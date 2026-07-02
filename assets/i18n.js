@@ -33,7 +33,7 @@ window.BTT_I18N = {
 
     "mat.title.1":"Искусственный ротанг —","mat.title.2":"материал, который служит",
     "mat.body":"Полиэтиленовое волокно (PE-ротанг) выглядит как природное плетение, но не гниёт, выдерживает солнце и мороз и полностью безопасно. Выбирайте цвет плетения и форму — под террасу, балкон или интерьер.",
-    "mat.cta":"О материале",
+    "mat.cta":"О материале","mat.chip":"PE-ротанг",
 
     "final.badge":"Плетение, которое живёт годами","final.title.1":"Сделано из","final.title.2":"искусственного","final.title.3":"ротанга",
 
@@ -116,7 +116,7 @@ window.BTT_I18N = {
 
     "mat.title.1":"Sun’iy rotang —","mat.title.2":"uzoq xizmat qiladigan material",
     "mat.body":"Polietilen tola (PE-rotang) tabiiy to‘quvga o‘xshaydi, lekin chirimaydi, quyosh va sovuqqa chidaydi va to‘liq xavfsiz. To‘quv rangi va shaklini tanlang — terassa, balkon yoki interyer uchun.",
-    "mat.cta":"Material haqida",
+    "mat.cta":"Material haqida","mat.chip":"PE-rotang",
 
     "final.badge":"Yillar yashaydigan to‘quv","final.title.1":"Sun’iy","final.title.2":"rotangdan","final.title.3":"yasalgan",
 
@@ -196,7 +196,7 @@ window.BTT_I18N = {
 
     "mat.title.1":"Synthetic rattan —","mat.title.2":"a material that lasts",
     "mat.body":"Polyethylene fibre (PE-rattan) looks like natural weave but never rots, withstands sun and frost and is completely safe. Choose the weave colour and shape — for the terrace, balcony or interior.",
-    "mat.cta":"About the material",
+    "mat.cta":"About the material","mat.chip":"PE-rattan",
 
     "final.badge":"A weave that lasts for years","final.title.1":"Made from","final.title.2":"synthetic","final.title.3":"rattan",
 

@@ -62,12 +62,12 @@
         <span class="hero__blob2"></span>
       </div>
       <div class="hero__caption">
-        <div class="hero__switch glass" data-hero-switch>
+        <div class="hero__switch glass glass--dark liquid spatial" data-hero-switch>
           <button class="hero__sw-arrow" data-hero-prev aria-label="Назад"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg></button>
           <div class="hero__sw-dots" data-hero-dots></div>
           <button class="hero__sw-arrow" data-hero-next aria-label="Вперёд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
         </div>
-        <div class="hero__cap-card">
+        <div class="hero__cap-card liquid-glass glass--dark spatial">
           <div class="s" data-h="bestS">Стойко к погоде</div>
           <div class="b" data-h="bestB">СЛУЖИТ ГОДАМИ</div>
         </div>
@@ -79,12 +79,12 @@
         <img class="hero__img is-on" data-h="sideImg" src="https://loremflickr.com/800/800/patio,furniture/all?lock=31" alt="" loading="eager">
         <img class="hero__img" data-h="sideImgB" alt="">
         <span class="pill pill--ghost hero__side-tag" data-h="interior">Плетёная мебель</span>
-        <a class="hero__store" data-h="storeLink" href="catalog.html">
+        <a class="hero__store glass glass--dark liquid spatial" data-h="storeLink" href="catalog.html">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg>
           <span data-h="store">Перейти в онлайн-магазин</span>
         </a>
       </div>
-      <div class="stats reveal" data-hero-stats>
+      <div class="stats liquid spatial reveal" data-hero-stats>
         <div class="stat"><div class="stat__num" data-h="s0n">50<span>+</span></div><div class="stat__label" data-h="s0l">Моделей плетения</div></div>
         <div class="stat"><div class="stat__num" data-h="s1n">8</div><div class="stat__label" data-h="s1l">Лет на улице</div></div>
         <div class="stat"><div class="stat__num" data-h="s2n">100<span>%</span></div><div class="stat__label" data-h="s2l">Влагостойкость</div></div>
@@ -153,17 +153,19 @@
 
 <!-- ===== COLLECTION ===== -->
 <section class="wrap section" style="padding-top:0">
-  <div class="section-head">
+  <div class="home-filters">
     <div>
       <div class="eyebrow reveal" data-i18n="cat.eyebrow">Коллекция</div>
       <h2 class="display-2 reveal" style="margin-top:8px"><span data-i18n="cat.title.1">Сделано из</span><br><span data-i18n="cat.title.2">искусственного ротанга</span></h2>
     </div>
-    <div class="cat-chips reveal" data-chips data-target="#home-grid">
+    <div class="glass-bar reveal">
+      <div class="cat-chips" data-chips data-target="#home-grid">
       <button class="chip is-active" data-cat="all" data-i18n="chip.all">Всё</button>
       <button class="chip" data-cat="furniture" data-i18n="chip.furniture">Садовая мебель</button>
       <button class="chip" data-cat="planter" data-i18n="chip.planter">Кашпо</button>
       <button class="chip" data-cat="basket" data-i18n="chip.basket">Корзины и сундуки</button>
       <button class="chip" data-cat="indoor" data-i18n="chip.indoor">Мебель для дома</button>
+      </div>
     </div>
   </div>
 
@@ -237,7 +239,7 @@
 <section class="wrap section" style="padding-block:clamp(20px,3vw,40px)">
   <div class="split">
     <h2 class="display-3 reveal" data-i18n="split.title">Обустройте сад и террасу мебелью, которой не страшна погода</h2>
-    <p class="lead reveal" data-i18n="split.body">Искусственный ротанг сочетает вид настоящего плетения с прочностью полимера: он не выгорает на солнце, не трескается на морозе и не требует особого ухода.</p>
+    <p class="lead reveal split__glass liquid-glass spatial" data-i18n="split.body">Искусственный ротанг сочетает вид настоящего плетения с прочностью полимера: он не выгорает на солнце, не трескается на морозе и не требует особого ухода.</p>
   </div>
 </section>
 
@@ -246,8 +248,9 @@
   <div class="material">
     <div class="material__img reveal">
       <img src="https://loremflickr.com/800/800/rattan,texture,weave/all?lock=61" alt="" loading="lazy" onerror="this.style.display='none'">
+      <span class="material__chip glass glass--dark liquid" data-i18n="mat.chip">PE-ротанг</span>
     </div>
-    <div class="reveal">
+    <div class="material__body liquid-glass spatial reveal">
       <h2 class="display-2" style="margin-bottom:18px"><span data-i18n="mat.title.1">Искусственный ротанг —</span><br><span data-i18n="mat.title.2">материал, который служит</span></h2>
       <p class="lead" data-i18n="mat.body" style="margin-bottom:28px">Полиэтиленовое волокно (PE-ротанг) выглядит как природное плетение, но не гниёт, выдерживает солнце и мороз и полностью безопасно.</p>
       <a class="btn btn--ghost btn--icon-end" href="about.html"><span data-i18n="mat.cta">О материале</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
@@ -259,7 +262,7 @@
 <section class="wrap section" style="padding-top:0">
   <div class="final reveal">
     <img src="https://loremflickr.com/800/800/rattan,garden,patio/all?lock=71" alt="" loading="lazy" onerror="this.style.display='none'">
-    <div class="final__inner">
+    <div class="final__inner liquid-glass glass--dark spatial">
       <span class="pill pill--dot" data-i18n="final.badge">Плетение, которое живёт годами</span>
       <h2><span data-i18n="final.title.1">Сделано из</span><br><span data-i18n="final.title.2">искусственного</span><br><span data-i18n="final.title.3">ротанга</span></h2>
     </div>

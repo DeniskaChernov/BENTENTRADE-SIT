@@ -63,7 +63,7 @@
     fab.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.6 8.6 0 0 1-3.8-.9L3 21l1.4-5.2A8.4 8.4 0 0 1 3.5 11.5 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg><span class="bot-fab__badge">1</span>';
 
     const panel=document.createElement("div");
-    panel.className="bot-panel"; panel.setAttribute("role","dialog"); panel.setAttribute("aria-label","Bententrade assistant");
+    panel.className="bot-panel glass liquid-glass spatial"; panel.setAttribute("role","dialog"); panel.setAttribute("aria-label","Bententrade assistant");
     panel.innerHTML=
       '<div class="bot-head"><div class="bot-head__ava">Б</div>'+
       '<div><div class="bot-head__t" data-bot-name>Бен</div><div class="bot-head__s" data-bot-role>Онлайн-помощник</div></div>'+
