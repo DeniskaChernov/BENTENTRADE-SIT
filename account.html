@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bententrade — Личный кабинет</title>
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/pages.css">
+<script>(function(){try{if(localStorage.getItem('btt_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="site-head__in">
+    <nav class="nav">
+      <a href="index.html" data-i18n="nav.home">Главная</a>
+      <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+      <a href="about.html" data-i18n="nav.about">О нас</a>
+      <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
+    </nav>
+    <a class="brand" href="index.html"><img src="assets/btt-logo.png" alt="Bententrade"></a>
+    <div class="head-tools">
+      <button class="icon-btn opt" data-i18n-aria="tool.search" aria-label="Поиск"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></button>
+      <button class="icon-btn opt" data-i18n-aria="tool.fav" aria-label="Избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg><span class="count" data-fav-count style="display:none">0</span></button>
+      <a class="icon-btn" href="catalog.html" data-i18n-aria="tool.cart" aria-label="Корзина"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="count" data-cart-count style="display:none">0</span></a>
+      <button class="icon-btn" data-theme-toggle data-i18n-aria="tool.theme" aria-label="Тема">
+        <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5Z"/></svg>
+        <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.3"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg>
+      </button>
+      <a class="icon-btn" href="account.html" style="background:var(--cream)" data-i18n-aria="tool.account" aria-label="Аккаунт"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></a>
+      <div class="lang"><button data-lang="ru">RU</button><button data-lang="uz">UZ</button><button data-lang="en">EN</button></div>
+      <button class="burger icon-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-drawer">
+  <a href="index.html" data-i18n="nav.home">Главная</a>
+  <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+  <a href="about.html" data-i18n="nav.about">О нас</a>
+  <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
+</nav>
+
+<main class="wrap section" style="padding-block:clamp(36px,5vw,64px)">
+  <div class="acc">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="acc-side glass">
+      <div class="acc-user">
+        <div class="acc-ava">АК</div>
+        <div>
+          <div class="nm">Азиз Каримов</div>
+          <div class="tier" data-i18n="acc.tier">Постоянный клиент</div>
+        </div>
+      </div>
+      <nav class="acc-nav" data-acc-nav>
+        <button data-acc-tab="overview" class="is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg><span data-i18n="acc.nav.overview">Обзор</span></button>
+        <button data-acc-tab="orders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5M9 13h6M9 17h6"/></svg><span data-i18n="acc.nav.orders">Заказы</span></button>
+        <button data-acc-tab="wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg><span data-i18n="acc.nav.wishlist">Избранное</span></button>
+        <button data-acc-tab="addresses"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg><span data-i18n="acc.nav.addresses">Адреса</span></button>
+        <button data-acc-tab="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 0 1-4 0v-.1A1.6 1.6 0 0 0 6.6 19l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7H2a2 2 0 0 1 0-4h.1A1.6 1.6 0 0 0 3.6 6.6l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H8a1.6 1.6 0 0 0 1-1.5V2a2 2 0 0 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V8a1.6 1.6 0 0 0 1.5 1H22a2 2 0 0 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z"/></svg><span data-i18n="acc.nav.settings">Настройки</span></button>
+        <div class="sep"></div>
+        <button class="danger" data-acc-logout><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg><span data-i18n="acc.nav.logout">Выйти</span></button>
+      </nav>
+    </aside>
+
+    <!-- ===== CONTENT ===== -->
+    <div class="acc-content">
+      <!-- OVERVIEW -->
+      <section class="acc-panel is-active" data-acc-panel="overview">
+        <div class="acc-h">
+          <div>
+            <h1><span data-i18n="acc.ov.hi">Здравствуйте,</span> Азиз 👋</h1>
+            <p data-i18n="acc.ov.sub">Рады видеть вас снова. Вот сводка по вашему аккаунту.</p>
+          </div>
+        </div>
+        <div class="acc-stats">
+          <div class="acc-stat glass"><div class="n">12</div><div class="l" data-i18n="acc.ov.s1">Всего заказов</div></div>
+          <div class="acc-stat glass"><div class="n">5</div><div class="l" data-i18n="acc.ov.s2">В избранном</div></div>
+          <div class="acc-stat glass"><div class="n">340</div><div class="l" data-i18n="acc.ov.s3">Бонусных баллов</div></div>
+        </div>
+
+        <div class="acc-card glass">
+          <div class="acc-card__h">
+            <h3 data-i18n="acc.ov.recent">Последние заказы</h3>
+            <button class="acc-link" data-acc-goto="orders"><span data-i18n="acc.ov.all">Все заказы</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+          <div class="order">
+            <div class="order__top">
+              <div><div class="order__id">#BT-2048</div><div class="order__date">14 июня 2026</div></div>
+              <span class="status status--ship" data-i18n="acc.st.ship">В пути</span>
+            </div>
+            <div class="order__body">
+              <div class="order__thumbs">
+                <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
+                <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
+              </div>
+              <div class="order__meta"><span data-i18n="acc.items2">2 товара</span></div>
+              <div class="order__total">$718</div>
+            </div>
+          </div>
+          <div class="order">
+            <div class="order__top">
+              <div><div class="order__id">#BT-2031</div><div class="order__date">2 июня 2026</div></div>
+              <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
+            </div>
+            <div class="order__body">
+              <div class="order__thumbs">
+                <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
+              </div>
+              <div class="order__meta"><span data-i18n="acc.items1">1 товар</span></div>
+              <div class="order__total">$597</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORDERS -->
+      <section class="acc-panel" data-acc-panel="orders">
+        <div class="acc-h"><div><h1 data-i18n="acc.nav.orders">Заказы</h1><p data-i18n="acc.ord.sub">История ваших покупок и их статусы.</p></div></div>
+
+        <div class="order glass">
+          <div class="order__top">
+            <div><div class="order__id">#BT-2048</div><div class="order__date">14 июня 2026</div></div>
+            <span class="status status--ship" data-i18n="acc.st.ship">В пути</span>
+          </div>
+          <div class="order__body">
+            <div class="order__thumbs">
+              <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
+              <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
+            </div>
+            <div class="order__meta"><span data-i18n="acc.items2">2 товара</span> · <span data-i18n="acc.ord.deliver">доставка 18–20 июня</span></div>
+            <div class="order__total">$718</div>
+          </div>
+          <div class="order__actions" style="margin-top:16px">
+            <button class="btn btn--ghost btn--sm" data-order-track="#BT-2048" data-i18n="acc.ord.track">Отследить</button>
+            <button class="btn btn--dark btn--sm" data-order-repeat="p1,p2" data-i18n="acc.ord.repeat">Повторить заказ</button>
+          </div>
+        </div>
+
+        <div class="order glass">
+          <div class="order__top">
+            <div><div class="order__id">#BT-2031</div><div class="order__date">2 июня 2026</div></div>
+            <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
+          </div>
+          <div class="order__body">
+            <div class="order__thumbs">
+              <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
+            </div>
+            <div class="order__meta"><span data-i18n="acc.items1">1 товар</span> · <span data-i18n="acc.ord.delivered">доставлен 6 июня</span></div>
+            <div class="order__total">$597</div>
+          </div>
+          <div class="order__actions" style="margin-top:16px">
+            <button class="btn btn--ghost btn--sm" data-order-review="#BT-2031" data-i18n="acc.ord.review">Оставить отзыв</button>
+            <button class="btn btn--dark btn--sm" data-order-repeat="p3" data-i18n="acc.ord.repeat">Повторить заказ</button>
+          </div>
+        </div>
+
+        <div class="order glass">
+          <div class="order__top">
+            <div><div class="order__id">#BT-1998</div><div class="order__date">18 мая 2026</div></div>
+            <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
+          </div>
+          <div class="order__body">
+            <div class="order__thumbs">
+              <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
+              <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
+              <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
+            </div>
+            <div class="order__meta"><span data-i18n="acc.items3">3 товара</span></div>
+            <div class="order__total">$1 160</div>
+          </div>
+          <div class="order__actions" style="margin-top:16px">
+            <button class="btn btn--ghost btn--sm" data-order-review="#BT-1998" data-i18n="acc.ord.review">Оставить отзыв</button>
+            <button class="btn btn--dark btn--sm" data-order-repeat="p4,p5,p11" data-i18n="acc.ord.repeat">Повторить заказ</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- WISHLIST -->
+      <section class="acc-panel" data-acc-panel="wishlist">
+        <div class="acc-h"><div><h1 data-i18n="acc.nav.wishlist">Избранное</h1><p data-i18n="acc.wish.sub">Товары, которые вы сохранили на потом.</p></div></div>
+        <div class="prod-grid">
+          <article class="product" data-product data-cat="chair">
+            <div class="product__media media">
+              <button class="fav is-on" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+              <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'">
+              <a class="see" href="product.html?id=p2" data-i18n="see">Подробнее</a>
+              <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+            </div>
+            <div>
+              <div class="product__cat">Стулья</div>
+              <div class="product__name" style="margin-top:4px">Кресло Light Wing</div>
+              <div class="price" style="margin-top:8px"><span class="price__now">$458</span></div>
+            </div>
+          </article>
+          <article class="product" data-product data-cat="shelf">
+            <div class="product__media media">
+              <button class="fav is-on" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+              <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'">
+              <a class="see" href="product.html?id=p3" data-i18n="see">Подробнее</a>
+              <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+            </div>
+            <div>
+              <div class="product__cat">Полки</div>
+              <div class="product__name" style="margin-top:4px">Стеллаж Marble</div>
+              <div class="price" style="margin-top:8px"><span class="price__now">$597</span></div>
+            </div>
+          </article>
+          <article class="product" data-product data-cat="desk">
+            <div class="product__media media">
+              <button class="fav is-on" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+              <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'">
+              <a class="see" href="product.html?id=p4" data-i18n="see">Подробнее</a>
+              <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+            </div>
+            <div>
+              <div class="product__cat">Столы</div>
+              <div class="product__name" style="margin-top:4px">Обеденный стол Oak</div>
+              <div class="price" style="margin-top:8px"><span class="price__now">$720</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ADDRESSES -->
+      <section class="acc-panel" data-acc-panel="addresses">
+        <div class="acc-h"><div><h1 data-i18n="acc.nav.addresses">Адреса</h1><p data-i18n="acc.addr.sub">Адреса доставки для быстрого оформления.</p></div></div>
+        <div class="addr-grid">
+          <div class="addr is-default glass">
+            <a class="addr__edit" href="#" data-addr-edit data-i18n="acc.addr.edit">Изменить</a>
+            <div class="addr__tag"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="acc.addr.default">Адрес по умолчанию</span></div>
+            <h4>Азиз Каримов</h4>
+            <p>Ташкент, Мирабадский район,<br>ул. Амира Темура, 15, кв. 42<br>+998 90 123 45 67</p>
+          </div>
+          <div class="addr glass">
+            <a class="addr__edit" href="#" data-addr-edit data-i18n="acc.addr.edit">Изменить</a>
+            <div class="addr__tag"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9 12 2l9 7v11a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg><span data-i18n="acc.addr.office">Офис</span></div>
+            <h4>ООО «Аркада»</h4>
+            <p>Ташкент, Юнусабадский район,<br>пр. Амира Темура, 108, офис 7<br>+998 71 200 18 46</p>
+          </div>
+          <button class="addr addr--add" type="button" data-addr-add>
+            <span class="plus"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+            <span data-i18n="acc.addr.add">Добавить адрес</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="acc-panel" data-acc-panel="settings">
+        <div class="acc-h"><div><h1 data-i18n="acc.nav.settings">Настройки</h1><p data-i18n="acc.set.sub">Личные данные и предпочтения.</p></div></div>
+        <div class="acc-card glass">
+          <div class="acc-card__h"><h3 data-i18n="acc.set.personal">Личные данные</h3></div>
+          <form class="form" data-acc-form>
+            <div class="field"><label data-i18n="acc.set.name">Имя</label><input type="text" value="Азиз Каримов"></div>
+            <div class="field"><label data-i18n="acc.set.email">Email</label><input type="email" value="aziz.karimov@gmail.com"></div>
+            <div class="field"><label data-i18n="acc.set.phone">Телефон</label><input type="tel" value="+998 90 123 45 67"></div>
+            <button class="btn btn--copper" type="submit" data-i18n="acc.set.save">Сохранить изменения</button>
+            <span class="form-ok" data-form-ok data-i18n="acc.set.saved">Изменения сохранены ✓</span>
+          </form>
+        </div>
+        <div class="acc-card glass">
+          <div class="acc-card__h"><h3 data-i18n="acc.set.prefs">Предпочтения</h3></div>
+          <div class="acc-rows">
+            <div class="acc-row"><span class="k" data-i18n="acc.set.theme">Тема оформления</span><span class="v" data-i18n="acc.set.themehint">Светлая / Тёмная</span><button class="btn btn--ghost btn--sm" data-theme-toggle data-i18n="acc.set.switch">Переключить</button></div>
+            <div class="acc-row"><span class="k" data-i18n="acc.set.lang">Язык</span><span class="v">Русский · O‘zbek · English</span><div class="lang lang--acc"><button data-lang="ru">RU</button><button data-lang="uz">UZ</button><button data-lang="en">EN</button></div></div>
+            <div class="acc-row"><span class="k" data-i18n="acc.set.news">Рассылка</span><span class="v" data-news-label data-i18n="acc.set.newson">Новинки и акции — включено</span><button class="switch" role="switch" aria-checked="true" data-news-toggle aria-label="Рассылка"><span class="switch__dot"></span></button></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="site-foot__top">
+    <div class="foot-col"><img src="assets/btt-logo.png" alt="Bententrade"><p data-i18n="foot.tag" style="color:var(--on-dark-muted);max-width:30ch">Мебель ручной работы из массива дерева.</p></div>
+    <div class="foot-col"><h5 data-i18n="foot.menu">Меню</h5><a href="index.html" data-i18n="nav.home">Главная</a><a href="catalog.html" data-i18n="nav.catalog">Каталог</a><a href="about.html" data-i18n="nav.about">О нас</a><a href="contacts.html" data-i18n="nav.contacts">Контакты</a></div>
+    <div class="foot-col"><h5 data-i18n="foot.help">Помощь</h5><a href="#" data-i18n="foot.faq">Вопросы и ответы</a><a href="#" data-i18n="foot.delivery">Доставка</a><a href="#" data-i18n="foot.returns">Возврат</a><a href="#" data-i18n="foot.care">Уход за мебелью</a></div>
+    <div class="foot-col"><h5 data-i18n="foot.contacts">Контакты</h5><p data-i18n="co.i.addr.v">Ташкент, ул. Амира Темура, 15</p><a href="tel:+998712001846">+998 71 200 18 46</a><a href="mailto:hello@bententrade.uz">hello@bententrade.uz</a></div>
+  </div>
+  <div class="site-foot__bottom"><span data-i18n="foot.since">С 2024 ГОДА</span><span data-i18n="foot.copy">© 2026 BENTENTRADE. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span><span data-i18n="foot.privacy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</span></div>
+</footer>
+
+<script src="assets/i18n.js"></script>
+<script src="assets/products.js"></script>
+<script src="assets/account.js"></script>
+<script src="assets/assistant.js"></script>
+<script src="assets/search.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/cart.js"></script>
+<script src="assets/fx.js"></script>
+</body>
+</html>

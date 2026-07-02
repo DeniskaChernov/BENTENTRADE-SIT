@@ -1,0 +1,135 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "assets/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Hanken Grotesque|Cormorant Garamond))/i]",
+        "message": "Font not provided by the design system. Available: Hanken Grotesque, Cormorant Garamond."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--body",
+      "--copper",
+      "--copper-bright",
+      "--copper-soft",
+      "--cream",
+      "--cream-2",
+      "--display",
+      "--glass-bg",
+      "--glass-blur",
+      "--glass-brd",
+      "--glass-inset",
+      "--glass-shadow",
+      "--glass-sheen",
+      "--gut",
+      "--ink",
+      "--ink-2",
+      "--ink-3",
+      "--line",
+      "--line-2",
+      "--maxw",
+      "--muted",
+      "--muted-2",
+      "--on-dark",
+      "--on-dark-line",
+      "--on-dark-muted",
+      "--paper",
+      "--r-lg",
+      "--r-md",
+      "--r-pill",
+      "--r-sm",
+      "--r-xl",
+      "--serif",
+      "--shadow-card",
+      "--shadow-soft",
+      "--spring",
+      "--text"
+    ],
+    "tokenKinds": {
+      "--ink": "color",
+      "--ink-2": "color",
+      "--ink-3": "color",
+      "--copper": "color",
+      "--copper-bright": "color",
+      "--copper-soft": "color",
+      "--cream": "color",
+      "--cream-2": "color",
+      "--paper": "color",
+      "--text": "font",
+      "--muted": "color",
+      "--muted-2": "color",
+      "--line": "color",
+      "--line-2": "color",
+      "--on-dark": "color",
+      "--on-dark-muted": "color",
+      "--on-dark-line": "color",
+      "--display": "font",
+      "--body": "font",
+      "--serif": "font",
+      "--r-xl": "spacing",
+      "--r-lg": "spacing",
+      "--r-md": "spacing",
+      "--r-sm": "spacing",
+      "--r-pill": "spacing",
+      "--shadow-card": "shadow",
+      "--shadow-soft": "shadow",
+      "--maxw": "spacing",
+      "--gut": "spacing",
+      "--glass-bg": "color",
+      "--glass-brd": "color",
+      "--glass-blur": "other",
+      "--glass-shadow": "shadow",
+      "--glass-sheen": "other",
+      "--glass-inset": "spacing",
+      "--spring": "other"
+    },
+    "fontFamilies": [
+      "Cormorant Garamond",
+      "Hanken Grotesque"
+    ]
+  }
+}

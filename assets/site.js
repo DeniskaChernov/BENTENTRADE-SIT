@@ -1,0 +1,242 @@
+/* ============================================================
+   BENTENTRADE — site interactions
+   ============================================================ */
+(function(){
+  const LANGS = ["ru","uz","en"];
+  const dict = window.BTT_I18N || {};
+
+  function getLang(){
+    const saved = localStorage.getItem("btt_lang");
+    return LANGS.includes(saved) ? saved : "ru";
+  }
+
+  function applyLang(lang){
+    const d = dict[lang] || dict.ru;
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(el=>{
+      const key = el.getAttribute("data-i18n");
+      if(d[key] == null) return;
+      // support \n -> <br> for multiline labels
+      if(d[key].includes("\n")){
+        el.innerHTML = d[key].split("\n").map(s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))).join("<br>");
+      } else {
+        el.textContent = d[key];
+      }
+    });
+    document.querySelectorAll("[data-i18n-ph]").forEach(el=>{
+      const key = el.getAttribute("data-i18n-ph");
+      if(d[key] != null) el.setAttribute("placeholder", d[key]);
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach(el=>{
+      const key = el.getAttribute("data-i18n-aria");
+      if(d[key] != null) el.setAttribute("aria-label", d[key]);
+    });
+    document.querySelectorAll(".lang button").forEach(b=>{
+      b.classList.toggle("is-active", b.dataset.lang === lang);
+    });
+  }
+
+  function setLang(lang){
+    localStorage.setItem("btt_lang", lang);
+    applyLang(lang);
+  }
+
+  /* ---- cart + favorites are owned by cart.js (persistent drawers) ---- */
+
+  /* ---- theme ---- */
+  function getTheme(){ return localStorage.getItem("btt_theme") === "dark" ? "dark" : "light"; }
+  function applyTheme(t){
+    document.documentElement.setAttribute("data-theme", t === "dark" ? "dark" : "light");
+  }
+  function toggleTheme(){
+    const next = getTheme() === "dark" ? "light" : "dark";
+    localStorage.setItem("btt_theme", next);
+    applyTheme(next);
+  }
+
+  /* ---- scroll reveal (IntersectionObserver) + sibling stagger ---- */
+  function initReveal(){
+    const reveals = Array.from(document.querySelectorAll(".reveal"));
+
+    // stagger: elements that share a parent fade in one after another
+    const byParent = new Map();
+    reveals.forEach(el=>{
+      const p = el.parentElement;
+      if(!p) return;
+      if(!byParent.has(p)) byParent.set(p, []);
+      byParent.get(p).push(el);
+    });
+    byParent.forEach(list=>{
+      if(list.length > 1) list.forEach((el,i)=>{ el.style.transitionDelay = Math.min(i*70, 420) + "ms"; });
+    });
+
+    // explicit [data-stagger] containers (children animate in sequence)
+    const staggers = Array.from(document.querySelectorAll("[data-stagger]"));
+    staggers.forEach(c=>{
+      const step = parseFloat(c.dataset.stagger) || 80;
+      Array.from(c.children).forEach((ch,i)=>{ ch.style.transitionDelay = (i*step) + "ms"; });
+    });
+
+    const targets = reveals.concat(staggers);
+    if(!("IntersectionObserver" in window)){
+      targets.forEach(el=>el.classList.add("is-in"));
+      return;
+    }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add("is-in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin:"0px 0px -8% 0px", threshold:0.1 });
+    targets.forEach(el=>io.observe(el));
+  }
+
+  /* ---- header condenses + frosts once you scroll past the top ---- */
+  function initHeaderScroll(){
+    const head = document.querySelector(".site-head");
+    if(!head) return;
+    let ticking = false;
+    function apply(){ head.classList.toggle("is-scrolled", window.scrollY > 24); ticking = false; }
+    window.addEventListener("scroll", ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(apply); } }, { passive:true });
+    apply();
+  }
+
+  /* ---- parallax: large banner images drift against the scroll ---- */
+  function initParallax(){
+    if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const sel = ".promo img, .final img, .material__img img, .ab-story__img img, .page-hero__collage img";
+    const items = Array.from(document.querySelectorAll(sel)).map(el=>({
+      el,
+      speed: parseFloat(el.dataset.parallax) || 0.14,
+      scale: 1.16
+    }));
+    if(!items.length) return;
+    items.forEach(it=>{ it.el.style.willChange = "transform"; });
+
+    let ticking = false;
+    function update(){
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      items.forEach(it=>{
+        const r = it.el.getBoundingClientRect();
+        if(r.bottom < -240 || r.top > vh + 240) return;
+        const center = r.top + r.height/2;
+        const off = (center - vh/2) / vh;          // ~ -0.5 .. 0.5
+        let y = -off * it.speed * vh;               // move opposite to scroll
+        y = Math.max(-30, Math.min(30, y));
+        it.el.style.transform = "translate3d(0," + y.toFixed(1) + "px,0) scale(" + it.scale + ")";
+      });
+      ticking = false;
+    }
+    function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener("scroll", onScroll, { passive:true });
+    window.addEventListener("resize", onScroll, { passive:true });
+    update();
+  }
+
+  /* ---- count-up stat numbers (about page) ---- */
+  function animateNum(el){
+    const tn = Array.from(el.childNodes).find(n=>n.nodeType===3 && /\d/.test(n.textContent));
+    if(!tn) return;
+    const m = (tn.textContent||"").trim().match(/^(\d+)(\D*)$/);
+    if(!m) return;
+    const target = parseInt(m[1],10), unit = m[2]||"";
+    const dur = 1100, t0 = performance.now();
+    (function tick(now){
+      const p = Math.min(1,(now-t0)/dur);
+      const eased = 1 - Math.pow(1-p, 3);
+      tn.textContent = Math.round(target*eased) + unit;
+      if(p < 1) requestAnimationFrame(tick); else tn.textContent = target + unit;
+    })(t0);
+  }
+  function initCounters(){
+    const nums = document.querySelectorAll(".ab-stat .n");
+    if(!nums.length || !("IntersectionObserver" in window)) return;
+    if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver((es)=>{
+      es.forEach(e=>{ if(e.isIntersecting){ io.unobserve(e.target); animateNum(e.target); } });
+    }, { threshold:0.4 });
+    nums.forEach(n=>io.observe(n));
+  }
+
+  /* ---- wire up on load ---- */
+  document.addEventListener("DOMContentLoaded", function(){
+    applyTheme(getTheme());
+    applyLang(getLang());
+    initReveal();
+    initParallax();
+    initHeaderScroll();
+    initCounters();
+
+    // theme toggle
+    document.querySelectorAll("[data-theme-toggle]").forEach(b=>{
+      b.addEventListener("click", toggleTheme);
+    });
+
+    // language buttons
+    document.querySelectorAll(".lang button").forEach(b=>{
+      b.addEventListener("click", ()=> setLang(b.dataset.lang));
+    });
+
+    // add-to-cart & favorites are handled by cart.js
+
+    // category chips (catalog + home)
+    document.querySelectorAll("[data-chips]").forEach(group=>{
+      const chips = group.querySelectorAll(".chip");
+      function activate(chip){
+        chips.forEach(c=>c.classList.remove("is-active"));
+        chip.classList.add("is-active");
+        const cat = chip.dataset.cat;
+        const grid = document.querySelector(group.dataset.target);
+        if(!grid) return;
+        grid.querySelectorAll("[data-product]").forEach(card=>{
+          const show = cat==="all" || card.dataset.cat===cat;
+          card.style.display = show ? "" : "none";
+        });
+      }
+      chips.forEach(chip=> chip.addEventListener("click", ()=> activate(chip)));
+      // honor #category hash coming from another page (e.g. hero CTA)
+      const hash = (location.hash || "").replace("#","");
+      if(hash){
+        const match = Array.from(chips).find(c=>c.dataset.cat===hash);
+        if(match) activate(match);
+      }
+    });
+
+    // honor ?q= free-text search coming from the Spotlight overlay
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const q = (params.get("q") || "").toLowerCase().trim();
+      if(!q) return;
+      const grid = document.querySelector("#catalog-grid");
+      if(!grid) return;
+      let shown = 0;
+      grid.querySelectorAll("[data-product]").forEach(card=>{
+        const txt = (card.textContent || "").toLowerCase();
+        const show = txt.includes(q);
+        card.style.display = show ? "" : "none";
+        if(show) shown++;
+      });
+      // reflect the query in the results count + a small banner
+      const note = document.querySelector("[data-search-note]");
+      if(note){ note.textContent = "«" + (params.get("q")) + "» — " + shown; note.style.display = ""; }
+    })();
+
+    // mobile nav
+    const burger = document.querySelector(".burger");
+    const drawer = document.querySelector(".mobile-drawer");
+    if(burger && drawer){
+      burger.addEventListener("click",()=> drawer.classList.toggle("open"));
+      drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>drawer.classList.remove("open")));
+    }
+
+    // contact form
+    const form = document.querySelector("[data-contact-form]");
+    if(form){
+      form.addEventListener("submit",(e)=>{
+        e.preventDefault();
+        const ok = form.querySelector("[data-form-ok]");
+        if(ok) ok.classList.add("show");
+        form.reset();
+      });
+    }
+  });
+})();
