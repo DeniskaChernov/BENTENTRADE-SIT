@@ -58,7 +58,6 @@
   function initReveal(){
     const reveals = Array.from(document.querySelectorAll(".reveal"));
 
-    // stagger: elements that share a parent fade in one after another
     const byParent = new Map();
     reveals.forEach(el=>{
       const p = el.parentElement;
@@ -67,13 +66,12 @@
       byParent.get(p).push(el);
     });
     byParent.forEach(list=>{
-      if(list.length > 1) list.forEach((el,i)=>{ el.style.transitionDelay = Math.min(i*70, 420) + "ms"; });
+      if(list.length > 1) list.forEach((el,i)=>{ el.style.transitionDelay = Math.min(i*100, 560) + "ms"; });
     });
 
-    // explicit [data-stagger] containers (children animate in sequence)
     const staggers = Array.from(document.querySelectorAll("[data-stagger]"));
     staggers.forEach(c=>{
-      const step = parseFloat(c.dataset.stagger) || 80;
+      const step = parseFloat(c.dataset.stagger) || 110;
       Array.from(c.children).forEach((ch,i)=>{ ch.style.transitionDelay = (i*step) + "ms"; });
     });
 
@@ -86,8 +84,56 @@
       entries.forEach(e=>{
         if(e.isIntersecting){ e.target.classList.add("is-in"); io.unobserve(e.target); }
       });
-    }, { rootMargin:"0px 0px -8% 0px", threshold:0.1 });
+    }, { rootMargin:"0px 0px -6% 0px", threshold:0.08 });
     targets.forEach(el=>io.observe(el));
+  }
+
+  /* ---- page enter / leave fade between static pages ---- */
+  function initPageTransitions(){
+    if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    document.body.classList.add("is-entering");
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=> document.body.classList.remove("is-entering"));
+    });
+
+    document.querySelectorAll("a[href]").forEach(a=>{
+      const href = a.getAttribute("href");
+      if(!href || href.startsWith("#") || href.startsWith("http") || href.startsWith("tel:") || href.startsWith("mailto:")) return;
+      if(a.target === "_blank" || a.hasAttribute("download")) return;
+      if(a.closest(".bot-panel") || a.closest(".search-ov")) return;
+      a.addEventListener("click", e=>{
+        if(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        document.body.classList.add("is-leaving");
+        setTimeout(()=>{ location.href = href; }, 380);
+      });
+    });
+  }
+
+  /* ---- animate product cards when category chips change ---- */
+  function filterProducts(grid, cat){
+    const cards = Array.from(grid.querySelectorAll("[data-product]"));
+    const toShow = cards.filter(c=> cat==="all" || c.dataset.cat===cat);
+    const toHide = cards.filter(c=> !toShow.includes(c));
+
+    toHide.forEach(card=>{
+      card.classList.remove("is-filter-in");
+      card.classList.add("is-filter-out");
+      setTimeout(()=>{ card.style.display = "none"; card.classList.remove("is-filter-out"); }, 320);
+    });
+
+    toShow.forEach((card,i)=>{
+      const wasHidden = card.style.display === "none";
+      card.style.display = "";
+      if(wasHidden){
+        card.classList.remove("is-filter-in");
+        void card.offsetWidth;
+        card.style.animationDelay = (i*60) + "ms";
+        card.classList.add("is-filter-in");
+        card.addEventListener("animationend", ()=> card.classList.remove("is-filter-in"), { once:true });
+      }
+    });
   }
 
   /* ---- header condenses + frosts once you scroll past the top ---- */
@@ -165,6 +211,7 @@
     initParallax();
     initHeaderScroll();
     initCounters();
+    initPageTransitions();
 
     // theme toggle
     document.querySelectorAll("[data-theme-toggle]").forEach(b=>{
@@ -187,10 +234,7 @@
         const cat = chip.dataset.cat;
         const grid = document.querySelector(group.dataset.target);
         if(!grid) return;
-        grid.querySelectorAll("[data-product]").forEach(card=>{
-          const show = cat==="all" || card.dataset.cat===cat;
-          card.style.display = show ? "" : "none";
-        });
+        filterProducts(grid, cat);
       }
       chips.forEach(chip=> chip.addEventListener("click", ()=> activate(chip)));
       // honor #category hash coming from another page (e.g. hero CTA)
