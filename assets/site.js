@@ -141,7 +141,12 @@
     const head = document.querySelector(".site-head");
     if(!head) return;
     let ticking = false;
-    function apply(){ head.classList.toggle("is-scrolled", window.scrollY > 24); ticking = false; }
+    function apply(){
+      head.classList.toggle("is-scrolled", window.scrollY > 24);
+      document.documentElement.style.setProperty("--head-h", head.offsetHeight + "px");
+      ticking = false;
+    }
+    window.addEventListener("resize", apply, { passive:true });
     window.addEventListener("scroll", ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(apply); } }, { passive:true });
     apply();
   }
@@ -203,6 +208,31 @@
     nums.forEach(n=>io.observe(n));
   }
 
+  function initCatToolbar(){
+    const sentinel = document.querySelector(".cat-toolbar-sentinel");
+    const bar = document.querySelector(".cat-toolbar");
+    const head = document.querySelector(".site-head");
+    if(!sentinel || !bar || !("IntersectionObserver" in window)) return;
+    let io = null;
+    function headOffset(){
+      if(head) return head.offsetHeight;
+      const v = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--head-h"));
+      return Number.isFinite(v) ? v : 76;
+    }
+    function observe(){
+      if(io) io.disconnect();
+      io = new IntersectionObserver(([e])=>{
+        bar.classList.toggle("is-stuck", !e.isIntersecting);
+      }, { threshold:0, rootMargin: "-" + headOffset() + "px 0px 0px 0px" });
+      io.observe(sentinel);
+    }
+    observe();
+    if(head && "ResizeObserver" in window){
+      new ResizeObserver(observe).observe(head);
+    }
+    window.addEventListener("resize", observe, { passive:true });
+  }
+
   /* ---- wire up on load ---- */
   document.addEventListener("DOMContentLoaded", function(){
     applyTheme(getTheme());
@@ -210,6 +240,7 @@
     initReveal();
     initParallax();
     initHeaderScroll();
+    initCatToolbar();
     initCounters();
     initPageTransitions();
 

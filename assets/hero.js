@@ -1,7 +1,6 @@
 /* ============================================================
    BENTENTRADE — hero (switchable worlds, reference layout)
-   Worlds: garden furniture · home furniture · artificial rattan · planters & baskets
-   Keeps the CAIRIS reference layout intact; only the content swaps.
+   Worlds: garden · home · rattan · planters — L-form overlay, 4 slides.
    Multilingual (RU/UZ/EN); reacts to the global language switch.
    ============================================================ */
 (function(){
@@ -50,7 +49,7 @@
       t1:      {ru:"Искусственный",          uz:"Sun’iy",                 en:"Synthetic"},
       t2:      {ru:"ротанг",                 uz:"rotang",                 en:"rattan"},
       interior:{ru:"Плетёная мебель",        uz:"To‘qilgan mebel",        en:"Woven furniture"},
-      bestS:   {ru:"Стойкий к погоде",       uz:"Ob-havoga chidamli",     en:"Weather-proof"},
+      bestS:   {ru:"Стойко к погоде",       uz:"Ob-havoga chidamli",     en:"Weather-proof"},
       bestB:   {ru:"СЛУЖИТ ГОДАМИ",          uz:"YILLAB XIZMAT QILADI",   en:"LASTS FOR YEARS"},
       store:   {ru:"Смотреть ротанг",         uz:"Rotangni ko‘rish",      en:"Shop the rattan"},
       href:    "catalog.html",
@@ -89,8 +88,8 @@
     sideImgs:[$('[data-h="sideImg"]'), $('[data-h="sideImgB"]')],
     badge:$('[data-h="badge"]'), t1:$('[data-h="t1"]'), t2:$('[data-h="t2"]'),
     interior:$('[data-h="interior"]'), bestS:$('[data-h="bestS"]'), bestB:$('[data-h="bestB"]'),
-    store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'),
-    blob:$('.hero__blob'), blobInner:$('[data-h-inner]'), main:$('.hero__main'), photo:$('.hero__photo'), stats:$('[data-hero-stats]'),
+    store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'), capCard:$('.hero__cap-card'),
+    pocketInner:$('[data-h-inner]'), main:$('.hero__main'), photo:$('.hero__photo'), stats:$('[data-hero-stats]'),
     dots:$('[data-hero-dots]')
   };
   const statNum=[$('[data-h="s0n"]'),$('[data-h="s1n"]'),$('[data-h="s2n"]')];
@@ -110,7 +109,7 @@
   const dotEls=Array.from(els.dots.children);
 
   function anim(){
-    [els.stats].forEach(el=>{
+    [els.pocketInner, els.stats, els.capCard].forEach(el=>{
       if(!el) return; el.classList.remove("is-swap"); void el.offsetWidth; el.classList.add("is-swap");
     });
   }
