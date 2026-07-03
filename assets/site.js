@@ -261,6 +261,21 @@
       document.querySelector('.cat-chips .chip[data-cat="all"]')?.click();
     });
 
+    document.addEventListener("btt:related-rendered", (e)=>{
+      const grid = e.detail && e.detail.grid;
+      if(!grid || !("IntersectionObserver" in window)) return;
+      const cards = Array.from(grid.querySelectorAll(".reveal"));
+      const step = parseFloat(grid.dataset.stagger) || 90;
+      cards.forEach((el,i)=>{ el.style.transitionDelay = (i * step) + "ms"; });
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting){ en.target.classList.add("is-in"); io.unobserve(en.target); }
+        });
+      }, { rootMargin:"0px 0px -6% 0px", threshold:0.08 });
+      cards.forEach(el=>io.observe(el));
+      if(window.BTT_syncFavs) window.BTT_syncFavs();
+    });
+
     // theme toggle
     document.querySelectorAll("[data-theme-toggle]").forEach(b=>{
       b.addEventListener("click", toggleTheme);

@@ -41,19 +41,19 @@
   <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
 </nav>
 
-<main class="wrap">
+<main class="wrap pdp-flow">
 
-  <nav class="crumb">
+  <nav class="crumb reveal">
     <a href="index.html" data-i18n="pdp.crumb.home">Главная</a>
     <span class="sep">/</span>
-    <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+    <a href="catalog.html" data-crumb-cat data-i18n="nav.catalog">Каталог</a>
     <span class="sep">/</span>
     <span class="cur" data-i18n="p1.name">Садовый диван «Лагуна»</span>
   </nav>
 
   <section class="pdp">
     <!-- GALLERY -->
-    <div class="pdp-gal">
+    <div class="pdp-gal reveal">
       <div class="pdp-gal__thumbs">
         <button class="pdp-thumb is-active" data-thumb aria-label="view 1"><img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=300&q=80" alt="" onerror="this.style.display='none'"></button>
         <button class="pdp-thumb" data-thumb aria-label="view 2"><img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=300&q=80" alt="" onerror="this.style.display='none'"></button>
@@ -62,15 +62,15 @@
       </div>
       <div class="pdp-stage" data-stage>
         <span class="badge-sale">-30%</span>
-        <img class="is-on" src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1100&q=80" alt="Деревянный стол Modern" onerror="this.style.background='var(--cream-2)'">
-        <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1100&q=80" alt="" onerror="this.style.display='none'">
-        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1100&q=80" alt="" onerror="this.style.display='none'">
-        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1100&q=80" alt="" onerror="this.style.display='none'">
+        <img class="is-on" src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1100&q=80" alt="" onerror="this.style.background='var(--cream-2)'">
+        <img src="" alt="" onerror="this.style.display='none'">
+        <img src="" alt="" onerror="this.style.display='none'">
+        <img src="" alt="" onerror="this.style.display='none'">
       </div>
     </div>
 
     <!-- INFO -->
-    <div class="pdp-info">
+    <div class="pdp-info reveal">
       <div class="product__cat" data-i18n="p1.cat">Садовая мебель</div>
       <h1 data-i18n="p1.name">Садовый диван «Лагуна»</h1>
       <div class="pdp-rate">
@@ -84,7 +84,7 @@
         <span data-i18n="pdp.rate">4.9 · 128 отзывов</span>
       </div>
 
-      <div class="pdp-price spatial">
+      <div class="pdp-price">
         <span class="now">$780</span>
         <span class="old">$980</span>
         <span class="save" data-i18n="pdp.save">Экономия $200</span>
@@ -125,19 +125,19 @@
 
       <!-- trust -->
       <div class="pdp-trust">
-        <div class="trust spatial">
+        <div class="trust">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></span>
           <div><div class="t" data-i18n="pdp.t1.t">Доставка 7–10 дней</div><div class="d" data-i18n="pdp.t1.d">Бесплатно по Узбекистану</div></div>
         </div>
-        <div class="trust spatial">
+        <div class="trust">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 5 6v5c0 4 3 7 7 9 4-2 7-5 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg></span>
           <div><div class="t" data-i18n="pdp.t2.t">Гарантия 5 лет</div><div class="d" data-i18n="pdp.t2.d">На каркас и сборку</div></div>
         </div>
-        <div class="trust spatial">
+        <div class="trust">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 4 4 14l-1 5 5-1L18 8z"/><path d="m12 6 4 4"/></svg></span>
           <div><div class="t" data-i18n="pdp.t3.t">Сборка включена</div><div class="d" data-i18n="pdp.t3.d">Наш мастер соберёт на месте</div></div>
         </div>
-        <div class="trust spatial">
+        <div class="trust">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg></span>
           <div><div class="t" data-i18n="pdp.t4.t">Возврат 14 дней</div><div class="d" data-i18n="pdp.t4.d">Если не подошёл размер</div></div>
         </div>
@@ -149,86 +149,30 @@
   <section class="section pdp-detail">
     <div class="reveal">
       <h2 data-i18n="pdp.about.h">О товаре</h2>
-      <p data-i18n="pdp.about.p1">Каждый стол начинается с подбора массива: мы используем выдержанный дуб без сучков и трещин. Столешница склеивается из ламелей, шлифуется в несколько проходов и покрывается натуральным маслом, которое подчёркивает текстуру дерева.</p>
-      <p data-i18n="pdp.about.p2">Ножки точатся на станке и крепятся на скрытый металлический каркас — конструкция выдерживает ежедневную нагрузку и не расшатывается годами.</p>
+      <p data-i18n="pdp.about.p1">Каждое изделие плетётся вручную из искусственного ротанга — полиэтиленового волокна, окрашенного в массе. Оно не выгорает на солнце, не впитывает влагу и не трескается на морозе, поэтому подходит и для улицы, и для дома.</p>
+      <p data-i18n="pdp.about.p2">Под плетением — лёгкий, но прочный каркас (алюминий для мебели, внутренний вкладыш для кашпо и корзин). Конструкция держит форму годами и легко моется обычной водой.</p>
     </div>
     <div class="reveal reveal--right">
       <h2 data-i18n="pdp.spec.h">Характеристики</h2>
-      <div class="spec-row"><span class="k" data-i18n="pdp.s.mat">Материал</span><span class="v" data-i18n="pdp.s.mat.v">Массив дуба</span></div>
-      <div class="spec-row"><span class="k" data-i18n="pdp.s.dim">Размеры</span><span class="v" data-i18n="pdp.s.dim.v">180 × 90 × 76 см</span></div>
-      <div class="spec-row"><span class="k" data-i18n="pdp.s.fin">Покрытие</span><span class="v" data-i18n="pdp.s.fin.v">Натуральное масло</span></div>
-      <div class="spec-row"><span class="k" data-i18n="pdp.s.wt">Вес</span><span class="v" data-i18n="pdp.s.wt.v">42 кг</span></div>
-      <div class="spec-row"><span class="k" data-i18n="pdp.s.seat">Мест</span><span class="v" data-i18n="pdp.s.seat.v">6–8 человек</span></div>
+      <div class="spec-row"><span class="k" data-i18n="pdp.s.mat">Материал</span><span class="v" data-i18n="pdp.s.mat.v">Искусственный ротанг</span></div>
+      <div class="spec-row"><span class="k" data-i18n="pdp.s.dim">Комплектация</span><span class="v" data-i18n="pdp.s.dim.v">С подушками</span></div>
+      <div class="spec-row"><span class="k" data-i18n="pdp.s.fin">Плетение</span><span class="v" data-i18n="pdp.s.fin.v">UV-стойкое</span></div>
+      <div class="spec-row"><span class="k" data-i18n="pdp.s.wt">Каркас</span><span class="v" data-i18n="pdp.s.wt.v">Алюминий</span></div>
+      <div class="spec-row"><span class="k" data-i18n="pdp.s.seat">Применение</span><span class="v" data-i18n="pdp.s.seat.v">Терраса, сад</span></div>
       <div class="spec-row"><span class="k" data-i18n="pdp.s.made">Производство</span><span class="v" data-i18n="pdp.s.made.v">Ташкент, ручная работа</span></div>
     </div>
   </section>
 
   <!-- RELATED -->
-  <section class="section" style="padding-top:0">
+  <section class="section section--compact">
     <div class="section-head">
       <div>
         <div class="eyebrow reveal" data-i18n="pdp.rel.k">Вам также понравится</div>
         <h2 class="display-3 reveal" data-i18n="pdp.rel.h">Из той же коллекции</h2>
       </div>
-      <a class="btn btn--ghost" href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+      <a class="btn btn--ghost reveal" href="catalog.html" data-crumb-cat data-i18n="nav.catalog">Каталог</a>
     </div>
-    <div class="catalog-grid">
-      <article class="product reveal" data-product>
-        <div class="product__media media">
-          <button class="fav" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-          <img src="https://loremflickr.com/800/800/rattan,dining/all?lock=14" alt="" loading="lazy" onerror="this.style.display='none'">
-          <a class="see" href="product.html?id=p4" data-i18n="see">Подробнее</a>
-          <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
-        </div>
-        <div>
-          <div class="product__cat" data-i18n="p4.cat"></div>
-          <div class="product__name" data-i18n="p4.name" style="margin-top:4px"></div>
-          <div class="price" style="margin-top:8px"><span class="price__now">$1180</span></div>
-        </div>
-      </article>
-      <article class="product reveal" data-product>
-        <div class="product__media media">
-          <span class="badge-sale">-19%</span>
-          <button class="fav" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-          <img src="https://loremflickr.com/800/800/wicker,chair/all?lock=2" alt="" loading="lazy" onerror="this.style.display='none'">
-          <a class="see" href="product.html?id=p2" data-i18n="see">Подробнее</a>
-          <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
-        </div>
-        <div>
-          <div class="product__cat" data-i18n="p2.cat"></div>
-          <div class="product__name" data-i18n="p2.name" style="margin-top:4px"></div>
-          <div class="price" style="margin-top:8px"><span class="price__now">$340</span><span class="price__old">$420</span></div>
-        </div>
-      </article>
-      <article class="product reveal" data-product>
-        <div class="product__media media">
-          <span class="badge-sale">-27%</span>
-          <button class="fav" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-          <img src="https://loremflickr.com/800/800/wicker,planter/all?lock=4" alt="" loading="lazy" onerror="this.style.display='none'">
-          <a class="see" href="product.html?id=p3" data-i18n="see">Подробнее</a>
-          <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
-        </div>
-        <div>
-          <div class="product__cat" data-i18n="p3.cat"></div>
-          <div class="product__name" data-i18n="p3.name" style="margin-top:4px"></div>
-          <div class="price" style="margin-top:8px"><span class="price__now">$95</span><span class="price__old">$130</span></div>
-        </div>
-      </article>
-      <article class="product reveal" data-product>
-        <div class="product__media media">
-          <span class="badge-sale">-24%</span>
-          <button class="fav" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-          <img src="https://loremflickr.com/800/800/rattan,chair/all?lock=17" alt="" loading="lazy" onerror="this.style.display='none'">
-          <a class="see" href="product.html?id=p5" data-i18n="see">Подробнее</a>
-          <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
-        </div>
-        <div>
-          <div class="product__cat" data-i18n="p5.cat"></div>
-          <div class="product__name" data-i18n="p5.name" style="margin-top:4px"></div>
-          <div class="price" style="margin-top:8px"><span class="price__now">$260</span><span class="price__old">$340</span></div>
-        </div>
-      </article>
-    </div>
+    <div class="catalog-grid" data-related-grid data-stagger data-stagger="90"></div>
   </section>
 </main>
 

@@ -280,13 +280,11 @@
   function openFav(){ if(!favEl) return; renderFavBody(); scrim.classList.add("on"); favEl.classList.add("on"); favEl.setAttribute("aria-hidden","false"); document.documentElement.style.overflow="hidden"; }
   function closeAll(){ if(!scrim) return; scrim.classList.remove("on"); cartEl.classList.remove("on"); favEl.classList.remove("on"); cartEl.setAttribute("aria-hidden","true"); favEl.setAttribute("aria-hidden","true"); document.documentElement.style.overflow=""; }
 
-  /* ---------- wire up ---------- */
-  document.addEventListener("DOMContentLoaded",function(){
-    buildShell();
-    renderCartBody(); renderFavBody(); renderBadges(); syncFavButtons();
-
-    // add-to-cart (catalog cards, PDP, account repeat-order)
-    document.querySelectorAll("[data-add]").forEach(btn=>{
+  function wireProductButtons(root){
+    const scope = root || document;
+    scope.querySelectorAll("[data-add]").forEach(btn=>{
+      if(btn.dataset.cartWired) return;
+      btn.dataset.cartWired = "1";
       btn.addEventListener("click",e=>{
         e.preventDefault();
         let qty=1;
@@ -296,15 +294,28 @@
         btn.classList.add("added"); setTimeout(()=>btn.classList.remove("added"),500);
       });
     });
-
-    // favorite toggles on products / PDP
-    document.querySelectorAll("[data-fav]").forEach(btn=>{
-      if(btn.hasAttribute("data-fav-open")) return;
+    scope.querySelectorAll("[data-fav]").forEach(btn=>{
+      if(btn.hasAttribute("data-fav-open") || btn.dataset.cartWired) return;
+      btn.dataset.cartWired = "1";
       btn.addEventListener("click",e=>{
         e.preventDefault();
         const on=toggleFav(resolveSnap(btn),btn);
         btn.classList.toggle("is-on",on);
       });
+    });
+  }
+
+  /* ---------- wire up ---------- */
+  document.addEventListener("DOMContentLoaded",function(){
+    buildShell();
+    renderCartBody(); renderFavBody(); renderBadges(); syncFavButtons();
+
+    wireProductButtons();
+    window.BTT_syncFavs = syncFavButtons;
+    document.addEventListener("btt:related-rendered", e=>{
+      const grid = e.detail && e.detail.grid;
+      if(grid) wireProductButtons(grid);
+      syncFavButtons();
     });
 
     // header cart icon → open cart drawer
