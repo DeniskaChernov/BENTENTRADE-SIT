@@ -1,144 +1,201 @@
 # Bententrade — Design Code / Дизайн-система
 
 Полное описание дизайна и кода сайта Bententrade для дальнейшей работы.
-Сайт: мебель ручной работы, искусственный ротанг, кашпо и корзины. Гео — Узбекистан + экспорт.
-Стиль взят с референса **CAIRIS**: светлая база, медный (copper) акцент, крупная типографика, органичные «блобы», стекло (glassmorphism). Поддержаны **тёмная тема** и **3 языка (RU / UZ / EN)**.
+Сайт: мебель, кашпо и корзины из **искусственного ротанга**. Гео — Узбекистан + экспорт.
+Стиль по референсу **CAIRIS / Apple**: светлая тёплая база, медный (copper) акцент, крупная типографика, органичные формы, **liquid-поверхности без blur**. Поддержаны **тёмная тема** и **3 языка (RU / UZ / EN)**.
 
 ---
 
 ## 1. Структура файлов
 
 ```
-index.html        Главная — переключаемый герой (3 мира), промо, коллекция, материалы
-catalog.html      Каталог — фильтры по категориям, сетка товаров
-about.html        О нас — история, ценности, статистика
-product.html      Карточка товара — галерея, опции, характеристики, похожие; гидратируется из ?id=p1…p11
-contacts.html     Контакты — форма, карта, реквизиты
-account.html      Личный кабинет — профиль, заказы, избранное, адреса, настройки
+index.html        Главная — герой L-форма (4 слайда), промо, коллекция, материалы
+catalog.html      Каталог — герой, sticky-фильтры, сетка товаров
+about.html        О нас — история, ценности, статистика (reveal)
+product.html      PDP — галерея, опции, характеристики, похожие; гидратация ?id=p1…p15
+contacts.html     Контакты — форма с валидацией, карта, реквизиты
+account.html      Личный кабинет — обзор, заказы, избранное (из localStorage), адреса, настройки
 
 assets/
-  styles.css      Токены (цвет, тип, форма, тень, стекло) + базовые стили, шапка, кнопки, карточки, футер, тёмная тема
-  pages.css       Раскладки страниц: герой, промо, каталог, about, контакты, аккаунт, бот-ассистент
+  styles.css      Токены, типографика, кнопки, шапка, карточки, футер, тёмная тема, liquid-поверхности
+  pages.css       Раскладки страниц: герой, промо, каталог, about, контакты, аккаунт, PDP, drawer, бот
   i18n.js         Словарь RU/UZ/EN (window.BTT_I18N)
-  site.js         Общие интеракции: язык, тема, корзина, избранное, чипы-фильтры, бургер, формы
-  hero.js         Переключаемый герой (3 мира) — данные + логика
-  assistant.js    Плавающий чат-помощник «Бен» — самовстраивается, мультиязычный
-  account.js      Вкладки личного кабинета
-  products.js     Данные товаров (изображения, цены, тексты/характеристики по категориям) — window.BTT_PRODUCTS
-  pdp.js          Карточка товара: гидратация по ?id, галерея, опции, счётчик кол-ва
+  site.js         Язык, тема, reveal, фильтры каталога, формы, --head-h, бургер
+  hero.js         Герой — 4 слайда, L-форма, автоплей, свайп
+  catalog-hero.js Синхронизация героя каталога с фильтрами (btt:cat-change)
+  products.js     Каталог данных — BTT_PRODUCTS, BTT_PRODUCT_IMG, BTT_PRODUCT_CAT
+  pdp.js          PDP: гидратация, галерея, похожие товары
+  cart.js         Корзина + избранное (localStorage), drawer, wireProductButtons
+  account.js      Вкладки кабинета, динамическое избранное, мобильный drawer
+  search.js       Spotlight-поиск
+  assistant.js    Чат-помощник «Бен»
+  fx.js           Микро-анимации входа страницы
   btt-logo.png    Логотип
 ```
 
-Подключение на странице (порядок важен):
+### Порядок скриптов (типичная страница)
+
 ```html
-<head> … <link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/pages.css">
-  <script>/* анти-FOUC: ставит data-theme=dark до отрисовки */</script>
+<head>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/pages.css">
+  <!-- анти-FOUC тёмной темы -->
+  <script>(function(){try{if(localStorage.getItem('btt_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 </head>
-<body> … <script src="assets/i18n.js"></script>
-       <script src="assets/hero.js"></script>      <!-- только index -->
-       <script src="assets/account.js"></script>   <!-- только account -->
-       <script src="assets/assistant.js"></script>
-       <script src="assets/site.js"></script></body>
+<body>
+  …
+  <script src="assets/i18n.js"></script>
+  <script src="assets/products.js"></script>   <!-- каталог, PDP, account -->
+  <script src="assets/hero.js"></script>       <!-- только index -->
+  <script src="assets/catalog-hero.js"></script> <!-- только catalog -->
+  <script src="assets/pdp.js"></script>        <!-- только product -->
+  <script src="assets/assistant.js"></script>
+  <script src="assets/search.js"></script>
+  <script src="assets/site.js"></script>
+  <script src="assets/cart.js"></script>       <!-- до account.js -->
+  <script src="assets/account.js"></script>    <!-- только account -->
+  <script src="assets/fx.js"></script>
+</body>
 ```
 
 ---
 
-## 2. Цвет
+## 2. Цвет и токены
 
-Базовая палитра (светлая тема, `:root` в `styles.css`):
+Базовая палитра (`:root` в `styles.css`):
 
-| Токен | Значение | Назначение |
+| Токен | Светлая | Назначение |
 |---|---|---|
-| `--ink` | `#1b1916` | основной тёмный: текст, тёмные карточки, футер |
-| `--ink-2` / `--ink-3` | `#262220` / `#322d28` | вложенные тёмные поверхности |
-| `--copper` | `#bd7335` | акцент бренда (из логотипа) |
-| `--copper-bright` | `#e27c3d` | яркий акцент, скидки, активные точки |
-| `--copper-soft` | `#f0d8c2` | мягкий фон акцента |
-| `--cream` / `--cream-2` | `#f4f1ea` / `#efe9df` | тёплый светлый фон, плейсхолдеры |
-| `--paper` | `#ffffff` | базовый фон страницы / карточек |
-| `--text` | `#1b1916` | основной текст |
-| `--muted` / `--muted-2` | `#736c61` / `#9a9389` | вторичный текст |
-| `--line` / `--line-2` | `#e7e1d6` / `#ded7ca` | разделители, бордеры |
+| `--ink` | `#1b1916` | тёмный текст, кнопки, футер |
+| `--copper` / `--copper-bright` | `#bd7335` / `#e27c3d` | акцент бренда, скидки |
+| `--cream` / `--cream-2` | `#f4f1ea` / `#efe9df` | тёплый фон, плейсхолдеры |
+| `--paper` | `#ffffff` | фон страницы |
+| `--text` / `--muted` | `#1b1916` / `#736c61` | основной и вторичный текст |
+| `--line` / `--line-2` | `#e7e1d6` / `#ded7ca` | разделители |
 | `--on-dark` | `#f4f1ea` | текст на тёмном |
 
-**Тёмная тема** — `[data-theme="dark"]` переопределяет те же токены (тёплый near-black `--paper:#141109`, светлый текст, медь чуть ярче). Контраст кнопок/чипов на тёмном чинится правилами `[data-theme="dark"] .btn--dark{…}` и т.п. Переключатель — кнопка `[data-theme-toggle]` (луна/солнце), значение в `localStorage.btt_theme`.
+**Liquid-поверхности** (без `backdrop-filter`):
 
-Правило: **новые цвета не выдумывать** — брать из токенов; если нужен оттенок, выводить через `oklch` от существующих.
+| Токен | Назначение |
+|---|---|
+| `--surface-bg` | фон панелей (карточки, сайдбар, формы) |
+| `--surface-brd` | бордер |
+| `--liquid-sheen` | верхний блик (::before) |
+| `--liquid-edge` | inset highlight |
+| `--spatial-shadow` | тень глубины |
+
+Классы: `.liquid`, `.liquid-glass`, `.glass`, `.surface` — сплошной фон + sheen, **blur отключён**.
+
+**Тёмная тема** — `[data-theme="dark"]` переопределяет все токены выше (`--paper:#141109`, светлый `--text`, ярче медь). Переключатель — `[data-theme-toggle]`, значение в `localStorage.btt_theme`. Анти-FOUC — inline `<script>` в `<head>` каждой страницы.
+
+Правило: **новые цвета не выдумывать** — только токены или `color-mix(in oklab, var(--copper) …)`.
 
 ---
 
 ## 3. Типографика
 
-- **Дисплей/текст:** `Hanken Grotesque` (`--display`, `--body`) — 400–900.
-- **Акцент-курсив:** `Cormorant Garamond` (`--serif`) — для «eyebrow» и подписи в карточке героя.
-- Заголовки: `font-weight:800`, `letter-spacing:-.02em`, плотный `line-height`.
-- Шкала: `.display-1` (48–104px), `.display-2` (34–60px), `.display-3` (26–40px), `.lead` (17–19px), `.eyebrow` (курсив, медь), `.kicker` (uppercase, трекинг .22em).
-- Минимальный текст — 12.5px (служебные надписи), основной — 16px.
+- **Дисплей/текст:** `Hanken Grotesque` (`--display`, `--body`).
+- **Акцент-курсив:** `Cormorant Garamond` (`--serif`) — eyebrow, подписи героя.
+- Заголовки: `font-weight:800`, `letter-spacing:-.02em`.
+- Шкала: `.display-1` … `.display-3`, `.lead`, `.eyebrow`, `.kicker`.
+- Минимум 12.5px (служебный), основной 16px.
 
 ---
 
-## 4. Форма, тень, стекло
+## 4. Форма и тень
 
-- Радиусы: `--r-xl:30 / --r-lg:22 / --r-md:16 / --r-sm:12 / --r-pill:100`.
-- Тени: `--shadow-card`, `--shadow-soft` (мягкие, тёплые, с отрицательным spread).
-- **Стекло** (`.glass` + токены `--glass-bg/-brd/-blur/-shadow`): `backdrop-filter: saturate(150%) blur(18px)` + полупрозрачный фон + светлый бордер. Применяется к: шапке, пилюлям `.pill--ghost`, карточке-подписи героя, контролу переключения героя, карточкам кабинета, панелям бота. В тёмной теме стекло темнеет автоматически.
-
----
-
-## 5. Компоненты (классы)
-
-- **Кнопки** `.btn` + `.btn--dark / --copper / --ghost / --icon-end / --sm`. Hover: смена фона на медь; active: `scale(.97)`. `.btn--icon-end` — круглая медная стрелка, поворот 45° на hover.
-- **Пилюли** `.pill`, `.pill--dot` (медная точка), `.pill--ghost` (стекло на фото).
-- **Чипы-фильтры** `.chip` / `.chip.is-active` (тёмная заливка). Фильтрация — `data-chips` + `data-target`, понимает `#hash` категории (переход из героя).
-- **Карточка товара** `.product` → `.product__media` (квадрат) с `.fav`, `.add`, `.see` (появляется на hover), `.badge-sale`; `.product__name`, `.product__cat`, `.price` (`__now` / `__old`).
-- **Тёмный блок статистики** `.stats` / `.stat` / `.stat__num span` (медь).
-- **Шапка** `.site-head` (sticky, стекло), `.nav`, `.head-tools`, `.icon-btn` (+ `.count` бейдж корзины), `.lang` (RU/UZ/EN), `[data-theme-toggle]`, бургер + `.mobile-drawer`.
-- **Футер** `.site-foot` (тёмный) — лого (перекрашен в медь фильтром), колонки меню/помощь/контакты, нижняя строка.
-- **Аккаунт** `.acc` (sidebar + контент), `.acc-nav` (вкладки), `.acc-panel.is-active`, `.acc-stat`, `.order` + `.status--done/ship/proc`, `.addr`, `.acc-row`.
-- **Бот** `.bot-fab`, `.bot-panel`, `.bot-msg--bot/--user`, `.bot-quick`, `.bot-chip`, `.bot-typing`.
+- Радиусы: `--r-xl:30` / `--r-lg:22` / `--r-md:16` / `--r-sm:12` / `--r-pill:100`.
+- Тени: `--shadow-card`, `--shadow-soft`, `--spatial-shadow`.
+- Отступы: `--gut`, `--section-y`, `--gap-grid`, `--head-h` (обновляется в `site.js` для sticky).
 
 ---
 
-## 6. Герой (3 переключаемых мира)
+## 5. Компоненты
 
-Раскладка — точно по референсу: слева большая карточка с фото, белый «блоб» (заголовок + бейдж) сверху, подпись снизу (пилюля + стеклянная карточка); справа фото с круглой ссылкой «в магазин» + тёмный блок статистики. Контрол переключения — компактная **стеклянная капсула** (стрелки + точки) в правом-верхнем углу главного фото, чтобы не ломать референс.
+| Компонент | Классы / атрибуты |
+|---|---|
+| Кнопки | `.btn`, `.btn--dark`, `.btn--copper`, `.btn--ghost`, `.btn--sm` |
+| Чипы | `.chip`, `.chip.is-active`; фильтр — `data-chips` + `data-cat` в `site.js` |
+| Карточка товара | `.product`, `.product__media`, `[data-fav]`, `[data-add]`, `.see`, `.price` |
+| Шапка | `.site-head` (sticky), `.nav`, `.head-tools`, `[data-cart-count]`, `[data-fav-count]` |
+| Футер | `.site-foot` (тёмный), лого с медным filter |
+| Герой | `.hero__frame` → `.hero__pocket`, `.hero__peek`, `.hero__base`; 4 слайда в `hero.js` |
+| Каталог | `.catalog-flow`, `.cat-toolbar-wrap` (sticky), `[data-cat-count]`, `.cat-empty` |
+| PDP | `.pdp-flow`, галерея, `pdp.js` + `btt:related-rendered` |
+| Аккаунт | `.account-flow`, `.acc-side` (drawer на моб.), `.acc-panel`, `[data-acc-wishlist]` |
+| Drawer | `.drawer`, `.drawer-scrim` — инжектится `cart.js` |
+| Бот | `.bot-fab`, `.bot-panel` |
 
-Миры заданы массивом `SLIDES` в `assets/hero.js`, каждый — объект с `badge / t1 / t2 / interior / bestS / bestB / store / stats[]` на трёх языках + `mainImg / sideImg / href`:
-1. **Мебель для дачи и сада**
-2. **Искусственный ротанг**
-3. **Кашпо, сундуки и корзины для белья**
+### Корзина и избранное (`cart.js`)
 
-Автопрокрутка 7с (пауза на hover), стрелки, точки, свайп, реакция на смену языка. Чтобы **добавить мир** — допишите объект в `SLIDES`; точки и переключение подхватятся сами.
+```
+localStorage.btt_cart  → { id: {name, price, img, qty} }
+localStorage.btt_favs  → { id: {name, price, img} }
+```
+
+API: `window.BTT_CART = { openCart, openFav, addToCart, wireProductButtons, getFavs, favCount }`.
+Событие `btt:favs-change` — при toggle/delete избранного.
+Кнопки `[data-add]` / `[data-fav]` вешает только `cart.js`.
+
+---
+
+## 6. Герой (4 слайда, L-форма)
+
+Раскладка по Figma Union: CSS Grid L-форма (`hero__frame`), серая непрозрачная база (`--hero-surface`), белый «карман» с заголовком, превью справа, блок статистики.
+
+Слайды в `SLIDES` (`hero.js`):
+1. Садовая мебель (`furniture`)
+2. Мебель для дома (`indoor`)
+3. Искусственный ротанг (`rattan`)
+4. Кашпо, сундуки и корзины (`planter`)
+
+Автоплей 7 с, пауза на hover, стрелки, точки, свайп. Смена языка — `MutationObserver` на `<html lang>`.
 
 ---
 
 ## 7. Интернационализация
 
-- Словарь `window.BTT_I18N = { ru:{}, uz:{}, en:{} }` в `i18n.js` (ключи вида `"hero.badge"`, `"acc.nav.orders"`). Доп. блоки добавляются через `Object.assign`.
-- Разметка: `data-i18n` (текст), `data-i18n-ph` (placeholder), `data-i18n-aria` (aria-label). `\n` в значении → `<br>`.
-- `site.js` хранит язык в `localStorage.btt_lang`, ставит `<html lang>`; `hero.js` и `assistant.js` слушают смену `lang` через `MutationObserver`.
+- `window.BTT_I18N = { ru, uz, en }` в `i18n.js`.
+- Разметка: `data-i18n`, `data-i18n-ph`, `data-i18n-aria`.
+- `site.js`: `localStorage.btt_lang`, `applyLang()`.
+- Товары: `pN.name`, `pN.cat` в i18n; цены/look — в `products.js`.
 
 ---
 
-## 8. Ассистент «Бен»
+## 8. Анимации
 
-`assistant.js` самовстраивается на любую страницу (нужен лишь `<script src>`), строит FAB + стеклянную панель. Логика — детерминированное дерево интентов (без бэкенда): приветствие, быстрые ответы (садовая мебель / ротанг / кашпо / доставка / менеджер), каждый ведёт в нужную категорию каталога или к контактам менеджера; свободный текст → fallback + переадресация менеджеру. Тексты — в объекте `T` (RU/UZ/EN). Для подключения реального оператора замените обработчик `submit` на отправку в Telegram/CRM.
+- `.reveal`, `.reveal--left/right`, `[data-stagger]` — появление секций (`site.js`).
+- `.spatial` — лёгкий подъём на hover (осторожно на мобильных панелях).
+- `prefers-reduced-motion` — отключает автоплей и тяжёлые transition.
+- `fx.js` — вход страницы (`body.is-entering`).
 
 ---
 
-## 9. Анимации и состояния
+## 9. Ритм страниц (flow-классы на `<main>`)
 
-- Появление секций: `.reveal` (`bttFadeUp`, стартует видимым на 55% — не «мигает» пустотой).
-- Hover: смена цвета (медь), лёгкий подъём (`translateY(-2/3px)`), увеличение фото в карточке.
-- Press: `scale(.92–.97)`.
-- Смена слайда героя: `heroText` / `heroImg` (fade + сдвиг/зум).
-- Везде учтён `prefers-reduced-motion` (анимации/автоплей отключаются).
+| Класс | Страница |
+|---|---|
+| `.home-flow` | index — секции после героя |
+| `.catalog-flow` | catalog |
+| `.pdp-flow` | product |
+| `.about-flow` | about |
+| `.contacts-flow` | contacts |
+| `.account-flow` | account |
 
 ---
 
 ## 10. Как расширять
 
-- **Новая страница:** копируйте шапку/футер из существующей (вместе с анти-FOUC `<script>` в `<head>`, `[data-theme-toggle]` и ссылкой на `account.html`), подключите `i18n.js` → `assistant.js` → `site.js`.
-- **Новый товар:** `<article class="product" data-product data-cat="…">` по образцу из `catalog.html`; ссылка «Подробнее» ведёт на `product.html?id=pN`. Данные — в `assets/products.js` (`BTT_PRODUCTS`), название/категория — в `i18n.js` (`pN.name`/`pN.cat`), тексты и характеристики — по категории в `BTT_PRODUCT_CAT`.
-- **Цвета/типографику** менять только через токены в `styles.css`.
-- Фото сейчас — стоковые (Unsplash). Заменить на реальные снимки товаров (для ротанга/кашпо особенно), пути — в `hero.js` (`SLIDES`) и в разметке карточек.
+- **Новая страница:** скопировать шапку/футер, anti-FOUC, подключить CSS + скрипты по образцу.
+- **Новый товар:** запись в `BTT_PRODUCTS`, ключи `pN.name`/`pN.cat` в i18n, карточка в `catalog.html` с `data-cat`.
+- **PDP:** `product.html?id=pN`, данные подтянет `pdp.js`.
+- **Цвета/тип** — только через токены в `styles.css`.
+- **Фото** — `loremflickr` с lock в `products.js` / `hero.js`; заменить на реальные при продакшене.
+
+---
+
+## 11. Figma
+
+Главная: [Bententrade — Главная](https://www.figma.com/design/4Y0JGexl7JctEsm9a9PVoB) — герой Union, 4 кадра слайдера, bento-ритм.
+
+При расхождении кода и макета — сверять герой и bento-сетки в первую очередь.

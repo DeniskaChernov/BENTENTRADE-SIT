@@ -84,6 +84,13 @@
   --glass-brd:var(--line);
   --glass-sheen:linear-gradient(165deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,0) 48%);
   --glass-inset:inset 0 1px 0 rgba(255,255,255,.08);
+
+  /* liquid surfaces — elevated warm panels (no blur) */
+  --surface-bg:var(--ink-2);
+  --surface-brd:var(--line);
+  --liquid-sheen:linear-gradient(165deg, rgba(255,255,255,.07) 0%, rgba(255,255,255,0) 50%);
+  --liquid-edge:inset 0 1px 0 rgba(255,255,255,.07);
+  --spatial-shadow:0 24px 56px -36px rgba(0,0,0,.5);
 }
 
 /* ============================================================
@@ -112,6 +119,7 @@
 /* spatial UI — floating depth */
 .spatial{transform:translateZ(0);transition:transform .5s var(--ease-out),box-shadow .5s ease;}
 .spatial:hover{transform:translateY(-2px);box-shadow:0 32px 64px -40px rgba(27,25,22,.28), var(--liquid-edge);}
+[data-theme="dark"] .spatial:hover{box-shadow:0 32px 64px -36px rgba(0,0,0,.55), var(--liquid-edge);}
 
 /* bento grid utility */
 .bento{display:grid;gap:12px;}
@@ -221,6 +229,11 @@ p{margin:0;text-wrap:pretty;}
 [data-theme="dark"] .product__media .fav,[data-theme="dark"] .product__media .see{background:rgba(33,29,22,.82);color:var(--text);}
 [data-theme="dark"] .product__media .add{background:var(--copper);color:#1a1209;}
 [data-theme="dark"] ::selection{background:var(--copper);color:#1a1209;}
+[data-theme="dark"] .site-head{background:color-mix(in oklab, var(--paper) 96%, transparent);}
+[data-theme="dark"] .nav a.is-current{background:var(--ink-3);color:var(--text);}
+[data-theme="dark"] .icon-btn:hover{background:var(--ink-3);}
+[data-theme="dark"] .lang{background:var(--ink-2);border-color:var(--line);}
+[data-theme="dark"] .drawer-x:hover,[data-theme="dark"] .drawer-back:hover{background:var(--ink-3);}
 
 .chip{
   padding:10px 22px;border-radius:var(--r-pill);border:1px solid var(--line);
