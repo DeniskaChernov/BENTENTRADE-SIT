@@ -47,7 +47,7 @@
   <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
 </nav>
 
-<main>
+<main class="home-flow">
 <!-- ===== HERO (L-form slider, 4 worlds) ===== -->
 <section class="hero wrap" data-hero>
   <div class="hero__grid">
@@ -102,7 +102,7 @@
 </section>
 
 <!-- ===== PROMO ===== -->
-<section class="wrap section" style="padding-top:clamp(28px,4vw,48px)">
+<section class="wrap section section--after-hero">
   <div class="promo reveal">
     <img src="https://loremflickr.com/800/800/rattan,garden,furniture/all?lock=72" alt="" loading="lazy" onerror="this.style.display='none'">
     <span class="pill pill--ghost tl" data-i18n="promo.consult">100% бесплатная консультация по подбору</span>
@@ -111,44 +111,44 @@
 </section>
 
 <!-- ===== PRODUCT LINES ===== -->
-<section class="wrap section" style="padding-top:0">
-  <div class="lines reveal">
-    <div class="lines__head">
+<section class="wrap section section--compact">
+  <div class="lines">
+    <div class="lines__head reveal">
       <div>
         <div class="eyebrow" data-i18n="lines.eyebrow">Направления</div>
         <h2 data-i18n="lines.title">Что мы производим</h2>
       </div>
     </div>
     <div class="lines__bento" data-stagger data-stagger="70">
-      <a class="bento-tile" href="catalog.html?cat=rattan">
+      <a class="bento-tile reveal" href="catalog.html?cat=rattan">
         <img src="https://loremflickr.com/800/800/rattan,weave/all?lock=21" alt="" loading="lazy" onerror="this.style.opacity=0">
         <div class="bento-tile__meta">
           <span class="bento-tile__title" data-i18n="line.rattan">Искусственный ротанг</span>
           <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
         </div>
       </a>
-      <a class="bento-tile" href="catalog.html?cat=furniture">
+      <a class="bento-tile reveal" href="catalog.html?cat=furniture">
         <img src="https://loremflickr.com/800/800/rattan,sofa/all?lock=11" alt="" loading="lazy" onerror="this.style.opacity=0">
         <div class="bento-tile__meta">
           <div><span class="bento-tile__title" data-i18n="line.furniture">Садовая мебель</span><span class="bento-tile__tag" data-i18n="line.onreq">Хит</span></div>
           <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
         </div>
       </a>
-      <a class="bento-tile" href="catalog.html?cat=planter">
+      <a class="bento-tile reveal" href="catalog.html?cat=planter">
         <img src="https://loremflickr.com/800/800/wicker,planter/all?lock=4" alt="" loading="lazy" onerror="this.style.opacity=0">
         <div class="bento-tile__meta">
           <span class="bento-tile__title" data-i18n="line.planter">Кашпо</span>
           <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
         </div>
       </a>
-      <a class="bento-tile" href="catalog.html?cat=basket">
+      <a class="bento-tile reveal" href="catalog.html?cat=basket">
         <img src="https://loremflickr.com/800/800/woven,basket/all?lock=34" alt="" loading="lazy" onerror="this.style.opacity=0">
         <div class="bento-tile__meta">
           <span class="bento-tile__title" data-i18n="line.twist">Сундуки и корзины</span>
           <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
         </div>
       </a>
-      <a class="bento-tile" href="catalog.html?cat=indoor">
+      <a class="bento-tile reveal" href="catalog.html?cat=indoor">
         <img src="https://loremflickr.com/800/800/rattan,rocking,chair/all?lock=90" alt="" loading="lazy" onerror="this.style.opacity=0">
         <div class="bento-tile__meta">
           <div><span class="bento-tile__title" data-i18n="line.indoor">Мебель для дома</span><span class="bento-tile__tag" data-i18n="line.new">Новое</span></div>
@@ -160,7 +160,7 @@
 </section>
 
 <!-- ===== COLLECTION ===== -->
-<section class="wrap section" style="padding-top:0">
+<section class="wrap section section--compact">
   <div class="home-filters">
     <div>
       <div class="eyebrow reveal" data-i18n="cat.eyebrow">Коллекция</div>
@@ -177,9 +177,9 @@
     </div>
   </div>
 
-  <div class="prod-grid" id="home-grid" data-stagger data-stagger="100">
+  <div class="prod-grid" id="home-grid" data-stagger data-stagger="90">
     <!-- garden furniture -->
-    <article class="product" data-product data-cat="furniture">
+    <article class="product reveal" data-product data-cat="furniture">
       <div class="product__media media">
         <span class="badge-sale">-20%</span>
         <button class="fav" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
@@ -195,7 +195,7 @@
     </article>
 
     <!-- planter -->
-    <article class="product" data-product data-cat="planter">
+    <article class="product reveal" data-product data-cat="planter">
       <div class="product__media media">
         <span class="badge-sale">-27%</span>
         <button class="fav" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
@@ -211,7 +211,7 @@
     </article>
 
     <!-- basket / chest -->
-    <article class="product" data-product data-cat="basket">
+    <article class="product reveal" data-product data-cat="basket">
       <div class="product__media media">
         <button class="fav" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
         <img src="https://loremflickr.com/800/800/woven,basket/all?lock=34" alt="" loading="lazy" onerror="this.style.display='none'">
@@ -226,7 +226,7 @@
     </article>
 
     <!-- indoor / home furniture -->
-    <article class="product" data-product data-cat="indoor">
+    <article class="product reveal" data-product data-cat="indoor">
       <div class="product__media media">
         <span class="badge-sale">-19%</span>
         <button class="fav" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
@@ -244,10 +244,10 @@
 </section>
 
 <!-- ===== SPLIT TEXT ===== -->
-<section class="wrap section" style="padding-block:clamp(20px,3vw,40px)">
+<section class="wrap section section--split-y">
   <div class="split">
-    <h2 class="display-3 reveal" data-i18n="split.title">Обустройте сад и террасу мебелью, которой не страшна погода</h2>
-    <p class="lead reveal split__glass spatial" data-i18n="split.body">Искусственный ротанг сочетает вид настоящего плетения с прочностью полимера: он не выгорает на солнце, не трескается на морозе и не требует особого ухода.</p>
+    <h2 class="display-3 reveal reveal--left" data-i18n="split.title">Обустройте сад и террасу мебелью, которой не страшна погода</h2>
+    <p class="lead reveal reveal--right split__glass" data-i18n="split.body">Искусственный ротанг сочетает вид настоящего плетения с прочностью полимера: он не выгорает на солнце, не трескается на морозе и не требует особого ухода.</p>
   </div>
 </section>
 
@@ -258,7 +258,7 @@
       <img src="https://loremflickr.com/800/800/rattan,texture,weave/all?lock=61" alt="" loading="lazy" onerror="this.style.display='none'">
       <span class="material__chip" data-i18n="mat.chip">PE-ротанг</span>
     </div>
-    <div class="material__body spatial reveal">
+    <div class="material__body reveal">
       <h2 class="display-2" style="margin-bottom:18px"><span data-i18n="mat.title.1">Искусственный ротанг —</span><br><span data-i18n="mat.title.2">материал, который служит</span></h2>
       <p class="lead" data-i18n="mat.body" style="margin-bottom:28px">Полиэтиленовое волокно (PE-ротанг) выглядит как природное плетение, но не гниёт, выдерживает солнце и мороз и полностью безопасно.</p>
       <a class="btn btn--ghost btn--icon-end" href="about.html"><span data-i18n="mat.cta">О материале</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
@@ -267,10 +267,10 @@
 </section>
 
 <!-- ===== FINAL ===== -->
-<section class="wrap section" style="padding-top:0">
+<section class="wrap section section--compact">
   <div class="final reveal">
     <img src="https://loremflickr.com/800/800/rattan,garden,patio/all?lock=71" alt="" loading="lazy" onerror="this.style.display='none'">
-    <div class="final__inner spatial">
+    <div class="final__inner">
       <span class="pill pill--dot" data-i18n="final.badge">Плетение, которое живёт годами</span>
       <h2><span data-i18n="final.title.1">Сделано из</span><br><span data-i18n="final.title.2">искусственного</span><br><span data-i18n="final.title.3">ротанга</span></h2>
     </div>

@@ -41,13 +41,13 @@
   <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
 </nav>
 
-<main>
+<main class="catalog-flow">
 <section class="page-hero page-hero--cat">
   <div class="page-hero__collage" aria-hidden="true">
     <img src="https://loremflickr.com/800/800/rattan,furniture/all?lock=11" alt="" loading="eager" onerror="this.style.opacity=0">
   </div>
   <div class="cat-hero__scrim" aria-hidden="true"></div>
-  <div class="cat-hero__bento">
+  <div class="cat-hero__bento" data-stagger data-stagger="60">
     <div class="cat-hero__card reveal">
       <div class="eyebrow" data-i18n="cat.hero.k">Каталог</div>
       <h1 data-i18n="cat.hero.title">Изделия из искусственного ротанга</h1>
@@ -69,11 +69,11 @@
   </div>
 </section>
 
-<section class="wrap section">
+<section class="wrap section section--catalog">
   <div class="cat-toolbar-wrap">
   <div class="cat-toolbar-sentinel" aria-hidden="true"></div>
   <div class="cat-toolbar">
-    <div class="cat-count"><span>15</span> <span data-i18n="cat.results">товаров</span><span data-search-note style="display:none;margin-left:10px;color:var(--copper);font-weight:600"></span></div>
+    <div class="cat-count"><span data-cat-count>15</span> <span data-i18n="cat.results">товаров</span><span data-search-note style="display:none;margin-left:10px;color:var(--copper);font-weight:600"></span></div>
     <div class="cat-chips" data-chips data-target="#catalog-grid">
       <button class="chip is-active" data-cat="all" data-i18n="chip.all">Всё</button>
       <button class="chip" data-cat="furniture" data-i18n="chip.furniture">Садовая мебель</button>
@@ -82,6 +82,11 @@
       <button class="chip" data-cat="indoor" data-i18n="chip.indoor">Мебель для дома</button>
     </div>
   </div>
+  </div>
+
+  <div class="cat-empty" data-cat-empty hidden>
+    <p data-i18n="cat.empty">В этой категории пока нет товаров. Попробуйте другой фильтр.</p>
+    <button type="button" class="btn btn--ghost btn--sm" data-cat-reset data-i18n="chip.all">Всё</button>
   </div>
 
   <div class="catalog-grid" id="catalog-grid" data-stagger data-stagger="90">

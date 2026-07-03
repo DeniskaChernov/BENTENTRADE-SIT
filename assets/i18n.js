@@ -58,7 +58,7 @@ window.BTT_I18N = {
     "p13.name":"Журнальный столик «Ротанг»","p13.cat":"Мебель для дома",
     "p14.name":"Комод «Плетёнка»","p14.cat":"Мебель для дома",
     "p15.name":"Стеллаж «Ажур»","p15.cat":"Мебель для дома",
-    "cat.load":"Показать ещё",
+    "cat.load":"Показать ещё","cat.empty":"В этой категории пока нет товаров. Попробуйте другой фильтр.",
 
     /* about */
     "ab.hero.k":"О компании","ab.hero.title":"Искусственный ротанг, сплетённый вручную",
@@ -140,7 +140,7 @@ window.BTT_I18N = {
     "p13.name":"«Rotang» jurnal stoli","p13.cat":"Uy mebeli",
     "p14.name":"«Pletenka» komod","p14.cat":"Uy mebeli",
     "p15.name":"«Ajur» stellaj","p15.cat":"Uy mebeli",
-    "cat.load":"Yana ko‘rsatish",
+    "cat.load":"Yana ko‘rsatish","cat.empty":"Bu toifada hozircha mahsulot yo‘q. Boshqa filtrni sinab ko‘ring.",
 
     "ab.hero.k":"Kompaniya haqida","ab.hero.title":"Qo‘lda to‘qilgan sun’iy rotang",
     "ab.hero.sub":"Bententrade — sun’iy rotangdan to‘quv ustaxonasi: bog‘ mebeli, gultuvak, sandiq va savatlar Toshkentda qo‘lda yig‘iladi.",
@@ -220,7 +220,7 @@ window.BTT_I18N = {
     "p13.name":"Rattan Coffee Table","p13.cat":"Home furniture",
     "p14.name":"Pletenka Dresser","p14.cat":"Home furniture",
     "p15.name":"Azhur Shelving Unit","p15.cat":"Home furniture",
-    "cat.load":"Load more",
+    "cat.load":"Load more","cat.empty":"No products in this category yet. Try another filter.",
 
     "ab.hero.k":"About us","ab.hero.title":"Synthetic rattan, woven by hand",
     "ab.hero.sub":"Bententrade is a synthetic-rattan weaving workshop: garden furniture, planters, chests and baskets, assembled by hand in Tashkent.",

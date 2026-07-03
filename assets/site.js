@@ -112,6 +112,18 @@
   }
 
   /* ---- animate product cards when category chips change ---- */
+  const CHIP_HASH_ALIAS = { rattan: "all" };
+
+  function updateCatCount(grid){
+    const cnt = document.querySelector("[data-cat-count]");
+    const empty = document.querySelector("[data-cat-empty]");
+    if(!grid) return;
+    const cards = Array.from(grid.querySelectorAll("[data-product]"));
+    const shown = cards.filter(c=> c.style.display !== "none").length;
+    if(cnt) cnt.textContent = String(shown);
+    if(empty) empty.hidden = shown > 0;
+  }
+
   function filterProducts(grid, cat){
     const cards = Array.from(grid.querySelectorAll("[data-product]"));
     const toShow = cards.filter(c=> cat==="all" || c.dataset.cat===cat);
@@ -120,7 +132,7 @@
     toHide.forEach(card=>{
       card.classList.remove("is-filter-in");
       card.classList.add("is-filter-out");
-      setTimeout(()=>{ card.style.display = "none"; card.classList.remove("is-filter-out"); }, 320);
+      setTimeout(()=>{ card.style.display = "none"; card.classList.remove("is-filter-out"); updateCatCount(grid); }, 320);
     });
 
     toShow.forEach((card,i)=>{
@@ -134,6 +146,7 @@
         card.addEventListener("animationend", ()=> card.classList.remove("is-filter-in"), { once:true });
       }
     });
+    updateCatCount(grid);
   }
 
   /* ---- header condenses + frosts once you scroll past the top ---- */
@@ -244,6 +257,10 @@
     initCounters();
     initPageTransitions();
 
+    document.querySelector("[data-cat-reset]")?.addEventListener("click", ()=>{
+      document.querySelector('.cat-chips .chip[data-cat="all"]')?.click();
+    });
+
     // theme toggle
     document.querySelectorAll("[data-theme-toggle]").forEach(b=>{
       b.addEventListener("click", toggleTheme);
@@ -259,20 +276,31 @@
     // category chips (catalog + home)
     document.querySelectorAll("[data-chips]").forEach(group=>{
       const chips = group.querySelectorAll(".chip");
-      function activate(chip){
+      function activate(chip, opts){
+        opts = opts || {};
         chips.forEach(c=>c.classList.remove("is-active"));
         chip.classList.add("is-active");
         const cat = chip.dataset.cat;
         const grid = document.querySelector(group.dataset.target);
-        if(!grid) return;
-        filterProducts(grid, cat);
+        if(grid) filterProducts(grid, cat);
+        if(chip.scrollIntoView && window.matchMedia && window.matchMedia("(max-width:720px)").matches){
+          chip.scrollIntoView({ inline:"nearest", behavior: opts.instant ? "auto" : "smooth", block:"nearest" });
+        }
+        document.dispatchEvent(new CustomEvent("btt:cat-change", { detail:{ cat, chip } }));
       }
       chips.forEach(chip=> chip.addEventListener("click", ()=> activate(chip)));
-      // honor #category hash coming from another page (e.g. hero CTA)
-      const hash = (location.hash || "").replace("#","");
-      if(hash){
-        const match = Array.from(chips).find(c=>c.dataset.cat===hash);
-        if(match) activate(match);
+      const params = new URLSearchParams(location.search);
+      const qcat = params.get("cat");
+      if(qcat){
+        const match = Array.from(chips).find(c=>c.dataset.cat===qcat);
+        if(match) activate(match, { instant:true });
+      } else {
+        const hash = (location.hash || "").replace("#","");
+        if(hash){
+          const resolved = CHIP_HASH_ALIAS[hash] || hash;
+          const match = Array.from(chips).find(c=>c.dataset.cat===resolved);
+          if(match) activate(match, { instant:true });
+        }
       }
     });
 
@@ -290,6 +318,7 @@
         card.style.display = show ? "" : "none";
         if(show) shown++;
       });
+      updateCatCount(grid);
       // reflect the query in the results count + a small banner
       const note = document.querySelector("[data-search-note]");
       if(note){ note.textContent = "«" + (params.get("q")) + "» — " + shown; note.style.display = ""; }
