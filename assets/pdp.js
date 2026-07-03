@@ -33,6 +33,10 @@
       const thumbImg = thumbBtn && thumbBtn.querySelector("img");
       if(thumbImg) thumbImg.src = im.thumb;
       if(stage[i]) stage[i].src = im.full;
+      if(thumbBtn){
+        const label = (t("pdp.thumb") || "Фото {n}").replace("{n}", String(i + 1));
+        thumbBtn.setAttribute("aria-label", label);
+      }
     });
     thumbs.forEach((btn,i)=>{
       const on = !!imgs[i];

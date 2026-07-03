@@ -374,6 +374,7 @@
       if(qcat){
         const match = Array.from(chips).find(c=>c.dataset.cat===qcat);
         if(match) activate(match, { instant:true });
+        else document.dispatchEvent(new CustomEvent("btt:cat-change", { detail:{ cat: qcat } }));
       } else {
         const hash = (location.hash || "").replace("#","");
         if(hash){

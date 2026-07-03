@@ -199,8 +199,23 @@ API: `window.BTT_CART = { openCart, openFav, addToCart, wireProductButtons, getF
 
 ---
 
-## 11. Figma
+## 11. Figma и финальный QA
 
-Главная: [Bententrade — Главная](https://www.figma.com/design/4Y0JGexl7JctEsm9a9PVoB) — герой Union, 4 кадра слайдера, bento-ритм.
+Макет: [Bententrade — Главная](https://www.figma.com/design/4Y0JGexl7JctEsm9a9PVoB).
 
-При расхождении кода и макета — сверять герой и bento-сетки в первую очередь.
+### Сверено с макетом / логикой
+
+- Герой L-форма (Union), 4 слайда, ссылки в каталог с `?cat=`
+- Bento-направления на главной → каталог с нужной категорией
+- Каталог: герой меняется по `?cat=` / `#hash` / чипам (`catalog-hero.js`)
+- PDP: галерея из `BTT_PRODUCT_IMG`, без Unsplash-заглушек
+- Единый футер, i18n, тёмная тема на всех страницах
+
+### Чеклист перед продакшеном
+
+- [ ] Заменить loremflickr на реальные фото товаров
+- [ ] Подключить бэкенд / CRM для форм (контакты, заказы)
+- [ ] Проверить Lighthouse на продакшен-хостинге
+- [ ] Добавить favicon и Open Graph meta
+
+---

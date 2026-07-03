@@ -16,7 +16,7 @@
       bestS:   {ru:"Лучшая мебель",          uz:"Eng yaxshi mebel",       en:"Best furniture"},
       bestB:   {ru:"ДЛЯ ОТДЫХА НА ВОЗДУХЕ",  uz:"OCHIQ HAVODA DAM OLISH", en:"FOR OUTDOOR LIVING"},
       store:   {ru:"Смотреть садовую мебель", uz:"Bog‘ mebelini ko‘rish", en:"Shop garden furniture"},
-      href:    "catalog.html",
+      href:    "catalog.html?cat=furniture",
       stats: [
         {num:"10k", suf:"+", label:{ru:"Довольных клиентов", uz:"Mamnun mijozlar",   en:"Happy clients"}},
         {num:"12",  suf:"+", label:{ru:"Лет на рынке",        uz:"Yillik tajriba",    en:"Years on market"}},
@@ -34,7 +34,7 @@
       bestS:   {ru:"Ротанг в интерьере",     uz:"Interyerda rotang",      en:"Rattan indoors"},
       bestB:   {ru:"ДЛЯ ГОСТИНОЙ И СПАЛЬНИ", uz:"MEHMONXONA VA YOTOQ UCHUN", en:"FOR LIVING & BEDROOM"},
       store:   {ru:"Смотреть мебель для дома", uz:"Uy mebelini ko‘rish", en:"Shop home furniture"},
-      href:    "catalog.html",
+      href:    "catalog.html?cat=indoor",
       stats: [
         {num:"4",   suf:"",  label:{ru:"Вида изделий",     uz:"Mahsulot turi",    en:"Item types"}},
         {num:"3",   suf:"",  label:{ru:"Размера",           uz:"O‘lcham",         en:"Sizes"}},
@@ -52,7 +52,7 @@
       bestS:   {ru:"Стойко к погоде",       uz:"Ob-havoga chidamli",     en:"Weather-proof"},
       bestB:   {ru:"СЛУЖИТ ГОДАМИ",          uz:"YILLAB XIZMAT QILADI",   en:"LASTS FOR YEARS"},
       store:   {ru:"Смотреть ротанг",         uz:"Rotangni ko‘rish",      en:"Shop the rattan"},
-      href:    "catalog.html",
+      href:    "catalog.html?cat=rattan",
       stats: [
         {num:"50", suf:"+", label:{ru:"Моделей плетения",  uz:"To‘quv modellari",  en:"Weave models"}},
         {num:"8",  suf:"",  label:{ru:"Лет на улице",       uz:"Yil ko‘chada",      en:"Years outdoors"}},
@@ -70,7 +70,7 @@
       bestS:   {ru:"Ручное плетение",        uz:"Qo‘l to‘quvi",            en:"Hand-woven"},
       bestB:   {ru:"ДЛЯ ДОМА И ДАЧИ",        uz:"UY VA DALA UCHUN",        en:"FOR HOME & DACHA"},
       store:   {ru:"Смотреть кашпо и корзины", uz:"Gultuvak va savatlar",  en:"Shop planters & baskets"},
-      href:    "catalog.html",
+      href:    "catalog.html?cat=planter",
       stats: [
         {num:"120",suf:"+", label:{ru:"Изделий в наличии", uz:"Mavjud mahsulot",   en:"Items in stock"}},
         {num:"6",  suf:"",  label:{ru:"Форм и размеров",    uz:"Shakl va o‘lcham",  en:"Shapes & sizes"}},
@@ -142,7 +142,7 @@
     els.interior.textContent=L(s.interior);
     els.bestS.textContent=L(s.bestS); els.bestB.textContent=L(s.bestB);
     els.store.textContent=L(s.store);
-    els.storeLink.href=s.href+(s.cat?"#"+s.cat:"");
+    els.storeLink.href=s.href;
     s.stats.forEach((st,i)=>{ if(!statNum[i])return;
       statNum[i].innerHTML=st.num+"<span>"+(st.suf||"")+"</span>";
       statLbl[i].textContent=L(st.label);
