@@ -80,7 +80,7 @@ window.BTT_I18N = {
     "co.f.email":"Email","co.f.email.ph":"you@email.com",
     "co.f.phone":"Телефон","co.f.phone.ph":"+998 ...",
     "co.f.msg":"Сообщение","co.f.msg.ph":"Что вы ищете — мебель, кашпо или корзину?",
-    "co.f.send":"Отправить заявку","co.f.sent":"Спасибо! Мы свяжемся с вами.",
+    "co.f.send":"Отправить заявку","co.f.sent":"Спасибо! Мы свяжемся с вами.","co.f.err":"Проверьте имя и email.",
     "co.i.addr.t":"Шоурум","co.i.addr.v":"Ташкент, ул. Амира Темура, 15",
     "co.i.phone.t":"Телефон","co.i.phone.v":"+998 71 200 18 46",
     "co.i.email.t":"Почта","co.i.email.v":"hello@bententrade.uz",
@@ -160,7 +160,7 @@ window.BTT_I18N = {
     "co.f.email":"Email","co.f.email.ph":"you@email.com",
     "co.f.phone":"Telefon","co.f.phone.ph":"+998 ...",
     "co.f.msg":"Xabar","co.f.msg.ph":"Nima izlayapsiz — mebel, gultuvak yoki savat?",
-    "co.f.send":"Ariza yuborish","co.f.sent":"Rahmat! Tez orada bog‘lanamiz.",
+    "co.f.send":"Ariza yuborish","co.f.sent":"Rahmat! Tez orada bog‘lanamiz.","co.f.err":"Ism va emailni tekshiring.",
     "co.i.addr.t":"Shourum","co.i.addr.v":"Toshkent, Amir Temur ko‘chasi, 15",
     "co.i.phone.t":"Telefon","co.i.phone.v":"+998 71 200 18 46",
     "co.i.email.t":"Pochta","co.i.email.v":"hello@bententrade.uz",
@@ -240,7 +240,7 @@ window.BTT_I18N = {
     "co.f.email":"Email","co.f.email.ph":"you@email.com",
     "co.f.phone":"Phone","co.f.phone.ph":"+998 ...",
     "co.f.msg":"Message","co.f.msg.ph":"What are you after — furniture, a planter or a basket?",
-    "co.f.send":"Send request","co.f.sent":"Thank you! We’ll be in touch.",
+    "co.f.send":"Send request","co.f.sent":"Thank you! We’ll be in touch.","co.f.err":"Please check your name and email.",
     "co.i.addr.t":"Showroom","co.i.addr.v":"Tashkent, Amir Temur St. 15",
     "co.i.phone.t":"Phone","co.i.phone.v":"+998 71 200 18 46",
     "co.i.email.t":"Email","co.i.email.v":"hello@bententrade.uz",
@@ -253,9 +253,9 @@ window.BTT_I18N = {
 Object.assign(window.BTT_I18N.ru,{"srch.ph":"Поиск мебели, кашпо, корзин…","srch.cats":"Категории","srch.prods":"Товары","srch.pages":"Страницы","srch.empty":"Ничего не найдено","nav.catalog2":"Каталог","nav.account2":"Личный кабинет"});
 Object.assign(window.BTT_I18N.uz,{"srch.ph":"Mebel, gultuvak, savat izlash…","srch.cats":"Kategoriyalar","srch.prods":"Mahsulotlar","srch.pages":"Sahifalar","srch.empty":"Hech narsa topilmadi","nav.catalog2":"Katalog","nav.account2":"Shaxsiy kabinet"});
 Object.assign(window.BTT_I18N.en,{"srch.ph":"Search furniture, planters, baskets…","srch.cats":"Categories","srch.prods":"Products","srch.pages":"Pages","srch.empty":"Nothing found","nav.catalog2":"Catalog","nav.account2":"Account"});
-Object.assign(window.BTT_I18N.ru,{"tool.theme":"Тема","tool.account":"Аккаунт"});
-Object.assign(window.BTT_I18N.uz,{"tool.theme":"Mavzu","tool.account":"Akkaunt"});
-Object.assign(window.BTT_I18N.en,{"tool.theme":"Theme","tool.account":"Account"});
+Object.assign(window.BTT_I18N.ru,{"tool.theme":"Тема","tool.account":"Аккаунт","tool.menu":"Меню"});
+Object.assign(window.BTT_I18N.uz,{"tool.theme":"Mavzu","tool.account":"Akkaunt","tool.menu":"Menyu"});
+Object.assign(window.BTT_I18N.en,{"tool.theme":"Theme","tool.account":"Account","tool.menu":"Menu"});
 
 
 /* ---- account page ---- */
@@ -268,11 +268,12 @@ Object.assign(window.BTT_I18N.ru,{
   "acc.st.ship":"В пути","acc.st.done":"Доставлен","acc.st.proc":"В обработке",
   "acc.items1":"1 товар","acc.items2":"2 товара","acc.items3":"3 товара",
   "acc.ord.sub":"История ваших покупок и их статусы.","acc.ord.deliver":"доставка 18–20 июня","acc.ord.delivered":"доставлен 6 июня",
+  "acc.ord.date2048":"14 июня 2026","acc.ord.date2031":"2 июня 2026","acc.ord.date1998":"18 мая 2026",
   "acc.ord.track":"Отследить","acc.ord.repeat":"Повторить заказ","acc.ord.review":"Оставить отзыв",
   "acc.wish.sub":"Товары, которые вы сохранили на потом.","acc.wish.empty":"В избранном пока пусто. Сохраняйте товары из каталога — они появятся здесь.","acc.wish.goto":"Перейти в каталог",
   "acc.addr.sub":"Адреса доставки для быстрого оформления.","acc.addr.edit":"Изменить","acc.addr.default":"Адрес по умолчанию","acc.addr.office":"Офис","acc.addr.add":"Добавить адрес",
   "acc.set.sub":"Личные данные и предпочтения.","acc.set.personal":"Личные данные","acc.set.name":"Имя","acc.set.email":"Email","acc.set.phone":"Телефон","acc.set.save":"Сохранить изменения","acc.set.saved":"Изменения сохранены ✓",
-  "acc.set.prefs":"Предпочтения","acc.set.theme":"Тема оформления","acc.set.themehint":"Светлая / Тёмная","acc.set.switch":"Переключить","acc.set.lang":"Язык","acc.set.news":"Рассылка","acc.set.newson":"Новинки и акции — включено"
+  "acc.set.prefs":"Предпочтения","acc.set.theme":"Тема оформления","acc.set.themehint":"Светлая / Тёмная","acc.set.switch":"Переключить","acc.set.lang":"Язык","acc.set.langhint":"Русский · O‘zbek · English","acc.set.news":"Рассылка","acc.set.newson":"Новинки и акции — включено"
 });
 Object.assign(window.BTT_I18N.uz,{
   "acc.tier":"Doimiy mijoz",
@@ -283,11 +284,12 @@ Object.assign(window.BTT_I18N.uz,{
   "acc.st.ship":"Yo‘lda","acc.st.done":"Yetkazilgan","acc.st.proc":"Tayyorlanmoqda",
   "acc.items1":"1 mahsulot","acc.items2":"2 mahsulot","acc.items3":"3 mahsulot",
   "acc.ord.sub":"Xaridlaringiz tarixi va holati.","acc.ord.deliver":"yetkazish 18–20 iyun","acc.ord.delivered":"6 iyunda yetkazildi",
+  "acc.ord.date2048":"14 iyun 2026","acc.ord.date2031":"2 iyun 2026","acc.ord.date1998":"18 may 2026",
   "acc.ord.track":"Kuzatish","acc.ord.repeat":"Takrorlash","acc.ord.review":"Sharh qoldirish",
   "acc.wish.sub":"Keyinroq uchun saqlangan mahsulotlar.","acc.wish.empty":"Sevimlilar bo‘sh. Katalogdan mahsulotlarni saqlang — ular shu yerda paydo bo‘ladi.","acc.wish.goto":"Katalogga o‘tish",
   "acc.addr.sub":"Tez rasmiylashtirish uchun manzillar.","acc.addr.edit":"Tahrirlash","acc.addr.default":"Asosiy manzil","acc.addr.office":"Ofis","acc.addr.add":"Manzil qo‘shish",
   "acc.set.sub":"Shaxsiy ma’lumotlar va sozlamalar.","acc.set.personal":"Shaxsiy ma’lumotlar","acc.set.name":"Ism","acc.set.email":"Email","acc.set.phone":"Telefon","acc.set.save":"Saqlash","acc.set.saved":"O‘zgarishlar saqlandi ✓",
-  "acc.set.prefs":"Sozlamalar","acc.set.theme":"Mavzu","acc.set.themehint":"Yorug‘ / Qorong‘i","acc.set.switch":"Almashtirish","acc.set.lang":"Til","acc.set.news":"Xabarnoma","acc.set.newson":"Yangiliklar va aksiyalar — yoqilgan"
+  "acc.set.prefs":"Sozlamalar","acc.set.theme":"Mavzu","acc.set.themehint":"Yorug‘ / Qorong‘i","acc.set.switch":"Almashtirish","acc.set.lang":"Til","acc.set.langhint":"Rus · O‘zbek · English","acc.set.news":"Xabarnoma","acc.set.newson":"Yangiliklar va aksiyalar — yoqilgan"
 });
 Object.assign(window.BTT_I18N.en,{
   "acc.tier":"Loyal customer",
@@ -298,11 +300,12 @@ Object.assign(window.BTT_I18N.en,{
   "acc.st.ship":"In transit","acc.st.done":"Delivered","acc.st.proc":"Processing",
   "acc.items1":"1 item","acc.items2":"2 items","acc.items3":"3 items",
   "acc.ord.sub":"Your purchase history and statuses.","acc.ord.deliver":"delivery Jun 18–20","acc.ord.delivered":"delivered Jun 6",
+  "acc.ord.date2048":"Jun 14, 2026","acc.ord.date2031":"Jun 2, 2026","acc.ord.date1998":"May 18, 2026",
   "acc.ord.track":"Track","acc.ord.repeat":"Reorder","acc.ord.review":"Leave a review",
   "acc.wish.sub":"Items you saved for later.","acc.wish.empty":"Your wishlist is empty. Save items from the catalog — they'll show up here.","acc.wish.goto":"Go to catalog",
   "acc.addr.sub":"Delivery addresses for faster checkout.","acc.addr.edit":"Edit","acc.addr.default":"Default address","acc.addr.office":"Office","acc.addr.add":"Add address",
   "acc.set.sub":"Personal details and preferences.","acc.set.personal":"Personal details","acc.set.name":"Name","acc.set.email":"Email","acc.set.phone":"Phone","acc.set.save":"Save changes","acc.set.saved":"Changes saved ✓",
-  "acc.set.prefs":"Preferences","acc.set.theme":"Theme","acc.set.themehint":"Light / Dark","acc.set.switch":"Switch","acc.set.lang":"Language","acc.set.news":"Newsletter","acc.set.newson":"News & deals — enabled"
+  "acc.set.prefs":"Preferences","acc.set.theme":"Theme","acc.set.themehint":"Light / Dark","acc.set.switch":"Switch","acc.set.lang":"Language","acc.set.langhint":"Russian · O‘zbek · English","acc.set.news":"Newsletter","acc.set.newson":"News & deals — enabled"
 });
 
 

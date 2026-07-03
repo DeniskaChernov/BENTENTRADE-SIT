@@ -29,7 +29,7 @@
       </button>
       <a class="icon-btn" href="account.html" style="background:var(--cream)" data-i18n-aria="tool.account" aria-label="Аккаунт"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></a>
       <div class="lang"><button data-lang="ru">RU</button><button data-lang="uz">UZ</button><button data-lang="en">EN</button></div>
-      <button class="burger icon-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <button class="burger icon-btn" data-i18n-aria="tool.menu" aria-label="Меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
 </header>
@@ -93,7 +93,7 @@
           </div>
           <div class="order">
             <div class="order__top">
-              <div><div class="order__id">#BT-2048</div><div class="order__date">14 июня 2026</div></div>
+              <div><div class="order__id">#BT-2048</div><div class="order__date" data-i18n="acc.ord.date2048">14 июня 2026</div></div>
               <span class="status status--ship" data-i18n="acc.st.ship">В пути</span>
             </div>
             <div class="order__body">
@@ -104,7 +104,7 @@
           </div>
           <div class="order">
             <div class="order__top">
-              <div><div class="order__id">#BT-2031</div><div class="order__date">2 июня 2026</div></div>
+              <div><div class="order__id">#BT-2031</div><div class="order__date" data-i18n="acc.ord.date2031">2 июня 2026</div></div>
               <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
             </div>
             <div class="order__body">
@@ -154,7 +154,7 @@
 
         <div class="order">
           <div class="order__top">
-            <div><div class="order__id">#BT-1998</div><div class="order__date">18 мая 2026</div></div>
+            <div><div class="order__id">#BT-1998</div><div class="order__date" data-i18n="acc.ord.date1998">18 мая 2026</div></div>
             <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
           </div>
           <div class="order__body">
@@ -219,8 +219,8 @@
           <div class="acc-card__h"><h3 data-i18n="acc.set.prefs">Предпочтения</h3></div>
           <div class="acc-rows">
             <div class="acc-row"><span class="k" data-i18n="acc.set.theme">Тема оформления</span><span class="v" data-i18n="acc.set.themehint">Светлая / Тёмная</span><button class="btn btn--ghost btn--sm" data-theme-toggle data-i18n="acc.set.switch">Переключить</button></div>
-            <div class="acc-row"><span class="k" data-i18n="acc.set.lang">Язык</span><span class="v">Русский · O‘zbek · English</span><div class="lang lang--acc"><button data-lang="ru">RU</button><button data-lang="uz">UZ</button><button data-lang="en">EN</button></div></div>
-            <div class="acc-row"><span class="k" data-i18n="acc.set.news">Рассылка</span><span class="v" data-news-label data-i18n="acc.set.newson">Новинки и акции — включено</span><button class="switch" role="switch" aria-checked="true" data-news-toggle aria-label="Рассылка"><span class="switch__dot"></span></button></div>
+            <div class="acc-row"><span class="k" data-i18n="acc.set.lang">Язык</span><span class="v" data-i18n="acc.set.langhint">Русский · O‘zbek · English</span><div class="lang lang--acc"><button data-lang="ru">RU</button><button data-lang="uz">UZ</button><button data-lang="en">EN</button></div></div>
+            <div class="acc-row"><span class="k" data-i18n="acc.set.news">Рассылка</span><span class="v" data-news-label data-i18n="acc.set.newson">Новинки и акции — включено</span><button class="switch" role="switch" aria-checked="true" data-news-toggle data-i18n-aria="acc.set.news" aria-label="Рассылка"><span class="switch__dot"></span></button></div>
           </div>
         </div>
       </section>
@@ -232,7 +232,7 @@
   <div class="site-foot__top">
     <div class="foot-col"><img src="assets/btt-logo.png" alt="Bententrade"><p data-i18n="foot.tag" style="color:var(--on-dark-muted);max-width:30ch">Мебель, кашпо и корзины из искусственного ротанга.</p></div>
     <div class="foot-col"><h5 data-i18n="foot.menu">Меню</h5><a href="index.html" data-i18n="nav.home">Главная</a><a href="catalog.html" data-i18n="nav.catalog">Каталог</a><a href="about.html" data-i18n="nav.about">О нас</a><a href="contacts.html" data-i18n="nav.contacts">Контакты</a></div>
-    <div class="foot-col"><h5 data-i18n="foot.help">Помощь</h5><a href="#" data-i18n="foot.faq">Вопросы и ответы</a><a href="#" data-i18n="foot.delivery">Доставка</a><a href="#" data-i18n="foot.returns">Возврат</a><a href="#" data-i18n="foot.care">Уход за мебелью</a></div>
+    <div class="foot-col"><h5 data-i18n="foot.help">Помощь</h5><a href="#" data-i18n="foot.faq">Вопросы и ответы</a><a href="#" data-i18n="foot.delivery">Доставка</a><a href="#" data-i18n="foot.returns">Возврат</a><a href="#" data-i18n="foot.care">Уход за плетением</a></div>
     <div class="foot-col"><h5 data-i18n="foot.contacts">Контакты</h5><p data-i18n="co.i.addr.v">Ташкент, ул. Амира Темура, 15</p><a href="tel:+998712001846">+998 71 200 18 46</a><a href="mailto:hello@bententrade.uz">hello@bententrade.uz</a></div>
   </div>
   <div class="site-foot__bottom"><span data-i18n="foot.since">С 2024 ГОДА</span><span data-i18n="foot.copy">© 2026 BENTENTRADE. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span><span data-i18n="foot.privacy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</span></div>

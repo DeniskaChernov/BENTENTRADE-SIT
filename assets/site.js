@@ -356,7 +356,8 @@
       const dict = window.BTT_I18N || {};
       const errMsg = ()=>{
         const l = document.documentElement.lang || "ru";
-        return ({ru:"Проверьте имя и email.", uz:"Ism va emailni tekshiring.", en:"Please check your name and email."})[l] || "Проверьте имя и email.";
+        const d = dict[l] || dict.ru || {};
+        return d["co.f.err"] || "Please check your name and email.";
       };
       form.addEventListener("submit",(e)=>{
         e.preventDefault();
