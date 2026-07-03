@@ -41,10 +41,17 @@
   <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
 </nav>
 
-<main class="wrap section" style="padding-block:clamp(36px,5vw,64px)">
+<main class="wrap section account-flow">
+  <div class="acc-mob-bar">
+    <button type="button" class="acc-mob-toggle" data-acc-mob-toggle aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <span data-acc-mob-label data-i18n="acc.nav.overview">Обзор</span>
+    </button>
+  </div>
+  <div class="acc-scrim" data-acc-scrim aria-hidden="true"></div>
   <div class="acc">
     <!-- ===== SIDEBAR ===== -->
-    <aside class="acc-side spatial">
+    <aside class="acc-side">
       <div class="acc-user">
         <div class="acc-ava">АК</div>
         <div>
@@ -75,7 +82,7 @@
         </div>
         <div class="acc-stats">
           <div class="acc-stat"><div class="n">12</div><div class="l" data-i18n="acc.ov.s1">Всего заказов</div></div>
-          <div class="acc-stat"><div class="n">5</div><div class="l" data-i18n="acc.ov.s2">В избранном</div></div>
+          <div class="acc-stat"><div class="n" data-acc-stat-fav>0</div><div class="l" data-i18n="acc.ov.s2">В избранном</div></div>
           <div class="acc-stat"><div class="n">340</div><div class="l" data-i18n="acc.ov.s3">Бонусных баллов</div></div>
         </div>
 
@@ -90,12 +97,9 @@
               <span class="status status--ship" data-i18n="acc.st.ship">В пути</span>
             </div>
             <div class="order__body">
-              <div class="order__thumbs">
-                <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
-                <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
-              </div>
+              <div class="order__thumbs" data-order-thumbs="p1,p2"></div>
               <div class="order__meta"><span data-i18n="acc.items2">2 товара</span></div>
-              <div class="order__total">$718</div>
+              <div class="order__total">$1 120</div>
             </div>
           </div>
           <div class="order">
@@ -104,11 +108,9 @@
               <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
             </div>
             <div class="order__body">
-              <div class="order__thumbs">
-                <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
-              </div>
+              <div class="order__thumbs" data-order-thumbs="p3"></div>
               <div class="order__meta"><span data-i18n="acc.items1">1 товар</span></div>
-              <div class="order__total">$597</div>
+              <div class="order__total">$95</div>
             </div>
           </div>
         </div>
@@ -124,14 +126,11 @@
             <span class="status status--ship" data-i18n="acc.st.ship">В пути</span>
           </div>
           <div class="order__body">
-            <div class="order__thumbs">
-              <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
-              <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
-            </div>
+            <div class="order__thumbs" data-order-thumbs="p1,p2"></div>
             <div class="order__meta"><span data-i18n="acc.items2">2 товара</span> · <span data-i18n="acc.ord.deliver">доставка 18–20 июня</span></div>
-            <div class="order__total">$718</div>
+            <div class="order__total">$1 120</div>
           </div>
-          <div class="order__actions" style="margin-top:16px">
+          <div class="order__actions">
             <button class="btn btn--ghost btn--sm" data-order-track="#BT-2048" data-i18n="acc.ord.track">Отследить</button>
             <button class="btn btn--dark btn--sm" data-order-repeat="p1,p2" data-i18n="acc.ord.repeat">Повторить заказ</button>
           </div>
@@ -143,13 +142,11 @@
             <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
           </div>
           <div class="order__body">
-            <div class="order__thumbs">
-              <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
-            </div>
+            <div class="order__thumbs" data-order-thumbs="p3"></div>
             <div class="order__meta"><span data-i18n="acc.items1">1 товар</span> · <span data-i18n="acc.ord.delivered">доставлен 6 июня</span></div>
-            <div class="order__total">$597</div>
+            <div class="order__total">$95</div>
           </div>
-          <div class="order__actions" style="margin-top:16px">
+          <div class="order__actions">
             <button class="btn btn--ghost btn--sm" data-order-review="#BT-2031" data-i18n="acc.ord.review">Оставить отзыв</button>
             <button class="btn btn--dark btn--sm" data-order-repeat="p3" data-i18n="acc.ord.repeat">Повторить заказ</button>
           </div>
@@ -161,15 +158,11 @@
             <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
           </div>
           <div class="order__body">
-            <div class="order__thumbs">
-              <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
-              <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
-              <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=160&q=70" alt="" onerror="this.style.display='none'">
-            </div>
+            <div class="order__thumbs" data-order-thumbs="p4,p5,p11"></div>
             <div class="order__meta"><span data-i18n="acc.items3">3 товара</span></div>
-            <div class="order__total">$1 160</div>
+            <div class="order__total">$1 512</div>
           </div>
-          <div class="order__actions" style="margin-top:16px">
+          <div class="order__actions">
             <button class="btn btn--ghost btn--sm" data-order-review="#BT-1998" data-i18n="acc.ord.review">Оставить отзыв</button>
             <button class="btn btn--dark btn--sm" data-order-repeat="p4,p5,p11" data-i18n="acc.ord.repeat">Повторить заказ</button>
           </div>
@@ -179,47 +172,11 @@
       <!-- WISHLIST -->
       <section class="acc-panel" data-acc-panel="wishlist">
         <div class="acc-h"><div><h1 data-i18n="acc.nav.wishlist">Избранное</h1><p data-i18n="acc.wish.sub">Товары, которые вы сохранили на потом.</p></div></div>
-        <div class="prod-grid">
-          <article class="product" data-product data-cat="chair">
-            <div class="product__media media">
-              <button class="fav is-on" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-              <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'">
-              <a class="see" href="product.html?id=p2" data-i18n="see">Подробнее</a>
-              <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
-            </div>
-            <div>
-              <div class="product__cat">Стулья</div>
-              <div class="product__name" style="margin-top:4px">Кресло Light Wing</div>
-              <div class="price" style="margin-top:8px"><span class="price__now">$458</span></div>
-            </div>
-          </article>
-          <article class="product" data-product data-cat="shelf">
-            <div class="product__media media">
-              <button class="fav is-on" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-              <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'">
-              <a class="see" href="product.html?id=p3" data-i18n="see">Подробнее</a>
-              <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
-            </div>
-            <div>
-              <div class="product__cat">Полки</div>
-              <div class="product__name" style="margin-top:4px">Стеллаж Marble</div>
-              <div class="price" style="margin-top:8px"><span class="price__now">$597</span></div>
-            </div>
-          </article>
-          <article class="product" data-product data-cat="desk">
-            <div class="product__media media">
-              <button class="fav is-on" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-              <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'">
-              <a class="see" href="product.html?id=p4" data-i18n="see">Подробнее</a>
-              <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
-            </div>
-            <div>
-              <div class="product__cat">Столы</div>
-              <div class="product__name" style="margin-top:4px">Обеденный стол Oak</div>
-              <div class="price" style="margin-top:8px"><span class="price__now">$720</span></div>
-            </div>
-          </article>
+        <div class="acc-wish-empty" data-acc-wish-empty hidden>
+          <p data-i18n="acc.wish.empty">В избранном пока пусто. Сохраняйте товары из каталога — они появятся здесь.</p>
+          <a class="btn btn--ghost btn--sm" href="catalog.html" data-i18n="acc.wish.goto">Перейти в каталог</a>
         </div>
+        <div class="prod-grid acc-wish-grid" data-acc-wishlist></div>
       </section>
 
       <!-- ADDRESSES -->
@@ -283,11 +240,11 @@
 
 <script src="assets/i18n.js"></script>
 <script src="assets/products.js"></script>
-<script src="assets/account.js"></script>
 <script src="assets/assistant.js"></script>
 <script src="assets/search.js"></script>
 <script src="assets/site.js"></script>
 <script src="assets/cart.js"></script>
+<script src="assets/account.js"></script>
 <script src="assets/fx.js"></script>
 </body>
 </html>

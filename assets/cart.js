@@ -54,6 +54,7 @@
   const getFavs = ()=>read("btt_favs");
   const cartCount = ()=>{ const c=getCart(); return Object.values(c).reduce((n,it)=>n+(it.qty||1),0); };
   const favCount  = ()=>Object.keys(getFavs()).length;
+  function onFavsChange(){ document.dispatchEvent(new CustomEvent("btt:favs-change")); }
 
   /* ---------- derive a product snapshot from DOM / PDP ---------- */
   function snapFromCard(card){
@@ -102,7 +103,7 @@
     const f=getFavs(); let on;
     if(f[snap.id]){ delete f[snap.id]; on=false; }
     else { f[snap.id]={ name:snap.name, price:snap.price, img:snap.img }; on=true; }
-    write("btt_favs",f); renderBadges(); renderFavBody(); syncFavButtons();
+    write("btt_favs",f); renderBadges(); renderFavBody(); syncFavButtons(); onFavsChange();
     return on;
   }
 
@@ -211,7 +212,7 @@
     const wa=root.querySelector("[data-order-wa]");
     if(wa) wa.addEventListener("click", ()=>dispatch("wa"));
     root.querySelectorAll("[data-fav-del]").forEach(b=>b.addEventListener("click",()=>{
-      const f=getFavs(); delete f[b.getAttribute("data-fav-del")]; write("btt_favs",f); renderBadges(); renderFavBody(); syncFavButtons();
+      const f=getFavs(); delete f[b.getAttribute("data-fav-del")]; write("btt_favs",f); renderBadges(); renderFavBody(); syncFavButtons(); onFavsChange();
     }));
     root.querySelectorAll("[data-fav-add]").forEach(b=>b.addEventListener("click",()=>{
       const id=b.getAttribute("data-fav-add"); const it=getFavs()[id];
@@ -333,5 +334,5 @@
     new MutationObserver(()=>{ renderCartBody(); renderFavBody(); }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
   });
 
-  window.BTT_CART={ openCart, openFav, addToCart };
+  window.BTT_CART={ openCart, openFav, addToCart, wireProductButtons, getFavs, favCount };
 })();

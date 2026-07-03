@@ -269,7 +269,7 @@ Object.assign(window.BTT_I18N.ru,{
   "acc.items1":"1 товар","acc.items2":"2 товара","acc.items3":"3 товара",
   "acc.ord.sub":"История ваших покупок и их статусы.","acc.ord.deliver":"доставка 18–20 июня","acc.ord.delivered":"доставлен 6 июня",
   "acc.ord.track":"Отследить","acc.ord.repeat":"Повторить заказ","acc.ord.review":"Оставить отзыв",
-  "acc.wish.sub":"Товары, которые вы сохранили на потом.",
+  "acc.wish.sub":"Товары, которые вы сохранили на потом.","acc.wish.empty":"В избранном пока пусто. Сохраняйте товары из каталога — они появятся здесь.","acc.wish.goto":"Перейти в каталог",
   "acc.addr.sub":"Адреса доставки для быстрого оформления.","acc.addr.edit":"Изменить","acc.addr.default":"Адрес по умолчанию","acc.addr.office":"Офис","acc.addr.add":"Добавить адрес",
   "acc.set.sub":"Личные данные и предпочтения.","acc.set.personal":"Личные данные","acc.set.name":"Имя","acc.set.email":"Email","acc.set.phone":"Телефон","acc.set.save":"Сохранить изменения","acc.set.saved":"Изменения сохранены ✓",
   "acc.set.prefs":"Предпочтения","acc.set.theme":"Тема оформления","acc.set.themehint":"Светлая / Тёмная","acc.set.switch":"Переключить","acc.set.lang":"Язык","acc.set.news":"Рассылка","acc.set.newson":"Новинки и акции — включено"
@@ -284,7 +284,7 @@ Object.assign(window.BTT_I18N.uz,{
   "acc.items1":"1 mahsulot","acc.items2":"2 mahsulot","acc.items3":"3 mahsulot",
   "acc.ord.sub":"Xaridlaringiz tarixi va holati.","acc.ord.deliver":"yetkazish 18–20 iyun","acc.ord.delivered":"6 iyunda yetkazildi",
   "acc.ord.track":"Kuzatish","acc.ord.repeat":"Takrorlash","acc.ord.review":"Sharh qoldirish",
-  "acc.wish.sub":"Keyinroq uchun saqlangan mahsulotlar.",
+  "acc.wish.sub":"Keyinroq uchun saqlangan mahsulotlar.","acc.wish.empty":"Sevimlilar bo‘sh. Katalogdan mahsulotlarni saqlang — ular shu yerda paydo bo‘ladi.","acc.wish.goto":"Katalogga o‘tish",
   "acc.addr.sub":"Tez rasmiylashtirish uchun manzillar.","acc.addr.edit":"Tahrirlash","acc.addr.default":"Asosiy manzil","acc.addr.office":"Ofis","acc.addr.add":"Manzil qo‘shish",
   "acc.set.sub":"Shaxsiy ma’lumotlar va sozlamalar.","acc.set.personal":"Shaxsiy ma’lumotlar","acc.set.name":"Ism","acc.set.email":"Email","acc.set.phone":"Telefon","acc.set.save":"Saqlash","acc.set.saved":"O‘zgarishlar saqlandi ✓",
   "acc.set.prefs":"Sozlamalar","acc.set.theme":"Mavzu","acc.set.themehint":"Yorug‘ / Qorong‘i","acc.set.switch":"Almashtirish","acc.set.lang":"Til","acc.set.news":"Xabarnoma","acc.set.newson":"Yangiliklar va aksiyalar — yoqilgan"
@@ -299,7 +299,7 @@ Object.assign(window.BTT_I18N.en,{
   "acc.items1":"1 item","acc.items2":"2 items","acc.items3":"3 items",
   "acc.ord.sub":"Your purchase history and statuses.","acc.ord.deliver":"delivery Jun 18–20","acc.ord.delivered":"delivered Jun 6",
   "acc.ord.track":"Track","acc.ord.repeat":"Reorder","acc.ord.review":"Leave a review",
-  "acc.wish.sub":"Items you saved for later.",
+  "acc.wish.sub":"Items you saved for later.","acc.wish.empty":"Your wishlist is empty. Save items from the catalog — they'll show up here.","acc.wish.goto":"Go to catalog",
   "acc.addr.sub":"Delivery addresses for faster checkout.","acc.addr.edit":"Edit","acc.addr.default":"Default address","acc.addr.office":"Office","acc.addr.add":"Add address",
   "acc.set.sub":"Personal details and preferences.","acc.set.personal":"Personal details","acc.set.name":"Name","acc.set.email":"Email","acc.set.phone":"Phone","acc.set.save":"Save changes","acc.set.saved":"Changes saved ✓",
   "acc.set.prefs":"Preferences","acc.set.theme":"Theme","acc.set.themehint":"Light / Dark","acc.set.switch":"Switch","acc.set.lang":"Language","acc.set.news":"Newsletter","acc.set.newson":"News & deals — enabled"
