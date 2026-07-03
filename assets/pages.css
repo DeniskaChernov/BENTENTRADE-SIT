@@ -341,6 +341,14 @@
 .catalog-flow .section--catalog{padding-top:clamp(28px,4vw,44px);}
 .pdp-flow .section--compact{padding-top:0;}
 
+/* inner pages — section rhythm */
+.about-flow .section--compact,
+.contacts-flow .section--compact{padding-top:0;}
+.contacts-flow .section--after-hero{padding-top:0;}
+
+.ab-story__title{margin:10px 0 22px;}
+.ab-story__lead{margin-bottom:18px;}
+
 /* product grid */
 .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap-grid);}
 
@@ -586,10 +594,22 @@
 .info-card .ic svg{width:20px;height:20px;}
 .info-card .t{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
 .info-card .v{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.01em;}
-.map{margin-top:6px;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/7;background:var(--cream-2);position:relative;}
-.map img{width:100%;height:100%;object-fit:cover;filter:grayscale(.2) sepia(.15);}
-.map__tag{position:absolute;left:14px;bottom:14px;border-radius:var(--r-md);padding:12px 18px;
-  font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--text);}
+.info-card--link{color:inherit;transition:transform .35s var(--spring), box-shadow .35s ease, border-color .25s ease;}
+.info-card--link:hover{border-color:color-mix(in oklab, var(--copper) 35%, var(--line));}
+.info-card--link:focus-visible{outline:2px solid var(--copper);outline-offset:3px;}
+.contact-aside__cards{display:flex;flex-direction:column;gap:0;}
+.map{margin-top:16px;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/7;background:var(--cream-2);position:relative;}
+.map img{width:100%;height:100%;object-fit:cover;filter:grayscale(.2) sepia(.15);transition:transform 1s var(--ease-out);}
+.map:hover img{transform:scale(1.03);}
+.map__tag{
+  position:absolute;left:14px;bottom:14px;border-radius:var(--r-md);padding:12px 18px;
+  font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--text);
+  transition:background .25s ease,color .25s ease;
+}
+.map__tag:hover{background:var(--copper);color:#fff;}
+.form-err{display:none;margin-top:12px;color:#c44;font-size:14px;font-weight:600;}
+.form-err.show{display:block;}
+.field.is-invalid input,.field.is-invalid textarea{border-color:#c44;box-shadow:0 0 0 3px color-mix(in oklab, #c44 12%, transparent);}
 
 /* ================= ACCOUNT ================= */
 .acc{display:grid;grid-template-columns:296px 1fr;gap:30px;align-items:start;}

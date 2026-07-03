@@ -350,11 +350,36 @@
     // contact form
     const form = document.querySelector("[data-contact-form]");
     if(form){
+      const ok = form.querySelector("[data-form-ok]");
+      const err = form.querySelector("[data-form-err]");
+      const submitBtn = form.querySelector("[data-contact-submit]");
+      const dict = window.BTT_I18N || {};
+      const errMsg = ()=>{
+        const l = document.documentElement.lang || "ru";
+        return ({ru:"Проверьте имя и email.", uz:"Ism va emailni tekshiring.", en:"Please check your name and email."})[l] || "Проверьте имя и email.";
+      };
       form.addEventListener("submit",(e)=>{
         e.preventDefault();
-        const ok = form.querySelector("[data-form-ok]");
-        if(ok) ok.classList.add("show");
+        form.querySelectorAll(".field").forEach(f=>f.classList.remove("is-invalid"));
+        if(err){ err.hidden = true; err.classList.remove("show"); err.textContent = ""; }
+        const name = form.querySelector("[name='name']");
+        const email = form.querySelector("[name='email']");
+        let valid = true;
+        if(!name || !name.value.trim()){ name && name.closest(".field")?.classList.add("is-invalid"); valid = false; }
+        if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
+          email && email.closest(".field")?.classList.add("is-invalid"); valid = false;
+        }
+        if(!valid){
+          if(err){ err.textContent = errMsg(); err.hidden = false; err.classList.add("show"); }
+          return;
+        }
+        if(ok){ ok.classList.add("show"); }
+        if(submitBtn) submitBtn.disabled = true;
         form.reset();
+        setTimeout(()=>{
+          if(ok) ok.classList.remove("show");
+          if(submitBtn) submitBtn.disabled = false;
+        }, 5000);
       });
     }
   });
