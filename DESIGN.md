@@ -162,12 +162,17 @@ API: `window.BTT_CART = { openCart, openFav, addToCart, wireProductButtons, getF
 
 ---
 
-## 8. Анимации
+## 8. Анимации, производительность и a11y
 
-- `.reveal`, `.reveal--left/right`, `[data-stagger]` — появление секций (`site.js`).
-- `.spatial` — лёгкий подъём на hover (осторожно на мобильных панелях).
-- `prefers-reduced-motion` — отключает автоплей и тяжёлые transition.
-- `fx.js` — вход страницы (`body.is-entering`).
+- `.reveal`, `.reveal--left/right`, `[data-stagger]` — появление секций (`site.js`); при `prefers-reduced-motion` сразу `.is-in`.
+- `.spatial`, parallax, page transitions, tilt (`fx.js`), count-up — отключены при reduced motion.
+- Герой: автоплей не стартует при reduced motion; стрелки/точки — `data-i18n-aria` (`hero.prev/next/slide`).
+- **Skip-link** — `site.js` вставляет ссылку `a11y.skip` → `#main`.
+- **Focus** — глобальный `:focus-visible` (медный outline); формы — ring через `box-shadow`.
+- **Мобильное меню** — `aria-expanded`, `aria-controls`, `aria-hidden`, Escape закрывает.
+- **Язык** — кнопки RU/UZ/EN с `aria-pressed`.
+- **Perf** — `preconnect` к Google Fonts; LCP героя: `fetchpriority="high"`; ниже fold — `loading="lazy"`; `decoding="async"`.
+- `meta description` на каждой странице.
 
 ---
 

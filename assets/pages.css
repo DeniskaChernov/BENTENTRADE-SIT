@@ -1019,6 +1019,9 @@ a.dl-name:hover{color:var(--copper);}
 [data-theme="dark"] .addr{border-color:var(--line);}
 [data-theme="dark"] .acc-mob-toggle{background:var(--ink-2);}
 [data-theme="dark"] .acc-wish-empty{background:var(--ink-2);}
+@media (prefers-reduced-motion:reduce){
+  .acc-panel{animation:none;}
+}
 
 /* ---- preference switch (settings) ---- */
 .lang--acc{position:static;}

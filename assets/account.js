@@ -98,11 +98,13 @@
       if(side) side.classList.remove("is-open");
       if(scrim) scrim.classList.remove("on");
       document.documentElement.style.overflow="";
+      if(mobToggle) mobToggle.setAttribute("aria-expanded", "false");
     }
     function openDrawer(){
       if(side) side.classList.add("is-open");
       if(scrim) scrim.classList.add("on");
       document.documentElement.style.overflow="hidden";
+      if(mobToggle) mobToggle.setAttribute("aria-expanded", "true");
     }
 
     function show(name){
@@ -122,8 +124,8 @@
     });
 
     if(mobToggle) mobToggle.addEventListener("click", ()=>{
-      if(side&&side.classList.contains("is-open")) closeDrawer();
-      else openDrawer();
+      const willOpen = !(side && side.classList.contains("is-open"));
+      if(willOpen) openDrawer(); else closeDrawer();
     });
     if(scrim) scrim.addEventListener("click", closeDrawer);
 

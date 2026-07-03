@@ -8,6 +8,7 @@ window.BTT_I18N = {
     "topbar.ship":"Бесплатная доставка по Узбекистану при заказе от $100",
     "nav.home":"Главная","nav.catalog":"Каталог","nav.about":"О нас","nav.contacts":"Контакты",
     "tool.search":"Поиск","tool.fav":"Избранное","tool.cart":"Корзина","tool.acc":"Аккаунт",
+    "a11y.skip":"К основному содержимому","hero.prev":"Предыдущий слайд","hero.next":"Следующий слайд","hero.slide":"Слайд {n}",
 
     "hero.badge":"Своё производство",
     "hero.title.1":"Искусственный","hero.title.2":"ротанг",
@@ -91,6 +92,7 @@ window.BTT_I18N = {
     "topbar.ship":"$100 dan ortiq buyurtmalarga O‘zbekiston bo‘ylab bepul yetkazib berish",
     "nav.home":"Bosh sahifa","nav.catalog":"Katalog","nav.about":"Biz haqimizda","nav.contacts":"Kontaktlar",
     "tool.search":"Qidiruv","tool.fav":"Sevimlilar","tool.cart":"Savatcha","tool.acc":"Profil",
+    "a11y.skip":"Asosiy kontentga o‘tish","hero.prev":"Oldingi slayd","hero.next":"Keyingi slayd","hero.slide":"Slayd {n}",
 
     "hero.badge":"O‘z ishlab chiqarish",
     "hero.title.1":"Sun’iy","hero.title.2":"rotang",
@@ -171,6 +173,7 @@ window.BTT_I18N = {
     "topbar.ship":"Free shipping across Uzbekistan on orders over $100",
     "nav.home":"Home","nav.catalog":"Catalog","nav.about":"About","nav.contacts":"Contacts",
     "tool.search":"Search","tool.fav":"Wishlist","tool.cart":"Cart","tool.acc":"Account",
+    "a11y.skip":"Skip to main content","hero.prev":"Previous slide","hero.next":"Next slide","hero.slide":"Slide {n}",
 
     "hero.badge":"Own production",
     "hero.title.1":"Synthetic","hero.title.2":"rattan",

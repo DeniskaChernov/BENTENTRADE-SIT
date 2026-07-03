@@ -33,6 +33,7 @@
     });
     document.querySelectorAll(".lang button").forEach(b=>{
       b.classList.toggle("is-active", b.dataset.lang === lang);
+      b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
     });
   }
 
@@ -56,6 +57,7 @@
 
   /* ---- scroll reveal (IntersectionObserver) + sibling stagger ---- */
   function initReveal(){
+    const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const reveals = Array.from(document.querySelectorAll(".reveal"));
 
     const byParent = new Map();
@@ -76,7 +78,7 @@
     });
 
     const targets = reveals.concat(staggers);
-    if(!("IntersectionObserver" in window)){
+    if(reduced || !("IntersectionObserver" in window)){
       targets.forEach(el=>el.classList.add("is-in"));
       return;
     }
@@ -246,16 +248,73 @@
     window.addEventListener("resize", observe, { passive:true });
   }
 
+  function initA11y(){
+    const main = document.querySelector("main");
+    if(main && !main.id) main.id = "main";
+
+    const dict = window.BTT_I18N || {};
+    const lang = document.documentElement.lang || "ru";
+    const skipText = ((dict[lang] || dict.ru || {})["a11y.skip"]) || "К основному содержимому";
+    let skip = document.querySelector(".skip-link");
+    if(!skip){
+      skip = document.createElement("a");
+      skip.className = "skip-link";
+      skip.href = "#main";
+      skip.addEventListener("click", e=>{
+        e.preventDefault();
+        const target = document.getElementById("main");
+        if(target){ target.setAttribute("tabindex","-1"); target.focus({ preventScroll:false }); }
+      });
+      document.body.insertBefore(skip, document.body.firstChild);
+    }
+    skip.textContent = skipText;
+
+    document.querySelectorAll(".lang button").forEach(b=>{
+      if(!b.hasAttribute("aria-pressed")){
+        b.setAttribute("aria-pressed", b.classList.contains("is-active") ? "true" : "false");
+      }
+    });
+  }
+
+  function initMobileNav(){
+    const burger = document.querySelector(".burger");
+    const drawer = document.querySelector(".mobile-drawer");
+    if(!burger || !drawer) return;
+    if(!drawer.id) drawer.id = "mobile-nav";
+    drawer.setAttribute("role", "navigation");
+    drawer.setAttribute("aria-hidden", "true");
+    const dict = window.BTT_I18N || {};
+    const lng = document.documentElement.lang || "ru";
+    drawer.setAttribute("aria-label", ((dict[lng] || dict.ru || {})["tool.menu"]) || "Меню");
+    burger.setAttribute("aria-controls", drawer.id);
+    burger.setAttribute("aria-expanded", "false");
+
+    function setOpen(on){
+      drawer.classList.toggle("open", on);
+      burger.setAttribute("aria-expanded", on ? "true" : "false");
+      drawer.setAttribute("aria-hidden", on ? "false" : "true");
+      document.documentElement.style.overflow = on ? "hidden" : "";
+    }
+
+    burger.addEventListener("click", ()=> setOpen(!drawer.classList.contains("open")));
+    drawer.querySelectorAll("a").forEach(a=> a.addEventListener("click", ()=> setOpen(false)));
+    document.addEventListener("keydown", e=>{
+      if(e.key === "Escape" && drawer.classList.contains("open")) setOpen(false);
+    });
+  }
+
   /* ---- wire up on load ---- */
   document.addEventListener("DOMContentLoaded", function(){
     applyTheme(getTheme());
     applyLang(getLang());
+    initA11y();
     initReveal();
     initParallax();
     initHeaderScroll();
     initCatToolbar();
     initCounters();
     initPageTransitions();
+    initMobileNav();
 
     document.querySelector("[data-cat-reset]")?.addEventListener("click", ()=>{
       document.querySelector('.cat-chips .chip[data-cat="all"]')?.click();
@@ -263,8 +322,14 @@
 
     document.addEventListener("btt:related-rendered", (e)=>{
       const grid = e.detail && e.detail.grid;
-      if(!grid || !("IntersectionObserver" in window)) return;
+      if(!grid) return;
       const cards = Array.from(grid.querySelectorAll(".reveal"));
+      const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if(reduced || !("IntersectionObserver" in window)){
+        cards.forEach(el=>el.classList.add("is-in"));
+        if(window.BTT_syncFavs) window.BTT_syncFavs();
+        return;
+      }
       const step = parseFloat(grid.dataset.stagger) || 90;
       cards.forEach((el,i)=>{ el.style.transitionDelay = (i * step) + "ms"; });
       const io = new IntersectionObserver((entries)=>{
@@ -283,7 +348,7 @@
 
     // language buttons
     document.querySelectorAll(".lang button").forEach(b=>{
-      b.addEventListener("click", ()=> setLang(b.dataset.lang));
+      b.addEventListener("click", ()=>{ setLang(b.dataset.lang); initA11y(); });
     });
 
     // add-to-cart & favorites are handled by cart.js
@@ -338,14 +403,6 @@
       const note = document.querySelector("[data-search-note]");
       if(note){ note.textContent = "«" + (params.get("q")) + "» — " + shown; note.style.display = ""; }
     })();
-
-    // mobile nav
-    const burger = document.querySelector(".burger");
-    const drawer = document.querySelector(".mobile-drawer");
-    if(burger && drawer){
-      burger.addEventListener("click",()=> drawer.classList.toggle("open"));
-      drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>drawer.classList.remove("open")));
-    }
 
     // contact form
     const form = document.querySelector("[data-contact-form]");

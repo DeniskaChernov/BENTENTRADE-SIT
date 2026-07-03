@@ -99,14 +99,24 @@
   const DUR=7000;
   let lang=(function(){var s=localStorage.getItem("btt_lang");return ["ru","uz","en"].includes(s)?s:"ru";})();
   const L=(o)=> (o && (o[lang]||o.ru)) || "";
+  function T(k, vars){
+    const d=(window.BTT_I18N&&window.BTT_I18N[lang])||(window.BTT_I18N&&window.BTT_I18N.ru)||{};
+    let s=d[k]!=null?d[k]:k;
+    if(vars) Object.keys(vars).forEach(key=>{ s=s.replace("{"+key+"}", vars[key]); });
+    return s;
+  }
 
   SLIDES.forEach((s,i)=>{
     const b=document.createElement("button");
-    b.className="hero__sw-dot"; b.setAttribute("aria-label","Слайд "+(i+1));
+    b.className="hero__sw-dot";
+    b.setAttribute("aria-label", T("hero.slide", { n: i+1 }));
     b.addEventListener("click",()=>go(i,true));
     els.dots.appendChild(b);
   });
   const dotEls=Array.from(els.dots.children);
+  function syncDotLabels(){
+    dotEls.forEach((b,i)=> b.setAttribute("aria-label", T("hero.slide", { n: i+1 })));
+  }
 
   function anim(){
     [els.pocketInner, els.stats, els.capCard].forEach(el=>{
@@ -160,7 +170,7 @@
 
   new MutationObserver(()=>{
     const nl=document.documentElement.lang;
-    if(nl && nl!==lang && ["ru","uz","en"].includes(nl)){ lang=nl; render(false); }
+    if(nl && nl!==lang && ["ru","uz","en"].includes(nl)){ lang=nl; render(false); syncDotLabels(); }
   }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
 
   render(false);

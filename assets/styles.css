@@ -482,7 +482,34 @@ html.no-js [data-stagger] > *{opacity:1;transform:none;filter:none;}
   [data-parallax]{transform:none!important;}
   body.is-entering main,body.is-leaving main{opacity:1!important;transform:none!important;filter:none!important;transition:none!important;}
   .product.is-filter-out,.product.is-filter-in{animation:none!important;opacity:1!important;transform:none!important;}
+  .spatial,.spatial:hover{transform:none!important;transition:none!important;}
+  .hero__img,.acc-panel,.tilt,.tilt--active{transition:none!important;animation:none!important;transform:none!important;}
+  .product:hover{transform:none;}
 }
+
+/* ============================================================
+   Accessibility — skip link & keyboard focus
+   ============================================================ */
+.skip-link{
+  position:fixed;left:var(--gut);top:12px;z-index:300;
+  padding:12px 20px;border-radius:var(--r-pill);
+  background:var(--ink);color:var(--on-dark);font-weight:700;font-size:14px;
+  transform:translateY(-140%);transition:transform .25s var(--ease-out);
+  box-shadow:var(--shadow-soft);
+}
+.skip-link:focus{transform:translateY(0);outline:none;}
+.skip-link:focus-visible{outline:2px solid var(--copper-bright);outline-offset:3px;}
+
+:focus{outline:none;}
+:focus-visible{
+  outline:2px solid var(--copper);
+  outline-offset:3px;
+}
+.btn:focus-visible,.chip:focus-visible,.pill:focus-visible{outline-offset:4px;}
+.icon-btn:focus-visible,.drawer-x:focus-visible,.drawer-back:focus-visible{border-radius:50%;}
+.nav a:focus-visible,.mobile-drawer a:focus-visible{border-radius:var(--r-pill);}
+.acc-nav button:focus-visible,.hero__sw-arrow:focus-visible{border-radius:var(--r-md);}
+.product__media .fav:focus-visible,.product__media .add:focus-visible,.product__media .see:focus-visible{outline-offset:2px;}
 
 /* ============================================================
    Responsive
