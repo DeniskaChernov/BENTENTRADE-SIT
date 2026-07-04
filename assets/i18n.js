@@ -259,6 +259,9 @@ Object.assign(window.BTT_I18N.en,{"srch.ph":"Search furniture, planters, baskets
 Object.assign(window.BTT_I18N.ru,{"tool.theme":"Тема","tool.account":"Аккаунт","tool.menu":"Меню"});
 Object.assign(window.BTT_I18N.uz,{"tool.theme":"Mavzu","tool.account":"Akkaunt","tool.menu":"Menyu"});
 Object.assign(window.BTT_I18N.en,{"tool.theme":"Theme","tool.account":"Account","tool.menu":"Menu"});
+Object.assign(window.BTT_I18N.ru,{"pdp.notFound":"Товар не найден","pdp.notFoundSub":"Возможно, товар снят с продажи или ссылка устарела."});
+Object.assign(window.BTT_I18N.uz,{"pdp.notFound":"Mahsulot topilmadi","pdp.notFoundSub":"Ehtimol, mahsulot sotuvdan olingan yoki havola eskirgan."});
+Object.assign(window.BTT_I18N.en,{"pdp.notFound":"Product not found","pdp.notFoundSub":"It may have been discontinued or the link is out of date."});
 
 
 /* ---- account page ---- */

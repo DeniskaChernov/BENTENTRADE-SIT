@@ -10,20 +10,63 @@
 
   const money = (n) => "$" + n;
   const mediaUrl = (key) => (key ? "/media/" + key : "");
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const idFromHref = (href) => { const m = (href || "").match(/[?&]id=([^&]+)/); return m ? decodeURIComponent(m[1]) : null; };
+
+  const FAV_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>';
+  const ADD_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>';
+
+  function lang() { const s = localStorage.getItem("btt_lang"); return ["ru", "uz", "en"].includes(s) ? s : "ru"; }
+  function t(k) { const I = window.BTT_I18N || {}; const d = I[lang()] || {}; if (d[k] != null) return d[k]; const ru = I.ru || {}; return ru[k] != null ? ru[k] : k; }
+
+  // Best image for a product: CRM upload → deterministic placeholder → generic.
+  function productImg(p) {
+    if (p.image) return mediaUrl(p.image);
+    if (window.BTT_PRODUCT_IMG) { const im = window.BTT_PRODUCT_IMG(p.id); if (im && im[0]) return im[0].full; }
+    return "https://loremflickr.com/800/800/rattan,furniture/all?lock=" + (String(p.id).replace(/\D/g, "") || "1");
+  }
+
+  function buildCard(p) {
+    const art = document.createElement("article");
+    art.className = "product reveal";
+    art.setAttribute("data-product", "");
+    art.setAttribute("data-cat", p.category || "");
+    const disc = p.price_old && p.price_old > p.price_now
+      ? Math.round((1 - p.price_now / p.price_old) * 100) : 0;
+    const sale = disc ? '<span class="badge-sale">-' + disc + "%</span>" : "";
+    const old = p.price_old ? '<span class="price__old">' + money(p.price_old) + "</span>" : "";
+    art.innerHTML =
+      '<div class="product__media media">' + sale +
+      '<button class="fav" data-fav aria-label="fav">' + FAV_SVG + "</button>" +
+      '<img src="' + esc(productImg(p)) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' +
+      '<a class="see" href="product.html?id=' + esc(p.id) + '" data-i18n="see">' + esc(t("see")) + "</a>" +
+      '<button class="add" data-add aria-label="add">' + ADD_SVG + "</button>" +
+      "</div><div>" +
+      '<div class="product__cat">' + esc(p.category_label || "") + "</div>" +
+      '<div class="product__name" style="margin-top:4px">' + esc(p.name || "") + "</div>" +
+      '<div class="price" style="margin-top:8px"><span class="price__now">' + money(p.price_now) + "</span>" + old + "</div>" +
+      "</div>";
+    return art;
+  }
 
   async function hydrateCatalog() {
     const grid = document.querySelector("#catalog-grid");
     if (!grid) return;
     let res;
     try { res = await window.BTT_API.products("all"); } catch (e) { return; }
+    const list = res.products || [];
+    if (!list.length) return; // never blank the catalog on an empty/bad response
     const map = {};
-    (res.products || []).forEach((p) => { map[p.id] = p; });
+    list.forEach((p) => { map[p.id] = p; });
+
+    let changed = false;
+    // 1) Patch existing cards; drop cards for products removed in the CRM.
     grid.querySelectorAll("[data-product]").forEach((card) => {
       const see = card.querySelector("a[href*='product.html?id=']");
-      const m = see && (see.getAttribute("href") || "").match(/id=(p\d+)/);
-      if (!m) return;
-      const p = map[m[1]];
-      if (!p) return;
+      const id = see && idFromHref(see.getAttribute("href"));
+      if (!id) return;
+      const p = map[id];
+      if (!p) { card.remove(); changed = true; return; }
       const now = card.querySelector(".price__now");
       if (now) now.textContent = money(p.price_now);
       const old = card.querySelector(".price__old");
@@ -33,21 +76,75 @@
       }
       const nameEl = card.querySelector(".product__name");
       if (nameEl && p.name) nameEl.textContent = p.name;
-      // Real photo from the CRM (falls back to the existing placeholder image).
+      const catEl = card.querySelector(".product__cat");
+      if (catEl && !catEl.hasAttribute("data-i18n") && p.category_label) catEl.textContent = p.category_label;
       if (p.image) {
         const img = card.querySelector(".product__media img");
         if (img) { img.src = mediaUrl(p.image); img.style.display = ""; }
       }
+      map[id]._seen = true;
     });
+
+    // 2) Append cards for products that exist in the CRM but not in the markup.
+    const frag = document.createDocumentFragment();
+    list.forEach((p) => { if (!map[p.id]._seen) { frag.appendChild(buildCard(p)); changed = true; } });
+    if (frag.childNodes.length) grid.appendChild(frag);
+
+    // 3) Re-wire buttons + reveal for new cards, then re-apply the active filter.
+    if (changed) {
+      document.dispatchEvent(new CustomEvent("btt:related-rendered", { detail: { grid } }));
+      const active = document.querySelector('.cat-chips .chip.is-active') || document.querySelector('.cat-chips .chip[data-cat="all"]');
+      if (active) active.click();
+    }
+  }
+
+  function knownStatic(id) { return !!(window.BTT_PRODUCTS && window.BTT_PRODUCTS[id]); }
+
+  function showPdp404() {
+    const main = document.querySelector("main.pdp-flow");
+    if (!main) return;
+    main.innerHTML =
+      '<section class="pdp-404" style="text-align:center;padding:96px 0 120px">' +
+      '<h1 style="margin-bottom:12px">' + esc(t("pdp.notFound") || "Товар не найден") + "</h1>" +
+      '<p class="muted" style="margin:0 auto 26px;max-width:420px">' + esc(t("pdp.notFoundSub") || "Возможно, товар снят с продажи или ссылка устарела.") + "</p>" +
+      '<a class="btn btn--dark" href="catalog.html">' + esc(t("nav.catalog2") || "Каталог") + "</a>" +
+      "</section>";
+    document.title = "Bententrade — 404";
   }
 
   async function hydratePDP() {
     if (!document.querySelector(".pdp-info")) return;
     const id = new URLSearchParams(location.search).get("id") || "p1";
     let res;
-    try { res = await window.BTT_API.product(id); } catch (e) { return; }
+    try {
+      res = await window.BTT_API.product(id);
+    } catch (e) {
+      // API said "not found" (or is unreachable): only hard-404 for ids that
+      // aren't part of the built-in static catalogue (offline safety net).
+      if (!knownStatic(id)) showPdp404();
+      return;
+    }
     const p = res && res.product;
-    if (!p) return;
+    if (!p) { if (!knownStatic(id)) showPdp404(); return; }
+
+    // Name / breadcrumb / category / description straight from the CRM.
+    const h1 = document.querySelector(".pdp-info h1");
+    if (h1 && p.name) { h1.textContent = p.name; document.title = "Bententrade — " + p.name; }
+    const crumb = document.querySelector(".crumb .cur");
+    if (crumb && p.name) crumb.textContent = p.name;
+    const catEl = document.querySelector(".pdp-info .product__cat");
+    if (catEl && p.category_label) catEl.textContent = p.category_label;
+    const desc = document.querySelector(".pdp-desc");
+    if (desc && p.description) desc.textContent = p.description;
+
+    // Sizes (index-based, mirrors pdp.js).
+    if (Array.isArray(p.sizes) && p.sizes.length) {
+      document.querySelectorAll(".size-row .size-btn").forEach((b, i) => {
+        if (p.sizes[i] != null) { b.textContent = p.sizes[i]; b.style.display = ""; }
+        else b.style.display = "none";
+      });
+    }
+
     const now = document.querySelector(".pdp-price .now");
     if (now) now.textContent = money(p.price_now);
     const old = document.querySelector(".pdp-price .old");
