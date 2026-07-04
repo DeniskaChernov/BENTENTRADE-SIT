@@ -61,7 +61,7 @@
 
   const els = {
     heroImgs:[$('[data-h="heroImg"]'), $('[data-h="heroImgB"]')],
-    badge:$('[data-h="badge"]'), t1:$('[data-h="t1"]'), t2:$('[data-h="t2"]'),
+    t1:$('[data-h="t1"]'), t2:$('[data-h="t2"]'),
     sub:$('[data-h="sub"]'),
     store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'),
     lead:$('[data-h-lead]'), pocketInner:$('[data-h-inner]'),
@@ -109,7 +109,6 @@
   function render(animate){
     const s=SLIDES[idx];
     crossfade(els.heroImgs, s.sideImg);
-    els.badge.textContent=L(s.badge);
     els.t1.textContent=L(s.t1); els.t2.textContent=L(s.t2);
     els.sub.textContent=L(s.sub);
     els.store.textContent=L(s.store);
