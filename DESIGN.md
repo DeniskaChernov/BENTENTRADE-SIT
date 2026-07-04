@@ -119,7 +119,7 @@ assets/
 | Карточка товара | `.product`, `.product__media`, `[data-fav]`, `[data-add]`, `.see`, `.price` |
 | Шапка | `.site-head` (sticky), `.nav`, `.head-tools`, `[data-cart-count]`, `[data-fav-count]` |
 | Футер | `.site-foot` (тёмный), лого с медным filter |
-| Герой | CAIRIS: `.hero__media` (1 фото) + `.hero__pocket` + caption; справа `.hero__photo` + `.stats` |
+| Герой | `.hero__frame` → `.hero__pocket`, `.hero__peek`, `.hero__base`; 4 слайда в `hero.js` |
 | Каталог | `.catalog-flow`, `.cat-toolbar-wrap` (sticky), `[data-cat-count]`, `.cat-empty` |
 | PDP | `.pdp-flow`, галерея, `pdp.js` + `btt:related-rendered` |
 | Аккаунт | `.account-flow`, `.acc-side` (drawer на моб.), `.acc-panel`, `[data-acc-wishlist]` |
@@ -141,7 +141,7 @@ API: `window.BTT_CART = { openCart, openFav, addToCart, wireProductButtons, getF
 
 ## 6. Герой (4 слайда, L-форма)
 
-Раскладка CAIRIS: слева — одно full-bleed фото + плавающий белый карман + слайдер/cap-card поверх; справа — второе фото и тёмный блок stats.
+Раскладка по Figma Union: CSS Grid L-форма (`hero__frame`), серая непрозрачная база (`--hero-surface`), белый «карман» с заголовком, превью справа, блок статистики.
 
 Слайды в `SLIDES` (`hero.js`):
 1. Садовая мебель (`furniture`)
