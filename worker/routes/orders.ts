@@ -29,6 +29,17 @@ app.post("/", async (c) => {
   const customerEmail = str(body.email, 160);
   const address = str(body.address, 400);
   const comment = str(body.comment, 2000);
+  const deliveryMethod = str(body.delivery, 20) === "pickup" ? "pickup" : "delivery";
+
+  // Server-side validation: name + phone are always required; a delivery order
+  // additionally needs an address (pickup does not).
+  if (!customerName) return c.json({ error: "name_required" }, 422);
+  if (!customerPhone || customerPhone.replace(/\D/g, "").length < 7) {
+    return c.json({ error: "phone_required" }, 422);
+  }
+  if (deliveryMethod === "delivery" && !address) {
+    return c.json({ error: "address_required" }, 422);
+  }
 
   // Resolve authoritative prices from DB where product id is known.
   const ids = rawItems.map((i) => str(i.id, 20)).filter(Boolean);
@@ -63,10 +74,10 @@ app.post("/", async (c) => {
   const token = crypto.randomUUID();
 
   const ins = await c.env.DB.prepare(
-    `INSERT INTO orders (public_id, user_id, customer_name, customer_phone, customer_email, address, comment, lang, currency, total, status)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new')`,
+    `INSERT INTO orders (public_id, user_id, customer_name, customer_phone, customer_email, address, comment, delivery_method, lang, currency, total, status)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new')`,
   )
-    .bind(token, userId, customerName, customerPhone, customerEmail, address, comment, lang, currency, total)
+    .bind(token, userId, customerName, customerPhone, customerEmail, address, comment, deliveryMethod, lang, currency, total)
     .run();
 
   const orderId = ins.meta.last_row_id as number;
@@ -85,7 +96,9 @@ app.post("/", async (c) => {
     `<b>Новый заказ ${publicId}</b> — ${currency}${total}\n` +
       (customerName ? `Клиент: ${escapeHtml(customerName)}\n` : "") +
       (customerPhone ? `Телефон: ${escapeHtml(customerPhone)}\n` : "") +
+      `Способ: ${deliveryMethod === "pickup" ? "Самовывоз" : "Доставка"}\n` +
       (address ? `Адрес: ${escapeHtml(address)}\n` : "") +
+      (comment ? `Комментарий: ${escapeHtml(comment)}\n` : "") +
       items.map((it) => `• ${escapeHtml(it.name)} ×${it.qty} — ${currency}${it.unit_price * it.qty}`).join("\n"),
   );
 
@@ -97,7 +110,7 @@ app.get("/", async (c) => {
   const session = c.get("session");
   if (!session) return c.json({ error: "unauthorized" }, 401);
   const { results } = await c.env.DB.prepare(
-    `SELECT id, public_id, total, currency, status, created_at FROM orders WHERE user_id = ? ORDER BY id DESC`,
+    `SELECT id, public_id, total, currency, status, delivery_method, address, created_at FROM orders WHERE user_id = ? ORDER BY id DESC`,
   )
     .bind(session.userId)
     .all<{ id: number }>();

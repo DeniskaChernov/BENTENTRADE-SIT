@@ -1009,6 +1009,22 @@ a.dl-name:hover{color:var(--copper);}
 .co-back{align-self:center;margin-top:2px;background:none;border:0;color:var(--muted);font-size:13.5px;font-weight:600;cursor:pointer;padding:6px;text-decoration:underline;text-underline-offset:3px;}
 .co-back:hover{color:var(--text);}
 
+/* ---- checkout form ---- */
+.co-form{display:flex;flex-direction:column;gap:13px;margin-top:18px;}
+.co-field{display:flex;flex-direction:column;gap:6px;}
+.co-field label{font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--muted);text-transform:uppercase;}
+.co-field input,.co-field textarea{width:100%;font:inherit;font-size:14.5px;color:var(--text);background:var(--surface,#fff);border:1px solid var(--line);border-radius:14px;padding:11px 14px;transition:border-color .18s,box-shadow .18s;}
+.co-field textarea{resize:vertical;min-height:48px;}
+.co-field input:focus,.co-field textarea:focus{outline:none;border-color:var(--copper,#bd7335);box-shadow:0 0 0 3px color-mix(in srgb,var(--copper,#bd7335) 18%,transparent);}
+.co-field input::placeholder,.co-field textarea::placeholder{color:var(--muted);opacity:.7;}
+.co-method{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.co-radio{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:14px;padding:10px 12px;cursor:pointer;font-size:14px;font-weight:600;color:var(--text);transition:border-color .18s,background .18s;}
+.co-radio:has(input:checked){border-color:var(--copper,#bd7335);background:color-mix(in srgb,var(--copper,#bd7335) 8%,transparent);}
+.co-radio input{accent-color:var(--copper,#bd7335);width:16px;height:16px;}
+.co-err{color:#c0392b;font-size:13px;font-weight:600;margin:2px 0 0;}
+.co-submit{width:100%;justify-content:center;}
+.co-msg-row{display:flex;flex-direction:column;gap:10px;width:100%;}
+
 /* ---- toast ---- */
 .btt-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,18px);z-index:200;
   background:var(--ink);color:var(--on-dark);padding:13px 20px;border-radius:var(--r-pill);

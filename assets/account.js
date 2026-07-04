@@ -260,10 +260,12 @@
   }
 
   async function hydrateAccount(){
-    if(!window.BTT_API) return; // static-only fallback keeps demo content
+    // The account area is for signed-in users only: never show demo content.
+    // No API client, a failed check, or no user → send them to the login page.
+    if(!window.BTT_API){ window.location.replace("login.html"); return; }
     let me;
     try{ me=await window.BTT_API.me(); }
-    catch(e){ return; } // backend offline → keep static demo
+    catch(e){ window.location.replace("login.html"); return; }
     if(!me || !me.user){ window.location.replace("login.html"); return; }
     const u=me.user;
 
@@ -385,33 +387,13 @@
     if(hash && Array.from(tabs).some(t=>t.dataset.accTab===hash)) show(hash);
     else if(mobLabel) mobLabel.textContent=tabLabel("overview");
 
-    /* ---- repeat order → cart ---- */
-    function snapshot(id){
-      const P=window.BTT_PRODUCTS||{}, p=P[id]; if(!p) return null;
-      const d=(window.BTT_I18N&&window.BTT_I18N[lang()])||(window.BTT_I18N&&window.BTT_I18N.ru)||{};
-      const imgs=window.BTT_PRODUCT_IMG?window.BTT_PRODUCT_IMG(id):null;
-      return { id, name:d[id+".name"]||id, price:p.now, img:(imgs&&imgs[0])?imgs[0].thumb:"" };
-    }
-    document.querySelectorAll("[data-order-repeat]").forEach(b=>{
-      b.addEventListener("click",()=>{
-        const ids=(b.getAttribute("data-order-repeat")||"").split(",").map(s=>s.trim()).filter(Boolean);
-        let added=0;
-        ids.forEach(id=>{ const s=snapshot(id); if(s&&window.BTT_CART){ window.BTT_CART.addToCart(s,1); added++; } });
-        if(added) toast(t("toast.repeat"));
-      });
-    });
-
+    // Repeat-order buttons are wired via wireRepeat() (guarded, re-run on render).
+    // Address add/edit are wired via wireAddresses() (opens the real modal).
     document.querySelectorAll("[data-order-track]").forEach(b=>{
       b.addEventListener("click",()=> toast(t("toast.track").replace("{id}", b.getAttribute("data-order-track"))));
     });
     document.querySelectorAll("[data-order-review]").forEach(b=>{
       b.addEventListener("click",()=> toast(t("toast.review")));
-    });
-    document.querySelectorAll("[data-addr-edit]").forEach(b=>{
-      b.addEventListener("click",e=>{ e.preventDefault(); toast(t("toast.addr")); });
-    });
-    document.querySelectorAll("[data-addr-add]").forEach(b=>{
-      b.addEventListener("click",()=> toast(t("toast.addrAdd")));
     });
 
     const news=document.querySelector("[data-news-toggle]");
@@ -434,6 +416,8 @@
     hydrateOrderThumbs();
     renderWishlist();
     syncStats();
+    wireRepeat();
+    wireAddresses();
     hydrateAccount();
 
     document.addEventListener("btt:favs-change", ()=>{ renderWishlist(); syncStats(); pushFavs(); });

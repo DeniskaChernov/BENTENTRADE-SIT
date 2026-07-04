@@ -126,21 +126,33 @@
     document.title = "Bententrade — 404";
   }
 
+  // Per-language cache so language switches never refetch or flash a 404.
+  const _pdpCache = {};
+  let _pdp404 = false;
+
   async function hydratePDP() {
     if (!document.querySelector(".pdp-info")) return;
+    if (_pdp404) return;
     const id = new URLSearchParams(location.search).get("id") || "p1";
+    const lg = lang();
+    if (_pdpCache[lg]) { applyPDP(_pdpCache[lg]); return; }
     let res;
     try {
       res = await window.BTT_API.product(id);
     } catch (e) {
       // API said "not found" (or is unreachable): only hard-404 for ids that
       // aren't part of the built-in static catalogue (offline safety net).
-      if (!knownStatic(id)) showPdp404();
+      if (!knownStatic(id)) { _pdp404 = true; showPdp404(); }
       return;
     }
     const p = res && res.product;
-    if (!p) { if (!knownStatic(id)) showPdp404(); return; }
+    if (!p) { if (!knownStatic(id)) { _pdp404 = true; showPdp404(); } return; }
+    _pdpCache[lg] = p;
+    applyPDP(p);
+  }
 
+  // Apply a CRM product onto the static PDP markup (runs after pdp.js re-render).
+  function applyPDP(p) {
     // Name / breadcrumb / category / description straight from the CRM.
     const h1 = document.querySelector(".pdp-info h1");
     if (h1 && p.name) { h1.textContent = p.name; document.title = "Bententrade — " + p.name; }
@@ -187,9 +199,12 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     run();
-    // Re-apply after language switches (PDP re-renders from local data).
-    document.querySelectorAll(".lang button").forEach((b) =>
-      b.addEventListener("click", () => setTimeout(run, 30)),
-    );
+    // Re-apply after language switches. We observe the <html lang> attribute
+    // (registered after pdp.js's observer, so our CRM data lands *after* the
+    // static re-render) instead of listening to individual buttons.
+    new MutationObserver(() => run()).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang"],
+    });
   });
 })();

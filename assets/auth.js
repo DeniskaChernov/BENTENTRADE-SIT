@@ -58,6 +58,9 @@
       window.location.replace("account.html");
     }
 
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    function fail(err, key) { err.textContent = t(key); err.hidden = false; return false; }
+
     const loginForm = document.querySelector('[data-auth-form="login"]');
     loginForm.addEventListener("submit", async function (e) {
       e.preventDefault();
@@ -65,12 +68,18 @@
       err.hidden = true;
       const email = loginForm.email.value.trim();
       const password = loginForm.password.value;
+      // Client-side validation before hitting the API.
+      if (!email || !password) return fail(err, "auth.err.required");
+      if (!EMAIL_RE.test(email)) return fail(err, "auth.err.email");
+      const submit = loginForm.querySelector('[type="submit"]');
+      if (submit) submit.disabled = true;
       try {
         await window.BTT_API.login(email, password);
         await afterAuth();
       } catch (ex) {
         err.textContent = errText(ex);
         err.hidden = false;
+        if (submit) submit.disabled = false;
       }
     });
 
@@ -85,12 +94,18 @@
         phone: regForm.phone.value.trim(),
         password: regForm.password.value,
       };
+      // Client-side validation before hitting the API.
+      if (!EMAIL_RE.test(payload.email)) return fail(err, "auth.err.email");
+      if ((payload.password || "").length < 8) return fail(err, "auth.err.weak");
+      const submit = regForm.querySelector('[type="submit"]');
+      if (submit) submit.disabled = true;
       try {
         await window.BTT_API.register(payload);
         await afterAuth();
       } catch (ex) {
         err.textContent = errText(ex);
         err.hidden = false;
+        if (submit) submit.disabled = false;
       }
     });
   });

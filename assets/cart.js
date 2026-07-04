@@ -25,7 +25,14 @@
         ordTitle:"Подтверждение заказа",ordSub:"Отправьте заказ менеджеру — он подтвердит наличие, доставку и оплату.",
         ordTg:"Оформить в Telegram",ordWa:"Оформить в WhatsApp",ordBack:"Вернуться в корзину",
         ordCopied:"Заказ скопирован — вставьте его в чат с менеджером.",
-        ordHead:"Заказ с сайта Bententrade",ordNote:"Заполню контакты и адрес в чате."},
+        ordHead:"Заказ с сайта Bententrade",ordNote:"Заполню контакты и адрес в чате.",
+        coName:"Имя",coNamePh:"Ваше имя",coPhone:"Телефон",coPhonePh:"+998 __ ___ __ __",
+        coMethod:"Способ получения",coDelivery:"Доставка",coPickup:"Самовывоз",
+        coAddress:"Адрес доставки",coAddressPh:"Город, улица, дом, квартира",
+        coComment:"Комментарий",coCommentPh:"Пожелания к заказу (необязательно)",
+        coSubmit:"Оформить заказ",coSending:"Оформляем…",coMsgOpt:"Или отправьте заказ менеджеру:",
+        errName:"Укажите имя",errPhone:"Укажите корректный телефон",errAddress:"Укажите адрес доставки",
+        errOrder:"Не удалось оформить заказ. Попробуйте ещё раз или напишите нам."},
     uz:{cart:"Savat",empty:"Savat bo‘sh",emptyHint:"Katalogdan mebel qo‘shing — u shu yerda paydo bo‘ladi.",
         toCat:"Katalogga o‘tish",total:"Jami",checkout:"Buyurtma berish",pcs:"dona",
         done:"Buyurtma qabul qilindi! Menejer bog‘lanadi.",remove:"Olib tashlash",
@@ -34,7 +41,14 @@
         ordTitle:"Buyurtma tasdiqlash",ordSub:"Buyurtmani menejerga yuboring — mavjudligi, yetkazish va to‘lovni tasdiqlaydi.",
         ordTg:"Telegramda rasmiylashtirish",ordWa:"WhatsAppda rasmiylashtirish",ordBack:"Savatga qaytish",
         ordCopied:"Buyurtma nusxalandi — menejer chatiga joylang.",
-        ordHead:"Bententrade saytidan buyurtma",ordNote:"Kontakt va manzilni chatda to‘ldiraman."},
+        ordHead:"Bententrade saytidan buyurtma",ordNote:"Kontakt va manzilni chatda to‘ldiraman.",
+        coName:"Ism",coNamePh:"Ismingiz",coPhone:"Telefon",coPhonePh:"+998 __ ___ __ __",
+        coMethod:"Olish usuli",coDelivery:"Yetkazib berish",coPickup:"Olib ketish",
+        coAddress:"Yetkazish manzili",coAddressPh:"Shahar, ko‘cha, uy, xonadon",
+        coComment:"Izoh",coCommentPh:"Buyurtmaga istaklar (ixtiyoriy)",
+        coSubmit:"Buyurtma berish",coSending:"Rasmiylashtirilmoqda…",coMsgOpt:"Yoki buyurtmani menejerga yuboring:",
+        errName:"Ismni kiriting",errPhone:"To‘g‘ri telefon kiriting",errAddress:"Yetkazish manzilini kiriting",
+        errOrder:"Buyurtma berilmadi. Qayta urinib ko‘ring yoki bizga yozing."},
     en:{cart:"Cart",empty:"Your cart is empty",emptyHint:"Add furniture from the catalog — it will show up here.",
         toCat:"Go to catalog",total:"Total",checkout:"Checkout",pcs:"pcs",
         done:"Order placed! Our manager will be in touch.",remove:"Remove",
@@ -43,7 +57,14 @@
         ordTitle:"Confirm your order",ordSub:"Send the order to our manager — they'll confirm stock, delivery and payment.",
         ordTg:"Order via Telegram",ordWa:"Order via WhatsApp",ordBack:"Back to cart",
         ordCopied:"Order copied — paste it into the chat with our manager.",
-        ordHead:"Order from the Bententrade website",ordNote:"I'll add my contacts and address in the chat."}
+        ordHead:"Order from the Bententrade website",ordNote:"I'll add my contacts and address in the chat.",
+        coName:"Name",coNamePh:"Your name",coPhone:"Phone",coPhonePh:"+998 __ ___ __ __",
+        coMethod:"Fulfilment",coDelivery:"Delivery",coPickup:"Pickup",
+        coAddress:"Delivery address",coAddressPh:"City, street, house, apartment",
+        coComment:"Comment",coCommentPh:"Notes for your order (optional)",
+        coSubmit:"Place order",coSending:"Placing…",coMsgOpt:"Or send the order to our manager:",
+        errName:"Enter your name",errPhone:"Enter a valid phone",errAddress:"Enter a delivery address",
+        errOrder:"Couldn't place the order. Try again or message us."}
   };
   function t(k){ return (STR[lang()]||STR.ru)[k]; }
 
@@ -105,6 +126,11 @@
     else { f[snap.id]={ name:snap.name, price:snap.price, img:snap.img }; on=true; }
     write("btt_favs",f); renderBadges(); renderFavBody(); syncFavButtons(); onFavsChange();
     return on;
+  }
+  // Replace the whole favourites map (used by the account page after a server merge).
+  function setFavs(map){
+    write("btt_favs", (map&&typeof map==="object"&&!Array.isArray(map))?map:{});
+    renderBadges(); renderFavBody(); syncFavButtons(); onFavsChange();
   }
 
   /* ---------- badges + button state ---------- */
@@ -208,9 +234,19 @@
     if(co) co.addEventListener("click", renderCheckout);
     root.querySelectorAll("[data-cart-back]").forEach(b=>b.addEventListener("click", renderCartBody));
     const tg=root.querySelector("[data-order-tg]");
-    if(tg) tg.addEventListener("click", ()=>dispatch("tg"));
+    if(tg) tg.addEventListener("click", ()=>openMsg("tg"));
     const wa=root.querySelector("[data-order-wa]");
-    if(wa) wa.addEventListener("click", ()=>dispatch("wa"));
+    if(wa) wa.addEventListener("click", ()=>openMsg("wa"));
+    const form=root.querySelector("[data-co-form]");
+    if(form){
+      form.addEventListener("submit",e=>{ e.preventDefault(); submitOrder(root); });
+      const addr=root.querySelector("[data-co-addr]");
+      root.querySelectorAll("[name=method]").forEach(r=>r.addEventListener("change",()=>{
+        if(addr) addr.hidden = (root.querySelector("[name=method]:checked")||{}).value==="pickup";
+      }));
+    }
+    const submit=root.querySelector("[data-co-submit]");
+    if(submit) submit.addEventListener("click",()=>submitOrder(root));
     root.querySelectorAll("[data-fav-del]").forEach(b=>b.addEventListener("click",()=>{
       const f=getFavs(); delete f[b.getAttribute("data-fav-del")]; write("btt_favs",f); renderBadges(); renderFavBody(); syncFavButtons(); onFavsChange();
     }));
@@ -220,12 +256,26 @@
     }));
   }
 
-  /* ---------- checkout → manager messenger ---------- */
-  function orderText(){
+  /* ---------- checkout ---------- */
+  // Remembered contact details so the form survives re-renders / language switches.
+  const getCheckout = ()=>read("btt_checkout");
+  function saveCheckout(v){ write("btt_checkout", v); }
+
+  // Human-readable order text for the optional messenger hand-off.
+  function buildOrderText(contact, orderId){
     const c=getCart(); const ids=Object.keys(c); let total=0;
     const lines=ids.map((id,i)=>{ const it=c[id]; const sum=(it.price||0)*(it.qty||1); total+=sum;
       return (i+1)+". "+it.name+" × "+(it.qty||1)+" — "+CONFIG.currency+sum; });
-    return t("ordHead")+"\n\n"+lines.join("\n")+"\n\n"+t("total")+": "+CONFIG.currency+total+"\n"+t("ordNote");
+    let out=t("ordHead")+"\n\n"+lines.join("\n")+"\n\n"+t("total")+": "+CONFIG.currency+total;
+    if(orderId) out+="\n"+t("ordTitle")+": № "+orderId;
+    if(contact){
+      out+="\n\n"+t("coName")+": "+(contact.name||"—");
+      out+="\n"+t("coPhone")+": "+(contact.phone||"—");
+      out+="\n"+t("coMethod")+": "+(contact.method==="pickup"?t("coPickup"):t("coDelivery"));
+      if(contact.method!=="pickup"&&contact.address) out+="\n"+t("coAddress")+": "+contact.address;
+      if(contact.comment) out+="\n"+t("coComment")+": "+contact.comment;
+    }
+    return out;
   }
   function copyText(txt){
     try{ if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt); return; } }catch(e){}
@@ -250,22 +300,28 @@
       };
     });
   }
-  async function persistOrder(){
+  async function persistOrder(contact){
     if(!window.BTT_API) return null;
     try{
       const res = await window.BTT_API.createOrder({
         items: cartItemsPayload(),
         lang: (document.documentElement.lang||"ru"),
         currency: CONFIG.currency,
+        name: contact && contact.name,
+        phone: contact && contact.phone,
+        delivery: contact && contact.method,
+        address: contact && (contact.method==="pickup" ? "" : contact.address),
+        comment: contact && contact.comment,
       });
       return (res && res.orderId) || null;
     }catch(e){ return null; }
   }
-  async function dispatch(kind){
-    // Persist the order server-side first (best-effort); the messenger hand-off
-    // remains as an additional confirmation channel.
-    const orderId = await persistOrder();
-    const txt = orderText() + (orderId ? ("\n№ " + orderId) : "");
+
+  // Keep the last placed order around so the confirmation screen's messenger
+  // buttons can reuse its text after the cart has been cleared.
+  let _lastOrderText="";
+  function openMsg(kind){
+    const txt=_lastOrderText || t("ordHead");
     if(kind==="tg"){
       copyText(txt);
       window.open("https://t.me/"+CONFIG.telegram, "_blank", "noopener");
@@ -273,15 +329,57 @@
     } else {
       window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(txt), "_blank", "noopener");
     }
+  }
+
+  function readForm(root){
+    const q=(s)=>root.querySelector(s);
+    const method=(root.querySelector("[name=method]:checked")||{}).value||"delivery";
+    return {
+      name:((q("[name=name]")||{}).value||"").trim(),
+      phone:((q("[name=phone]")||{}).value||"").trim(),
+      method:method,
+      address:((q("[name=address]")||{}).value||"").trim(),
+      comment:((q("[name=comment]")||{}).value||"").trim(),
+    };
+  }
+  function showErr(root,msg){
+    const el=root.querySelector("[data-co-err]");
+    if(el){ el.textContent=msg; el.hidden=!msg; }
+  }
+  async function submitOrder(root){
+    const f=readForm(root);
+    if(!f.name){ showErr(root,t("errName")); return; }
+    if(f.phone.replace(/\D/g,"").length<7){ showErr(root,t("errPhone")); return; }
+    if(f.method!=="pickup" && !f.address){ showErr(root,t("errAddress")); return; }
+    showErr(root,"");
+    saveCheckout(f);
+    const btn=root.querySelector("[data-co-submit]");
+    if(btn){ btn.disabled=true; btn.textContent=t("coSending"); }
+    let orderId=null;
+    if(window.BTT_API){
+      orderId=await persistOrder(f);
+      if(!orderId){ showErr(root,t("errOrder")); if(btn){ btn.disabled=false; btn.textContent=t("coSubmit"); } return; }
+    }
+    _lastOrderText=buildOrderText(f, orderId);
     write("btt_cart",{}); renderBadges(); renderDone(orderId);
   }
+
   function renderDone(orderId){
     if(!cartEl) return;
     const num = orderId ? '<div class="t" style="opacity:.7;font-size:14px;margin-top:-6px">№ '+esc(orderId)+'</div>' : '';
+    const tgIco='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 2.9 11.6c-1 .4-1 1.8 0 2.1l4.7 1.5 1.8 5.6c.3.8 1.3 1 1.9.4l2.6-2.5 4.7 3.5c.7.5 1.7.1 1.9-.7L23 5.5c.2-1-.8-1.8-1.7-1.2Z"/></svg>';
+    const waIco='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.6 4.7-1.2A10 10 0 1 0 12 2Zm5.3 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7s-3.9-3.3-4-3.5c-.1-.2-1-1.3-1-2.5s.6-1.8.9-2.1c.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .6.4l.8 2c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2 1.2.9 1.8.9 2.1.8.2-.1.5-.5.7-.8.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.6 0 1.2Z"/></svg>';
     cartEl.innerHTML='<div class="drawer-head"><h3>'+esc(t("cart"))+'</h3><button class="drawer-x" data-drawer-close aria-label="×"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
-      '<div class="drawer-empty"><svg viewBox="0 0 24 24" fill="none" stroke="#3c8a4e" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="t">'+esc(t("done"))+'</div>'+num+'<a class="btn btn--dark" href="catalog.html">'+esc(t("toCat"))+'</a></div>';
+      '<div class="drawer-empty"><svg viewBox="0 0 24 24" fill="none" stroke="#3c8a4e" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="t">'+esc(t("done"))+'</div>'+num+
+      '<p class="drawer-co__sub" style="margin:14px 0 10px">'+esc(t("coMsgOpt"))+'</p>'+
+      '<div class="co-msg-row">'+
+        '<button class="btn co-msg co-tg" data-order-tg>'+tgIco+'<span>'+esc(t("ordTg"))+'</span></button>'+
+        '<button class="btn co-msg co-wa" data-order-wa>'+waIco+'<span>'+esc(t("ordWa"))+'</span></button>'+
+      '</div>'+
+      '<a class="btn btn--dark" href="catalog.html" style="margin-top:12px">'+esc(t("toCat"))+'</a></div>';
     wireDrawer(cartEl);
   }
+
   function renderCheckout(){
     if(!cartEl) return;
     const c=getCart(); const ids=Object.keys(c);
@@ -289,17 +387,31 @@
     let total=0;
     const rows=ids.map(id=>{ const it=c[id]; const sum=(it.price||0)*(it.qty||1); total+=sum;
       return '<div class="ord-line"><span>'+esc(it.name)+' <i>×'+(it.qty||1)+'</i></span><b>'+CONFIG.currency+sum+'</b></div>'; }).join("");
-    const tgIco='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 2.9 11.6c-1 .4-1 1.8 0 2.1l4.7 1.5 1.8 5.6c.3.8 1.3 1 1.9.4l2.6-2.5 4.7 3.5c.7.5 1.7.1 1.9-.7L23 5.5c.2-1-.8-1.8-1.7-1.2Z"/></svg>';
-    const waIco='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.6 4.7-1.2A10 10 0 1 0 12 2Zm5.3 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7s-3.9-3.3-4-3.5c-.1-.2-1-1.3-1-2.5s.6-1.8.9-2.1c.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .6.4l.8 2c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2 1.2.9 1.8.9 2.1.8.2-.1.5-.5.7-.8.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.6 0 1.2Z"/></svg>';
+    const saved=getCheckout();
+    const pickup=saved.method==="pickup";
+    const val=(k)=>esc(saved[k]||"");
     cartEl.innerHTML=
       '<div class="drawer-head"><button class="drawer-back" data-cart-back aria-label="←"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><h3>'+esc(t("ordTitle"))+'</h3>'+
       '<button class="drawer-x" data-drawer-close aria-label="×"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
       '<div class="drawer-co"><p class="drawer-co__sub">'+esc(t("ordSub"))+'</p>'+
         '<div class="ord-list">'+rows+'</div>'+
-        '<div class="ord-total"><span>'+esc(t("total"))+'</span><b>'+CONFIG.currency+total+'</b></div></div>'+
+        '<div class="ord-total"><span>'+esc(t("total"))+'</span><b>'+CONFIG.currency+total+'</b></div>'+
+        '<form class="co-form" data-co-form novalidate>'+
+          '<div class="co-field"><label>'+esc(t("coName"))+'</label><input name="name" type="text" autocomplete="name" value="'+val("name")+'" placeholder="'+esc(t("coNamePh"))+'"></div>'+
+          '<div class="co-field"><label>'+esc(t("coPhone"))+'</label><input name="phone" type="tel" autocomplete="tel" value="'+val("phone")+'" placeholder="'+esc(t("coPhonePh"))+'"></div>'+
+          '<div class="co-field"><label>'+esc(t("coMethod"))+'</label>'+
+            '<div class="co-method" data-co-method>'+
+              '<label class="co-radio"><input type="radio" name="method" value="delivery"'+(pickup?"":" checked")+'><span>'+esc(t("coDelivery"))+'</span></label>'+
+              '<label class="co-radio"><input type="radio" name="method" value="pickup"'+(pickup?" checked":"")+'><span>'+esc(t("coPickup"))+'</span></label>'+
+            '</div>'+
+          '</div>'+
+          '<div class="co-field" data-co-addr'+(pickup?' hidden':'')+'><label>'+esc(t("coAddress"))+'</label><input name="address" type="text" autocomplete="street-address" value="'+val("address")+'" placeholder="'+esc(t("coAddressPh"))+'"></div>'+
+          '<div class="co-field"><label>'+esc(t("coComment"))+'</label><textarea name="comment" rows="2" placeholder="'+esc(t("coCommentPh"))+'">'+val("comment")+'</textarea></div>'+
+          '<p class="co-err" data-co-err hidden></p>'+
+        '</form>'+
+      '</div>'+
       '<div class="drawer-foot drawer-co__foot">'+
-        '<button class="btn co-msg co-tg" data-order-tg>'+tgIco+'<span>'+esc(t("ordTg"))+'</span></button>'+
-        '<button class="btn co-msg co-wa" data-order-wa>'+waIco+'<span>'+esc(t("ordWa"))+'</span></button>'+
+        '<button class="btn btn--dark co-submit" data-co-submit>'+esc(t("coSubmit"))+'</button>'+
         '<button class="co-back" data-cart-back>'+esc(t("ordBack"))+'</button></div>';
     wireDrawer(cartEl);
   }
@@ -362,5 +474,5 @@
     new MutationObserver(()=>{ renderCartBody(); renderFavBody(); }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
   });
 
-  window.BTT_CART={ openCart, openFav, addToCart, wireProductButtons, getFavs, favCount };
+  window.BTT_CART={ openCart, openFav, addToCart, wireProductButtons, getFavs, setFavs, favCount };
 })();

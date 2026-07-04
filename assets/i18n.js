@@ -505,7 +505,7 @@ Object.assign(window.BTT_I18N.ru,{
   "auth.login":"Вход","auth.register":"Регистрация","auth.name":"Имя","auth.email":"Email","auth.phone":"Телефон","auth.password":"Пароль",
   "auth.pwhint":"Минимум 8 символов.",
   "auth.err.creds":"Неверный email или пароль.","auth.err.email":"Введите корректный email.","auth.err.weak":"Пароль должен быть не короче 8 символов.",
-  "auth.err.taken":"Этот email уже зарегистрирован.","auth.err.phone":"Введите корректный номер телефона.","auth.err.rate":"Слишком много попыток. Попробуйте позже.","auth.err.generic":"Не удалось выполнить. Попробуйте ещё раз.",
+  "auth.err.taken":"Этот email уже зарегистрирован.","auth.err.phone":"Введите корректный номер телефона.","auth.err.rate":"Слишком много попыток. Попробуйте позже.","auth.err.generic":"Не удалось выполнить. Попробуйте ещё раз.","auth.err.required":"Заполните email и пароль.",
   "nav.account":"Кабинет","acc.loading":"Загрузка…","acc.ord.empty":"Заказов пока нет.","acc.addr.empty":"Адресов пока нет.","toast.saved":"Изменения сохранены ✓","toast.addrSaved":"Адрес сохранён ✓","toast.addrDeleted":"Адрес удалён",
   "nav.blog":"Статьи","blog.k":"Журнал","blog.title":"Статьи","blog.sub":"Идеи, советы по уходу и вдохновение для сада и дома.","blog.empty":"Статьи скоро появятся.","blog.read":"Читать","blog.back":"Все статьи"
 });
@@ -513,7 +513,7 @@ Object.assign(window.BTT_I18N.uz,{
   "auth.login":"Kirish","auth.register":"Ro‘yxatdan o‘tish","auth.name":"Ism","auth.email":"Email","auth.phone":"Telefon","auth.password":"Parol",
   "auth.pwhint":"Kamida 8 ta belgi.",
   "auth.err.creds":"Email yoki parol noto‘g‘ri.","auth.err.email":"To‘g‘ri email kiriting.","auth.err.weak":"Parol kamida 8 ta belgidan iborat bo‘lishi kerak.",
-  "auth.err.taken":"Bu email allaqachon ro‘yxatdan o‘tgan.","auth.err.phone":"To‘g‘ri telefon raqamini kiriting.","auth.err.rate":"Urinishlar juda ko‘p. Keyinroq urinib ko‘ring.","auth.err.generic":"Bajarib bo‘lmadi. Yana urinib ko‘ring.",
+  "auth.err.taken":"Bu email allaqachon ro‘yxatdan o‘tgan.","auth.err.phone":"To‘g‘ri telefon raqamini kiriting.","auth.err.rate":"Urinishlar juda ko‘p. Keyinroq urinib ko‘ring.","auth.err.generic":"Bajarib bo‘lmadi. Yana urinib ko‘ring.","auth.err.required":"Email va parolni kiriting.",
   "nav.account":"Kabinet","acc.loading":"Yuklanmoqda…","acc.ord.empty":"Hozircha buyurtmalar yo‘q.","acc.addr.empty":"Hozircha manzillar yo‘q.","toast.saved":"O‘zgarishlar saqlandi ✓","toast.addrSaved":"Manzil saqlandi ✓","toast.addrDeleted":"Manzil o‘chirildi",
   "nav.blog":"Maqolalar","blog.k":"Jurnal","blog.title":"Maqolalar","blog.sub":"Bog‘ va uy uchun g‘oyalar, parvarish maslahatlari va ilhom.","blog.empty":"Maqolalar tez orada paydo bo‘ladi.","blog.read":"O‘qish","blog.back":"Barcha maqolalar"
 });
@@ -521,7 +521,7 @@ Object.assign(window.BTT_I18N.en,{
   "auth.login":"Sign in","auth.register":"Register","auth.name":"Name","auth.email":"Email","auth.phone":"Phone","auth.password":"Password",
   "auth.pwhint":"At least 8 characters.",
   "auth.err.creds":"Invalid email or password.","auth.err.email":"Enter a valid email.","auth.err.weak":"Password must be at least 8 characters.",
-  "auth.err.taken":"This email is already registered.","auth.err.phone":"Enter a valid phone number.","auth.err.rate":"Too many attempts. Try again later.","auth.err.generic":"Something went wrong. Please try again.",
+  "auth.err.taken":"This email is already registered.","auth.err.phone":"Enter a valid phone number.","auth.err.rate":"Too many attempts. Try again later.","auth.err.generic":"Something went wrong. Please try again.","auth.err.required":"Enter your email and password.",
   "nav.account":"Account","acc.loading":"Loading…","acc.ord.empty":"No orders yet.","acc.addr.empty":"No addresses yet.","toast.saved":"Changes saved ✓","toast.addrSaved":"Address saved ✓","toast.addrDeleted":"Address removed",
   "nav.blog":"Journal","blog.k":"Journal","blog.title":"Articles","blog.sub":"Ideas, care tips and inspiration for your garden and home.","blog.empty":"Articles are coming soon.","blog.read":"Read","blog.back":"All articles"
 });
