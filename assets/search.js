@@ -29,14 +29,34 @@
     { href:"contacts.html", k:"nav.contacts" }
   ];
 
-  function products(){
+  function staticProducts(){
     const d = (window.BTT_I18N && window.BTT_I18N[lang()]) || {};
     const out = [];
     for(let i=1;i<=15;i++){
       const name = d["p"+i+".name"], cat = d["p"+i+".cat"];
-      if(name) out.push({ id:"p"+i, name, cat:cat||"", q:name });
+      if(name) out.push({ id:"p"+i, name, cat:cat||"", img:null, q:name });
     }
     return out;
+  }
+
+  // Live product index from the CRM (per-language cache) so products added or
+  // renamed in the CRM are searchable. Falls back to the static list.
+  const apiCache = {};
+  function loadApiProducts(){
+    if(!window.BTT_API) return;
+    const l = lang();
+    if(apiCache[l]) return;
+    window.BTT_API.products("all").then(res=>{
+      apiCache[l] = (res.products || []).map(p=>({
+        id:p.id, name:p.name || "", cat:p.category_label || "",
+        img:p.image ? ("/media/" + p.image) : null, q:p.name || ""
+      }));
+      if(ov && ov.classList.contains("is-open")) render();
+    }).catch(()=>{});
+  }
+  function products(){
+    const l = lang();
+    return (apiCache[l] && apiCache[l].length) ? apiCache[l] : staticProducts();
   }
 
   let ov, input, body, items = [], active = -1;
@@ -90,7 +110,7 @@
       html += '<div class="search-sec">'+esc(t("srch.prods"))+'</div>';
       prods.forEach(p=>{
         items.push({ href:"product.html?id="+encodeURIComponent(p.id) });
-        html += row(null, p.name, p.cat, items.length-1, p.name.slice(0,1));
+        html += row(p.img || null, p.name, p.cat, items.length-1, p.name.slice(0,1));
       });
     }
     if(pages.length){
@@ -141,6 +161,7 @@
 
   function open(){
     if(!ov) build();
+    loadApiProducts();
     input.value = "";
     render();
     ov.classList.add("is-open");
