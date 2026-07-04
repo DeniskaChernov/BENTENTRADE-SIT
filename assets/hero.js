@@ -84,8 +84,7 @@
   const $ = (s) => root.querySelector(s);
 
   const els = {
-    mainImgs:[$('[data-h="mainImg"]'), $('[data-h="mainImgB"]')],
-    sideImgs:[$('[data-h="sideImg"]'), $('[data-h="sideImgB"]')],
+    heroImgs:[$('[data-h="heroImg"]'), $('[data-h="heroImgB"]')],
     badge:$('[data-h="badge"]'), t1:$('[data-h="t1"]'), t2:$('[data-h="t2"]'),
     interior:$('[data-h="interior"]'), bestS:$('[data-h="bestS"]'), bestB:$('[data-h="bestB"]'),
     store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'), storeOrb:$('[data-h="storeOrb"]'),
@@ -135,8 +134,7 @@
   }
   function render(animate){
     const s=SLIDES[idx];
-    crossfade(els.mainImgs, s.mainImg);
-    crossfade(els.sideImgs, s.sideImg);
+    crossfade(els.heroImgs, s.sideImg);
     els.badge.textContent=L(s.badge);
     els.t1.textContent=L(s.t1); els.t2.textContent=L(s.t2);
     els.interior.textContent=L(s.interior);
