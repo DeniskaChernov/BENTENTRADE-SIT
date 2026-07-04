@@ -1,0 +1,20 @@
+# Files in the repo root that must NOT be published as public static assets.
+.git
+node_modules
+worker
+migrations
+scripts
+screenshots
+uploads
+backups
+*.md
+package.json
+package-lock.json
+tsconfig.json
+wrangler.jsonc
+.assetsignore
+.dev.vars
+.dev.vars.example
+_ds_manifest.json
+_adherence.oxlintrc.json
+.thumbnail

@@ -53,7 +53,7 @@
   // category-based PDP copy & specs. 5th spec ("seat") is repurposed as "Use".
   window.BTT_PRODUCT_CAT = {
     furniture:{
-      sizes:["2-местный","3-местный","Угловой"], defSize:1,
+      sizes:{ru:["2-местный","3-местный","Угловой"],uz:["2 o‘rinli","3 o‘rinli","Burchak"],en:["2-seater","3-seater","Corner"]}, defSize:1,
       ru:{desc:"Садовая мебель из искусственного ротанга на лёгком алюминиевом каркасе. Плотное ручное плетение не выгорает на солнце, не боится дождя и перепадов температур — комплект круглый год может стоять на террасе, во дворе или в саду.",
           mat:"Искусственный ротанг + алюминий",dim:"С подушками, всесезонный",fin:"UV-стойкое плетение",wt:"Каркас алюминий",seat:"Терраса, двор, сад",made:"Ташкент, ручная работа"},
       uz:{desc:"Yengil alyumin karkasdagi sun’iy rotangdan bog‘ mebeli. Zich qo‘l to‘quvi quyoshda rangini yo‘qotmaydi, yomg‘ir va harorat o‘zgarishidan qo‘rqmaydi — to‘plam yil bo‘yi terassa, hovli yoki bog‘da turishi mumkin.",
@@ -62,7 +62,7 @@
           mat:"Synthetic rattan + aluminium",dim:"With cushions, all-season",fin:"UV-stable weave",wt:"Aluminium frame",seat:"Terrace, yard, garden",made:"Tashkent, by hand"}
     },
     planter:{
-      sizes:["Ø30 см","Ø40 см","Ø55 см"], defSize:1,
+      sizes:{ru:["Ø30 см","Ø40 см","Ø55 см"],uz:["Ø30 sm","Ø40 sm","Ø55 sm"],en:["Ø30 cm","Ø40 cm","Ø55 cm"]}, defSize:1,
       ru:{desc:"Кашпо, плетённое вручную из искусственного ротанга, со скрытым внутренним вкладышем и дренажом. Лёгкое, не гниёт и не трескается — одинаково хорошо смотрится с живыми растениями дома, на балконе и в саду.",
           mat:"Искусственный ротанг",dim:"Со вкладышем и дренажом",fin:"Влагостойкое плетение",wt:"Лёгкое",seat:"Дом, балкон, сад",made:"Ташкент, ручная работа"},
       uz:{desc:"Sun’iy rotangdan qo‘lda to‘qilgan gultuvak, yashirin ichki vkladish va drenaj bilan. Yengil, chirimaydi va yorilmaydi — uy, balkon va bog‘da jonli o‘simliklar bilan birdek chiroyli ko‘rinadi.",
@@ -71,7 +71,7 @@
           mat:"Synthetic rattan",dim:"With liner & drainage",fin:"Moisture-resistant weave",wt:"Lightweight",seat:"Home, balcony, garden",made:"Tashkent, by hand"}
     },
     basket:{
-      sizes:["S","M","L"], defSize:1,
+      sizes:{ru:["S","M","L"],uz:["S","M","L"],en:["S","M","L"]}, defSize:1,
       ru:{desc:"Сундук и корзина для белья из искусственного ротанга с мягкой тканевой подкладкой и крышкой. Держит форму, не цепляет ткань и проветривается — для хранения белья, пледов, игрушек и мелочей в спальне или ванной.",
           mat:"Искусственный ротанг + подкладка",dim:"С крышкой и подкладкой",fin:"Гладкое плетение",wt:"Складная подкладка",seat:"Бельё, пледы, хранение",made:"Ташкент, ручная работа"},
       uz:{desc:"Sun’iy rotangdan yumshoq mato astarli va qopqoqli sandiq hamda kir savati. Shaklini saqlaydi, matoga ilashmaydi va shamollatiladi — yotoqxona yoki hammomda kir, pled, o‘yinchoq va mayda buyumlar uchun.",
@@ -80,7 +80,7 @@
           mat:"Synthetic rattan + liner",dim:"With lid & liner",fin:"Smooth weave",wt:"Foldable liner",seat:"Laundry, throws, storage",made:"Tashkent, by hand"}
     },
     indoor:{
-      sizes:["Компакт","Стандарт","Большой"], defSize:1,
+      sizes:{ru:["Компакт","Стандарт","Большой"],uz:["Ixcham","Standart","Katta"],en:["Compact","Standard","Large"]}, defSize:1,
       ru:{desc:"Мебель для дома из искусственного ротанга: лёгкая, тёплая на вид и практичная. Плетение не боится влаги и перепадов, легко протирается влажной тканью — под гостиную, спальню, прихожую или балкон.",
           mat:"Искусственный ротанг + каркас",dim:"Для интерьера, всесезонно",fin:"Гладкое плетение",wt:"Лёгкий каркас",seat:"Гостиная, спальня, балкон",made:"Ташкент, ручная работа"},
       uz:{desc:"Sun’iy rotangdan uy mebeli: yengil, ko‘rinishi issiq va amaliy. To‘quv namlik va o‘zgarishlardan qo‘rqmaydi, nam mato bilan oson artiladi — mehmonxona, yotoqxona, dahliz yoki balkon uchun.",

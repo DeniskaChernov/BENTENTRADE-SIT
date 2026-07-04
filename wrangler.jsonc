@@ -1,0 +1,47 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bententrade",
+  "main": "worker/index.ts",
+  "compatibility_date": "2024-09-23",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Static site (existing HTML/CSS/JS) is served directly from the repo root.
+  // Non-asset paths (/api/*, /admin/*) fall through to the Worker below.
+  // See .assetsignore for files that must NOT be published as public assets.
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS"
+  },
+
+  "observability": { "enabled": true },
+
+  // D1 — relational database (products, orders, requests, users, articles).
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bententrade_db",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // KV — auth sessions.
+  "kv_namespaces": [
+    {
+      "binding": "SESSIONS",
+      "id": "REPLACE_WITH_KV_NAMESPACE_ID"
+    }
+  ],
+
+  // R2 — media (real product photos, article images).
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "bententrade-media"
+    }
+  ],
+
+  "vars": {
+    "SITE_ORIGIN": "https://bententrade.uz"
+  }
+}

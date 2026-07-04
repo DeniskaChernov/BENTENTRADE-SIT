@@ -135,7 +135,8 @@
     specVals.forEach((el,i)=>{ if(vals[i]!=null) el.textContent = vals[i]; });
 
     if(sizeRow){
-      const sizes = c.sizes || [];
+      const sz = c.sizes || [];
+      const sizes = Array.isArray(sz) ? sz : (sz[lang()] || sz.ru || []);
       const btns = sizeRow.querySelectorAll("button");
       btns.forEach((b,i)=>{
         if(sizes[i]!=null){ b.textContent = sizes[i]; b.style.display=""; }

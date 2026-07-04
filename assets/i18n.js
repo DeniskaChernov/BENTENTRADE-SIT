@@ -215,14 +215,14 @@ window.BTT_I18N = {
     "p5.name":"Riviera Armchair","p5.cat":"Garden furniture",
     "p6.name":"Safari Chest","p6.cat":"Baskets & chests",
     "p7.name":"Orbita Planter","p7.cat":"Planter",
-    "p8.name":"Sad Garden Chair","p8.cat":"Garden furniture",
+    "p8.name":"Garden Chair","p8.cat":"Garden furniture",
     "p9.name":"Dune Planter Set","p9.cat":"Planter",
     "p10.name":"Oasis Corner Sofa","p10.cat":"Garden furniture",
-    "p11.name":"Len Laundry Basket","p11.cat":"Baskets & chests",
-    "p12.name":"Uyut Rocking Chair","p12.cat":"Home furniture",
+    "p11.name":"Linen Laundry Basket","p11.cat":"Baskets & chests",
+    "p12.name":"Cosy Rocking Chair","p12.cat":"Home furniture",
     "p13.name":"Rattan Coffee Table","p13.cat":"Home furniture",
-    "p14.name":"Pletenka Dresser","p14.cat":"Home furniture",
-    "p15.name":"Azhur Shelving Unit","p15.cat":"Home furniture",
+    "p14.name":"Wicker Dresser","p14.cat":"Home furniture",
+    "p15.name":"Openwork Shelving Unit","p15.cat":"Home furniture",
     "cat.load":"Load more","cat.empty":"No products in this category yet. Try another filter.",
 
     "ab.hero.k":"About us","ab.hero.title":"Woven furniture, made by hand",
@@ -418,3 +418,104 @@ Object.assign(window.BTT_I18N.en,{
 Object.assign(window.BTT_I18N.ru,{"ab.band":"Плетение, которое служит годами"});
 Object.assign(window.BTT_I18N.uz,{"ab.band":"Yillar xizmat qiladigan to‘quv"});
 Object.assign(window.BTT_I18N.en,{"ab.band":"A weave that lasts for years"});
+
+/* ---- info / legal pages (FAQ, delivery, returns, care, privacy) ---- */
+Object.assign(window.BTT_I18N.ru,{
+  "faq.k":"Помощь","faq.title":"Вопросы и ответы","faq.sub":"Коротко о материале, доставке, гарантии и уходе за плетением.",
+  "faq.q1":"Что такое искусственный ротанг?","faq.a1":"Это прочное плетение из окрашенного в массе волокна. Выглядит как натуральный ротанг, но не выгорает на солнце, не боится влаги и мороза и не требует особого ухода.",
+  "faq.q2":"Мебель можно оставлять на улице круглый год?","faq.a2":"Да. Плетение и каркас рассчитаны на улицу: солнце, дождь и мороз им не страшны. Подушки на зиму лучше убрать в помещение.",
+  "faq.q3":"Сколько идёт доставка?","faq.a3":"По Ташкенту — 3–7 дней, по Узбекистану — 7–10 дней. Мебель привозим в собранном виде. Подробнее — на странице «Доставка».",
+  "faq.q4":"Есть ли гарантия?","faq.a4":"Да, 3 года на плетение и каркас. В течение 14 дней можно вернуть товар, если не подошёл размер или цвет.",
+  "faq.q5":"Как ухаживать за плетением?","faq.a5":"Достаточно протереть влажной тканью. Не нужны специальные средства. Подробные советы — на странице «Уход за плетением».",
+  "faq.q6":"Можно заказать по своим размерам?","faq.a6":"Да, мы делаем изделия под заказ. Опишите задачу в форме на странице «Контакты» — предложим решение и рассчитаем стоимость.",
+  "del.k":"Помощь","del.title":"Доставка","del.sub":"Привозим мебель в собранном виде и бережно упаковываем кашпо и корзины.",
+  "del.b1.t":"Сроки и зоны","del.b1.l1":"Ташкент — 3–7 рабочих дней.","del.b1.l2":"Регионы Узбекистана — 7–10 рабочих дней.","del.b1.l3":"Изделия под заказ — сроки согласуем отдельно.",
+  "del.b2.t":"Стоимость","del.b2.l1":"Бесплатно по Узбекистану при заказе от $100.","del.b2.l2":"Для меньших заказов стоимость рассчитывается по адресу.","del.b2.l3":"Самовывоз из шоурума в Ташкенте — бесплатно.",
+  "del.b3.t":"Как это происходит","del.b3.p":"После оформления заказа мы связываемся с вами, подтверждаем адрес и удобное время. Мебель доставляется в собранном виде — достаточно распаковать и пользоваться.",
+  "ret.k":"Помощь","ret.title":"Возврат и обмен","ret.sub":"Если товар не подошёл — поможем обменять или вернуть деньги.",
+  "ret.b1.t":"Срок возврата","ret.b1.p":"Вернуть или обменять товар можно в течение 14 дней с момента получения, если он не был в использовании и сохранил товарный вид.",
+  "ret.b2.t":"Условия","ret.b2.l1":"Изделие без следов эксплуатации и повреждений.","ret.b2.l2":"Сохранена комплектация (подушки, крепления).","ret.b2.l3":"Изделия, изготовленные по индивидуальным размерам, возврату не подлежат.",
+  "ret.b3.t":"Как оформить","ret.b3.p":"Напишите нам на hello@bententrade.uz или позвоните — согласуем возврат и забор товара. Деньги возвращаем тем же способом в течение 3–5 рабочих дней после получения изделия.",
+  "care.k":"Помощь","care.title":"Уход за плетением","care.sub":"Искусственный ротанг неприхотлив — вот всё, что нужно знать.",
+  "care.b1.t":"Регулярный уход","care.b1.l1":"Протирайте плетение влажной мягкой тканью по мере загрязнения.","care.b1.l2":"Для въевшейся грязи используйте тёплую воду с мягким мылом.","care.b1.l3":"Труднодоступные места удобно чистить мягкой щёткой.",
+  "care.b2.t":"Чего лучше избегать","care.b2.l1":"Агрессивных растворителей и абразивных порошков.","care.b2.l2":"Мойки под высоким давлением — струя может деформировать плетение.","care.b2.l3":"Долгого контакта подушек с влагой — их лучше просушивать.",
+  "care.b3.t":"Зимой","care.b3.p":"Само плетение и каркас переносят мороз. На зиму достаточно убрать в помещение текстиль и подушки, а мебель при желании накрыть чехлом от пыли.",
+  "pv.k":"Правовая информация","pv.title":"Политика конфиденциальности","pv.sub":"Мы собираем минимум данных и используем их только для обработки заказов и связи.",
+  "pv.b1.t":"Какие данные мы собираем","pv.b1.l1":"Имя и контактные данные (телефон, email), которые вы указываете в форме.","pv.b1.l2":"Адрес доставки — для передачи заказа.","pv.b1.l3":"Технические данные о посещении сайта в обезличенном виде.",
+  "pv.b2.t":"Как мы их используем","pv.b2.l1":"Для обработки заказа и связи по нему.","pv.b2.l2":"Для ответа на ваши обращения и заявки.","pv.b2.l3":"Мы не передаём ваши данные третьим лицам, кроме служб доставки.",
+  "pv.b3.t":"Хранение и ваши права","pv.b3.p":"Данные хранятся столько, сколько необходимо для выполнения заказа и требований закона. Вы можете запросить их изменение или удаление, написав нам на hello@bententrade.uz."
+});
+Object.assign(window.BTT_I18N.uz,{
+  "faq.k":"Yordam","faq.title":"Savol-javob","faq.sub":"Material, yetkazib berish, kafolat va to‘quv parvarishi haqida qisqacha.",
+  "faq.q1":"Sun’iy rotang nima?","faq.a1":"Bu massasiga bo‘yalgan toladan qilingan mustahkam to‘quv. Tabiiy rotangga o‘xshaydi, lekin quyoshda rangi o‘chmaydi, namlik va sovuqdan qo‘rqmaydi va alohida parvarish talab qilmaydi.",
+  "faq.q2":"Mebelni yil davomida ko‘chada qoldirsa bo‘ladimi?","faq.a2":"Ha. To‘quv va karkas ko‘cha uchun mo‘ljallangan: quyosh, yomg‘ir va sovuq unga ta’sir qilmaydi. Yostiqlarni qishga xonaga olib kirgan ma’qul.",
+  "faq.q3":"Yetkazib berish qancha vaqt oladi?","faq.a3":"Toshkent bo‘yicha — 3–7 kun, O‘zbekiston bo‘yicha — 7–10 kun. Mebelni yig‘ilgan holda yetkazamiz. Batafsil — «Yetkazib berish» sahifasida.",
+  "faq.q4":"Kafolat bormi?","faq.a4":"Ha, to‘quv va karkasga 3 yil. 14 kun ichida o‘lcham yoki rang mos kelmasa, mahsulotni qaytarish mumkin.",
+  "faq.q5":"To‘quvni qanday parvarish qilinadi?","faq.a5":"Nam mato bilan artish yetarli. Maxsus vositalar kerak emas. Batafsil maslahatlar — «To‘quv parvarishi» sahifasida.",
+  "faq.q6":"O‘z o‘lchamlarim bo‘yicha buyurtma berish mumkinmi?","faq.a6":"Ha, biz buyurtma asosida ishlab chiqaramiz. «Kontaktlar» sahifasidagi shaklda vazifani yozing — yechim taklif qilamiz va narxini hisoblaymiz.",
+  "del.k":"Yordam","del.title":"Yetkazib berish","del.sub":"Mebelni yig‘ilgan holda yetkazamiz, gultuvak va savatlarni ehtiyotkorlik bilan qadoqlaymiz.",
+  "del.b1.t":"Muddat va hududlar","del.b1.l1":"Toshkent — 3–7 ish kuni.","del.b1.l2":"O‘zbekiston viloyatlari — 7–10 ish kuni.","del.b1.l3":"Buyurtma asosidagi buyumlar — muddat alohida kelishiladi.",
+  "del.b2.t":"Narxi","del.b2.l1":"$100 dan ortiq buyurtmada O‘zbekiston bo‘ylab bepul.","del.b2.l2":"Kichikroq buyurtmalar uchun narx manzilga qarab hisoblanadi.","del.b2.l3":"Toshkentdagi shourumdan olib ketish — bepul.",
+  "del.b3.t":"Bu qanday amalga oshadi","del.b3.p":"Buyurtma rasmiylashtirilgach, biz siz bilan bog‘lanamiz, manzil va qulay vaqtni tasdiqlaymiz. Mebel yig‘ilgan holda yetkaziladi — qadoqdan chiqarib foydalanish kifoya.",
+  "ret.k":"Yordam","ret.title":"Qaytarish va almashtirish","ret.sub":"Mahsulot mos kelmasa — almashtirish yoki pulni qaytarishda yordam beramiz.",
+  "ret.b1.t":"Qaytarish muddati","ret.b1.p":"Mahsulotni olgan kundan boshlab 14 kun ichida qaytarish yoki almashtirish mumkin, agar u ishlatilmagan va tovar ko‘rinishini saqlagan bo‘lsa.",
+  "ret.b2.t":"Shartlar","ret.b2.l1":"Buyum ishlatilish izlarisiz va shikastsiz.","ret.b2.l2":"Jihozlanishi saqlangan (yostiqlar, mahkamlagichlar).","ret.b2.l3":"Individual o‘lchamlarda tayyorlangan buyumlar qaytarilmaydi.",
+  "ret.b3.t":"Qanday rasmiylashtiriladi","ret.b3.p":"Bizga hello@bententrade.uz ga yozing yoki qo‘ng‘iroq qiling — qaytarish va buyumni olib ketishni kelishamiz. Pulni buyum qabul qilingach 3–5 ish kuni ichida o‘sha usulda qaytaramiz.",
+  "care.k":"Yordam","care.title":"To‘quv parvarishi","care.sub":"Sun’iy rotang injiq emas — bilish kerak bo‘lgan hammasi shu yerda.",
+  "care.b1.t":"Muntazam parvarish","care.b1.l1":"To‘quvni ifloslanishiga qarab nam yumshoq mato bilan arting.","care.b1.l2":"Yopishgan kir uchun iliq suv va yumshoq sovun ishlating.","care.b1.l3":"Qiyin joylarni yumshoq cho‘tka bilan tozalash qulay.",
+  "care.b2.t":"Nimadan saqlanish kerak","care.b2.l1":"Tajovuzkor erituvchilar va abraziv kukunlardan.","care.b2.l2":"Yuqori bosimli yuvishdan — oqim to‘quvni deformatsiya qilishi mumkin.","care.b2.l3":"Yostiqlarning namlik bilan uzoq aloqasidan — ularni quritgan ma’qul.",
+  "care.b3.t":"Qishda","care.b3.p":"To‘quv va karkasning o‘zi sovuqqa chidaydi. Qishga matolar va yostiqlarni xonaga olib kirish, xohlasangiz mebelni changdan g‘ilof bilan yopish kifoya.",
+  "pv.k":"Huquqiy ma’lumot","pv.title":"Maxfiylik siyosati","pv.sub":"Biz minimal ma’lumot yig‘amiz va ulardan faqat buyurtmalarni qayta ishlash va bog‘lanish uchun foydalanamiz.",
+  "pv.b1.t":"Qanday ma’lumot yig‘amiz","pv.b1.l1":"Shaklda ko‘rsatgan ism va kontakt ma’lumotlari (telefon, email).","pv.b1.l2":"Yetkazish manzili — buyurtmani topshirish uchun.","pv.b1.l3":"Sayt tashrifi haqidagi texnik ma’lumotlar shaxssizlashtirilgan holda.",
+  "pv.b2.t":"Ulardan qanday foydalanamiz","pv.b2.l1":"Buyurtmani qayta ishlash va u bo‘yicha bog‘lanish uchun.","pv.b2.l2":"Murojaat va arizalaringizga javob berish uchun.","pv.b2.l3":"Ma’lumotlaringizni yetkazish xizmatlaridan tashqari uchinchi shaxslarga bermaymiz.",
+  "pv.b3.t":"Saqlash va huquqlaringiz","pv.b3.p":"Ma’lumotlar buyurtmani bajarish va qonun talablari uchun zarur bo‘lgan muddat davomida saqlanadi. Ularni o‘zgartirish yoki o‘chirishni hello@bententrade.uz ga yozib so‘rashingiz mumkin."
+});
+Object.assign(window.BTT_I18N.en,{
+  "faq.k":"Help","faq.title":"Questions & answers","faq.sub":"The essentials on material, delivery, warranty and weave care.",
+  "faq.q1":"What is synthetic rattan?","faq.a1":"It's a durable weave made from fibre dyed all the way through. It looks like natural rattan but won't fade in the sun, isn't afraid of moisture or frost and needs no special care.",
+  "faq.q2":"Can the furniture stay outdoors year-round?","faq.a2":"Yes. The weave and frame are built for outdoors — sun, rain and frost are no problem. It's best to store the cushions indoors for winter.",
+  "faq.q3":"How long does delivery take?","faq.a3":"Tashkent — 3–7 days, across Uzbekistan — 7–10 days. Furniture arrives fully assembled. See the Delivery page for details.",
+  "faq.q4":"Is there a warranty?","faq.a4":"Yes, 3 years on the weave and frame. You can return an item within 14 days if the size or colour doesn't fit.",
+  "faq.q5":"How do I care for the weave?","faq.a5":"Just wipe it with a damp cloth. No special products needed. See the Weave care page for detailed tips.",
+  "faq.q6":"Can I order custom sizes?","faq.a6":"Yes, we make items to order. Describe your needs in the form on the Contacts page — we'll suggest a solution and quote a price.",
+  "del.k":"Help","del.title":"Delivery","del.sub":"We deliver furniture fully assembled and carefully pack planters and baskets.",
+  "del.b1.t":"Timing and zones","del.b1.l1":"Tashkent — 3–7 business days.","del.b1.l2":"Uzbekistan regions — 7–10 business days.","del.b1.l3":"Custom-made items — timing agreed separately.",
+  "del.b2.t":"Cost","del.b2.l1":"Free across Uzbekistan on orders over $100.","del.b2.l2":"For smaller orders the cost is calculated by address.","del.b2.l3":"Pickup from our Tashkent showroom — free.",
+  "del.b3.t":"How it works","del.b3.p":"After you place an order we contact you to confirm the address and a convenient time. Furniture is delivered fully assembled — just unpack and use it.",
+  "ret.k":"Help","ret.title":"Returns & exchange","ret.sub":"If an item doesn't fit, we'll help you exchange it or refund your money.",
+  "ret.b1.t":"Return window","ret.b1.p":"You can return or exchange an item within 14 days of receipt, provided it hasn't been used and keeps its original appearance.",
+  "ret.b2.t":"Conditions","ret.b2.l1":"The item has no signs of use or damage.","ret.b2.l2":"The set is complete (cushions, fittings).","ret.b2.l3":"Items made to custom sizes cannot be returned.",
+  "ret.b3.t":"How to arrange it","ret.b3.p":"Write to us at hello@bententrade.uz or call — we'll arrange the return and pickup. We refund by the same method within 3–5 business days of receiving the item.",
+  "care.k":"Help","care.title":"Weave care","care.sub":"Synthetic rattan is low-maintenance — here's all you need to know.",
+  "care.b1.t":"Routine care","care.b1.l1":"Wipe the weave with a damp soft cloth as needed.","care.b1.l2":"For stubborn dirt use warm water with mild soap.","care.b1.l3":"A soft brush is handy for hard-to-reach spots.",
+  "care.b2.t":"What to avoid","care.b2.l1":"Harsh solvents and abrasive powders.","care.b2.l2":"High-pressure washing — the jet can deform the weave.","care.b2.l3":"Prolonged contact of cushions with moisture — let them dry out.",
+  "care.b3.t":"In winter","care.b3.p":"The weave and frame themselves tolerate frost. For winter it's enough to store fabrics and cushions indoors and, if you like, cover the furniture with a dust sheet.",
+  "pv.k":"Legal","pv.title":"Privacy policy","pv.sub":"We collect the minimum of data and use it only to process orders and stay in touch.",
+  "pv.b1.t":"What data we collect","pv.b1.l1":"Name and contact details (phone, email) you provide in the form.","pv.b1.l2":"Delivery address — to fulfil the order.","pv.b1.l3":"Technical, anonymised data about your visit to the site.",
+  "pv.b2.t":"How we use it","pv.b2.l1":"To process your order and communicate about it.","pv.b2.l2":"To respond to your enquiries and requests.","pv.b2.l3":"We don't share your data with third parties, except delivery services.",
+  "pv.b3.t":"Storage and your rights","pv.b3.p":"Data is kept for as long as needed to fulfil the order and meet legal requirements. You can request changes or deletion by writing to hello@bententrade.uz."
+});
+Object.assign(window.BTT_I18N.ru,{
+  "auth.login":"Вход","auth.register":"Регистрация","auth.name":"Имя","auth.email":"Email","auth.phone":"Телефон","auth.password":"Пароль",
+  "auth.pwhint":"Минимум 8 символов.",
+  "auth.err.creds":"Неверный email или пароль.","auth.err.email":"Введите корректный email.","auth.err.weak":"Пароль должен быть не короче 8 символов.",
+  "auth.err.taken":"Этот email уже зарегистрирован.","auth.err.phone":"Введите корректный номер телефона.","auth.err.rate":"Слишком много попыток. Попробуйте позже.","auth.err.generic":"Не удалось выполнить. Попробуйте ещё раз.",
+  "nav.account":"Кабинет","acc.loading":"Загрузка…","acc.ord.empty":"Заказов пока нет.","acc.addr.empty":"Адресов пока нет.","toast.saved":"Изменения сохранены ✓","toast.addrSaved":"Адрес сохранён ✓","toast.addrDeleted":"Адрес удалён",
+  "nav.blog":"Статьи","blog.k":"Журнал","blog.title":"Статьи","blog.sub":"Идеи, советы по уходу и вдохновение для сада и дома.","blog.empty":"Статьи скоро появятся.","blog.read":"Читать","blog.back":"Все статьи"
+});
+Object.assign(window.BTT_I18N.uz,{
+  "auth.login":"Kirish","auth.register":"Ro‘yxatdan o‘tish","auth.name":"Ism","auth.email":"Email","auth.phone":"Telefon","auth.password":"Parol",
+  "auth.pwhint":"Kamida 8 ta belgi.",
+  "auth.err.creds":"Email yoki parol noto‘g‘ri.","auth.err.email":"To‘g‘ri email kiriting.","auth.err.weak":"Parol kamida 8 ta belgidan iborat bo‘lishi kerak.",
+  "auth.err.taken":"Bu email allaqachon ro‘yxatdan o‘tgan.","auth.err.phone":"To‘g‘ri telefon raqamini kiriting.","auth.err.rate":"Urinishlar juda ko‘p. Keyinroq urinib ko‘ring.","auth.err.generic":"Bajarib bo‘lmadi. Yana urinib ko‘ring.",
+  "nav.account":"Kabinet","acc.loading":"Yuklanmoqda…","acc.ord.empty":"Hozircha buyurtmalar yo‘q.","acc.addr.empty":"Hozircha manzillar yo‘q.","toast.saved":"O‘zgarishlar saqlandi ✓","toast.addrSaved":"Manzil saqlandi ✓","toast.addrDeleted":"Manzil o‘chirildi",
+  "nav.blog":"Maqolalar","blog.k":"Jurnal","blog.title":"Maqolalar","blog.sub":"Bog‘ va uy uchun g‘oyalar, parvarish maslahatlari va ilhom.","blog.empty":"Maqolalar tez orada paydo bo‘ladi.","blog.read":"O‘qish","blog.back":"Barcha maqolalar"
+});
+Object.assign(window.BTT_I18N.en,{
+  "auth.login":"Sign in","auth.register":"Register","auth.name":"Name","auth.email":"Email","auth.phone":"Phone","auth.password":"Password",
+  "auth.pwhint":"At least 8 characters.",
+  "auth.err.creds":"Invalid email or password.","auth.err.email":"Enter a valid email.","auth.err.weak":"Password must be at least 8 characters.",
+  "auth.err.taken":"This email is already registered.","auth.err.phone":"Enter a valid phone number.","auth.err.rate":"Too many attempts. Try again later.","auth.err.generic":"Something went wrong. Please try again.",
+  "nav.account":"Account","acc.loading":"Loading…","acc.ord.empty":"No orders yet.","acc.addr.empty":"No addresses yet.","toast.saved":"Changes saved ✓","toast.addrSaved":"Address saved ✓","toast.addrDeleted":"Address removed",
+  "nav.blog":"Journal","blog.k":"Journal","blog.title":"Articles","blog.sub":"Ideas, care tips and inspiration for your garden and home.","blog.empty":"Articles are coming soon.","blog.read":"Read","blog.back":"All articles"
+});

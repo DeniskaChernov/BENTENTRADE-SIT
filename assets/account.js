@@ -8,7 +8,7 @@
   const ADD_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>';
 
   function lang(){ const s=localStorage.getItem("btt_lang"); return ["ru","uz","en"].includes(s)?s:"ru"; }
-  function t(k){ const d=(window.BTT_I18N&&window.BTT_I18N[lang()])||{}; return d[k]!=null?d[k]:k; }
+  function t(k){ const I=window.BTT_I18N||{}; const d=I[lang()]||{}; if(d[k]!=null) return d[k]; const ru=I.ru||{}; return ru[k]!=null?ru[k]:k; }
   function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;"); }
 
   function getFavs(){
@@ -79,6 +79,233 @@
     });
   }
 
+  /* ---------------- API-backed hydration ---------------- */
+  const ST = {
+    new:        { ru:"Новый",      uz:"Yangi",         en:"New",        cls:"status--new" },
+    processing: { ru:"В обработке", uz:"Ishlanmoqda",   en:"Processing", cls:"status--ship" },
+    shipped:    { ru:"В пути",     uz:"Yo‘lda",         en:"Shipped",    cls:"status--ship" },
+    delivered:  { ru:"Доставлен",  uz:"Yetkazildi",    en:"Delivered",  cls:"status--done" },
+    cancelled:  { ru:"Отменён",    uz:"Bekor qilingan", en:"Cancelled",  cls:"status--cancel" },
+  };
+  function fmtDate(s){
+    try{
+      const d=new Date(String(s||"").replace(" ","T")+"Z");
+      if(isNaN(d)) return String(s||"");
+      const loc = lang()==="en" ? "en-GB" : (lang()==="uz" ? "uz-UZ" : "ru-RU");
+      return d.toLocaleDateString(loc,{day:"numeric",month:"long",year:"numeric"});
+    }catch(e){ return String(s||""); }
+  }
+  function itemsLabel(n){ const L={ru:"тов.",uz:"dona",en:"items"}; return n+" "+(L[lang()]||L.en); }
+
+  function orderThumb(id){
+    const imgs=window.BTT_PRODUCT_IMG?window.BTT_PRODUCT_IMG(id):null;
+    const src=(imgs&&imgs[0])?imgs[0].thumb:"";
+    return '<img src="'+esc(src)+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">';
+  }
+  function orderCard(o, withActions){
+    const st=ST[o.status]||ST.new; const lbl=st[lang()]||st.en;
+    const items=o.items||[];
+    const ids=items.map(i=>i.product_id).filter(Boolean);
+    const count=items.reduce((n,i)=>n+(i.qty||1),0);
+    const actions = withActions
+      ? '<div class="order__actions"><button class="btn btn--dark btn--sm" data-order-repeat="'+esc(ids.join(","))+'">'+esc(t("acc.ord.repeat"))+'</button></div>'
+      : "";
+    return '<div class="order">'+
+      '<div class="order__top"><div><div class="order__id">#'+esc(o.public_id||("BT-"+o.id))+'</div>'+
+      '<div class="order__date">'+esc(fmtDate(o.created_at))+'</div></div>'+
+      '<span class="status '+st.cls+'">'+esc(lbl)+'</span></div>'+
+      '<div class="order__body"><div class="order__thumbs">'+ids.map(orderThumb).join("")+'</div>'+
+      '<div class="order__meta"><span>'+esc(itemsLabel(count))+'</span></div>'+
+      '<div class="order__total">'+esc(o.currency||"$")+o.total+'</div></div>'+actions+'</div>';
+  }
+
+  function repeatSnapshot(id){
+    const P=window.BTT_PRODUCTS||{}, p=P[id]; if(!p) return null;
+    const d=(window.BTT_I18N&&window.BTT_I18N[lang()])||(window.BTT_I18N&&window.BTT_I18N.ru)||{};
+    const imgs=window.BTT_PRODUCT_IMG?window.BTT_PRODUCT_IMG(id):null;
+    return { id, name:d[id+".name"]||id, price:p.now, img:(imgs&&imgs[0])?imgs[0].thumb:"" };
+  }
+  function wireRepeat(){
+    document.querySelectorAll("[data-order-repeat]").forEach(b=>{
+      if(b.dataset.repeatWired) return; b.dataset.repeatWired="1";
+      b.addEventListener("click",()=>{
+        const ids=(b.getAttribute("data-order-repeat")||"").split(",").map(s=>s.trim()).filter(Boolean);
+        let added=0;
+        ids.forEach(id=>{ const s=repeatSnapshot(id); if(s&&window.BTT_CART){ window.BTT_CART.addToCart(s,1); added++; } });
+        if(added) toast(t("toast.repeat"));
+      });
+    });
+  }
+
+  function renderOrders(orders){
+    const panel=document.querySelector('[data-acc-panel="orders"]');
+    if(panel){
+      panel.querySelectorAll(".order").forEach(n=>n.remove());
+      let empty=panel.querySelector("[data-acc-ord-empty]");
+      if(!orders.length){
+        if(!empty){ empty=document.createElement("p"); empty.setAttribute("data-acc-ord-empty",""); empty.style.color="var(--muted)"; panel.appendChild(empty); }
+        empty.textContent=t("acc.ord.empty"); empty.hidden=false;
+      }else{
+        if(empty) empty.hidden=true;
+        panel.insertAdjacentHTML("beforeend", orders.map(o=>orderCard(o,true)).join(""));
+      }
+    }
+    const ovCard=document.querySelector('[data-acc-panel="overview"] .acc-card');
+    if(ovCard){
+      ovCard.querySelectorAll(".order").forEach(n=>n.remove());
+      ovCard.insertAdjacentHTML("beforeend", orders.slice(0,2).map(o=>orderCard(o,false)).join(""));
+    }
+    const statN=document.querySelector('[data-acc-panel="overview"] .acc-stats .acc-stat .n');
+    if(statN) statN.textContent=orders.length;
+    wireRepeat();
+  }
+
+  const CHECK_SVG='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>';
+  const HOME_SVG='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9 12 2l9 7v11a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg>';
+  function addrCard(a){
+    const tag = a.is_default
+      ? '<div class="addr__tag">'+CHECK_SVG+'<span>'+esc(t("acc.addr.default"))+'</span></div>'
+      : '<div class="addr__tag">'+HOME_SVG+'<span>'+esc(a.label||t("acc.addr.office"))+'</span></div>';
+    const line2=[a.city,a.line].filter(Boolean).map(esc).join(", ");
+    return '<div class="addr'+(a.is_default?" is-default":"")+'" data-addr-id="'+a.id+'">'+
+      '<a class="addr__edit" href="#" data-addr-edit>'+esc(t("acc.addr.edit"))+'</a>'+tag+
+      '<h4>'+esc(a.recipient||"")+'</h4>'+
+      '<p>'+line2+(a.phone?'<br>'+esc(a.phone):"")+'</p></div>';
+  }
+  function renderAddresses(addresses){
+    const grid=document.querySelector(".addr-grid");
+    if(!grid) return;
+    const addBtn=grid.querySelector("[data-addr-add]");
+    grid.querySelectorAll(".addr:not(.addr--add)").forEach(n=>n.remove());
+    const html=addresses.map(addrCard).join("");
+    if(addBtn) addBtn.insertAdjacentHTML("beforebegin", html);
+    else grid.insertAdjacentHTML("afterbegin", html);
+    grid.__addresses=addresses;
+    wireAddresses();
+  }
+
+  /* --- address modal --- */
+  let addrModal;
+  function ensureAddrModal(){
+    if(addrModal) return addrModal;
+    addrModal=document.createElement("div");
+    addrModal.className="addr-modal";
+    addrModal.innerHTML=
+      '<div class="addr-modal__box"><form class="form" data-addr-form>'+
+      '<div class="field"><label>'+esc(t("acc.addr.office"))+'</label><input name="label"></div>'+
+      '<div class="field"><label>'+esc(t("acc.set.name"))+'</label><input name="recipient" required></div>'+
+      '<div class="field"><label>'+esc(t("acc.set.phone"))+'</label><input name="phone" type="tel"></div>'+
+      '<div class="field"><label>'+esc(t("co.i.addr"))+'</label><input name="city"></div>'+
+      '<div class="field"><label>'+esc(t("acc.addr.sub"))+'</label><input name="line"></div>'+
+      '<label class="addr-modal__def"><input type="checkbox" name="is_default"> <span>'+esc(t("acc.addr.default"))+'</span></label>'+
+      '<div class="addr-modal__row"><button type="button" class="btn btn--ghost btn--sm" data-addr-cancel>'+esc(t("ordBack")||"Отмена")+'</button>'+
+      '<button type="submit" class="btn btn--copper btn--sm">'+esc(t("acc.set.save"))+'</button></div>'+
+      '</form></div>';
+    document.body.appendChild(addrModal);
+    addrModal.addEventListener("click",e=>{ if(e.target===addrModal) closeAddrModal(); });
+    addrModal.querySelector("[data-addr-cancel]").addEventListener("click", closeAddrModal);
+    return addrModal;
+  }
+  function closeAddrModal(){ if(addrModal) addrModal.classList.remove("on"); document.documentElement.style.overflow=""; }
+  function openAddrModal(existing){
+    if(!window.BTT_API) { toast(t("toast.addr")); return; }
+    const m=ensureAddrModal();
+    const f=m.querySelector("[data-addr-form]");
+    f.reset();
+    f.label.value=(existing&&existing.label)||"";
+    f.recipient.value=(existing&&existing.recipient)||"";
+    f.phone.value=(existing&&existing.phone)||"";
+    f.city.value=(existing&&existing.city)||"";
+    f.line.value=(existing&&existing.line)||"";
+    f.is_default.checked=!!(existing&&existing.is_default);
+    f.onsubmit=async function(e){
+      e.preventDefault();
+      const payload={ label:f.label.value.trim(), recipient:f.recipient.value.trim(), phone:f.phone.value.trim(), city:f.city.value.trim(), line:f.line.value.trim(), is_default:f.is_default.checked };
+      try{
+        if(existing&&existing.id) await window.BTT_API.updateAddress(existing.id,payload);
+        else await window.BTT_API.createAddress(payload);
+        closeAddrModal();
+        const res=await window.BTT_API.listAddresses();
+        renderAddresses(res.addresses||[]);
+        toast(t("toast.addrSaved"));
+      }catch(err){ toast(t("auth.err.generic")); }
+    };
+    m.classList.add("on"); document.documentElement.style.overflow="hidden";
+  }
+  function wireAddresses(){
+    document.querySelectorAll("[data-addr-add]").forEach(b=>{
+      if(b.dataset.wired) return; b.dataset.wired="1";
+      b.addEventListener("click",()=>openAddrModal(null));
+    });
+    document.querySelectorAll(".addr[data-addr-id] [data-addr-edit]").forEach(a=>{
+      if(a.dataset.wired) return; a.dataset.wired="1";
+      a.addEventListener("click",e=>{
+        e.preventDefault();
+        const card=a.closest("[data-addr-id]");
+        const id=Number(card.getAttribute("data-addr-id"));
+        const grid=document.querySelector(".addr-grid");
+        const found=(grid&&grid.__addresses||[]).find(x=>x.id===id);
+        openAddrModal(found||{id});
+      });
+    });
+  }
+
+  let favSyncTimer;
+  function pushFavs(){
+    if(!window.BTT_API) return;
+    clearTimeout(favSyncTimer);
+    favSyncTimer=setTimeout(()=>{
+      try{ window.BTT_API.putFavorites(Object.keys(getFavs())); }catch(e){}
+    }, 400);
+  }
+
+  async function hydrateAccount(){
+    if(!window.BTT_API) return; // static-only fallback keeps demo content
+    let me;
+    try{ me=await window.BTT_API.me(); }
+    catch(e){ return; } // backend offline → keep static demo
+    if(!me || !me.user){ window.location.replace("login.html"); return; }
+    const u=me.user;
+
+    // Header / sidebar identity
+    const nmeEl=document.querySelector(".acc-user .nm");
+    if(nmeEl && u.name) nmeEl.textContent=u.name;
+    const ava=document.querySelector(".acc-ava");
+    if(ava){ const initials=(u.name||u.email||"?").trim().split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase(); ava.textContent=initials||"?"; }
+    const hiName=document.querySelector('[data-acc-panel="overview"] .acc-h h1');
+    if(hiName && u.name){ hiName.innerHTML='<span data-i18n="acc.ov.hi">'+esc(t("acc.ov.hi"))+'</span> '+esc(u.name.split(/\s+/)[0])+' 👋'; }
+
+    // Settings form
+    const form=document.querySelector("[data-acc-form]");
+    if(form){
+      const inp=form.querySelectorAll("input");
+      if(inp[0]) inp[0].value=u.name||"";
+      if(inp[1]){ inp[1].value=u.email||""; inp[1].readOnly=true; }
+      if(inp[2]) inp[2].value=u.phone||"";
+    }
+    const news=document.querySelector("[data-news-toggle]");
+    if(news){
+      const on=u.newsletter?true:false;
+      news.setAttribute("aria-checked", on?"true":"false");
+    }
+
+    // Merge favourites (server ∪ local), then reflect both ways.
+    try{
+      const favRes=await window.BTT_API.getFavorites();
+      const serverIds=favRes.favorites||[];
+      if(serverIds.length){
+        const local=getFavs(); let changed=false;
+        serverIds.forEach(id=>{ if(!local[id]){ const p=(window.BTT_PRODUCTS||{})[id]; const d=(window.BTT_I18N&&window.BTT_I18N[lang()])||{}; const imgs=window.BTT_PRODUCT_IMG?window.BTT_PRODUCT_IMG(id):null; local[id]={name:(d[id+".name"]||id),price:p?p.now:0,img:(imgs&&imgs[0])?imgs[0].thumb:""}; changed=true; } });
+        if(changed){ if(window.BTT_CART&&window.BTT_CART.setFavs) window.BTT_CART.setFavs(local); else localStorage.setItem("btt_favs",JSON.stringify(local)); renderWishlist(); syncStats(); }
+      }
+      pushFavs();
+    }catch(e){}
+
+    // Orders + addresses
+    try{ const or=await window.BTT_API.myOrders(); renderOrders(or.orders||[]); }catch(e){}
+    try{ const ar=await window.BTT_API.listAddresses(); renderAddresses(ar.addresses||[]); }catch(e){}
+  }
+
   document.addEventListener("DOMContentLoaded", function(){
     const nav = document.querySelector("[data-acc-nav]");
     if(!nav) return;
@@ -130,13 +357,26 @@
     if(scrim) scrim.addEventListener("click", closeDrawer);
 
     const logout = document.querySelector("[data-acc-logout]");
-    if(logout) logout.addEventListener("click", ()=>{ window.location.href = "index.html"; });
+    if(logout) logout.addEventListener("click", async ()=>{
+      try{ if(window.BTT_API) await window.BTT_API.logout(); }catch(e){}
+      window.location.href = "index.html";
+    });
 
     const form = document.querySelector("[data-acc-form]");
     if(form){
-      form.addEventListener("submit",(e)=>{
+      form.addEventListener("submit", async (e)=>{
         e.preventDefault();
         const ok = form.querySelector("[data-form-ok]");
+        const inputs = form.querySelectorAll("input");
+        const news = document.querySelector("[data-news-toggle]");
+        const payload = {
+          name: (inputs[0] && inputs[0].value.trim()) || "",
+          phone: (inputs[2] && inputs[2].value.trim()) || "",
+          newsletter: news ? (news.getAttribute("aria-checked")==="true") : true,
+        };
+        if(window.BTT_API){
+          try{ await window.BTT_API.updateProfile(payload); }catch(err){}
+        }
         if(ok){ ok.classList.add("show"); setTimeout(()=>ok.classList.remove("show"), 2600); }
       });
     }
@@ -194,8 +434,9 @@
     hydrateOrderThumbs();
     renderWishlist();
     syncStats();
+    hydrateAccount();
 
-    document.addEventListener("btt:favs-change", ()=>{ renderWishlist(); syncStats(); });
+    document.addEventListener("btt:favs-change", ()=>{ renderWishlist(); syncStats(); pushFavs(); });
     document.addEventListener("storage", e=>{
       if(e.key==="btt_favs"){ renderWishlist(); syncStats(); }
     });

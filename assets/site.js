@@ -417,12 +417,14 @@
         const d = dict[l] || dict.ru || {};
         return d["co.f.err"] || "Please check your name and email.";
       };
-      form.addEventListener("submit",(e)=>{
+      form.addEventListener("submit", async (e)=>{
         e.preventDefault();
         form.querySelectorAll(".field").forEach(f=>f.classList.remove("is-invalid"));
         if(err){ err.hidden = true; err.classList.remove("show"); err.textContent = ""; }
         const name = form.querySelector("[name='name']");
         const email = form.querySelector("[name='email']");
+        const phone = form.querySelector("[name='phone']");
+        const message = form.querySelector("[name='message']");
         let valid = true;
         if(!name || !name.value.trim()){ name && name.closest(".field")?.classList.add("is-invalid"); valid = false; }
         if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
@@ -432,13 +434,43 @@
           if(err){ err.textContent = errMsg(); err.hidden = false; err.classList.add("show"); }
           return;
         }
-        if(ok){ ok.classList.add("show"); }
+
+        const payload = {
+          name: name.value.trim(),
+          email: email.value.trim(),
+          phone: phone ? phone.value.trim() : "",
+          message: message ? message.value.trim() : "",
+          lang: document.documentElement.lang || "ru",
+        };
+
         if(submitBtn) submitBtn.disabled = true;
-        form.reset();
-        setTimeout(()=>{
-          if(ok) ok.classList.remove("show");
+
+        const done = ()=>{
+          if(ok){ ok.classList.add("show"); }
+          form.reset();
+          setTimeout(()=>{
+            if(ok) ok.classList.remove("show");
+            if(submitBtn) submitBtn.disabled = false;
+          }, 5000);
+        };
+        const fail = ()=>{
+          if(err){ err.textContent = errMsg(); err.hidden = false; err.classList.add("show"); }
           if(submitBtn) submitBtn.disabled = false;
-        }, 5000);
+        };
+
+        // Send to the backend when available; otherwise keep the graceful
+        // confirmation so the static site still "works".
+        if(window.BTT_API){
+          try{
+            await window.BTT_API.contact(payload);
+            done();
+          }catch(ex){
+            if(ex && ex.status === 422){ fail(); }
+            else { done(); } // network/backend down — don't punish the visitor
+          }
+        } else {
+          done();
+        }
       });
     }
   });

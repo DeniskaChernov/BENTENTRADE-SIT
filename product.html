@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Карточка товара Bententrade — искусственный ротанг, характеристики и доставка.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/favicon.svg">
+<meta name="theme-color" content="#bd7335">
+<link rel="canonical" href="https://bententrade.uz/product.html">
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="Bententrade">
+<meta property="og:title" content="Bententrade — Товар">
+<meta property="og:description" content="Искусственный ротанг, характеристики и доставка.">
+<meta property="og:url" content="https://bententrade.uz/product.html">
+<meta property="og:image" content="https://bententrade.uz/assets/btt-logo.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bententrade — Товар">
+<meta name="twitter:description" content="Искусственный ротанг, характеристики и доставка.">
+<meta name="twitter:image" content="https://bententrade.uz/assets/btt-logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <title>Bententrade — Садовый диван «Лагуна»</title>
@@ -18,19 +32,20 @@
     <nav class="nav">
       <a href="index.html" data-i18n="nav.home">Главная</a>
       <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+      <a href="blog.html" data-i18n="nav.blog">Статьи</a>
       <a href="about.html" data-i18n="nav.about">О нас</a>
       <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
     </nav>
-    <a class="brand" href="index.html"><img src="assets/btt-logo.png" alt="Bententrade"></a>
+    <a class="brand" href="index.html"><img src="assets/btt-logo.svg" alt="Bententrade"></a>
     <div class="head-tools">
       <button class="icon-btn opt" data-i18n-aria="tool.search" aria-label="Поиск"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></button>
       <button class="icon-btn opt" data-i18n-aria="tool.fav" aria-label="Избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg><span class="count" data-fav-count style="display:none">0</span></button>
       <a class="icon-btn" href="catalog.html" data-i18n-aria="tool.cart" aria-label="Корзина"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="count" data-cart-count style="display:none">0</span></a>
+      <a class="icon-btn" href="account.html" data-i18n-aria="tool.acc" aria-label="Аккаунт"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5"/></svg></a>
       <button class="icon-btn" data-theme-toggle data-i18n-aria="tool.theme" aria-label="Тема">
         <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5Z"/></svg>
         <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.3"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg>
       </button>
-      <a class="icon-btn" href="account.html" data-i18n-aria="tool.account" aria-label="Аккаунт"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></a>
       <div class="lang"><button data-lang="ru">RU</button><button data-lang="uz">UZ</button><button data-lang="en">EN</button></div>
       <button class="burger icon-btn" data-i18n-aria="tool.menu" aria-label="Меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
@@ -40,6 +55,7 @@
 <nav class="mobile-drawer">
   <a href="index.html" data-i18n="nav.home">Главная</a>
   <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+  <a href="blog.html" data-i18n="nav.blog">Статьи</a>
   <a href="about.html" data-i18n="nav.about">О нас</a>
   <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
 </nav>
@@ -182,14 +198,15 @@
 <!-- FOOTER -->
 <footer class="site-foot">
   <div class="site-foot__top">
-    <div class="foot-col"><img src="assets/btt-logo.png" alt="Bententrade"><p data-i18n="foot.tag" style="color:var(--on-dark-muted);max-width:30ch">Мебель, кашпо и корзины из искусственного ротанга.</p></div>
+    <div class="foot-col"><img src="assets/btt-logo.svg" alt="Bententrade"><p data-i18n="foot.tag" style="color:var(--on-dark-muted);max-width:30ch">Мебель, кашпо и корзины из искусственного ротанга.</p></div>
     <div class="foot-col"><h5 data-i18n="foot.menu">Меню</h5><a href="index.html" data-i18n="nav.home">Главная</a><a href="catalog.html" data-i18n="nav.catalog">Каталог</a><a href="about.html" data-i18n="nav.about">О нас</a><a href="contacts.html" data-i18n="nav.contacts">Контакты</a></div>
-    <div class="foot-col"><h5 data-i18n="foot.help">Помощь</h5><a href="#" data-i18n="foot.faq">Вопросы и ответы</a><a href="#" data-i18n="foot.delivery">Доставка</a><a href="#" data-i18n="foot.returns">Возврат</a><a href="#" data-i18n="foot.care">Уход за плетением</a></div>
+    <div class="foot-col"><h5 data-i18n="foot.help">Помощь</h5><a href="faq.html" data-i18n="foot.faq">Вопросы и ответы</a><a href="delivery.html" data-i18n="foot.delivery">Доставка</a><a href="returns.html" data-i18n="foot.returns">Возврат</a><a href="care.html" data-i18n="foot.care">Уход за плетением</a></div>
     <div class="foot-col"><h5 data-i18n="foot.contacts">Контакты</h5><p data-i18n="co.i.addr.v">Ташкент, ул. Амира Темура, 15</p><a href="tel:+998712001846" data-i18n="co.i.phone.v">+998 71 200 18 46</a><a href="mailto:hello@bententrade.uz">hello@bententrade.uz</a></div>
   </div>
-  <div class="site-foot__bottom"><span data-i18n="foot.since">С 2024 ГОДА</span><span data-i18n="foot.copy">© 2026 BENTENTRADE. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span><span data-i18n="foot.privacy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</span></div>
+  <div class="site-foot__bottom"><span data-i18n="foot.since">С 2024 ГОДА</span><span data-i18n="foot.copy">© 2026 BENTENTRADE. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span><a href="privacy.html" data-i18n="foot.privacy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></div>
 </footer>
 
+<script src="assets/api.js"></script>
 <script src="assets/i18n.js"></script>
 <script src="assets/assistant.js"></script>
 <script src="assets/search.js"></script>
@@ -198,5 +215,6 @@
 <script src="assets/cart.js"></script>
 <script src="assets/fx.js"></script>
 <script src="assets/pdp.js"></script>
+<script src="assets/catalog-sync.js"></script>
 </body>
 </html>

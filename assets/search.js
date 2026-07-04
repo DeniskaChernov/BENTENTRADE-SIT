@@ -8,31 +8,33 @@
     return ["ru","uz","en"].includes(s) ? s : "ru";
   }
   function t(key){
-    const d = (window.BTT_I18N && window.BTT_I18N[lang()]) || {};
-    return d[key] != null ? d[key] : key;
+    const I = window.BTT_I18N || {};
+    const d = I[lang()] || {};
+    if(d[key] != null) return d[key];
+    const ru = I.ru || {};
+    return ru[key] != null ? ru[key] : key;
   }
 
-  // category index — slug routes to catalog ?cat=
+  // category index — slug matches the catalog chips (site.js) and routes to catalog ?cat=
   const CATS = [
-    { slug:"rattan",  k:"line.rattan",  img:"https://loremflickr.com/120/120/rattan,wicker/all?lock=11" },
-    { slug:"planter", k:"line.planter", img:"https://loremflickr.com/120/120/wicker,basket/all?lock=21" },
-    { slug:"twist",   k:"line.twist",   img:"https://loremflickr.com/120/120/rope,coil/all?lock=31" },
-    { slug:"furniture", k:"line.furniture", img:"https://loremflickr.com/120/120/rattan,furniture/all?lock=41" }
+    { slug:"furniture", k:"chip.furniture", img:"https://loremflickr.com/120/120/rattan,sofa/all?lock=11" },
+    { slug:"planter",   k:"chip.planter",   img:"https://loremflickr.com/120/120/wicker,planter/all?lock=4" },
+    { slug:"basket",    k:"chip.basket",    img:"https://loremflickr.com/120/120/woven,basket/all?lock=34" },
+    { slug:"indoor",    k:"chip.indoor",    img:"https://loremflickr.com/120/120/rattan,rocking,chair/all?lock=90" }
   ];
-  // page index
+  // page index (personal account is hidden until auth is live)
   const PAGES = [
-    { href:"catalog.html",  k:"nav.catalog2" },
+    { href:"catalog.html",  k:"nav.catalog" },
     { href:"about.html",    k:"nav.about" },
-    { href:"contacts.html", k:"nav.contacts" },
-    { href:"account.html",  k:"nav.account2" }
+    { href:"contacts.html", k:"nav.contacts" }
   ];
 
   function products(){
     const d = (window.BTT_I18N && window.BTT_I18N[lang()]) || {};
     const out = [];
-    for(let i=1;i<=11;i++){
+    for(let i=1;i<=15;i++){
       const name = d["p"+i+".name"], cat = d["p"+i+".cat"];
-      if(name) out.push({ name, cat:cat||"", q:name });
+      if(name) out.push({ id:"p"+i, name, cat:cat||"", q:name });
     }
     return out;
   }
@@ -87,7 +89,7 @@
     if(prods.length){
       html += '<div class="search-sec">'+esc(t("srch.prods"))+'</div>';
       prods.forEach(p=>{
-        items.push({ href:"catalog.html?q="+encodeURIComponent(p.q) });
+        items.push({ href:"product.html?id="+encodeURIComponent(p.id) });
         html += row(null, p.name, p.cat, items.length-1, p.name.slice(0,1));
       });
     }

@@ -1,0 +1,30 @@
+{
+  "name": "bententrade",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bententrade — статический сайт (Cloudflare Static Assets) + API/CRM на Workers (Hono) + D1 + R2 + KV",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "release": "npm run typecheck && npm run db:migrate && wrangler deploy",
+    "cf:provision:d1": "wrangler d1 create bententrade_db",
+    "cf:provision:kv": "wrangler kv namespace create SESSIONS",
+    "cf:provision:r2": "wrangler r2 bucket create bententrade-media",
+    "db:migrate:local": "wrangler d1 migrations apply bententrade_db --local",
+    "db:migrate": "wrangler d1 migrations apply bententrade_db --remote",
+    "db:seed:local": "wrangler d1 execute bententrade_db --local --file=./migrations/seed.sql",
+    "db:seed": "wrangler d1 execute bententrade_db --remote --file=./migrations/seed.sql",
+    "db:backup": "node scripts/backup-d1.mjs",
+    "seed:gen": "node scripts/gen-seed.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240909.0",
+    "typescript": "^5.6.2",
+    "wrangler": "^3.78.0"
+  },
+  "dependencies": {
+    "hono": "^4.6.3"
+  }
+}

@@ -12,7 +12,7 @@
   /* ---------- manager contact (edit these) ----------
      telegram : username after t.me/  (no @)
      whatsapp : full number, digits only (country code first)        */
-  const CONFIG = { telegram: "bententrade", whatsapp: "998901234567", currency: "$" };
+  const CONFIG = { telegram: "bententrade", whatsapp: "998712001846", currency: "$" };
 
   /* ---------- i18n helper ---------- */
   function lang(){ const s=localStorage.getItem("btt_lang"); return ["ru","uz","en"].includes(s)?s:"ru"; }
@@ -237,8 +237,35 @@
     toastEl.textContent=msg; toastEl.classList.add("on");
     clearTimeout(toastT); toastT=setTimeout(()=>toastEl.classList.remove("on"), 3800);
   }
-  function dispatch(kind){
-    const txt=orderText();
+  function cartItemsPayload(){
+    const c=getCart();
+    return Object.keys(c).map(id=>{
+      const it=c[id];
+      return {
+        id: /^p\d+$/.test(id) ? id : undefined,
+        name: it.name,
+        qty: it.qty||1,
+        price: it.price||0,
+        options: it.options || undefined,
+      };
+    });
+  }
+  async function persistOrder(){
+    if(!window.BTT_API) return null;
+    try{
+      const res = await window.BTT_API.createOrder({
+        items: cartItemsPayload(),
+        lang: (document.documentElement.lang||"ru"),
+        currency: CONFIG.currency,
+      });
+      return (res && res.orderId) || null;
+    }catch(e){ return null; }
+  }
+  async function dispatch(kind){
+    // Persist the order server-side first (best-effort); the messenger hand-off
+    // remains as an additional confirmation channel.
+    const orderId = await persistOrder();
+    const txt = orderText() + (orderId ? ("\n№ " + orderId) : "");
     if(kind==="tg"){
       copyText(txt);
       window.open("https://t.me/"+CONFIG.telegram, "_blank", "noopener");
@@ -246,12 +273,13 @@
     } else {
       window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(txt), "_blank", "noopener");
     }
-    write("btt_cart",{}); renderBadges(); renderDone();
+    write("btt_cart",{}); renderBadges(); renderDone(orderId);
   }
-  function renderDone(){
+  function renderDone(orderId){
     if(!cartEl) return;
+    const num = orderId ? '<div class="t" style="opacity:.7;font-size:14px;margin-top:-6px">№ '+esc(orderId)+'</div>' : '';
     cartEl.innerHTML='<div class="drawer-head"><h3>'+esc(t("cart"))+'</h3><button class="drawer-x" data-drawer-close aria-label="×"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
-      '<div class="drawer-empty"><svg viewBox="0 0 24 24" fill="none" stroke="#3c8a4e" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="t">'+esc(t("done"))+'</div><a class="btn btn--dark" href="catalog.html">'+esc(t("toCat"))+'</a></div>';
+      '<div class="drawer-empty"><svg viewBox="0 0 24 24" fill="none" stroke="#3c8a4e" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="t">'+esc(t("done"))+'</div>'+num+'<a class="btn btn--dark" href="catalog.html">'+esc(t("toCat"))+'</a></div>';
     wireDrawer(cartEl);
   }
   function renderCheckout(){
