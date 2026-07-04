@@ -303,12 +303,12 @@ p{margin:0;text-wrap:pretty;}
   }
   .site-head.is-scrolled .site-head__in{
     max-width:min(calc(100% - 32px), calc(var(--maxw) - 148px));
-    padding:7px 22px;
+    padding:7px 30px;
     background:color-mix(in oklab, var(--paper) 70%, transparent);
     -webkit-backdrop-filter:saturate(150%) blur(14px);
     backdrop-filter:saturate(150%) blur(14px);
     border-color:var(--line);
-    border-radius:16px;
+    border-radius:var(--r-pill);
     box-shadow:0 12px 34px -20px rgba(27,25,22,.30), 0 1px 0 rgba(255,255,255,.05) inset;
   }
   [data-theme="dark"] .site-head.is-scrolled{box-shadow:none;}
