@@ -7,75 +7,51 @@
   const SLIDES = [
     {
       cat: "furniture",
-      mainImg: "https://loremflickr.com/800/800/rattan,sofa/all?lock=11",
       sideImg: "https://loremflickr.com/800/800/patio,furniture/all?lock=31",
-      badge:   {ru:"Живи на воздухе",        uz:"Ochiq havoda yasha",     en:"Live outdoors"},
-      t1:      {ru:"Мебель",                 uz:"Mebel",                  en:"Furniture"},
-      t2:      {ru:"для дачи и сада",         uz:"dala va bog‘ uchun",     en:"for patio & garden"},
-      interior:{ru:"Садовая коллекция",      uz:"Bog‘ to‘plami",          en:"Garden collection"},
-      bestS:   {ru:"Лучшая мебель",          uz:"Eng yaxshi mebel",       en:"Best furniture"},
-      bestB:   {ru:"ДЛЯ ОТДЫХА НА ВОЗДУХЕ",  uz:"OCHIQ HAVODA DAM OLISH", en:"FOR OUTDOOR LIVING"},
-      store:   {ru:"Смотреть садовую мебель", uz:"Bog‘ mebelini ko‘rish", en:"Shop garden furniture"},
-      href:    "catalog.html?cat=furniture",
-      stats: [
-        {num:"10k", suf:"+", label:{ru:"Довольных клиентов", uz:"Mamnun mijozlar",   en:"Happy clients"}},
-        {num:"12",  suf:"+", label:{ru:"Лет на рынке",        uz:"Yillik tajriba",    en:"Years on market"}},
-        {num:"35",  suf:"+", label:{ru:"Премиум-изделий",     uz:"Premium mahsulot",  en:"Premium pieces"}}
-      ]
+      badge:   {ru:"Для дачи и сада",         uz:"Dala va bog‘ uchun",     en:"For patio & garden"},
+      t1:      {ru:"Мебель",                  uz:"Mebel",                  en:"Furniture"},
+      t2:      {ru:"для дачи и сада",          uz:"dala va bog‘ uchun",     en:"for patio & garden"},
+      sub:     {ru:"Диваны, кресла и обеденные группы для террасы и двора — всё есть в наличии.",
+                uz:"Divan, kreslo va ovqat guruhlari — terrasa va hovli uchun, hammasi omborda.",
+                en:"Sofas, chairs and dining sets for the terrace and yard — all in stock."},
+      store:   {ru:"Смотреть садовую мебель",  uz:"Bog‘ mebelini ko‘rish", en:"Shop garden furniture"},
+      href:    "catalog.html?cat=furniture"
     },
     {
       cat: "indoor",
-      mainImg: "https://loremflickr.com/800/800/rattan,cabinet/all?lock=95",
       sideImg: "https://loremflickr.com/800/800/rattan,rocking,chair/all?lock=90",
-      badge:   {ru:"Уют дома",             uz:"Uy qulayligi",           en:"Home comfort"},
-      t1:      {ru:"Мебель",                 uz:"Mebel",                  en:"Furniture"},
-      t2:      {ru:"для дома",              uz:"uy uchun",               en:"for the home"},
-      interior:{ru:"Домашняя коллекция",     uz:"Uy to‘plami",           en:"Home collection"},
-      bestS:   {ru:"Ротанг в интерьере",     uz:"Interyerda rotang",      en:"Rattan indoors"},
-      bestB:   {ru:"ДЛЯ ГОСТИНОЙ И СПАЛЬНИ", uz:"MEHMONXONA VA YOTOQ UCHUN", en:"FOR LIVING & BEDROOM"},
-      store:   {ru:"Смотреть мебель для дома", uz:"Uy mebelini ko‘rish", en:"Shop home furniture"},
-      href:    "catalog.html?cat=indoor",
-      stats: [
-        {num:"4",   suf:"",  label:{ru:"Вида изделий",     uz:"Mahsulot turi",    en:"Item types"}},
-        {num:"3",   suf:"",  label:{ru:"Размера",           uz:"O‘lcham",         en:"Sizes"}},
-        {num:"100", suf:"%", label:{ru:"Ручная работа",       uz:"Qo‘l mehnati",     en:"Handmade"}}
-      ]
+      badge:   {ru:"Для дома",                uz:"Uy uchun",               en:"For the home"},
+      t1:      {ru:"Мебель",                  uz:"Mebel",                  en:"Furniture"},
+      t2:      {ru:"для дома",                 uz:"uy uchun",               en:"for the home"},
+      sub:     {ru:"Кресла, столики и стеллажи, которые впишутся в гостиную, спальню или балкон.",
+                uz:"Kreslo, stol va javonlar — mehmonxona, yotoqxona yoki balkon uchun.",
+                en:"Chairs, tables and shelving that fit the living room, bedroom or balcony."},
+      store:   {ru:"Смотреть мебель для дома", uz:"Uy mebelini ko‘rish",   en:"Shop home furniture"},
+      href:    "catalog.html?cat=indoor"
     },
     {
       cat: "rattan",
-      mainImg: "https://loremflickr.com/800/800/rattan,weave/all?lock=21",
       sideImg: "https://loremflickr.com/800/800/wicker,chair/all?lock=2",
-      badge:   {ru:"Своё производство",      uz:"O‘z ishlab chiqarish",   en:"Own production"},
-      t1:      {ru:"Искусственный",          uz:"Sun’iy",                 en:"Synthetic"},
-      t2:      {ru:"ротанг",                 uz:"rotang",                 en:"rattan"},
-      interior:{ru:"Плетёная мебель",        uz:"To‘qilgan mebel",        en:"Woven furniture"},
-      bestS:   {ru:"Стойко к погоде",       uz:"Ob-havoga chidamli",     en:"Weather-proof"},
-      bestB:   {ru:"СЛУЖИТ ГОДАМИ",          uz:"YILLAB XIZMAT QILADI",   en:"LASTS FOR YEARS"},
-      store:   {ru:"Смотреть ротанг",         uz:"Rotangni ko‘rish",      en:"Shop the rattan"},
-      href:    "catalog.html?cat=rattan",
-      stats: [
-        {num:"50", suf:"+", label:{ru:"Моделей плетения",  uz:"To‘quv modellari",  en:"Weave models"}},
-        {num:"8",  suf:"",  label:{ru:"Лет на улице",       uz:"Yil ko‘chada",      en:"Years outdoors"}},
-        {num:"100",suf:"%", label:{ru:"Влагостойкость",     uz:"Namlikka chidamli", en:"Water resistant"}}
-      ]
+      badge:   {ru:"Наше производство",       uz:"O‘z ishlab chiqarish",   en:"Own production"},
+      t1:      {ru:"Плетёная мебель",          uz:"To‘qilgan mebel",        en:"Woven furniture"},
+      t2:      {ru:"из ротанга",               uz:"rotangdan",              en:"from rattan"},
+      sub:     {ru:"Не выгорает на солнце и не боится дождя — служит годами на улице и дома.",
+                uz:"Quyoshda so‘lmaydi, yomg‘irdan qo‘rqmaydi — ko‘chada ham, uyda ham yillab xizmat qiladi.",
+                en:"Won’t fade in the sun or fear the rain — lasts for years outdoors and indoors."},
+      store:   {ru:"Смотреть плетёную мебель", uz:"To‘qilgan mebelni ko‘rish", en:"Shop woven furniture"},
+      href:    "catalog.html?cat=rattan"
     },
     {
       cat: "planter",
-      mainImg: "https://loremflickr.com/800/800/woven,basket/all?lock=34",
       sideImg: "https://loremflickr.com/800/800/wicker,planter/all?lock=4",
-      badge:   {ru:"Уют в деталях",          uz:"Tafsilotlardagi qulaylik", en:"Comfort in details"},
-      t1:      {ru:"Кашпо, сундуки",          uz:"Gultuvak, sandiq",        en:"Planters, chests"},
-      t2:      {ru:"и корзины для белья",     uz:"va kir savatlari",        en:"& laundry baskets"},
-      interior:{ru:"Декор и хранение",       uz:"Dekor va saqlash",        en:"Decor & storage"},
-      bestS:   {ru:"Ручное плетение",        uz:"Qo‘l to‘quvi",            en:"Hand-woven"},
-      bestB:   {ru:"ДЛЯ ДОМА И ДАЧИ",        uz:"UY VA DALA UCHUN",        en:"FOR HOME & DACHA"},
-      store:   {ru:"Смотреть кашпо и корзины", uz:"Gultuvak va savatlar",  en:"Shop planters & baskets"},
-      href:    "catalog.html?cat=planter",
-      stats: [
-        {num:"120",suf:"+", label:{ru:"Изделий в наличии", uz:"Mavjud mahsulot",   en:"Items in stock"}},
-        {num:"6",  suf:"",  label:{ru:"Форм и размеров",    uz:"Shakl va o‘lcham",  en:"Shapes & sizes"}},
-        {num:"24", suf:"ч", label:{ru:"Отгрузка заказа",    uz:"Buyurtma jo‘natish", en:"Order dispatch"}}
-      ]
+      badge:   {ru:"Декор и хранение",         uz:"Dekor va saqlash",       en:"Decor & storage"},
+      t1:      {ru:"Кашпо, сундуки",           uz:"Gultuvak, sandiq",       en:"Planters, chests"},
+      t2:      {ru:"и корзины для белья",       uz:"va kir savatlari",       en:"& laundry baskets"},
+      sub:     {ru:"Плетём вручную для растений, белья и мелочей — красиво хранить проще.",
+                uz:"O‘simlik, kir va mayda buyumlar uchun qo‘lda to‘qiymiz — chiroyli saqlash oson.",
+                en:"Hand-woven for plants, laundry and odds and ends — tidy storage made easy."},
+      store:   {ru:"Смотреть кашпо и корзины",  uz:"Gultuvak va savatlar",   en:"Shop planters & baskets"},
+      href:    "catalog.html?cat=planter"
     }
   ];
 
@@ -86,13 +62,11 @@
   const els = {
     heroImgs:[$('[data-h="heroImg"]'), $('[data-h="heroImgB"]')],
     badge:$('[data-h="badge"]'), t1:$('[data-h="t1"]'), t2:$('[data-h="t2"]'),
-    interior:$('[data-h="interior"]'), bestS:$('[data-h="bestS"]'), bestB:$('[data-h="bestB"]'),
-    store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'), storeOrb:$('[data-h="storeOrb"]'),
-    lead:$('[data-h-lead]'), pocketInner:$('[data-h-inner]'), stats:$('[data-hero-stats]'),
+    sub:$('[data-h="sub"]'),
+    store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'),
+    lead:$('[data-h-lead]'), pocketInner:$('[data-h-inner]'),
     dots:$('[data-hero-dots]')
   };
-  const statNum=[$('[data-h="s0n"]'),$('[data-h="s1n"]'),$('[data-h="s2n"]')];
-  const statLbl=[$('[data-h="s0l"]'),$('[data-h="s1l"]'),$('[data-h="s2l"]')];
 
   let idx=0, timer=null;
   const DUR=7000;
@@ -118,7 +92,7 @@
   }
 
   function anim(){
-    [els.pocketInner, els.stats, els.lead].forEach(el=>{
+    [els.pocketInner, els.lead].forEach(el=>{
       if(!el) return; el.classList.remove("is-swap"); void el.offsetWidth; el.classList.add("is-swap");
     });
   }
@@ -137,15 +111,9 @@
     crossfade(els.heroImgs, s.sideImg);
     els.badge.textContent=L(s.badge);
     els.t1.textContent=L(s.t1); els.t2.textContent=L(s.t2);
-    els.interior.textContent=L(s.interior);
-    els.bestS.textContent=L(s.bestS); els.bestB.textContent=L(s.bestB);
+    els.sub.textContent=L(s.sub);
     els.store.textContent=L(s.store);
     els.storeLink.href=s.href;
-    if(els.storeOrb){ els.storeOrb.href=s.href; els.storeOrb.setAttribute("aria-label", L(s.store)); }
-    s.stats.forEach((st,i)=>{ if(!statNum[i])return;
-      statNum[i].innerHTML=st.num+"<span>"+(st.suf||"")+"</span>";
-      statLbl[i].textContent=L(st.label);
-    });
     dotEls.forEach((d,i)=>d.classList.toggle("is-active",i===idx));
     if(animate) anim();
   }
