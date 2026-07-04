@@ -89,7 +89,7 @@
     badge:$('[data-h="badge"]'), t1:$('[data-h="t1"]'), t2:$('[data-h="t2"]'),
     interior:$('[data-h="interior"]'), bestS:$('[data-h="bestS"]'), bestB:$('[data-h="bestB"]'),
     store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'), storeOrb:$('[data-h="storeOrb"]'),
-    lead:$('[data-h-lead]'), pocketInner:$('[data-h-inner]'), photo:$('.hero__photo'), stats:$('[data-hero-stats]'),
+    lead:$('[data-h-lead]'), pocketInner:$('[data-h-inner]'), visual:$('.hero__visual'), stats:$('[data-hero-stats]'),
     dots:$('[data-hero-dots]')
   };
   const statNum=[$('[data-h="s0n"]'),$('[data-h="s1n"]'),$('[data-h="s2n"]')];
