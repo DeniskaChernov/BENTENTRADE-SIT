@@ -388,7 +388,7 @@
 /* inner pages — section rhythm */
 .about-flow .section--compact,
 .contacts-flow .section--compact{padding-top:0;}
-.contacts-flow .section--after-hero{padding-top:0;}
+.contacts-flow .section--after-hero{padding-top:clamp(40px,5vw,64px);}
 .account-flow{padding-block:clamp(36px,5vw,64px);}
 
 .acc-prod-name{margin-top:4px;}
