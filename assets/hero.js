@@ -88,8 +88,8 @@
     sideImgs:[$('[data-h="sideImg"]'), $('[data-h="sideImgB"]')],
     badge:$('[data-h="badge"]'), t1:$('[data-h="t1"]'), t2:$('[data-h="t2"]'),
     interior:$('[data-h="interior"]'), bestS:$('[data-h="bestS"]'), bestB:$('[data-h="bestB"]'),
-    store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'), lead:$('[data-h-lead]'),
-    pocketInner:$('[data-h-inner]'), main:$('.hero__main'), photo:$('.hero__photo'), stats:$('[data-hero-stats]'),
+    store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'), storeOrb:$('[data-h="storeOrb"]'),
+    lead:$('[data-h-lead]'), pocketInner:$('[data-h-inner]'), photo:$('.hero__photo'), stats:$('[data-hero-stats]'),
     dots:$('[data-hero-dots]')
   };
   const statNum=[$('[data-h="s0n"]'),$('[data-h="s1n"]'),$('[data-h="s2n"]')];
@@ -143,6 +143,7 @@
     els.bestS.textContent=L(s.bestS); els.bestB.textContent=L(s.bestB);
     els.store.textContent=L(s.store);
     els.storeLink.href=s.href;
+    if(els.storeOrb){ els.storeOrb.href=s.href; els.storeOrb.setAttribute("aria-label", L(s.store)); }
     s.stats.forEach((st,i)=>{ if(!statNum[i])return;
       statNum[i].innerHTML=st.num+"<span>"+(st.suf||"")+"</span>";
       statLbl[i].textContent=L(st.label);
@@ -174,5 +175,15 @@
   }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
 
   render(false);
+  const card=root.querySelector("[data-hero-card]");
+  function enterHero(){
+    if(!card) return;
+    card.classList.add("is-entered");
+  }
+  if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+    enterHero();
+  }else{
+    setTimeout(enterHero, 200);
+  }
   if(!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) start();
 })();
