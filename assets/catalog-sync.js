@@ -49,53 +49,67 @@
     return art;
   }
 
-  async function hydrateCatalog() {
-    const grid = document.querySelector("#catalog-grid");
-    if (!grid) return;
-    let res;
-    try { res = await window.BTT_API.products("all"); } catch (e) { return; }
-    const list = res.products || [];
-    if (!list.length) return; // never blank the catalog on an empty/bad response
-    const map = {};
-    list.forEach((p) => { map[p.id] = p; });
+  // Patch one card in place from the CRM data. Returns { id, product } or null.
+  function patchCard(card, map) {
+    const see = card.querySelector("a[href*='product.html?id=']");
+    const id = see && idFromHref(see.getAttribute("href"));
+    if (!id) return null;
+    const p = map[id];
+    if (!p) return { id: id, product: null };
+    const now = card.querySelector(".price__now");
+    if (now) now.textContent = money(p.price_now);
+    const old = card.querySelector(".price__old");
+    if (old) {
+      if (p.price_old) { old.textContent = money(p.price_old); old.style.display = ""; }
+      else old.style.display = "none";
+    }
+    const nameEl = card.querySelector(".product__name");
+    if (nameEl && p.name) nameEl.textContent = p.name;
+    const catEl = card.querySelector(".product__cat");
+    if (catEl && !catEl.hasAttribute("data-i18n") && p.category_label) catEl.textContent = p.category_label;
+    if (p.image) {
+      const img = card.querySelector(".product__media img");
+      if (img) { img.src = mediaUrl(p.image); img.style.display = ""; }
+    }
+    return { id: id, product: p };
+  }
 
+  // Curated grids (e.g. home featured): patch prices/names/photos only.
+  function patchGrid(grid, map) {
+    grid.querySelectorAll("[data-product]").forEach((card) => patchCard(card, map));
+  }
+
+  // Catalog grid: patch + drop products removed in the CRM + append new ones.
+  function hydrateCatalogGrid(grid, list, map) {
     let changed = false;
-    // 1) Patch existing cards; drop cards for products removed in the CRM.
     grid.querySelectorAll("[data-product]").forEach((card) => {
-      const see = card.querySelector("a[href*='product.html?id=']");
-      const id = see && idFromHref(see.getAttribute("href"));
-      if (!id) return;
-      const p = map[id];
-      if (!p) { card.remove(); changed = true; return; }
-      const now = card.querySelector(".price__now");
-      if (now) now.textContent = money(p.price_now);
-      const old = card.querySelector(".price__old");
-      if (old) {
-        if (p.price_old) { old.textContent = money(p.price_old); old.style.display = ""; }
-        else old.style.display = "none";
-      }
-      const nameEl = card.querySelector(".product__name");
-      if (nameEl && p.name) nameEl.textContent = p.name;
-      const catEl = card.querySelector(".product__cat");
-      if (catEl && !catEl.hasAttribute("data-i18n") && p.category_label) catEl.textContent = p.category_label;
-      if (p.image) {
-        const img = card.querySelector(".product__media img");
-        if (img) { img.src = mediaUrl(p.image); img.style.display = ""; }
-      }
-      map[id]._seen = true;
+      const r = patchCard(card, map);
+      if (!r) return;
+      if (!r.product) { card.remove(); changed = true; return; }
+      r.product._seen = true;
     });
-
-    // 2) Append cards for products that exist in the CRM but not in the markup.
     const frag = document.createDocumentFragment();
-    list.forEach((p) => { if (!map[p.id]._seen) { frag.appendChild(buildCard(p)); changed = true; } });
+    list.forEach((p) => { if (!p._seen) { frag.appendChild(buildCard(p)); changed = true; } });
     if (frag.childNodes.length) grid.appendChild(frag);
-
-    // 3) Re-wire buttons + reveal for new cards, then re-apply the active filter.
     if (changed) {
       document.dispatchEvent(new CustomEvent("btt:related-rendered", { detail: { grid } }));
       const active = document.querySelector('.cat-chips .chip.is-active') || document.querySelector('.cat-chips .chip[data-cat="all"]');
       if (active) active.click();
     }
+  }
+
+  async function hydrateCatalog() {
+    const catGrid = document.querySelector("#catalog-grid");
+    const homeGrid = document.querySelector("#home-grid");
+    if (!catGrid && !homeGrid) return;
+    let res;
+    try { res = await window.BTT_API.products("all"); } catch (e) { return; }
+    const list = res.products || [];
+    if (!list.length) return; // never blank the storefront on an empty/bad response
+    const map = {};
+    list.forEach((p) => { map[p.id] = p; });
+    if (homeGrid) patchGrid(homeGrid, map);
+    if (catGrid) hydrateCatalogGrid(catGrid, list, map);
   }
 
   function knownStatic(id) { return !!(window.BTT_PRODUCTS && window.BTT_PRODUCTS[id]); }
