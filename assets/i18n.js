@@ -30,7 +30,7 @@ window.BTT_I18N = {
     "p3.name":"Кашпо «Колонна»","p3.cat":"Кашпо",
 
     "split.title":"Обустройте сад и террасу мебелью, которой не страшна погода",
-    "split.body":"Искусственный ротанг сочетает вид настоящего плетения с прочностью полимера: он не выгорает на солнце, не трескается на морозе и не требует особого ухода — достаточно протереть влажной тканью.",
+    "split.body":"Наше плетение выглядит как натуральное, но сделано прочнее: не выгорает на солнце, не трескается на морозе и не требует особого ухода — достаточно протереть влажной тканью.",
 
     "mat.title.1":"Искусственный ротанг —","mat.title.2":"материал, который служит",
     "mat.body":"Полиэтиленовое волокно (PE-ротанг) выглядит как природное плетение, но не гниёт, выдерживает солнце и мороз и полностью безопасно. Выбирайте цвет плетения и форму — под террасу, балкон или интерьер.",
@@ -114,7 +114,7 @@ window.BTT_I18N = {
     "p3.name":"«Kolonna» gultuvak","p3.cat":"Gultuvak",
 
     "split.title":"Bog‘ va terassangizni ob-havodan qo‘rqmaydigan mebel bilan jihozlang",
-    "split.body":"Sun’iy rotang haqiqiy to‘quv ko‘rinishini polimer mustahkamligi bilan birlashtiradi: quyoshda rangi o‘chmaydi, sovuqda yorilmaydi va alohida parvarish talab qilmaydi — nam mato bilan artish kifoya.",
+    "split.body":"To‘quvimiz tabiiyga o‘xshaydi, lekin mustahkamroq: quyoshda rangi o‘chmaydi, sovuqda yorilmaydi va alohida parvarish talab qilmaydi — nam mato bilan artish kifoya.",
 
     "mat.title.1":"Sun’iy rotang —","mat.title.2":"uzoq xizmat qiladigan material",
     "mat.body":"Polietilen tola (PE-rotang) tabiiy to‘quvga o‘xshaydi, lekin chirimaydi, quyosh va sovuqqa chidaydi va to‘liq xavfsiz. To‘quv rangi va shaklini tanlang — terassa, balkon yoki interyer uchun.",
@@ -195,7 +195,7 @@ window.BTT_I18N = {
     "p3.name":"Colonna Planter","p3.cat":"Planter",
 
     "split.title":"Furnish your garden and terrace with furniture that laughs at the weather",
-    "split.body":"Synthetic rattan combines the look of real weave with the strength of polymer: it won't fade in the sun, crack in frost or demand special care — a wipe with a damp cloth is enough.",
+    "split.body":"Our weave looks natural but is built tougher: it won't fade in the sun, crack in frost or need special care — a wipe with a damp cloth is enough.",
 
     "mat.title.1":"Synthetic rattan —","mat.title.2":"a material that lasts",
     "mat.body":"Polyethylene fibre (PE-rattan) looks like natural weave but never rots, withstands sun and frost and is completely safe. Choose the weave colour and shape — for the terrace, balcony or interior.",

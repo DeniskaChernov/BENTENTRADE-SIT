@@ -301,9 +301,18 @@
 /* ================= SPLIT text ================= */
 .split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,8vw,100px);align-items:start;}
 .split__glass{
-  padding:clamp(24px,3vw,36px);border-radius:var(--r-xl);
+  padding:clamp(28px,3.2vw,42px);border-radius:var(--r-xl);
   align-self:center;
+  display:flex;flex-direction:column;gap:clamp(16px,1.8vw,22px);
 }
+.split__mark{
+  width:48px;height:48px;border-radius:14px;flex:none;
+  display:grid;place-items:center;
+  background:color-mix(in oklab, var(--copper-bright) 15%, transparent);
+  color:var(--copper);
+}
+.split__mark svg{width:24px;height:24px;}
+.split__glass .lead{margin:0;color:var(--text);opacity:.9;max-width:46ch;}
 
 /* ================= MATERIAL ================= */
 .material{
