@@ -291,7 +291,7 @@ p{margin:0;text-wrap:pretty;}
   -webkit-backdrop-filter:none;backdrop-filter:none;
 }
 .brand{display:flex;justify-content:center;}
-.brand img{height:32px;width:auto;}
+.brand img{height:40px;width:auto;}
 .head-tools{display:flex;align-items:center;justify-content:flex-end;gap:4px;}
 .icon-btn{
   width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:var(--text);
