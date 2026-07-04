@@ -90,7 +90,7 @@
   --surface-brd:var(--line);
   --liquid-sheen:linear-gradient(165deg, rgba(255,255,255,.07) 0%, rgba(255,255,255,0) 50%);
   --liquid-edge:inset 0 1px 0 rgba(255,255,255,.07);
-  --spatial-shadow:0 24px 56px -36px rgba(0,0,0,.5);
+  --spatial-shadow:0 12px 34px -26px rgba(0,0,0,.4);
 }
 
 /* ============================================================
