@@ -27,9 +27,16 @@ const ssl =
     ? { rejectUnauthorized: false }
     : undefined;
 
-export const pool = new pg.Pool({ connectionString, ssl, max: 8 });
-pool.on("connect", (client) => {
-  client.query("SET TIME ZONE 'UTC'").catch(() => {});
+// Isolate all app tables in a dedicated schema so we never collide with other
+// apps sharing the same PostgreSQL database (Railway plugin DBs are often shared).
+// search_path is set at connection startup (no race with the first query).
+export const PG_SCHEMA = (process.env.PG_SCHEMA || "bententrade").replace(/[^a-z0-9_]/gi, "");
+
+export const pool = new pg.Pool({
+  connectionString,
+  ssl,
+  max: 8,
+  options: `-c search_path=${PG_SCHEMA} -c timezone=UTC`,
 });
 
 /* ----------------------- SQL compatibility ----------------------- */
@@ -223,6 +230,8 @@ export function buildEnv() {
 
 /* ------------------------------ migrate + seed ------------------------------ */
 export async function migrate() {
+  // Ensure the dedicated schema exists before creating tables in it.
+  await pool.query(`CREATE SCHEMA IF NOT EXISTS ${PG_SCHEMA}`);
   const schema = readFileSync(join(ROOT, "db", "schema.pg.sql"), "utf8");
   await pool.query(schema);
 }
