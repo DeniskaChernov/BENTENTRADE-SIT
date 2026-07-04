@@ -44,7 +44,7 @@ window.BTT_I18N = {
     "foot.since":"С 2024 ГОДА","foot.copy":"© 2026 BENTENTRADE. ВСЕ ПРАВА ЗАЩИЩЕНЫ.","foot.privacy":"ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ",
 
     /* catalog */
-    "cat.hero.k":"Каталог","cat.hero.title":"Изделия из искусственного ротанга","cat.hero.sub":"Садовая мебель, кашпо и корзины из искусственного ротанга — сделано вручную для дома, дачи и сада.",
+    "cat.hero.k":"Каталог","cat.hero.title":"Мебель, кашпо и корзины","cat.hero.sub":"Плетёные изделия ручной работы для дома, дачи и сада — вся коллекция в одном месте.",
     "cat.filter":"Фильтр","cat.sort":"Сортировка","cat.results":"товаров",
     "cat.hero.cta":"К товарам","cat.hero.t1":"изделий в наличии","cat.hero.t2":"направления","cat.hero.t3":"отгрузка",
     "p4.name":"Обеденная группа «Терраса»","p4.cat":"Садовая мебель",
@@ -127,7 +127,7 @@ window.BTT_I18N = {
     "foot.faq":"Savol-javob","foot.delivery":"Yetkazib berish","foot.returns":"Qaytarish","foot.care":"To‘quv parvarishi",
     "foot.since":"2024 YILDAN","foot.copy":"© 2026 BENTENTRADE. BARCHA HUQUQLAR HIMOYALANGAN.","foot.privacy":"MAXFIYLIK SIYOSATI",
 
-    "cat.hero.k":"Katalog","cat.hero.title":"Sun’iy rotang mahsulotlari","cat.hero.sub":"Sun’iy rotangdan bog‘ mebeli, gultuvak va savatlar — uy, dala va bog‘ uchun qo‘lda tayyorlangan.",
+    "cat.hero.k":"Katalog","cat.hero.title":"Mebel, gultuvak va savatlar","cat.hero.sub":"Uy, dala va bog‘ uchun qo‘lda to‘qilgan buyumlar — butun to‘plam bir joyda.",
     "cat.filter":"Filtr","cat.sort":"Saralash","cat.results":"mahsulot",
     "cat.hero.cta":"Mahsulotlarga","cat.hero.t1":"mavjud mahsulot","cat.hero.t2":"yo‘nalish","cat.hero.t3":"jo‘natish",
     "p4.name":"«Terrasa» ovqat to‘plami","p4.cat":"Bog‘ mebeli",
@@ -208,7 +208,7 @@ window.BTT_I18N = {
     "foot.faq":"FAQ","foot.delivery":"Delivery","foot.returns":"Returns","foot.care":"Weave care",
     "foot.since":"SINCE 2024","foot.copy":"© 2026 BENTENTRADE. ALL RIGHTS RESERVED.","foot.privacy":"PRIVACY POLICY",
 
-    "cat.hero.k":"Catalog","cat.hero.title":"Synthetic-rattan range","cat.hero.sub":"Garden furniture, planters and baskets in synthetic rattan — handmade for home, patio and garden.",
+    "cat.hero.k":"Catalog","cat.hero.title":"Furniture, planters & baskets","cat.hero.sub":"Hand-woven pieces for home, patio and garden — the whole collection in one place.",
     "cat.filter":"Filter","cat.sort":"Sort","cat.results":"products",
     "cat.hero.cta":"Browse products","cat.hero.t1":"items in stock","cat.hero.t2":"categories","cat.hero.t3":"dispatch",
     "p4.name":"Terrace Dining Set","p4.cat":"Garden furniture",

@@ -9,21 +9,21 @@
   const CFG = {
     all: {
       img:"https://loremflickr.com/800/800/rattan,furniture/all?lock=11",
-      ru:{k:"Каталог",t:"Изделия из искусственного ротанга",s:"Садовая мебель, кашпо и корзины из искусственного ротанга — сделано вручную для дома, дачи и сада."},
-      uz:{k:"Katalog",t:"Sun’iy rotang mahsulotlari",s:"Sun’iy rotangdan bog‘ mebeli, gultuvak va savatlar — uy, dala va bog‘ uchun qo‘lda tayyorlangan."},
-      en:{k:"Catalog",t:"Synthetic-rattan range",s:"Garden furniture, planters and baskets in synthetic rattan — handmade for home, patio and garden."}
+      ru:{k:"Каталог",t:"Мебель, кашпо и корзины",s:"Плетёные изделия ручной работы для дома, дачи и сада — вся коллекция в одном месте."},
+      uz:{k:"Katalog",t:"Mebel, gultuvak va savatlar",s:"Uy, dala va bog‘ uchun qo‘lda to‘qilgan buyumlar — butun to‘plam bir joyda."},
+      en:{k:"Catalog",t:"Furniture, planters & baskets",s:"Hand-woven pieces for home, patio and garden — the whole collection in one place."}
     },
     furniture: {
       img:"https://loremflickr.com/800/800/rattan,sofa/all?lock=11",
-      ru:{k:"Садовая мебель",t:"Мебель для сада и террасы",s:"Диваны, кресла и обеденные группы из искусственного ротанга — всесезонные, на лёгком алюминиевом каркасе."},
-      uz:{k:"Bog‘ mebeli",t:"Bog‘ va terassa mebeli",s:"Sun’iy rotangdan divan, kreslo va ovqat to‘plamlari — har faslga mos, yengil alyumin karkasda."},
-      en:{k:"Garden furniture",t:"Furniture for garden & terrace",s:"Sofas, armchairs and dining sets in synthetic rattan — all-season, on a light aluminium frame."}
+      ru:{k:"Садовая мебель",t:"Мебель для сада и террасы",s:"Диваны, кресла и обеденные группы — всесезонные, на лёгком алюминиевом каркасе."},
+      uz:{k:"Bog‘ mebeli",t:"Bog‘ va terassa mebeli",s:"Divan, kreslo va ovqat to‘plamlari — har faslga mos, yengil alyumin karkasda."},
+      en:{k:"Garden furniture",t:"Furniture for garden & terrace",s:"Sofas, armchairs and dining sets — all-season, on a light aluminium frame."}
     },
     planter: {
       img:"https://loremflickr.com/800/800/wicker,planter/all?lock=4",
-      ru:{k:"Кашпо",t:"Кашпо из ротанга",s:"Плетёные кашпо с дренажом и вкладышем — для растений дома, на балконе и в саду."},
-      uz:{k:"Gultuvak",t:"Rotang gultuvaklari",s:"Drenaj va vkladishli to‘qilgan gultuvaklar — uy, balkon va bog‘dagi o‘simliklar uchun."},
-      en:{k:"Planters",t:"Rattan planters",s:"Woven planters with drainage and a liner — for plants at home, on the balcony and in the garden."}
+      ru:{k:"Кашпо",t:"Плетёные кашпо",s:"Кашпо с дренажом и вкладышем — для растений дома, на балконе и в саду."},
+      uz:{k:"Gultuvak",t:"To‘qilgan gultuvaklar",s:"Drenaj va vkladishli gultuvaklar — uy, balkon va bog‘dagi o‘simliklar uchun."},
+      en:{k:"Planters",t:"Woven planters",s:"Planters with drainage and a liner — for plants at home, on the balcony and in the garden."}
     },
     basket: {
       img:"https://loremflickr.com/800/800/woven,basket/all?lock=34",
@@ -33,15 +33,15 @@
     },
     indoor: {
       img:"https://loremflickr.com/800/800/rattan,rocking,chair/all?lock=90",
-      ru:{k:"Мебель для дома",t:"Мебель для дома из ротанга",s:"Кресла-качалки, столики, комоды и стеллажи из искусственного ротанга — для гостиной, спальни и балкона."},
-      uz:{k:"Uy mebeli",t:"Rotangdan uy mebeli",s:"Tebranma kreslo, stol, komod va stellajlar — mehmonxona, yotoqxona va balkon uchun."},
-      en:{k:"Home furniture",t:"Rattan home furniture",s:"Rocking chairs, coffee tables, dressers and shelving in synthetic rattan — for the living room, bedroom and balcony."}
+      ru:{k:"Мебель для дома",t:"Мебель для дома",s:"Кресла-качалки, столики, комоды и стеллажи — для гостиной, спальни и балкона."},
+      uz:{k:"Uy mebeli",t:"Uy mebeli",s:"Tebranma kreslo, stol, komod va stellajlar — mehmonxona, yotoqxona va balkon uchun."},
+      en:{k:"Home furniture",t:"Home furniture",s:"Rocking chairs, coffee tables, dressers and shelving — for the living room, bedroom and balcony."}
     },
     rattan: {
       img:"https://loremflickr.com/800/800/rattan,weave/all?lock=21",
-      ru:{k:"Материал",t:"Искусственный ротанг",s:"PE-ротанг выглядит как природное плетение, но не выгорает, не гниёт и служит годами."},
-      uz:{k:"Material",t:"Sun’iy rotang",s:"PE-rotang tabiiy to‘quvga o‘xshaydi, lekin rangini yo‘qotmaydi, chirimaydi va yillar xizmat qiladi."},
-      en:{k:"Material",t:"Synthetic rattan",s:"PE-rattan looks like natural weave but won't fade, won't rot and lasts for years."}
+      ru:{k:"Материал",t:"Плетение, которое служит годами",s:"Наше плетение выглядит как натуральное, но не выгорает, не гниёт и не боится улицы."},
+      uz:{k:"Material",t:"Yillar xizmat qiladigan to‘quv",s:"To‘quvimiz tabiiyga o‘xshaydi, lekin rangini yo‘qotmaydi, chirimaydi va ko‘chadan qo‘rqmaydi."},
+      en:{k:"Material",t:"A weave that lasts for years",s:"Our weave looks natural but won’t fade, won’t rot and isn’t afraid of the outdoors."}
     }
   };
 
