@@ -396,8 +396,8 @@
 .page-hero__card{
   max-width:720px;padding:clamp(32px,4vw,52px);border-radius:var(--r-xl);
 }
-.page-hero h1{font-size:clamp(38px,6vw,76px);max-width:14ch;margin-top:14px;}
-.page-hero .lead{margin-top:20px;}
+.page-hero h1{font-size:clamp(32px,4.4vw,56px);max-width:16ch;margin-top:14px;line-height:1.06;letter-spacing:-.02em;}
+.page-hero .lead{margin-top:18px;max-width:52ch;}
 
 /* catalog hero — dark liquid bento over photo (no blur) */
 .page-hero--cat{

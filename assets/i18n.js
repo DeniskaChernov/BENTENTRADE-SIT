@@ -62,13 +62,13 @@ window.BTT_I18N = {
     "cat.load":"Показать ещё","cat.empty":"В этой категории пока нет товаров. Попробуйте другой фильтр.",
 
     /* about */
-    "ab.hero.k":"О компании","ab.hero.title":"Искусственный ротанг, сплетённый вручную",
-    "ab.hero.sub":"Bententrade — мастерская плетения из искусственного ротанга: садовая мебель, кашпо, сундуки и корзины, собранные руками в Ташкенте.",
+    "ab.hero.k":"О компании","ab.hero.title":"Плетёная мебель ручной работы",
+    "ab.hero.sub":"Bententrade — мастерская ручного плетения: садовая мебель, кашпо, сундуки и корзины, собранные руками в Ташкенте.",
     "ab.story.k":"Наша история","ab.story.title":"От нити ротанга до мебели, которой не страшны годы и погода",
     "ab.story.body1":"Мы начали в 2024 году с простой идеи: плетёная мебель должна служить десятилетиями и не бояться улицы. Поэтому мы плетём не из натурального, а из искусственного ротанга — полиэтиленового волокна, которое выглядит как настоящее, но не выгорает и не трескается.",
     "ab.story.body2":"Сегодня Bententrade — это команда мастеров плетения и дизайнеров. Садовая мебель, кашпо и корзины — от первого эскиза до доставки к вам домой.",
     "ab.v.k":"Принципы","ab.v.title":"Во что мы верим",
-    "ab.v1.t":"Честный материал","ab.v1.b":"Только качественный PE-ротанг и алюминий. Никакой хрупкой пластмассы под видом плетения.",
+    "ab.v1.t":"Честный материал","ab.v1.b":"Только прочное плетение и лёгкий алюминий. Никакой хрупкой пластмассы под видом плетения.",
     "ab.v2.t":"Ручное плетение","ab.v2.b":"Каждое изделие плетётся вручную по нити — ровный рисунок и плотная посадка.",
     "ab.v3.t":"Всесезонность","ab.v3.b":"Не боится солнца, дождя и мороза — мебель остаётся на улице круглый год.",
     "ab.v4.t":"Уход за минуту","ab.v4.b":"Достаточно протереть влажной тканью — ни лака, ни пропиток.",
@@ -144,13 +144,13 @@ window.BTT_I18N = {
     "p15.name":"«Ajur» stellaj","p15.cat":"Uy mebeli",
     "cat.load":"Yana ko‘rsatish","cat.empty":"Bu toifada hozircha mahsulot yo‘q. Boshqa filtrni sinab ko‘ring.",
 
-    "ab.hero.k":"Kompaniya haqida","ab.hero.title":"Qo‘lda to‘qilgan sun’iy rotang",
-    "ab.hero.sub":"Bententrade — sun’iy rotangdan to‘quv ustaxonasi: bog‘ mebeli, gultuvak, sandiq va savatlar Toshkentda qo‘lda yig‘iladi.",
+    "ab.hero.k":"Kompaniya haqida","ab.hero.title":"Qo‘lda to‘qilgan mebel",
+    "ab.hero.sub":"Bententrade — qo‘lda to‘quv ustaxonasi: bog‘ mebeli, gultuvak, sandiq va savatlar Toshkentda qo‘lda yig‘iladi.",
     "ab.story.k":"Bizning tariximiz","ab.story.title":"Rotang tolasidan yillar va ob-havodan qo‘rqmaydigan mebelgacha",
     "ab.story.body1":"Biz 2024 yilda oddiy g‘oya bilan boshladik: to‘qilgan mebel o‘nlab yillar xizmat qilishi va ko‘chadan qo‘rqmasligi kerak. Shuning uchun biz tabiiy emas, sun’iy rotangdan — haqiqiyga o‘xshaydigan, lekin rangini yo‘qotmaydigan va yorilmaydigan polietilen toladan to‘qiymiz.",
     "ab.story.body2":"Bugun Bententrade — to‘quv ustalari va dizaynerlar jamoasi. Bog‘ mebeli, gultuvak va savatlar — birinchi eskizdan uyingizga yetkazishgacha.",
     "ab.v.k":"Tamoyillar","ab.v.title":"Biz nimaga ishonamiz",
-    "ab.v1.t":"Halol material","ab.v1.b":"Faqat sifatli PE-rotang va alyumin. To‘quv niqobidagi mo‘rt plastmassa yo‘q.",
+    "ab.v1.t":"Halol material","ab.v1.b":"Faqat mustahkam to‘quv va yengil alyumin. To‘quv niqobidagi mo‘rt plastmassa yo‘q.",
     "ab.v2.t":"Qo‘l to‘quvi","ab.v2.b":"Har bir buyum tola bo‘ylab qo‘lda to‘qiladi — tekis naqsh va zich o‘rnashish.",
     "ab.v3.t":"Har faslga mos","ab.v3.b":"Quyosh, yomg‘ir va sovuqdan qo‘rqmaydi — mebel yil bo‘yi ko‘chada turadi.",
     "ab.v4.t":"Bir daqiqalik parvarish","ab.v4.b":"Nam mato bilan artish kifoya — lak ham, qoplama ham kerak emas.",
@@ -225,13 +225,13 @@ window.BTT_I18N = {
     "p15.name":"Azhur Shelving Unit","p15.cat":"Home furniture",
     "cat.load":"Load more","cat.empty":"No products in this category yet. Try another filter.",
 
-    "ab.hero.k":"About us","ab.hero.title":"Synthetic rattan, woven by hand",
-    "ab.hero.sub":"Bententrade is a synthetic-rattan weaving workshop: garden furniture, planters, chests and baskets, assembled by hand in Tashkent.",
+    "ab.hero.k":"About us","ab.hero.title":"Woven furniture, made by hand",
+    "ab.hero.sub":"Bententrade is a hand-weaving workshop: garden furniture, planters, chests and baskets, assembled by hand in Tashkent.",
     "ab.story.k":"Our story","ab.story.title":"From a rattan strand to furniture that shrugs off years and weather",
     "ab.story.body1":"We started in 2024 with a simple idea: woven furniture should last for decades and not fear the outdoors. So we weave not with natural but with synthetic rattan — a polyethylene fibre that looks like the real thing but won't fade or crack.",
     "ab.story.body2":"Today Bententrade is a team of weavers and designers. Garden furniture, planters and baskets — from the first sketch to delivery at your door.",
     "ab.v.k":"Principles","ab.v.title":"What we believe in",
-    "ab.v1.t":"Honest material","ab.v1.b":"Only quality PE-rattan and aluminium. No brittle plastic pretending to be weave.",
+    "ab.v1.t":"Honest material","ab.v1.b":"Only durable weave and light aluminium. No brittle plastic pretending to be weave.",
     "ab.v2.t":"Hand-woven","ab.v2.b":"Every piece is woven by hand, strand by strand — an even pattern and a tight fit.",
     "ab.v3.t":"All-season","ab.v3.b":"Unfazed by sun, rain and frost — the furniture stays outdoors all year round.",
     "ab.v4.t":"One-minute care","ab.v4.b":"A wipe with a damp cloth is all it takes — no varnish, no treatments.",
@@ -415,6 +415,6 @@ Object.assign(window.BTT_I18N.en,{
 });
 
 /* ---- about CTA band ---- */
-Object.assign(window.BTT_I18N.ru,{"ab.band":"Искусственный ротанг — выбор, который служит годами"});
-Object.assign(window.BTT_I18N.uz,{"ab.band":"Sun’iy rotang — yillar xizmat qiladigan tanlov"});
-Object.assign(window.BTT_I18N.en,{"ab.band":"Synthetic rattan — a choice that lasts for years"});
+Object.assign(window.BTT_I18N.ru,{"ab.band":"Плетение, которое служит годами"});
+Object.assign(window.BTT_I18N.uz,{"ab.band":"Yillar xizmat qiladigan to‘quv"});
+Object.assign(window.BTT_I18N.en,{"ab.band":"A weave that lasts for years"});
