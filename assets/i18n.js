@@ -262,6 +262,9 @@ Object.assign(window.BTT_I18N.en,{"tool.theme":"Theme","tool.account":"Account",
 Object.assign(window.BTT_I18N.ru,{"pdp.notFound":"Товар не найден","pdp.notFoundSub":"Возможно, товар снят с продажи или ссылка устарела."});
 Object.assign(window.BTT_I18N.uz,{"pdp.notFound":"Mahsulot topilmadi","pdp.notFoundSub":"Ehtimol, mahsulot sotuvdan olingan yoki havola eskirgan."});
 Object.assign(window.BTT_I18N.en,{"pdp.notFound":"Product not found","pdp.notFoundSub":"It may have been discontinued or the link is out of date."});
+Object.assign(window.BTT_I18N.ru,{"type.eyebrow":"Быстрый выбор","type.title":"Популярные типы","type.set":"Комплект","type.table":"Стол","type.chair":"Стул","type.sofa":"Диван"});
+Object.assign(window.BTT_I18N.uz,{"type.eyebrow":"Tez tanlash","type.title":"Ommabop turlar","type.set":"To‘plam","type.table":"Stol","type.chair":"Stul","type.sofa":"Divan"});
+Object.assign(window.BTT_I18N.en,{"type.eyebrow":"Quick pick","type.title":"Popular types","type.set":"Set","type.table":"Table","type.chair":"Chair","type.sofa":"Sofa"});
 
 
 /* ---- account page ---- */
