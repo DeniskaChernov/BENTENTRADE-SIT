@@ -9,6 +9,7 @@
   if (!window.BTT_API) return;
 
   const money = (n) => "$" + n;
+  const mediaUrl = (key) => (key ? "/media/" + key : "");
 
   async function hydrateCatalog() {
     const grid = document.querySelector("#catalog-grid");
@@ -32,6 +33,11 @@
       }
       const nameEl = card.querySelector(".product__name");
       if (nameEl && p.name) nameEl.textContent = p.name;
+      // Real photo from the CRM (falls back to the existing placeholder image).
+      if (p.image) {
+        const img = card.querySelector(".product__media img");
+        if (img) { img.src = mediaUrl(p.image); img.style.display = ""; }
+      }
     });
   }
 
@@ -48,6 +54,21 @@
     if (old) {
       if (p.price_old) { old.textContent = money(p.price_old); old.style.display = ""; }
       else old.style.display = "none";
+    }
+    // Real gallery from the CRM: override the placeholder images when media exist.
+    const urls = (p.media || []).map((m) => mediaUrl(m.key)).filter(Boolean);
+    if (urls.length) {
+      const stage = document.querySelectorAll("[data-stage] img");
+      const thumbs = document.querySelectorAll("[data-thumb]");
+      stage.forEach((im, i) => {
+        if (urls[i]) { im.src = urls[i]; im.style.display = ""; im.classList.toggle("is-on", i === 0); }
+        else { im.style.display = "none"; im.classList.remove("is-on"); }
+      });
+      thumbs.forEach((btn, i) => {
+        const tImg = btn.querySelector("img");
+        if (urls[i]) { if (tImg) tImg.src = urls[i]; btn.style.display = ""; btn.classList.toggle("is-active", i === 0); }
+        else { btn.style.display = "none"; btn.classList.remove("is-active"); }
+      });
     }
   }
 

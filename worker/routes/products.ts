@@ -19,7 +19,8 @@ app.get("/", async (c) => {
   }
   const sql =
     `SELECT p.id, p.category, p.look, p.price_now, p.price_old, p.default_size,
-            i.name, i.category_label
+            i.name, i.category_label,
+            (SELECT m.key FROM media m WHERE m.product_id = p.id ORDER BY m.sort ASC, m.id ASC LIMIT 1) AS image
      FROM products p
      LEFT JOIN product_i18n i ON i.product_id = p.id AND i.lang = ?
      WHERE ${where.join(" AND ")}
