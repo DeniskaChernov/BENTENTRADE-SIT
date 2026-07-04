@@ -88,7 +88,7 @@
     sideImgs:[$('[data-h="sideImg"]'), $('[data-h="sideImgB"]')],
     badge:$('[data-h="badge"]'), t1:$('[data-h="t1"]'), t2:$('[data-h="t2"]'),
     interior:$('[data-h="interior"]'), bestS:$('[data-h="bestS"]'), bestB:$('[data-h="bestB"]'),
-    store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'), capCard:$('.hero__cap-card'),
+    store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'), lead:$('[data-h-lead]'),
     pocketInner:$('[data-h-inner]'), main:$('.hero__main'), photo:$('.hero__photo'), stats:$('[data-hero-stats]'),
     dots:$('[data-hero-dots]')
   };
@@ -119,7 +119,7 @@
   }
 
   function anim(){
-    [els.pocketInner, els.stats, els.capCard].forEach(el=>{
+    [els.pocketInner, els.stats, els.lead].forEach(el=>{
       if(!el) return; el.classList.remove("is-swap"); void el.offsetWidth; el.classList.add("is-swap");
     });
   }
