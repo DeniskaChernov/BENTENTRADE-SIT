@@ -157,7 +157,7 @@
     if(!head) return;
     let ticking = false;
     function apply(){
-      head.classList.toggle("is-scrolled", window.scrollY > 24);
+      head.classList.toggle("is-scrolled", window.scrollY > 10);
       document.documentElement.style.setProperty("--head-h", head.offsetHeight + "px");
       ticking = false;
     }

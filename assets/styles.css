@@ -274,11 +274,49 @@ p{margin:0;text-wrap:pretty;}
 [data-theme="dark"] .site-head.is-scrolled{box-shadow:0 1px 0 var(--line), 0 12px 40px -32px rgba(0,0,0,.35);}
 .site-head__in{
   max-width:var(--maxw);margin:0 auto;padding:10px var(--gut);
-  transition:padding .5s var(--ease-out);
+  border:1px solid transparent;border-radius:0;
+  transition:padding .5s var(--ease-flow);
   display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;
 }
 .nav{display:flex;align-items:center;gap:2px;}
 .site-head.is-scrolled .site-head__in{padding-top:7px;padding-bottom:7px;}
+
+/* Floating "pill" navbar animation on scroll (desktop). Same navbar, just the
+   motion from the shadcn header: detaches from the top, narrows, rounds,
+   blurs and lifts on a shadow — with an ease-out transition. */
+@media (min-width:901px){
+  .site-head{
+    transition:background .4s ease, box-shadow .4s ease, border-color .4s ease, top .5s var(--ease-flow);
+  }
+  .site-head__in{
+    transition:max-width .55s var(--ease-flow),
+               padding .5s var(--ease-flow), background .45s ease,
+               border-color .45s ease, box-shadow .45s ease,
+               border-radius .45s var(--ease-flow),
+               -webkit-backdrop-filter .45s ease, backdrop-filter .45s ease;
+  }
+  .site-head.is-scrolled{
+    top:12px;
+    background:transparent;
+    border-bottom-color:transparent;
+    box-shadow:none;
+  }
+  .site-head.is-scrolled .site-head__in{
+    max-width:min(calc(100% - 32px), calc(var(--maxw) - 148px));
+    padding:7px 22px;
+    background:color-mix(in oklab, var(--paper) 70%, transparent);
+    -webkit-backdrop-filter:saturate(150%) blur(14px);
+    backdrop-filter:saturate(150%) blur(14px);
+    border-color:var(--line);
+    border-radius:16px;
+    box-shadow:0 12px 34px -20px rgba(27,25,22,.30), 0 1px 0 rgba(255,255,255,.05) inset;
+  }
+  [data-theme="dark"] .site-head.is-scrolled{box-shadow:none;}
+  [data-theme="dark"] .site-head.is-scrolled .site-head__in{
+    background:color-mix(in oklab, var(--paper) 68%, transparent);
+    box-shadow:0 16px 46px -22px rgba(0,0,0,.6), 0 1px 0 rgba(255,255,255,.04) inset;
+  }
+}
 .nav a{
   padding:8px 14px;border-radius:var(--r-pill);font-size:14px;font-weight:600;color:var(--muted);white-space:nowrap;
   transition:color .35s var(--ease-flow),background .35s var(--ease-flow),transform .35s var(--ease-flow);
