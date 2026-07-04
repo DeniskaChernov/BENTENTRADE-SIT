@@ -5,6 +5,10 @@
   "description": "Bententrade — статический сайт (Cloudflare Static Assets) + API/CRM на Workers (Hono) + D1 + R2 + KV",
   "type": "module",
   "scripts": {
+    "start": "tsx server/index.ts",
+    "start:dev": "tsx watch server/index.ts",
+    "pg:migrate": "tsx scripts/pg-cli.ts migrate",
+    "pg:seed": "tsx scripts/pg-cli.ts seed",
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "release": "npm run typecheck && npm run db:migrate && wrangler deploy",
@@ -19,12 +23,21 @@
     "seed:gen": "node scripts/gen-seed.mjs",
     "typecheck": "tsc --noEmit"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240909.0",
+    "@types/node": "^20.14.0",
+    "@types/pg": "^8.11.6",
+    "tsx": "^4.19.1",
     "typescript": "^5.6.2",
     "wrangler": "^3.78.0"
   },
   "dependencies": {
-    "hono": "^4.6.3"
+    "@hono/node-server": "^1.13.1",
+    "dotenv": "^16.4.5",
+    "hono": "^4.6.3",
+    "pg": "^8.12.0"
   }
 }

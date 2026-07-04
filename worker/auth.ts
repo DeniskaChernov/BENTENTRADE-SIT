@@ -108,7 +108,10 @@ export async function destroySession(env: Env, id: string | null): Promise<void>
 }
 
 export function setSessionCookie(c: Ctx, id: string): void {
-  const secure = new URL(c.req.url).protocol === "https:";
+  // Behind a proxy (Railway) TLS is terminated upstream, so also honour X-Forwarded-Proto.
+  const secure =
+    new URL(c.req.url).protocol === "https:" ||
+    (c.req.header("x-forwarded-proto") || "").split(",")[0].trim() === "https";
   c.header(
     "Set-Cookie",
     `${SESSION_COOKIE}=${id}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${SESSION_TTL_SEC}` +
