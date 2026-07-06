@@ -21,11 +21,12 @@ window.BTT_I18N = {
 
     "twist.eyebrow":"Своё производство","twist.title.1":"Крученый","twist.title.2":"ротанг",
     "twist.body":"Плетём катушки из полиэтиленового волокна — от тонкого декора до толстого каркаса. Разные диаметры и цвета, стабильное качество партии за партией.",
+    "twist.f1":"Диаметры под ваш каркас и декор","twist.f2":"Палитра цветов — от базовых до под заказ","twist.f3":"Стабильное качество каждой партии",
     "twist.cta":"Смотреть каталог","twist.chip":"PE-ротанг",
 
     "cat.eyebrow":"Коллекция","cat.title.1":"Сделано из","cat.title.2":"искусственного ротанга",
     "lines.eyebrow":"Направления","lines.title":"Что мы производим",
-    "line.rattan":"Искусственный ротанг","line.planter":"Кашпо","line.twist":"Сундуки и корзины","line.furniture":"Садовая мебель","line.onreq":"Хит","line.indoor":"Мебель для дома","line.new":"Новое",
+    "line.rattan":"Искусственный ротанг","line.twisted":"Крученый ротанг","line.planter":"Кашпо","line.twist":"Сундуки и корзины","line.furniture":"Садовая мебель","line.onreq":"Хит","line.indoor":"Мебель для дома","line.new":"Новое",
     "chip.all":"Всё","chip.furniture":"Садовая мебель","chip.planter":"Кашпо","chip.basket":"Корзины и сундуки","chip.indoor":"Мебель для дома",
     "see":"Подробнее",
     "cat.furniture":"Садовая мебель","cat.planter":"Кашпо","cat.basket":"Корзины и сундуки","cat.indoor":"Мебель для дома",
@@ -109,11 +110,12 @@ window.BTT_I18N = {
 
     "twist.eyebrow":"O‘z ishlab chiqarish","twist.title.1":"Burma","twist.title.2":"rotang",
     "twist.body":"Polietilen tolidan g‘iloflar to‘qiyamiz — nozik dekor yoki qalin karkas uchun. Turli diametr va ranglar, har bir partiyada barqaror sifat.",
+    "twist.f1":"Karkas va dekor uchun turli diametr","twist.f2":"Asosiy va buyurtma ranglari","twist.f3":"Har bir partiyada barqaror sifat",
     "twist.cta":"Katalogni ko‘rish","twist.chip":"PE-rotang",
 
     "cat.eyebrow":"Kolleksiya","cat.title.1":"Sun’iy rotangdan","cat.title.2":"yasalgan",
     "lines.eyebrow":"Yo‘nalishlar","lines.title":"Biz nima ishlab chiqaramiz",
-    "line.rattan":"Sun’iy rotang","line.planter":"Gultuvak","line.twist":"Sandiq va savatlar","line.furniture":"Bog‘ mebeli","line.onreq":"Xit","line.indoor":"Uy mebeli","line.new":"Yangi",
+    "line.rattan":"Sun’iy rotang","line.twisted":"Burma rotang","line.planter":"Gultuvak","line.twist":"Sandiq va savatlar","line.furniture":"Bog‘ mebeli","line.onreq":"Xit","line.indoor":"Uy mebeli","line.new":"Yangi",
     "chip.all":"Hammasi","chip.furniture":"Bog‘ mebeli","chip.planter":"Gultuvak","chip.basket":"Savat va sandiq","chip.indoor":"Uy mebeli",
     "see":"Batafsil",
     "cat.furniture":"Bog‘ mebeli","cat.planter":"Gultuvak","cat.basket":"Savat va sandiq","cat.indoor":"Uy mebeli",
@@ -194,11 +196,12 @@ window.BTT_I18N = {
 
     "twist.eyebrow":"Own production","twist.title.1":"Twisted","twist.title.2":"rattan",
     "twist.body":"We weave coils from polyethylene fibre — from fine decor to heavy frame gauges. Multiple diameters and colours, consistent quality batch after batch.",
+    "twist.f1":"Diameters for frame and decor","twist.f2":"Colour palette — stock and custom","twist.f3":"Consistent quality every batch",
     "twist.cta":"Browse catalog","twist.chip":"PE-rattan",
 
     "cat.eyebrow":"Collection","cat.title.1":"Made from","cat.title.2":"synthetic rattan",
     "lines.eyebrow":"Categories","lines.title":"What we produce",
-    "line.rattan":"Synthetic rattan","line.planter":"Planters","line.twist":"Chests & baskets","line.furniture":"Garden furniture","line.onreq":"Top pick","line.indoor":"Home furniture","line.new":"New",
+    "line.rattan":"Synthetic rattan","line.twisted":"Twisted rattan","line.planter":"Planters","line.twist":"Chests & baskets","line.furniture":"Garden furniture","line.onreq":"Top pick","line.indoor":"Home furniture","line.new":"New",
     "chip.all":"All","chip.furniture":"Garden furniture","chip.planter":"Planters","chip.basket":"Baskets & chests","chip.indoor":"Home furniture",
     "see":"See details",
     "cat.furniture":"Garden furniture","cat.planter":"Planter","cat.basket":"Baskets & chests","cat.indoor":"Home furniture",
