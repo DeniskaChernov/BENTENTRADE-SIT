@@ -87,7 +87,7 @@ app.get("/admin/app.js", (c) =>
 const STATIC_ALLOW = /^\/(assets\/.+|[a-z0-9_.-]+\.html|favicon\.(?:ico|svg)|robots\.txt|sitemap\.xml|manifest\.webmanifest)$/i;
 app.use("*", async (c: Context, next: Next) => {
   const p = c.req.path;
-  if (p === "/" || STATIC_ALLOW.test(p)) return next();
+  if (p === "/" || p === "/health" || STATIC_ALLOW.test(p)) return next();
   return c.notFound();
 });
 app.get("/", serveStatic({ path: "./index.html" }));
@@ -102,7 +102,8 @@ async function boot() {
   serve({
     fetch: (req: Request) => app.fetch(req, ENV),
     port,
-    hostname: process.env.HOSTNAME || "::",
+    // Bind all interfaces. Do NOT use process.env.HOSTNAME — Railway sets it to the container id.
+    hostname: "0.0.0.0",
   }, (info) => {
     console.log(`Bententrade server on http://${info.address}:${info.port}`);
   });
