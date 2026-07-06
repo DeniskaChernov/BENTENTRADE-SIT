@@ -1,21 +1,20 @@
 /* ============================================================
-   BENTENTRADE — hero (split card + world switcher)
-   Worlds: twisted rattan · garden · home · planters
+   BENTENTRADE — hero (switchable worlds, reference layout)
+   Worlds: garden · home · rattan · planters — L-form overlay, 4 slides.
+   Multilingual (RU/UZ/EN); reacts to the global language switch.
    ============================================================ */
 (function(){
   const SLIDES = [
     {
       cat: "rattan",
       sideImg: "assets/hero-rattan.png",
-      eyebrow: {ru:"Своё производство",       uz:"O‘z ishlab chiqarish",   en:"Own production"},
-      chip:    {ru:"PE-ротанг",               uz:"PE-rotang",              en:"PE-rattan"},
-      t1:      {ru:"Крученый",                uz:"Burma",                  en:"Twisted"},
+      t1:      {ru:"Искусственный",           uz:"Sun’iy",                 en:"Synthetic"},
       t2:      {ru:"ротанг",                  uz:"rotang",                 en:"rattan"},
-      sub:     {ru:"Плетём катушки из полиэтиленового волокна — от тонкого декора до толстого каркаса. Разные диаметры и цвета, стабильное качество партии за партией.",
-                uz:"Polietilen tolidan g‘iloflar to‘qiyamiz — nozik dekor yoki qalin karkas uchun. Turli diametr va ranglar, har bir partiyada barqaror sifat.",
-                en:"We weave coils from polyethylene fibre — from fine decor to heavy frame gauges. Multiple diameters and colours, consistent quality batch after batch."},
+      sub:     {ru:"Сами плетём мебель, кашпо и корзины — материал не выгорает на солнце, не боится влаги и мороза, служит годами.",
+                uz:"Mebel, gultuvak va savatlarni o‘zimiz to‘qiyamiz — quyoshda so‘lmaydi, yomg‘ir va sovuqdan qo‘rqmaydi, yillar xizmat qiladi.",
+                en:"We weave furniture, planters and baskets in-house — won’t fade in the sun, handles rain and frost, lasts for years."},
       store:   {ru:"Смотреть каталог",         uz:"Katalogni ko‘rish",      en:"Browse catalog"},
-      href:    "catalog.html?cat=rattan"
+      href:    "catalog.html"
     },
     {
       cat: "furniture",
@@ -58,7 +57,6 @@
 
   const els = {
     heroImgs:[$('[data-h="heroImg"]'), $('[data-h="heroImgB"]')],
-    eyebrow:$('[data-h="eyebrow"]'), chip:$('[data-h="chip"]'),
     t1:$('[data-h="t1"]'), t2:$('[data-h="t2"]'),
     sub:$('[data-h="sub"]'),
     store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'),
@@ -97,6 +95,7 @@
       if(!el) return; el.classList.remove("is-swap"); void el.offsetWidth; el.classList.add("is-swap");
     });
   }
+  // crossfade two stacked <img> layers — old stays painted until new loads
   function crossfade(layers, src){
     const on = layers.find(i=>i.classList.contains("is-on")) || layers[0];
     const off = layers.find(i=>i!==on);
@@ -106,17 +105,9 @@
     off.src=src;
     if(off.complete && off.naturalWidth) show();
   }
-  function setOptional(el, val){
-    if(!el) return;
-    const text = val || "";
-    el.textContent = text;
-    el.hidden = !text;
-  }
   function render(animate){
     const s=SLIDES[idx];
     crossfade(els.heroImgs, s.sideImg);
-    setOptional(els.eyebrow, s.eyebrow ? L(s.eyebrow) : "");
-    setOptional(els.chip, s.chip ? L(s.chip) : "");
     els.t1.textContent=L(s.t1); els.t2.textContent=L(s.t2);
     els.sub.textContent=L(s.sub);
     els.store.textContent=L(s.store);
