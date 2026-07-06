@@ -50,8 +50,7 @@
       href:    "catalog.html?cat=planter"
     },
     {
-      cat: "twisted",
-      sideImg: "assets/hero-rattan.png",
+      sideImg: "assets/hero-twisted-rattan.png",
       t1:      {ru:"Крученый",                uz:"Burma",                  en:"Twisted"},
       t2:      {ru:"ротанг",                  uz:"rotang",                 en:"rattan"},
       sub:     {ru:"Плетём катушки из полиэтиленового волокна — от тонкого декора до толстого каркаса. Разные диаметры и цвета, стабильное качество партии за партией.",
