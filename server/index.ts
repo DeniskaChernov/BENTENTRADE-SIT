@@ -39,11 +39,20 @@ app.use("*", async (c: Context, next: Next) => {
   } catch (e) { /* immutable headers — ignore */ }
 });
 
+// Flipped to true once the DB has migrated. Until then API calls (except the
+// health check) return a clean 503 instead of throwing on every query.
+let dbReady = false;
+app.use("/api/*", async (c: Context, next: Next) => {
+  if (c.req.path === "/api/health") return next();
+  if (!dbReady) return c.json({ error: "db_unavailable" }, 503);
+  return next();
+});
+
 // Sessions only where they matter (API), so static assets stay cheap.
 app.use("/api/*", sessionMiddleware);
 
-// Health check.
-app.get("/api/health", (c) => c.json({ ok: true, ts: Date.now() }));
+// Health check (always available so the platform can probe the process).
+app.get("/api/health", (c) => c.json({ ok: dbReady, ts: Date.now() }));
 
 // Public API.
 app.route("/api/products", products);
@@ -89,9 +98,11 @@ async function boot() {
   try {
     await migrate();
     const seeded = await seedIfEmpty();
+    dbReady = true;
     console.log(seeded ? "[db] migrated + seeded" : "[db] migrated");
   } catch (e) {
-    console.error("[db] init failed (static site still served):", (e as Error).message);
+    dbReady = false;
+    console.error("[db] init failed (API returns 503, static site still served):", (e as Error).message);
   }
   serve({ fetch: (req: Request) => app.fetch(req, ENV), port }, (info) => {
     console.log(`Bententrade server on http://localhost:${info.port}`);

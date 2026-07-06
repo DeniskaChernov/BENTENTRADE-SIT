@@ -31,6 +31,14 @@
       const key = el.getAttribute("data-i18n-aria");
       if(d[key] != null) el.setAttribute("aria-label", d[key]);
     });
+    // Give product images a meaningful alt from the visible product name
+    // (covers static cards; JS-built cards set their own alt).
+    document.querySelectorAll(".product__media img").forEach(img=>{
+      const card = img.closest(".product, [data-product]");
+      const nm = card && card.querySelector(".product__name");
+      const txt = nm && nm.textContent.trim();
+      if(txt) img.setAttribute("alt", txt);
+    });
     document.querySelectorAll(".lang button").forEach(b=>{
       b.classList.toggle("is-active", b.dataset.lang === lang);
       b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
@@ -276,6 +284,17 @@
     });
   }
 
+  function initFaq(){
+    document.querySelectorAll("[data-faq] .faq-q").forEach(btn=>{
+      const panel = document.getElementById(btn.getAttribute("aria-controls"));
+      btn.addEventListener("click", ()=>{
+        const open = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", open ? "false" : "true");
+        if(panel) panel.hidden = open;
+      });
+    });
+  }
+
   function initMobileNav(){
     const burger = document.querySelector(".burger");
     const drawer = document.querySelector(".mobile-drawer");
@@ -315,6 +334,7 @@
     initCounters();
     initPageTransitions();
     initMobileNav();
+    initFaq();
 
     document.querySelector("[data-cat-reset]")?.addEventListener("click", ()=>{
       document.querySelector('.cat-chips .chip[data-cat="all"]')?.click();

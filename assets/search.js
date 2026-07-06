@@ -68,7 +68,7 @@
       '<div class="search-box" role="dialog" aria-modal="true">'+
         '<div class="search-box__head">'+
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>'+
-          '<input class="search-box__input" type="text" autocomplete="off" spellcheck="false">'+
+          '<input class="search-box__input" type="text" autocomplete="off" spellcheck="false" placeholder="'+esc(t("srch.ph"))+'" data-i18n-ph="srch.ph" aria-label="'+esc(t("srch.ph"))+'" data-i18n-aria="srch.ph">'+
           '<span class="search-box__kbd">ESC</span>'+
         '</div>'+
         '<div class="search-box__body"></div>'+
@@ -132,7 +132,7 @@
 
   function row(img, title, sub, i, glyph){
     const ic = img
-      ? '<span class="search-item__ic"><img src="'+img+'" alt="" onerror="this.parentNode.textContent=\''+(glyph||"")+'\'"></span>'
+      ? '<span class="search-item__ic"><img src="'+img+'" alt="'+esc(title||"")+'" onerror="this.parentNode.textContent=\''+(glyph||"")+'\'"></span>'
       : '<span class="search-item__ic">'+esc(glyph||"")+'</span>';
     return '<button class="search-item" data-i="'+i+'">'+ic+
       '<span class="search-item__tx"><b>'+esc(title)+'</b><span>'+esc(sub)+'</span></span>'+

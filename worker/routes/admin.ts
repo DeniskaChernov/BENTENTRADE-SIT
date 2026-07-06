@@ -254,15 +254,31 @@ app.get("/media", async (c) => {
   return c.json({ media: results });
 });
 
+// Only real raster image types are accepted; the extension is derived from the
+// MIME type (never trusted from the filename) to avoid spoofed uploads.
+const ALLOWED_MIME: Record<string, string> = {
+  "image/jpeg": "jpg",
+  "image/png": "png",
+  "image/webp": "webp",
+  "image/gif": "gif",
+  "image/avif": "avif",
+};
+const MAX_UPLOAD_BYTES = 8 * 1024 * 1024; // 8 MB
+
 app.post("/media", async (c) => {
   const form = await c.req.formData();
   const raw = form.get("file") as unknown as File | string | null;
   if (!raw || typeof raw === "string") return c.json({ error: "file_required" }, 422);
   const file: File = raw;
+  const mime = (file.type || "").toLowerCase();
+  const ext = ALLOWED_MIME[mime];
+  if (!ext) return c.json({ error: "unsupported_type" }, 415);
+  if (typeof file.size === "number" && (file.size <= 0 || file.size > MAX_UPLOAD_BYTES)) {
+    return c.json({ error: "file_too_large", maxBytes: MAX_UPLOAD_BYTES }, 413);
+  }
   const productId = str(form.get("product_id"), 40) || null;
   const articleId = form.get("article_id") ? Number(form.get("article_id")) : null;
   const alt = str(form.get("alt"), 200);
-  const ext = (file.name.split(".").pop() || "bin").toLowerCase().replace(/[^a-z0-9]/g, "");
   const scope = productId ? `products/${productId}` : articleId ? `articles/${articleId}` : "misc";
   const key = `${scope}/${crypto.randomUUID()}.${ext}`;
   await c.env.MEDIA.put(key, file.stream(), {

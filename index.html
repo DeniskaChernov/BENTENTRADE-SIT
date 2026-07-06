@@ -68,14 +68,14 @@
 
 <main class="home-flow">
 <!-- ===== HERO (unified card, 4 worlds) ===== -->
-<section class="hero wrap" data-hero>
+<section class="hero wrap" data-hero role="region" aria-roledescription="carousel" data-i18n-aria="hero.carousel" aria-label="Витрина">
   <div class="hero__card" data-hero-card>
     <div class="hero__bg" aria-hidden="true">
       <img class="hero__img is-on" data-h="heroImg" src="https://loremflickr.com/800/800/patio,furniture/all?lock=31" alt="" loading="eager" fetchpriority="high" decoding="async">
       <img class="hero__img" data-h="heroImgB" alt="">
     </div>
     <div class="hero__shade" aria-hidden="true"></div>
-    <div class="hero__main" data-h-inner>
+    <div class="hero__main" data-h-inner aria-live="polite">
       <h1 class="hero__title"><span data-h="t1">Мебель</span><br><span data-h="t2">для дачи и сада</span></h1>
       <p class="hero__lead" data-h-lead data-h="sub">Диваны, кресла и обеденные группы для террасы и двора — всё в наличии.</p>
       <a class="btn btn--light hero__cta btn--icon-end" data-h="storeLink" href="catalog.html?cat=furniture">
@@ -172,10 +172,10 @@
     <article class="product reveal" data-product data-cat="furniture">
       <div class="product__media media">
         <span class="badge-sale">-20%</span>
-        <button class="fav" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
         <img src="https://loremflickr.com/800/800/rattan,sofa/all?lock=11" alt="" loading="lazy" onerror="this.style.display='none'">
         <a class="see" href="product.html?id=p1" data-i18n="see">Подробнее</a>
-        <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p1.cat">Садовая мебель</div>
@@ -188,10 +188,10 @@
     <article class="product reveal" data-product data-cat="planter">
       <div class="product__media media">
         <span class="badge-sale">-27%</span>
-        <button class="fav" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
         <img src="https://loremflickr.com/800/800/wicker,planter/all?lock=4" alt="" loading="lazy" onerror="this.style.display='none'">
         <a class="see" href="product.html?id=p3" data-i18n="see">Подробнее</a>
-        <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p3.cat">Кашпо</div>
@@ -203,10 +203,10 @@
     <!-- basket / chest -->
     <article class="product reveal" data-product data-cat="basket">
       <div class="product__media media">
-        <button class="fav" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
         <img src="https://loremflickr.com/800/800/woven,basket/all?lock=34" alt="" loading="lazy" onerror="this.style.display='none'">
         <a class="see" href="product.html?id=p6" data-i18n="see">Подробнее</a>
-        <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p6.cat">Корзины и сундуки</div>
@@ -219,10 +219,10 @@
     <article class="product reveal" data-product data-cat="indoor">
       <div class="product__media media">
         <span class="badge-sale">-19%</span>
-        <button class="fav" data-fav aria-label="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
         <img src="https://loremflickr.com/800/800/rattan,rocking,chair/all?lock=90" alt="" loading="lazy" onerror="this.style.display='none'">
         <a class="see" href="product.html?id=p12" data-i18n="see">Подробнее</a>
-        <button class="add" data-add aria-label="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p12.cat">Мебель для дома</div>
@@ -351,6 +351,7 @@
   </div>
 </footer>
 
+<script src="assets/util.js"></script>
 <script src="assets/api.js"></script>
 <script src="assets/i18n.js"></script>
 <script src="assets/hero.js"></script>

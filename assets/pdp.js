@@ -20,8 +20,9 @@
   const t = key => (DICT[lang()]||DICT.ru||{})[key];
   const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-  const FAV_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>';
-  const ADD_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>';
+  const U = window.BTT_UTIL || {};
+  const FAV_SVG = U.FAV_SVG || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>';
+  const ADD_SVG = U.ADD_SVG || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>';
 
   function setImages(){
     const imgs = window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(id) : null;
@@ -87,10 +88,10 @@
       const old = p.old ? '<span class="price__old">$' + p.old + '</span>' : "";
       return '<article class="product reveal" data-product data-cat="' + esc(p.cat) + '">' +
         '<div class="product__media media">' + sale +
-        '<button class="fav" data-fav aria-label="fav">' + FAV_SVG + '</button>' +
-        '<img src="' + esc(img) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' +
+        '<button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="' + esc(t("a11y.fav")||"") + '">' + FAV_SVG + '</button>' +
+        '<img src="' + esc(img) + '" alt="' + esc(pn||"") + '" loading="lazy" onerror="this.style.display=\'none\'">' +
         '<a class="see" href="product.html?id=' + esc(pid) + '">' + esc(see) + '</a>' +
-        '<button class="add" data-add aria-label="add">' + ADD_SVG + '</button>' +
+        '<button class="add" data-add data-i18n-aria="a11y.add" aria-label="' + esc(t("a11y.add")||"") + '">' + ADD_SVG + '</button>' +
         '</div><div><div class="product__cat">' + esc(pc) + '</div>' +
         '<div class="product__name" style="margin-top:4px">' + esc(pn) + '</div>' +
         '<div class="price" style="margin-top:8px"><span class="price__now">$' + p.now + '</span>' + old + '</div></div></article>';

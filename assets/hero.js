@@ -79,9 +79,12 @@
     return s;
   }
 
+  els.dots.setAttribute("role", "tablist");
   SLIDES.forEach((s,i)=>{
     const b=document.createElement("button");
     b.className="hero__sw-dot";
+    b.setAttribute("type","button");
+    b.setAttribute("role","tab");
     b.setAttribute("aria-label", T("hero.slide", { n: i+1 }));
     b.addEventListener("click",()=>go(i,true));
     els.dots.appendChild(b);
@@ -113,7 +116,7 @@
     els.sub.textContent=L(s.sub);
     els.store.textContent=L(s.store);
     els.storeLink.href=s.href;
-    dotEls.forEach((d,i)=>d.classList.toggle("is-active",i===idx));
+    dotEls.forEach((d,i)=>{ const on=i===idx; d.classList.toggle("is-active",on); d.setAttribute("aria-selected", on?"true":"false"); });
     if(animate) anim();
   }
   function go(n,user){ idx=(n+SLIDES.length)%SLIDES.length; render(true); if(user) start(); }

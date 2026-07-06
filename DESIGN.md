@@ -22,11 +22,14 @@ assets/
   i18n.js         Словарь RU/UZ/EN (window.BTT_I18N)
   site.js         Язык, тема, reveal, фильтры каталога, формы, --head-h, бургер
   hero.js         Герой — 4 слайда, L-форма, автоплей, свайп
+  catalog-sync.js Синхронизация каталога/главной/related с CRM (кэш по языку)
+  util.js         Общие хелперы lang/t/esc и SVG-иконки карточек (window.BTT_UTIL)
   catalog-hero.js Синхронизация героя каталога с фильтрами (btt:cat-change)
   products.js     Каталог данных — BTT_PRODUCTS, BTT_PRODUCT_IMG, BTT_PRODUCT_CAT
   pdp.js          PDP: гидратация, галерея, похожие товары
   cart.js         Корзина + избранное (localStorage), drawer, wireProductButtons
-  account.js      Вкладки кабинета, динамическое избранное, мобильный drawer
+  account.js      Вкладки кабинета, адреса, избранное, мобильный drawer
+  blog.js         Журнал — loading/error/empty, SEO meta на article
   search.js       Spotlight-поиск
   assistant.js    Чат-помощник «Бен»
   fx.js           Микро-анимации входа страницы
@@ -44,6 +47,8 @@ assets/
 </head>
 <body>
   …
+  <script src="assets/util.js"></script>
+  <script src="assets/api.js"></script>
   <script src="assets/i18n.js"></script>
   <script src="assets/products.js"></script>   <!-- каталог, PDP, account -->
   <script src="assets/hero.js"></script>       <!-- только index -->
@@ -85,6 +90,17 @@ assets/
 | `--spatial-shadow` | тень глубины |
 
 Классы: `.liquid`, `.liquid-glass`, `.glass`, `.surface` — сплошной фон + sheen, **blur отключён**.
+
+**Брейкпоинты** (эталонные значения в `@media`, см. комментарий в `styles.css`):
+
+| px | Где используется |
+|---|---|
+| 1100 | каталог 4→3 колонки |
+| 980 | hero/split, общие stack-раскладки |
+| 900 | аккаунт, PDP, cat-hero |
+| 720 | фильтры со скроллом, type-strip 2×2 |
+| 600 | hero mobile, promo |
+| 420 | узкие телефоны |
 
 **Тёмная тема** — `[data-theme="dark"]` переопределяет все токены выше (`--paper:#141109`, светлый `--text`, ярче медь). Переключатель — `[data-theme-toggle]`, значение в `localStorage.btt_theme`. Анти-FOUC — inline `<script>` в `<head>` каждой страницы.
 

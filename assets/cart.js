@@ -32,7 +32,8 @@
         coComment:"Комментарий",coCommentPh:"Пожелания к заказу (необязательно)",
         coSubmit:"Оформить заказ",coSending:"Оформляем…",coMsgOpt:"Или отправьте заказ менеджеру:",
         errName:"Укажите имя",errPhone:"Укажите корректный телефон",errAddress:"Укажите адрес доставки",
-        errOrder:"Не удалось оформить заказ. Попробуйте ещё раз или напишите нам."},
+        errOrder:"Не удалось оформить заказ. Попробуйте ещё раз или напишите нам.",
+        close:"Закрыть",less:"Меньше",more:"Больше"},
     uz:{cart:"Savat",empty:"Savat bo‘sh",emptyHint:"Katalogdan mebel qo‘shing — u shu yerda paydo bo‘ladi.",
         toCat:"Katalogga o‘tish",total:"Jami",checkout:"Buyurtma berish",pcs:"dona",
         done:"Buyurtma qabul qilindi! Menejer bog‘lanadi.",remove:"Olib tashlash",
@@ -48,7 +49,8 @@
         coComment:"Izoh",coCommentPh:"Buyurtmaga istaklar (ixtiyoriy)",
         coSubmit:"Buyurtma berish",coSending:"Rasmiylashtirilmoqda…",coMsgOpt:"Yoki buyurtmani menejerga yuboring:",
         errName:"Ismni kiriting",errPhone:"To‘g‘ri telefon kiriting",errAddress:"Yetkazish manzilini kiriting",
-        errOrder:"Buyurtma berilmadi. Qayta urinib ko‘ring yoki bizga yozing."},
+        errOrder:"Buyurtma berilmadi. Qayta urinib ko‘ring yoki bizga yozing.",
+        close:"Yopish",less:"Kamroq",more:"Ko‘proq"},
     en:{cart:"Cart",empty:"Your cart is empty",emptyHint:"Add furniture from the catalog — it will show up here.",
         toCat:"Go to catalog",total:"Total",checkout:"Checkout",pcs:"pcs",
         done:"Order placed! Our manager will be in touch.",remove:"Remove",
@@ -64,7 +66,8 @@
         coComment:"Comment",coCommentPh:"Notes for your order (optional)",
         coSubmit:"Place order",coSending:"Placing…",coMsgOpt:"Or send the order to our manager:",
         errName:"Enter your name",errPhone:"Enter a valid phone",errAddress:"Enter a delivery address",
-        errOrder:"Couldn't place the order. Try again or message us."}
+        errOrder:"Couldn't place the order. Try again or message us.",
+        close:"Close",less:"Less",more:"More"}
   };
   function t(k){ return (STR[lang()]||STR.ru)[k]; }
 
@@ -75,7 +78,18 @@
   const getFavs = ()=>read("btt_favs");
   const cartCount = ()=>{ const c=getCart(); return Object.values(c).reduce((n,it)=>n+(it.qty||1),0); };
   const favCount  = ()=>Object.keys(getFavs()).length;
-  function onFavsChange(){ document.dispatchEvent(new CustomEvent("btt:favs-change")); }
+  let _favSyncT=null;
+  function onFavsChange(){
+    document.dispatchEvent(new CustomEvent("btt:favs-change"));
+    // Best-effort server sync on every toggle (site-wide, not just the account
+    // page). Anonymous users get a 401 which we simply ignore.
+    if(window.BTT_API && window.BTT_API.putFavorites){
+      clearTimeout(_favSyncT);
+      _favSyncT=setTimeout(()=>{
+        try{ Promise.resolve(window.BTT_API.putFavorites(Object.keys(getFavs()))).catch(()=>{}); }catch(e){}
+      }, 500);
+    }
+  }
 
   /* ---------- derive a product snapshot from DOM / PDP ---------- */
   function snapFromCard(card){
@@ -177,9 +191,9 @@
           '<div class="dl-main"><div class="dl-name">'+esc(it.name)+'</div>'+
             '<div class="dl-price">$'+(it.price||0)+'</div>'+
             '<div class="dl-qty" data-dl-qty="'+esc(id)+'">'+
-              '<button data-dl-dec aria-label="−"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg></button>'+
+              '<button data-dl-dec aria-label="'+esc(t("less"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg></button>'+
               '<span>'+(it.qty||1)+'</span>'+
-              '<button data-dl-inc aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>'+
+              '<button data-dl-inc aria-label="'+esc(t("more"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>'+
             '</div></div>'+
           '<button class="dl-del" data-dl-del="'+esc(id)+'" aria-label="'+esc(t("remove"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg></button>'+
         '</div>';
@@ -190,7 +204,7 @@
     }
     cartEl.innerHTML=
       '<div class="drawer-head"><h3>'+esc(t("cart"))+'</h3>'+
-      '<button class="drawer-x" data-drawer-close aria-label="×"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+body;
+      '<button class="drawer-x" data-drawer-close aria-label="'+esc(t("close"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+body;
     wireDrawer(cartEl);
   }
 
@@ -218,7 +232,7 @@
     }
     favEl.innerHTML=
       '<div class="drawer-head"><h3>'+esc(t("fav"))+'</h3>'+
-      '<button class="drawer-x" data-drawer-close aria-label="×"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+body;
+      '<button class="drawer-x" data-drawer-close aria-label="'+esc(t("close"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+body;
     wireDrawer(favEl);
   }
 
@@ -369,7 +383,7 @@
     const num = orderId ? '<div class="t" style="opacity:.7;font-size:14px;margin-top:-6px">№ '+esc(orderId)+'</div>' : '';
     const tgIco='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 2.9 11.6c-1 .4-1 1.8 0 2.1l4.7 1.5 1.8 5.6c.3.8 1.3 1 1.9.4l2.6-2.5 4.7 3.5c.7.5 1.7.1 1.9-.7L23 5.5c.2-1-.8-1.8-1.7-1.2Z"/></svg>';
     const waIco='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.6 4.7-1.2A10 10 0 1 0 12 2Zm5.3 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7s-3.9-3.3-4-3.5c-.1-.2-1-1.3-1-2.5s.6-1.8.9-2.1c.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .6.4l.8 2c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2 1.2.9 1.8.9 2.1.8.2-.1.5-.5.7-.8.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.6 0 1.2Z"/></svg>';
-    cartEl.innerHTML='<div class="drawer-head"><h3>'+esc(t("cart"))+'</h3><button class="drawer-x" data-drawer-close aria-label="×"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
+    cartEl.innerHTML='<div class="drawer-head"><h3>'+esc(t("cart"))+'</h3><button class="drawer-x" data-drawer-close aria-label="'+esc(t("close"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
       '<div class="drawer-empty"><svg viewBox="0 0 24 24" fill="none" stroke="#3c8a4e" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="t">'+esc(t("done"))+'</div>'+num+
       '<p class="drawer-co__sub" style="margin:14px 0 10px">'+esc(t("coMsgOpt"))+'</p>'+
       '<div class="co-msg-row">'+
@@ -391,8 +405,8 @@
     const pickup=saved.method==="pickup";
     const val=(k)=>esc(saved[k]||"");
     cartEl.innerHTML=
-      '<div class="drawer-head"><button class="drawer-back" data-cart-back aria-label="←"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><h3>'+esc(t("ordTitle"))+'</h3>'+
-      '<button class="drawer-x" data-drawer-close aria-label="×"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
+      '<div class="drawer-head"><button class="drawer-back" data-cart-back aria-label="'+esc(t("ordBack"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><h3>'+esc(t("ordTitle"))+'</h3>'+
+      '<button class="drawer-x" data-drawer-close aria-label="'+esc(t("close"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
       '<div class="drawer-co"><p class="drawer-co__sub">'+esc(t("ordSub"))+'</p>'+
         '<div class="ord-list">'+rows+'</div>'+
         '<div class="ord-total"><span>'+esc(t("total"))+'</span><b>'+CONFIG.currency+total+'</b></div>'+

@@ -4,6 +4,8 @@
    BENTENTRADE — design tokens
    ============================================================ */
 :root{
+  /* Responsive breakpoints (reference values — CSS vars can't be used in @media):
+     1100 catalog 4→3 | 980 hero/split | 900 acc/pdp | 720 filters | 600 hero mobile | 420 narrow */
   /* base palette */
   --ink:#1b1916;
   --ink-2:#262220;

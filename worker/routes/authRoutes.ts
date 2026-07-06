@@ -88,6 +88,10 @@ app.get("/me", async (c) => {
 /** POST /api/auth/bootstrap-admin — promote a user to admin using a one-time token.
  *  Body: { email, token }. Token is compared to the ADMIN_BOOTSTRAP_TOKEN secret. */
 app.post("/bootstrap-admin", async (c) => {
+  // Tight rate-limit: this endpoint checks a secret token, so throttle brute force.
+  if (!(await rateLimit(c.env, `bootstrap:${clientIp(c)}`, 5, 3600))) {
+    return c.json({ error: "rate_limited" }, 429);
+  }
   const body = await c.req.json().catch(() => ({}));
   const token = str(body.token, 200);
   const email = str(body.email, 160).toLowerCase();

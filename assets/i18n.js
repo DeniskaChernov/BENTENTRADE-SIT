@@ -259,6 +259,9 @@ Object.assign(window.BTT_I18N.en,{"srch.ph":"Search furniture, planters, baskets
 Object.assign(window.BTT_I18N.ru,{"tool.theme":"Тема","tool.account":"Аккаунт","tool.menu":"Меню"});
 Object.assign(window.BTT_I18N.uz,{"tool.theme":"Mavzu","tool.account":"Akkaunt","tool.menu":"Menyu"});
 Object.assign(window.BTT_I18N.en,{"tool.theme":"Theme","tool.account":"Account","tool.menu":"Menu"});
+Object.assign(window.BTT_I18N.ru,{"a11y.fav":"В избранное","a11y.add":"В корзину","a11y.close":"Закрыть","a11y.prev":"Назад","a11y.next":"Вперёд","hero.carousel":"Витрина"});
+Object.assign(window.BTT_I18N.uz,{"a11y.fav":"Sevimlilarga","a11y.add":"Savatga","a11y.close":"Yopish","a11y.prev":"Orqaga","a11y.next":"Oldinga","hero.carousel":"Vitrina"});
+Object.assign(window.BTT_I18N.en,{"a11y.fav":"Add to wishlist","a11y.add":"Add to cart","a11y.close":"Close","a11y.prev":"Previous","a11y.next":"Next","hero.carousel":"Showcase"});
 Object.assign(window.BTT_I18N.ru,{"pdp.notFound":"Товар не найден","pdp.notFoundSub":"Возможно, товар снят с продажи или ссылка устарела."});
 Object.assign(window.BTT_I18N.uz,{"pdp.notFound":"Mahsulot topilmadi","pdp.notFoundSub":"Ehtimol, mahsulot sotuvdan olingan yoki havola eskirgan."});
 Object.assign(window.BTT_I18N.en,{"pdp.notFound":"Product not found","pdp.notFoundSub":"It may have been discontinued or the link is out of date."});
@@ -281,6 +284,7 @@ Object.assign(window.BTT_I18N.ru,{
   "acc.ord.track":"Отследить","acc.ord.repeat":"Повторить заказ","acc.ord.review":"Оставить отзыв",
   "acc.wish.sub":"Товары, которые вы сохранили на потом.","acc.wish.empty":"В избранном пока пусто. Сохраняйте товары из каталога — они появятся здесь.","acc.wish.goto":"Перейти в каталог",
   "acc.addr.sub":"Адреса доставки для быстрого оформления.","acc.addr.edit":"Изменить","acc.addr.default":"Адрес по умолчанию","acc.addr.office":"Офис","acc.addr.add":"Добавить адрес",
+  "acc.addr.label":"Метка (например, Дом)","acc.addr.city":"Город","acc.addr.line":"Улица, дом, квартира","acc.addr.cancel":"Отмена","acc.addr.del":"Удалить адрес",
   "acc.set.sub":"Личные данные и предпочтения.","acc.set.personal":"Личные данные","acc.set.name":"Имя","acc.set.email":"Email","acc.set.phone":"Телефон","acc.set.save":"Сохранить изменения","acc.set.saved":"Изменения сохранены ✓",
   "acc.set.prefs":"Предпочтения","acc.set.theme":"Тема оформления","acc.set.themehint":"Светлая / Тёмная","acc.set.switch":"Переключить","acc.set.lang":"Язык","acc.set.langhint":"Русский · O‘zbek · English","acc.set.news":"Рассылка","acc.set.newson":"Новинки и акции — включено"
 });
@@ -297,6 +301,7 @@ Object.assign(window.BTT_I18N.uz,{
   "acc.ord.track":"Kuzatish","acc.ord.repeat":"Takrorlash","acc.ord.review":"Sharh qoldirish",
   "acc.wish.sub":"Keyinroq uchun saqlangan mahsulotlar.","acc.wish.empty":"Sevimlilar bo‘sh. Katalogdan mahsulotlarni saqlang — ular shu yerda paydo bo‘ladi.","acc.wish.goto":"Katalogga o‘tish",
   "acc.addr.sub":"Tez rasmiylashtirish uchun manzillar.","acc.addr.edit":"Tahrirlash","acc.addr.default":"Asosiy manzil","acc.addr.office":"Ofis","acc.addr.add":"Manzil qo‘shish",
+  "acc.addr.label":"Yorliq (masalan, Uy)","acc.addr.city":"Shahar","acc.addr.line":"Ko‘cha, uy, xonadon","acc.addr.cancel":"Bekor qilish","acc.addr.del":"Manzilni o‘chirish",
   "acc.set.sub":"Shaxsiy ma’lumotlar va sozlamalar.","acc.set.personal":"Shaxsiy ma’lumotlar","acc.set.name":"Ism","acc.set.email":"Email","acc.set.phone":"Telefon","acc.set.save":"Saqlash","acc.set.saved":"O‘zgarishlar saqlandi ✓",
   "acc.set.prefs":"Sozlamalar","acc.set.theme":"Mavzu","acc.set.themehint":"Yorug‘ / Qorong‘i","acc.set.switch":"Almashtirish","acc.set.lang":"Til","acc.set.langhint":"Rus · O‘zbek · English","acc.set.news":"Xabarnoma","acc.set.newson":"Yangiliklar va aksiyalar — yoqilgan"
 });
@@ -313,6 +318,7 @@ Object.assign(window.BTT_I18N.en,{
   "acc.ord.track":"Track","acc.ord.repeat":"Reorder","acc.ord.review":"Leave a review",
   "acc.wish.sub":"Items you saved for later.","acc.wish.empty":"Your wishlist is empty. Save items from the catalog — they'll show up here.","acc.wish.goto":"Go to catalog",
   "acc.addr.sub":"Delivery addresses for faster checkout.","acc.addr.edit":"Edit","acc.addr.default":"Default address","acc.addr.office":"Office","acc.addr.add":"Add address",
+  "acc.addr.label":"Label (e.g. Home)","acc.addr.city":"City","acc.addr.line":"Street, house, apartment","acc.addr.cancel":"Cancel","acc.addr.del":"Delete address",
   "acc.set.sub":"Personal details and preferences.","acc.set.personal":"Personal details","acc.set.name":"Name","acc.set.email":"Email","acc.set.phone":"Phone","acc.set.save":"Save changes","acc.set.saved":"Changes saved ✓",
   "acc.set.prefs":"Preferences","acc.set.theme":"Theme","acc.set.themehint":"Light / Dark","acc.set.switch":"Switch","acc.set.lang":"Language","acc.set.langhint":"Russian · O‘zbek · English","acc.set.news":"Newsletter","acc.set.newson":"News & deals — enabled"
 });
@@ -507,7 +513,7 @@ Object.assign(window.BTT_I18N.ru,{
   "auth.err.creds":"Неверный email или пароль.","auth.err.email":"Введите корректный email.","auth.err.weak":"Пароль должен быть не короче 8 символов.",
   "auth.err.taken":"Этот email уже зарегистрирован.","auth.err.phone":"Введите корректный номер телефона.","auth.err.rate":"Слишком много попыток. Попробуйте позже.","auth.err.generic":"Не удалось выполнить. Попробуйте ещё раз.","auth.err.required":"Заполните email и пароль.",
   "nav.account":"Кабинет","acc.loading":"Загрузка…","acc.ord.empty":"Заказов пока нет.","acc.addr.empty":"Адресов пока нет.","toast.saved":"Изменения сохранены ✓","toast.addrSaved":"Адрес сохранён ✓","toast.addrDeleted":"Адрес удалён",
-  "nav.blog":"Статьи","blog.k":"Журнал","blog.title":"Статьи","blog.sub":"Идеи, советы по уходу и вдохновение для сада и дома.","blog.empty":"Статьи скоро появятся.","blog.read":"Читать","blog.back":"Все статьи"
+  "nav.blog":"Статьи","blog.k":"Журнал","blog.title":"Статьи","blog.sub":"Идеи, советы по уходу и вдохновение для сада и дома.","blog.empty":"Статьи скоро появятся.","blog.loading":"Загрузка…","blog.error":"Не удалось загрузить. Проверьте соединение.","blog.retry":"Повторить","blog.notFound":"Статья не найдена.","blog.read":"Читать","blog.back":"Все статьи"
 });
 Object.assign(window.BTT_I18N.uz,{
   "auth.login":"Kirish","auth.register":"Ro‘yxatdan o‘tish","auth.name":"Ism","auth.email":"Email","auth.phone":"Telefon","auth.password":"Parol",
@@ -515,7 +521,7 @@ Object.assign(window.BTT_I18N.uz,{
   "auth.err.creds":"Email yoki parol noto‘g‘ri.","auth.err.email":"To‘g‘ri email kiriting.","auth.err.weak":"Parol kamida 8 ta belgidan iborat bo‘lishi kerak.",
   "auth.err.taken":"Bu email allaqachon ro‘yxatdan o‘tgan.","auth.err.phone":"To‘g‘ri telefon raqamini kiriting.","auth.err.rate":"Urinishlar juda ko‘p. Keyinroq urinib ko‘ring.","auth.err.generic":"Bajarib bo‘lmadi. Yana urinib ko‘ring.","auth.err.required":"Email va parolni kiriting.",
   "nav.account":"Kabinet","acc.loading":"Yuklanmoqda…","acc.ord.empty":"Hozircha buyurtmalar yo‘q.","acc.addr.empty":"Hozircha manzillar yo‘q.","toast.saved":"O‘zgarishlar saqlandi ✓","toast.addrSaved":"Manzil saqlandi ✓","toast.addrDeleted":"Manzil o‘chirildi",
-  "nav.blog":"Maqolalar","blog.k":"Jurnal","blog.title":"Maqolalar","blog.sub":"Bog‘ va uy uchun g‘oyalar, parvarish maslahatlari va ilhom.","blog.empty":"Maqolalar tez orada paydo bo‘ladi.","blog.read":"O‘qish","blog.back":"Barcha maqolalar"
+  "nav.blog":"Maqolalar","blog.k":"Jurnal","blog.title":"Maqolalar","blog.sub":"Bog‘ va uy uchun g‘oyalar, parvarish maslahatlari va ilhom.","blog.empty":"Maqolalar tez orada paydo bo‘ladi.","blog.loading":"Yuklanmoqda…","blog.error":"Yuklab bo‘lmadi. Ulanishni tekshiring.","blog.retry":"Qayta urinish","blog.notFound":"Maqola topilmadi.","blog.read":"O‘qish","blog.back":"Barcha maqolalar"
 });
 Object.assign(window.BTT_I18N.en,{
   "auth.login":"Sign in","auth.register":"Register","auth.name":"Name","auth.email":"Email","auth.phone":"Phone","auth.password":"Password",
@@ -523,5 +529,5 @@ Object.assign(window.BTT_I18N.en,{
   "auth.err.creds":"Invalid email or password.","auth.err.email":"Enter a valid email.","auth.err.weak":"Password must be at least 8 characters.",
   "auth.err.taken":"This email is already registered.","auth.err.phone":"Enter a valid phone number.","auth.err.rate":"Too many attempts. Try again later.","auth.err.generic":"Something went wrong. Please try again.","auth.err.required":"Enter your email and password.",
   "nav.account":"Account","acc.loading":"Loading…","acc.ord.empty":"No orders yet.","acc.addr.empty":"No addresses yet.","toast.saved":"Changes saved ✓","toast.addrSaved":"Address saved ✓","toast.addrDeleted":"Address removed",
-  "nav.blog":"Journal","blog.k":"Journal","blog.title":"Articles","blog.sub":"Ideas, care tips and inspiration for your garden and home.","blog.empty":"Articles are coming soon.","blog.read":"Read","blog.back":"All articles"
+  "nav.blog":"Journal","blog.k":"Journal","blog.title":"Articles","blog.sub":"Ideas, care tips and inspiration for your garden and home.","blog.empty":"Articles are coming soon.","blog.loading":"Loading…","blog.error":"Couldn't load content. Check your connection.","blog.retry":"Try again","blog.notFound":"Article not found.","blog.read":"Read","blog.back":"All articles"
 });

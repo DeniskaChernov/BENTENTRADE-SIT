@@ -4,12 +4,13 @@
 (function(){
   "use strict";
 
-  const FAV_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>';
-  const ADD_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>';
+  const U = window.BTT_UTIL || {};
+  const FAV_SVG = U.FAV_SVG || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>';
+  const ADD_SVG = U.ADD_SVG || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>';
 
-  function lang(){ const s=localStorage.getItem("btt_lang"); return ["ru","uz","en"].includes(s)?s:"ru"; }
-  function t(k){ const I=window.BTT_I18N||{}; const d=I[lang()]||{}; if(d[k]!=null) return d[k]; const ru=I.ru||{}; return ru[k]!=null?ru[k]:k; }
-  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;"); }
+  const lang = U.lang || function(){ const s=localStorage.getItem("btt_lang"); return ["ru","uz","en"].includes(s)?s:"ru"; };
+  const t = U.t || function(k){ const I=window.BTT_I18N||{}; const d=I[lang()]||{}; if(d[k]!=null) return d[k]; const ru=I.ru||{}; return ru[k]!=null?ru[k]:k; };
+  const esc = U.esc || function(s){ return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); };
 
   function getFavs(){
     if(window.BTT_CART&&window.BTT_CART.getFavs) return window.BTT_CART.getFavs();
@@ -33,10 +34,10 @@
     const on=!!favs[id];
     return '<article class="product" data-product data-cat="'+esc(p.cat)+'">'+
       '<div class="product__media media">'+
-        '<button class="fav'+(on?" is-on":"")+'" data-fav aria-label="fav">'+FAV_SVG+'</button>'+
-        '<img src="'+esc(thumb)+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">'+
+        '<button class="fav'+(on?" is-on":"")+'" data-fav data-i18n-aria="a11y.fav" aria-label="'+esc(t("a11y.fav"))+'">'+FAV_SVG+'</button>'+
+        '<img src="'+esc(thumb)+'" alt="'+esc(t(id+".name"))+'" loading="lazy" onerror="this.style.display=\'none\'">'+
         '<a class="see" href="product.html?id='+esc(id)+'" data-i18n="see">'+esc(t("see"))+'</a>'+
-        '<button class="add" data-add aria-label="add">'+ADD_SVG+'</button>'+
+        '<button class="add" data-add data-i18n-aria="a11y.add" aria-label="'+esc(t("a11y.add"))+'">'+ADD_SVG+'</button>'+
       '</div>'+
       '<div>'+
         '<div class="product__cat">'+esc(t(id+".cat"))+'</div>'+
@@ -192,13 +193,14 @@
     addrModal.className="addr-modal";
     addrModal.innerHTML=
       '<div class="addr-modal__box"><form class="form" data-addr-form>'+
-      '<div class="field"><label>'+esc(t("acc.addr.office"))+'</label><input name="label"></div>'+
+      '<div class="field"><label>'+esc(t("acc.addr.label"))+'</label><input name="label"></div>'+
       '<div class="field"><label>'+esc(t("acc.set.name"))+'</label><input name="recipient" required></div>'+
       '<div class="field"><label>'+esc(t("acc.set.phone"))+'</label><input name="phone" type="tel"></div>'+
-      '<div class="field"><label>'+esc(t("co.i.addr"))+'</label><input name="city"></div>'+
-      '<div class="field"><label>'+esc(t("acc.addr.sub"))+'</label><input name="line"></div>'+
+      '<div class="field"><label>'+esc(t("acc.addr.city"))+'</label><input name="city"></div>'+
+      '<div class="field"><label>'+esc(t("acc.addr.line"))+'</label><input name="line"></div>'+
       '<label class="addr-modal__def"><input type="checkbox" name="is_default"> <span>'+esc(t("acc.addr.default"))+'</span></label>'+
-      '<div class="addr-modal__row"><button type="button" class="btn btn--ghost btn--sm" data-addr-cancel>'+esc(t("ordBack")||"Отмена")+'</button>'+
+      '<div class="addr-modal__row"><button type="button" class="btn btn--ghost btn--sm" data-addr-cancel>'+esc(t("acc.addr.cancel"))+'</button>'+
+      '<button type="button" class="btn btn--ghost btn--sm addr-modal__del" data-addr-del hidden>'+esc(t("acc.addr.del"))+'</button>'+
       '<button type="submit" class="btn btn--copper btn--sm">'+esc(t("acc.set.save"))+'</button></div>'+
       '</form></div>';
     document.body.appendChild(addrModal);
@@ -218,15 +220,25 @@
     f.city.value=(existing&&existing.city)||"";
     f.line.value=(existing&&existing.line)||"";
     f.is_default.checked=!!(existing&&existing.is_default);
+    const delBtn=m.querySelector("[data-addr-del]");
+    if(delBtn) delBtn.hidden = !(existing && existing.id);
+    async function refresh(){
+      closeAddrModal();
+      const res=await window.BTT_API.listAddresses();
+      renderAddresses(res.addresses||[]);
+    }
+    if(delBtn) delBtn.onclick=async function(){
+      if(!(existing&&existing.id)) return;
+      try{ await window.BTT_API.deleteAddress(existing.id); await refresh(); toast(t("toast.addrDeleted")); }
+      catch(err){ toast(t("auth.err.generic")); }
+    };
     f.onsubmit=async function(e){
       e.preventDefault();
       const payload={ label:f.label.value.trim(), recipient:f.recipient.value.trim(), phone:f.phone.value.trim(), city:f.city.value.trim(), line:f.line.value.trim(), is_default:f.is_default.checked };
       try{
         if(existing&&existing.id) await window.BTT_API.updateAddress(existing.id,payload);
         else await window.BTT_API.createAddress(payload);
-        closeAddrModal();
-        const res=await window.BTT_API.listAddresses();
-        renderAddresses(res.addresses||[]);
+        await refresh();
         toast(t("toast.addrSaved"));
       }catch(err){ toast(t("auth.err.generic")); }
     };

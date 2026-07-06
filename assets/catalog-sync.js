@@ -8,16 +8,17 @@
   "use strict";
   if (!window.BTT_API) return;
 
+  const U = window.BTT_UTIL || {};
   const money = (n) => "$" + n;
   const mediaUrl = (key) => (key ? "/media/" + key : "");
-  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const esc = U.esc || ((s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])));
   const idFromHref = (href) => { const m = (href || "").match(/[?&]id=([^&]+)/); return m ? decodeURIComponent(m[1]) : null; };
 
-  const FAV_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>';
-  const ADD_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>';
+  const FAV_SVG = U.FAV_SVG || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>';
+  const ADD_SVG = U.ADD_SVG || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>';
 
-  function lang() { const s = localStorage.getItem("btt_lang"); return ["ru", "uz", "en"].includes(s) ? s : "ru"; }
-  function t(k) { const I = window.BTT_I18N || {}; const d = I[lang()] || {}; if (d[k] != null) return d[k]; const ru = I.ru || {}; return ru[k] != null ? ru[k] : k; }
+  const lang = U.lang || function () { const s = localStorage.getItem("btt_lang"); return ["ru", "uz", "en"].includes(s) ? s : "ru"; };
+  const t = U.t || function (k) { const I = window.BTT_I18N || {}; const d = I[lang()] || {}; if (d[k] != null) return d[k]; const ru = I.ru || {}; return ru[k] != null ? ru[k] : k; };
 
   // Best image for a product: CRM upload → deterministic placeholder → generic.
   function productImg(p) {
@@ -37,10 +38,10 @@
     const old = p.price_old ? '<span class="price__old">' + money(p.price_old) + "</span>" : "";
     art.innerHTML =
       '<div class="product__media media">' + sale +
-      '<button class="fav" data-fav aria-label="fav">' + FAV_SVG + "</button>" +
-      '<img src="' + esc(productImg(p)) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' +
+      '<button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="' + esc(t("a11y.fav")) + '">' + FAV_SVG + "</button>" +
+      '<img src="' + esc(productImg(p)) + '" alt="' + esc(p.name || "") + '" loading="lazy" onerror="this.style.display=\'none\'">' +
       '<a class="see" href="product.html?id=' + esc(p.id) + '" data-i18n="see">' + esc(t("see")) + "</a>" +
-      '<button class="add" data-add aria-label="add">' + ADD_SVG + "</button>" +
+      '<button class="add" data-add data-i18n-aria="a11y.add" aria-label="' + esc(t("a11y.add")) + '">' + ADD_SVG + "</button>" +
       "</div><div>" +
       '<div class="product__cat">' + esc(p.category_label || "") + "</div>" +
       '<div class="product__name" style="margin-top:4px">' + esc(p.name || "") + "</div>" +
@@ -67,10 +68,9 @@
     if (nameEl && p.name) nameEl.textContent = p.name;
     const catEl = card.querySelector(".product__cat");
     if (catEl && !catEl.hasAttribute("data-i18n") && p.category_label) catEl.textContent = p.category_label;
-    if (p.image) {
-      const img = card.querySelector(".product__media img");
-      if (img) { img.src = mediaUrl(p.image); img.style.display = ""; }
-    }
+    const img = card.querySelector(".product__media img");
+    if (img && p.name && !img.getAttribute("alt")) img.setAttribute("alt", p.name);
+    if (p.image && img) { img.src = mediaUrl(p.image); img.style.display = ""; }
     return { id: id, product: p };
   }
 
@@ -98,19 +98,43 @@
     }
   }
 
+  // One source of truth for the CRM product list, cached per language so that
+  // every surface (catalog, home, related, search) shares the same data and
+  // language switches stay correct without re-fetching within a language.
+  const _mapCache = {};
+  function ensureMap() {
+    const lg = lang();
+    if (_mapCache[lg]) return _mapCache[lg];
+    const pr = window.BTT_API.products("all")
+      .then((res) => {
+        const list = res.products || [];
+        const map = {};
+        list.forEach((p) => { map[p.id] = p; });
+        return { list, map };
+      })
+      .catch(() => ({ list: [], map: {} }));
+    _mapCache[lg] = pr;
+    return pr;
+  }
+
   async function hydrateCatalog() {
     const catGrid = document.querySelector("#catalog-grid");
     const homeGrid = document.querySelector("#home-grid");
     if (!catGrid && !homeGrid) return;
-    let res;
-    try { res = await window.BTT_API.products("all"); } catch (e) { return; }
-    const list = res.products || [];
+    const { list, map } = await ensureMap();
     if (!list.length) return; // never blank the storefront on an empty/bad response
-    const map = {};
-    list.forEach((p) => { map[p.id] = p; });
     if (homeGrid) patchGrid(homeGrid, map);
     if (catGrid) hydrateCatalogGrid(catGrid, list, map);
   }
+
+  // Pull CRM images/prices/names into any product grid rendered after us —
+  // most importantly the PDP "related" grid built by pdp.js.
+  document.addEventListener("btt:related-rendered", async (e) => {
+    const grid = e.detail && e.detail.grid;
+    if (!grid || grid.id === "catalog-grid") return;
+    const { map } = await ensureMap();
+    patchGrid(grid, map);
+  });
 
   function knownStatic(id) { return !!(window.BTT_PRODUCTS && window.BTT_PRODUCTS[id]); }
 

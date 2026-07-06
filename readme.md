@@ -12,6 +12,9 @@
 | `about.html` | О нас |
 | `contacts.html` | Контакты и форма |
 | `account.html` | Личный кабинет |
+| `blog.html` / `article.html` | Журнал статей (API) |
+| `faq.html`, `delivery.html`, `returns.html`, `care.html`, `privacy.html` | Инфо-страницы |
+| `login.html` | Вход / регистрация |
 
 ## Языки и тема
 
@@ -20,11 +23,14 @@
 
 ## Ключевые скрипты
 
-- `site.js` — язык, тема, reveal, фильтры, a11y
+- `util.js` — общие хелперы (`lang`, `t`, `esc`, SVG-иконки карточек)
+- `api.js` + `catalog-sync.js` — CRM API, синхронизация каталога и витрины
+- `site.js` — язык, тема, reveal, фильтры, FAQ-аккордеон, a11y
 - `hero.js` — слайдер героя (только главная)
-- `cart.js` — корзина и избранное (localStorage)
+- `cart.js` — корзина, checkout, избранное (localStorage + sync с API)
 - `pdp.js` — гидратация PDP
-- `products.js` — каталог данных
+- `blog.js` — список и статьи журнала
+- `products.js` — статический каталог (фолбэк)
 
 Подробная дизайн-система — в [`DESIGN.md`](DESIGN.md).
 
