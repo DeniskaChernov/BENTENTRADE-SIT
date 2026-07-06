@@ -283,9 +283,9 @@ Object.assign(window.BTT_I18N.en,{"a11y.fav":"Add to wishlist","a11y.add":"Add t
 Object.assign(window.BTT_I18N.ru,{"pdp.notFound":"Товар не найден","pdp.notFoundSub":"Возможно, товар снят с продажи или ссылка устарела."});
 Object.assign(window.BTT_I18N.uz,{"pdp.notFound":"Mahsulot topilmadi","pdp.notFoundSub":"Ehtimol, mahsulot sotuvdan olingan yoki havola eskirgan."});
 Object.assign(window.BTT_I18N.en,{"pdp.notFound":"Product not found","pdp.notFoundSub":"It may have been discontinued or the link is out of date."});
-Object.assign(window.BTT_I18N.ru,{"type.eyebrow":"Быстрый выбор","type.title":"Популярные типы","type.set":"Комплект","type.table":"Стол","type.chair":"Стул","type.sofa":"Диван"});
-Object.assign(window.BTT_I18N.uz,{"type.eyebrow":"Tez tanlash","type.title":"Ommabop turlar","type.set":"To‘plam","type.table":"Stol","type.chair":"Stul","type.sofa":"Divan"});
-Object.assign(window.BTT_I18N.en,{"type.eyebrow":"Quick pick","type.title":"Popular types","type.set":"Set","type.table":"Table","type.chair":"Chair","type.sofa":"Sofa"});
+Object.assign(window.BTT_I18N.ru,{"type.eyebrow":"Быстрый выбор","type.title":"Популярные типы","type.set":"Комплект","type.table":"Стол","type.chair":"Стул","type.sofa":"Диван","mood.terrace":"Терраса","mood.garden":"Сад","mood.veranda":"Веранда","mood.patio":"Патио","mood.balcony":"Балкон","mood.eve":"Вечер на террасе","mood.eve.h":"Садовая мебель","mood.green":"Зелень и уют","mood.green.h":"Кашпо и корзины","mood.cozy":"Тепло дома","mood.cozy.h":"Мебель для интерьера"});
+Object.assign(window.BTT_I18N.uz,{"type.eyebrow":"Tez tanlash","type.title":"Ommabop turlar","type.set":"To‘plam","type.table":"Stol","type.chair":"Stul","type.sofa":"Divan","mood.terrace":"Terassa","mood.garden":"Bog‘","mood.veranda":"Veranda","mood.patio":"Patio","mood.balcony":"Balkon","mood.eve":"Terassada kechqurun","mood.eve.h":"Bog‘ mebeli","mood.green":"Yashillik va qulaylik","mood.green.h":"Gultuvak va savatlar","mood.cozy":"Uy iliqligi","mood.cozy.h":"Ichki mebel"});
+Object.assign(window.BTT_I18N.en,{"type.eyebrow":"Quick pick","type.title":"Popular types","type.set":"Set","type.table":"Table","type.chair":"Chair","type.sofa":"Sofa","mood.terrace":"Terrace","mood.garden":"Garden","mood.veranda":"Veranda","mood.patio":"Patio","mood.balcony":"Balcony","mood.eve":"Evening on the terrace","mood.eve.h":"Garden furniture","mood.green":"Greenery & calm","mood.green.h":"Planters & baskets","mood.cozy":"Warm at home","mood.cozy.h":"Home furniture"});
 
 
 /* ---- account page ---- */

@@ -419,11 +419,11 @@ p{margin:0;text-wrap:pretty;}
   opacity:0;transition:opacity .35s ease;mix-blend-mode:soft-light;z-index:3;
 }
 /* slightly deepen card shadow while a media tile is being tilted */
-.product__media.tilt--active,.bento-tile.tilt--active{box-shadow:0 30px 60px -28px rgba(27,25,22,.55);}
+.product__media.tilt--active,.bento-tile.tilt--active,.mood-tile.tilt--active,.scene-card.tilt--active{box-shadow:0 30px 60px -28px rgba(27,25,22,.55);}
 .pdp-stage.tilt--active{box-shadow:0 40px 80px -34px rgba(27,25,22,.6);}
 /* raise the tilted tile (and its card) above neighbours so scaled edges don't get clipped/overlapped */
 .tilt--active{z-index:5;}
-.product:has(.tilt--active),.bento-tile:has(.tilt--active){position:relative;z-index:5;}
+.product:has(.tilt--active),.bento-tile:has(.tilt--active),.mood-tile:has(.tilt--active),.scene-card:has(.tilt--active){position:relative;z-index:5;}
 
 /* dark stat block — liquid glass over imagery */
 .stats{

@@ -41,7 +41,7 @@
 
   function run(){
     document.querySelectorAll(".product__media").forEach(el=>bind(el, 6));
-    document.querySelectorAll(".bento-tile").forEach(el=>bind(el, 5));
+    document.querySelectorAll(".bento-tile, .mood-tile, .scene-card").forEach(el=>bind(el, 5));
     document.querySelectorAll(".pdp-stage").forEach(el=>bind(el, 5));
     document.querySelectorAll(".material__img").forEach(el=>bind(el, 4));
   }
