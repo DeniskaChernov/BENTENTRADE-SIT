@@ -40,7 +40,7 @@
     },
     {
       cat: "planter",
-      sideImg: "https://loremflickr.com/800/800/wicker,planter/all?lock=4",
+      sideImg: "assets/hero-planter.png",
       t1:      {ru:"Кашпо, сундуки",           uz:"Gultuvak, sandiq",       en:"Planters, chests"},
       t2:      {ru:"и корзины для белья",       uz:"va kir savatlari",       en:"& laundry baskets"},
       sub:     {ru:"Плетём вручную для растений, белья и мелочей — красиво хранить проще.",
