@@ -6,6 +6,18 @@
 (function(){
   const SLIDES = [
     {
+      cat: "rattan",
+      sideImg: "https://loremflickr.com/800/800/rattan,weave,texture/all?lock=21",
+      badge:   {ru:"Своё производство",       uz:"O‘z ishlab chiqarish",   en:"Own production"},
+      t1:      {ru:"Искусственный",           uz:"Sun’iy",                 en:"Synthetic"},
+      t2:      {ru:"ротанг",                  uz:"rotang",                 en:"rattan"},
+      sub:     {ru:"Сами плетём мебель, кашпо и корзины — материал не выгорает на солнце, не боится влаги и мороза, служит годами.",
+                uz:"Mebel, gultuvak va savatlarni o‘zimiz to‘qiyamiz — quyoshda so‘lmaydi, yomg‘ir va sovuqdan qo‘rqmaydi, yillar xizmat qiladi.",
+                en:"We weave furniture, planters and baskets in-house — won’t fade in the sun, handles rain and frost, lasts for years."},
+      store:   {ru:"Смотреть каталог",         uz:"Katalogni ko‘rish",      en:"Browse catalog"},
+      href:    "catalog.html"
+    },
+    {
       cat: "furniture",
       sideImg: "https://loremflickr.com/800/800/patio,furniture/all?lock=31",
       badge:   {ru:"Для дачи и сада",         uz:"Dala va bog‘ uchun",     en:"For patio & garden"},
@@ -30,18 +42,6 @@
       href:    "catalog.html?cat=indoor"
     },
     {
-      cat: "rattan",
-      sideImg: "https://loremflickr.com/800/800/wicker,chair/all?lock=2",
-      badge:   {ru:"Наше производство",       uz:"O‘z ishlab chiqarish",   en:"Own production"},
-      t1:      {ru:"Плетёная мебель",          uz:"To‘qilgan mebel",        en:"Woven furniture"},
-      t2:      {ru:"из ротанга",               uz:"rotangdan",              en:"from rattan"},
-      sub:     {ru:"Не выгорает на солнце и не боится дождя — служит годами на улице и дома.",
-                uz:"Quyoshda so‘lmaydi, yomg‘irdan qo‘rqmaydi — ko‘chada ham, uyda ham yillab xizmat qiladi.",
-                en:"Won’t fade in the sun or fear the rain — lasts for years outdoors and indoors."},
-      store:   {ru:"Смотреть плетёную мебель", uz:"To‘qilgan mebelni ko‘rish", en:"Shop woven furniture"},
-      href:    "catalog.html?cat=rattan"
-    },
-    {
       cat: "planter",
       sideImg: "https://loremflickr.com/800/800/wicker,planter/all?lock=4",
       badge:   {ru:"Декор и хранение",         uz:"Dekor va saqlash",       en:"Decor & storage"},
@@ -61,6 +61,7 @@
 
   const els = {
     heroImgs:[$('[data-h="heroImg"]'), $('[data-h="heroImgB"]')],
+    badge:$('[data-h="badge"]'),
     t1:$('[data-h="t1"]'), t2:$('[data-h="t2"]'),
     sub:$('[data-h="sub"]'),
     store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'),
@@ -112,6 +113,7 @@
   function render(animate){
     const s=SLIDES[idx];
     crossfade(els.heroImgs, s.sideImg);
+    if(els.badge) els.badge.textContent=L(s.badge);
     els.t1.textContent=L(s.t1); els.t2.textContent=L(s.t2);
     els.sub.textContent=L(s.sub);
     els.store.textContent=L(s.store);

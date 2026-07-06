@@ -431,8 +431,23 @@
   }
 
   /* ---------- open / close ---------- */
-  function openCart(){ if(!cartEl) return; renderCartBody(); scrim.classList.add("on"); cartEl.classList.add("on"); cartEl.setAttribute("aria-hidden","false"); document.documentElement.style.overflow="hidden"; }
-  function openFav(){ if(!favEl) return; renderFavBody(); scrim.classList.add("on"); favEl.classList.add("on"); favEl.setAttribute("aria-hidden","false"); document.documentElement.style.overflow="hidden"; }
+  function closeMobileNav(){
+    const drawer = document.querySelector(".mobile-drawer");
+    const burger = document.querySelector(".burger");
+    if(drawer){ drawer.classList.remove("open"); drawer.setAttribute("aria-hidden","true"); }
+    if(burger) burger.setAttribute("aria-expanded","false");
+  }
+  function openCart(){
+    if(!cartEl) return;
+    closeMobileNav();
+    renderCartBody();
+    scrim.classList.add("on");
+    cartEl.classList.add("on");
+    cartEl.setAttribute("aria-hidden","false");
+    document.documentElement.style.overflow="hidden";
+  }
+  function openFav(){
+    closeMobileNav(); if(!favEl) return; renderFavBody(); scrim.classList.add("on"); favEl.classList.add("on"); favEl.setAttribute("aria-hidden","false"); document.documentElement.style.overflow="hidden"; }
   function closeAll(){ if(!scrim) return; scrim.classList.remove("on"); cartEl.classList.remove("on"); favEl.classList.remove("on"); cartEl.setAttribute("aria-hidden","true"); favEl.setAttribute("aria-hidden","true"); document.documentElement.style.overflow=""; }
 
   function wireProductButtons(root){
@@ -474,12 +489,12 @@
     });
 
     // header cart icon → open cart drawer
-    document.querySelectorAll("a[data-i18n-aria='tool.cart'], a[aria-label='cart'], a[aria-label='Корзина']").forEach(a=>{
-      a.addEventListener("click",e=>{ e.preventDefault(); openCart(); });
+    document.querySelectorAll("[data-cart-open], a[data-i18n-aria='tool.cart'], a[aria-label='cart'], a[aria-label='Корзина']").forEach(el=>{
+      el.addEventListener("click",e=>{ e.preventDefault(); openCart(); });
     });
-    // header heart (the .opt fav button) → open favorites drawer
-    document.querySelectorAll("[data-i18n-aria='tool.fav'], button[aria-label='fav'], button[aria-label='Избранное']").forEach(b=>{
-      b.setAttribute("data-fav-open","1");
+    document.querySelectorAll("[data-fav-open], [data-i18n-aria='tool.fav'], button[aria-label='fav'], button[aria-label='Избранное']").forEach(b=>{
+      if(b.dataset.favWired) return;
+      b.dataset.favWired = "1";
       b.addEventListener("click",e=>{ e.preventDefault(); openFav(); });
     });
 

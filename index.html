@@ -41,7 +41,7 @@
     <div class="head-tools">
       <button class="icon-btn opt" data-i18n-aria="tool.search" aria-label="Поиск"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></button>
       <button class="icon-btn opt" data-i18n-aria="tool.fav" aria-label="Избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg><span class="count" data-fav-count style="display:none">0</span></button>
-      <a class="icon-btn" href="catalog.html" data-i18n-aria="tool.cart" aria-label="Корзина"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="count" data-cart-count style="display:none">0</span></a>
+      <button type="button" class="icon-btn" data-cart-open data-i18n-aria="tool.cart" aria-label="Корзина"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="count" data-cart-count style="display:none">0</span></button>
       <a class="icon-btn" href="account.html" data-i18n-aria="tool.acc" aria-label="Аккаунт"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5"/></svg></a>
       <button class="icon-btn" data-theme-toggle data-i18n-aria="tool.theme" aria-label="Тема">
         <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5Z"/></svg>
@@ -64,6 +64,18 @@
   <a href="blog.html" data-i18n="nav.blog">Статьи</a>
   <a href="about.html" data-i18n="nav.about">О нас</a>
   <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
+  <div class="mobile-drawer__tools">
+    <button type="button" class="mobile-drawer__tool" data-cart-open>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+      <span data-i18n="tool.cart">Корзина</span>
+      <span class="count" data-cart-count style="display:none">0</span>
+    </button>
+    <button type="button" class="mobile-drawer__tool" data-fav-open>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>
+      <span data-i18n="tool.fav">Избранное</span>
+      <span class="count" data-fav-count style="display:none">0</span>
+    </button>
+  </div>
 </nav>
 
 <main class="home-flow">
@@ -71,15 +83,16 @@
 <section class="hero wrap" data-hero role="region" aria-roledescription="carousel" data-i18n-aria="hero.carousel" aria-label="Витрина">
   <div class="hero__card" data-hero-card>
     <div class="hero__bg" aria-hidden="true">
-      <img class="hero__img is-on" data-h="heroImg" src="https://loremflickr.com/800/800/patio,furniture/all?lock=31" alt="" loading="eager" fetchpriority="high" decoding="async">
+      <img class="hero__img is-on" data-h="heroImg" src="https://loremflickr.com/800/800/rattan,weave,texture/all?lock=21" alt="" loading="eager" fetchpriority="high" decoding="async">
       <img class="hero__img" data-h="heroImgB" alt="">
     </div>
     <div class="hero__shade" aria-hidden="true"></div>
     <div class="hero__main" data-h-inner aria-live="polite">
-      <h1 class="hero__title"><span data-h="t1">Мебель</span><br><span data-h="t2">для дачи и сада</span></h1>
-      <p class="hero__lead" data-h-lead data-h="sub">Диваны, кресла и обеденные группы для террасы и двора — всё в наличии.</p>
-      <a class="btn btn--light hero__cta btn--icon-end" data-h="storeLink" href="catalog.html?cat=furniture">
-        <span data-h="store">Смотреть садовую мебель</span>
+      <span class="pill pill--glass pill--dot hero__badge" data-h="badge">Своё производство</span>
+      <h1 class="hero__title"><span data-h="t1">Искусственный</span><br><span data-h="t2">ротанг</span></h1>
+      <p class="hero__lead" data-h-lead data-h="sub">Сами плетём мебель, кашпо и корзины — материал не выгорает на солнце, не боится влаги и мороза, служит годами.</p>
+      <a class="btn btn--light hero__cta btn--icon-end" data-h="storeLink" href="catalog.html">
+        <span data-h="store">Смотреть каталог</span>
         <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
