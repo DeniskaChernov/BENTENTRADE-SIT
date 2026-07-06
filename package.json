@@ -5,7 +5,7 @@
   "description": "Bententrade — статический сайт (Cloudflare Static Assets) + API/CRM на Workers (Hono) + D1 + R2 + KV",
   "type": "module",
   "scripts": {
-    "start": "tsx server/index.ts",
+    "start": "node --import tsx server/index.ts",
     "start:dev": "tsx watch server/index.ts",
     "pg:migrate": "tsx scripts/pg-cli.ts migrate",
     "pg:seed": "tsx scripts/pg-cli.ts seed",

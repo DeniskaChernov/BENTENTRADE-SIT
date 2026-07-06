@@ -71,9 +71,21 @@
 ## Проверка после деплоя
 
 ```bash
-curl https://<домен>/api/health           # {"ok":true,...}
+curl https://<домен>/health              # {"ok":true,...} — Railway healthcheck
+curl https://<домен>/api/health           # {"ok":true,...} — с учётом БД
 curl https://<домен>/api/products?lang=ru  # список товаров из БД
 ```
+
+## Письма «Deploy Crashed» при каждом пуше
+
+Это **не поломка сайта**, а особенность Railway при redeploy:
+
+1. При новом деплое старый контейнер получает **SIGTERM** (особенно заметно с **Volume** — два деплоя не могут монтировать один диск одновременно).
+2. Если процесс выходит с ошибкой (раньше так делал `npm start`), Railway помечает деплой как **Crashed** и шлёт email.
+
+**Что сделано в репозитории:** `railway.toml` с `healthcheckPath = "/health"`, endpoint `/health`, запуск через `node --import tsx` (без npm-обёртки), graceful `SIGTERM → exit 0`, bind на `::`.
+
+Если письма всё ещё приходят — в Railway → **Project Settings → Notifications** отключите «Deploy crashed», либо добавьте переменную сервиса `RAILWAY_DEPLOYMENT_DRAINING_SECONDS=10` для плавной остановки старого контейнера.
 
 ## Локальный запуск (для разработки)
 
