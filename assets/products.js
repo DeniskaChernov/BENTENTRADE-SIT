@@ -9,7 +9,8 @@
     planter:   "assets/hero-planter.png",
     basket:    "assets/bento-planter.png",
     indoor:    "assets/hero-home-furniture.png",
-    rattan:    "assets/bento-rattan.png"
+    rattan:    "assets/bento-rattan.png",
+    twisted:   "assets/hero-twisted-rattan.png"
   };
 
   const CAT = window.BTT_CAT_IMG;

@@ -47,7 +47,7 @@
                 uz:"O‘simlik, kir va mayda buyumlar uchun qo‘lda to‘qiymiz — chiroyli saqlash oson.",
                 en:"Hand-woven for plants, laundry and odds and ends — tidy storage made easy."},
       store:   {ru:"Смотреть кашпо и корзины",  uz:"Gultuvak va savatlar",   en:"Shop planters & baskets"},
-      href:    "catalog.html?cat=planter"
+      href:    "catalog.html?cat=planterMix"
     },
     {
       sideImg: "assets/hero-twisted-rattan.png",
@@ -57,7 +57,7 @@
                 uz:"Polietilen tolidan g‘iloflar to‘qiyamiz — nozik dekor yoki qalin karkas uchun. Turli diametr va ranglar, har bir partiyada barqaror sifat.",
                 en:"We weave coils from polyethylene fibre — from fine decor to heavy frame gauges. Multiple diameters and colours, consistent quality batch after batch."},
       store:   {ru:"Смотреть каталог",         uz:"Katalogni ko‘rish",      en:"Browse catalog"},
-      href:    "catalog.html?cat=rattan"
+      href:    "catalog.html?cat=twisted"
     }
   ];
 

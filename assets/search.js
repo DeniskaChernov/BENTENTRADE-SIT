@@ -17,10 +17,11 @@
 
   // category index — slug matches the catalog chips (site.js) and routes to catalog ?cat=
   const CATS = [
-    { slug:"furniture", k:"chip.furniture", img:"assets/hero-garden-furniture.png" },
-    { slug:"planter",   k:"chip.planter",   img:"assets/bento-planter.png" },
-    { slug:"basket",    k:"chip.basket",    img:"assets/bento-planter.png" },
-    { slug:"indoor",    k:"chip.indoor",    img:"assets/hero-home-furniture.png" }
+    { slug:"furniture",  k:"chip.furniture",  img:"assets/hero-garden-furniture.png" },
+    { slug:"planterMix", k:"chip.planterMix", img:"assets/bento-planter.png" },
+    { slug:"indoor",     k:"chip.indoor",     img:"assets/hero-home-furniture.png" },
+    { slug:"rattan",     k:"chip.rattan",     img:"assets/bento-rattan.png" },
+    { slug:"twisted",    k:"chip.twisted",    img:"assets/hero-twisted-rattan.png" },
   ];
   // page index (personal account is hidden until auth is live)
   const PAGES = [

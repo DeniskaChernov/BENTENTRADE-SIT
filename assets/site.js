@@ -122,7 +122,24 @@
   }
 
   /* ---- animate product cards when category chips change ---- */
-  const CHIP_HASH_ALIAS = { rattan: "all" };
+  const CHIP_URL_ALIAS = { planter: "planterMix", basket: "planterMix" };
+  const CHIP_CAT_GROUPS = {
+    planterMix: ["planter", "basket"],
+    rattan: ["furniture", "planter", "basket", "indoor"],
+    twisted: ["twisted"]
+  };
+
+  function cardMatchesCat(card, cat){
+    if(cat === "all") return true;
+    const groups = CHIP_CAT_GROUPS[cat];
+    const c = card.dataset.cat || "";
+    if(groups) return groups.includes(c);
+    return c === cat;
+  }
+
+  function resolveChipCat(cat){
+    return CHIP_URL_ALIAS[cat] || cat;
+  }
 
   function updateCatCount(grid){
     const cnt = document.querySelector("[data-cat-count]");
@@ -136,7 +153,7 @@
 
   function filterProducts(grid, cat){
     const cards = Array.from(grid.querySelectorAll("[data-product]"));
-    const toShow = cards.filter(c=> cat==="all" || c.dataset.cat===cat);
+    const toShow = cards.filter(c=> cardMatchesCat(c, cat));
     const toHide = cards.filter(c=> !toShow.includes(c));
 
     toHide.forEach(card=>{
@@ -409,13 +426,14 @@
       const params = new URLSearchParams(location.search);
       const qcat = params.get("cat");
       if(qcat){
-        const match = Array.from(chips).find(c=>c.dataset.cat===qcat);
+        const resolved = resolveChipCat(qcat);
+        const match = Array.from(chips).find(c=>c.dataset.cat===resolved);
         if(match) activate(match, { instant:true });
-        else document.dispatchEvent(new CustomEvent("btt:cat-change", { detail:{ cat: qcat } }));
+        else document.dispatchEvent(new CustomEvent("btt:cat-change", { detail:{ cat: resolved } }));
       } else {
         const hash = (location.hash || "").replace("#","");
         if(hash){
-          const resolved = CHIP_HASH_ALIAS[hash] || hash;
+          const resolved = resolveChipCat(hash);
           const match = Array.from(chips).find(c=>c.dataset.cat===resolved);
           if(match) activate(match, { instant:true });
         }

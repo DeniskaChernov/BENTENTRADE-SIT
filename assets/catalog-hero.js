@@ -8,10 +8,12 @@
   const CAT = (window.BTT_CAT_IMG) || {
     all:       "assets/hero-garden-furniture.png",
     furniture: "assets/hero-garden-furniture.png",
+    planterMix:"assets/bento-planter.png",
     planter:   "assets/hero-planter.png",
     basket:    "assets/bento-planter.png",
     indoor:    "assets/hero-home-furniture.png",
-    rattan:    "assets/bento-rattan.png"
+    rattan:    "assets/bento-rattan.png",
+    twisted:   "assets/hero-twisted-rattan.png"
   };
 
   const CFG = {
@@ -27,17 +29,23 @@
       uz:{k:"Bog‘ mebeli",t:"Bog‘ va terassa mebeli",s:"Divan, kreslo va ovqat to‘plamlari — har faslga mos, yengil alyumin karkasda."},
       en:{k:"Garden furniture",t:"Furniture for garden & terrace",s:"Sofas, armchairs and dining sets — all-season, on a light aluminium frame."}
     },
+    planterMix: {
+      img: CAT.planterMix,
+      ru:{k:"Кашпо, сундуки и корзины",t:"Кашпо, сундуки и корзины",s:"Плетёные кашпо, сундуки и корзины для белья — с вкладышем, дренажом и крышкой для дома, балкона и сада."},
+      uz:{k:"Gultuvak, sandiq va savatlar",t:"Gultuvak, sandiq va savatlar",s:"To‘qilgan gultuvak, sandiq va kir savatlari — vkladish, drenaj va qopqoq bilan uy, balkon va bog‘ uchun."},
+      en:{k:"Planters, chests & baskets",t:"Planters, chests & baskets",s:"Woven planters, chests and laundry baskets — with a liner, drainage and lid for home, balcony and garden."}
+    },
     planter: {
-      img: CAT.planter,
-      ru:{k:"Кашпо",t:"Плетёные кашпо",s:"Кашпо с дренажом и вкладышем — для растений дома, на балконе и в саду."},
-      uz:{k:"Gultuvak",t:"To‘qilgan gultuvaklar",s:"Drenaj va vkladishli gultuvaklar — uy, balkon va bog‘dagi o‘simliklar uchun."},
-      en:{k:"Planters",t:"Woven planters",s:"Planters with drainage and a liner — for plants at home, on the balcony and in the garden."}
+      img: CAT.planterMix,
+      ru:{k:"Кашпо, сундуки и корзины",t:"Кашпо, сундуки и корзины",s:"Плетёные кашпо, сундуки и корзины для белья — с вкладышем, дренажом и крышкой для дома, балкона и сада."},
+      uz:{k:"Gultuvak, sandiq va savatlar",t:"Gultuvak, sandiq va savatlar",s:"To‘qilgan gultuvak, sandiq va kir savatlari — vkladish, drenaj va qopqoq bilan uy, balkon va bog‘ uchun."},
+      en:{k:"Planters, chests & baskets",t:"Planters, chests & baskets",s:"Woven planters, chests and laundry baskets — with a liner, drainage and lid for home, balcony and garden."}
     },
     basket: {
-      img: CAT.basket,
-      ru:{k:"Корзины и сундуки",t:"Сундуки и корзины для белья",s:"Плетёные сундуки и корзины с подкладкой и крышкой — для белья, пледов и хранения."},
-      uz:{k:"Savat va sandiq",t:"Sandiq va kir savatlari",s:"Astar va qopqoqli to‘qilgan sandiq va savatlar — kir, pled va saqlash uchun."},
-      en:{k:"Baskets & chests",t:"Chests & laundry baskets",s:"Woven chests and baskets with a liner and lid — for laundry, throws and storage."}
+      img: CAT.planterMix,
+      ru:{k:"Кашпо, сундуки и корзины",t:"Кашпо, сундуки и корзины",s:"Плетёные кашпо, сундуки и корзины для белья — с вкладышем, дренажом и крышкой для дома, балкона и сада."},
+      uz:{k:"Gultuvak, sandiq va savatlar",t:"Gultuvak, sandiq va savatlar",s:"To‘qilgan gultuvak, sandiq va kir savatlari — vkladish, drenaj va qopqoq bilan uy, balkon va bog‘ uchun."},
+      en:{k:"Planters, chests & baskets",t:"Planters, chests & baskets",s:"Woven planters, chests and laundry baskets — with a liner, drainage and lid for home, balcony and garden."}
     },
     indoor: {
       img: CAT.indoor,
@@ -47,9 +55,15 @@
     },
     rattan: {
       img: CAT.rattan,
-      ru:{k:"Материал",t:"Плетение, которое служит годами",s:"Наше плетение выглядит как натуральное, но не выгорает, не гниёт и не боится улицы."},
-      uz:{k:"Material",t:"Yillar xizmat qiladigan to‘quv",s:"To‘quvimiz tabiiyga o‘xshaydi, lekin rangini yo‘qotmaydi, chirimaydi va ko‘chadan qo‘rqmaydi."},
-      en:{k:"Material",t:"A weave that lasts for years",s:"Our weave looks natural but won’t fade, won’t rot and isn’t afraid of the outdoors."}
+      ru:{k:"Искусственный ротанг",t:"Изделия из искусственного ротанга",s:"Мебель, кашпо и корзины из полиэтиленового волокна — не выгорает, не гниёт и служит годами."},
+      uz:{k:"Sun’iy rotang",t:"Sun’iy rotangdan buyumlar",s:"Polietilen tolidan mebel, gultuvak va savatlar — rangini yo‘qotmaydi, chirimaydi va yillar xizmat qiladi."},
+      en:{k:"Synthetic rattan",t:"Pieces in synthetic rattan",s:"Furniture, planters and baskets in polyethylene fibre — won’t fade, won’t rot and lasts for years."}
+    },
+    twisted: {
+      img: CAT.twisted,
+      ru:{k:"Крученый ротанг",t:"Крученый ротанг",s:"Плетём катушки из полиэтиленового волокна — от тонкого декора до толстого каркаса. Разные диаметры и цвета."},
+      uz:{k:"Burma rotang",t:"Burma rotang",s:"Polietilen tolidan g‘iloflar to‘qiyamiz — nozik dekor yoki qalin karkas uchun. Turli diametr va ranglar."},
+      en:{k:"Twisted rattan",t:"Twisted rattan",s:"We weave coils from polyethylene fibre — from fine decor to heavy frame gauges. Multiple diameters and colours."}
     }
   };
 
@@ -63,7 +77,9 @@
   function readHeroCat(){
     const q = new URLSearchParams(location.search).get("cat");
     const h = (location.hash || "").replace("#","");
-    const c = q || h || "all";
+    const raw = q || h || "all";
+    const alias = { planter: "planterMix", basket: "planterMix" };
+    const c = alias[raw] || raw;
     return CFG[c] ? c : "all";
   }
 
