@@ -172,7 +172,6 @@
 .hero__cta{
   margin-top:clamp(4px,1vw,10px);
 }
-.hero__badge{margin-bottom:0;}
 .hero__card .hero__switch{
   position:absolute;z-index:3;
   left:50%;bottom:clamp(20px,3vw,34px);transform:translateX(-50%);
@@ -186,9 +185,7 @@
   .hero__card.is-entered .hero__main > *:nth-child(1){animation-delay:.12s;}
   .hero__card.is-entered .hero__main > *:nth-child(2){animation-delay:.24s;}
   .hero__card.is-entered .hero__main > *:nth-child(3){animation-delay:.36s;}
-  .hero__card.is-entered .hero__main > *:nth-child(4){animation-delay:.48s;}
-  .hero__card.is-entered .hero__main > *:nth-child(5){animation-delay:.58s;}
-  .hero__card.is-entered .hero__switch{animation:heroSwitchIn .8s .6s var(--ease-out) backwards;}
+  .hero__card.is-entered .hero__switch{animation:heroSwitchIn .8s .48s var(--ease-out) backwards;}
 }
 @keyframes heroItemIn{
   from{opacity:0;transform:translateY(18px);filter:blur(4px);}

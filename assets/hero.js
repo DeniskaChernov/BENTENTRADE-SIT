@@ -8,7 +8,6 @@
     {
       cat: "rattan",
       sideImg: "https://loremflickr.com/800/800/rattan,weave,texture/all?lock=21",
-      badge:   {ru:"Своё производство",       uz:"O‘z ishlab chiqarish",   en:"Own production"},
       t1:      {ru:"Искусственный",           uz:"Sun’iy",                 en:"Synthetic"},
       t2:      {ru:"ротанг",                  uz:"rotang",                 en:"rattan"},
       sub:     {ru:"Сами плетём мебель, кашпо и корзины — материал не выгорает на солнце, не боится влаги и мороза, служит годами.",
@@ -20,7 +19,6 @@
     {
       cat: "furniture",
       sideImg: "https://loremflickr.com/800/800/patio,furniture/all?lock=31",
-      badge:   {ru:"Для дачи и сада",         uz:"Dala va bog‘ uchun",     en:"For patio & garden"},
       t1:      {ru:"Мебель",                  uz:"Mebel",                  en:"Furniture"},
       t2:      {ru:"для дачи и сада",          uz:"dala va bog‘ uchun",     en:"for patio & garden"},
       sub:     {ru:"Диваны, кресла и обеденные группы для террасы и двора — всё есть в наличии.",
@@ -32,7 +30,6 @@
     {
       cat: "indoor",
       sideImg: "https://loremflickr.com/800/800/rattan,rocking,chair/all?lock=90",
-      badge:   {ru:"Для дома",                uz:"Uy uchun",               en:"For the home"},
       t1:      {ru:"Мебель",                  uz:"Mebel",                  en:"Furniture"},
       t2:      {ru:"для дома",                 uz:"uy uchun",               en:"for the home"},
       sub:     {ru:"Кресла, столики и стеллажи, которые впишутся в гостиную, спальню или балкон.",
@@ -44,7 +41,6 @@
     {
       cat: "planter",
       sideImg: "https://loremflickr.com/800/800/wicker,planter/all?lock=4",
-      badge:   {ru:"Декор и хранение",         uz:"Dekor va saqlash",       en:"Decor & storage"},
       t1:      {ru:"Кашпо, сундуки",           uz:"Gultuvak, sandiq",       en:"Planters, chests"},
       t2:      {ru:"и корзины для белья",       uz:"va kir savatlari",       en:"& laundry baskets"},
       sub:     {ru:"Плетём вручную для растений, белья и мелочей — красиво хранить проще.",
@@ -61,7 +57,6 @@
 
   const els = {
     heroImgs:[$('[data-h="heroImg"]'), $('[data-h="heroImgB"]')],
-    badge:$('[data-h="badge"]'),
     t1:$('[data-h="t1"]'), t2:$('[data-h="t2"]'),
     sub:$('[data-h="sub"]'),
     store:$('[data-h="store"]'), storeLink:$('[data-h="storeLink"]'),
@@ -113,7 +108,6 @@
   function render(animate){
     const s=SLIDES[idx];
     crossfade(els.heroImgs, s.sideImg);
-    if(els.badge) els.badge.textContent=L(s.badge);
     els.t1.textContent=L(s.t1); els.t2.textContent=L(s.t2);
     els.sub.textContent=L(s.sub);
     els.store.textContent=L(s.store);
