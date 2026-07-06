@@ -88,7 +88,8 @@ window.BTT_I18N = {
     "co.f.msg":"Сообщение","co.f.msg.ph":"Что вы ищете — мебель, кашпо или корзину?",
     "co.f.send":"Отправить заявку","co.f.sent":"Спасибо! Мы свяжемся с вами.","co.f.err":"Проверьте имя и email.",
     "co.i.addr.t":"Шоурум","co.i.addr.v":"Ташкент, ул. Амира Темура, 15",
-    "co.i.phone.t":"Телефон","co.i.phone.v":"+998 71 200 18 46",
+    "co.i.phone.t":"Телефон","co.i.phone.v":"+998 77 104 44 22","co.i.phone.note":"Денис",
+    "co.i.telegram.t":"Telegram","co.i.telegram.v":"@bententradeuz",
     "co.i.email.t":"Почта","co.i.email.v":"hello@bententrade.uz",
     "co.i.hours.t":"Часы работы","co.i.hours.v":"Пн–Сб, 10:00 – 20:00"
   },
@@ -174,7 +175,8 @@ window.BTT_I18N = {
     "co.f.msg":"Xabar","co.f.msg.ph":"Nima izlayapsiz — mebel, gultuvak yoki savat?",
     "co.f.send":"Ariza yuborish","co.f.sent":"Rahmat! Tez orada bog‘lanamiz.","co.f.err":"Ism va emailni tekshiring.",
     "co.i.addr.t":"Shourum","co.i.addr.v":"Toshkent, Amir Temur ko‘chasi, 15",
-    "co.i.phone.t":"Telefon","co.i.phone.v":"+998 71 200 18 46",
+    "co.i.phone.t":"Telefon","co.i.phone.v":"+998 77 104 44 22","co.i.phone.note":"Denis",
+    "co.i.telegram.t":"Telegram","co.i.telegram.v":"@bententradeuz",
     "co.i.email.t":"Pochta","co.i.email.v":"hello@bententrade.uz",
     "co.i.hours.t":"Ish vaqti","co.i.hours.v":"Du–Sh, 10:00 – 20:00"
   },
@@ -260,7 +262,8 @@ window.BTT_I18N = {
     "co.f.msg":"Message","co.f.msg.ph":"What are you after — furniture, a planter or a basket?",
     "co.f.send":"Send request","co.f.sent":"Thank you! We’ll be in touch.","co.f.err":"Please check your name and email.",
     "co.i.addr.t":"Showroom","co.i.addr.v":"Tashkent, Amir Temur St. 15",
-    "co.i.phone.t":"Phone","co.i.phone.v":"+998 71 200 18 46",
+    "co.i.phone.t":"Phone","co.i.phone.v":"+998 77 104 44 22","co.i.phone.note":"Denis",
+    "co.i.telegram.t":"Telegram","co.i.telegram.v":"@bententradeuz",
     "co.i.email.t":"Email","co.i.email.v":"hello@bententrade.uz",
     "co.i.hours.t":"Opening hours","co.i.hours.v":"Mon–Sat, 10:00 – 20:00"
   }

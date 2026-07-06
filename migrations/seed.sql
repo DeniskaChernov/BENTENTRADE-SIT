@@ -81,7 +81,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'uz', 'Sun''iy rotang nima', 'To''quv nimadan tayyorlangani va nega yillar xizmat qilishini ko''ramiz.', 'Sun''iy rotang — massasiga bo''yalgan mustahkam tola. Quyoshda rangi o''chmaydi, namlik va sovuqdan qo''rqmaydi va alohida parvarish talab qilmaydi.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'en', 'What is synthetic rattan', 'A look at what the weave is made of and why it lasts for years.', 'Synthetic rattan is a durable fibre dyed all the way through. It won''t fade in the sun, isn''t afraid of moisture or frost and needs no special care.');
 
-INSERT OR REPLACE INTO settings (key, value) VALUES ('phone', '+998 71 200 18 46');
-INSERT OR REPLACE INTO settings (key, value) VALUES ('whatsapp', '998712001846');
-INSERT OR REPLACE INTO settings (key, value) VALUES ('telegram', 'bententrade');
+INSERT OR REPLACE INTO settings (key, value) VALUES ('phone', '+998 77 104 44 22');
+INSERT OR REPLACE INTO settings (key, value) VALUES ('whatsapp', '998771044422');
+INSERT OR REPLACE INTO settings (key, value) VALUES ('telegram', 'bententradeuz');
 INSERT OR REPLACE INTO settings (key, value) VALUES ('email', 'hello@bententrade.uz');

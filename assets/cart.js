@@ -12,7 +12,7 @@
   /* ---------- manager contact (edit these) ----------
      telegram : username after t.me/  (no @)
      whatsapp : full number, digits only (country code first)        */
-  const CONFIG = { telegram: "bententrade", whatsapp: "998712001846", currency: "$" };
+  const CONFIG = { telegram: "bententradeuz", whatsapp: "998771044422", currency: "$" };
 
   /* ---------- i18n helper ---------- */
   function lang(){ const s=localStorage.getItem("btt_lang"); return ["ru","uz","en"].includes(s)?s:"ru"; }

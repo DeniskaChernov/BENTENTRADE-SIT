@@ -320,9 +320,9 @@ export async function seedIfEmpty() {
     }
 
     for (const [k, v] of [
-      ["phone", "+998 71 200 18 46"],
-      ["whatsapp", "998712001846"],
-      ["telegram", "bententrade"],
+      ["phone", "+998 77 104 44 22"],
+      ["whatsapp", "998771044422"],
+      ["telegram", "bententradeuz"],
       ["email", "hello@bententrade.uz"],
     ]) {
       await client.query(

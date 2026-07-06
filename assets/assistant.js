@@ -16,7 +16,7 @@
         "Кашпо":"Плетёные кашпо с дренажом и вкладышем — для дома, балкона и сада. Вся подборка в <a href='catalog.html?cat=planter'>каталоге</a>. Подсказать по размеру?",
         "Корзины и сундуки":"Сундуки и корзины для белья из искусственного ротанга — с подкладкой и крышкой. Смотрите в <a href='catalog.html?cat=basket'>каталоге</a>. Нужен размер S/M/L?",
         "Доставка":"Доставляем по всему Узбекистану за 7–10 дней, по Ташкенту — быстрее. Изделия привозим в собранном виде. Назовёте город — подскажу сроки.",
-        "Связаться с менеджером":"Конечно! Менеджер на связи в Telegram <a href='https://t.me/bententrade' target='_blank'>@bententrade</a> и по телефону <a href='tel:+998712001846'>+998 71 200 18 46</a>. Оформить заказ через корзину?"
+        "Связаться с менеджером":"Конечно! Денис на связи в Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> и по телефону <a href='tel:+998771044422'>+998 77 104 44 22</a>. Оформить заказ через корзину?"
       },
       fallback:"Спасибо за вопрос! Я передам его менеджеру — он ответит детально. Пока можете посмотреть <a href='catalog.html'>каталог</a> или выбрать тему ниже 👇",
       reply:"Понял! Менеджер свяжется с вами в ближайшее время. Что-нибудь ещё?"
@@ -31,7 +31,7 @@
         "Gultuvak":"Drenaj va vkladishli to‘qilgan gultuvaklar — uy, balkon va bog‘ uchun. Hammasi <a href='catalog.html?cat=planter'>katalogda</a>. O‘lcham bo‘yicha aytaymi?",
         "Savat va sandiq":"Sun’iy rotangdan kir savati va sandiqlar — astar va qopqoq bilan. <a href='catalog.html?cat=basket'>Katalog</a>ni ko‘ring. S/M/L o‘lcham kerakmi?",
         "Yetkazib berish":"O‘zbekiston bo‘ylab 7–10 kun, Toshkent bo‘ylab tezroq. Buyumlarni yig‘ilgan holda yetkazamiz. Shaharni ayting — muddatni aytaman.",
-        "Menejer bilan bog‘lanish":"Albatta! Menejer Telegramda <a href='https://t.me/bententrade' target='_blank'>@bententrade</a> va telefon <a href='tel:+998712001846'>+998 71 200 18 46</a>. Buyurtmani savat orqali rasmiylashtiraymi?"
+        "Menejer bilan bog‘lanish":"Albatta! Denis Telegramda <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> va telefon <a href='tel:+998771044422'>+998 77 104 44 22</a>. Buyurtmani savat orqali rasmiylashtiraymi?"
       },
       fallback:"Savolingiz uchun rahmat! Menejerga yetkazaman. Hozircha <a href='catalog.html'>katalog</a>ni ko‘ring yoki quyidan mavzu tanlang 👇",
       reply:"Tushunarli! Menejer tez orada bog‘lanadi. Yana biror narsa kerakmi?"
@@ -46,7 +46,7 @@
         "Planters":"Woven planters with drainage and a liner — for home, balcony and garden. See them all in the <a href='catalog.html?cat=planter'>catalog</a>. Want sizing help?",
         "Baskets & chests":"Synthetic-rattan laundry baskets and chests — with a liner and lid. See the <a href='catalog.html?cat=basket'>catalog</a>. Need an S/M/L size?",
         "Delivery":"We ship across Uzbekistan in 7–10 days, faster within Tashkent. Pieces arrive fully assembled. Tell me your city for exact timing.",
-        "Talk to a manager":"Of course! Our manager is on Telegram <a href='https://t.me/bententrade' target='_blank'>@bententrade</a> and phone <a href='tel:+998712001846'>+998 71 200 18 46</a>. Want to place the order via the cart?"
+        "Talk to a manager":"Of course! Denis is on Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> and phone <a href='tel:+998771044422'>+998 77 104 44 22</a>. Want to place the order via the cart?"
       },
       fallback:"Thanks for your question! I'll pass it to our manager for a detailed reply. Meanwhile, check the <a href='catalog.html'>catalog</a> or pick a topic below 👇",
       reply:"Got it! Our manager will reach out shortly. Anything else?"

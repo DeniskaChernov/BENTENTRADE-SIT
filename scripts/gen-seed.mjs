@@ -76,9 +76,9 @@ function main() {
     );
   }
   lines.push("");
-  lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('phone', '+998 71 200 18 46');`);
-  lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('whatsapp', '998712001846');`);
-  lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('telegram', 'bententrade');`);
+  lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('phone', '+998 77 104 44 22');`);
+  lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('whatsapp', '998771044422');`);
+  lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('telegram', 'bententradeuz');`);
   lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('email', 'hello@bententrade.uz');`);
   lines.push("");
 
