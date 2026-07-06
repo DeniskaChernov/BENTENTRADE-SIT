@@ -20,13 +20,18 @@
     { slug:"furniture",  k:"chip.furniture",  img:"assets/hero-garden-furniture.png" },
     { slug:"planterMix", k:"chip.planterMix", img:"assets/bento-planter.png" },
     { slug:"indoor",     k:"chip.indoor",     img:"assets/hero-home-furniture.png" },
-    { slug:"rattan",     k:"chip.rattan",     img:"assets/bento-rattan.png" },
-    { slug:"twisted",    k:"chip.twisted",    img:"assets/hero-twisted-rattan.png" },
+    { slug:"rattan",     k:"chip.rattan",     img:"assets/bento-rattan.png" }
   ];
-  // page index (personal account is hidden until auth is live)
   const PAGES = [
+    { href:"index.html",    k:"nav.home" },
     { href:"catalog.html",  k:"nav.catalog" },
+    { href:"blog.html",     k:"nav.blog" },
+    { href:"faq.html",      k:"foot.faq" },
+    { href:"delivery.html", k:"foot.delivery" },
+    { href:"care.html",     k:"foot.care" },
+    { href:"returns.html",  k:"foot.returns" },
     { href:"about.html",    k:"nav.about" },
+    { href:"about.html",    k:"chip.twisted", sub:"srch.material" },
     { href:"contacts.html", k:"nav.contacts" }
   ];
 
@@ -93,7 +98,7 @@
 
     const cats = CATS.map(c=>({ ...c, label:t(c.k) })).filter(c=> !q || norm(c.label).includes(q));
     const prods = products().filter(p=> !q || norm(p.name).includes(q) || norm(p.cat).includes(q));
-    const pages = PAGES.map(p=>({ ...p, label:t(p.k) })).filter(p=> !q || norm(p.label).includes(q));
+    const pages = PAGES.map(p=>({ ...p, label:t(p.k), sub:p.sub?t(p.sub):p.href })).filter(p=> !q || norm(p.label).includes(q) || norm(p.sub||"").includes(q));
 
     if(!cats.length && !prods.length && !pages.length){
       body.innerHTML = '<div class="search-empty">'+esc(t("srch.empty"))+'</div>';
@@ -118,7 +123,7 @@
       html += '<div class="search-sec">'+esc(t("srch.pages"))+'</div>';
       pages.forEach(p=>{
         items.push({ href:p.href });
-        html += row(null, p.label, p.href, items.length-1, "→");
+        html += row(null, p.label, p.sub || p.href, items.length-1, "→");
       });
     }
     body.innerHTML = html;

@@ -2,11 +2,25 @@
 (function(){
   const SLIDES = [
     {
+      img: "assets/hero-garden-furniture.png",
+      loc: { ru:"Терраса и сад", uz:"Terassa va bog‘", en:"Terrace & garden" },
+      title: { ru:"Мебель для открытого воздуха", uz:"Ochiq havoda mebel", en:"Outdoor furniture" },
+      sub: { ru:"Комплекты, столы и кресла из PE-ротанга — не выгорают на солнце и не боятся дождя.", uz:"PE-rotangdan to‘plamlar, stollar va kreslolar — quyoshda rangini yo‘qotmaydi.", en:"PE-rattan sets, tables and chairs — they won’t fade in the sun or fear the rain." },
+      href: "catalog.html?cat=furniture"
+    },
+    {
       img: "assets/scene-dining-beige.png",
       loc: { ru:"Гостиная", uz:"Mehmonxona", en:"Living room" },
       title: { ru:"Уют, в который хочется вернуться", uz:"Qaytishni xohlagan qulaylik", en:"Comfort you want to come home to" },
       sub: { ru:"Мягкий свет, натуральные фактуры и мебель, которая живёт в интерьере, а не на белом фоне.", uz:"Yumshoq yorug‘lik, tabiiy tekstura va ichkarida yashaydigan mebel.", en:"Soft light, natural textures and furniture that lives in the room — not on a white backdrop." },
       href: "catalog.html?cat=indoor"
+    },
+    {
+      img: "assets/hero-planter.png",
+      loc: { ru:"Сад и балкон", uz:"Bog‘ va balkon", en:"Garden & balcony" },
+      title: { ru:"Кашпо и корзины с характером", uz:"Xarakterli gultuvak va savatlar", en:"Planters and baskets with character" },
+      sub: { ru:"Плетёные кашпо, сундуки и корзины — для зелени, хранения и декора на улице и дома.", uz:"To‘qilgan gultuvaklar, sandiqlar va savatlar — bog‘ va uy uchun.", en:"Woven planters, chests and baskets — for greenery, storage and décor indoors and out." },
+      href: "catalog.html?cat=planterMix"
     },
     {
       img: "assets/scene-dining-warm.png",
@@ -20,28 +34,14 @@
       loc: { ru:"Кухня-столовая", uz:"Oshxona-zal", en:"Kitchen-dining" },
       title: { ru:"Современная открытая планировка", uz:"Zamonaviy ochiq reja", en:"Modern open plan" },
       sub: { ru:"Светлые деревянные поверхности и акцентная обивка — интерьер с характером.", uz:"Yorug‘ yog‘och va ta’kidli qoplamalar — xarakterli interyer.", en:"Light wood surfaces and bold upholstery — an interior with character." },
-      href: "catalog.html?cat=furniture"
-    },
-    {
-      img: "assets/scene-dining-azure.png",
-      loc: { ru:"Светлый зал", uz:"Yorug‘ zal", en:"Bright dining hall" },
-      title: { ru:"Воздух и пространство", uz:"Havo va makon", en:"Air and space" },
-      sub: { ru:"Большие окна, рассеянный дневной свет — мебель, которая не перегружает комнату.", uz:"Katta derazalar, yumshoq kunduzgi yorug‘lik — xonani bosib olmaydigan mebel.", en:"Large windows, diffused daylight — furniture that never overwhelms the room." },
       href: "catalog.html?cat=indoor"
     },
     {
-      img: "assets/scene-dining-marble.png",
-      loc: { ru:"Патио-столовая", uz:"Patio-ovqat", en:"Patio dining" },
-      title: { ru:"Мрамор и плетение", uz:"Mramor va to‘quv", en:"Marble and weave" },
-      sub: { ru:"Контраст фактур: холодный камень, тёплая обивка и ротанг, который служит годами.", uz:"Tekstura kontrasti: sovuq tosh, iliq qoplama va yillar xizmat qiladigan rotang.", en:"A play of textures: cool stone, warm upholstery and rattan built to last." },
-      href: "catalog.html?cat=furniture"
-    },
-    {
-      img: "assets/scene-dining-contrast.png",
-      loc: { ru:"Дизайн-интерьер", uz:"Dizayn-interyer", en:"Design interior" },
-      title: { ru:"Смелые акценты", uz:"Jasur ta’kidlar", en:"Bold accents" },
-      sub: { ru:"Оранжевая обивка, графичные линии стола — атмосфера, а не просто каталог.", uz:"To‘q sariq qoplama, grafik chiziqlar — atmosfera, shunchaki katalog emas.", en:"Orange upholstery, graphic table lines — atmosphere, not just a catalog." },
-      href: "catalog.html?cat=indoor"
+      img: "assets/hero-rattan.png",
+      loc: { ru:"Материал", uz:"Material", en:"Material" },
+      title: { ru:"Искусственный ротанг Bententrade", uz:"Bententrade sun’iy rotangi", en:"Bententrade synthetic rattan" },
+      sub: { ru:"Плетение как у натурального ротанга, но прочнее: устойчив к UV, влаге и морозу.", uz:"Tabiiy rotangdek to‘qilgan, lekin mustahkamroq: UV, namlik va sovuqqa chidamli.", en:"Weave like natural rattan, but tougher: resistant to UV, moisture and frost." },
+      href: "catalog.html?cat=rattan"
     }
   ];
 

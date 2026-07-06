@@ -66,7 +66,7 @@ window.BTT_I18N = {
     "p13.name":"Журнальный столик «Ротанг»","p13.cat":"Мебель для дома",
     "p14.name":"Комод «Плетёнка»","p14.cat":"Мебель для дома",
     "p15.name":"Стеллаж «Ажур»","p15.cat":"Мебель для дома",
-    "cat.load":"Показать ещё","cat.empty":"В этой категории пока нет товаров. Попробуйте другой фильтр.",
+    "cat.load":"Показать ещё","cat.empty":"В этой категории пока нет товаров. Попробуйте другой фильтр.","cat.searchNote":"«{q}» — {n}",
 
     /* about */
     "ab.hero.k":"О компании","ab.hero.title":"Плетёная мебель ручной работы",
@@ -157,7 +157,7 @@ window.BTT_I18N = {
     "p13.name":"«Rotang» jurnal stoli","p13.cat":"Uy mebeli",
     "p14.name":"«Pletenka» komod","p14.cat":"Uy mebeli",
     "p15.name":"«Ajur» stellaj","p15.cat":"Uy mebeli",
-    "cat.load":"Yana ko‘rsatish","cat.empty":"Bu toifada hozircha mahsulot yo‘q. Boshqa filtrni sinab ko‘ring.",
+    "cat.load":"Yana ko‘rsatish","cat.empty":"Bu toifada hozircha mahsulot yo‘q. Boshqa filtrni sinab ko‘ring.","cat.searchNote":"«{q}» — {n}",
 
     "ab.hero.k":"Kompaniya haqida","ab.hero.title":"Qo‘lda to‘qilgan mebel",
     "ab.hero.sub":"Bententrade — qo‘lda to‘quv ustaxonasi: bog‘ mebeli, gultuvak, sandiq va savatlar Toshkentda qo‘lda yig‘iladi.",
@@ -246,7 +246,7 @@ window.BTT_I18N = {
     "p13.name":"Rattan Coffee Table","p13.cat":"Home furniture",
     "p14.name":"Wicker Dresser","p14.cat":"Home furniture",
     "p15.name":"Openwork Shelving Unit","p15.cat":"Home furniture",
-    "cat.load":"Load more","cat.empty":"No products in this category yet. Try another filter.",
+    "cat.load":"Load more","cat.empty":"No products in this category yet. Try another filter.","cat.searchNote":"«{q}» — {n}",
 
     "ab.hero.k":"About us","ab.hero.title":"Woven furniture, made by hand",
     "ab.hero.sub":"Bententrade is a hand-weaving workshop: garden furniture, planters, chests and baskets, assembled by hand in Tashkent.",
@@ -277,9 +277,9 @@ window.BTT_I18N = {
 
 
 /* ---- search overlay ---- */
-Object.assign(window.BTT_I18N.ru,{"srch.ph":"Поиск мебели, кашпо, корзин…","srch.cats":"Категории","srch.prods":"Товары","srch.pages":"Страницы","srch.empty":"Ничего не найдено","nav.catalog2":"Каталог","nav.account2":"Личный кабинет"});
-Object.assign(window.BTT_I18N.uz,{"srch.ph":"Mebel, gultuvak, savat izlash…","srch.cats":"Kategoriyalar","srch.prods":"Mahsulotlar","srch.pages":"Sahifalar","srch.empty":"Hech narsa topilmadi","nav.catalog2":"Katalog","nav.account2":"Shaxsiy kabinet"});
-Object.assign(window.BTT_I18N.en,{"srch.ph":"Search furniture, planters, baskets…","srch.cats":"Categories","srch.prods":"Products","srch.pages":"Pages","srch.empty":"Nothing found","nav.catalog2":"Catalog","nav.account2":"Account"});
+Object.assign(window.BTT_I18N.ru,{"srch.ph":"Поиск мебели, кашпо, корзин…","srch.cats":"Категории","srch.prods":"Товары","srch.pages":"Страницы","srch.empty":"Ничего не найдено","srch.material":"О материале","nav.catalog2":"Каталог","nav.account2":"Личный кабинет"});
+Object.assign(window.BTT_I18N.uz,{"srch.ph":"Mebel, gultuvak, savat izlash…","srch.cats":"Kategoriyalar","srch.prods":"Mahsulotlar","srch.pages":"Sahifalar","srch.empty":"Hech narsa topilmadi","srch.material":"Material haqida","nav.catalog2":"Katalog","nav.account2":"Shaxsiy kabinet"});
+Object.assign(window.BTT_I18N.en,{"srch.ph":"Search furniture, planters, baskets…","srch.cats":"Categories","srch.prods":"Products","srch.pages":"Pages","srch.empty":"Nothing found","srch.material":"About the material","nav.catalog2":"Catalog","nav.account2":"Account"});
 Object.assign(window.BTT_I18N.ru,{"tool.theme":"Тема","tool.account":"Аккаунт","tool.menu":"Меню"});
 Object.assign(window.BTT_I18N.uz,{"tool.theme":"Mavzu","tool.account":"Akkaunt","tool.menu":"Menyu"});
 Object.assign(window.BTT_I18N.en,{"tool.theme":"Theme","tool.account":"Account","tool.menu":"Menu"});
@@ -289,9 +289,9 @@ Object.assign(window.BTT_I18N.en,{"a11y.fav":"Add to wishlist","a11y.add":"Add t
 Object.assign(window.BTT_I18N.ru,{"pdp.notFound":"Товар не найден","pdp.notFoundSub":"Возможно, товар снят с продажи или ссылка устарела."});
 Object.assign(window.BTT_I18N.uz,{"pdp.notFound":"Mahsulot topilmadi","pdp.notFoundSub":"Ehtimol, mahsulot sotuvdan olingan yoki havola eskirgan."});
 Object.assign(window.BTT_I18N.en,{"pdp.notFound":"Product not found","pdp.notFoundSub":"It may have been discontinued or the link is out of date."});
-Object.assign(window.BTT_I18N.ru,{"type.eyebrow":"Быстрый выбор","type.title":"Популярные типы","type.set":"Комплект","type.table":"Стол","type.chair":"Стул","type.sofa":"Диван","mood.terrace":"Терраса","mood.garden":"Сад","mood.veranda":"Веранда","mood.patio":"Патио","mood.balcony":"Балкон","mood.eve":"Вечер на террасе","mood.eve.h":"Садовая мебель","mood.green":"Зелень и уют","mood.green.h":"Кашпо и корзины","mood.cozy":"Тепло дома","mood.cozy.h":"Мебель для интерьера","ind.title":"Создайте уют в гостиной, спальне и на балконе","ind.body":"Плетёная мебель для дома лёгкая и тёплая на вид — не боится влажности, легко протирается и впишется в гостиную, спальню или застеклённый балкон.","ind.living":"Гостиная","ind.bedroom":"Спальня","ind.balcony":"Балкон","ind.study":"Кабинет","ind.hall":"Прихожая","ind.type.dining":"Обеденная зона","ind.type.rocker":"Кресло-качалка","ind.type.coffee":"Журнальный столик","ind.type.shelf":"Стеллаж","ind.type.cabinet":"Комод","ind.scene1":"Утро в гостиной","ind.scene2":"Спокойная спальня","ind.scene3":"Уютный уголок"});
-Object.assign(window.BTT_I18N.uz,{"type.eyebrow":"Tez tanlash","type.title":"Ommabop turlar","type.set":"To‘plam","type.table":"Stol","type.chair":"Stul","type.sofa":"Divan","mood.terrace":"Terassa","mood.garden":"Bog‘","mood.veranda":"Veranda","mood.patio":"Patio","mood.balcony":"Balkon","mood.eve":"Terassada kechqurun","mood.eve.h":"Bog‘ mebeli","mood.green":"Yashillik va qulaylik","mood.green.h":"Gultuvak va savatlar","mood.cozy":"Uy iliqligi","mood.cozy.h":"Ichki mebel","ind.title":"Mehmonxona, yotoqxona va balkonda qulaylik yarating","ind.body":"Uy mebeli yengil va iliq ko‘rinadi — namlikdan qo‘rqmaydi, oson artiladi va mehmonxona, yotoqxona yoki oynali balkonga mos tushadi.","ind.living":"Mehmonxona","ind.bedroom":"Yotoqxona","ind.balcony":"Balkon","ind.study":"Kabinet","ind.hall":"Dahliz","ind.type.dining":"Ovqat zonasi","ind.type.rocker":"Tebranma kreslo","ind.type.coffee":"Jurnal stoli","ind.type.shelf":"Stellaj","ind.type.cabinet":"Komod","ind.scene1":"Mehmonxonada ertalab","ind.scene2":"Tinch yotoqxona","ind.scene3":"Qulay burchak"});
-Object.assign(window.BTT_I18N.en,{"type.eyebrow":"Quick pick","type.title":"Popular types","type.set":"Set","type.table":"Table","type.chair":"Chair","type.sofa":"Sofa","mood.terrace":"Terrace","mood.garden":"Garden","mood.veranda":"Veranda","mood.patio":"Patio","mood.balcony":"Balcony","mood.eve":"Evening on the terrace","mood.eve.h":"Garden furniture","mood.green":"Greenery & calm","mood.green.h":"Planters & baskets","mood.cozy":"Warm at home","mood.cozy.h":"Home furniture","ind.title":"Create comfort in the living room, bedroom and on the balcony","ind.body":"Home woven furniture looks light and warm — it shrugs off humidity, wipes clean easily and fits the living room, bedroom or glazed balcony.","ind.living":"Living room","ind.bedroom":"Bedroom","ind.balcony":"Balcony","ind.study":"Study","ind.hall":"Hallway","ind.type.dining":"Dining area","ind.type.rocker":"Rocking chair","ind.type.coffee":"Coffee table","ind.type.shelf":"Shelving unit","ind.type.cabinet":"Dresser","ind.scene1":"Morning in the living room","ind.scene2":"Calm bedroom","ind.scene3":"Cosy corner"});
+Object.assign(window.BTT_I18N.ru,{"type.eyebrow":"Быстрый выбор","type.title":"Популярные типы","type.set":"Комплект","type.table":"Стол","type.chair":"Стул","type.sofa":"Диван","mood.terrace":"Терраса","mood.garden":"Сад","mood.veranda":"Веранда","mood.patio":"Патио","mood.balcony":"Балкон","mood.eve":"Вечер на террасе","mood.eve.h":"Садовая мебель","mood.green":"Зелень и уют","mood.green.h":"Кашпо и корзины","mood.sun":"Солнечный день","mood.cozy":"Тепло дома","mood.cozy.h":"Мебель для интерьера","ind.title":"Создайте уют в гостиной, спальне и на балконе","ind.body":"Плетёная мебель для дома лёгкая и тёплая на вид — не боится влажности, легко протирается и впишется в гостиную, спальню или застеклённый балкон.","ind.living":"Гостиная","ind.bedroom":"Спальня","ind.balcony":"Балкон","ind.study":"Кабинет","ind.hall":"Прихожая","ind.type.dining":"Обеденная зона","ind.type.rocker":"Кресло-качалка","ind.type.coffee":"Журнальный столик","ind.type.shelf":"Стеллаж","ind.type.cabinet":"Комод","ind.scene1":"Утро в гостиной","ind.scene2":"Спокойная спальня","ind.scene3":"Уютный уголок"});
+Object.assign(window.BTT_I18N.uz,{"type.eyebrow":"Tez tanlash","type.title":"Ommabop turlar","type.set":"To‘plam","type.table":"Stol","type.chair":"Stul","type.sofa":"Divan","mood.terrace":"Terassa","mood.garden":"Bog‘","mood.veranda":"Veranda","mood.patio":"Patio","mood.balcony":"Balkon","mood.eve":"Terassada kechqurun","mood.eve.h":"Bog‘ mebeli","mood.green":"Yashillik va qulaylik","mood.green.h":"Gultuvak va savatlar","mood.sun":"Quyoshli kun","mood.cozy":"Uy iliqligi","mood.cozy.h":"Ichki mebel","ind.title":"Mehmonxona, yotoqxona va balkonda qulaylik yarating","ind.body":"Uy mebeli yengil va iliq ko‘rinadi — namlikdan qo‘rqmaydi, oson artiladi va mehmonxona, yotoqxona yoki oynali balkonga mos tushadi.","ind.living":"Mehmonxona","ind.bedroom":"Yotoqxona","ind.balcony":"Balkon","ind.study":"Kabinet","ind.hall":"Dahliz","ind.type.dining":"Ovqat zonasi","ind.type.rocker":"Tebranma kreslo","ind.type.coffee":"Jurnal stoli","ind.type.shelf":"Stellaj","ind.type.cabinet":"Komod","ind.scene1":"Mehmonxonada ertalab","ind.scene2":"Tinch yotoqxona","ind.scene3":"Qulay burchak"});
+Object.assign(window.BTT_I18N.en,{"type.eyebrow":"Quick pick","type.title":"Popular types","type.set":"Set","type.table":"Table","type.chair":"Chair","type.sofa":"Sofa","mood.terrace":"Terrace","mood.garden":"Garden","mood.veranda":"Veranda","mood.patio":"Patio","mood.balcony":"Balcony","mood.eve":"Evening on the terrace","mood.eve.h":"Garden furniture","mood.green":"Greenery & calm","mood.green.h":"Planters & baskets","mood.sun":"Sunny day","mood.cozy":"Warm at home","mood.cozy.h":"Home furniture","ind.title":"Create comfort in the living room, bedroom and on the balcony","ind.body":"Home woven furniture looks light and warm — it shrugs off humidity, wipes clean easily and fits the living room, bedroom or glazed balcony.","ind.living":"Living room","ind.bedroom":"Bedroom","ind.balcony":"Balcony","ind.study":"Study","ind.hall":"Hallway","ind.type.dining":"Dining area","ind.type.rocker":"Rocking chair","ind.type.coffee":"Coffee table","ind.type.shelf":"Shelving unit","ind.type.cabinet":"Dresser","ind.scene1":"Morning in the living room","ind.scene2":"Calm bedroom","ind.scene3":"Cosy corner"});
 
 
 /* ---- account page ---- */
@@ -471,7 +471,7 @@ Object.assign(window.BTT_I18N.ru,{
   "ret.k":"Помощь","ret.title":"Возврат и обмен","ret.sub":"Если товар не подошёл — поможем обменять или вернуть деньги.",
   "ret.b1.t":"Срок возврата","ret.b1.p":"Вернуть или обменять товар можно в течение 14 дней с момента получения, если он не был в использовании и сохранил товарный вид.",
   "ret.b2.t":"Условия","ret.b2.l1":"Изделие без следов эксплуатации и повреждений.","ret.b2.l2":"Сохранена комплектация (подушки, крепления).","ret.b2.l3":"Изделия, изготовленные по индивидуальным размерам, возврату не подлежат.",
-  "ret.b3.t":"Как оформить","ret.b3.p":"Напишите нам на hello@bententrade.uz или позвоните — согласуем возврат и забор товара. Деньги возвращаем тем же способом в течение 3–5 рабочих дней после получения изделия.",
+  "ret.b3.t":"Как оформить","ret.b3.p1":"Напишите нам на ","ret.b3.p2":" или позвоните — согласуем возврат и забор товара. Деньги возвращаем тем же способом в течение 3–5 рабочих дней после получения изделия.",
   "care.k":"Помощь","care.title":"Уход за плетением","care.sub":"Искусственный ротанг неприхотлив — вот всё, что нужно знать.",
   "care.b1.t":"Регулярный уход","care.b1.l1":"Протирайте плетение влажной мягкой тканью по мере загрязнения.","care.b1.l2":"Для въевшейся грязи используйте тёплую воду с мягким мылом.","care.b1.l3":"Труднодоступные места удобно чистить мягкой щёткой.",
   "care.b2.t":"Чего лучше избегать","care.b2.l1":"Агрессивных растворителей и абразивных порошков.","care.b2.l2":"Мойки под высоким давлением — струя может деформировать плетение.","care.b2.l3":"Долгого контакта подушек с влагой — их лучше просушивать.",
@@ -479,7 +479,7 @@ Object.assign(window.BTT_I18N.ru,{
   "pv.k":"Правовая информация","pv.title":"Политика конфиденциальности","pv.sub":"Мы собираем минимум данных и используем их только для обработки заказов и связи.",
   "pv.b1.t":"Какие данные мы собираем","pv.b1.l1":"Имя и контактные данные (телефон, email), которые вы указываете в форме.","pv.b1.l2":"Адрес доставки — для передачи заказа.","pv.b1.l3":"Технические данные о посещении сайта в обезличенном виде.",
   "pv.b2.t":"Как мы их используем","pv.b2.l1":"Для обработки заказа и связи по нему.","pv.b2.l2":"Для ответа на ваши обращения и заявки.","pv.b2.l3":"Мы не передаём ваши данные третьим лицам, кроме служб доставки.",
-  "pv.b3.t":"Хранение и ваши права","pv.b3.p":"Данные хранятся столько, сколько необходимо для выполнения заказа и требований закона. Вы можете запросить их изменение или удаление, написав нам на hello@bententrade.uz."
+  "pv.b3.t":"Хранение и ваши права","pv.b3.p1":"Данные хранятся столько, сколько необходимо для выполнения заказа и требований закона. Вы можете запросить их изменение или удаление, написав нам на ","pv.b3.p2":"."
 });
 Object.assign(window.BTT_I18N.uz,{
   "faq.k":"Yordam","faq.title":"Savol-javob","faq.sub":"Material, yetkazib berish, kafolat va to‘quv parvarishi haqida qisqacha.",
@@ -496,7 +496,7 @@ Object.assign(window.BTT_I18N.uz,{
   "ret.k":"Yordam","ret.title":"Qaytarish va almashtirish","ret.sub":"Mahsulot mos kelmasa — almashtirish yoki pulni qaytarishda yordam beramiz.",
   "ret.b1.t":"Qaytarish muddati","ret.b1.p":"Mahsulotni olgan kundan boshlab 14 kun ichida qaytarish yoki almashtirish mumkin, agar u ishlatilmagan va tovar ko‘rinishini saqlagan bo‘lsa.",
   "ret.b2.t":"Shartlar","ret.b2.l1":"Buyum ishlatilish izlarisiz va shikastsiz.","ret.b2.l2":"Jihozlanishi saqlangan (yostiqlar, mahkamlagichlar).","ret.b2.l3":"Individual o‘lchamlarda tayyorlangan buyumlar qaytarilmaydi.",
-  "ret.b3.t":"Qanday rasmiylashtiriladi","ret.b3.p":"Bizga hello@bententrade.uz ga yozing yoki qo‘ng‘iroq qiling — qaytarish va buyumni olib ketishni kelishamiz. Pulni buyum qabul qilingach 3–5 ish kuni ichida o‘sha usulda qaytaramiz.",
+  "ret.b3.t":"Qanday rasmiylashtiriladi","ret.b3.p1":"Bizga ","ret.b3.p2":" ga yozing yoki qo‘ng‘iroq qiling — qaytarish va buyumni olib ketishni kelishamiz. Pulni buyum qabul qilingach 3–5 ish kuni ichida o‘sha usulda qaytaramiz.",
   "care.k":"Yordam","care.title":"To‘quv parvarishi","care.sub":"Sun’iy rotang injiq emas — bilish kerak bo‘lgan hammasi shu yerda.",
   "care.b1.t":"Muntazam parvarish","care.b1.l1":"To‘quvni ifloslanishiga qarab nam yumshoq mato bilan arting.","care.b1.l2":"Yopishgan kir uchun iliq suv va yumshoq sovun ishlating.","care.b1.l3":"Qiyin joylarni yumshoq cho‘tka bilan tozalash qulay.",
   "care.b2.t":"Nimadan saqlanish kerak","care.b2.l1":"Tajovuzkor erituvchilar va abraziv kukunlardan.","care.b2.l2":"Yuqori bosimli yuvishdan — oqim to‘quvni deformatsiya qilishi mumkin.","care.b2.l3":"Yostiqlarning namlik bilan uzoq aloqasidan — ularni quritgan ma’qul.",
@@ -504,7 +504,7 @@ Object.assign(window.BTT_I18N.uz,{
   "pv.k":"Huquqiy ma’lumot","pv.title":"Maxfiylik siyosati","pv.sub":"Biz minimal ma’lumot yig‘amiz va ulardan faqat buyurtmalarni qayta ishlash va bog‘lanish uchun foydalanamiz.",
   "pv.b1.t":"Qanday ma’lumot yig‘amiz","pv.b1.l1":"Shaklda ko‘rsatgan ism va kontakt ma’lumotlari (telefon, email).","pv.b1.l2":"Yetkazish manzili — buyurtmani topshirish uchun.","pv.b1.l3":"Sayt tashrifi haqidagi texnik ma’lumotlar shaxssizlashtirilgan holda.",
   "pv.b2.t":"Ulardan qanday foydalanamiz","pv.b2.l1":"Buyurtmani qayta ishlash va u bo‘yicha bog‘lanish uchun.","pv.b2.l2":"Murojaat va arizalaringizga javob berish uchun.","pv.b2.l3":"Ma’lumotlaringizni yetkazish xizmatlaridan tashqari uchinchi shaxslarga bermaymiz.",
-  "pv.b3.t":"Saqlash va huquqlaringiz","pv.b3.p":"Ma’lumotlar buyurtmani bajarish va qonun talablari uchun zarur bo‘lgan muddat davomida saqlanadi. Ularni o‘zgartirish yoki o‘chirishni hello@bententrade.uz ga yozib so‘rashingiz mumkin."
+  "pv.b3.t":"Saqlash va huquqlaringiz","pv.b3.p1":"Ma’lumotlar buyurtmani bajarish va qonun talablari uchun zarur bo‘lgan muddat davomida saqlanadi. Ularni o‘zgartirish yoki o‘chirishni ","pv.b3.p2":" ga yozib so‘rashingiz mumkin."
 });
 Object.assign(window.BTT_I18N.en,{
   "faq.k":"Help","faq.title":"Questions & answers","faq.sub":"The essentials on material, delivery, warranty and weave care.",
@@ -521,7 +521,7 @@ Object.assign(window.BTT_I18N.en,{
   "ret.k":"Help","ret.title":"Returns & exchange","ret.sub":"If an item doesn't fit, we'll help you exchange it or refund your money.",
   "ret.b1.t":"Return window","ret.b1.p":"You can return or exchange an item within 14 days of receipt, provided it hasn't been used and keeps its original appearance.",
   "ret.b2.t":"Conditions","ret.b2.l1":"The item has no signs of use or damage.","ret.b2.l2":"The set is complete (cushions, fittings).","ret.b2.l3":"Items made to custom sizes cannot be returned.",
-  "ret.b3.t":"How to arrange it","ret.b3.p":"Write to us at hello@bententrade.uz or call — we'll arrange the return and pickup. We refund by the same method within 3–5 business days of receiving the item.",
+  "ret.b3.t":"How to arrange it","ret.b3.p1":"Write to us at ","ret.b3.p2":" or call — we'll arrange the return and pickup. We refund by the same method within 3–5 business days of receiving the item.",
   "care.k":"Help","care.title":"Weave care","care.sub":"Synthetic rattan is low-maintenance — here's all you need to know.",
   "care.b1.t":"Routine care","care.b1.l1":"Wipe the weave with a damp soft cloth as needed.","care.b1.l2":"For stubborn dirt use warm water with mild soap.","care.b1.l3":"A soft brush is handy for hard-to-reach spots.",
   "care.b2.t":"What to avoid","care.b2.l1":"Harsh solvents and abrasive powders.","care.b2.l2":"High-pressure washing — the jet can deform the weave.","care.b2.l3":"Prolonged contact of cushions with moisture — let them dry out.",
@@ -529,7 +529,7 @@ Object.assign(window.BTT_I18N.en,{
   "pv.k":"Legal","pv.title":"Privacy policy","pv.sub":"We collect the minimum of data and use it only to process orders and stay in touch.",
   "pv.b1.t":"What data we collect","pv.b1.l1":"Name and contact details (phone, email) you provide in the form.","pv.b1.l2":"Delivery address — to fulfil the order.","pv.b1.l3":"Technical, anonymised data about your visit to the site.",
   "pv.b2.t":"How we use it","pv.b2.l1":"To process your order and communicate about it.","pv.b2.l2":"To respond to your enquiries and requests.","pv.b2.l3":"We don't share your data with third parties, except delivery services.",
-  "pv.b3.t":"Storage and your rights","pv.b3.p":"Data is kept for as long as needed to fulfil the order and meet legal requirements. You can request changes or deletion by writing to hello@bententrade.uz."
+  "pv.b3.t":"Storage and your rights","pv.b3.p1":"Data is kept for as long as needed to fulfil the order and meet legal requirements. You can request changes or deletion by writing to ","pv.b3.p2":"."
 });
 Object.assign(window.BTT_I18N.ru,{
   "auth.login":"Вход","auth.register":"Регистрация","auth.name":"Имя","auth.email":"Email","auth.phone":"Телефон","auth.password":"Пароль",

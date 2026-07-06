@@ -316,8 +316,8 @@
     }catch(e){}
 
     // Orders + addresses
-    try{ const or=await window.BTT_API.myOrders(); renderOrders(or.orders||[]); }catch(e){}
-    try{ const ar=await window.BTT_API.listAddresses(); renderAddresses(ar.addresses||[]); }catch(e){}
+    try{ const or=await window.BTT_API.myOrders(); renderOrders(or.orders||[]); }catch(e){ renderOrders([]); }
+    try{ const ar=await window.BTT_API.listAddresses(); renderAddresses(ar.addresses||[]); }catch(e){ renderAddresses([]); }
   }
 
   document.addEventListener("DOMContentLoaded", function(){

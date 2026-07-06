@@ -57,7 +57,7 @@
                 uz:"Polietilen tolidan g‘iloflar to‘qiyamiz — nozik dekor yoki qalin karkas uchun. Turli diametr va ranglar, har bir partiyada barqaror sifat.",
                 en:"We weave coils from polyethylene fibre — from fine decor to heavy frame gauges. Multiple diameters and colours, consistent quality batch after batch."},
       store:   {ru:"Смотреть каталог",         uz:"Katalogni ko‘rish",      en:"Browse catalog"},
-      href:    "catalog.html?cat=twisted"
+      href:    "about.html"
     }
   ];
 

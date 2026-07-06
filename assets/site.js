@@ -125,7 +125,7 @@
   const CHIP_URL_ALIAS = { planter: "planterMix", basket: "planterMix" };
   const CHIP_CAT_GROUPS = {
     planterMix: ["planter", "basket"],
-    rattan: ["furniture", "planter", "basket", "indoor"],
+    rattan: ["furniture", "planter", "basket"],
     twisted: ["twisted"]
   };
 
@@ -407,6 +407,43 @@
 
     // add-to-cart & favorites are handled by cart.js
 
+    const urlParams = new URLSearchParams(location.search);
+
+    // legacy: twisted is a material, not a product category
+    if(/catalog\.html$/i.test(location.pathname.split("/").pop() || "") && urlParams.get("cat") === "twisted"){
+      location.replace("about.html");
+      return;
+    }
+
+    let activeCat = "all";
+
+    function getSearchQ(){
+      return (urlParams.get("q") || "").toLowerCase().trim();
+    }
+
+    function applyCatalogFilters(grid, cat, q){
+      const cards = Array.from(grid.querySelectorAll("[data-product]"));
+      cards.forEach(card=>{
+        const txt = (card.textContent || "").toLowerCase();
+        const show = cardMatchesCat(card, cat) && (!q || txt.includes(q));
+        card.style.display = show ? "" : "none";
+      });
+      updateCatCount(grid);
+      const note = document.querySelector("[data-search-note]");
+      if(note){
+        if(q){
+          const d = dict[getLang()] || dict.ru || {};
+          const tpl = d["cat.searchNote"] || "«{q}» — {n}";
+          const shown = cards.filter(c=> c.style.display !== "none").length;
+          note.textContent = tpl.replace("{q}", urlParams.get("q") || "").replace("{n}", String(shown));
+          note.style.display = "";
+        } else {
+          note.textContent = "";
+          note.style.display = "none";
+        }
+      }
+    }
+
     // category chips (catalog + home)
     document.querySelectorAll("[data-chips]").forEach(group=>{
       const chips = group.querySelectorAll(".chip");
@@ -415,16 +452,20 @@
         chips.forEach(c=>c.classList.remove("is-active"));
         chip.classList.add("is-active");
         const cat = chip.dataset.cat;
+        activeCat = cat;
         const grid = document.querySelector(group.dataset.target);
-        if(grid) filterProducts(grid, cat);
+        const q = getSearchQ();
+        if(grid){
+          if(q && grid.id === "catalog-grid") applyCatalogFilters(grid, cat, q);
+          else filterProducts(grid, cat);
+        }
         if(chip.scrollIntoView && window.matchMedia && window.matchMedia("(max-width:720px)").matches){
           chip.scrollIntoView({ inline:"nearest", behavior: opts.instant ? "auto" : "smooth", block:"nearest" });
         }
         document.dispatchEvent(new CustomEvent("btt:cat-change", { detail:{ cat, chip } }));
       }
       chips.forEach(chip=> chip.addEventListener("click", ()=> activate(chip)));
-      const params = new URLSearchParams(location.search);
-      const qcat = params.get("cat");
+      const qcat = urlParams.get("cat");
       if(qcat){
         const resolved = resolveChipCat(qcat);
         const match = Array.from(chips).find(c=>c.dataset.cat===resolved);
@@ -436,29 +477,12 @@
           const resolved = resolveChipCat(hash);
           const match = Array.from(chips).find(c=>c.dataset.cat===resolved);
           if(match) activate(match, { instant:true });
+        } else if(getSearchQ()){
+          const grid = document.querySelector(group.dataset.target);
+          if(grid && grid.id === "catalog-grid") applyCatalogFilters(grid, activeCat, getSearchQ());
         }
       }
     });
-
-    // honor ?q= free-text search coming from the Spotlight overlay
-    (function(){
-      const params = new URLSearchParams(location.search);
-      const q = (params.get("q") || "").toLowerCase().trim();
-      if(!q) return;
-      const grid = document.querySelector("#catalog-grid");
-      if(!grid) return;
-      let shown = 0;
-      grid.querySelectorAll("[data-product]").forEach(card=>{
-        const txt = (card.textContent || "").toLowerCase();
-        const show = txt.includes(q);
-        card.style.display = show ? "" : "none";
-        if(show) shown++;
-      });
-      updateCatCount(grid);
-      // reflect the query in the results count + a small banner
-      const note = document.querySelector("[data-search-note]");
-      if(note){ note.textContent = "«" + (params.get("q")) + "» — " + shown; note.style.display = ""; }
-    })();
 
     // contact form
     const form = document.querySelector("[data-contact-form]");
