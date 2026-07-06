@@ -79,47 +79,29 @@
 </nav>
 
 <main class="home-flow">
-<!-- ===== HERO (unified card, 4 worlds) ===== -->
+<!-- ===== HERO (split card, 4 worlds) ===== -->
 <section class="hero wrap" data-hero role="region" aria-roledescription="carousel" data-i18n-aria="hero.carousel" aria-label="Витрина">
   <div class="hero__card" data-hero-card>
-    <div class="hero__bg" aria-hidden="true">
-      <img class="hero__img is-on" data-h="heroImg" src="assets/hero-rattan.png" alt="" loading="eager" fetchpriority="high" decoding="async">
-      <img class="hero__img" data-h="heroImgB" alt="" loading="lazy" decoding="async">
-    </div>
-    <div class="hero__shade" aria-hidden="true"></div>
-    <div class="hero__main" data-h-inner aria-live="polite">
-      <h1 class="hero__title"><span data-h="t1">Искусственный</span><br><span data-h="t2">ротанг</span></h1>
-      <p class="hero__lead" data-h-lead data-h="sub">Сами плетём мебель, кашпо и корзины — материал не выгорает на солнце, не боится влаги и мороза, служит годами.</p>
-      <a class="btn btn--light hero__cta btn--icon-end" data-h="storeLink" href="catalog.html">
-        <span data-h="store">Смотреть каталог</span>
-        <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
+    <div class="hero__split">
+      <div class="hero__panel" data-h-inner aria-live="polite">
+        <div class="hero__eyebrow eyebrow" data-h="eyebrow">Своё производство</div>
+        <h1 class="hero__title"><span data-h="t1">Крученый</span><br><span data-h="t2">ротанг</span></h1>
+        <p class="hero__lead" data-h-lead data-h="sub">Плетём катушки из полиэтиленового волокна — от тонкого декора до толстого каркаса. Разные диаметры и цвета, стабильное качество партии за партией.</p>
+        <a class="btn btn--copper btn--icon-end hero__cta" data-h="storeLink" href="catalog.html?cat=rattan">
+          <span data-h="store">Смотреть каталог</span>
+          <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+      <div class="hero__media">
+        <img class="hero__img is-on" data-h="heroImg" src="assets/hero-rattan.png" alt="" loading="eager" fetchpriority="high" decoding="async">
+        <img class="hero__img" data-h="heroImgB" alt="" loading="lazy" decoding="async">
+        <span class="hero__chip" data-h="chip">PE-ротанг</span>
+      </div>
     </div>
     <div class="hero__switch liquid liquid--dark spatial" data-hero-switch>
       <button class="hero__sw-arrow" data-hero-prev data-i18n-aria="hero.prev" aria-label="Предыдущий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg></button>
       <div class="hero__sw-dots" data-hero-dots></div>
       <button class="hero__sw-arrow" data-hero-next data-i18n-aria="hero.next" aria-label="Следующий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== TWISTED RATTAN (own production) ===== -->
-<section class="wrap section section--after-hero twist-rattan" id="twisted-rattan" aria-labelledby="twist-heading">
-  <div class="twist-rattan__grid">
-    <div class="twist-rattan__media">
-      <img src="assets/hero-rattan.png" alt="" loading="eager" fetchpriority="high" decoding="async">
-      <span class="twist-rattan__chip" data-i18n="twist.chip">PE-ротанг</span>
-    </div>
-    <div class="twist-rattan__body">
-      <div class="eyebrow" data-i18n="twist.eyebrow">Своё производство</div>
-      <h2 class="display-2" id="twist-heading"><span data-i18n="twist.title.1">Крученый</span><br><span data-i18n="twist.title.2">ротанг</span></h2>
-      <p class="lead twist-rattan__text" data-i18n="twist.body">Плетём катушки из полиэтиленового волокна — от тонкого декора до толстого каркаса. Разные диаметры и цвета, стабильное качество партии за партией.</p>
-      <ul class="twist-rattan__facts">
-        <li data-i18n="twist.f1">Диаметры под ваш каркас и декор</li>
-        <li data-i18n="twist.f2">Палитра цветов — от базовых до под заказ</li>
-        <li data-i18n="twist.f3">Стабильное качество каждой партии</li>
-      </ul>
-      <a class="btn btn--copper btn--icon-end twist-rattan__cta" href="catalog.html?cat=rattan"><span data-i18n="twist.cta">Смотреть каталог</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </div>
 </section>
