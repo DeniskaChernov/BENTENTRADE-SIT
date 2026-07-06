@@ -7,7 +7,7 @@
   const SLIDES = [
     {
       cat: "rattan",
-      sideImg: "https://loremflickr.com/800/800/rattan,weave,texture/all?lock=21",
+      sideImg: "assets/hero-rattan.png",
       t1:      {ru:"Искусственный",           uz:"Sun’iy",                 en:"Synthetic"},
       t2:      {ru:"ротанг",                  uz:"rotang",                 en:"rattan"},
       sub:     {ru:"Сами плетём мебель, кашпо и корзины — материал не выгорает на солнце, не боится влаги и мороза, служит годами.",
