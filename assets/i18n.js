@@ -19,6 +19,10 @@ window.BTT_I18N = {
 
     "promo.consult":"100% бесплатная\nконсультация по подбору","promo.price":"Гарантия лучшей цены",
 
+    "twist.eyebrow":"Своё производство","twist.title.1":"Крученый","twist.title.2":"ротанг",
+    "twist.body":"Плетём катушки из полиэтиленового волокна — от тонкого декора до толстого каркаса. Разные диаметры и цвета, стабильное качество партии за партией.",
+    "twist.cta":"Смотреть каталог","twist.chip":"PE-ротанг",
+
     "cat.eyebrow":"Коллекция","cat.title.1":"Сделано из","cat.title.2":"искусственного ротанга",
     "lines.eyebrow":"Направления","lines.title":"Что мы производим",
     "line.rattan":"Искусственный ротанг","line.planter":"Кашпо","line.twist":"Сундуки и корзины","line.furniture":"Садовая мебель","line.onreq":"Хит","line.indoor":"Мебель для дома","line.new":"Новое",
@@ -103,6 +107,10 @@ window.BTT_I18N = {
 
     "promo.consult":"100% bepul\ntanlov bo‘yicha maslahat","promo.price":"Eng yaxshi narx kafolati",
 
+    "twist.eyebrow":"O‘z ishlab chiqarish","twist.title.1":"Burma","twist.title.2":"rotang",
+    "twist.body":"Polietilen tolidan g‘iloflar to‘qiyamiz — nozik dekor yoki qalin karkas uchun. Turli diametr va ranglar, har bir partiyada barqaror sifat.",
+    "twist.cta":"Katalogni ko‘rish","twist.chip":"PE-rotang",
+
     "cat.eyebrow":"Kolleksiya","cat.title.1":"Sun’iy rotangdan","cat.title.2":"yasalgan",
     "lines.eyebrow":"Yo‘nalishlar","lines.title":"Biz nima ishlab chiqaramiz",
     "line.rattan":"Sun’iy rotang","line.planter":"Gultuvak","line.twist":"Sandiq va savatlar","line.furniture":"Bog‘ mebeli","line.onreq":"Xit","line.indoor":"Uy mebeli","line.new":"Yangi",
@@ -183,6 +191,10 @@ window.BTT_I18N = {
     "stat.clients":"Happy clients","stat.projects":"Items in catalog","stat.premium":"Weave models",
 
     "promo.consult":"100% free\nproduct-match consultation","promo.price":"Price match guarantee",
+
+    "twist.eyebrow":"Own production","twist.title.1":"Twisted","twist.title.2":"rattan",
+    "twist.body":"We weave coils from polyethylene fibre — from fine decor to heavy frame gauges. Multiple diameters and colours, consistent quality batch after batch.",
+    "twist.cta":"Browse catalog","twist.chip":"PE-rattan",
 
     "cat.eyebrow":"Collection","cat.title.1":"Made from","cat.title.2":"synthetic rattan",
     "lines.eyebrow":"Categories","lines.title":"What we produce",
