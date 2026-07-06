@@ -34,6 +34,7 @@ window.BTT_I18N = {
     "p2.name":"Кресло «Бали»","p2.cat":"Садовая мебель",
     "p3.name":"Кашпо «Колонна»","p3.cat":"Кашпо",
 
+    "atmo.cta":"Смотреть коллекцию","atmo.carousel":"Атмосфера Bententrade",
     "split.title":"Обустройте сад и террасу мебелью, которой не страшна погода",
     "split.body":"Наше плетение выглядит как натуральное, но сделано прочнее: не выгорает на солнце, не трескается на морозе и не требует особого ухода — достаточно протереть влажной тканью.",
 
@@ -124,6 +125,7 @@ window.BTT_I18N = {
     "p2.name":"«Bali» kreslo","p2.cat":"Bog‘ mebeli",
     "p3.name":"«Kolonna» gultuvak","p3.cat":"Gultuvak",
 
+    "atmo.cta":"Kolleksiyani ko‘rish","atmo.carousel":"Bententrade atmosferasi",
     "split.title":"Bog‘ va terassangizni ob-havodan qo‘rqmaydigan mebel bilan jihozlang",
     "split.body":"To‘quvimiz tabiiyga o‘xshaydi, lekin mustahkamroq: quyoshda rangi o‘chmaydi, sovuqda yorilmaydi va alohida parvarish talab qilmaydi — nam mato bilan artish kifoya.",
 
@@ -211,6 +213,7 @@ window.BTT_I18N = {
     "p2.name":"Bali Lounge Chair","p2.cat":"Garden furniture",
     "p3.name":"Colonna Planter","p3.cat":"Planter",
 
+    "atmo.cta":"Browse the collection","atmo.carousel":"Bententrade atmosphere",
     "split.title":"Furnish your garden and terrace with furniture that laughs at the weather",
     "split.body":"Our weave looks natural but is built tougher: it won't fade in the sun, crack in frost or need special care — a wipe with a damp cloth is enough.",
 

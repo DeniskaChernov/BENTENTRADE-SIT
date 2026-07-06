@@ -106,7 +106,7 @@
 <!-- ===== PROMO ===== -->
 <section class="wrap section section--after-hero">
   <div class="promo reveal">
-    <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
+    <img src="assets/scene-dining-grey.png" alt="" loading="lazy" decoding="async">
     <span class="pill pill--ghost tl" data-i18n="promo.consult">100% бесплатная консультация по подбору</span>
     <span class="pill br" data-i18n="promo.price">Гарантия лучшей цены</span>
   </div>
@@ -246,20 +246,45 @@
   </div>
 </section>
 
+<!-- ===== ATMOSPHERE HERO — mid-page lifestyle carousel ===== -->
+<section class="atmo-hero wrap section" data-atmo-hero role="region" aria-roledescription="carousel" data-i18n-aria="atmo.carousel" aria-label="Атмосфера">
+  <div class="atmo-hero__card">
+    <div class="atmo-hero__bg" aria-hidden="true">
+      <img class="atmo-hero__img is-on" data-a="img" src="assets/scene-dining-beige.png" alt="" loading="lazy" decoding="async">
+      <img class="atmo-hero__img" data-a="imgB" alt="" loading="lazy" decoding="async">
+    </div>
+    <div class="atmo-hero__shade" aria-hidden="true"></div>
+    <div class="atmo-hero__main" aria-live="polite">
+      <span class="pill pill--glass pill--dot atmo-hero__loc" data-a="loc">Гостиная</span>
+      <h2 class="atmo-hero__title" data-a="title">Уют, в который хочется вернуться</h2>
+      <p class="atmo-hero__lead" data-a="sub">Мягкий свет, натуральные фактуры и мебель, которая живёт в интерьере, а не на белом фоне.</p>
+      <a class="btn btn--light btn--icon-end atmo-hero__cta" data-a="link" href="catalog.html?cat=indoor">
+        <span data-a="cta" data-i18n="atmo.cta">Смотреть коллекцию</span>
+        <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+    <div class="atmo-hero__switch liquid liquid--dark spatial">
+      <button class="hero__sw-arrow" data-atmo-prev data-i18n-aria="hero.prev" aria-label="Предыдущий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="hero__sw-dots" data-atmo-dots></div>
+      <button class="hero__sw-arrow" data-atmo-next data-i18n-aria="hero.next" aria-label="Следующий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</section>
+
 <!-- ===== MOOD BENTO — lifestyle scenes ================= -->
 <section class="wrap section section--split-y">
   <div class="mood">
     <h2 class="display-3 reveal" data-i18n="split.title">Обустройте сад и террасу мебелью, которой не страшна погода</h2>
     <div class="mood__bento" data-stagger data-stagger="70">
       <a class="mood-tile reveal" href="catalog.html?cat=furniture">
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-grey.png" alt="" loading="lazy" decoding="async">
         <div class="mood-tile__meta">
           <span class="mood-tile__loc" data-i18n="mood.terrace">Терраса</span>
           <span class="mood-tile__title" data-i18n="type.set">Комплект</span>
         </div>
       </a>
-      <a class="mood-tile mood-tile--crop-r reveal" href="catalog.html?cat=furniture">
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
+      <a class="mood-tile mood-tile--crop-r reveal" href="catalog.html?cat=indoor">
+        <img src="assets/scene-dining-teal.png" alt="" loading="lazy" decoding="async">
         <div class="mood-tile__meta">
           <span class="mood-tile__loc" data-i18n="mood.garden">Сад</span>
           <span class="mood-tile__title" data-i18n="type.sofa">Диван</span>
@@ -270,21 +295,21 @@
         <p data-i18n="split.body">Наше плетение выглядит как натуральное, но сделано прочнее: не выгорает на солнце, не трескается на морозе и не требует особого ухода — достаточно протереть влажной тканью.</p>
       </div>
       <a class="mood-tile mood-tile--crop-l reveal" href="catalog.html?cat=indoor">
-        <img src="assets/hero-home-furniture.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-cream.png" alt="" loading="lazy" decoding="async">
         <div class="mood-tile__meta">
           <span class="mood-tile__loc" data-i18n="mood.veranda">Веранда</span>
           <span class="mood-tile__title" data-i18n="type.chair">Стул</span>
         </div>
       </a>
       <a class="mood-tile mood-tile--crop-t reveal" href="catalog.html?cat=furniture">
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-marble.png" alt="" loading="lazy" decoding="async">
         <div class="mood-tile__meta">
           <span class="mood-tile__loc" data-i18n="mood.patio">Патио</span>
           <span class="mood-tile__title" data-i18n="type.table">Стол</span>
         </div>
       </a>
       <a class="mood-tile reveal" href="catalog.html?cat=planterMix">
-        <img src="assets/hero-planter.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-light.png" alt="" loading="lazy" decoding="async">
         <div class="mood-tile__meta">
           <span class="mood-tile__loc" data-i18n="mood.balcony">Балкон</span>
           <span class="mood-tile__title" data-i18n="line.planterMix">Кашпо, сундуки и корзины</span>
@@ -292,22 +317,22 @@
       </a>
     </div>
     <div class="mood__scenes" data-stagger data-stagger="60">
-      <a class="scene-card reveal" href="catalog.html?cat=furniture">
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
+      <a class="scene-card reveal" href="catalog.html?cat=indoor">
+        <img src="assets/scene-dining-beige.png" alt="" loading="lazy" decoding="async">
         <div class="scene-card__meta">
           <span class="scene-card__loc" data-i18n="mood.eve">Вечер на террасе</span>
           <span class="scene-card__hint" data-i18n="mood.eve.h">Садовая мебель</span>
         </div>
       </a>
-      <a class="scene-card reveal" href="catalog.html?cat=planterMix">
-        <img src="assets/bento-planter.png" alt="" loading="lazy" decoding="async">
+      <a class="scene-card reveal" href="catalog.html?cat=indoor">
+        <img src="assets/scene-dining-azure.png" alt="" loading="lazy" decoding="async">
         <div class="scene-card__meta">
           <span class="scene-card__loc" data-i18n="mood.green">Зелень и уют</span>
           <span class="scene-card__hint" data-i18n="mood.green.h">Кашпо и корзины</span>
         </div>
       </a>
       <a class="scene-card reveal" href="catalog.html?cat=indoor">
-        <img src="assets/hero-home-furniture.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-contrast.png" alt="" loading="lazy" decoding="async">
         <div class="scene-card__meta">
           <span class="scene-card__loc" data-i18n="mood.cozy">Тепло дома</span>
           <span class="scene-card__hint" data-i18n="mood.cozy.h">Мебель для интерьера</span>
@@ -335,7 +360,7 @@
 <!-- ===== FINAL ===== -->
 <section class="wrap section section--compact">
   <div class="final reveal">
-    <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
+    <img src="assets/scene-dining-warm.png" alt="" loading="lazy" decoding="async">
     <div class="final__inner">
       <span class="pill pill--dot" data-i18n="final.badge">Плетение, которое живёт годами</span>
       <h2><span data-i18n="final.title.1">Сделано из</span><br><span data-i18n="final.title.2">искусственного</span><br><span data-i18n="final.title.3">ротанга</span></h2>
@@ -384,6 +409,7 @@
 <script src="assets/api.js"></script>
 <script src="assets/i18n.js"></script>
 <script src="assets/hero.js"></script>
+<script src="assets/atmo-hero.js"></script>
 <script src="assets/assistant.js"></script>
 <script src="assets/search.js"></script>
 <script src="assets/site.js"></script>
