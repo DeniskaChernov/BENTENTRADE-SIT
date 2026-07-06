@@ -236,9 +236,7 @@
 /* 6-col bento — fixed row heights = perfectly even alignment
    Image specs (object-fit:cover; keep subject centered, title safe zone ~22% bottom):
    · Tile 1 large (2×2): 1200×1400 px, 6∶7 or 4∶5 — WebP/JPG
-   · Tiles 2–3 wide (2×1): 1600×900 px, 16∶9
-   · Tiles 4–5 small (1×1): 800×800 px, 1∶1
-   · Tile 6 wide (2×1): 1600×900 px, 16∶9
+   · Tiles 2–3, 4–5 wide (2×1): 1600×900 px, 16∶9
    · Universal fallback: 1600×1200 px (4∶3) for any tile */
 .lines__bento{
   display:grid;
@@ -262,9 +260,8 @@
 .bento-tile:nth-child(1){grid-column:1 / span 2;grid-row:1 / span 2;}
 .bento-tile:nth-child(2){grid-column:3 / span 2;grid-row:1;}
 .bento-tile:nth-child(3){grid-column:5 / span 2;grid-row:1;}
-.bento-tile:nth-child(4){grid-column:3;grid-row:2;}
-.bento-tile:nth-child(5){grid-column:4;grid-row:2;}
-.bento-tile:nth-child(6){grid-column:5 / span 2;grid-row:2;}
+.bento-tile:nth-child(4){grid-column:3 / span 2;grid-row:2;}
+.bento-tile:nth-child(5){grid-column:5 / span 2;grid-row:2;}
 
 .bento-tile__meta{
   position:absolute;left:0;right:0;bottom:0;z-index:3;

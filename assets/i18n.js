@@ -26,7 +26,7 @@ window.BTT_I18N = {
 
     "cat.eyebrow":"Коллекция","cat.title.1":"Сделано из","cat.title.2":"искусственного ротанга",
     "lines.eyebrow":"Направления","lines.title":"Что мы производим",
-    "line.rattan":"Искусственный ротанг","line.twisted":"Крученый ротанг","line.planter":"Кашпо","line.twist":"Сундуки и корзины","line.furniture":"Садовая мебель","line.onreq":"Хит","line.indoor":"Мебель для дома","line.new":"Новое",
+    "line.rattan":"Искусственный ротанг","line.twisted":"Крученый ротанг","line.planter":"Кашпо","line.planterMix":"Кашпо, сундуки и корзины","line.twist":"Сундуки и корзины","line.furniture":"Садовая мебель","line.onreq":"Хит","line.indoor":"Мебель для дома","line.new":"Новое",
     "chip.all":"Всё","chip.furniture":"Садовая мебель","chip.planter":"Кашпо","chip.basket":"Корзины и сундуки","chip.indoor":"Мебель для дома",
     "see":"Подробнее",
     "cat.furniture":"Садовая мебель","cat.planter":"Кашпо","cat.basket":"Корзины и сундуки","cat.indoor":"Мебель для дома",
@@ -115,7 +115,7 @@ window.BTT_I18N = {
 
     "cat.eyebrow":"Kolleksiya","cat.title.1":"Sun’iy rotangdan","cat.title.2":"yasalgan",
     "lines.eyebrow":"Yo‘nalishlar","lines.title":"Biz nima ishlab chiqaramiz",
-    "line.rattan":"Sun’iy rotang","line.twisted":"Burma rotang","line.planter":"Gultuvak","line.twist":"Sandiq va savatlar","line.furniture":"Bog‘ mebeli","line.onreq":"Xit","line.indoor":"Uy mebeli","line.new":"Yangi",
+    "line.rattan":"Sun’iy rotang","line.twisted":"Burma rotang","line.planter":"Gultuvak","line.planterMix":"Gultuvak, sandiq va savatlar","line.twist":"Sandiq va savatlar","line.furniture":"Bog‘ mebeli","line.onreq":"Xit","line.indoor":"Uy mebeli","line.new":"Yangi",
     "chip.all":"Hammasi","chip.furniture":"Bog‘ mebeli","chip.planter":"Gultuvak","chip.basket":"Savat va sandiq","chip.indoor":"Uy mebeli",
     "see":"Batafsil",
     "cat.furniture":"Bog‘ mebeli","cat.planter":"Gultuvak","cat.basket":"Savat va sandiq","cat.indoor":"Uy mebeli",
@@ -201,7 +201,7 @@ window.BTT_I18N = {
 
     "cat.eyebrow":"Collection","cat.title.1":"Made from","cat.title.2":"synthetic rattan",
     "lines.eyebrow":"Categories","lines.title":"What we produce",
-    "line.rattan":"Synthetic rattan","line.twisted":"Twisted rattan","line.planter":"Planters","line.twist":"Chests & baskets","line.furniture":"Garden furniture","line.onreq":"Top pick","line.indoor":"Home furniture","line.new":"New",
+    "line.rattan":"Synthetic rattan","line.twisted":"Twisted rattan","line.planter":"Planters","line.planterMix":"Planters, chests & baskets","line.twist":"Chests & baskets","line.furniture":"Garden furniture","line.onreq":"Top pick","line.indoor":"Home furniture","line.new":"New",
     "chip.all":"All","chip.furniture":"Garden furniture","chip.planter":"Planters","chip.basket":"Baskets & chests","chip.indoor":"Home furniture",
     "see":"See details",
     "cat.furniture":"Garden furniture","cat.planter":"Planter","cat.basket":"Baskets & chests","cat.indoor":"Home furniture",
