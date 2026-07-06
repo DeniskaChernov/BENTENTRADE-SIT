@@ -533,6 +533,7 @@ a.mood-tile:hover img{transform:scale(1.04);}
 
 /* home collection — filter bar */
 .home-filters{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:clamp(48px,6vw,72px);}
+.home-filters--solo{margin-bottom:clamp(40px,5vw,56px);}
 .home-filters .glass-bar{margin-left:auto;padding:10px 14px;border:none;background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;}
 .home-filters .chip{background:transparent;}
 .home-filters .chip.is-active{background:var(--ink);border-color:var(--ink);color:var(--on-dark);}
