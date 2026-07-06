@@ -29,7 +29,7 @@
     },
     {
       cat: "indoor",
-      sideImg: "https://loremflickr.com/800/800/rattan,rocking,chair/all?lock=90",
+      sideImg: "assets/hero-home-furniture.png",
       t1:      {ru:"Мебель",                  uz:"Mebel",                  en:"Furniture"},
       t2:      {ru:"для дома",                 uz:"uy uchun",               en:"for the home"},
       sub:     {ru:"Кресла, столики и стеллажи, которые впишутся в гостиную, спальню или балкон.",
