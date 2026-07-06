@@ -24,7 +24,24 @@
   function productImg(p) {
     if (p.image) return mediaUrl(p.image);
     if (window.BTT_PRODUCT_IMG) { const im = window.BTT_PRODUCT_IMG(p.id); if (im && im[0]) return im[0].full; }
-    return "https://loremflickr.com/800/800/rattan,furniture/all?lock=" + (String(p.id).replace(/\D/g, "") || "1");
+    const cat = p.category || "furniture";
+    const C = window.BTT_CAT_IMG || {};
+    return C[cat] || C.furniture || "assets/hero-garden-furniture.png";
+  }
+
+  function hydrateStaticProductImgs(root) {
+    if (!window.BTT_PRODUCT_IMG || !root) return;
+    root.querySelectorAll("[data-product]").forEach((card) => {
+      const see = card.querySelector("a[href*='product.html?id=']");
+      const id = see && idFromHref(see.getAttribute("href"));
+      if (!id) return;
+      const im = window.BTT_PRODUCT_IMG(id);
+      const img = card.querySelector(".product__media img");
+      if (im && im[0] && img) {
+        img.src = im[0].full;
+        img.removeAttribute("onerror");
+      }
+    });
   }
 
   function buildCard(p) {
@@ -219,7 +236,12 @@
     }
   }
 
-  function run() { hydrateCatalog(); hydratePDP(); }
+  function run() {
+    hydrateStaticProductImgs(document.querySelector("#catalog-grid"));
+    hydrateStaticProductImgs(document.querySelector("#home-grid"));
+    hydrateCatalog();
+    hydratePDP();
+  }
 
   document.addEventListener("DOMContentLoaded", function () {
     run();

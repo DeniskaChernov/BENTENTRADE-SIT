@@ -1,30 +1,34 @@
 /* Bententrade — product catalogue data (artificial-rattan range)
-   Three lines: garden furniture (furniture) · planters / kashpo (planter)
-   · chests & laundry baskets (basket). Names & on-card category come from the
-   i18n dictionary (p{n}.name / p{n}.cat); PDP copy + specs are category-based
-   and translated in CAT below. Imagery is deterministic loremflickr (topical). */
+   Category hero / card imagery: local assets (replace per SKU when CRM photos exist). */
 (function(){
   "use strict";
 
-  // deterministic topical photo (square) — kw="rattan,sofa", lock=11
-  const F = (kw,lock,w) => "https://loremflickr.com/"+w+"/"+w+"/"+kw+"/all?lock="+lock;
+  window.BTT_CAT_IMG = {
+    all:       "assets/hero-garden-furniture.png",
+    furniture: "assets/hero-garden-furniture.png",
+    planter:   "assets/hero-planter.png",
+    basket:    "assets/bento-planter.png",
+    indoor:    "assets/hero-home-furniture.png",
+    rattan:    "assets/bento-rattan.png"
+  };
 
-  // a "look" = 4 [keyword, lock] pairs (main + 3 alternates)
+  const CAT = window.BTT_CAT_IMG;
+
   const LOOK = {
-    sofa:    [["rattan,sofa",11],["patio,furniture",31],["outdoor,sofa",41],["wicker,chair",2]],
-    dining:  [["rattan,dining",14],["patio,table",32],["garden,table",42],["outdoor,furniture",52]],
-    lounge:  [["wicker,chair",2],["rattan,chair",17],["lounge,chair",37],["egg,chair",47]],
-    chair:   [["rattan,chair",17],["wicker,chair",27],["garden,chair",38],["patio,chair",48]],
-    corner:  [["rattan,sofa",19],["outdoor,sofa",29],["patio,furniture",39],["garden,sofa",49]],
-    planterT:[["wicker,planter",4],["rattan,plant",24],["woven,basket",34],["plant,pot",44]],
-    planterS:[["rattan,plant",24],["wicker,planter",15],["plant,pot",45],["woven,basket",4]],
-    planterSet:[["plant,pot",44],["wicker,planter",4],["rattan,plant",24],["woven,basket",34]],
-    chest:   [["woven,basket",34],["wicker,basket",54],["rattan,storage",64],["wicker,trunk",74]],
-    laundry: [["wicker,basket",54],["laundry,basket",84],["woven,basket",34],["rattan,storage",64]],
-    rocker:  [["rattan,rocking,chair",90],["wicker,rocking,chair",91],["rattan,chair",17],["lounge,chair",37]],
-    coffee:  [["rattan,coffee,table",92],["wicker,table",93],["rattan,table",14],["living,room,table",94]],
-    cabinet: [["rattan,cabinet",95],["wicker,dresser",96],["rattan,sideboard",97],["woven,cabinet",98]],
-    shelf:   [["rattan,shelf",99],["wicker,shelf",100],["rattan,bookcase",101],["woven,shelf",102]]
+    sofa:       CAT.furniture,
+    dining:     CAT.furniture,
+    lounge:     CAT.furniture,
+    chair:      CAT.furniture,
+    corner:     CAT.furniture,
+    planterT:   CAT.planter,
+    planterS:   CAT.planter,
+    planterSet: CAT.planter,
+    chest:      CAT.basket,
+    laundry:    CAT.basket,
+    rocker:     CAT.indoor,
+    coffee:     CAT.indoor,
+    cabinet:    CAT.indoor,
+    shelf:      CAT.indoor
   };
 
   window.BTT_PRODUCTS = {
@@ -45,12 +49,17 @@
     p15:{cat:"indoor",    look:"shelf",     now:320, old:390}
   };
 
+  function imgsFor(src){
+    return [{ thumb:src, full:src }, { thumb:src, full:src }, { thumb:src, full:src }, { thumb:src, full:src }];
+  }
+
   window.BTT_PRODUCT_IMG = id => {
-    const p = window.BTT_PRODUCTS[id]; if(!p) return null;
-    return LOOK[p.look].map(([kw,lock]) => ({ thumb:F(kw,lock,300), full:F(kw,lock,1100) }));
+    const p = window.BTT_PRODUCTS[id];
+    if(!p) return null;
+    const src = LOOK[p.look] || CAT[p.cat] || CAT.furniture;
+    return imgsFor(src);
   };
 
-  // category-based PDP copy & specs. 5th spec ("seat") is repurposed as "Use".
   window.BTT_PRODUCT_CAT = {
     furniture:{
       sizes:{ru:["2-местный","3-местный","Угловой"],uz:["2 o‘rinli","3 o‘rinli","Burchak"],en:["2-seater","3-seater","Corner"]}, defSize:1,
