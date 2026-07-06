@@ -18,7 +18,7 @@
     },
     {
       cat: "furniture",
-      sideImg: "https://loremflickr.com/800/800/patio,furniture/all?lock=31",
+      sideImg: "assets/hero-garden-furniture.png",
       t1:      {ru:"Мебель",                  uz:"Mebel",                  en:"Furniture"},
       t2:      {ru:"для дачи и сада",          uz:"dala va bog‘ uchun",     en:"for patio & garden"},
       sub:     {ru:"Диваны, кресла и обеденные группы для террасы и двора — всё есть в наличии.",
