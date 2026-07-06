@@ -132,7 +132,7 @@
 
   function row(img, title, sub, i, glyph){
     const ic = img
-      ? '<span class="search-item__ic"><img src="'+img+'" alt="'+esc(title||"")+'" onerror="this.parentNode.textContent=\''+(glyph||"")+'\'"></span>'
+      ? '<span class="search-item__ic"><img src="'+img+'" alt="'+esc(title||"")+'" loading="lazy" decoding="async" onerror="this.parentNode.textContent=\''+(glyph||"")+'\'"></span>'
       : '<span class="search-item__ic">'+esc(glyph||"")+'</span>';
     return '<button class="search-item" data-i="'+i+'">'+ic+
       '<span class="search-item__tx"><b>'+esc(title)+'</b><span>'+esc(sub)+'</span></span>'+

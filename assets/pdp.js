@@ -89,7 +89,7 @@
       return '<article class="product reveal" data-product data-cat="' + esc(p.cat) + '">' +
         '<div class="product__media media">' + sale +
         '<button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="' + esc(t("a11y.fav")||"") + '">' + FAV_SVG + '</button>' +
-        '<img src="' + esc(img) + '" alt="' + esc(pn||"") + '" loading="lazy" onerror="this.style.display=\'none\'">' +
+        '<img src="' + esc(img) + '" alt="' + esc(pn||"") + '" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">' +
         '<a class="see" href="product.html?id=' + esc(pid) + '">' + esc(see) + '</a>' +
         '<button class="add" data-add data-i18n-aria="a11y.add" aria-label="' + esc(t("a11y.add")||"") + '">' + ADD_SVG + '</button>' +
         '</div><div><div class="product__cat">' + esc(pc) + '</div>' +

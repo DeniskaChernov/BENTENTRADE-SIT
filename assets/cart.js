@@ -187,7 +187,7 @@
       const rows=ids.map(id=>{
         const it=c[id]; const sum=(it.price||0)*(it.qty||1); total+=sum;
         return '<div class="dl-item">'+
-          '<div class="dl-thumb">'+(it.img?'<img src="'+esc(it.img)+'" alt="" onerror="this.style.display=\'none\'">':'')+'</div>'+
+          '<div class="dl-thumb">'+(it.img?'<img src="'+esc(it.img)+'" alt="" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">':'')+'</div>'+
           '<div class="dl-main"><div class="dl-name">'+esc(it.name)+'</div>'+
             '<div class="dl-price">$'+(it.price||0)+'</div>'+
             '<div class="dl-qty" data-dl-qty="'+esc(id)+'">'+
@@ -220,7 +220,7 @@
       const rows=ids.map(id=>{
         const it=f[id]; const href=/^p\d+$/.test(id)?("product.html?id="+id):"catalog.html";
         return '<div class="dl-item">'+
-          '<a class="dl-thumb" href="'+href+'">'+(it.img?'<img src="'+esc(it.img)+'" alt="" onerror="this.style.display=\'none\'">':'')+'</a>'+
+          '<a class="dl-thumb" href="'+href+'">'+(it.img?'<img src="'+esc(it.img)+'" alt="" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">':'')+'</a>'+
           '<div class="dl-main"><a class="dl-name" href="'+href+'">'+esc(it.name)+'</a>'+
             '<div class="dl-price">$'+(it.price||0)+'</div>'+
             '<button class="btn btn--ghost btn--sm" data-fav-add="'+esc(id)+'">'+esc(t("addCart"))+'</button>'+

@@ -284,6 +284,22 @@
     });
   }
 
+  function initLazyImages(){
+    const bind = window.BTT_UTIL && window.BTT_UTIL.lazyBind;
+    if(!bind) return;
+    bind(document);
+    if(!("MutationObserver" in window) || !document.body) return;
+    const mo = new MutationObserver((muts)=>{
+      muts.forEach((m)=>{
+        m.addedNodes.forEach((n)=>{
+          if(n.nodeType !== 1) return;
+          bind(n);
+        });
+      });
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+  }
+
   function initFaq(){
     document.querySelectorAll("[data-faq] .faq-q").forEach(btn=>{
       const panel = document.getElementById(btn.getAttribute("aria-controls"));
@@ -334,6 +350,7 @@
     initCounters();
     initPageTransitions();
     initMobileNav();
+    initLazyImages();
     initFaq();
 
     document.querySelector("[data-cat-reset]")?.addEventListener("click", ()=>{

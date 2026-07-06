@@ -139,7 +139,7 @@
       '<a class="article__back" href="blog.html">← ' + esc(t("blog.back")) + "</a>" +
       '<div class="article__date">' + esc(fmtDate(a.published_at)) + "</div>" +
       "<h1>" + esc(title) + "</h1>" +
-      (img ? '<div class="article__cover"><img src="' + esc(img) + '" alt="' + esc(title) + '"></div>' : "") +
+      (img ? '<div class="article__cover"><img src="' + esc(img) + '" alt="' + esc(title) + '" loading="lazy" decoding="async"></div>' : "") +
       '<div class="article__body">' + bodyHtml + "</div></article>";
     root.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
   }
