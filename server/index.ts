@@ -95,6 +95,11 @@ const ENV = buildEnv();
 const port = Number(process.env.PORT || 8080);
 
 async function boot() {
+  // Listen first — Railway probes PORT during deploy; DB init must not block HTTP.
+  serve({ fetch: (req: Request) => app.fetch(req, ENV), port }, (info) => {
+    console.log(`Bententrade server on http://localhost:${info.port}`);
+  });
+
   try {
     await migrate();
     const seeded = await seedIfEmpty();
@@ -104,9 +109,6 @@ async function boot() {
     dbReady = false;
     console.error("[db] init failed (API returns 503, static site still served):", (e as Error).message);
   }
-  serve({ fetch: (req: Request) => app.fetch(req, ENV), port }, (info) => {
-    console.log(`Bententrade server on http://localhost:${info.port}`);
-  });
 }
 
 boot();

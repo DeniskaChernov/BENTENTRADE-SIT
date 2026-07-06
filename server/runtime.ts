@@ -36,6 +36,7 @@ export const pool = new pg.Pool({
   connectionString,
   ssl,
   max: 8,
+  connectionTimeoutMillis: 10_000,
   options: `-c search_path=${PG_SCHEMA} -c timezone=UTC`,
 });
 
