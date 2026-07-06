@@ -137,10 +137,12 @@
   async function hydrateCatalog() {
     const catGrid = document.querySelector("#catalog-grid");
     const homeGrid = document.querySelector("#home-grid");
-    if (!catGrid && !homeGrid) return;
+    const rattanGrid = document.querySelector("#rattan-grid");
+    if (!catGrid && !homeGrid && !rattanGrid) return;
     const { list, map } = await ensureMap();
     if (!list.length) return; // never blank the storefront on an empty/bad response
     if (homeGrid) patchGrid(homeGrid, map);
+    if (rattanGrid) patchGrid(rattanGrid, map);
     if (catGrid) hydrateCatalogGrid(catGrid, list, map);
   }
 
@@ -239,6 +241,7 @@
   function run() {
     hydrateStaticProductImgs(document.querySelector("#catalog-grid"));
     hydrateStaticProductImgs(document.querySelector("#home-grid"));
+    hydrateStaticProductImgs(document.querySelector("#rattan-grid"));
     hydrateCatalog();
     hydratePDP();
   }
