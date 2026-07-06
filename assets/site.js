@@ -23,6 +23,19 @@
         el.textContent = d[key];
       }
     });
+    document.querySelectorAll("[data-i18n-html]").forEach(el=>{
+      const key = el.getAttribute("data-i18n-html");
+      if(d[key] != null) el.innerHTML = d[key];
+    });
+    const docTitle = document.querySelector("title[data-i18n-doc]");
+    if(docTitle){
+      const k = docTitle.getAttribute("data-i18n-doc");
+      if(d[k] != null) document.title = d[k];
+    }
+    document.querySelectorAll("[data-i18n-meta]").forEach(el=>{
+      const key = el.getAttribute("data-i18n-meta");
+      if(d[key] != null) el.setAttribute("content", d[key]);
+    });
     document.querySelectorAll("[data-i18n-ph]").forEach(el=>{
       const key = el.getAttribute("data-i18n-ph");
       if(d[key] != null) el.setAttribute("placeholder", d[key]);

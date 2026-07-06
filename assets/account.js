@@ -274,11 +274,11 @@
   async function hydrateAccount(){
     // The account area is for signed-in users only: never show demo content.
     // No API client, a failed check, or no user → send them to the login page.
-    if(!window.BTT_API){ window.location.replace("login.html"); return; }
+    if(!window.BTT_API){ document.documentElement.classList.remove("acc-loading"); window.location.replace("login.html"); return; }
     let me;
     try{ me=await window.BTT_API.me(); }
-    catch(e){ window.location.replace("login.html"); return; }
-    if(!me || !me.user){ window.location.replace("login.html"); return; }
+    catch(e){ document.documentElement.classList.remove("acc-loading"); window.location.replace("login.html"); return; }
+    if(!me || !me.user){ document.documentElement.classList.remove("acc-loading"); window.location.replace("login.html"); return; }
     const u=me.user;
 
     // Header / sidebar identity
@@ -318,6 +318,7 @@
     // Orders + addresses
     try{ const or=await window.BTT_API.myOrders(); renderOrders(or.orders||[]); }catch(e){ renderOrders([]); }
     try{ const ar=await window.BTT_API.listAddresses(); renderAddresses(ar.addresses||[]); }catch(e){ renderAddresses([]); }
+    document.documentElement.classList.remove("acc-loading");
   }
 
   document.addEventListener("DOMContentLoaded", function(){

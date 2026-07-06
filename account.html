@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Личный кабинет Bententrade — заказы, избранное и настройки.">
+<meta name="description" data-i18n-meta="meta.account.desc" content="">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
 <meta name="theme-color" content="#bd7335">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<title>Bententrade — Личный кабинет</title>
+<title data-i18n-doc="meta.account.title">Bententrade — Личный кабинет</title>
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="stylesheet" href="assets/pages.css">
-<script>(function(){try{if(localStorage.getItem('btt_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+<script>(function(){try{if(localStorage.getItem('btt_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();document.documentElement.classList.add('acc-loading');</script>
 </head>
 <body>
 
@@ -73,7 +73,7 @@
   <div class="acc">
     <!-- ===== SIDEBAR ===== -->
     <aside class="acc-side">
-      <div class="acc-user">
+      <div class="acc-user" data-acc-demo>
         <div class="acc-ava">АК</div>
         <div>
           <div class="nm">Азиз Каримов</div>
@@ -102,17 +102,17 @@
           </div>
         </div>
         <div class="acc-stats">
-          <div class="acc-stat"><div class="n">12</div><div class="l" data-i18n="acc.ov.s1">Всего заказов</div></div>
+          <div class="acc-stat" data-acc-demo><div class="n">12</div><div class="l" data-i18n="acc.ov.s1">Всего заказов</div></div>
           <div class="acc-stat"><div class="n" data-acc-stat-fav>0</div><div class="l" data-i18n="acc.ov.s2">В избранном</div></div>
-          <div class="acc-stat"><div class="n">340</div><div class="l" data-i18n="acc.ov.s3">Бонусных баллов</div></div>
+          <div class="acc-stat" data-acc-demo><div class="n">340</div><div class="l" data-i18n="acc.ov.s3">Бонусных баллов</div></div>
         </div>
 
-        <div class="acc-card">
+        <div class="acc-card" data-acc-demo>
           <div class="acc-card__h">
             <h3 data-i18n="acc.ov.recent">Последние заказы</h3>
             <button class="acc-link" data-acc-goto="orders"><span data-i18n="acc.ov.all">Все заказы</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           </div>
-          <div class="order">
+          <div class="order" data-acc-demo>
             <div class="order__top">
               <div><div class="order__id">#BT-2048</div><div class="order__date" data-i18n="acc.ord.date2048">14 июня 2026</div></div>
               <span class="status status--ship" data-i18n="acc.st.ship">В пути</span>
@@ -123,7 +123,7 @@
               <div class="order__total">$1 120</div>
             </div>
           </div>
-          <div class="order">
+          <div class="order" data-acc-demo>
             <div class="order__top">
               <div><div class="order__id">#BT-2031</div><div class="order__date" data-i18n="acc.ord.date2031">2 июня 2026</div></div>
               <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
@@ -141,7 +141,7 @@
       <section class="acc-panel" data-acc-panel="orders">
         <div class="acc-h"><div><h1 data-i18n="acc.nav.orders">Заказы</h1><p data-i18n="acc.ord.sub">История ваших покупок и их статусы.</p></div></div>
 
-        <div class="order">
+        <div class="order" data-acc-demo>
           <div class="order__top">
             <div><div class="order__id">#BT-2048</div><div class="order__date" data-i18n="acc.ord.date2048">14 июня 2026</div></div>
             <span class="status status--ship" data-i18n="acc.st.ship">В пути</span>
@@ -157,7 +157,7 @@
           </div>
         </div>
 
-        <div class="order">
+        <div class="order" data-acc-demo>
           <div class="order__top">
             <div><div class="order__id">#BT-2031</div><div class="order__date" data-i18n="acc.ord.date2031">2 июня 2026</div></div>
             <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
@@ -173,7 +173,7 @@
           </div>
         </div>
 
-        <div class="order">
+        <div class="order" data-acc-demo>
           <div class="order__top">
             <div><div class="order__id">#BT-1998</div><div class="order__date" data-i18n="acc.ord.date1998">18 мая 2026</div></div>
             <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
@@ -204,13 +204,13 @@
       <section class="acc-panel" data-acc-panel="addresses">
         <div class="acc-h"><div><h1 data-i18n="acc.nav.addresses">Адреса</h1><p data-i18n="acc.addr.sub">Адреса доставки для быстрого оформления.</p></div></div>
         <div class="addr-grid">
-          <div class="addr is-default">
+          <div class="addr is-default" data-acc-demo>
             <a class="addr__edit" href="#" data-addr-edit data-i18n="acc.addr.edit">Изменить</a>
             <div class="addr__tag"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="acc.addr.default">Адрес по умолчанию</span></div>
             <h4>Азиз Каримов</h4>
             <p>Ташкент, Мирабадский район,<br>ул. Амира Темура, 15, кв. 42<br>+998 77 104 44 22</p>
           </div>
-          <div class="addr">
+          <div class="addr" data-acc-demo>
             <a class="addr__edit" href="#" data-addr-edit data-i18n="acc.addr.edit">Изменить</a>
             <div class="addr__tag"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9 12 2l9 7v11a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg><span data-i18n="acc.addr.office">Офис</span></div>
             <h4>ООО «Аркада»</h4>

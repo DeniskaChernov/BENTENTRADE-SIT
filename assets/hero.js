@@ -10,9 +10,9 @@
       sideImg: "assets/hero-rattan.png",
       t1:      {ru:"Искусственный",           uz:"Sun’iy",                 en:"Synthetic"},
       t2:      {ru:"ротанг",                  uz:"rotang",                 en:"rattan"},
-      sub:     {ru:"Сами плетём мебель, кашпо и корзины — материал не выгорает на солнце, не боится влаги и мороза, служит годами.",
-                uz:"Mebel, gultuvak va savatlarni o‘zimiz to‘qiyamiz — quyoshda so‘lmaydi, yomg‘ir va sovuqdan qo‘rqmaydi, yillar xizmat qiladi.",
-                en:"We weave furniture, planters and baskets in-house — won’t fade in the sun, handles rain and frost, lasts for years."},
+      sub:     {ru:"Сами плетём мебель, кашпо и корзины — любой цвет под заказ. Материал не выгорает на солнце, не боится влаги и мороза, служит годами.",
+                uz:"Mebel, gultuvak va savatlarni o‘zimiz to‘qiyamiz — istalgan rang buyurtmasi. Quyoshda so‘lmaydi, yomg‘ir va sovuqdan qo‘rqmaydi, yillar xizmat qiladi.",
+                en:"We weave furniture, planters and baskets in-house — any colour to order. Won’t fade in the sun, handles rain and frost, lasts for years."},
       store:   {ru:"Смотреть каталог",         uz:"Katalogni ko‘rish",      en:"Browse catalog"},
       href:    "catalog.html"
     },
