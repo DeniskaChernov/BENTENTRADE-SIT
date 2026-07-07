@@ -23,6 +23,38 @@
   const U = window.BTT_UTIL || {};
   const FAV_SVG = U.FAV_SVG || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>';
   const ADD_SVG = U.ADD_SVG || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>';
+  const MSG = { telegram: "bententradeuz", whatsapp: "998771044422" };
+
+  function productMsg(nm){
+    const tpl = t("pdp.custom.msg") || "Здравствуйте! Интересует: {name}.";
+    return tpl.replace("{name}", nm || "");
+  }
+
+  function setMetaPair(name, content){
+    if(!content) return;
+    document.querySelectorAll('meta[name="'+name+'"], meta[property="'+name+'"]').forEach(el=>{
+      el.setAttribute("content", content);
+    });
+  }
+
+  function updateMessenger(nm){
+    const msg = encodeURIComponent(productMsg(nm));
+    const tg = document.querySelector("[data-pdp-tg]");
+    const wa = document.querySelector("[data-pdp-wa]");
+    if(tg) tg.href = "https://t.me/" + MSG.telegram + "?text=" + msg;
+    if(wa) wa.href = "https://wa.me/" + MSG.whatsapp + "?text=" + msg;
+  }
+
+  function updatePageMeta(nm){
+    const title = (t("meta.product.title") || "Bententrade — {name}").replace("{name}", nm || "");
+    const desc = (t("meta.product.desc") || "{name}").replace("{name}", nm || "");
+    document.title = title;
+    setMetaPair("description", desc);
+    setMetaPair("og:title", title);
+    setMetaPair("og:description", desc);
+    setMetaPair("twitter:title", title);
+    setMetaPair("twitter:description", desc);
+  }
 
   function setImages(){
     const imgs = window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(id) : null;
@@ -109,7 +141,8 @@
     if(node.crumb) node.crumb.textContent = nm || node.crumb.textContent;
     if(node.cat) node.cat.textContent = cat || "";
     if(node.desc) node.desc.textContent = ct.desc;
-    document.title = "Bententrade — " + (nm || "");
+    updatePageMeta(nm || "");
+    updateMessenger(nm || "");
 
     document.querySelectorAll("[data-crumb-cat]").forEach(a=>{
       a.href = "catalog.html?cat=" + prod.cat;

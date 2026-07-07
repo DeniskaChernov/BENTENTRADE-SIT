@@ -18,6 +18,10 @@ window.BTT_I18N = {
     "stat.clients":"Довольных клиентов","stat.projects":"Изделий в каталоге","stat.premium":"Моделей плетения",
 
     "promo.consult":"100% бесплатная\nконсультация по подбору","promo.colors":"Любой цвет плетения под заказ","promo.price":"Гарантия лучшей цены",
+    "colors.eyebrow":"Оттенки плетения","colors.title":"Любой цвет под заказ",
+    "colors.body":"Выберите оттенок из палитры или принесите свой образец — подберём ближайший или изготовим под ваш RAL.",
+    "colors.cta":"Обсудить оттенок","colors.a11y":"Палитра оттенков плетения",
+    "colors.graphite":"Графит","colors.beige":"Бежевый","colors.mocha":"Мокко","colors.olive":"Оливковый","colors.white":"Белый","colors.caramel":"Карамель",
 
     "twist.eyebrow":"Своё производство","twist.title.1":"Крученый","twist.title.2":"ротанг",
     "twist.body":"Плетём катушки из полиэтиленового волокна — от тонкого декора до толстого каркаса. Разные диаметры и цвета, стабильное качество партии за партией.",
@@ -80,6 +84,10 @@ window.BTT_I18N = {
     "ab.v2.t":"Ручное плетение","ab.v2.b":"Каждое изделие плетётся вручную по нити — ровный рисунок и плотная посадка.",
     "ab.v3.t":"Всесезонность","ab.v3.b":"Не боится солнца, дождя и мороза — мебель остаётся на улице круглый год.",
     "ab.v4.t":"Уход за минуту","ab.v4.b":"Достаточно протереть влажной тканью — ни лака, ни пропиток.",
+    "ab.custom.k":"Под заказ","ab.custom.title":"Любой цвет, размер и форма",
+    "ab.custom.body1":"Не нашли нужный оттенок или размер в каталоге? Сплетём изделие по вашим параметрам — от кресла для террасы до корзины нестандартной формы.",
+    "ab.custom.body2":"Пришлите фото, эскиз или образец ткани — подберём плетение и рассчитаем срок и стоимость.",
+    "ab.custom.cta":"Описать задачу",
     "ab.cta":"Связаться с нами",
 
     /* contacts */
@@ -111,6 +119,10 @@ window.BTT_I18N = {
     "stat.clients":"Mamnun mijozlar","stat.projects":"Katalogdagi mahsulot","stat.premium":"To‘quv modellari",
 
     "promo.consult":"100% bepul\ntanlov bo‘yicha maslahat","promo.colors":"Istalgan rangda to‘quv buyurtmasi","promo.price":"Eng yaxshi narx kafolati",
+    "colors.eyebrow":"To‘quv ranglari","colors.title":"Istalgan rang buyurtmasi",
+    "colors.body":"Palitradan rang tanlang yoki o‘z namunangizni olib keling — eng yaqinini tanlaymiz yoki RAL bo‘yicha ishlab chiqaramiz.",
+    "colors.cta":"Rangni muhokama qilish","colors.a11y":"To‘quv ranglari palitrasi",
+    "colors.graphite":"Grafit","colors.beige":"Bej","colors.mocha":"Mokko","colors.olive":"Zaytun","colors.white":"Oq","colors.caramel":"Karamel",
 
     "twist.eyebrow":"O‘z ishlab chiqarish","twist.title.1":"Burma","twist.title.2":"rotang",
     "twist.body":"Polietilen tolidan g‘iloflar to‘qiyamiz — nozik dekor yoki qalin karkas uchun. Turli diametr va ranglar, har bir partiyada barqaror sifat.",
@@ -171,6 +183,10 @@ window.BTT_I18N = {
     "ab.v2.t":"Qo‘l to‘quvi","ab.v2.b":"Har bir buyum tola bo‘ylab qo‘lda to‘qiladi — tekis naqsh va zich o‘rnashish.",
     "ab.v3.t":"Har faslga mos","ab.v3.b":"Quyosh, yomg‘ir va sovuqdan qo‘rqmaydi — mebel yil bo‘yi ko‘chada turadi.",
     "ab.v4.t":"Bir daqiqalik parvarish","ab.v4.b":"Nam mato bilan artish kifoya — lak ham, qoplama ham kerak emas.",
+    "ab.custom.k":"Buyurtma asosida","ab.custom.title":"Istalgan rang, o‘lcham va shakl",
+    "ab.custom.body1":"Katalogda kerakli rang yoki o‘lcham yo‘qmi? Sizning parametrlaringiz bo‘yicha buyum to‘qamiz — terassa kreslosidan tortib noan’anaviy shakldagi savatgacha.",
+    "ab.custom.body2":"Foto, eskiz yoki mato namunasini yuboring — to‘quvni tanlaymiz va muddat hamda narxni hisoblaymiz.",
+    "ab.custom.cta":"Vazifani yozish",
     "ab.cta":"Biz bilan bog‘lanish",
 
     "co.hero.k":"Kontaktlar","co.hero.title":"Buyurtmangizni muhokama qilaylik",
@@ -201,6 +217,10 @@ window.BTT_I18N = {
     "stat.clients":"Happy clients","stat.projects":"Items in catalog","stat.premium":"Weave models",
 
     "promo.consult":"100% free\nproduct-match consultation","promo.colors":"Any weave colour to order","promo.price":"Price match guarantee",
+    "colors.eyebrow":"Weave shades","colors.title":"Any colour to order",
+    "colors.body":"Pick a shade from the palette or bring your own sample — we'll match the closest or weave to your RAL.",
+    "colors.cta":"Discuss a colour","colors.a11y":"Weave colour palette",
+    "colors.graphite":"Graphite","colors.beige":"Beige","colors.mocha":"Mocha","colors.olive":"Olive","colors.white":"White","colors.caramel":"Caramel",
 
     "twist.eyebrow":"Own production","twist.title.1":"Twisted","twist.title.2":"rattan",
     "twist.body":"We weave coils from polyethylene fibre — from fine decor to heavy frame gauges. Multiple diameters and colours, consistent quality batch after batch.",
@@ -261,6 +281,10 @@ window.BTT_I18N = {
     "ab.v2.t":"Hand-woven","ab.v2.b":"Every piece is woven by hand, strand by strand — an even pattern and a tight fit.",
     "ab.v3.t":"All-season","ab.v3.b":"Unfazed by sun, rain and frost — the furniture stays outdoors all year round.",
     "ab.v4.t":"One-minute care","ab.v4.b":"A wipe with a damp cloth is all it takes — no varnish, no treatments.",
+    "ab.custom.k":"Made to order","ab.custom.title":"Any colour, size and shape",
+    "ab.custom.body1":"Can't find the right shade or size in the catalog? We'll weave to your specs — from a terrace chair to a basket in a custom shape.",
+    "ab.custom.body2":"Send a photo, sketch or fabric swatch — we'll pick the weave and quote lead time and price.",
+    "ab.custom.cta":"Describe your project",
     "ab.cta":"Get in touch",
 
     "co.hero.k":"Contacts","co.hero.title":"Let’s talk about your order",
@@ -367,7 +391,10 @@ Object.assign(window.BTT_I18N.ru,{
   "pdp.s.mat":"Материал","pdp.s.mat.v":"Искусственный ротанг","pdp.s.dim":"Комплектация","pdp.s.dim.v":"С подушками",
   "pdp.s.fin":"Плетение","pdp.s.fin.v":"UV-стойкое","pdp.s.wt":"Каркас","pdp.s.wt.v":"Алюминий",
   "pdp.s.seat":"Применение","pdp.s.seat.v":"Терраса, сад","pdp.s.made":"Производство","pdp.s.made.v":"Ташкент, ручная работа",
-  "pdp.rel.k":"Вам также понравится","pdp.rel.h":"Из той же коллекции"
+  "pdp.rel.k":"Вам также понравится","pdp.rel.h":"Из той же коллекции",
+  "pdp.custom.title":"Нужен другой цвет или размер?","pdp.custom.body":"Изготовим под заказ — любой оттенок плетения и размеры по вашим параметрам.",
+  "pdp.custom.tg":"Telegram","pdp.custom.wa":"WhatsApp",
+  "pdp.custom.msg":"Здравствуйте! Интересует: {name}. Хочу обсудить цвет и размер."
 });
 Object.assign(window.BTT_I18N.uz,{
   "pdp.crumb.home":"Bosh sahifa","pdp.rate":"4.9 · 128 sharh","pdp.save":"$125 tejash",
@@ -384,7 +411,10 @@ Object.assign(window.BTT_I18N.uz,{
   "pdp.s.mat":"Material","pdp.s.mat.v":"Sun’iy rotang","pdp.s.dim":"Jihozlanishi","pdp.s.dim.v":"Yostiqlar bilan",
   "pdp.s.fin":"To‘quv","pdp.s.fin.v":"UV-chidamli","pdp.s.wt":"Karkas","pdp.s.wt.v":"Alyumin",
   "pdp.s.seat":"Qo‘llanish","pdp.s.seat.v":"Terassa, bog‘","pdp.s.made":"Ishlab chiqarish","pdp.s.made.v":"Toshkent, qo‘l mehnati",
-  "pdp.rel.k":"Sizga ham yoqadi","pdp.rel.h":"Shu to‘plamdan"
+  "pdp.rel.k":"Sizga ham yoqadi","pdp.rel.h":"Shu to‘plamdan",
+  "pdp.custom.title":"Boshqa rang yoki o‘lcham kerakmi?","pdp.custom.body":"Buyurtma asosida ishlab chiqaramiz — istalgan to‘quv rangi va o‘lchamlar.",
+  "pdp.custom.tg":"Telegram","pdp.custom.wa":"WhatsApp",
+  "pdp.custom.msg":"Assalomu alaykum! Qiziqtiradi: {name}. Rang va o‘lchamni muhokama qilmoqchiman."
 });
 Object.assign(window.BTT_I18N.en,{
   "pdp.crumb.home":"Home","pdp.rate":"4.9 · 128 reviews","pdp.save":"Save $125",
@@ -401,7 +431,10 @@ Object.assign(window.BTT_I18N.en,{
   "pdp.s.mat":"Material","pdp.s.mat.v":"Synthetic rattan","pdp.s.dim":"Includes","pdp.s.dim.v":"With cushions",
   "pdp.s.fin":"Weave","pdp.s.fin.v":"UV-stable","pdp.s.wt":"Frame","pdp.s.wt.v":"Aluminium",
   "pdp.s.seat":"Use","pdp.s.seat.v":"Terrace, garden","pdp.s.made":"Made in","pdp.s.made.v":"Tashkent, by hand",
-  "pdp.rel.k":"You may also like","pdp.rel.h":"From the same collection"
+  "pdp.rel.k":"You may also like","pdp.rel.h":"From the same collection",
+  "pdp.custom.title":"Need a different colour or size?","pdp.custom.body":"Made to order — any weave shade and dimensions to your specs.",
+  "pdp.custom.tg":"Telegram","pdp.custom.wa":"WhatsApp",
+  "pdp.custom.msg":"Hello! I'm interested in: {name}. I'd like to discuss colour and size."
 });
 
 /* ---- account actions (toasts, newsletter) ---- */
@@ -553,6 +586,8 @@ Object.assign(window.BTT_I18N.uz,{
 Object.assign(window.BTT_I18N.ru,{
   "meta.index.title":"Bententrade — садовая мебель, кашпо и корзины из ротанга",
   "meta.index.desc":"Садовая мебель, кашпо и корзины из искусственного ротанга. Любой цвет под заказ, ручное плетение, доставка по Узбекистану.",
+  "meta.product.title":"Bententrade — {name}",
+  "meta.product.desc":"{name} — искусственный ротанг, ручное плетение, доставка по Узбекистану.",
   "meta.catalog.title":"Bententrade — Каталог",
   "meta.catalog.desc":"Каталог плетёной мебели, кашпо и корзин из искусственного ротанга. Любой цвет под заказ.",
   "meta.about.title":"Bententrade — О нас",
@@ -581,6 +616,8 @@ Object.assign(window.BTT_I18N.ru,{
 Object.assign(window.BTT_I18N.uz,{
   "meta.index.title":"Bententrade — bog‘ mebeli, gultuvak va savatlar",
   "meta.index.desc":"Sun’iy rotangdan bog‘ mebeli, gultuvak va savatlar. Istalgan rang buyurtmasi, qo‘l to‘quv, O‘zbekiston bo‘ylab yetkazish.",
+  "meta.product.title":"Bententrade — {name}",
+  "meta.product.desc":"{name} — sun’iy rotang, qo‘lda to‘quv, O‘zbekiston bo‘ylab yetkazish.",
   "meta.catalog.title":"Bententrade — Katalog",
   "meta.catalog.desc":"Sun’iy rotangdan to‘qilgan mebel, gultuvak va savatlar katalogi. Istalgan rang buyurtmasi.",
   "meta.about.title":"Bententrade — Biz haqimizda",
@@ -609,6 +646,8 @@ Object.assign(window.BTT_I18N.uz,{
 Object.assign(window.BTT_I18N.en,{
   "meta.index.title":"Bententrade — garden furniture, planters & baskets",
   "meta.index.desc":"Garden furniture, planters and baskets in synthetic rattan. Any colour to order, hand-woven, delivery across Uzbekistan.",
+  "meta.product.title":"Bententrade — {name}",
+  "meta.product.desc":"{name} — synthetic rattan, hand-woven, delivery across Uzbekistan.",
   "meta.catalog.title":"Bententrade — Catalog",
   "meta.catalog.desc":"Catalogue of woven furniture, planters and baskets. Any colour to order.",
   "meta.about.title":"Bententrade — About us",
