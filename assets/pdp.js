@@ -118,6 +118,11 @@
     setMetaPair("twitter:title", title);
     setMetaPair("twitter:description", desc);
     setMetaPair("twitter:image", image);
+    const catLabel = t(id + ".cat") || "";
+    const kw = (t("meta.product.keywords") || "{name}, rotang tashkent")
+      .replace(/\{name\}/g, nm || "")
+      .replace(/\{cat\}/g, catLabel);
+    setMetaPair("keywords", kw);
     setCanonical(pageUrl);
     updateProductSchema(nm);
   }

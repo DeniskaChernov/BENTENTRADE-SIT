@@ -62,7 +62,7 @@ window.BTT_I18N = {
     /* catalog */
     "cat.hero.k":"Каталог","cat.hero.title":"Мебель, кашпо и корзины","cat.hero.sub":"Плетёные изделия ручной работы для дома, дачи и сада — вся коллекция в одном месте.",
     "cat.filter":"Фильтр","cat.sort":"Сортировка","cat.results":"товаров",
-    "cat.hero.cta":"К товарам","cat.hero.t1":"изделий в наличии","cat.hero.t2":"направления","cat.hero.t3":"отгрузка",
+    "cat.hero.cta":"К товарам","cat.hero.alt":"Каталог садовой мебели и изделий из искусственного ротанга Bententrade","cat.hero.t1":"изделий в наличии","cat.hero.t2":"направления","cat.hero.t3":"отгрузка",
     "p4.name":"Обеденная группа «Терраса»","p4.cat":"Садовая мебель",
     "p5.name":"Кресло «Ривьера»","p5.cat":"Садовая мебель",
     "p6.name":"Сундук «Сафари»","p6.cat":"Корзины и сундуки",
@@ -210,7 +210,7 @@ window.BTT_I18N = {
 
     "cat.hero.k":"Katalog","cat.hero.title":"Mebel, gultuvak va savatlar","cat.hero.sub":"Uy, dala va bog‘ uchun qo‘lda to‘qilgan buyumlar — butun to‘plam bir joyda.",
     "cat.filter":"Filtr","cat.sort":"Saralash","cat.results":"mahsulot",
-    "cat.hero.cta":"Mahsulotlarga","cat.hero.t1":"mavjud mahsulot","cat.hero.t2":"yo‘nalish","cat.hero.t3":"jo‘natish",
+    "cat.hero.cta":"Mahsulotlarga","cat.hero.alt":"Bententrade sun’iy rotang mebeli va buyumlari katalogi","cat.hero.t1":"mavjud mahsulot","cat.hero.t2":"yo‘nalish","cat.hero.t3":"jo‘natish",
     "p4.name":"«Terrasa» ovqat to‘plami","p4.cat":"Bog‘ mebeli",
     "p5.name":"«Rivyera» kreslo","p5.cat":"Bog‘ mebeli",
     "p6.name":"«Safari» sandiq","p6.cat":"Savat va sandiq",
@@ -356,7 +356,7 @@ window.BTT_I18N = {
 
     "cat.hero.k":"Catalog","cat.hero.title":"Furniture, planters & baskets","cat.hero.sub":"Hand-woven pieces for home, patio and garden — the whole collection in one place.",
     "cat.filter":"Filter","cat.sort":"Sort","cat.results":"products",
-    "cat.hero.cta":"Browse products","cat.hero.t1":"items in stock","cat.hero.t2":"categories","cat.hero.t3":"dispatch",
+    "cat.hero.cta":"Browse products","cat.hero.alt":"Bententrade catalog of synthetic rattan furniture and accessories","cat.hero.t1":"items in stock","cat.hero.t2":"categories","cat.hero.t3":"dispatch",
     "p4.name":"Terrace Dining Set","p4.cat":"Garden furniture",
     "p5.name":"Riviera Armchair","p5.cat":"Garden furniture",
     "p6.name":"Safari Chest","p6.cat":"Baskets & chests",
@@ -729,7 +729,9 @@ Object.assign(window.BTT_I18N.ru,{
   "auth.err.creds":"Неверный email или пароль.","auth.err.email":"Введите корректный email.","auth.err.weak":"Пароль должен быть не короче 8 символов.",
   "auth.err.taken":"Этот email уже зарегистрирован.","auth.err.phone":"Введите корректный номер телефона.","auth.err.rate":"Слишком много попыток. Попробуйте позже.","auth.err.generic":"Не удалось выполнить. Попробуйте ещё раз.","auth.err.required":"Заполните email и пароль.",
   "nav.account":"Кабинет","acc.loading":"Загрузка…","acc.ord.empty":"Заказов пока нет.","acc.addr.empty":"Адресов пока нет.","toast.saved":"Изменения сохранены ✓","toast.addrSaved":"Адрес сохранён ✓","toast.addrDeleted":"Адрес удалён",
-  "nav.blog":"Статьи","blog.k":"Журнал","blog.title":"Статьи","blog.sub":"Идеи, советы по уходу и вдохновение для сада и дома.","blog.empty":"Статьи скоро появятся.","blog.loading":"Загрузка…","blog.error":"Не удалось загрузить. Проверьте соединение.","blog.retry":"Повторить","blog.notFound":"Статья не найдена.","blog.read":"Читать","blog.back":"Все статьи"
+  "nav.blog":"Статьи","blog.k":"Журнал","blog.title":"Статьи","blog.sub":"Идеи, советы по уходу и вдохновение для сада и дома.","blog.empty":"Статьи скоро появятся.","blog.loading":"Загрузка…","blog.error":"Не удалось загрузить. Проверьте соединение.","blog.retry":"Повторить","blog.notFound":"Статья не найдена.","blog.read":"Читать","blog.back":"Все статьи",
+  "lp.rotang.k":"Материал","lp.rotang.title":"Искусственный ротанг в Ташкенте","lp.rotang.sub":"Профили, палитра оттенков и консультация по подбору материала для мебели и плетения.","lp.rotang.b1.t":"Что предлагаем","lp.rotang.b1.p":"Полумесяц, круглый и крученый профили — для каркаса и декора. Образцы в шоуруме, подбор диаметра под проект.","lp.rotang.b2.t":"Почему Bententrade","lp.rotang.b2.p":"Своё производство, стабильное качество партии, доставка по Узбекистану. Изготовление мебели и изделий на заказ в любом цвете.","lp.rotang.cta.cat":"Смотреть в каталоге","lp.rotang.cta.contact":"Связаться с нами",
+  "lp.garden.k":"Сад","lp.garden.title":"Садовая мебель из ротанга в Ташкенте","lp.garden.sub":"Диваны, кресла, столы и комплекты для террасы, дачи и беседки — ручное плетение, устойчиво к погоде.","lp.garden.b1.t":"Для улицы и террасы","lp.garden.b1.p":"Искусственный ротанг не боится влаги и солнца — мебель стоит на открытом воздухе круглый сезон.","lp.garden.b2.t":"Под вашу площадку","lp.garden.b2.p":"Подберём комплект по размеру участка и стилю. Доставка в собранном виде по Ташкенту и регионам УЗ.","lp.garden.cta.cat":"Каталог мебели","lp.garden.cta.mto":"Заказать на заказ"
 });
 Object.assign(window.BTT_I18N.uz,{
   "auth.login":"Kirish","auth.register":"Ro‘yxatdan o‘tish","auth.name":"Ism","auth.email":"Email","auth.phone":"Telefon","auth.password":"Parol",
@@ -737,7 +739,9 @@ Object.assign(window.BTT_I18N.uz,{
   "auth.err.creds":"Email yoki parol noto‘g‘ri.","auth.err.email":"To‘g‘ri email kiriting.","auth.err.weak":"Parol kamida 8 ta belgidan iborat bo‘lishi kerak.",
   "auth.err.taken":"Bu email allaqachon ro‘yxatdan o‘tgan.","auth.err.phone":"To‘g‘ri telefon raqamini kiriting.","auth.err.rate":"Urinishlar juda ko‘p. Keyinroq urinib ko‘ring.","auth.err.generic":"Bajarib bo‘lmadi. Yana urinib ko‘ring.","auth.err.required":"Email va parolni kiriting.",
   "nav.account":"Kabinet","acc.loading":"Yuklanmoqda…","acc.ord.empty":"Hozircha buyurtmalar yo‘q.","acc.addr.empty":"Hozircha manzillar yo‘q.","toast.saved":"O‘zgarishlar saqlandi ✓","toast.addrSaved":"Manzil saqlandi ✓","toast.addrDeleted":"Manzil o‘chirildi",
-  "nav.blog":"Maqolalar","blog.k":"Jurnal","blog.title":"Maqolalar","blog.sub":"Bog‘ va uy uchun g‘oyalar, parvarish maslahatlari va ilhom.","blog.empty":"Maqolalar tez orada paydo bo‘ladi.","blog.loading":"Yuklanmoqda…","blog.error":"Yuklab bo‘lmadi. Ulanishni tekshiring.","blog.retry":"Qayta urinish","blog.notFound":"Maqola topilmadi.","blog.read":"O‘qish","blog.back":"Barcha maqolalar"
+  "nav.blog":"Maqolalar","blog.k":"Jurnal","blog.title":"Maqolalar","blog.sub":"Bog‘ va uy uchun g‘oyalar, parvarish maslahatlari va ilhom.","blog.empty":"Maqolalar tez orada paydo bo‘ladi.","blog.loading":"Yuklanmoqda…","blog.error":"Yuklab bo‘lmadi. Ulanishni tekshiring.","blog.retry":"Qayta urinish","blog.notFound":"Maqola topilmadi.","blog.read":"O‘qish","blog.back":"Barcha maqolalar",
+  "lp.rotang.k":"Material","lp.rotang.title":"Toshkentda sun’iy rotang","lp.rotang.sub":"Profil, rang palitrasi va mebel hamda to‘qish uchun material tanlash bo‘yicha maslahat.","lp.rotang.b1.t":"Nima taklif qilamiz","lp.rotang.b1.p":"Yarim oy, dumaloq va burma profillar — karkas va dekor uchun. Namunalar shourumda, loyiha uchun diametr tanlash.","lp.rotang.b2.t":"Nega Bententrade","lp.rotang.b2.p":"O‘z ishlab chiqarish, barqaror sifat, O‘zbekiston bo‘ylab yetkazish. Har qanday rangda buyurtma asosida ishlab chiqarish.","lp.rotang.cta.cat":"Katalogda ko‘rish","lp.rotang.cta.contact":"Bog‘lanish",
+  "lp.garden.k":"Bog‘","lp.garden.title":"Toshkentda rotangdan bog‘ mebeli","lp.garden.sub":"Terassa, dacha va ayvon uchun divanlar, kreslolar, stollar va to‘plamlar — qo‘l to‘quv, ob-havoga chidamli.","lp.garden.b1.t":"Ochiq havoda","lp.garden.b1.p":"Sun’iy rotang namlik va quyoshdan qo‘rqmaydi — mebel butun mavsum ochiq havoda turadi.","lp.garden.b2.t":"Maydoningizga mos","lp.garden.b2.p":"Maydon va uslub bo‘yicha to‘plam tanlaymiz. Toshkent va viloyatlarga yig‘ilgan holda yetkazamiz.","lp.garden.cta.cat":"Mebel katalogi","lp.garden.cta.mto":"Buyurtma berish"
 });
 Object.assign(window.BTT_I18N.ru,{
   "meta.index.title":"Bententrade — садовая мебель, кашпо и корзины из ротанга",
@@ -745,6 +749,7 @@ Object.assign(window.BTT_I18N.ru,{
   "meta.index.keywords":"искусственный ротанг, ротанг ташкент, ротанг купить, садовая мебель ротанг, rotang, synthetic rattan, bententrade, искусственный ротанг узбекистан, ротанге, ротаг, искуственный ротанг, rattan tashkent, artificial rattan uzbekistan",
   "meta.product.title":"Bententrade — {name}",
   "meta.product.desc":"{name} — купить в Ташкенте. Искусственный ротанг, ручное плетение, цена в сумах, доставка по Узбекистану.",
+  "meta.product.keywords":"{name}, {cat}, купить ротанг ташкент, искусственный ротанг, rotang, bententrade, rattan tashkent",
   "meta.catalog.title":"Bententrade — Каталог",
   "meta.catalog.desc":"Каталог мебели, кашпо и корзин из искусственного ротанга. Садовая мебель и интерьер — купить в Ташкенте с доставкой по УЗ.",
   "meta.catalog.keywords":"каталог ротанг, мебель из ротанга купить, кашпо ротанг, корзины ротанг, rotang katalog, rattan catalog tashkent, искусственный ротанг каталог, rotang sotib olish",
@@ -794,6 +799,13 @@ Object.assign(window.BTT_I18N.ru,{
   "meta.blog.keywords":"ротанг статьи, как выбрать ротанг, уход за ротангом, synthetic rattan blog, rotang maslahat",
   "meta.article.title":"Bententrade — Статья",
   "meta.article.desc":"Статья журнала Bententrade о мебели и плетении из ротанга.",
+  "meta.article.keywords":"{title}, ротанг, bententrade, rotang, rattan uzbekistan, искусственный ротанг",
+  "meta.lp.rotang.title":"Искусственный ротанг в Ташкенте — купить | Bententrade",
+  "meta.lp.rotang.desc":"Купить искусственный ротанг в Ташкенте — профили, палитра, образцы. Доставка по Узбекистану, консультация и изготовление на заказ.",
+  "meta.lp.rotang.keywords":"искусственный ротанг ташкент, ротанг купить, rotang sotib olish, synthetic rattan tashkent, bententrade",
+  "meta.lp.garden.title":"Садовая мебель из ротанга в Ташкенте | Bententrade",
+  "meta.lp.garden.desc":"Садовая мебель из искусственного ротанга — диваны, кресла, столы. Купить в Ташкенте с доставкой по Узбекистану.",
+  "meta.lp.garden.keywords":"садовая мебель ротанг ташкент, garden furniture rattan, terassa mebeli rotang, мебель для террасы",
   "meta.login.title":"Bententrade — Вход",
   "meta.login.desc":"Вход в личный кабинет Bententrade.",
   "meta.account.title":"Bententrade — Личный кабинет",
@@ -805,6 +817,7 @@ Object.assign(window.BTT_I18N.uz,{
   "meta.index.keywords":"sun’iy rotang, rotang toshkent, bog‘ mebeli, rotang sotib olish, synthetic rattan, bententrade, rotang, rattan tashkent",
   "meta.product.title":"Bententrade — {name}",
   "meta.product.desc":"{name} — Toshkentda sotib oling. Sun’iy rotang, qo‘l to‘quv, narx so‘mda, O‘zbekiston bo‘ylab yetkazish.",
+  "meta.product.keywords":"{name}, {cat}, rotang sotib olish toshkent, sun’iy rotang, bententrade, rattan tashkent",
   "meta.catalog.title":"Bententrade — Katalog",
   "meta.catalog.desc":"Sun’iy rotangdan mebel, gultuvak va savatlar katalogi. Bog‘ va interyer — Toshkentda yetkazib berish bilan.",
   "meta.catalog.keywords":"rotang katalog, rotang mebel, gultuvak rotang, savat rotang",
@@ -850,6 +863,13 @@ Object.assign(window.BTT_I18N.uz,{
   "meta.blog.keywords":"rotang maqolalar, rotang tanlash, sun’iy rotang parvarishi",
   "meta.article.title":"Bententrade — Maqola",
   "meta.article.desc":"Bententrade jurnali maqolasi.",
+  "meta.article.keywords":"{title}, rotang, bententrade, sun’iy rotang, rattan uzbekistan",
+  "meta.lp.rotang.title":"Toshkentda sun’iy rotang — sotib olish | Bententrade",
+  "meta.lp.rotang.desc":"Toshkentda sun’iy rotang — profillar, palitra, namunalar. O‘zbekiston bo‘ylab yetkazish va buyurtma asosida ishlab chiqarish.",
+  "meta.lp.rotang.keywords":"sun’iy rotang toshkent, rotang sotib olish, synthetic rattan tashkent, bententrade",
+  "meta.lp.garden.title":"Toshkentda rotangdan bog‘ mebeli | Bententrade",
+  "meta.lp.garden.desc":"Sun’iy rotangdan bog‘ mebeli — divanlar, kreslolar, stollar. Toshkentda yetkazib berish bilan.",
+  "meta.lp.garden.keywords":"bog‘ mebeli rotang toshkent, garden furniture rattan, terassa mebeli",
   "meta.login.title":"Bententrade — Kirish",
   "meta.login.desc":"Bententrade shaxsiy kabinetiga kirish.",
   "meta.account.title":"Bententrade — Shaxsiy kabinet",
@@ -861,6 +881,7 @@ Object.assign(window.BTT_I18N.en,{
   "meta.index.keywords":"synthetic rattan, rattan furniture uzbekistan, artificial rattan tashkent, rotang, garden furniture rattan, bententrade, rattan tashkent, rotang uzbekistan",
   "meta.product.title":"Bententrade — {name}",
   "meta.product.desc":"{name} — buy in Tashkent. Synthetic rattan, hand-woven, price in UZS, delivery across Uzbekistan.",
+  "meta.product.keywords":"{name}, {cat}, buy rattan tashkent, synthetic rattan, bententrade, artificial rattan uzbekistan",
   "meta.catalog.title":"Bententrade — Catalog",
   "meta.catalog.desc":"Catalog of synthetic rattan furniture, planters and baskets. Garden and home — buy in Tashkent with delivery.",
   "meta.catalog.keywords":"rattan catalog, synthetic rattan furniture, rattan planter, rattan basket uzbekistan",
@@ -906,6 +927,13 @@ Object.assign(window.BTT_I18N.en,{
   "meta.blog.keywords":"synthetic rattan articles, how to choose rattan, rattan care tips, rotang blog",
   "meta.article.title":"Bententrade — Article",
   "meta.article.desc":"A Bententrade journal article.",
+  "meta.article.keywords":"{title}, rattan, bententrade, synthetic rattan, rotang uzbekistan",
+  "meta.lp.rotang.title":"Synthetic rattan in Tashkent — buy | Bententrade",
+  "meta.lp.rotang.desc":"Buy synthetic rattan in Tashkent — profiles, palette, samples. Delivery across Uzbekistan, custom weaving and furniture.",
+  "meta.lp.rotang.keywords":"synthetic rattan tashkent, buy rattan uzbekistan, rotang sotib olish, bententrade",
+  "meta.lp.garden.title":"Garden rattan furniture in Tashkent | Bententrade",
+  "meta.lp.garden.desc":"Garden furniture in synthetic rattan — sofas, chairs, tables. Buy in Tashkent with delivery across Uzbekistan.",
+  "meta.lp.garden.keywords":"garden furniture rattan tashkent, patio furniture uzbekistan, terrace rattan",
   "meta.login.title":"Bententrade — Sign in",
   "meta.login.desc":"Sign in to your Bententrade account.",
   "meta.account.title":"Bententrade — Account",
@@ -915,5 +943,7 @@ Object.assign(window.BTT_I18N.en,{
   "auth.err.creds":"Invalid email or password.","auth.err.email":"Enter a valid email.","auth.err.weak":"Password must be at least 8 characters.",
   "auth.err.taken":"This email is already registered.","auth.err.phone":"Enter a valid phone number.","auth.err.rate":"Too many attempts. Try again later.","auth.err.generic":"Something went wrong. Please try again.","auth.err.required":"Enter your email and password.",
   "nav.account":"Account","acc.loading":"Loading…","acc.ord.empty":"No orders yet.","acc.addr.empty":"No addresses yet.","toast.saved":"Changes saved ✓","toast.addrSaved":"Address saved ✓","toast.addrDeleted":"Address removed",
-  "nav.blog":"Journal","blog.k":"Journal","blog.title":"Articles","blog.sub":"Ideas, care tips and inspiration for your garden and home.","blog.empty":"Articles are coming soon.","blog.loading":"Loading…","blog.error":"Couldn't load content. Check your connection.","blog.retry":"Try again","blog.notFound":"Article not found.","blog.read":"Read","blog.back":"All articles"
+  "nav.blog":"Journal","blog.k":"Journal","blog.title":"Articles","blog.sub":"Ideas, care tips and inspiration for your garden and home.","blog.empty":"Articles are coming soon.","blog.loading":"Loading…","blog.error":"Couldn't load content. Check your connection.","blog.retry":"Try again","blog.notFound":"Article not found.","blog.read":"Read","blog.back":"All articles",
+  "lp.rotang.k":"Material","lp.rotang.title":"Synthetic rattan in Tashkent","lp.rotang.sub":"Profiles, colour palette and expert advice for furniture weaving and frame work.","lp.rotang.b1.t":"What we offer","lp.rotang.b1.p":"Half-moon, round and twisted profiles — for frames and décor. Samples in our showroom, diameter matched to your project.","lp.rotang.b2.t":"Why Bententrade","lp.rotang.b2.p":"In-house production, consistent batch quality, delivery across Uzbekistan. Custom furniture and pieces in any colour.","lp.rotang.cta.cat":"Browse catalog","lp.rotang.cta.contact":"Contact us",
+  "lp.garden.k":"Garden","lp.garden.title":"Garden rattan furniture in Tashkent","lp.garden.sub":"Sofas, chairs, tables and sets for terrace, patio and gazebo — hand-woven, weather-resistant.","lp.garden.b1.t":"Built for outdoors","lp.garden.b1.p":"Synthetic rattan handles moisture and sun — furniture stays outside all season.","lp.garden.b2.t":"Sized for your space","lp.garden.b2.p":"We help pick a set for your layout and style. Delivered assembled in Tashkent and across UZ.","lp.garden.cta.cat":"Furniture catalog","lp.garden.cta.mto":"Custom order"
 });

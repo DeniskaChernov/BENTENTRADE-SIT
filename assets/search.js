@@ -32,7 +32,9 @@
     { href:"returns.html",  k:"foot.returns" },
     { href:"about.html",    k:"nav.about" },
     { href:"about.html",    k:"chip.twisted", sub:"srch.material" },
-    { href:"contacts.html", k:"nav.contacts" }
+    { href:"contacts.html", k:"nav.contacts" },
+    { href:"rotang-tashkent.html", k:"lp.rotang.title" },
+    { href:"sadovaya-mebel-rotang.html", k:"lp.garden.title" }
   ];
 
   function staticProducts(){

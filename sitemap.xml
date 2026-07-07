@@ -5,6 +5,10 @@
   <url><loc>https://bententrade.uz/catalog.html?cat=furniture</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://bententrade.uz/catalog.html?cat=planterMix</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://bententrade.uz/catalog.html?cat=indoor</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog.html?cat=rattan</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog.html?cat=twisted</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bententrade.uz/rotang-tashkent.html</loc><changefreq>monthly</changefreq><priority>0.88</priority></url>
+  <url><loc>https://bententrade.uz/sadovaya-mebel-rotang.html</loc><changefreq>monthly</changefreq><priority>0.88</priority></url>
   <url><loc>https://bententrade.uz/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://bententrade.uz/contacts.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://bententrade.uz/blog.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>

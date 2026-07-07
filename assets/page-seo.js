@@ -168,12 +168,46 @@
     ]);
   }
 
+  function renderLandingRotang() {
+    SEO.injectJsonLd("btt-page-lp-rotang", {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: t("meta.lp.rotang.title"),
+      description: t("meta.lp.rotang.desc"),
+      url: SITE + "/rotang-tashkent.html",
+      inLanguage: document.documentElement.lang || "ru",
+      about: { "@type": "Product", name: t("lp.rotang.title"), category: "Synthetic rattan" },
+    });
+    injectBreadcrumb("btt-page-bc", [
+      { name: t("pdp.crumb.home") || "Главная", url: SITE + "/" },
+      { name: t("lp.rotang.title"), url: SITE + "/rotang-tashkent.html" },
+    ]);
+  }
+
+  function renderLandingGarden() {
+    SEO.injectJsonLd("btt-page-lp-garden", {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: t("meta.lp.garden.title"),
+      description: t("meta.lp.garden.desc"),
+      url: SITE + "/sadovaya-mebel-rotang.html",
+      inLanguage: document.documentElement.lang || "ru",
+      about: { "@type": "Product", name: t("lp.garden.title"), category: "Garden furniture" },
+    });
+    injectBreadcrumb("btt-page-bc", [
+      { name: t("pdp.crumb.home") || "Главная", url: SITE + "/" },
+      { name: t("lp.garden.title"), url: SITE + "/sadovaya-mebel-rotang.html" },
+    ]);
+  }
+
   function render() {
     if (page === "about.html") renderAbout();
     else if (page === "contacts.html") renderContacts();
     else if (page === "blog.html") renderBlog();
     else if (page === "delivery.html") renderDelivery();
     else if (page === "returns.html") renderReturns();
+    else if (page === "rotang-tashkent.html") renderLandingRotang();
+    else if (page === "sadovaya-mebel-rotang.html") renderLandingGarden();
   }
 
   render();

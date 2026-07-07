@@ -139,6 +139,14 @@
     return pr;
   }
 
+  function syncCatalogCount() {
+    const el = document.querySelector("[data-cat-count]");
+    const P = window.BTT_PRODUCTS;
+    if (!el || !P) return;
+    const n = Object.keys(P).filter((k) => /^p\d+$/.test(k)).length;
+    if (n) el.textContent = String(n);
+  }
+
   function appendMissingStaticProducts(grid) {
     const P = window.BTT_PRODUCTS;
     if (!grid || !P) return false;
@@ -179,11 +187,13 @@
     const { list, map } = await ensureMap();
     if (!list.length) {
       if (catGrid) appendMissingStaticProducts(catGrid);
+      syncCatalogCount();
       return;
     }
     if (homeGrid) patchGrid(homeGrid, map);
     if (rattanGrid) patchGrid(rattanGrid, map);
     if (catGrid) hydrateCatalogGrid(catGrid, list, map);
+    syncCatalogCount();
   }
 
   // Pull CRM images/prices/names into any product grid rendered after us —

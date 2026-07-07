@@ -166,6 +166,22 @@
     setMeta("og:description", desc, "property");
     setMeta("og:url", pageUrl, "property");
     setCanonical(pageUrl);
+    const kwTpl = t("meta.article.keywords") || "{title}, rotang, bententrade";
+    const kw = kwTpl.replace(/\{title\}/g, title).slice(0, 200);
+    setMeta("keywords", kw);
+
+    const SEO = window.BTT_SEO || {};
+    if (SEO.injectJsonLd) {
+      SEO.injectJsonLd("btt-page-bc", {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: t("pdp.crumb.home") || "Главная", item: SITE + "/" },
+          { "@type": "ListItem", position: 2, name: t("nav.blog") || "Статьи", item: SITE + "/blog.html" },
+          { "@type": "ListItem", position: 3, name: title, item: pageUrl },
+        ],
+      });
+    }
 
     const img = cover(a.cover_media);
     if (img) {
@@ -214,5 +230,9 @@
     document.querySelectorAll(".lang button").forEach((b) =>
       b.addEventListener("click", () => setTimeout(() => { if (list) renderList(list); if (single) renderSingle(single); }, 40)),
     );
+    document.addEventListener("btt:lang", () => {
+      if (list) renderList(list);
+      if (single) renderSingle(single);
+    });
   });
 })();
