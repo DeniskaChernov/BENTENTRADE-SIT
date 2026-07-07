@@ -58,7 +58,32 @@
     p22:{cat:"indoor",    look:"coffee",    now:175, old:220, stock:1},
     p23:{cat:"indoor",    look:"rocker",    now:380, old:0,   stock:1},
     p24:{cat:"furniture", look:"sofa",      now:890, old:1100,stock:1},
-    p25:{cat:"furniture", look:"dining",    now:520, old:0,   stock:1}
+    p25:{cat:"furniture", look:"dining",    now:520, old:0,   stock:1},
+    p26:{cat:"furniture", look:"lounge",    now:395, old:480, stock:1},
+    p27:{cat:"furniture", look:"dining",    now:980, old:0,   stock:1},
+    p28:{cat:"furniture", look:"chair",     now:220, old:280, stock:1},
+    p29:{cat:"furniture", look:"sofa",      now:720, old:890, stock:1},
+    p30:{cat:"planter",   look:"planterT",  now:110, old:0,   stock:1},
+    p31:{cat:"planter",   look:"planterS",  now:42,  old:55,  stock:1},
+    p32:{cat:"planter",   look:"planterSet",now:245, old:310, stock:1},
+    p33:{cat:"basket",    look:"chest",     now:165, old:0,   stock:1},
+    p34:{cat:"basket",    look:"laundry",   now:64,  old:82,  stock:1},
+    p35:{cat:"basket",    look:"chest",     now:88,  old:0,   stock:1},
+    p36:{cat:"indoor",    look:"rocker",    now:310, old:390, stock:1},
+    p37:{cat:"indoor",    look:"coffee",    now:195, old:0,   stock:1},
+    p38:{cat:"indoor",    look:"cabinet",   now:490, old:620, stock:0},
+    p39:{cat:"indoor",    look:"shelf",     now:275, old:340, stock:1},
+    p40:{cat:"furniture", look:"corner",    now:1720,old:0,   stock:0},
+    p41:{cat:"furniture", look:"lounge",    now:450, old:0,   stock:1},
+    p42:{cat:"furniture", look:"chair",     now:198, old:250, stock:1},
+    p43:{cat:"planter",   look:"planterT",  now:138, old:175, stock:1},
+    p44:{cat:"planter",   look:"planterS",  now:55,  old:0,   stock:1},
+    p45:{cat:"basket",    look:"laundry",   now:52,  old:0,   stock:1},
+    p46:{cat:"basket",    look:"chest",     now:142, old:180, stock:1},
+    p47:{cat:"indoor",    look:"rocker",    now:265, old:0,   stock:1},
+    p48:{cat:"indoor",    look:"coffee",    now:168, old:210, stock:1},
+    p49:{cat:"furniture", look:"sofa",      now:650, old:800, stock:1},
+    p50:{cat:"furniture", look:"dining",    now:1050,old:1280,stock:1}
   };
 
   window.BTT_IS_MTO = id => {

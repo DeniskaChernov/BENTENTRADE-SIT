@@ -37,7 +37,15 @@
 
   function staticProducts(){
     const d = (window.BTT_I18N && window.BTT_I18N[lang()]) || {};
+    const P = window.BTT_PRODUCTS;
     const out = [];
+    if(P){
+      Object.keys(P).sort((a,b)=>+a.slice(1)-+b.slice(1)).forEach(id=>{
+        const name = d[id+".name"];
+        if(name) out.push({ id, name, cat:d[id+".cat"]||"", img:null, q:name });
+      });
+      if(out.length) return out;
+    }
     for(let i=1;i<=15;i++){
       const name = d["p"+i+".name"], cat = d["p"+i+".cat"];
       if(name) out.push({ id:"p"+i, name, cat:cat||"", img:null, q:name });
