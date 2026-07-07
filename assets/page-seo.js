@@ -10,6 +10,20 @@
     return { "@id": SITE + "/#org" };
   }
 
+  function breadcrumb(items) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: items.map(function (it, i) {
+        return { "@type": "ListItem", position: i + 1, name: it.name, item: it.url };
+      }),
+    };
+  }
+
+  function injectBreadcrumb(id, items) {
+    SEO.injectJsonLd(id, breadcrumb(items));
+  }
+
   function aboutSchema() {
     return {
       "@context": "https://schema.org",
@@ -98,13 +112,25 @@
 
   function renderAbout() {
     SEO.injectJsonLd("btt-page-about", aboutSchema());
+    injectBreadcrumb("btt-page-bc", [
+      { name: t("pdp.crumb.home") || "Главная", url: SITE + "/" },
+      { name: t("nav.about") || "О нас", url: SITE + "/about.html" },
+    ]);
   }
 
   function renderContacts() {
     SEO.injectJsonLd("btt-page-contacts", contactsSchema());
+    injectBreadcrumb("btt-page-bc", [
+      { name: t("pdp.crumb.home") || "Главная", url: SITE + "/" },
+      { name: t("nav.contacts") || "Контакты", url: SITE + "/contacts.html" },
+    ]);
   }
 
   function renderBlog() {
+    injectBreadcrumb("btt-page-bc", [
+      { name: t("pdp.crumb.home") || "Главная", url: SITE + "/" },
+      { name: t("nav.blog") || "Статьи", url: SITE + "/blog.html" },
+    ]);
     fetch("/data/articles.json")
       .then(function (r) { return r.json(); })
       .then(function (data) {
@@ -114,10 +140,40 @@
       .catch(function () {});
   }
 
+  function renderDelivery() {
+    SEO.injectJsonLd("btt-page-delivery", {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: t("meta.delivery.title"),
+      description: t("meta.delivery.desc"),
+      url: SITE + "/delivery.html",
+    });
+    injectBreadcrumb("btt-page-bc", [
+      { name: t("pdp.crumb.home") || "Главная", url: SITE + "/" },
+      { name: t("foot.delivery") || "Доставка", url: SITE + "/delivery.html" },
+    ]);
+  }
+
+  function renderReturns() {
+    SEO.injectJsonLd("btt-page-returns", {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: t("meta.returns.title"),
+      description: t("meta.returns.desc"),
+      url: SITE + "/returns.html",
+    });
+    injectBreadcrumb("btt-page-bc", [
+      { name: t("pdp.crumb.home") || "Главная", url: SITE + "/" },
+      { name: t("foot.returns") || "Возврат", url: SITE + "/returns.html" },
+    ]);
+  }
+
   function render() {
     if (page === "about.html") renderAbout();
     else if (page === "contacts.html") renderContacts();
     else if (page === "blog.html") renderBlog();
+    else if (page === "delivery.html") renderDelivery();
+    else if (page === "returns.html") renderReturns();
   }
 
   render();

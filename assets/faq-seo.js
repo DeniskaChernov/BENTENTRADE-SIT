@@ -36,6 +36,14 @@
       "@type": "FAQPage",
       mainEntity: entities,
     });
+    SEO.injectJsonLd("btt-page-bc", {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: t("pdp.crumb.home") || "Главная", item: "https://bententrade.uz/" },
+        { "@type": "ListItem", position: 2, name: t("foot.faq") || "FAQ", item: "https://bententrade.uz/faq.html" },
+      ],
+    });
   }
 
   document.addEventListener("DOMContentLoaded", render);

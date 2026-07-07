@@ -35,6 +35,14 @@
       description: t("care.sub"),
       step: steps(),
     });
+    SEO.injectJsonLd("btt-page-bc", {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: t("pdp.crumb.home") || "Главная", item: "https://bententrade.uz/" },
+        { "@type": "ListItem", position: 2, name: t("foot.care") || "Уход", item: "https://bententrade.uz/care.html" },
+      ],
+    });
   }
 
   document.addEventListener("DOMContentLoaded", render);
