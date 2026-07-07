@@ -63,6 +63,11 @@
 </nav>
 
 <main class="wrap section account-flow">
+  <div class="acc-skeleton" aria-hidden="true">
+    <div class="acc-skeleton__bar acc-skeleton__bar--lg"></div>
+    <div class="acc-skeleton__bar acc-skeleton__bar--md"></div>
+    <div class="acc-skeleton__bar acc-skeleton__bar--sm"></div>
+  </div>
   <div class="acc-mob-bar">
     <button type="button" class="acc-mob-toggle" data-acc-mob-toggle aria-expanded="false" data-i18n-aria="tool.menu" aria-label="Меню">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -97,7 +102,7 @@
       <section class="acc-panel is-active" data-acc-panel="overview">
         <div class="acc-h">
           <div>
-            <h1><span data-i18n="acc.ov.hi">Здравствуйте,</span> Азиз 👋</h1>
+            <h1><span data-i18n="acc.ov.hi">Здравствуйте</span><span data-acc-greet-name></span></h1>
             <p data-i18n="acc.ov.sub">Рады видеть вас снова. Вот сводка по вашему аккаунту.</p>
           </div>
         </div>

@@ -22,6 +22,42 @@
   };
 
   const SITE = "https://bententrade.uz";
+  let staticArticles = null;
+
+  async function loadStaticArticles() {
+    if (staticArticles) return staticArticles;
+    try {
+      const res = await fetch("data/articles.json", { cache: "no-cache" });
+      if (!res.ok) return [];
+      const data = await res.json();
+      staticArticles = (data && data.articles) || [];
+      return staticArticles;
+    } catch (e) { return []; }
+  }
+
+  function localizeArticle(a) {
+    const loc = (a.i18n && (a.i18n[lang()] || a.i18n.ru)) || {};
+    return {
+      slug: a.slug,
+      published_at: a.published_at,
+      cover_media: a.cover_media,
+      title: loc.title || a.slug,
+      excerpt: loc.excerpt || "",
+      body: loc.body || "",
+    };
+  }
+
+  async function fetchArticles() {
+    if (window.BTT_API) {
+      try {
+        const res = await window.BTT_API.articles();
+        const list = (res && res.articles) || [];
+        if (list.length) return list;
+      } catch (e) { /* fallback below */ }
+    }
+    const raw = await loadStaticArticles();
+    return raw.map(localizeArticle);
+  }
 
   function fmtDate(s) {
     try {
@@ -75,14 +111,12 @@
   }
 
   async function renderList(root) {
-    if (!window.BTT_API) { showState(root, "empty"); return; }
     showState(root, "loading");
-    let res;
-    try { res = await window.BTT_API.articles(); } catch (e) {
+    let list;
+    try { list = await fetchArticles(); } catch (e) {
       showState(root, "error", () => renderList(root));
       return;
     }
-    const list = (res && res.articles) || [];
     if (!list.length) { showState(root, "empty"); return; }
     root.innerHTML =
       '<div class="blog-grid">' +
@@ -104,14 +138,20 @@
 
   async function renderSingle(root) {
     const slug = new URLSearchParams(location.search).get("slug");
-    if (!slug || !window.BTT_API) { showState(root, "empty"); return; }
+    if (!slug) { showState(root, "empty"); return; }
     showState(root, "loading");
-    let res;
-    try { res = await window.BTT_API.article(slug); } catch (e) {
-      showState(root, "error", () => renderSingle(root));
-      return;
+    let a = null;
+    if (window.BTT_API) {
+      try {
+        const res = await window.BTT_API.article(slug);
+        a = res && res.article;
+      } catch (e) { /* static fallback */ }
     }
-    const a = res && res.article;
+    if (!a) {
+      const raw = await loadStaticArticles();
+      const found = raw.find((x) => x.slug === slug);
+      if (found) a = localizeArticle(found);
+    }
     if (!a) {
       root.innerHTML = '<p class="blog-state blog-state--empty">' + esc(t("blog.notFound")) + "</p>";
       return;

@@ -32,22 +32,28 @@
     shelf:      CAT.indoor
   };
 
+  /* Prices in USD units; BTT_UTIL.formatMoney converts to UZS for display. */
   window.BTT_PRODUCTS = {
-    p1: {cat:"furniture", look:"sofa",      now:780, old:980},
-    p2: {cat:"furniture", look:"lounge",    now:340, old:420},
-    p3: {cat:"planter",   look:"planterT",  now:95,  old:130},
-    p4: {cat:"furniture", look:"dining",    now:1180,old:0},
-    p5: {cat:"furniture", look:"chair",     now:260, old:340},
-    p6: {cat:"basket",    look:"chest",     now:180, old:0},
-    p7: {cat:"planter",   look:"planterS",  now:48,  old:64},
-    p8: {cat:"furniture", look:"chair",     now:155, old:0},
-    p9: {cat:"planter",   look:"planterSet",now:210, old:280},
-    p10:{cat:"furniture", look:"corner",    now:1640,old:1990},
-    p11:{cat:"basket",    look:"laundry",   now:72,  old:0},
-    p12:{cat:"indoor",    look:"rocker",    now:290, old:360},
-    p13:{cat:"indoor",    look:"coffee",    now:210, old:0},
-    p14:{cat:"indoor",    look:"cabinet",   now:540, old:680},
-    p15:{cat:"indoor",    look:"shelf",     now:320, old:390}
+    p1: {cat:"furniture", look:"sofa",      now:780, old:980, stock:1},
+    p2: {cat:"furniture", look:"lounge",    now:340, old:420, stock:1},
+    p3: {cat:"planter",   look:"planterT",  now:95,  old:130, stock:1},
+    p4: {cat:"furniture", look:"dining",    now:1180,old:0,   stock:1},
+    p5: {cat:"furniture", look:"chair",     now:260, old:340, stock:1},
+    p6: {cat:"basket",    look:"chest",     now:180, old:0,   stock:1},
+    p7: {cat:"planter",   look:"planterS",  now:48,  old:64,  stock:1},
+    p8: {cat:"furniture", look:"chair",     now:155, old:0,   stock:1},
+    p9: {cat:"planter",   look:"planterSet",now:210, old:280, stock:1},
+    p10:{cat:"furniture", look:"corner",    now:1640,old:1990,stock:0},
+    p11:{cat:"basket",    look:"laundry",   now:72,  old:0,   stock:1},
+    p12:{cat:"indoor",    look:"rocker",    now:290, old:360, stock:1},
+    p13:{cat:"indoor",    look:"coffee",    now:210, old:0,   stock:1},
+    p14:{cat:"indoor",    look:"cabinet",   now:540, old:680, stock:0},
+    p15:{cat:"indoor",    look:"shelf",     now:320, old:390, stock:1}
+  };
+
+  window.BTT_IS_MTO = id => {
+    const p = window.BTT_PRODUCTS[id];
+    return !!(p && p.stock === 0);
   };
 
   function imgsFor(src){

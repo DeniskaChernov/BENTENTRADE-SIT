@@ -117,7 +117,7 @@
       const imgs = window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(pid) : null;
       const img = imgs && imgs[0] ? imgs[0].thumb : "";
       const sale = p.old ? '<span class="badge-sale">-' + Math.round((1 - p.now / p.old) * 100) + '%</span>' : "";
-      const old = p.old ? '<span class="price__old">$' + p.old + '</span>' : "";
+      const old = p.old ? '<span class="price__old">' + money(p.old) + '</span>' : "";
       return '<article class="product reveal" data-product data-cat="' + esc(p.cat) + '">' +
         '<div class="product__media media">' + sale +
         '<button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="' + esc(t("a11y.fav")||"") + '">' + FAV_SVG + '</button>' +
@@ -126,7 +126,7 @@
         '<button class="add" data-add data-i18n-aria="a11y.add" aria-label="' + esc(t("a11y.add")||"") + '">' + ADD_SVG + '</button>' +
         '</div><div><div class="product__cat">' + esc(pc) + '</div>' +
         '<div class="product__name" style="margin-top:4px">' + esc(pn) + '</div>' +
-        '<div class="price" style="margin-top:8px"><span class="price__now">$' + p.now + '</span>' + old + '</div></div></article>';
+        '<div class="price" style="margin-top:8px"><span class="price__now">' + money(p.now) + '</span>' + old + '</div></div></article>';
     }).join("");
     document.dispatchEvent(new CustomEvent("btt:related-rendered", { detail:{ grid } }));
   }
@@ -149,20 +149,47 @@
     });
 
     const now = $(".pdp-price .now"), old = $(".pdp-price .old"), save = $(".pdp-price .save");
-    if(now) now.textContent = "$"+prod.now;
+    const fmt = window.BTT_UTIL && window.BTT_UTIL.formatMoney;
+    const fmtN = (n) => fmt ? fmt(n) : String(n);
+    if(now) now.textContent = fmtN(prod.now);
     if(old) old.style.display = prod.old ? "" : "none";
-    if(old && prod.old) old.textContent = "$"+prod.old;
+    if(old && prod.old) old.textContent = fmtN(prod.old);
     if(save){
       if(prod.old){
         save.style.display = "";
         const word = {ru:"Экономия",uz:"Tejash",en:"Save"}[lang()] || "Экономия";
-        save.textContent = word + " $" + (prod.old - prod.now);
+        save.textContent = word + " " + fmtN(prod.old - prod.now);
       } else save.style.display = "none";
     }
     const badge = $(".pdp-stage .badge-sale");
     if(badge){
       if(prod.old){ badge.style.display=""; badge.textContent = "-"+Math.round((1-prod.now/prod.old)*100)+"%"; }
       else badge.style.display = "none";
+    }
+
+    const isMto = window.BTT_IS_MTO ? window.BTT_IS_MTO("p"+num) : prod.stock === 0;
+    const addBtn = document.querySelector(".pdp-actions [data-add], .pdp-buy [data-add]");
+    const mtoBtn = document.querySelector("[data-pdp-mto]");
+    if(isMto){
+      if(addBtn) addBtn.style.display = "none";
+      if(mtoBtn) mtoBtn.hidden = false;
+      let mtoBadge = $(".pdp-stage .badge-mto");
+      if(!mtoBadge){
+        mtoBadge = document.createElement("span");
+        mtoBadge.className = "badge-mto";
+        const stage = $(".pdp-stage");
+        if(stage) stage.appendChild(mtoBadge);
+      }
+      if(mtoBadge){
+        mtoBadge.style.display = "";
+        mtoBadge.setAttribute("data-i18n", "mto.badge");
+        mtoBadge.textContent = t("mto.badge");
+      }
+    } else {
+      if(addBtn) addBtn.style.display = "";
+      if(mtoBtn) mtoBtn.hidden = true;
+      const mtoBadge = $(".pdp-stage .badge-mto");
+      if(mtoBadge) mtoBadge.style.display = "none";
     }
 
     const vals = [ct.mat, ct.dim, ct.fin, ct.wt, ct.seat, ct.made];
@@ -183,6 +210,20 @@
   setImages();
   render();
   renderRelated();
+
+  const mtoLink = document.querySelector("[data-pdp-mto]");
+  if(mtoLink && !mtoLink.dataset.mtoWired){
+    mtoLink.dataset.mtoWired = "1";
+    mtoLink.addEventListener("click", e=>{
+      e.preventDefault();
+      const nm = (document.querySelector(".pdp-info h1")||{}).textContent || "";
+      const tpl = t("mto.msg");
+      const msg = tpl.replace("{name}", nm.trim());
+      const mgr = window.BTT_UTIL && window.BTT_UTIL.managerUrl;
+      const url = mgr ? mgr(msg).telegram : "https://t.me/bententradeuz";
+      window.open(url, "_blank", "noopener");
+    });
+  }
 
   new MutationObserver(()=>{
     render();

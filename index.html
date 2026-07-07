@@ -112,6 +112,17 @@
   </div>
 </section>
 
+<!-- ===== CUSTOM ORDER ===== -->
+<section class="wrap section section--tight">
+  <div class="custom-order reveal">
+    <div class="custom-order__text">
+      <h3 data-i18n="mto.banner.title">Не нашли нужный искусственный ротанг?</h3>
+      <p data-i18n="mto.banner.sub">Сделаем на заказ — подберём цвет, диаметр и профиль под ваш проект.</p>
+    </div>
+    <a class="btn btn--copper btn--icon-end" data-mto-chat href="#"><span data-i18n="mto.banner.cta">Сделать на заказ</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+  </div>
+</section>
+
 <!-- ===== PRODUCT LINES ===== -->
 <section class="wrap section section--compact" id="product-lines">
   <div class="lines">
@@ -122,13 +133,64 @@
       </div>
     </div>
     <div class="lines__bento" data-stagger data-stagger="70">
-      <a class="bento-tile reveal" href="#rattan-profiles">
-        <img src="assets/bento-rattan.png" alt="" loading="lazy" decoding="async" onerror="this.style.opacity=0">
-        <div class="bento-tile__meta">
-          <span class="bento-tile__title" data-i18n="line.rattan">Искусственный ротанг</span>
-          <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      <div class="bento-tile bento-tile--pal reveal" id="rattan-profiles">
+        <div class="bento-pal">
+          <div class="bento-pal__banner">
+            <img src="assets/rattan-palette-hero.png" alt="" data-i18n-alt="pal.hero.alt" loading="lazy" decoding="async">
+          </div>
+          <div class="bento-pal__body">
+            <div class="bento-pal__head">
+              <div class="eyebrow" data-i18n="pal.eyebrow">Палитра профилей</div>
+              <h3 class="bento-pal__title" data-i18n="pal.title">Искусственный ротанг для мебели · полумесяц 10 мм</h3>
+            </div>
+            <div class="bento-pal__profiles">
+              <article class="r-profile">
+                <div class="r-profile__media"><img src="assets/rattan-profile-0609-tobacco.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="r-profile__meta">
+                  <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0609</b></span>
+                  <span class="r-profile__color" data-i18n="pal.c0609">Tobacco</span>
+                  <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+                </div>
+              </article>
+              <article class="r-profile">
+                <div class="r-profile__media"><img src="assets/rattan-profile-1505-woody.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="r-profile__meta">
+                  <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>1505</b></span>
+                  <span class="r-profile__color" data-i18n="pal.c1505">Woody</span>
+                  <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+                </div>
+              </article>
+              <article class="r-profile">
+                <div class="r-profile__media"><img src="assets/rattan-profile-0704-brown.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="r-profile__meta">
+                  <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0704</b></span>
+                  <span class="r-profile__color" data-i18n="pal.c0704b">Brown</span>
+                  <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+                </div>
+              </article>
+              <article class="r-profile">
+                <div class="r-profile__media"><img src="assets/rattan-profile-0704-graphite.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="r-profile__meta">
+                  <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0704</b></span>
+                  <span class="r-profile__color" data-i18n="pal.c0704g">Graphite</span>
+                  <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+                </div>
+              </article>
+              <article class="r-profile">
+                <div class="r-profile__media"><img src="assets/rattan-profile-2404-choco.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="r-profile__meta">
+                  <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>2404</b></span>
+                  <span class="r-profile__color" data-i18n="pal.c2404">Choco</span>
+                  <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+                </div>
+              </article>
+            </div>
+            <p class="bento-pal__foot">
+              <a class="btn btn--ghost btn--icon-end" href="contacts.html"><span data-i18n="pal.cta">Запросить образец или прайс</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+            </p>
+          </div>
         </div>
-      </a>
+      </div>
       <a class="bento-tile reveal" href="about.html">
         <img src="assets/bento-twisted-rattan.png" alt="" loading="lazy" decoding="async" onerror="this.style.opacity=0">
         <div class="bento-tile__meta">
@@ -158,79 +220,6 @@
         </div>
       </a>
     </div>
-  </div>
-</section>
-
-<!-- ===== RATTAN PROFILE PALETTE ===== -->
-<section class="wrap section section--compact" id="rattan-profiles">
-  <div class="rattan-pal">
-    <div class="rattan-pal__banner reveal">
-      <img src="assets/rattan-palette-hero.png" alt="" data-i18n-alt="pal.hero.alt" loading="lazy" decoding="async">
-    </div>
-
-    <div class="lines__head reveal">
-      <div>
-        <div class="eyebrow" data-i18n="pal.eyebrow">Палитра профилей</div>
-        <h2 data-i18n="pal.title">Искусственный ротанг для мебели · полумесяц 10 мм</h2>
-      </div>
-    </div>
-
-    <div class="rattan-profiles" data-stagger data-stagger="70">
-      <article class="r-profile reveal">
-        <div class="r-profile__media">
-          <img src="assets/rattan-profile-0609-tobacco.png" alt="" loading="lazy" decoding="async">
-        </div>
-        <div class="r-profile__meta">
-          <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0609</b></span>
-          <span class="r-profile__color" data-i18n="pal.c0609">Tobacco</span>
-          <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
-        </div>
-      </article>
-      <article class="r-profile reveal">
-        <div class="r-profile__media">
-          <img src="assets/rattan-profile-1505-woody.png" alt="" loading="lazy" decoding="async">
-        </div>
-        <div class="r-profile__meta">
-          <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>1505</b></span>
-          <span class="r-profile__color" data-i18n="pal.c1505">Woody</span>
-          <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
-        </div>
-      </article>
-      <article class="r-profile reveal">
-        <div class="r-profile__media">
-          <img src="assets/rattan-profile-0704-brown.png" alt="" loading="lazy" decoding="async">
-        </div>
-        <div class="r-profile__meta">
-          <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0704</b></span>
-          <span class="r-profile__color" data-i18n="pal.c0704b">Brown</span>
-          <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
-        </div>
-      </article>
-      <article class="r-profile reveal">
-        <div class="r-profile__media">
-          <img src="assets/rattan-profile-0704-graphite.png" alt="" loading="lazy" decoding="async">
-        </div>
-        <div class="r-profile__meta">
-          <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0704</b></span>
-          <span class="r-profile__color" data-i18n="pal.c0704g">Graphite</span>
-          <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
-        </div>
-      </article>
-      <article class="r-profile reveal">
-        <div class="r-profile__media">
-          <img src="assets/rattan-profile-2404-choco.png" alt="" loading="lazy" decoding="async">
-        </div>
-        <div class="r-profile__meta">
-          <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>2404</b></span>
-          <span class="r-profile__color" data-i18n="pal.c2404">Choco</span>
-          <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
-        </div>
-      </article>
-    </div>
-
-    <p class="rattan-pal__foot reveal">
-      <a class="btn btn--ghost btn--icon-end" href="contacts.html"><span data-i18n="pal.cta">Запросить образец или прайс</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-    </p>
   </div>
 </section>
 
@@ -335,14 +324,14 @@
     <h2 class="display-3 reveal" data-i18n="split.title">Обустройте сад и террасу мебелью, которой не страшна погода</h2>
     <div class="mood__bento" data-stagger data-stagger="70">
       <a class="mood-tile reveal" href="catalog.html?cat=furniture">
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-warm.png" alt="" loading="lazy" decoding="async">
         <div class="mood-tile__meta">
           <span class="mood-tile__loc" data-i18n="mood.terrace">Терраса</span>
           <span class="mood-tile__title" data-i18n="type.set">Комплект</span>
         </div>
       </a>
       <a class="mood-tile mood-tile--crop-r reveal" href="catalog.html?cat=furniture">
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-teal.png" alt="" loading="lazy" decoding="async">
         <div class="mood-tile__meta">
           <span class="mood-tile__loc" data-i18n="mood.garden">Сад</span>
           <span class="mood-tile__title" data-i18n="type.sofa">Диван</span>
@@ -353,14 +342,14 @@
         <p data-i18n="split.body">Наше плетение выглядит как натуральное, но сделано прочнее: не выгорает на солнце, не трескается на морозе и не требует особого ухода — достаточно протереть влажной тканью.</p>
       </div>
       <a class="mood-tile mood-tile--crop-l reveal" href="product.html?id=p5">
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-cream.png" alt="" loading="lazy" decoding="async">
         <div class="mood-tile__meta">
           <span class="mood-tile__loc" data-i18n="mood.veranda">Веранда</span>
           <span class="mood-tile__title" data-i18n="type.chair">Стул</span>
         </div>
       </a>
       <a class="mood-tile mood-tile--crop-t reveal" href="product.html?id=p4">
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-grey.png" alt="" loading="lazy" decoding="async">
         <div class="mood-tile__meta">
           <span class="mood-tile__loc" data-i18n="mood.patio">Патио</span>
           <span class="mood-tile__title" data-i18n="type.table">Стол</span>
@@ -376,7 +365,7 @@
     </div>
     <div class="mood__scenes" data-stagger data-stagger="60">
       <a class="scene-card reveal" href="catalog.html?cat=furniture">
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-warm.png" alt="" loading="lazy" decoding="async">
         <div class="scene-card__meta">
           <span class="scene-card__loc" data-i18n="mood.eve">Вечер на террасе</span>
           <span class="scene-card__hint" data-i18n="mood.eve.h">Садовая мебель</span>
@@ -390,7 +379,7 @@
         </div>
       </a>
       <a class="scene-card reveal" href="catalog.html?cat=furniture">
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-light.png" alt="" loading="lazy" decoding="async">
         <div class="scene-card__meta">
           <span class="scene-card__loc" data-i18n="mood.sun">Солнечный день</span>
           <span class="scene-card__hint" data-i18n="mood.eve.h">Садовая мебель</span>
@@ -755,9 +744,9 @@
 <script src="assets/atmo-hero.js"></script>
 <script src="assets/assistant.js"></script>
 <script src="assets/search.js"></script>
+<script src="assets/products.js"></script>
 <script src="assets/site.js"></script>
 <script src="assets/cart.js"></script>
-<script src="assets/products.js"></script>
 <script src="assets/catalog-sync.js"></script>
 <script src="assets/fx.js"></script>
 

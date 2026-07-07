@@ -5,7 +5,7 @@
    ============================================================ */
 window.BTT_I18N = {
   ru:{
-    "topbar.ship":"Бесплатная доставка по Узбекистану при заказе от $100",
+    "topbar.ship":"Бесплатная доставка по Узбекистану при заказе от 1 250 000 сум",
     "nav.home":"Главная","nav.catalog":"Каталог","nav.about":"О нас","nav.contacts":"Контакты",
     "tool.search":"Поиск","tool.fav":"Избранное","tool.cart":"Корзина","tool.acc":"Аккаунт",
     "a11y.skip":"К основному содержимому","hero.prev":"Предыдущий слайд","hero.next":"Следующий слайд","hero.slide":"Слайд {n}",
@@ -17,7 +17,10 @@ window.BTT_I18N = {
     "hero.interior":"Плетёная мебель","hero.best.s":"Стойко к погоде","hero.best.b":"СЛУЖИТ ГОДАМИ",
     "stat.clients":"Довольных клиентов","stat.projects":"Изделий в каталоге","stat.premium":"Моделей плетения",
 
-    "promo.consult":"100% бесплатная\nконсультация по подбору","promo.colors":"Любой цвет плетения под заказ","promo.price":"Гарантия лучшей цены",
+    "promo.consult":"100% бесплатная\nконсультация по подбору","promo.price":"Гарантия лучшей цены",
+    "mto.badge":"На заказ","mto.card":"Сделать на заказ","mto.msg":"Здравствуйте! Хочу заказать: {name}",
+    "mto.banner.title":"Не нашли нужный искусственный ротанг?","mto.banner.sub":"Сделаем на заказ — подберём цвет, диаметр и профиль под ваш проект.",
+    "mto.banner.cta":"Сделать на заказ","mto.banner.msg":"Здравствуйте! Не нашёл нужный искусственный ротанг — хочу сделать на заказ.",
 
     "twist.eyebrow":"Своё производство","twist.title.1":"Крученый","twist.title.2":"ротанг",
     "twist.body":"Плетём катушки из полиэтиленового волокна — от тонкого декора до толстого каркаса. Разные диаметры и цвета, стабильное качество партии за партией.",
@@ -106,7 +109,7 @@ window.BTT_I18N = {
   },
 
   uz:{
-    "topbar.ship":"$100 dan ortiq buyurtmalarga O‘zbekiston bo‘ylab bepul yetkazib berish",
+    "topbar.ship":"1 250 000 so‘mdan ortiq buyurtmalarga O‘zbekiston bo‘ylab bepul yetkazib berish",
     "nav.home":"Bosh sahifa","nav.catalog":"Katalog","nav.about":"Biz haqimizda","nav.contacts":"Kontaktlar",
     "tool.search":"Qidiruv","tool.fav":"Sevimlilar","tool.cart":"Savatcha","tool.acc":"Profil",
     "a11y.skip":"Asosiy kontentga o‘tish","hero.prev":"Oldingi slayd","hero.next":"Keyingi slayd","hero.slide":"Slayd {n}",
@@ -118,7 +121,10 @@ window.BTT_I18N = {
     "hero.interior":"To‘qilgan mebel","hero.best.s":"Ob-havoga chidamli","hero.best.b":"YILLAB XIZMAT QILADI",
     "stat.clients":"Mamnun mijozlar","stat.projects":"Katalogdagi mahsulot","stat.premium":"To‘quv modellari",
 
-    "promo.consult":"100% bepul\ntanlov bo‘yicha maslahat","promo.colors":"Istalgan rangda to‘quv buyurtmasi","promo.price":"Eng yaxshi narx kafolati",
+    "promo.consult":"100% bepul\ntanlov bo‘yicha maslahat","promo.price":"Eng yaxshi narx kafolati",
+    "mto.badge":"Buyurtmaga","mto.card":"Buyurtma berish","mto.msg":"Assalomu alaykum! Buyurtma qilmoqchiman: {name}",
+    "mto.banner.title":"Kerakli sun’iy rotangni topa olmadingizmi?","mto.banner.sub":"Buyurtmaga tayyorlaymiz — loyihangiz uchun rang, diametr va profilni tanlaymiz.",
+    "mto.banner.cta":"Buyurtma berish","mto.banner.msg":"Assalomu alaykum! Kerakli rotangni topa olmadim — buyurtma qilmoqchiman.",
 
     "twist.eyebrow":"O‘z ishlab chiqarish","twist.title.1":"Burma","twist.title.2":"rotang",
     "twist.body":"Polietilen tolidan g‘iloflar to‘qiyamiz — nozik dekor yoki qalin karkas uchun. Turli diametr va ranglar, har bir partiyada barqaror sifat.",
@@ -204,7 +210,7 @@ window.BTT_I18N = {
   },
 
   en:{
-    "topbar.ship":"Free shipping across Uzbekistan on orders over $100",
+    "topbar.ship":"Free shipping across Uzbekistan on orders over 1,250,000 UZS",
     "nav.home":"Home","nav.catalog":"Catalog","nav.about":"About","nav.contacts":"Contacts",
     "tool.search":"Search","tool.fav":"Wishlist","tool.cart":"Cart","tool.acc":"Account",
     "a11y.skip":"Skip to main content","hero.prev":"Previous slide","hero.next":"Next slide","hero.slide":"Slide {n}",
@@ -216,7 +222,10 @@ window.BTT_I18N = {
     "hero.interior":"Woven furniture","hero.best.s":"Weather-proof","hero.best.b":"LASTS FOR YEARS",
     "stat.clients":"Happy clients","stat.projects":"Items in catalog","stat.premium":"Weave models",
 
-    "promo.consult":"100% free\nproduct-match consultation","promo.colors":"Any weave colour to order","promo.price":"Price match guarantee",
+    "promo.consult":"100% free\nproduct-match consultation","promo.price":"Price match guarantee",
+    "mto.badge":"Made to order","mto.card":"Order custom","mto.msg":"Hello! I'd like to order: {name}",
+    "mto.banner.title":"Can't find the rattan you need?","mto.banner.sub":"We'll make it to order — colour, diameter and profile matched to your project.",
+    "mto.banner.cta":"Order custom","mto.banner.msg":"Hello! I can't find the rattan I need — I'd like a custom order.",
 
     "twist.eyebrow":"Own production","twist.title.1":"Twisted","twist.title.2":"rattan",
     "twist.body":"We weave coils from polyethylene fibre — from fine decor to heavy frame gauges. Multiple diameters and colours, consistent quality batch after batch.",
@@ -377,7 +386,7 @@ Object.assign(window.BTT_I18N.en,{
 
 /* ---- product detail (PDP) — desc & spec values are filled from products.js per category ---- */
 Object.assign(window.BTT_I18N.ru,{
-  "pdp.crumb.home":"Главная","pdp.rate":"4.9 · 128 отзывов","pdp.save":"Экономия $125",
+  "pdp.crumb.home":"Главная","pdp.rate":"4.9 · 128 отзывов","pdp.save":"Экономия",
   "pdp.desc":"Изделие из искусственного ротанга ручного плетения — не выгорает, не боится влаги и служит годами.",
   "pdp.opt.finish":"Цвет плетения","pdp.opt.size":"Размер",
   "pdp.fin.natural":"Графит","pdp.fin.walnut":"Бежевый","pdp.fin.smoke":"Мокко",
@@ -397,7 +406,7 @@ Object.assign(window.BTT_I18N.ru,{
   "pdp.custom.msg":"Здравствуйте! Интересует: {name}. Хочу обсудить цвет и размер."
 });
 Object.assign(window.BTT_I18N.uz,{
-  "pdp.crumb.home":"Bosh sahifa","pdp.rate":"4.9 · 128 sharh","pdp.save":"$125 tejash",
+  "pdp.crumb.home":"Bosh sahifa","pdp.rate":"4.9 · 128 sharh","pdp.save":"Tejash",
   "pdp.desc":"Qo‘lda to‘qilgan sun’iy rotang buyumi — rangini yo‘qotmaydi, namlikdan qo‘rqmaydi va yillar xizmat qiladi.",
   "pdp.opt.finish":"To‘quv rangi","pdp.opt.size":"O‘lcham",
   "pdp.fin.natural":"Grafit","pdp.fin.walnut":"Bej","pdp.fin.smoke":"Mokko",
@@ -417,7 +426,7 @@ Object.assign(window.BTT_I18N.uz,{
   "pdp.custom.msg":"Assalomu alaykum! Qiziqtiradi: {name}. Rang va o‘lchamni muhokama qilmoqchiman."
 });
 Object.assign(window.BTT_I18N.en,{
-  "pdp.crumb.home":"Home","pdp.rate":"4.9 · 128 reviews","pdp.save":"Save $125",
+  "pdp.crumb.home":"Home","pdp.rate":"4.9 · 128 reviews","pdp.save":"Save",
   "pdp.desc":"A hand-woven synthetic-rattan piece — won't fade, shrugs off moisture and lasts for years.",
   "pdp.opt.finish":"Weave colour","pdp.opt.size":"Size",
   "pdp.fin.natural":"Graphite","pdp.fin.walnut":"Beige","pdp.fin.smoke":"Mocha",
@@ -502,7 +511,7 @@ Object.assign(window.BTT_I18N.ru,{
   "faq.q6":"Можно заказать по своим размерам и в любом цвете?","faq.a6":"Да — изготавливаем под заказ любые размеры и оттенки плетения. Опишите задачу в форме на странице <a href=\"contacts.html\">«Контакты»</a> — предложим решение и рассчитаем стоимость.",
   "del.k":"Помощь","del.title":"Доставка","del.sub":"Привозим мебель в собранном виде и бережно упаковываем кашпо и корзины.",
   "del.b1.t":"Сроки и зоны","del.b1.l1":"Ташкент — 3–7 рабочих дней.","del.b1.l2":"Регионы Узбекистана — 7–10 рабочих дней.","del.b1.l3":"Изделия под заказ — сроки согласуем отдельно.",
-  "del.b2.t":"Стоимость","del.b2.l1":"Бесплатно по Узбекистану при заказе от $100.","del.b2.l2":"Для меньших заказов стоимость рассчитывается по адресу.","del.b2.l3":"Самовывоз из шоурума в Ташкенте — бесплатно.",
+  "del.b2.t":"Стоимость","del.b2.l1":"Бесплатно по Узбекистану при заказе от 1 250 000 сум.","del.b2.l2":"Для меньших заказов стоимость рассчитывается по адресу.","del.b2.l3":"Самовывоз из шоурума в Ташкенте — бесплатно.",
   "del.b3.t":"Как это происходит","del.b3.p":"После оформления заказа мы связываемся с вами, подтверждаем адрес и удобное время. Мебель доставляется в собранном виде — достаточно распаковать и пользоваться.",
   "ret.k":"Помощь","ret.title":"Возврат и обмен","ret.sub":"Если товар не подошёл — поможем обменять или вернуть деньги.",
   "ret.b1.t":"Срок возврата","ret.b1.p":"Вернуть или обменять товар можно в течение 14 дней с момента получения, если он не был в использовании и сохранил товарный вид.",
@@ -527,7 +536,7 @@ Object.assign(window.BTT_I18N.uz,{
   "faq.q6":"O‘z o‘lcham va rangim bo‘yicha buyurtma berish mumkinmi?","faq.a6":"Ha — istalgan o‘lcham va to‘quv rangida buyurtma asosida ishlab chiqaramiz. <a href=\"contacts.html\">«Kontaktlar»</a> sahifasidagi shaklda vazifani yozing — yechim taklif qilamiz va narxini hisoblaymiz.",
   "del.k":"Yordam","del.title":"Yetkazib berish","del.sub":"Mebelni yig‘ilgan holda yetkazamiz, gultuvak va savatlarni ehtiyotkorlik bilan qadoqlaymiz.",
   "del.b1.t":"Muddat va hududlar","del.b1.l1":"Toshkent — 3–7 ish kuni.","del.b1.l2":"O‘zbekiston viloyatlari — 7–10 ish kuni.","del.b1.l3":"Buyurtma asosidagi buyumlar — muddat alohida kelishiladi.",
-  "del.b2.t":"Narxi","del.b2.l1":"$100 dan ortiq buyurtmada O‘zbekiston bo‘ylab bepul.","del.b2.l2":"Kichikroq buyurtmalar uchun narx manzilga qarab hisoblanadi.","del.b2.l3":"Toshkentdagi shourumdan olib ketish — bepul.",
+  "del.b2.t":"Narxi","del.b2.l1":"1 250 000 so‘mdan ortiq buyurtmada O‘zbekiston bo‘ylab bepul.","del.b2.l2":"Kichikroq buyurtmalar uchun narx manzilga qarab hisoblanadi.","del.b2.l3":"Toshkentdagi shourumdan olib ketish — bepul.",
   "del.b3.t":"Bu qanday amalga oshadi","del.b3.p":"Buyurtma rasmiylashtirilgach, biz siz bilan bog‘lanamiz, manzil va qulay vaqtni tasdiqlaymiz. Mebel yig‘ilgan holda yetkaziladi — qadoqdan chiqarib foydalanish kifoya.",
   "ret.k":"Yordam","ret.title":"Qaytarish va almashtirish","ret.sub":"Mahsulot mos kelmasa — almashtirish yoki pulni qaytarishda yordam beramiz.",
   "ret.b1.t":"Qaytarish muddati","ret.b1.p":"Mahsulotni olgan kundan boshlab 14 kun ichida qaytarish yoki almashtirish mumkin, agar u ishlatilmagan va tovar ko‘rinishini saqlagan bo‘lsa.",
@@ -552,7 +561,7 @@ Object.assign(window.BTT_I18N.en,{
   "faq.q6":"Can I order custom sizes and any colour?","faq.a6":"Yes — we make items to order in any size and weave shade. Describe your needs on the <a href=\"contacts.html\">Contacts</a> page — we'll suggest a solution and quote a price.",
   "del.k":"Help","del.title":"Delivery","del.sub":"We deliver furniture fully assembled and carefully pack planters and baskets.",
   "del.b1.t":"Timing and zones","del.b1.l1":"Tashkent — 3–7 business days.","del.b1.l2":"Uzbekistan regions — 7–10 business days.","del.b1.l3":"Custom-made items — timing agreed separately.",
-  "del.b2.t":"Cost","del.b2.l1":"Free across Uzbekistan on orders over $100.","del.b2.l2":"For smaller orders the cost is calculated by address.","del.b2.l3":"Pickup from our Tashkent showroom — free.",
+  "del.b2.t":"Cost","del.b2.l1":"Free across Uzbekistan on orders over 1,250,000 UZS.","del.b2.l2":"For smaller orders the cost is calculated by address.","del.b2.l3":"Pickup from our Tashkent showroom — free.",
   "del.b3.t":"How it works","del.b3.p":"After you place an order we contact you to confirm the address and a convenient time. Furniture is delivered fully assembled — just unpack and use it.",
   "ret.k":"Help","ret.title":"Returns & exchange","ret.sub":"If an item doesn't fit, we'll help you exchange it or refund your money.",
   "ret.b1.t":"Return window","ret.b1.p":"You can return or exchange an item within 14 days of receipt, provided it hasn't been used and keeps its original appearance.",

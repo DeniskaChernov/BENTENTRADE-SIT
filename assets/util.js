@@ -67,6 +67,32 @@
     scope.querySelectorAll("img").forEach(lazyImg);
   }
 
+  /** Catalog prices in products.js are USD units; display only in UZS. */
+  var UZS_PER_USD = 12500;
+
+  function toUzs(usdAmount) {
+    return Math.round(Number(usdAmount) || 0) * UZS_PER_USD;
+  }
+
+  function formatMoney(amount, opts) {
+    opts = opts || {};
+    var n = opts.raw ? Math.round(Number(amount) || 0) : toUzs(amount);
+    var spaced = String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0");
+    return spaced + " сум";
+  }
+
+  function parseMoneyText(text) {
+    return parseInt(String(text || "").replace(/[^\d]/g, ""), 10) || 0;
+  }
+
+  function managerUrl(text) {
+    var msg = encodeURIComponent(text || "");
+    return {
+      telegram: "https://t.me/bententradeuz" + (msg ? "?text=" + msg : ""),
+      whatsapp: "https://wa.me/998771044422" + (msg ? "?text=" + msg : ""),
+    };
+  }
+
   window.BTT_UTIL = {
     lang: lang,
     t: t,
@@ -76,5 +102,10 @@
     ADD_SVG: SVG.add,
     lazyImg: lazyImg,
     lazyBind: lazyBind,
+    UZS_PER_USD: UZS_PER_USD,
+    toUzs: toUzs,
+    formatMoney: formatMoney,
+    parseMoneyText: parseMoneyText,
+    managerUrl: managerUrl,
   };
 })();

@@ -9,7 +9,9 @@
   if (!window.BTT_API) return;
 
   const U = window.BTT_UTIL || {};
-  const money = (n) => "$" + n;
+  const money = (n) => (window.BTT_UTIL && window.BTT_UTIL.formatMoney)
+    ? window.BTT_UTIL.formatMoney(n)
+    : (String(Math.round(Number(n) * 12500)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + " сум");
   const mediaUrl = (key) => (key ? "/media/" + key : "");
   const esc = U.esc || ((s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])));
   const idFromHref = (href) => { const m = (href || "").match(/[?&]id=([^&]+)/); return m ? decodeURIComponent(m[1]) : null; };
@@ -52,9 +54,10 @@
     const disc = p.price_old && p.price_old > p.price_now
       ? Math.round((1 - p.price_now / p.price_old) * 100) : 0;
     const sale = disc ? '<span class="badge-sale">-' + disc + "%</span>" : "";
+    const mto = p.stock === 0 ? '<span class="badge-mto" data-i18n="mto.badge">' + esc(t("mto.badge")) + "</span>" : "";
     const old = p.price_old ? '<span class="price__old">' + money(p.price_old) + "</span>" : "";
     art.innerHTML =
-      '<div class="product__media media">' + sale +
+      '<div class="product__media media">' + sale + mto +
       '<button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="' + esc(t("a11y.fav")) + '">' + FAV_SVG + "</button>" +
       '<img src="' + esc(productImg(p)) + '" alt="' + esc(p.name || "") + '" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">' +
       '<a class="see" href="product.html?id=' + esc(p.id) + '" data-i18n="see">' + esc(t("see")) + "</a>" +

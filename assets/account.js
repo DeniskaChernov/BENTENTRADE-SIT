@@ -42,8 +42,8 @@
       '<div>'+
         '<div class="product__cat">'+esc(t(id+".cat"))+'</div>'+
         '<div class="product__name acc-prod-name">'+esc(t(id+".name"))+'</div>'+
-        '<div class="price acc-prod-price"><span class="price__now">$'+p.now+'</span>'+
-        (p.old?'<span class="price__old">$'+p.old+'</span>':"")+'</div>'+
+        '<div class="price acc-prod-price"><span class="price__now">'+((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(p.now):p.now)+'</span>'+
+        (p.old?'<span class="price__old">'+((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(p.old):p.old)+'</span>':"")+'</div>'+
       '</div>'+
     '</article>';
   }
@@ -117,7 +117,7 @@
       '<span class="status '+st.cls+'">'+esc(lbl)+'</span></div>'+
       '<div class="order__body"><div class="order__thumbs">'+ids.map(orderThumb).join("")+'</div>'+
       '<div class="order__meta"><span>'+esc(itemsLabel(count))+'</span></div>'+
-      '<div class="order__total">'+esc(o.currency||"$")+o.total+'</div></div>'+actions+'</div>';
+      '<div class="order__total">'+esc((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(o.total,{raw:true}):(o.total+" сум"))+'</div></div>'+actions+'</div>';
   }
 
   function repeatSnapshot(id){
@@ -287,7 +287,7 @@
     const ava=document.querySelector(".acc-ava");
     if(ava){ const initials=(u.name||u.email||"?").trim().split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase(); ava.textContent=initials||"?"; }
     const hiName=document.querySelector('[data-acc-panel="overview"] .acc-h h1');
-    if(hiName && u.name){ hiName.innerHTML='<span data-i18n="acc.ov.hi">'+esc(t("acc.ov.hi"))+'</span> '+esc(u.name.split(/\s+/)[0])+' 👋'; }
+    if(hiName && u.name){ hiName.innerHTML='<span data-i18n="acc.ov.hi">'+esc(t("acc.ov.hi"))+'</span>, '+esc(u.name.split(/\s+/)[0])+' 👋'; }
 
     // Settings form
     const form=document.querySelector("[data-acc-form]");

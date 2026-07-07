@@ -73,6 +73,7 @@
   function setLang(lang){
     localStorage.setItem("btt_lang", lang);
     applyLang(lang);
+    applyProductMeta();
   }
 
   /* ---- cart + favorites are owned by cart.js (persistent drawers) ---- */
@@ -369,6 +370,95 @@
     mo.observe(document.body, { childList: true, subtree: true });
   }
 
+  function productIdFromCard(card){
+    const see = card.querySelector("a[href*='product.html?id=']");
+    const m = see && (see.getAttribute("href")||"").match(/id=(p\d+)/);
+    return m ? m[1] : null;
+  }
+
+  function isMtoProduct(id){
+    if(!id) return false;
+    if(window.BTT_IS_MTO) return window.BTT_IS_MTO(id);
+    const p = (window.BTT_PRODUCTS||{})[id];
+    return !!(p && p.stock === 0);
+  }
+
+  function mtoMessage(name){
+    const d = dict[getLang()] || dict.ru || {};
+    const tpl = d["mto.msg"] || "Здравствуйте! Хочу заказать: {name}";
+    return tpl.replace("{name}", name || "");
+  }
+
+  function openManagerChat(msg){
+    const mgr = window.BTT_UTIL && window.BTT_UTIL.managerUrl;
+    const url = mgr ? mgr(msg).telegram : "https://t.me/bententradeuz";
+    window.open(url, "_blank", "noopener");
+  }
+
+  function applyProductMeta(root){
+    const P = window.BTT_PRODUCTS || {};
+    const fmt = window.BTT_UTIL && window.BTT_UTIL.formatMoney;
+    if(!fmt) return;
+    const scope = root || document;
+    scope.querySelectorAll("[data-product]").forEach(card=>{
+      const id = productIdFromCard(card);
+      if(!id || !P[id]) return;
+      const p = P[id];
+      const now = card.querySelector(".price__now");
+      const old = card.querySelector(".price__old");
+      if(now) now.textContent = fmt(p.now);
+      if(old){
+        if(p.old){ old.textContent = fmt(p.old); old.style.display = ""; }
+        else old.style.display = "none";
+      }
+      const media = card.querySelector(".product__media");
+      if(!media) return;
+      const mto = isMtoProduct(id);
+      let badge = media.querySelector(".badge-mto");
+      if(mto){
+        if(!badge){
+          badge = document.createElement("span");
+          badge.className = "badge-mto";
+          badge.setAttribute("data-i18n", "mto.badge");
+          media.appendChild(badge);
+        }
+        const d = dict[getLang()] || dict.ru || {};
+        badge.textContent = d["mto.badge"] || "На заказ";
+        const add = media.querySelector("[data-add]");
+        if(add){
+          add.classList.add("add--mto");
+          add.setAttribute("aria-label", (dict[getLang()]||dict.ru||{})["mto.card"] || "Сделать на заказ");
+          if(!add.dataset.mtoWired){
+            add.dataset.mtoWired = "1";
+            add.addEventListener("click", e=>{
+              e.preventDefault(); e.stopImmediatePropagation();
+              const nm = (card.querySelector(".product__name")||{}).textContent || id;
+              openManagerChat(mtoMessage(nm.trim()));
+            }, true);
+          }
+        }
+      } else if(badge){
+        badge.remove();
+        const add = media.querySelector("[data-add]");
+        if(add) add.classList.remove("add--mto");
+      }
+    });
+  }
+
+  function initCustomOrder(){
+    document.querySelectorAll("[data-mto-chat]").forEach(btn=>{
+      if(btn.dataset.mtoChatWired) return;
+      btn.dataset.mtoChatWired = "1";
+      btn.addEventListener("click", e=>{
+        e.preventDefault();
+        const d = dict[getLang()] || dict.ru || {};
+        openManagerChat(d["mto.banner.msg"] || "Здравствуйте! Не нашёл нужный ротанг — хочу сделать на заказ.");
+      });
+    });
+  }
+
+  window.BTT_applyProductMeta = applyProductMeta;
+
   function initFaq(){
     document.querySelectorAll("[data-faq] .faq-q").forEach(btn=>{
       const panel = document.getElementById(btn.getAttribute("aria-controls"));
@@ -443,6 +533,8 @@
     initInPageNav();
     initLazyImages();
     initFaq();
+    applyProductMeta();
+    initCustomOrder();
 
     document.querySelector("[data-cat-reset]")?.addEventListener("click", ()=>{
       document.querySelector('.cat-chips .chip[data-cat="all"]')?.click();
@@ -451,6 +543,7 @@
     document.addEventListener("btt:related-rendered", (e)=>{
       const grid = e.detail && e.detail.grid;
       if(!grid) return;
+      applyProductMeta(grid);
       const cards = Array.from(grid.querySelectorAll(".reveal"));
       const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if(reduced || !("IntersectionObserver" in window)){

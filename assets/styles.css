@@ -370,6 +370,14 @@ p{margin:0;text-wrap:pretty;}
   position:absolute;top:14px;right:14px;background:var(--copper-bright);color:#fff;
   font-size:13px;font-weight:800;padding:6px 12px;border-radius:var(--r-pill);z-index:2;
 }
+.badge-mto{
+  position:absolute;top:14px;right:14px;z-index:3;
+  padding:6px 12px;border-radius:var(--r-pill);font-size:11px;font-weight:800;
+  letter-spacing:.04em;text-transform:uppercase;
+  background:rgba(22,19,15,.78);border:1px solid rgba(255,255,255,.16);color:#fff;
+  backdrop-filter:blur(6px);
+}
+.product__media .add.add--mto{background:var(--copper);color:#fff;border-color:var(--copper);}
 
 .product{display:flex;flex-direction:column;gap:18px;transition:opacity .45s var(--ease-flow),transform .45s var(--ease-flow);}
 .product:hover{transform:translateY(-2px);}

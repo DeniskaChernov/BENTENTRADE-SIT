@@ -12,7 +12,10 @@
   /* ---------- manager contact (edit these) ----------
      telegram : username after t.me/  (no @)
      whatsapp : full number, digits only (country code first)        */
-  const CONFIG = { telegram: "bententradeuz", whatsapp: "998771044422", currency: "$" };
+  const CONFIG = { telegram: "bententradeuz", whatsapp: "998771044422", currency: "сум" };
+  const fmt = (n) => (window.BTT_UTIL && window.BTT_UTIL.formatMoney)
+    ? window.BTT_UTIL.formatMoney(n, { raw: true })
+    : (String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + " сум");
 
   /* ---------- i18n helper ---------- */
   function lang(){ const s=localStorage.getItem("btt_lang"); return ["ru","uz","en"].includes(s)?s:"ru"; }
@@ -189,7 +192,7 @@
         return '<div class="dl-item">'+
           '<div class="dl-thumb">'+(it.img?'<img src="'+esc(it.img)+'" alt="" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">':'')+'</div>'+
           '<div class="dl-main"><div class="dl-name">'+esc(it.name)+'</div>'+
-            '<div class="dl-price">$'+(it.price||0)+'</div>'+
+            '<div class="dl-price">'+esc(fmt(it.price||0))+'</div>'+
             '<div class="dl-qty" data-dl-qty="'+esc(id)+'">'+
               '<button data-dl-dec aria-label="'+esc(t("less"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg></button>'+
               '<span>'+(it.qty||1)+'</span>'+
@@ -199,7 +202,7 @@
         '</div>';
       }).join("");
       body='<div class="drawer-list">'+rows+'</div>'+
-        '<div class="drawer-foot"><div class="drawer-total"><span>'+esc(t("total"))+'</span><b>$'+total+'</b></div>'+
+        '<div class="drawer-foot"><div class="drawer-total"><span>'+esc(t("total"))+'</span><b>'+esc(fmt(total))+'</b></div>'+
         '<button class="btn btn--dark" data-cart-checkout>'+esc(t("checkout"))+'</button></div>';
     }
     cartEl.innerHTML=
@@ -222,7 +225,7 @@
         return '<div class="dl-item">'+
           '<a class="dl-thumb" href="'+href+'">'+(it.img?'<img src="'+esc(it.img)+'" alt="" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">':'')+'</a>'+
           '<div class="dl-main"><a class="dl-name" href="'+href+'">'+esc(it.name)+'</a>'+
-            '<div class="dl-price">$'+(it.price||0)+'</div>'+
+            '<div class="dl-price">'+esc(fmt(it.price||0))+'</div>'+
             '<button class="btn btn--ghost btn--sm" data-fav-add="'+esc(id)+'">'+esc(t("addCart"))+'</button>'+
           '</div>'+
           '<button class="dl-del" data-fav-del="'+esc(id)+'" aria-label="'+esc(t("remove"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg></button>'+
@@ -279,8 +282,8 @@
   function buildOrderText(contact, orderId){
     const c=getCart(); const ids=Object.keys(c); let total=0;
     const lines=ids.map((id,i)=>{ const it=c[id]; const sum=(it.price||0)*(it.qty||1); total+=sum;
-      return (i+1)+". "+it.name+" × "+(it.qty||1)+" — "+CONFIG.currency+sum; });
-    let out=t("ordHead")+"\n\n"+lines.join("\n")+"\n\n"+t("total")+": "+CONFIG.currency+total;
+      return (i+1)+". "+it.name+" × "+(it.qty||1)+" — "+fmt(sum); });
+    let out=t("ordHead")+"\n\n"+lines.join("\n")+"\n\n"+t("total")+": "+fmt(total);
     if(orderId) out+="\n"+t("ordTitle")+": № "+orderId;
     if(contact){
       out+="\n\n"+t("coName")+": "+(contact.name||"—");
@@ -400,7 +403,7 @@
     if(!ids.length){ renderCartBody(); return; }
     let total=0;
     const rows=ids.map(id=>{ const it=c[id]; const sum=(it.price||0)*(it.qty||1); total+=sum;
-      return '<div class="ord-line"><span>'+esc(it.name)+' <i>×'+(it.qty||1)+'</i></span><b>'+CONFIG.currency+sum+'</b></div>'; }).join("");
+      return '<div class="ord-line"><span>'+esc(it.name)+' <i>×'+(it.qty||1)+'</i></span><b>'+esc(fmt(sum))+'</b></div>'; }).join("");
     const saved=getCheckout();
     const pickup=saved.method==="pickup";
     const val=(k)=>esc(saved[k]||"");
@@ -409,7 +412,7 @@
       '<button class="drawer-x" data-drawer-close aria-label="'+esc(t("close"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
       '<div class="drawer-co"><p class="drawer-co__sub">'+esc(t("ordSub"))+'</p>'+
         '<div class="ord-list">'+rows+'</div>'+
-        '<div class="ord-total"><span>'+esc(t("total"))+'</span><b>'+CONFIG.currency+total+'</b></div>'+
+        '<div class="ord-total"><span>'+esc(t("total"))+'</span><b>'+esc(fmt(total))+'</b></div>'+
         '<form class="co-form" data-co-form novalidate>'+
           '<div class="co-field"><label>'+esc(t("coName"))+'</label><input name="name" type="text" autocomplete="name" value="'+val("name")+'" placeholder="'+esc(t("coNamePh"))+'"></div>'+
           '<div class="co-field"><label>'+esc(t("coPhone"))+'</label><input name="phone" type="tel" autocomplete="tel" value="'+val("phone")+'" placeholder="'+esc(t("coPhonePh"))+'"></div>'+
