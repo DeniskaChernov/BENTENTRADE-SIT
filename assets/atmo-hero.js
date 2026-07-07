@@ -5,7 +5,7 @@
       img: "assets/hero-garden-furniture.png",
       loc: { ru:"Терраса и сад", uz:"Terassa va bog‘", en:"Terrace & garden" },
       title: { ru:"Мебель для открытого воздуха", uz:"Ochiq havoda mebel", en:"Outdoor furniture" },
-      sub: { ru:"Комплекты, столы и кресла из PE-ротанга — не выгорают на солнце и не боятся дождя.", uz:"PE-rotangdan to‘plamlar, stollar va kreslolar — quyoshda rangini yo‘qotmaydi.", en:"PE-rattan sets, tables and chairs — they won’t fade in the sun or fear the rain." },
+      sub: { ru:"Комплекты, столы и кресла из искусственного ротанга — не выгорают на солнце и не боятся дождя.", uz:"Sun’iy rotangdan to‘plamlar, stollar va kreslolar — quyoshda rangini yo‘qotmaydi.", en:"Synthetic rattan sets, tables and chairs — they won’t fade in the sun or fear the rain." },
       href: "catalog.html?cat=furniture"
     },
     {

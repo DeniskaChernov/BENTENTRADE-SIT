@@ -52,6 +52,14 @@
       const txt = nm && nm.textContent.trim();
       if(txt) img.setAttribute("alt", txt);
     });
+    document.querySelectorAll(".r-profile").forEach(card=>{
+      const img = card.querySelector(".r-profile__media img");
+      const color = card.querySelector(".r-profile__color");
+      const art = card.querySelector(".r-profile__art b");
+      if(!img || !color) return;
+      const spec = d["pal.spec"] || "Полумесяц · 10 мм";
+      img.setAttribute("alt", spec + " — " + color.textContent.trim() + (art ? " (" + art.textContent + ")" : ""));
+    });
     document.querySelectorAll(".lang button").forEach(b=>{
       b.classList.toggle("is-active", b.dataset.lang === lang);
       b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
@@ -142,6 +150,32 @@
     twisted: ["twisted"],
     "ind-storage": ["ind-cabinet", "ind-shelf"]
   };
+  const HOME_SECTION_IDS = new Set([
+    "product-lines", "home-collection",
+    "rattan-profiles", "rattan-collection", "indoor-collection"
+  ]);
+
+  function headOffset(){
+    return (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--head-h"), 10) || 56) + 16;
+  }
+
+  function scrollToSection(id, instant){
+    const el = document.getElementById(id);
+    if(!el) return false;
+    const top = el.getBoundingClientRect().top + window.scrollY - headOffset();
+    window.scrollTo({ top: Math.max(0, top), behavior: instant ? "auto" : "smooth" });
+    return true;
+  }
+
+  function closeMobileNav(){
+    const drawer = document.querySelector(".mobile-drawer");
+    const burger = document.querySelector(".burger");
+    if(!drawer || !drawer.classList.contains("open")) return;
+    drawer.classList.remove("open");
+    drawer.setAttribute("aria-hidden", "true");
+    if(burger) burger.setAttribute("aria-expanded", "false");
+    document.documentElement.style.overflow = "";
+  }
 
   function cardMatchesCat(card, cat){
     if(cat === "all") return true;
@@ -363,10 +397,31 @@
     }
 
     burger.addEventListener("click", ()=> setOpen(!drawer.classList.contains("open")));
-    drawer.querySelectorAll("a").forEach(a=> a.addEventListener("click", ()=> setOpen(false)));
+    drawer.querySelectorAll("a, .mobile-drawer__tool").forEach(a=> a.addEventListener("click", ()=> setOpen(false)));
     document.addEventListener("keydown", e=>{
       if(e.key === "Escape" && drawer.classList.contains("open")) setOpen(false);
     });
+  }
+
+  function initInPageNav(){
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      const href = a.getAttribute("href");
+      if(!href || href === "#") return;
+      const id = href.slice(1);
+      if(!document.getElementById(id)) return;
+      a.addEventListener("click", e=>{
+        e.preventDefault();
+        if(history.pushState) history.pushState(null, "", "#" + id);
+        else location.hash = id;
+        scrollToSection(id);
+        closeMobileNav();
+      });
+    });
+
+    const hash = (location.hash || "").replace("#", "");
+    if(hash && HOME_SECTION_IDS.has(hash)){
+      requestAnimationFrame(()=> setTimeout(()=> scrollToSection(hash, true), 100));
+    }
   }
 
   /* ---- wire up on load ---- */
@@ -381,6 +436,7 @@
     initCounters();
     initPageTransitions();
     initMobileNav();
+    initInPageNav();
     initLazyImages();
     initFaq();
 
@@ -476,6 +532,10 @@
         if(chip.scrollIntoView && window.matchMedia && window.matchMedia("(max-width:720px)").matches){
           chip.scrollIntoView({ inline:"nearest", behavior: opts.instant ? "auto" : "smooth", block:"nearest" });
         }
+        if(grid && window.matchMedia && window.matchMedia("(max-width:720px)").matches){
+          const section = grid.closest("section[id]");
+          if(section) setTimeout(()=> scrollToSection(section.id, true), opts.instant ? 0 : 340);
+        }
         document.dispatchEvent(new CustomEvent("btt:cat-change", { detail:{ cat, chip } }));
       }
       chips.forEach(chip=> chip.addEventListener("click", ()=> activate(chip)));
@@ -487,7 +547,7 @@
         else document.dispatchEvent(new CustomEvent("btt:cat-change", { detail:{ cat: resolved } }));
       } else {
         const hash = (location.hash || "").replace("#","");
-        if(hash){
+        if(hash && !HOME_SECTION_IDS.has(hash) && !document.getElementById(hash)){
           const resolved = resolveChipCat(hash);
           const match = Array.from(chips).find(c=>c.dataset.cat===resolved);
           if(match) activate(match, { instant:true });

@@ -108,33 +108,12 @@
   <div class="promo reveal">
     <img src="assets/hero-garden-furniture.png" alt="" loading="lazy" decoding="async">
     <span class="pill pill--ghost tl" data-i18n="promo.consult">100% бесплатная консультация по подбору</span>
-    <span class="pill pill--ghost bc" data-i18n="promo.colors">Любой цвет плетения под заказ</span>
     <span class="pill br" data-i18n="promo.price">Гарантия лучшей цены</span>
   </div>
 </section>
 
-<!-- ===== WEAVE COLOURS — custom order palette ===== -->
-<section class="wrap section section--compact">
-  <div class="color-palette reveal">
-    <div class="color-palette__copy">
-      <div class="eyebrow" data-i18n="colors.eyebrow">Оттенки плетения</div>
-      <h2 class="display-2" data-i18n="colors.title">Любой цвет под заказ</h2>
-      <p class="lead color-palette__text" data-i18n="colors.body">Выберите оттенок из палитры или принесите свой образец — подберём ближайший или изготовим под ваш RAL.</p>
-      <a class="btn btn--copper btn--icon-end color-palette__cta" href="contacts.html"><span data-i18n="colors.cta">Обсудить оттенок</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-    </div>
-    <ul class="color-palette__swatches" data-i18n-aria="colors.a11y" aria-label="Палитра оттенков плетения">
-      <li><span class="color-palette__dot" style="background:#3a3a3c"></span><span data-i18n="colors.graphite">Графит</span></li>
-      <li><span class="color-palette__dot" style="background:#cbb088"></span><span data-i18n="colors.beige">Бежевый</span></li>
-      <li><span class="color-palette__dot" style="background:#6f4e35"></span><span data-i18n="colors.mocha">Мокко</span></li>
-      <li><span class="color-palette__dot" style="background:#5c6b4a"></span><span data-i18n="colors.olive">Оливковый</span></li>
-      <li><span class="color-palette__dot" style="background:#f0ebe3;border:1px solid var(--line)"></span><span data-i18n="colors.white">Белый</span></li>
-      <li><span class="color-palette__dot" style="background:#a67c52"></span><span data-i18n="colors.caramel">Карамель</span></li>
-    </ul>
-  </div>
-</section>
-
 <!-- ===== PRODUCT LINES ===== -->
-<section class="wrap section section--compact">
+<section class="wrap section section--compact" id="product-lines">
   <div class="lines">
     <div class="lines__head reveal">
       <div>
@@ -143,7 +122,7 @@
       </div>
     </div>
     <div class="lines__bento" data-stagger data-stagger="70">
-      <a class="bento-tile reveal" href="catalog.html?cat=rattan">
+      <a class="bento-tile reveal" href="#rattan-profiles">
         <img src="assets/bento-rattan.png" alt="" loading="lazy" decoding="async" onerror="this.style.opacity=0">
         <div class="bento-tile__meta">
           <span class="bento-tile__title" data-i18n="line.rattan">Искусственный ротанг</span>
@@ -183,7 +162,7 @@
 </section>
 
 <!-- ===== COLLECTION ===== -->
-<section class="wrap section section--compact">
+<section class="wrap section section--compact" id="home-collection">
   <div class="home-filters home-filters--solo">
     <div>
       <div class="eyebrow reveal" data-i18n="cat.eyebrow">Коллекция</div>
@@ -263,7 +242,7 @@
     <div class="atmo-hero__main" aria-live="polite">
       <span class="pill pill--glass pill--dot atmo-hero__loc" data-a="loc">Терраса и сад</span>
       <h2 class="atmo-hero__title" data-a="title">Мебель для открытого воздуха</h2>
-      <p class="atmo-hero__lead" data-a="sub">Комплекты, столы и кресла из PE-ротанга — не выгорают на солнце и не боятся дождя.</p>
+      <p class="atmo-hero__lead" data-a="sub">Комплекты, столы и кресла из искусственного ротанга — не выгорают на солнце и не боятся дождя.</p>
       <a class="btn btn--light btn--icon-end atmo-hero__cta" data-a="link" href="catalog.html?cat=furniture">
         <span data-a="cta" data-i18n="atmo.cta">Смотреть коллекцию</span>
         <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
@@ -353,22 +332,100 @@
   <div class="material">
     <div class="material__img reveal">
       <img src="assets/hero-rattan.png" alt="" loading="lazy" decoding="async">
-      <span class="material__chip" data-i18n="mat.chip">PE-ротанг</span>
     </div>
     <div class="material__body reveal">
       <h2 class="display-2 material__title"><span data-i18n="mat.title.1">Искусственный ротанг —</span><br><span data-i18n="mat.title.2">материал, который служит</span></h2>
-      <p class="lead material__text" data-i18n="mat.body">Полиэтиленовое волокно (PE-ротанг) выглядит как природное плетение, но не гниёт, выдерживает солнце и мороз и полностью безопасно.</p>
+      <p class="lead material__text" data-i18n="mat.body">Искусственный ротанг выглядит как природное плетение, но не гниёт, выдерживает солнце и мороз и полностью безопасно.</p>
       <a class="btn btn--ghost btn--icon-end material__cta" href="about.html"><span data-i18n="mat.cta">О материале</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </div>
 </section>
 
+<!-- ===== RATTAN PROFILE PALETTE — material coils for furniture ===== -->
+<section class="wrap section section--compact rattan-pal" id="rattan-profiles">
+  <div class="rattan-pal__hero reveal">
+    <img class="rattan-pal__hero-img" src="assets/rattan-palette-hero.png" alt="" loading="lazy" decoding="async">
+    <div class="rattan-pal__hero-copy">
+      <p class="rattan-pal__hero-k" data-i18n="pal.hero.k">Новая палитра искусственного ротанга</p>
+      <h2 class="display-2 rattan-pal__hero-title" data-i18n="pal.hero.title">Глубокие оттенки, вдохновлённые натуральным деревом</h2>
+      <ul class="rattan-pal__tags">
+        <li data-i18n="pal.tag.1">новая палитра</li>
+        <li data-i18n="pal.tag.2">премиальное качество</li>
+        <li data-i18n="pal.tag.3">яркие цвета</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="home-filters" style="margin-top:clamp(32px,4vw,48px)">
+    <div>
+      <div class="eyebrow reveal" data-i18n="pal.eyebrow">Палитра профилей</div>
+      <h2 class="display-2 reveal" style="margin-top:8px"><span data-i18n="pal.title.1">Искусственный ротанг</span><br><span data-i18n="pal.title.2">для мебели · полумесяц 10 мм</span></h2>
+    </div>
+  </div>
+
+  <div class="rattan-profiles" data-stagger data-stagger="70">
+    <article class="r-profile reveal">
+      <div class="r-profile__media">
+        <img src="assets/rattan-profile-0609-tobacco.png" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="r-profile__meta">
+        <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0609</b></span>
+        <span class="r-profile__color" data-i18n="pal.c0609">Tobacco</span>
+        <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+      </div>
+    </article>
+    <article class="r-profile reveal">
+      <div class="r-profile__media">
+        <img src="assets/rattan-profile-1505-woody.png" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="r-profile__meta">
+        <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>1505</b></span>
+        <span class="r-profile__color" data-i18n="pal.c1505">Woody</span>
+        <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+      </div>
+    </article>
+    <article class="r-profile reveal">
+      <div class="r-profile__media">
+        <img src="assets/rattan-profile-0704-brown.png" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="r-profile__meta">
+        <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0704</b></span>
+        <span class="r-profile__color" data-i18n="pal.c0704b">Brown</span>
+        <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+      </div>
+    </article>
+    <article class="r-profile reveal">
+      <div class="r-profile__media">
+        <img src="assets/rattan-profile-0704-graphite.png" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="r-profile__meta">
+        <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0704</b></span>
+        <span class="r-profile__color" data-i18n="pal.c0704g">Graphite</span>
+        <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+      </div>
+    </article>
+    <article class="r-profile reveal">
+      <div class="r-profile__media">
+        <img src="assets/rattan-profile-2404-choco.png" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="r-profile__meta">
+        <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>2404</b></span>
+        <span class="r-profile__color" data-i18n="pal.c2404">Choco</span>
+        <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+      </div>
+    </article>
+  </div>
+  <p class="reveal" style="margin-top:clamp(32px,4vw,48px);text-align:center">
+    <a class="btn btn--ghost btn--icon-end" href="contacts.html"><span data-i18n="pal.cta">Запросить образец или прайс</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+  </p>
+</section>
+
 <!-- ===== RATTAN COLLECTION — after material block ===== -->
-<section class="wrap section section--compact">
+<section class="wrap section section--compact" id="rattan-collection">
   <div class="home-filters">
     <div>
       <div class="eyebrow reveal" data-i18n="rat.eyebrow">Искусственный ротанг</div>
-      <h2 class="display-2 reveal" style="margin-top:8px"><span data-i18n="rat.title.1">Коллекция</span><br><span data-i18n="rat.title.2">из PE-ротанга</span></h2>
+      <h2 class="display-2 reveal" style="margin-top:8px"><span data-i18n="rat.title.1">Коллекция</span><br><span data-i18n="rat.title.2">искусственного ротанга</span></h2>
     </div>
     <div class="glass-bar reveal">
       <div class="cat-chips" data-chips data-target="#rattan-grid">
@@ -568,7 +625,7 @@
 </section>
 
 <!-- ===== INDOOR COLLECTION — after home mood block ===== -->
-<section class="wrap section section--compact">
+<section class="wrap section section--compact" id="indoor-collection">
   <div class="home-filters">
     <div>
       <div class="eyebrow reveal" data-i18n="ind.coll.eyebrow">Мебель для дома</div>
