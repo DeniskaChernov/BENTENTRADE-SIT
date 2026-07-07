@@ -44,6 +44,10 @@
       const key = el.getAttribute("data-i18n-aria");
       if(d[key] != null) el.setAttribute("aria-label", d[key]);
     });
+    document.querySelectorAll("[data-i18n-alt]").forEach(el=>{
+      const key = el.getAttribute("data-i18n-alt");
+      if(d[key] != null) el.setAttribute("alt", d[key]);
+    });
     // Give product images a meaningful alt from the visible product name
     // (covers static cards; JS-built cards set their own alt).
     document.querySelectorAll(".product__media img").forEach(img=>{
