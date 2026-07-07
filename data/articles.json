@@ -109,6 +109,72 @@
           "body": "The half-moon profile has a flat inner face and rounded outer face. That suits tight seat weaving — the strip lies flat without gaps.\n\n10 mm diameter balances flexibility and strength. Thinner for décor, thicker for frame elements.\n\nBententrade's palette has five base shades: articles 0609, 1505, 0704 and 2404. Need another colour? We'll make it to order from a single coil.\n\nRequest a sample or price list on the site — we'll bring it to the showroom or courier across Tashkent."
         }
       }
+    },
+    {
+      "slug": "rotang-dlya-terrasy",
+      "published_at": "2026-04-02",
+      "cover_media": "assets/scene-dining-warm.png",
+      "i18n": {
+        "ru": {
+          "title": "Искусственный ротанг для террасы и веранды",
+          "excerpt": "Как подобрать мебель, которая переживёт солнце, дождь и перепады температур без ухода маслом.",
+          "body": "Терраса и веранда — самые жёсткие условия для мебели: прямое солнце, ветер, ночная влага. Искусственный ротанг создан именно для таких зон.\n\nДля открытой площадки выбирайте плотное плетение на алюминиевом каркасе — он не ржавеет. Комплект из дивана и кресел или обеденная группа закрывают большинство сценариев: от завтрака до вечерних посиделок.\n\nЦвет лучше брать из палитры Tobacco, Woody или Graphite — они меньше маркие на улице. Подушки храните в чехлах или убирайте в дом на зиму.\n\nНе нашли нужный размер — сделаем на заказ. Напишите менеджеру в Telegram: подберём профиль и рассчитаем доставку по Ташкенту и области."
+        },
+        "uz": {
+          "title": "Terassa va veranda uchun sun’iy rotang",
+          "excerpt": "Quyosh, yomg‘ir va harorat o‘zgarishiga chidamli mebelni qanday tanlash kerak.",
+          "body": "Terassa va veranda — mebel uchun eng qattiq sharoit: to‘g‘ridan-to‘g‘ri quyosh, shamol, tungi namlik. Sun’iy rotang aynan shunday zonalar uchun yaratilgan.\n\nOchiq maydon uchun alyumin karkasdagi zich to‘qilgan mebelni tanlang — u zanglamaydi. Divan va kreslo to‘plami yoki ovqat stoli ko‘pchilik vazifalarni yopadi.\n\nTobacco, Woody yoki Graphite palitrasi ko‘chada kamroq ifloslanadi. Yostiqlarni qopqoqda saqlang yoki qishda uyga olib qo‘ying.\n\nKerakli o‘lcham topilmasa — buyurtmaga tayyorlaymiz. Telegram orqali menejerga yozing."
+        },
+        "en": {
+          "title": "Synthetic rattan for terrace and veranda",
+          "excerpt": "How to choose furniture that survives sun, rain and temperature swings without oiling.",
+          "body": "Terraces and verandas are tough on furniture: direct sun, wind, night humidity. Synthetic rattan is built for exactly these zones.\n\nFor open areas choose dense weave on an aluminium frame — it won't rust. A sofa-and-chair set or dining group covers most scenarios.\n\nColours from the Tobacco, Woody or Graphite palette stay cleaner outdoors. Store cushions in covers or move them indoors for winter.\n\nCan't find the right size? We'll make it to order — message our manager on Telegram."
+        }
+      }
+    },
+    {
+      "slug": "mebel-iz-rotanga-na-zakaz",
+      "published_at": "2026-04-10",
+      "cover_media": "assets/hero-home-furniture.png",
+      "i18n": {
+        "ru": {
+          "title": "Мебель из ротанга на заказ: цвет, размер, форма",
+          "excerpt": "Когда стандартный каталог не подходит — как мы делаем индивидуальные изделия в мастерской Bententrade.",
+          "body": "Иногда нужен нестандартный диван по размеру ниши, кашпо под конкретное растение или оттенок, которого нет в палитре. Мы плетём на заказ в Ташкенте.\n\nПроцесс простой: вы присылаете размеры, фото или эскиз — менеджер уточняет детали, подбирает профиль и называет срок. Обычно от 2 до 4 недель в зависимости от сложности.\n\nМожно заказать только материал (ротанг бухтами) или готовое изделие целиком. Цены в сумах, доставка по Узбекистану.\n\nНапишите в Telegram @bententradeuz или WhatsApp — ответим в рабочее время и пришлём примеры похожих работ."
+        },
+        "uz": {
+          "title": "Buyurtmaga rotang mebel: rang, o‘lcham, shakl",
+          "excerpt": "Standart katalog mos kelmasa — Bententrade ustaxonasida individual buyumlarni qanday yasaymiz.",
+          "body": "Ba’zan nisha o‘lchamidagi divan, ma’lum o‘simlik uchun gultuvak yoki palitrada yo‘q rang kerak bo‘ladi. Biz Toshkentda buyurtmaga to‘qimiz.\n\nJarayon oddiy: o‘lcham, foto yoki eskiz yuborasiz — menejer profil tanlaydi va muddat aytadi. Odatda 2–4 hafta.\n\nFaqat material (g‘iloflab rotang) yoki tayyor buyum buyurtma qilish mumkin. Narxlar so‘mda, O‘zbekiston bo‘ylab yetkazish.\n\nTelegram @bententradeuz yoki WhatsApp orqali yozing."
+        },
+        "en": {
+          "title": "Custom rattan furniture: colour, size, shape",
+          "excerpt": "When the standard catalogue isn't enough — how we make bespoke pieces at Bententrade.",
+          "body": "Sometimes you need a sofa sized for a niche, a planter for a specific plant or a shade not in the palette. We weave to order in Tashkent.\n\nSend dimensions, a photo or sketch — our manager confirms details, picks the profile and quotes lead time. Usually 2–4 weeks depending on complexity.\n\nYou can order material by the coil or a finished piece. Prices in UZS, delivery across Uzbekistan.\n\nMessage us on Telegram @bententradeuz or WhatsApp."
+        }
+      }
+    },
+    {
+      "slug": "iskusstvennyy-i-naturalnyy-rotang",
+      "published_at": "2026-04-18",
+      "cover_media": "assets/bento-rattan.png",
+      "i18n": {
+        "ru": {
+          "title": "Искусственный и натуральный ротанг: в чём разница",
+          "excerpt": "Сравниваем срок службы, уход, внешний вид и цену — чтобы вы не переплачивали за неподходящий материал.",
+          "body": "Натуральный ротанг красив, но боится влаги и ультрафиолета: на улице быстро выцветает и трескается без регулярного ухода.\n\nИскусственный ротанг (PE) окрашен в массе, не гниёт и выдерживает мороз. Внешне отличить качественное плетение сложно — особенно в оттенках дерева.\n\nДля сада, террасы и уличного кафе мы рекомендуем только искусственный ротанг. Натуральный уместен в закрытых интерьерах с контролируемой влажностью.\n\nВ Bententrade работаем с PE-профилями собственного производства — палитра Tobacco, Woody, Brown, Graphite, Choco. Закажите образец и сравните на месте."
+        },
+        "uz": {
+          "title": "Sun’iy va tabiiy rotang: farqi nima",
+          "excerpt": "Xizmat muddati, parvarish, ko‘rinish va narxni solishtiramiz.",
+          "body": "Tabiiy rotang chiroyli, lekin namlik va ultrabinafsha nurdan qo‘rqadi: ochiq havoda tez rangini yo‘qotadi.\n\nSun’iy rotang (PE) massada bo‘yalgan, chirmaydi va sovuqqa chidamli. Sifatli to‘quvni farqlash qiyin.\n\nBog‘, terassa va ko‘cha kafesi uchun faqat sun’iy rotangni tavsiya qilamiz.\n\nBententrade o‘z PE profillarida ishlaydi — Tobacco, Woody, Brown, Graphite, Choco. Namuna buyurtma qiling."
+        },
+        "en": {
+          "title": "Synthetic vs natural rattan: what's the difference",
+          "excerpt": "We compare lifespan, care, look and price so you don't overpay for the wrong material.",
+          "body": "Natural rattan is beautiful but fears moisture and UV: outdoors it fades and cracks without regular care.\n\nSynthetic rattan (PE) is coloured through the fibre, won't rot and handles frost. Quality weave is hard to tell from natural — especially in wood tones.\n\nFor gardens, terraces and outdoor cafés we recommend synthetic rattan only.\n\nAt Bententrade we work with our own PE profiles — Tobacco, Woody, Brown, Graphite, Choco. Order a sample and compare in person."
+        }
+      }
     }
   ]
 }

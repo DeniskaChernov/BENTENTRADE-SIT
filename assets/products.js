@@ -1,4 +1,7 @@
 /* Bententrade — product catalogue data (artificial-rattan range)
+   PLACEHOLDER / FALLBACK: static SKUs for offline storefront and SEO.
+   When the CRM API is available, catalog-sync.js patches prices, names and photos;
+   new CRM products replace or extend this list without editing HTML.
    Category hero / card imagery: local assets (replace per SKU when CRM photos exist). */
 (function(){
   "use strict";

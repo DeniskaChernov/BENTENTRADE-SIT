@@ -89,7 +89,9 @@
     const catEl = card.querySelector(".product__cat");
     if (catEl && !catEl.hasAttribute("data-i18n") && p.category_label) catEl.textContent = p.category_label;
     const img = card.querySelector(".product__media img");
-    if (img && p.name && !img.getAttribute("alt")) img.setAttribute("alt", p.name);
+    const localized = t(id + ".name");
+    if (img && localized) img.setAttribute("alt", localized);
+    else if (img && p.name && !img.getAttribute("alt")) img.setAttribute("alt", p.name);
     if (p.image && img) { img.src = mediaUrl(p.image); img.style.display = ""; }
     return { id: id, product: p };
   }
