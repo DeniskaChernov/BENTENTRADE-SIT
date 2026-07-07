@@ -48,7 +48,17 @@
     p12:{cat:"indoor",    look:"rocker",    now:290, old:360, stock:1},
     p13:{cat:"indoor",    look:"coffee",    now:210, old:0,   stock:1},
     p14:{cat:"indoor",    look:"cabinet",   now:540, old:680, stock:0},
-    p15:{cat:"indoor",    look:"shelf",     now:320, old:390, stock:1}
+    p15:{cat:"indoor",    look:"shelf",     now:320, old:390, stock:1},
+    p16:{cat:"furniture", look:"lounge",    now:420, old:520, stock:1},
+    p17:{cat:"furniture", look:"chair",     now:185, old:0,   stock:1},
+    p18:{cat:"planter",   look:"planterT",  now:125, old:160, stock:1},
+    p19:{cat:"planter",   look:"planterS",  now:68,  old:0,   stock:1},
+    p20:{cat:"basket",    look:"chest",     now:95,  old:120, stock:1},
+    p21:{cat:"basket",    look:"laundry",   now:58,  old:0,   stock:1},
+    p22:{cat:"indoor",    look:"coffee",    now:175, old:220, stock:1},
+    p23:{cat:"indoor",    look:"rocker",    now:380, old:0,   stock:1},
+    p24:{cat:"furniture", look:"sofa",      now:890, old:1100,stock:1},
+    p25:{cat:"furniture", look:"dining",    now:520, old:0,   stock:1}
   };
 
   window.BTT_IS_MTO = id => {
@@ -56,15 +66,38 @@
     return !!(p && p.stock === 0);
   };
 
-  function imgsFor(src){
-    return [{ thumb:src, full:src }, { thumb:src, full:src }, { thumb:src, full:src }, { thumb:src, full:src }];
+  const SCENE = [
+    "assets/scene-dining-warm.png",
+    "assets/scene-dining-teal.png",
+    "assets/scene-dining-cream.png",
+    "assets/scene-dining-grey.png",
+    "assets/scene-dining-light.png",
+    "assets/scene-dining-beige.png",
+    "assets/scene-dining-azure.png",
+    "assets/scene-dining-marble.png",
+    "assets/scene-dining-contrast.png",
+  ];
+
+  function imgsFor(src, id){
+    const n = parseInt(String(id || "p0").slice(1), 10) || 0;
+    const picks = [src];
+    for (let i = 0; i < 3 && picks.length < 4; i++) {
+      const s = SCENE[(n + i * 3) % SCENE.length];
+      if (s !== src && !picks.includes(s)) picks.push(s);
+    }
+    while (picks.length < 4) {
+      const s = SCENE[picks.length % SCENE.length];
+      if (!picks.includes(s)) picks.push(s);
+      else break;
+    }
+    return picks.slice(0, 4).map(s => ({ thumb: s, full: s }));
   }
 
   window.BTT_PRODUCT_IMG = id => {
     const p = window.BTT_PRODUCTS[id];
     if(!p) return null;
     const src = LOOK[p.look] || CAT[p.cat] || CAT.furniture;
-    return imgsFor(src);
+    return imgsFor(src, id);
   };
 
   window.BTT_PRODUCT_CAT = {

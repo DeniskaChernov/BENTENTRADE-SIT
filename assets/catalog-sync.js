@@ -137,13 +137,48 @@
     return pr;
   }
 
+  function appendMissingStaticProducts(grid) {
+    const P = window.BTT_PRODUCTS;
+    if (!grid || !P) return false;
+    const seen = new Set();
+    grid.querySelectorAll("[data-product]").forEach((card) => {
+      const see = card.querySelector("a[href*='product.html?id=']");
+      const pid = see && idFromHref(see.getAttribute("href"));
+      if (pid) seen.add(pid);
+    });
+    const frag = document.createDocumentFragment();
+    let added = false;
+    Object.keys(P).sort((a, b) => +a.slice(1) - +b.slice(1)).forEach((pid) => {
+      if (seen.has(pid)) return;
+      const row = P[pid];
+      frag.appendChild(buildCard({
+        id: pid,
+        category: row.cat,
+        category_label: t(pid + ".cat"),
+        name: t(pid + ".name"),
+        price_now: row.now,
+        price_old: row.old || 0,
+        stock: row.stock,
+      }));
+      added = true;
+    });
+    if (added) {
+      grid.appendChild(frag);
+      document.dispatchEvent(new CustomEvent("btt:related-rendered", { detail: { grid } }));
+    }
+    return added;
+  }
+
   async function hydrateCatalog() {
     const catGrid = document.querySelector("#catalog-grid");
     const homeGrid = document.querySelector("#home-grid");
     const rattanGrid = document.querySelector("#rattan-grid");
     if (!catGrid && !homeGrid && !rattanGrid) return;
     const { list, map } = await ensureMap();
-    if (!list.length) return; // never blank the storefront on an empty/bad response
+    if (!list.length) {
+      if (catGrid) appendMissingStaticProducts(catGrid);
+      return;
+    }
     if (homeGrid) patchGrid(homeGrid, map);
     if (rattanGrid) patchGrid(rattanGrid, map);
     if (catGrid) hydrateCatalogGrid(catGrid, list, map);
