@@ -75,6 +75,7 @@
     applyLang(lang);
     applyProductMeta();
     if(window.BTT_SEO) window.BTT_SEO.refresh(lang);
+    document.dispatchEvent(new CustomEvent("btt:lang", { detail: { lang } }));
   }
 
   /* ---- cart + favorites are owned by cart.js (persistent drawers) ---- */
