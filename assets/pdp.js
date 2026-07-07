@@ -45,15 +45,81 @@
     if(wa) wa.href = "https://wa.me/" + MSG.whatsapp + "?text=" + msg;
   }
 
+  function setCanonical(href){
+    if(!href) return;
+    let link = document.querySelector('link[rel="canonical"]');
+    if(!link){ link = document.createElement("link"); link.rel = "canonical"; document.head.appendChild(link); }
+    link.href = href;
+  }
+
+  function absUrl(path){
+    if(!path) return "https://bententrade.uz/assets/btt-logo.png";
+    if(path.indexOf("http") === 0) return path;
+    return "https://bententrade.uz/" + path.replace(/^\//, "");
+  }
+
+  function injectJsonLd(elId, data){
+    let el = document.getElementById(elId);
+    if(!el){
+      el = document.createElement("script");
+      el.type = "application/ld+json";
+      el.id = elId;
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(data);
+  }
+
+  function updateProductSchema(nm){
+    const imgs = window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(id) : null;
+    const image = imgs && imgs[0] ? absUrl(imgs[0].full) : absUrl("assets/btt-logo.png");
+    const uzs = U.toUzs ? U.toUzs(prod.now) : Math.round(prod.now * 12500);
+    const pageUrl = "https://bententrade.uz/product.html?id=" + encodeURIComponent(id);
+    const inStock = !(window.BTT_IS_MTO && window.BTT_IS_MTO(id)) && prod.stock !== 0;
+    injectJsonLd("pdp-schema-product", {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": nm,
+      "image": image,
+      "description": (t("meta.product.desc") || "{name}").replace("{name}", nm || ""),
+      "sku": id.toUpperCase(),
+      "brand": { "@type": "Brand", "name": "Bententrade" },
+      "offers": {
+        "@type": "Offer",
+        "url": pageUrl,
+        "priceCurrency": "UZS",
+        "price": uzs,
+        "availability": inStock ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+        "seller": { "@type": "Organization", "name": "Bententrade" }
+      }
+    });
+    injectJsonLd("pdp-schema-breadcrumb", {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": t("pdp.crumb.home") || "Главная", "item": "https://bententrade.uz/" },
+        { "@type": "ListItem", "position": 2, "name": t("meta.catalog.title") || "Каталог", "item": "https://bententrade.uz/catalog.html" },
+        { "@type": "ListItem", "position": 3, "name": nm, "item": pageUrl }
+      ]
+    });
+  }
+
   function updatePageMeta(nm){
     const title = (t("meta.product.title") || "Bententrade — {name}").replace("{name}", nm || "");
     const desc = (t("meta.product.desc") || "{name}").replace("{name}", nm || "");
+    const pageUrl = "https://bententrade.uz/product.html?id=" + encodeURIComponent(id);
+    const imgs = window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(id) : null;
+    const image = imgs && imgs[0] ? absUrl(imgs[0].full) : absUrl("assets/btt-logo.png");
     document.title = title;
     setMetaPair("description", desc);
     setMetaPair("og:title", title);
     setMetaPair("og:description", desc);
+    setMetaPair("og:url", pageUrl);
+    setMetaPair("og:image", image);
     setMetaPair("twitter:title", title);
     setMetaPair("twitter:description", desc);
+    setMetaPair("twitter:image", image);
+    setCanonical(pageUrl);
+    updateProductSchema(nm);
   }
 
   function setImages(){

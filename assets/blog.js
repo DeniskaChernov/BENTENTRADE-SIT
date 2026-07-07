@@ -174,6 +174,28 @@
     }
 
     const bodyHtml = esc(a.body || "").split(/\n{2,}/).map((p) => "<p>" + p.replace(/\n/g, "<br>") + "</p>").join("");
+    let schemaEl = document.getElementById("article-schema");
+    if (!schemaEl) {
+      schemaEl = document.createElement("script");
+      schemaEl.type = "application/ld+json";
+      schemaEl.id = "article-schema";
+      document.head.appendChild(schemaEl);
+    }
+    schemaEl.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": desc,
+      "datePublished": a.published_at || "",
+      "author": { "@type": "Organization", "name": "Bententrade" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bententrade",
+        "logo": { "@type": "ImageObject", "url": SITE + "/assets/btt-logo.png" },
+      },
+      "mainEntityOfPage": pageUrl,
+      "image": img ? (img.indexOf("http") === 0 ? img : SITE + "/" + img.replace(/^\//, "")) : SITE + "/assets/btt-logo.png",
+    });
     root.innerHTML =
       '<article class="article reveal">' +
       '<a class="article__back" href="blog.html">← ' + esc(t("blog.back")) + "</a>" +
