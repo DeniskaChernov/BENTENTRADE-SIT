@@ -42,6 +42,7 @@ window.BTT_I18N = {
     "mat.body":"Полиэтиленовое волокно (PE-ротанг) выглядит как природное плетение, но не гниёт, выдерживает солнце и мороз и полностью безопасно. Любой оттенок плетения под заказ — для террасы, балкона или интерьера.",
     "mat.cta":"О материале","mat.chip":"PE-ротанг",
     "rat.eyebrow":"Искусственный ротанг","rat.title.1":"Коллекция","rat.title.2":"из PE-ротанга","rat.cta":"Весь каталог ротанга",
+    "ind.coll.eyebrow":"Мебель для дома","ind.coll.title.1":"Коллекция","ind.coll.title.2":"для интерьера","ind.cta":"Вся мебель для дома","ind.chip.storage":"Комоды и стеллажи",
 
     "final.badge":"Плетение, которое живёт годами","final.title.1":"Сделано из","final.title.2":"искусственного","final.title.3":"ротанга",
 
@@ -134,6 +135,7 @@ window.BTT_I18N = {
     "mat.body":"Polietilen tola (PE-rotang) tabiiy to‘quvga o‘xshaydi, lekin chirimaydi, quyosh va sovuqqa chidaydi va to‘liq xavfsiz. Istalgan rangda to‘quv buyurtmasi — terassa, balkon yoki interyer uchun.",
     "mat.cta":"Material haqida","mat.chip":"PE-rotang",
     "rat.eyebrow":"Sun’iy rotang","rat.title.1":"Kolleksiya","rat.title.2":"PE-rotangdan","rat.cta":"Butun rotang katalogi",
+    "ind.coll.eyebrow":"Uy mebeli","ind.coll.title.1":"Kolleksiya","ind.coll.title.2":"interyer uchun","ind.cta":"Butun uy mebeli","ind.chip.storage":"Komod va stellajlar",
 
     "final.badge":"Yillar yashaydigan to‘quv","final.title.1":"Sun’iy","final.title.2":"rotangdan","final.title.3":"yasalgan",
 
@@ -223,6 +225,7 @@ window.BTT_I18N = {
     "mat.body":"Polyethylene fibre (PE-rattan) looks like natural weave but never rots, withstands sun and frost and is completely safe. Any weave colour to order — for the terrace, balcony or interior.",
     "mat.cta":"About the material","mat.chip":"PE-rattan",
     "rat.eyebrow":"Synthetic rattan","rat.title.1":"Collection","rat.title.2":"in PE-rattan","rat.cta":"Full rattan catalog",
+    "ind.coll.eyebrow":"Home furniture","ind.coll.title.1":"Collection","ind.coll.title.2":"for indoors","ind.cta":"All home furniture","ind.chip.storage":"Dressers & shelving",
 
     "final.badge":"A weave that lasts for years","final.title.1":"Made from","final.title.2":"synthetic","final.title.3":"rattan",
 

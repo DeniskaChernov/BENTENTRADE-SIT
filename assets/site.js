@@ -139,7 +139,8 @@
   const CHIP_CAT_GROUPS = {
     planterMix: ["planter", "basket"],
     rattan: ["furniture", "planter", "basket"],
-    twisted: ["twisted"]
+    twisted: ["twisted"],
+    "ind-storage": ["ind-cabinet", "ind-shelf"]
   };
 
   function cardMatchesCat(card, cat){

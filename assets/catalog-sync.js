@@ -242,6 +242,7 @@
     hydrateStaticProductImgs(document.querySelector("#catalog-grid"));
     hydrateStaticProductImgs(document.querySelector("#home-grid"));
     hydrateStaticProductImgs(document.querySelector("#rattan-grid"));
+    hydrateStaticProductImgs(document.querySelector("#indoor-grid"));
     hydrateCatalog();
     hydratePDP();
   }

@@ -172,10 +172,12 @@
 .hero__cta{
   margin-top:clamp(4px,1vw,10px);
 }
-.hero__card .hero__switch{
+.hero__card .hero__switch,
+.atmo-hero__card .hero__switch{
   position:absolute;z-index:3;
   left:50%;bottom:clamp(20px,3vw,34px);transform:translateX(-50%);
 }
+.atmo-hero__card .hero__switch{bottom:clamp(16px,2.5vw,28px);}
 
 /* entrance stagger */
 @media (prefers-reduced-motion:no-preference){
@@ -335,9 +337,6 @@
   margin:0;font-size:clamp(14px,1.4vw,17px);line-height:1.55;color:rgba(255,255,255,.76);max-width:42ch;
 }
 .atmo-hero__cta{margin-top:clamp(4px,1vw,8px);}
-.atmo-hero__card .atmo-hero__switch{
-  position:absolute;z-index:3;left:50%;bottom:clamp(16px,2.5vw,28px);transform:translateX(-50%);
-}
 .atmo-hero__main .is-swap{animation:heroText .55s cubic-bezier(.2,.7,.2,1);}
 @media (prefers-reduced-motion:reduce){
   .atmo-hero__card{opacity:1;transform:none;filter:none;transition:none;}
@@ -1038,7 +1037,8 @@ html.acc-loading .acc-content{opacity:.45;pointer-events:none}
     max-width:100%;
     padding:clamp(32px,8vw,48px) clamp(16px,5vw,24px) clamp(88px,14vw,104px);
   }
-  .hero__card .hero__switch{
+  .hero__card .hero__switch,
+  .atmo-hero__card .hero__switch{
     bottom:clamp(14px,3vw,22px);
     max-width:calc(100% - 32px);
   }
