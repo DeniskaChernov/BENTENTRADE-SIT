@@ -21,6 +21,7 @@
     "db:seed": "wrangler d1 execute bententrade_db --remote --file=./migrations/seed.sql",
     "db:backup": "node scripts/backup-d1.mjs",
     "seed:gen": "node scripts/gen-seed.mjs",
+    "sitemap:gen": "node scripts/gen-sitemap.mjs",
     "typecheck": "tsc --noEmit"
   },
   "engines": {

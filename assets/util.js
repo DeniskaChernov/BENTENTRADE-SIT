@@ -108,4 +108,77 @@
     parseMoneyText: parseMoneyText,
     managerUrl: managerUrl,
   };
+
+  var OG_LOCALES = { ru: "ru_RU", uz: "uz_UZ", en: "en_US" };
+  var SITE_URL = "https://bententrade.uz";
+
+  function seoPageUrl() {
+    var path = location.pathname.split("/").pop() || "index.html";
+    return SITE_URL + "/" + path + (location.search || "");
+  }
+
+  function setMetaProperty(name, content) {
+    if (!content) return;
+    var el = document.querySelector('meta[property="' + name + '"]');
+    if (!el) {
+      el = document.createElement("meta");
+      el.setAttribute("property", name);
+      document.head.appendChild(el);
+    }
+    el.setAttribute("content", content);
+  }
+
+  function injectHreflang() {
+    document.querySelectorAll("link[data-btt-hreflang]").forEach(function (n) { n.remove(); });
+    var url = seoPageUrl();
+    ["ru", "uz", "en", "x-default"].forEach(function (h) {
+      var link = document.createElement("link");
+      link.rel = "alternate";
+      link.hreflang = h;
+      link.href = url;
+      link.setAttribute("data-btt-hreflang", "");
+      document.head.appendChild(link);
+    });
+  }
+
+  function updateOgLocale(activeLang) {
+    var active = OG_LOCALES[activeLang] || OG_LOCALES.ru;
+    setMetaProperty("og:locale", active);
+    document.querySelectorAll("meta[data-btt-og-alt]").forEach(function (n) { n.remove(); });
+    Object.keys(OG_LOCALES).forEach(function (code) {
+      if (code === activeLang) return;
+      var m = document.createElement("meta");
+      m.setAttribute("property", "og:locale:alternate");
+      m.setAttribute("content", OG_LOCALES[code]);
+      m.setAttribute("data-btt-og-alt", "");
+      document.head.appendChild(m);
+    });
+  }
+
+  function stripHtml(html) {
+    var d = document.createElement("div");
+    d.innerHTML = html == null ? "" : html;
+    return (d.textContent || "").replace(/\s+/g, " ").trim();
+  }
+
+  function injectJsonLd(id, data) {
+    var el = document.getElementById(id);
+    if (!el) {
+      el = document.createElement("script");
+      el.type = "application/ld+json";
+      el.id = id;
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(data);
+  }
+
+  window.BTT_SEO = {
+    pageUrl: seoPageUrl,
+    stripHtml: stripHtml,
+    injectJsonLd: injectJsonLd,
+    refresh: function (lng) {
+      injectHreflang();
+      updateOgLocale(lng || document.documentElement.lang || "ru");
+    },
+  };
 })();

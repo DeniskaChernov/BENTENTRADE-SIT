@@ -74,6 +74,7 @@
     localStorage.setItem("btt_lang", lang);
     applyLang(lang);
     applyProductMeta();
+    if(window.BTT_SEO) window.BTT_SEO.refresh(lang);
   }
 
   /* ---- cart + favorites are owned by cart.js (persistent drawers) ---- */
@@ -522,6 +523,7 @@
   document.addEventListener("DOMContentLoaded", function(){
     applyTheme(getTheme());
     applyLang(getLang());
+    if(window.BTT_SEO) window.BTT_SEO.refresh(getLang());
     initA11y();
     initReveal();
     initParallax();

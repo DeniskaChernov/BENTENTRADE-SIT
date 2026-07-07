@@ -105,4 +105,43 @@
           mat:"Synthetic rattan + frame",dim:"For interiors, all-season",fin:"Smooth weave",wt:"Light frame",seat:"Living room, bedroom, balcony",made:"Tashkent, by hand"}
     }
   };
+
+  function formatStaticPrices(){
+    var fmt = window.BTT_UTIL && window.BTT_UTIL.formatMoney;
+    var P = window.BTT_PRODUCTS;
+    if(!fmt || !P) return;
+    document.querySelectorAll("[data-product]").forEach(function(card){
+      var see = card.querySelector("a[href*='product.html?id=']");
+      if(!see) return;
+      var m = (see.getAttribute("href") || "").match(/id=(p\d+)/);
+      if(!m) return;
+      var p = P[m[1]];
+      if(!p) return;
+      var now = card.querySelector(".price__now");
+      var old = card.querySelector(".price__old");
+      if(now) now.textContent = fmt(p.now);
+      if(old){
+        if(p.old){ old.textContent = fmt(p.old); old.style.display = ""; }
+        else old.style.display = "none";
+      }
+    });
+    if(/product\.html$/i.test(location.pathname.split("/").pop() || "")){
+      var params = new URLSearchParams(location.search);
+      var pid = params.get("id") || "p1";
+      var prod = P[pid];
+      if(prod){
+        var pdpNow = document.querySelector(".pdp-price .now");
+        var pdpOld = document.querySelector(".pdp-price .old");
+        if(pdpNow) pdpNow.textContent = fmt(prod.now);
+        if(pdpOld){
+          if(prod.old){ pdpOld.textContent = fmt(prod.old); pdpOld.style.display = ""; }
+          else pdpOld.style.display = "none";
+        }
+      }
+    }
+  }
+  if(typeof document !== "undefined"){
+    if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", formatStaticPrices);
+    else formatStaticPrices();
+  }
 })();

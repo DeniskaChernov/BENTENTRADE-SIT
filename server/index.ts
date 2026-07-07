@@ -84,7 +84,7 @@ app.get("/admin/app.js", (c) =>
 );
 
 // ---- static site (only expose front-end files, never server code) ----
-const STATIC_ALLOW = /^\/(assets\/.+|[a-z0-9_.-]+\.html|favicon\.(?:ico|svg)|robots\.txt|sitemap\.xml|manifest\.webmanifest)$/i;
+const STATIC_ALLOW = /^\/(assets\/.+|data\/.+|[a-z0-9_.-]+\.html|favicon\.(?:ico|svg)|robots\.txt|sitemap\.xml|manifest\.webmanifest)$/i;
 app.use("*", async (c: Context, next: Next) => {
   const p = c.req.path;
   if (p === "/" || p === "/health" || STATIC_ALLOW.test(p)) return next();
