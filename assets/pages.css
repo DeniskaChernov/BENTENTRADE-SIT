@@ -236,14 +236,12 @@
 .lines__head .eyebrow{color:var(--copper);}
 .lines__head h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,3.4vw,44px);letter-spacing:-.03em;margin-top:14px;color:var(--text);}
 
-/* 6-col bento — palette tile (2×2 left) + four direction tiles (2×2 right) */
+/* 6-col bento — fixed row heights = perfectly even alignment */
 .lines__bento{
   display:grid;
   grid-template-columns:repeat(6,1fr);
-  grid-template-rows:repeat(2, minmax(220px, 1fr));
+  grid-template-rows:repeat(2, clamp(208px, 21vw, 288px));
   gap:16px;
-  align-items:stretch;
-  min-height:clamp(440px, 38vw, 520px);
 }
 .bento-tile{
   position:relative;display:block;border-radius:22px;overflow:hidden;
@@ -252,110 +250,17 @@
   transition:transform .5s var(--ease-out),box-shadow .5s ease;
   min-height:0;
 }
-/* Palette — one bento tile (2×2 left): banner + profiles + CTA */
-.bento-tile--pal{
-  grid-column:1 / span 2;
-  grid-row:1 / span 2;
-  display:block;
-  padding:0;
-  background:transparent;
-  border-radius:0;
-  box-shadow:none;
-  overflow:hidden;
-  min-height:0;
-  height:100%;
-  align-self:stretch;
+.bento-tile:hover{transform:translateY(-3px);box-shadow:0 32px 64px -40px rgba(27,25,22,.26);}
+.bento-tile img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .75s var(--ease-out);
 }
-.bento-tile--pal:hover{transform:none;box-shadow:none;}
-.bento-pal{
-  height:100%;
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-  border-radius:var(--r-xl);
-  overflow:hidden;
-  background:var(--paper);
-  box-shadow:var(--spatial-shadow);
-  border:1px solid color-mix(in oklab, var(--line) 70%, transparent);
-}
-.bento-pal__banner{
-  position:relative;
-  flex:0 0 auto;
-  aspect-ratio:16 / 9;
-  max-height:clamp(108px, 11vw, 148px);
-  overflow:hidden;
-  background:#12100e;
-  line-height:0;
-}
-.bento-pal__banner img{
-  display:block;width:100%;height:100%;
-  object-fit:cover;object-position:center top;
-}
-.bento-pal__body{
-  flex:1 1 auto;
-  display:flex;
-  flex-direction:column;
-  min-height:0;
-  padding:clamp(12px,1.4vw,18px);
-  background:var(--paper);
-}
-.bento-pal__head{margin-bottom:clamp(10px,1.2vw,14px);flex:none;}
-.bento-pal__head .eyebrow{font-size:10px;color:var(--copper);}
-.bento-pal__title{
-  font-family:var(--display);
-  font-weight:700;
-  font-size:clamp(15px,1.35vw,19px);
-  letter-spacing:-.025em;
-  line-height:1.12;
-  margin-top:6px;
-  color:var(--text);
-}
-.bento-pal__profiles{
-  flex:1 1 auto;
-  display:flex;
-  overflow-x:auto;
-  gap:8px;
-  min-height:0;
-  margin-inline:-2px;
-  padding-inline:2px 6px;
-  padding-bottom:2px;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-}
-.bento-pal__profiles::-webkit-scrollbar{display:none;}
-.bento-pal__profiles .r-profile{
-  flex:0 0 clamp(88px, 26%, 120px);
-  scroll-snap-align:start;
-  min-width:0;
-}
-.bento-pal__profiles .r-profile__meta{padding:8px 10px 10px;}
-.bento-pal__profiles .r-profile__art{font-size:9px;}
-.bento-pal__profiles .r-profile__color{font-size:clamp(12px,1.1vw,14px);}
-.bento-pal__profiles .r-profile__spec{font-size:10px;}
-.bento-pal__foot{
-  margin:clamp(10px,1.2vw,14px) 0 0;
-  text-align:center;
-  flex:none;
-}
-.bento-pal__foot .btn{
-  width:100%;
-  justify-content:center;
-  font-size:12px;
-  padding:10px 14px;
-}
-/* Direction tiles — classic 2×2 right */
+.bento-tile:hover img{transform:scale(1.035);}
+.bento-tile:nth-child(1){grid-column:1 / span 2;grid-row:1 / span 2;}
 .bento-tile:nth-child(2){grid-column:3 / span 2;grid-row:1;}
 .bento-tile:nth-child(3){grid-column:5 / span 2;grid-row:1;}
 .bento-tile:nth-child(4){grid-column:3 / span 2;grid-row:2;}
 .bento-tile:nth-child(5){grid-column:5 / span 2;grid-row:2;}
-
-.bento-tile:not(.bento-tile--pal):hover{transform:translateY(-3px);box-shadow:0 32px 64px -40px rgba(27,25,22,.26);}
-.bento-tile:not(.bento-tile--pal) img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  transition:transform .75s var(--ease-out);
-}
-.bento-tile:not(.bento-tile--pal):hover img{transform:scale(1.035);}
 
 .bento-tile__meta{
   position:absolute;left:0;right:0;bottom:0;z-index:3;
@@ -376,7 +281,6 @@
   transition:background .3s ease,border-color .3s ease,transform .35s var(--ease-out);
 }
 .bento-tile:hover .bento-tile__arr{background:var(--copper);border-color:var(--copper);transform:translate(2px,-2px);}
-.bento-tile--pal:hover .bento-tile__arr{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);transform:none;}
 .bento-tile__arr svg{width:14px;height:14px;}
 
 @media (max-width:980px){
@@ -384,46 +288,13 @@
     grid-template-columns:repeat(2,1fr);
     grid-template-rows:none;
     gap:12px;
-    min-height:0;
   }
-  .bento-tile--pal{
-    grid-column:1 / -1;
-    grid-row:auto;
-    height:auto;
-    overflow:hidden;
-  }
-  .bento-pal{height:auto;}
-  .bento-pal__banner{
-    aspect-ratio:16 / 9;
-    max-height:clamp(160px, 40vw, 220px);
-  }
-  .bento-pal__body{padding:clamp(16px,4vw,24px);}
-  .bento-pal__title{font-size:clamp(18px,4.5vw,24px);}
-  .bento-pal__profiles{
-    display:grid;
-    grid-template-columns:repeat(5,minmax(0,1fr));
-    gap:clamp(6px,1.5vw,10px);
-    overflow:visible;
-    margin-inline:0;
-    padding-inline:0;
-  }
-  .bento-pal__profiles .r-profile{
-    flex:none;
-    min-width:0;
-  }
-  .bento-pal__profiles .r-profile__meta{padding:8px 6px 10px;}
-  .bento-pal__profiles .r-profile__color{font-size:clamp(11px,2.8vw,14px);}
-  .bento-pal__profiles .r-profile__spec{font-size:9px;}
-  .bento-pal__foot .btn{width:100%;font-size:13px;padding:12px 16px;}
-  .bento-tile:nth-child(n):not(.bento-tile--pal){
-    grid-column:auto;grid-row:auto;
-    min-height:min(44vw,240px);
-  }
+  .bento-tile:nth-child(n){grid-column:auto;grid-row:auto;min-height:200px;}
+  .bento-tile:nth-child(1){grid-column:1 / -1;min-height:min(52vw,320px);}
 }
 @media (max-width:520px){
   .lines__bento{grid-template-columns:1fr;}
-  .bento-tile:nth-child(n):not(.bento-tile--pal){min-height:min(52vw,260px);}
-  .bento-pal__profiles .r-profile__art{display:none;}
+  .bento-tile:nth-child(1){min-height:min(68vw,340px);}
 }
 
 /* ================= ATMOSPHERE HERO — mid-page lifestyle carousel ================= */

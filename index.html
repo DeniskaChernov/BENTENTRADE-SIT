@@ -123,64 +123,13 @@
       </div>
     </div>
     <div class="lines__bento" data-stagger data-stagger="70">
-      <div class="bento-tile bento-tile--pal reveal" id="rattan-profiles">
-        <article class="bento-pal">
-          <div class="bento-pal__banner">
-            <img src="assets/rattan-palette-hero.png" alt="" data-i18n-alt="pal.hero.alt" loading="lazy" decoding="async">
-          </div>
-          <div class="bento-pal__body">
-            <div class="bento-pal__head">
-              <div class="eyebrow" data-i18n="pal.eyebrow">Палитра профилей</div>
-              <h3 class="bento-pal__title" data-i18n="pal.title">Искусственный ротанг</h3>
-            </div>
-            <div class="bento-pal__profiles">
-              <article class="r-profile">
-                <div class="r-profile__media"><img src="assets/rattan-profile-0609-tobacco.png" alt="" loading="lazy" decoding="async"></div>
-                <div class="r-profile__meta">
-                  <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0609</b></span>
-                  <span class="r-profile__color" data-i18n="pal.c0609">Tobacco</span>
-                  <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
-                </div>
-              </article>
-              <article class="r-profile">
-                <div class="r-profile__media"><img src="assets/rattan-profile-1505-woody.png" alt="" loading="lazy" decoding="async"></div>
-                <div class="r-profile__meta">
-                  <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>1505</b></span>
-                  <span class="r-profile__color" data-i18n="pal.c1505">Woody</span>
-                  <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
-                </div>
-              </article>
-              <article class="r-profile">
-                <div class="r-profile__media"><img src="assets/rattan-profile-0704-brown.png" alt="" loading="lazy" decoding="async"></div>
-                <div class="r-profile__meta">
-                  <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0704</b></span>
-                  <span class="r-profile__color" data-i18n="pal.c0704b">Brown</span>
-                  <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
-                </div>
-              </article>
-              <article class="r-profile">
-                <div class="r-profile__media"><img src="assets/rattan-profile-0704-graphite.png" alt="" loading="lazy" decoding="async"></div>
-                <div class="r-profile__meta">
-                  <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0704</b></span>
-                  <span class="r-profile__color" data-i18n="pal.c0704g">Graphite</span>
-                  <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
-                </div>
-              </article>
-              <article class="r-profile">
-                <div class="r-profile__media"><img src="assets/rattan-profile-2404-choco.png" alt="" loading="lazy" decoding="async"></div>
-                <div class="r-profile__meta">
-                  <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>2404</b></span>
-                  <span class="r-profile__color" data-i18n="pal.c2404">Choco</span>
-                  <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
-                </div>
-              </article>
-            </div>
-            <p class="bento-pal__foot">
-              <a class="btn btn--ghost btn--icon-end" href="contacts.html"><span data-i18n="pal.cta">Запросить образец или прайс</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-            </p>
-          </div>
-        </article>
-      </div>
+      <a class="bento-tile reveal" href="#rattan-profiles">
+        <img src="assets/bento-rattan.png" alt="" loading="lazy" decoding="async" onerror="this.style.opacity=0">
+        <div class="bento-tile__meta">
+          <span class="bento-tile__title" data-i18n="line.rattan">Искусственный ротанг</span>
+          <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+      </a>
       <a class="bento-tile reveal" href="about.html">
         <img src="assets/bento-twisted-rattan.png" alt="" data-i18n-alt="line.twisted.alt" loading="lazy" decoding="async" onerror="this.style.opacity=0">
         <div class="bento-tile__meta">
@@ -210,6 +159,79 @@
         </div>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ===== RATTAN PROFILE PALETTE ===== -->
+<section class="wrap section section--compact" id="rattan-profiles">
+  <div class="rattan-pal">
+    <div class="rattan-pal__banner reveal">
+      <img src="assets/rattan-palette-hero.png" alt="" data-i18n-alt="pal.hero.alt" loading="lazy" decoding="async">
+    </div>
+
+    <div class="lines__head reveal">
+      <div>
+        <div class="eyebrow" data-i18n="pal.eyebrow">Палитра профилей</div>
+        <h2 data-i18n="pal.title">Искусственный ротанг</h2>
+      </div>
+    </div>
+
+    <div class="rattan-profiles" data-stagger data-stagger="70">
+      <article class="r-profile reveal">
+        <div class="r-profile__media">
+          <img src="assets/rattan-profile-0609-tobacco.png" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="r-profile__meta">
+          <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0609</b></span>
+          <span class="r-profile__color" data-i18n="pal.c0609">Tobacco</span>
+          <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+        </div>
+      </article>
+      <article class="r-profile reveal">
+        <div class="r-profile__media">
+          <img src="assets/rattan-profile-1505-woody.png" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="r-profile__meta">
+          <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>1505</b></span>
+          <span class="r-profile__color" data-i18n="pal.c1505">Woody</span>
+          <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+        </div>
+      </article>
+      <article class="r-profile reveal">
+        <div class="r-profile__media">
+          <img src="assets/rattan-profile-0704-brown.png" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="r-profile__meta">
+          <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0704</b></span>
+          <span class="r-profile__color" data-i18n="pal.c0704b">Brown</span>
+          <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+        </div>
+      </article>
+      <article class="r-profile reveal">
+        <div class="r-profile__media">
+          <img src="assets/rattan-profile-0704-graphite.png" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="r-profile__meta">
+          <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>0704</b></span>
+          <span class="r-profile__color" data-i18n="pal.c0704g">Graphite</span>
+          <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+        </div>
+      </article>
+      <article class="r-profile reveal">
+        <div class="r-profile__media">
+          <img src="assets/rattan-profile-2404-choco.png" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="r-profile__meta">
+          <span class="r-profile__art"><span data-i18n="pal.art">Артикул</span> <b>2404</b></span>
+          <span class="r-profile__color" data-i18n="pal.c2404">Choco</span>
+          <span class="r-profile__spec" data-i18n="pal.spec">Полумесяц · 10 мм</span>
+        </div>
+      </article>
+    </div>
+
+    <p class="rattan-pal__foot reveal">
+      <a class="btn btn--ghost btn--icon-end" href="contacts.html"><span data-i18n="pal.cta">Запросить образец или прайс</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </p>
   </div>
 </section>
 
