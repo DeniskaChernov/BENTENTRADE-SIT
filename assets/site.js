@@ -159,7 +159,7 @@
   };
   const HOME_SECTION_IDS = new Set([
     "product-lines", "home-collection",
-    "rattan-profiles", "rattan-collection", "indoor-collection"
+    "rattan-collection", "indoor-collection"
   ]);
 
   function headOffset(){
