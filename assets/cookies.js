@@ -11,18 +11,24 @@
       accept: "Принять",
       reject: "Только просмотр",
       more: "Подробнее",
+      prefsAccepted: "Согласие принято. Данные могут отправляться на сервер.",
+      prefsPending: "Согласие не принято. Запросы к серверу заблокированы.",
     },
     uz: {
       text: "Buyurtma, katalog va shakllar uchun cookie va server so‘rovlari ishlatiladi. Ma’lumotlar faqat roziligingizdan keyin yuboriladi.",
       accept: "Qabul qilish",
       reject: "Faqat ko‘rish",
       more: "Batafsil",
+      prefsAccepted: "Rozilik qabul qilindi. Ma’lumotlar serverga yuborilishi mumkin.",
+      prefsPending: "Rozilik berilmagan. Server so‘rovlari bloklangan.",
     },
     en: {
       text: "We use cookies and server requests for orders, catalog and forms. Data is sent only after you accept.",
       accept: "Accept",
       reject: "Browse only",
       more: "Learn more",
+      prefsAccepted: "Consent accepted. Data may be sent to the server.",
+      prefsPending: "Consent not given. Server requests are blocked.",
     },
   };
 
@@ -44,6 +50,8 @@
     if (key === "cookie.banner.accept") return L.accept;
     if (key === "cookie.banner.reject") return L.reject;
     if (key === "cookie.banner.more") return L.more;
+    if (key === "ck.prefs.status.accepted") return L.prefsAccepted || key;
+    if (key === "ck.prefs.status.pending") return L.prefsPending || key;
     return key;
   }
 
@@ -167,12 +175,52 @@
     } catch (e) { /* ignore */ }
     hideBanner();
     document.dispatchEvent(new CustomEvent("btt:cookies-accepted"));
+    syncCookiePrefsPage();
   }
 
   function reject() {
     /* «Только просмотр» — скрыть до перезагрузки; согласие не даётся, API заблокирован. */
     hideBanner();
     document.dispatchEvent(new CustomEvent("btt:cookies-rejected"));
+  }
+
+  function revoke() {
+    try {
+      localStorage.removeItem(KEY);
+    } catch (e) { /* ignore */ }
+    showBanner();
+    document.dispatchEvent(new CustomEvent("btt:cookies-revoked"));
+    syncCookiePrefsPage();
+  }
+
+  function syncCookiePrefsPage() {
+    var panel = document.querySelector("[data-cookie-prefs]");
+    if (!panel) return;
+    var statusEl = panel.querySelector("[data-cookie-status]");
+    var acceptBtn = panel.querySelector("[data-cookie-accept-page]");
+    var rejectBtn = panel.querySelector("[data-cookie-reject-page]");
+    var revokeBtn = panel.querySelector("[data-cookie-revoke-page]");
+    var on = hasConsent();
+    if (statusEl) {
+      statusEl.textContent = on ? t("ck.prefs.status.accepted") : t("ck.prefs.status.pending");
+    }
+    if (acceptBtn) acceptBtn.hidden = on;
+    if (rejectBtn) rejectBtn.hidden = on;
+    if (revokeBtn) revokeBtn.hidden = !on;
+  }
+
+  function initCookiePrefsPage() {
+    if (!/\/cookies\.html/i.test(location.pathname.split("/").pop() || "")) return;
+    var panel = document.querySelector("[data-cookie-prefs]");
+    if (!panel) return;
+    panel.querySelector("[data-cookie-accept-page]")?.addEventListener("click", accept);
+    panel.querySelector("[data-cookie-reject-page]")?.addEventListener("click", reject);
+    panel.querySelector("[data-cookie-revoke-page]")?.addEventListener("click", revoke);
+    syncCookiePrefsPage();
+    document.addEventListener("btt:cookies-accepted", syncCookiePrefsPage);
+    document.addEventListener("btt:cookies-rejected", syncCookiePrefsPage);
+    document.addEventListener("btt:cookies-revoked", syncCookiePrefsPage);
+    document.addEventListener("btt:lang", syncCookiePrefsPage);
   }
 
   function init() {
@@ -183,6 +231,7 @@
     } catch (e) { /* ignore */ }
     if (!hasConsent()) showBanner();
     document.addEventListener("btt:lang", applyBannerText);
+    initCookiePrefsPage();
   }
 
   window.BTT_COOKIES = {
@@ -191,6 +240,7 @@
     guardedFetch: guardedFetch,
     accept: accept,
     reject: reject,
+    revoke: revoke,
     showBanner: showBanner,
     isRequiredError: function (err) {
       return !!(err && err.code === "cookie_consent_required");

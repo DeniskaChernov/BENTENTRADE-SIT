@@ -271,6 +271,36 @@
     }, 400);
   }
 
+  function showAccCookieGate(){
+    const acc = document.querySelector(".acc");
+    if(acc) acc.style.display = "none";
+    let gate = document.querySelector("[data-acc-cookie-gate]");
+    if(!gate){
+      gate = document.createElement("section");
+      gate.className = "acc-cookie-gate";
+      gate.setAttribute("data-acc-cookie-gate", "");
+      gate.innerHTML =
+        '<div class="info-block">' +
+        '<h2>' + esc(t("acc.cookie.title")) + "</h2>" +
+        '<p>' + esc(t("acc.cookie.sub")) + "</p>" +
+        '<button type="button" class="btn btn--copper" data-acc-cookie-accept>' + esc(t("cookie.banner.accept")) + "</button>" +
+        "</div>";
+      const main = document.querySelector("main");
+      if(main) main.appendChild(gate);
+      gate.querySelector("[data-acc-cookie-accept]")?.addEventListener("click", ()=>{
+        if(window.BTT_COOKIES && window.BTT_COOKIES.accept) window.BTT_COOKIES.accept();
+      });
+    }
+    gate.hidden = false;
+  }
+
+  function hideAccCookieGate(){
+    const gate = document.querySelector("[data-acc-cookie-gate]");
+    if(gate) gate.hidden = true;
+    const acc = document.querySelector(".acc");
+    if(acc) acc.style.display = "";
+  }
+
   async function hydrateAccount(){
     if(!window.BTT_API){ document.documentElement.classList.remove("acc-loading"); window.location.replace("login.html"); return; }
     let me;
@@ -278,6 +308,7 @@
     catch(e){
       document.documentElement.classList.remove("acc-loading");
       if(window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(e)){
+        showAccCookieGate();
         window.BTT_COOKIES.showBanner();
         return;
       }
@@ -456,6 +487,12 @@
     wireRepeat();
     wireAddresses();
     hydrateAccount();
+
+    document.addEventListener("btt:cookies-accepted", ()=>{
+      hideAccCookieGate();
+      document.documentElement.classList.add("acc-loading");
+      hydrateAccount();
+    });
 
     document.addEventListener("btt:favs-change", ()=>{ renderWishlist(); syncStats(); pushFavs(); });
     document.addEventListener("storage", e=>{

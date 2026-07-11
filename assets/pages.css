@@ -955,7 +955,7 @@ html.acc-loading .acc-skeleton{display:block}
   transition:background .25s ease,color .25s ease;
 }
 .map__tag:hover{background:var(--copper);color:#fff;}
-.form-err{display:none;margin-top:12px;color:#c44;font-size:14px;font-weight:600;}
+.form-err{display:none;margin-top:12px;padding:10px 14px;border-radius:var(--r-md);background:rgba(200,60,50,.1);color:#c0392b;font-size:14px;font-weight:500;line-height:1.45;text-wrap:pretty;}
 .form-err.show{display:block;}
 .field.is-invalid input,.field.is-invalid textarea{border-color:#c44;box-shadow:0 0 0 3px color-mix(in oklab, #c44 12%, transparent);}
 
@@ -1423,7 +1423,7 @@ a.dl-name:hover{color:var(--copper);}
 .co-radio{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:14px;padding:10px 12px;cursor:pointer;font-size:14px;font-weight:600;color:var(--text);transition:border-color .18s,background .18s;}
 .co-radio:has(input:checked){border-color:var(--copper,#bd7335);background:color-mix(in srgb,var(--copper,#bd7335) 8%,transparent);}
 .co-radio input{accent-color:var(--copper,#bd7335);width:16px;height:16px;}
-.co-err{color:#c0392b;font-size:13px;font-weight:600;margin:2px 0 0;}
+.co-err{color:#c0392b;font-size:13px;font-weight:600;margin:8px 0 0;padding:10px 14px;border-radius:var(--r-md);background:rgba(200,60,50,.1);line-height:1.45;text-wrap:pretty;}
 .co-submit{width:100%;justify-content:center;}
 .co-msg-row{display:flex;flex-direction:column;gap:10px;width:100%;}
 
@@ -1504,6 +1504,13 @@ a.dl-name:hover{color:var(--copper);}
 .auth-form.is-active{display:block;}
 .auth-hint{font-size:13px;color:var(--muted);margin-top:10px;}
 .auth-err{margin-top:12px;padding:10px 14px;border-radius:var(--r-md);background:rgba(200,60,50,.1);color:#c0392b;font-size:14px;font-weight:500;line-height:1.45;text-wrap:pretty;}
+
+.cookie-prefs__status{margin:0 0 16px;color:var(--muted);font-size:15px;line-height:1.5;}
+.cookie-prefs__actions{display:flex;flex-wrap:wrap;gap:10px;}
+.acc-cookie-gate{max-width:520px;margin:0 auto;padding:clamp(24px,5vw,48px) 0;}
+.acc-cookie-gate .info-block{padding:clamp(24px,4vw,32px);}
+.acc-cookie-gate h2{margin-bottom:10px;}
+.acc-cookie-gate p{color:var(--muted);line-height:1.55;margin-bottom:20px;}
 [data-theme="dark"] .auth-tabs button.is-active{background:var(--ink-2);color:var(--on-dark);}
 
 /* ---- account: extra order statuses ---- */

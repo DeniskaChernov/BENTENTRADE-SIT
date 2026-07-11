@@ -60,6 +60,7 @@
   const apiCache = {};
   function loadApiProducts(){
     if(!window.BTT_API) return;
+    if(window.BTT_COOKIES && !window.BTT_COOKIES.hasConsent()) return;
     const l = lang();
     if(apiCache[l]) return;
     window.BTT_API.products("all").then(res=>{

@@ -61,6 +61,9 @@ window.BTT_I18N = {
     "cookie.banner.text":"Мы используем cookie и запросы к серверу для заказов, каталога и форм. Данные отправляются только после вашего согласия.",
     "cookie.banner.accept":"Принять","cookie.banner.reject":"Только просмотр","cookie.banner.more":"Подробнее",
     "cookie.required":"Примите файлы cookie, чтобы отправить данные на сервер.",
+    "ck.prefs.title":"Управление согласием","ck.prefs.status.accepted":"Согласие принято. Данные могут отправляться на сервер.","ck.prefs.status.pending":"Согласие не принято. Запросы к серверу заблокированы.","ck.prefs.revoke":"Отозвать согласие",
+    "acc.cookie.title":"Нужно согласие на cookie","acc.cookie.sub":"Примите cookie внизу страницы, чтобы загрузить личный кабинет с сервера.",
+    "bot.aria.fab":"Чат-помощник","bot.aria.close":"Закрыть","bot.aria.send":"Отправить",
 
     /* catalog */
     "cat.hero.k":"Каталог","cat.hero.title":"Мебель, кашпо и корзины","cat.hero.sub":"Плетёные изделия ручной работы для дома, дачи и сада — вся коллекция в одном месте.",
@@ -213,6 +216,9 @@ window.BTT_I18N = {
     "cookie.banner.text":"Buyurtma, katalog va shakllar uchun cookie va server so‘rovlari ishlatiladi. Ma’lumotlar faqat roziligingizdan keyin yuboriladi.",
     "cookie.banner.accept":"Qabul qilish","cookie.banner.reject":"Faqat ko‘rish","cookie.banner.more":"Batafsil",
     "cookie.required":"Ma’lumotlarni serverga yuborish uchun cookie fayllarini qabul qiling.",
+    "ck.prefs.title":"Rozilikni boshqarish","ck.prefs.status.accepted":"Rozilik qabul qilindi. Ma’lumotlar serverga yuborilishi mumkin.","ck.prefs.status.pending":"Rozilik berilmagan. Server so‘rovlari bloklangan.","ck.prefs.revoke":"Rozilikni bekor qilish",
+    "acc.cookie.title":"Cookie roziligi kerak","acc.cookie.sub":"Kabinetni serverdan yuklash uchun pastdagi cookie bannerida rozilik bering.",
+    "bot.aria.fab":"Chat yordamchi","bot.aria.close":"Yopish","bot.aria.send":"Yuborish",
 
     "cat.hero.k":"Katalog","cat.hero.title":"Mebel, gultuvak va savatlar","cat.hero.sub":"Uy, dala va bog‘ uchun qo‘lda to‘qilgan buyumlar — butun to‘plam bir joyda.",
     "cat.filter":"Filtr","cat.sort":"Saralash","cat.results":"mahsulot",
@@ -362,6 +368,9 @@ window.BTT_I18N = {
     "cookie.banner.text":"We use cookies and server requests for orders, catalog and forms. Data is sent only after you accept.",
     "cookie.banner.accept":"Accept","cookie.banner.reject":"Browse only","cookie.banner.more":"Learn more",
     "cookie.required":"Accept cookies to send data to the server.",
+    "ck.prefs.title":"Manage consent","ck.prefs.status.accepted":"Consent accepted. Data may be sent to the server.","ck.prefs.status.pending":"Consent not given. Server requests are blocked.","ck.prefs.revoke":"Revoke consent",
+    "acc.cookie.title":"Cookie consent required","acc.cookie.sub":"Accept cookies in the banner below to load your account from the server.",
+    "bot.aria.fab":"Chat assistant","bot.aria.close":"Close","bot.aria.send":"Send",
 
     "cat.hero.k":"Catalog","cat.hero.title":"Furniture, planters & baskets","cat.hero.sub":"Hand-woven pieces for home, patio and garden — the whole collection in one place.",
     "cat.filter":"Filter","cat.sort":"Sort","cat.results":"products",

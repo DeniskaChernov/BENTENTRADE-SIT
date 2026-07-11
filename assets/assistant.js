@@ -108,9 +108,14 @@
     }
     function applyLang(){
       const d=T[lang()];
+      const I = window.BTT_I18N || {};
+      const tr = (k, fb) => (I.t ? I.t(k) : (I[lang()] && I[lang()][k]) || fb);
       panel.querySelector("[data-bot-name]").textContent=d.name;
       panel.querySelector("[data-bot-role]").textContent=d.role;
       input.placeholder=d.ph;
+      fab.setAttribute("aria-label", tr("bot.aria.fab", "Чат-помощник"));
+      panel.querySelector("[data-bot-close]")?.setAttribute("aria-label", tr("bot.aria.close", "Закрыть"));
+      panel.querySelector(".bot-send")?.setAttribute("aria-label", tr("bot.aria.send", "Отправить"));
       renderQuick();
     }
     function handle(text){
