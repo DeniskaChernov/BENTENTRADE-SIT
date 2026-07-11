@@ -118,14 +118,14 @@
       ? '<div class="order__actions"><button class="btn btn--dark btn--sm" data-order-repeat="'+esc(ids.join(","))+'">'+esc(t("acc.ord.repeat"))+'</button></div>'
       : "";
     return '<div class="order">'+
-      '<button type="button" class="order__hit" aria-expanded="false" aria-label="'+esc(t("acc.ord.expand"))+'">'+
+      '<div class="order__hit" role="button" tabindex="0" aria-expanded="false" aria-label="'+esc(t("acc.ord.expand"))+'">'+
       '<div class="order__top"><div><div class="order__id">#'+esc(o.public_id||("BT-"+o.id))+'</div>'+
       '<div class="order__date">'+esc(fmtDate(o.created_at))+'</div></div>'+
       '<span class="status '+st.cls+'">'+esc(lbl)+'</span></div>'+
       '<div class="order__body"><div class="order__thumbs">'+ids.map(orderThumb).join("")+'</div>'+
       '<div class="order__meta"><span>'+esc(itemsLabel(count))+'</span></div>'+
       '<div class="order__total">'+esc((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(o.total,{raw:true}):(o.total+" сум"))+'</div></div>'+
-      '</button>'+
+      '</div>'+
       '<div class="order__timeline" hidden>'+orderTimeline(o.status)+'</div>'+actions+'</div>';
   }
 
@@ -166,6 +166,9 @@
         order.classList.toggle("is-open", open);
         btn.setAttribute("aria-expanded", open ? "true" : "false");
         if(tl) tl.hidden = !open;
+      });
+      btn.addEventListener("keydown",(e)=>{
+        if(e.key==="Enter" || e.key===" "){ e.preventDefault(); btn.click(); }
       });
     });
   }
