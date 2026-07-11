@@ -485,11 +485,30 @@
     burger.setAttribute("aria-controls", drawer.id);
     burger.setAttribute("aria-expanded", "false");
 
+    let scrim = document.querySelector(".nav-scrim");
+    if(!scrim){
+      scrim = document.createElement("div");
+      scrim.className = "nav-scrim";
+      scrim.setAttribute("aria-hidden", "true");
+      document.body.appendChild(scrim);
+      scrim.addEventListener("click", ()=> setOpen(false));
+    }
+
+    const links = Array.from(drawer.querySelectorAll(":scope > a"));
+    const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     function setOpen(on){
       drawer.classList.toggle("open", on);
       burger.setAttribute("aria-expanded", on ? "true" : "false");
       drawer.setAttribute("aria-hidden", on ? "false" : "true");
+      scrim.classList.toggle("on", on);
+      scrim.setAttribute("aria-hidden", on ? "false" : "true");
       document.documentElement.style.overflow = on ? "hidden" : "";
+      if(!reduced){
+        links.forEach((a,i)=>{
+          a.style.transitionDelay = on ? (60 + i * 45) + "ms" : "0ms";
+        });
+      }
     }
 
     burger.addEventListener("click", ()=> setOpen(!drawer.classList.contains("open")));
@@ -563,6 +582,7 @@
       }, { rootMargin:"0px 0px -6% 0px", threshold:0.08 });
       cards.forEach(el=>io.observe(el));
       if(window.BTT_syncFavs) window.BTT_syncFavs();
+      if(window.BTT_FX) window.BTT_FX.refresh(grid);
     });
 
     // theme toggle

@@ -351,7 +351,15 @@
 
     function show(name){
       tabs.forEach(t=> t.classList.toggle("is-active", t.dataset.accTab === name));
-      panels.forEach(p=> p.classList.toggle("is-active", p.dataset.accPanel === name));
+      panels.forEach(p=>{
+        const on = p.dataset.accPanel === name;
+        p.classList.toggle("is-active", on);
+        if(on && !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)){
+          p.classList.remove("acc-panel--in");
+          void p.offsetWidth;
+          p.classList.add("acc-panel--in");
+        }
+      });
       if(mobLabel) mobLabel.textContent=tabLabel(name);
       closeDrawer();
       try{ history.replaceState(null, "", "#" + name); }catch(e){}

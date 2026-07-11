@@ -153,9 +153,24 @@
   /* ---------- badges + button state ---------- */
   function renderBadges(){
     const cc=cartCount();
-    document.querySelectorAll("[data-cart-count]").forEach(el=>{ el.textContent=cc; el.style.display=cc>0?"grid":"none"; });
+    document.querySelectorAll("[data-cart-count]").forEach(el=>{
+      const prev = parseInt(el.textContent, 10) || 0;
+      el.textContent=cc; el.style.display=cc>0?"grid":"none";
+      if(cc > prev) bump(el);
+    });
     const fc=favCount();
-    document.querySelectorAll("[data-fav-count]").forEach(el=>{ el.textContent=fc; el.style.display=fc>0?"grid":"none"; });
+    document.querySelectorAll("[data-fav-count]").forEach(el=>{
+      const prev = parseInt(el.textContent, 10) || 0;
+      el.textContent=fc; el.style.display=fc>0?"grid":"none";
+      if(fc > prev) bump(el);
+    });
+  }
+  function bump(el){
+    if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    el.classList.remove("is-bump");
+    void el.offsetWidth;
+    el.classList.add("is-bump");
+    el.addEventListener("animationend", ()=> el.classList.remove("is-bump"), { once:true });
   }
   // reflect saved favorites onto product/PDP heart buttons
   function syncFavButtons(){

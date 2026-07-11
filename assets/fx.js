@@ -4,11 +4,12 @@
 (function(){
   "use strict";
   const mq = s => window.matchMedia && window.matchMedia(s).matches;
-  if(mq("(prefers-reduced-motion: reduce)") || mq("(hover: none)")) return;
+  const canTilt = !mq("(prefers-reduced-motion: reduce)") && !mq("(hover: none)");
 
   function bind(el, max){
+    if(el.dataset.tiltBound === "1") return;
+    el.dataset.tiltBound = "1";
     el.classList.add("tilt");
-    // clip corners with clip-path (survives 3D transforms; overflow:hidden + border-radius does not)
     const r = getComputedStyle(el).borderRadius;
     if(r && r !== "0px") el.style.clipPath = "inset(0 round " + r + ")";
     const glare = document.createElement("span");
@@ -24,9 +25,9 @@
       raf = null;
     }
     el.addEventListener("mousemove", e=>{
-      const r = el.getBoundingClientRect();
-      px = (e.clientX - r.left) / r.width;
-      py = (e.clientY - r.top)  / r.height;
+      const rect = el.getBoundingClientRect();
+      px = (e.clientX - rect.left) / rect.width;
+      py = (e.clientY - rect.top)  / rect.height;
       el.classList.add("tilt--active");
       glare.style.opacity = .6;
       if(!raf) raf = requestAnimationFrame(frame);
@@ -39,13 +40,23 @@
     });
   }
 
-  function run(){
-    document.querySelectorAll(".product__media").forEach(el=>bind(el, 6));
-    document.querySelectorAll(".bento-tile:not(.bento-tile--pal), .mood-tile, .scene-card").forEach(el=>bind(el, 5));
-    document.querySelectorAll(".pdp-stage").forEach(el=>bind(el, 5));
-    document.querySelectorAll(".material__img").forEach(el=>bind(el, 4));
+  function run(root){
+    if(!canTilt) return;
+    const scope = root || document;
+    scope.querySelectorAll(".product__media").forEach(el=>bind(el, 6));
+    scope.querySelectorAll(".bento-tile:not(.bento-tile--pal), .mood-tile, .scene-card").forEach(el=>bind(el, 5));
+    scope.querySelectorAll(".pdp-stage").forEach(el=>bind(el, 5));
+    scope.querySelectorAll(".material__img").forEach(el=>bind(el, 4));
   }
 
-  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  window.BTT_FX = { refresh: run };
+
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", ()=>run());
   else run();
+
+  document.addEventListener("btt:related-rendered", (e)=>{
+    const grid = e.detail && e.detail.grid;
+    if(grid) run(grid);
+  });
+  document.addEventListener("btt:cookies-accepted", ()=>run());
 })();
