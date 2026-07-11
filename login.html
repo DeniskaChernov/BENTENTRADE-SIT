@@ -80,6 +80,7 @@
         <div class="field"><label data-i18n="auth.password">Пароль</label><input type="password" name="password" autocomplete="current-password" required></div>
         <button class="btn btn--copper" type="submit" data-i18n="auth.login">Вход</button>
         <p class="auth-err" data-auth-err hidden></p>
+        <p class="auth-hint" data-auth-cookie-hint hidden data-i18n="auth.cookie.hint">Вход на сервер доступен после принятия cookie.</p>
       </form>
 
       <form class="form auth-form" data-auth-form="register" novalidate>
@@ -90,6 +91,7 @@
         <button class="btn btn--copper" type="submit" data-i18n="auth.register">Регистрация</button>
         <p class="auth-hint" data-i18n="auth.pwhint">Минимум 8 символов.</p>
         <p class="auth-err" data-auth-err hidden></p>
+        <p class="auth-hint" data-auth-cookie-hint hidden data-i18n="auth.cookie.hint">Регистрация на сервер доступна после принятия cookie.</p>
       </form>
     </div>
   </div>

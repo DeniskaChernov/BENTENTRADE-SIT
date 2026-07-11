@@ -388,10 +388,21 @@
       if(inp[2]) inp[2].value=u.phone||"";
     }
     const news=document.querySelector("[data-news-toggle]");
+    const newsLabel=document.querySelector("[data-news-label]");
     if(news){
       const on=u.newsletter?true:false;
       news.setAttribute("aria-checked", on?"true":"false");
+      if(newsLabel){ newsLabel.setAttribute("data-i18n", on?"acc.set.newson":"acc.set.newsoff"); newsLabel.textContent=t(on?"acc.set.newson":"acc.set.newsoff"); }
+      localStorage.setItem("btt_news", on?"1":"0");
     }
+
+    try{
+      const ck=JSON.parse(localStorage.getItem("btt_checkout")||"{}")||{};
+      let ch=false;
+      if(u.name && !ck.name){ ck.name=u.name; ch=true; }
+      if(u.phone && !ck.phone){ ck.phone=u.phone; ch=true; }
+      if(ch) localStorage.setItem("btt_checkout", JSON.stringify(ck));
+    }catch(e){}
 
     // Merge favourites (server ∪ local), then reflect both ways.
     try{
@@ -490,6 +501,11 @@
         if(window.BTT_API){
           try{
             await window.BTT_API.updateProfile(payload);
+            const nmeEl=document.querySelector("[data-acc-user-name]") || document.querySelector(".acc-user .nm");
+            if(nmeEl && payload.name) nmeEl.textContent=payload.name;
+            const subEl=document.querySelector("[data-acc-user-sub]");
+            if(subEl && payload.phone){ subEl.textContent=payload.phone; subEl.hidden=false; }
+            toast(t("toast.saved"));
           }catch(err){
             if(window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(err)){
               window.BTT_COOKIES.showBanner();
@@ -508,12 +524,7 @@
     if(hash && Array.from(tabs).some(t=>t.dataset.accTab===hash)) show(hash);
     else if(mobLabel) mobLabel.textContent=tabLabel("overview");
 
-    // Repeat-order buttons are wired via wireRepeat() (guarded, re-run on render).
-    // Order expand is wired via wireOrderExpand().
-    // Address add/edit are wired via wireAddresses() (opens the real modal).
-    document.querySelectorAll("[data-order-review]").forEach(b=>{
-      b.addEventListener("click",()=> toast(t("toast.review")));
-    });
+    // Repeat-order / expand / addresses wired in renderOrders() and wireAddresses().
 
     const news=document.querySelector("[data-news-toggle]");
     const newsLabel=document.querySelector("[data-news-label]");

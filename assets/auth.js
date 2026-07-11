@@ -39,6 +39,15 @@
     }
     tabs.forEach((b) => b.addEventListener("click", () => showTab(b.dataset.authTab)));
 
+    function syncCookieHints() {
+      const show = window.BTT_COOKIES && !window.BTT_COOKIES.hasConsent();
+      document.querySelectorAll("[data-auth-cookie-hint]").forEach((el) => {
+        el.hidden = !show;
+      });
+    }
+    syncCookieHints();
+    document.addEventListener("btt:cookies-accepted", syncCookieHints);
+
     function errText(err) {
       if (window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(err)) {
         window.BTT_COOKIES.showBanner();
@@ -115,6 +124,13 @@
         err.hidden = false;
         if (submit) submit.disabled = false;
       }
+    });
+
+    document.addEventListener("btt:cookies-accepted", async function () {
+      try {
+        const me = await window.BTT_API.me();
+        if (me && me.user) window.location.replace("account.html");
+      } catch (e) { /* stay on login */ }
     });
   });
 })();

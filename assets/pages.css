@@ -1177,6 +1177,10 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   .values{grid-template-columns:1fr;}
 }
 @media (max-width:600px){
+  .acc-row{grid-template-columns:1fr;gap:8px;align-items:start;}
+  .acc-row .btn,.acc-row .lang--acc{justify-self:start;}
+  .auth-card .field input{font-size:16px;}
+  .co-field input,.co-field textarea{font-size:16px;}
   .prod-grid,.catalog-grid{grid-template-columns:1fr;gap:16px;}
   .ab-stats{grid-template-columns:1fr 1fr;}
   .page-hero{padding-block:clamp(40px,10vw,72px);}
