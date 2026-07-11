@@ -665,6 +665,11 @@
       const err = form.querySelector("[data-form-err]");
       const submitBtn = form.querySelector("[data-contact-submit]");
       const dict = window.BTT_I18N || {};
+      const cookieErrMsg = ()=>{
+        const l = document.documentElement.lang || "ru";
+        const d = dict[l] || dict.ru || {};
+        return d["cookie.required"] || "Accept cookies to send data to the server.";
+      };
       const errMsg = ()=>{
         const l = document.documentElement.lang || "ru";
         const d = dict[l] || dict.ru || {};
@@ -718,6 +723,12 @@
             await window.BTT_API.contact(payload);
             done();
           }catch(ex){
+            if(window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(ex)){
+              if(err){ err.textContent = cookieErrMsg(); err.hidden = false; err.classList.add("show"); }
+              if(submitBtn) submitBtn.disabled = false;
+              window.BTT_COOKIES.showBanner();
+              return;
+            }
             if(ex && ex.status === 422){ fail(); }
             else { done(); } // network/backend down — don't punish the visitor
           }

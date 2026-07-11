@@ -131,7 +131,8 @@
       { name: t("pdp.crumb.home") || "Главная", url: SITE + "/" },
       { name: t("nav.blog") || "Статьи", url: SITE + "/blog.html" },
     ]);
-    fetch("/data/articles.json")
+    var fetchFn = (window.BTT_COOKIES && window.BTT_COOKIES.guardedFetch) || fetch;
+    fetchFn("/data/articles.json")
       .then(function (r) { return r.json(); })
       .then(function (data) {
         var list = (data && data.articles) || [];
@@ -212,4 +213,5 @@
 
   render();
   document.addEventListener("btt:lang", render);
+  document.addEventListener("btt:cookies-accepted", render);
 })();

@@ -27,7 +27,9 @@
   async function loadStaticArticles() {
     if (staticArticles) return staticArticles;
     try {
-      const res = await fetch("data/articles.json", { cache: "no-cache" });
+      const res = await (window.BTT_COOKIES && window.BTT_COOKIES.guardedFetch
+        ? window.BTT_COOKIES.guardedFetch("data/articles.json", { cache: "no-cache" })
+        : fetch("data/articles.json", { cache: "no-cache" }));
       if (!res.ok) return [];
       const data = await res.json();
       staticArticles = (data && data.articles) || [];
@@ -231,6 +233,11 @@
       b.addEventListener("click", () => setTimeout(() => { if (list) renderList(list); if (single) renderSingle(single); }, 40)),
     );
     document.addEventListener("btt:lang", () => {
+      if (list) renderList(list);
+      if (single) renderSingle(single);
+    });
+    document.addEventListener("btt:cookies-accepted", () => {
+      staticArticles = null;
       if (list) renderList(list);
       if (single) renderSingle(single);
     });

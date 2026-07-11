@@ -36,6 +36,10 @@
     tabs.forEach((b) => b.addEventListener("click", () => showTab(b.dataset.authTab)));
 
     function errText(err) {
+      if (window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(err)) {
+        window.BTT_COOKIES.showBanner();
+        return t("cookie.required");
+      }
       const code = (err && err.data && err.data.error) || "";
       const map = {
         invalid_credentials: "auth.err.creds",

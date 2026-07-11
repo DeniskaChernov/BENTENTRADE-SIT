@@ -11,6 +11,11 @@
   const BASE = ""; // same origin
 
   async function request(path, opts) {
+    if (window.BTT_COOKIES && !window.BTT_COOKIES.hasConsent()) {
+      const err = new Error("cookie_consent_required");
+      err.code = "cookie_consent_required";
+      throw err;
+    }
     opts = opts || {};
     const init = {
       method: opts.method || "GET",

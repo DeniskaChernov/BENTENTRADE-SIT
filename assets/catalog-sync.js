@@ -307,4 +307,11 @@
       attributeFilter: ["lang"],
     });
   });
+
+  document.addEventListener("btt:cookies-accepted", function () {
+    Object.keys(_mapCache).forEach(function (k) { delete _mapCache[k]; });
+    Object.keys(_pdpCache).forEach(function (k) { delete _pdpCache[k]; });
+    _pdp404 = false;
+    run();
+  });
 })();

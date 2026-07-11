@@ -331,7 +331,13 @@
         comment: contact && contact.comment,
       });
       return (res && res.orderId) || null;
-    }catch(e){ return null; }
+    }catch(e){
+      if(window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(e)){
+        toast(t("cookie.required"));
+        window.BTT_COOKIES.showBanner();
+      }
+      return null;
+    }
   }
 
   // Keep the last placed order around so the confirmation screen's messenger

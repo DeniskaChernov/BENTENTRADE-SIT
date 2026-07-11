@@ -200,4 +200,9 @@
   });
 
   window.BTT_SEARCH = { open, close };
+
+  document.addEventListener("btt:cookies-accepted", function () {
+    Object.keys(apiCache).forEach(function (k) { delete apiCache[k]; });
+    loadApiProducts();
+  });
 })();

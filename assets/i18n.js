@@ -57,7 +57,10 @@ window.BTT_I18N = {
     "foot.tag":"Мебель, кашпо и корзины из искусственного ротанга — для сада, террасы и дома. С 2024 года.",
     "foot.menu":"Меню","foot.help":"Помощь","foot.contacts":"Контакты",
     "foot.faq":"Вопросы и ответы","foot.delivery":"Доставка","foot.returns":"Возврат","foot.care":"Уход за плетением",
-    "foot.since":"С 2024 ГОДА","foot.copy":"© 2026 BENTENTRADE. ВСЕ ПРАВА ЗАЩИЩЕНЫ.","foot.privacy":"ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ",
+    "foot.since":"С 2024 ГОДА","foot.copy":"© 2026 BENTENTRADE. ВСЕ ПРАВА ЗАЩИЩЕНЫ.","foot.cookies":"ФАЙЛЫ COOKIE","foot.privacy":"ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ",
+    "cookie.banner.text":"Мы используем cookie и запросы к серверу для заказов, каталога и форм. Данные отправляются только после вашего согласия.",
+    "cookie.banner.accept":"Принять","cookie.banner.reject":"Только просмотр","cookie.banner.more":"Подробнее",
+    "cookie.required":"Примите файлы cookie, чтобы отправить данные на сервер.",
 
     /* catalog */
     "cat.hero.k":"Каталог","cat.hero.title":"Мебель, кашпо и корзины","cat.hero.sub":"Плетёные изделия ручной работы для дома, дачи и сада — вся коллекция в одном месте.",
@@ -206,7 +209,10 @@ window.BTT_I18N = {
     "foot.tag":"Sun’iy rotangdan mebel, gultuvak va savatlar — bog‘, terassa va uy uchun. 2024 yildan.",
     "foot.menu":"Menyu","foot.help":"Yordam","foot.contacts":"Kontaktlar",
     "foot.faq":"Savol-javob","foot.delivery":"Yetkazib berish","foot.returns":"Qaytarish","foot.care":"To‘quv parvarishi",
-    "foot.since":"2024 YILDAN","foot.copy":"© 2026 BENTENTRADE. BARCHA HUQUQLAR HIMOYALANGAN.","foot.privacy":"MAXFIYLIK SIYOSATI",
+    "foot.since":"2024 YILDAN","foot.copy":"© 2026 BENTENTRADE. BARCHA HUQUQLAR HIMOYALANGAN.","foot.cookies":"COOKIE FAYLLARI","foot.privacy":"MAXFIYLIK SIYOSATI",
+    "cookie.banner.text":"Buyurtma, katalog va shakllar uchun cookie va server so‘rovlari ishlatiladi. Ma’lumotlar faqat roziligingizdan keyin yuboriladi.",
+    "cookie.banner.accept":"Qabul qilish","cookie.banner.reject":"Faqat ko‘rish","cookie.banner.more":"Batafsil",
+    "cookie.required":"Ma’lumotlarni serverga yuborish uchun cookie fayllarini qabul qiling.",
 
     "cat.hero.k":"Katalog","cat.hero.title":"Mebel, gultuvak va savatlar","cat.hero.sub":"Uy, dala va bog‘ uchun qo‘lda to‘qilgan buyumlar — butun to‘plam bir joyda.",
     "cat.filter":"Filtr","cat.sort":"Saralash","cat.results":"mahsulot",
@@ -352,7 +358,10 @@ window.BTT_I18N = {
     "foot.tag":"Furniture, planters and baskets in synthetic rattan — for garden, terrace and home. Since 2024.",
     "foot.menu":"Menu","foot.help":"Help","foot.contacts":"Contacts",
     "foot.faq":"FAQ","foot.delivery":"Delivery","foot.returns":"Returns","foot.care":"Weave care",
-    "foot.since":"SINCE 2024","foot.copy":"© 2026 BENTENTRADE. ALL RIGHTS RESERVED.","foot.privacy":"PRIVACY POLICY",
+    "foot.since":"SINCE 2024","foot.copy":"© 2026 BENTENTRADE. ALL RIGHTS RESERVED.","foot.cookies":"COOKIE POLICY","foot.privacy":"PRIVACY POLICY",
+    "cookie.banner.text":"We use cookies and server requests for orders, catalog and forms. Data is sent only after you accept.",
+    "cookie.banner.accept":"Accept","cookie.banner.reject":"Browse only","cookie.banner.more":"Learn more",
+    "cookie.required":"Accept cookies to send data to the server.",
 
     "cat.hero.k":"Catalog","cat.hero.title":"Furniture, planters & baskets","cat.hero.sub":"Hand-woven pieces for home, patio and garden — the whole collection in one place.",
     "cat.filter":"Filter","cat.sort":"Sort","cat.results":"products",
@@ -663,7 +672,11 @@ Object.assign(window.BTT_I18N.ru,{
   "pv.k":"Правовая информация","pv.title":"Политика конфиденциальности","pv.sub":"Мы собираем минимум данных и используем их только для обработки заказов и связи.",
   "pv.b1.t":"Какие данные мы собираем","pv.b1.l1":"Имя и контактные данные (телефон, email), которые вы указываете в форме.","pv.b1.l2":"Адрес доставки — для передачи заказа.","pv.b1.l3":"Технические данные о посещении сайта в обезличенном виде.",
   "pv.b2.t":"Как мы их используем","pv.b2.l1":"Для обработки заказа и связи по нему.","pv.b2.l2":"Для ответа на ваши обращения и заявки.","pv.b2.l3":"Мы не передаём ваши данные третьим лицам, кроме служб доставки.",
-  "pv.b3.t":"Хранение и ваши права","pv.b3.p1":"Данные хранятся столько, сколько необходимо для выполнения заказа и требований закона. Вы можете запросить их изменение или удаление, написав нам на ","pv.b3.p2":"."
+  "pv.b3.t":"Хранение и ваши права","pv.b3.p1":"Данные хранятся столько, сколько необходимо для выполнения заказа и требований закона. Вы можете запросить их изменение или удаление, написав нам на ","pv.b3.p2":".",
+  "ck.k":"Правовая информация","ck.title":"Файлы cookie","ck.sub":"Мы не отправляем данные на сервер, пока вы не примете cookie. После согласия — для заказов, каталога и форм.",
+  "ck.b1.t":"Что такое cookie","ck.b1.p":"Cookie — небольшие файлы в браузере. Мы также используем localStorage для языка, темы, корзины и избранного — только на вашем устройстве.",
+  "ck.b2.t":"До принятия","ck.b2.l1":"Запросы к API и загрузка данных с сервера заблокированы.","ck.b2.l2":"Сайт работает в режиме просмотра со статическим каталогом.","ck.b2.l3":"Формы заказа и обратной связи не отправляют данные на сервер.",
+  "ck.b3.t":"После принятия","ck.b3.l1":"Заказы, обращения, вход в аккаунт и синхронизация каталога с CRM.","ck.b3.l2":"Вы можете в любой момент очистить cookie в настройках браузера.","ck.b3.l3":"Подробнее о персональных данных — в ","ck.b3.link":"политике конфиденциальности","ck.b3.p2":"."
 });
 Object.assign(window.BTT_I18N.uz,{
   "faq.k":"Yordam","faq.title":"Savol-javob","faq.sub":"Material, yetkazib berish, kafolat va to‘quv parvarishi haqida qisqacha.",
@@ -692,7 +705,11 @@ Object.assign(window.BTT_I18N.uz,{
   "pv.k":"Huquqiy ma’lumot","pv.title":"Maxfiylik siyosati","pv.sub":"Biz minimal ma’lumot yig‘amiz va ulardan faqat buyurtmalarni qayta ishlash va bog‘lanish uchun foydalanamiz.",
   "pv.b1.t":"Qanday ma’lumot yig‘amiz","pv.b1.l1":"Shaklda ko‘rsatgan ism va kontakt ma’lumotlari (telefon, email).","pv.b1.l2":"Yetkazish manzili — buyurtmani topshirish uchun.","pv.b1.l3":"Sayt tashrifi haqidagi texnik ma’lumotlar shaxssizlashtirilgan holda.",
   "pv.b2.t":"Ulardan qanday foydalanamiz","pv.b2.l1":"Buyurtmani qayta ishlash va u bo‘yicha bog‘lanish uchun.","pv.b2.l2":"Murojaat va arizalaringizga javob berish uchun.","pv.b2.l3":"Ma’lumotlaringizni yetkazish xizmatlaridan tashqari uchinchi shaxslarga bermaymiz.",
-  "pv.b3.t":"Saqlash va huquqlaringiz","pv.b3.p1":"Ma’lumotlar buyurtmani bajarish va qonun talablari uchun zarur bo‘lgan muddat davomida saqlanadi. Ularni o‘zgartirish yoki o‘chirishni ","pv.b3.p2":" ga yozib so‘rashingiz mumkin."
+  "pv.b3.t":"Saqlash va huquqlaringiz","pv.b3.p1":"Ma’lumotlar buyurtmani bajarish va qonun talablari uchun zarur bo‘lgan muddat davomida saqlanadi. Ularni o‘zgartirish yoki o‘chirishni ","pv.b3.p2":" ga yozib so‘rashingiz mumkin.",
+  "ck.k":"Huquqiy ma’lumot","ck.title":"Cookie fayllari","ck.sub":"Siz cookie qabul qilmaguningizcha ma’lumotlar serverga yuborilmaydi. Rozilikdan keyin — buyurtmalar, katalog va shakllar uchun.",
+  "ck.b1.t":"Cookie nima","ck.b1.p":"Cookie — brauzerdagi kichik fayllar. Til, mavzu, savat va sevimlilar uchun localStorage ham ishlatiladi — faqat qurilmangizda.",
+  "ck.b2.t":"Qabul qilishdan oldin","ck.b2.l1":"API so‘rovlari va serverdan ma’lumot yuklash bloklangan.","ck.b2.l2":"Sayt statik katalog bilan ko‘rish rejimida ishlaydi.","ck.b2.l3":"Buyurtma va murojaat shakllari serverga ma’lumot yubormaydi.",
+  "ck.b3.t":"Qabul qilgandan keyin","ck.b3.l1":"Buyurtmalar, murojaatlar, akkauntga kirish va CRM bilan katalog sinxronizatsiyasi.","ck.b3.l2":"Brauzer sozlamalarida cookie ni istalgan vaqtda tozalashingiz mumkin.","ck.b3.l3":"Shaxsiy ma’lumotlar haqida batafsil — ","ck.b3.link":"maxfiylik siyosatida","ck.b3.p2":"."
 });
 Object.assign(window.BTT_I18N.en,{
   "faq.k":"Help","faq.title":"Questions & answers","faq.sub":"The essentials on material, delivery, warranty and weave care.",
@@ -721,7 +738,11 @@ Object.assign(window.BTT_I18N.en,{
   "pv.k":"Legal","pv.title":"Privacy policy","pv.sub":"We collect the minimum of data and use it only to process orders and stay in touch.",
   "pv.b1.t":"What data we collect","pv.b1.l1":"Name and contact details (phone, email) you provide in the form.","pv.b1.l2":"Delivery address — to fulfil the order.","pv.b1.l3":"Technical, anonymised data about your visit to the site.",
   "pv.b2.t":"How we use it","pv.b2.l1":"To process your order and communicate about it.","pv.b2.l2":"To respond to your enquiries and requests.","pv.b2.l3":"We don't share your data with third parties, except delivery services.",
-  "pv.b3.t":"Storage and your rights","pv.b3.p1":"Data is kept for as long as needed to fulfil the order and meet legal requirements. You can request changes or deletion by writing to ","pv.b3.p2":"."
+  "pv.b3.t":"Storage and your rights","pv.b3.p1":"Data is kept for as long as needed to fulfil the order and meet legal requirements. You can request changes or deletion by writing to ","pv.b3.p2":".",
+  "ck.k":"Legal","ck.title":"Cookie policy","ck.sub":"We do not send data to the server until you accept cookies. After consent — for orders, catalog and forms.",
+  "ck.b1.t":"What are cookies","ck.b1.p":"Cookies are small files in your browser. We also use localStorage for language, theme, cart and favourites — only on your device.",
+  "ck.b2.t":"Before you accept","ck.b2.l1":"API requests and server data loading are blocked.","ck.b2.l2":"The site works in browse-only mode with a static catalog.","ck.b2.l3":"Order and contact forms do not send data to the server.",
+  "ck.b3.t":"After you accept","ck.b3.l1":"Orders, enquiries, account login and catalog sync with the CRM.","ck.b3.l2":"You can clear cookies in your browser settings at any time.","ck.b3.l3":"More on personal data in our ","ck.b3.link":"privacy policy","ck.b3.p2":"."
 });
 Object.assign(window.BTT_I18N.ru,{
   "auth.login":"Вход","auth.register":"Регистрация","auth.name":"Имя","auth.email":"Email","auth.phone":"Телефон","auth.password":"Пароль",
@@ -794,6 +815,8 @@ Object.assign(window.BTT_I18N.ru,{
   "meta.care.keywords":"уход за ротангом, чистка плетеной мебели, synthetic rattan care, rotang parvarishi",
   "meta.privacy.title":"Bententrade — Политика конфиденциальности",
   "meta.privacy.desc":"Как Bententrade обрабатывает и хранит ваши персональные данные.",
+  "meta.cookies.title":"Bententrade — Файлы cookie",
+  "meta.cookies.desc":"Как Bententrade использует cookie и когда отправляет данные на сервер.",
   "meta.blog.title":"Bententrade — Статьи",
   "meta.blog.desc":"Статьи о искусственном ротанге: как выбрать материал, уход за плетением, идеи для сада и интерьера. Bententrade, Ташкент.",
   "meta.blog.keywords":"ротанг статьи, как выбрать ротанг, уход за ротангом, synthetic rattan blog, rotang maslahat",
@@ -858,6 +881,8 @@ Object.assign(window.BTT_I18N.uz,{
   "meta.care.desc":"Sun’iy rotangdan mahsulotlarga qanday parvarish qilish kerak.",
   "meta.privacy.title":"Bententrade — Maxfiylik siyosati",
   "meta.privacy.desc":"Bententrade shaxsiy ma’lumotlaringizni qanday qayta ishlaydi.",
+  "meta.cookies.title":"Bententrade — Cookie fayllari",
+  "meta.cookies.desc":"Bententrade cookie dan qanday foydalanadi va qachon ma’lumot yuboradi.",
   "meta.blog.title":"Bententrade — Maqolalar",
   "meta.blog.desc":"Sun’iy rotang haqida maqolalar: material tanlash, parvarish, bog‘ va interyer g‘oyalari. Bententrade, Toshkent.",
   "meta.blog.keywords":"rotang maqolalar, rotang tanlash, sun’iy rotang parvarishi",
@@ -922,6 +947,8 @@ Object.assign(window.BTT_I18N.en,{
   "meta.care.desc":"How to care for synthetic rattan furniture and accessories.",
   "meta.privacy.title":"Bententrade — Privacy policy",
   "meta.privacy.desc":"How Bententrade processes and stores your personal data.",
+  "meta.cookies.title":"Bententrade — Cookie policy",
+  "meta.cookies.desc":"How Bententrade uses cookies and when data is sent to the server.",
   "meta.blog.title":"Bententrade — Articles",
   "meta.blog.desc":"Articles on synthetic rattan: how to choose material, weave care, garden and home ideas. Bententrade, Tashkent.",
   "meta.blog.keywords":"synthetic rattan articles, how to choose rattan, rattan care tips, rotang blog",
