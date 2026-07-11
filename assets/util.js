@@ -78,7 +78,7 @@
     opts = opts || {};
     var n = opts.raw ? Math.round(Number(amount) || 0) : toUzs(amount);
     var spaced = String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0");
-    return spaced + " сум";
+    return spaced + "\u00a0сум";
   }
 
   function parseMoneyText(text) {

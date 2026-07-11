@@ -28,12 +28,13 @@
     if (staticArticles) return staticArticles;
     try {
       const fetchOne = async (url) => {
-        const res = await (window.BTT_COOKIES && window.BTT_COOKIES.guardedFetch
-          ? window.BTT_COOKIES.guardedFetch(url, { cache: "default" })
-          : fetch(url, { cache: "default" }));
-        if (!res.ok) return [];
-        const data = await res.json();
-        return (data && data.articles) || [];
+        if (!window.BTT_COOKIES || !window.BTT_COOKIES.guardedFetch) return [];
+        try {
+          const res = await window.BTT_COOKIES.guardedFetch(url, { cache: "default" });
+          if (!res.ok) return [];
+          const data = await res.json();
+          return (data && data.articles) || [];
+        } catch (e) { return []; }
       };
       const [base, extra] = await Promise.all([
         fetchOne("data/articles.json"),

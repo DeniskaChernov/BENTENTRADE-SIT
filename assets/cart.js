@@ -394,7 +394,8 @@
     const btn=root.querySelector("[data-co-submit]");
     if(btn){ btn.disabled=true; btn.textContent=t("coSending"); }
     let orderId=null;
-    if(window.BTT_API){
+    const apiOk = window.BTT_API && (!window.BTT_COOKIES || window.BTT_COOKIES.hasConsent());
+    if(apiOk){
       orderId=await persistOrder(f);
       if(!orderId){ showErr(root,t("errOrder")); if(btn){ btn.disabled=false; btn.textContent=t("coSubmit"); } return; }
     }

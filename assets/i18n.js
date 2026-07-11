@@ -972,5 +972,20 @@ Object.assign(window.BTT_I18N.en,{
   "nav.account":"Account","acc.loading":"Loading…","acc.ord.empty":"No orders yet.","acc.addr.empty":"No addresses yet.","toast.saved":"Changes saved ✓","toast.addrSaved":"Address saved ✓","toast.addrDeleted":"Address removed",
   "nav.blog":"Journal","blog.k":"Journal","blog.title":"Articles","blog.sub":"Ideas, care tips and inspiration for your garden and home.","blog.empty":"Articles are coming soon.","blog.loading":"Loading…","blog.error":"Couldn't load content. Check your connection.","blog.retry":"Try again","blog.notFound":"Article not found.","blog.read":"Read","blog.back":"All articles",
   "lp.rotang.k":"Material","lp.rotang.title":"Synthetic rattan in Tashkent","lp.rotang.sub":"Profiles, colour palette and expert advice for furniture weaving and frame work.","lp.rotang.b1.t":"What we offer","lp.rotang.b1.p":"Half-moon, round and twisted profiles — for frames and décor. Samples in our showroom, diameter matched to your project.","lp.rotang.b2.t":"Why Bententrade","lp.rotang.b2.p":"In-house production, consistent batch quality, delivery across Uzbekistan. Custom furniture and pieces in any colour.","lp.rotang.cta.cat":"Browse catalog","lp.rotang.cta.contact":"Contact us",
-  "lp.garden.k":"Garden","lp.garden.title":"Garden rattan furniture in Tashkent","lp.garden.sub":"Sofas, chairs, tables and sets for terrace, patio and gazebo — hand-woven, weather-resistant.","lp.garden.b1.t":"Built for outdoors","lp.garden.b1.p":"Synthetic rattan handles moisture and sun — furniture stays outside all season.","lp.garden.b2.t":"Sized for your space","lp.garden.b2.p":"We help pick a set for your layout and style. Delivered assembled in Tashkent and across UZ.","lp.garden.cta.cat":"Furniture catalog","lp.garden.cta.mto":"Custom order"
+  "lp.garden.k":"Garden","lp.garden.title":"Garden rattan furniture in Tashkent","lp.garden.sub":"Sofas, chairs, tables and sets for terrace, patio and gazebo — hand-woven, weather-resistant.","lp.garden.b1.t":"Built for outdoors","lp.garden.b1.p":"Synthetic rattan handles moisture and sun — furniture stays outside all season.","lp.garden.b2.t":"Sized for your space","lp.garden.b2.p":"We help pick a set for your layout and style. Delivered assembled in Tashkent and across UZ.",  "lp.garden.cta.cat":"Furniture catalog","lp.garden.cta.mto":"Custom order"
 });
+
+window.BTT_I18N.t = function (key) {
+  var l = "ru";
+  try {
+    if (window.BTT_UTIL && window.BTT_UTIL.lang) l = window.BTT_UTIL.lang();
+    else {
+      var s = localStorage.getItem("btt_lang");
+      if (s === "uz" || s === "en") l = s;
+    }
+  } catch (e) { /* ignore */ }
+  var d = window.BTT_I18N[l] || {};
+  if (d[key] != null) return d[key];
+  var ru = window.BTT_I18N.ru || {};
+  return ru[key] != null ? ru[key] : key;
+};

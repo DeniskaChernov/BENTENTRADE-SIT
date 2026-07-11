@@ -11,7 +11,7 @@
   const U = window.BTT_UTIL || {};
   const money = (n) => (window.BTT_UTIL && window.BTT_UTIL.formatMoney)
     ? window.BTT_UTIL.formatMoney(n)
-    : (String(Math.round(Number(n) * 12500)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + " сум");
+    : (String(Math.round(Number(n) * 12500)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0сум");
   const mediaUrl = (key) => (key ? "/media/" + key : "");
   const esc = U.esc || ((s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])));
   const idFromHref = (href) => { const m = (href || "").match(/[?&]id=([^&]+)/); return m ? decodeURIComponent(m[1]) : null; };
@@ -270,6 +270,14 @@
     if (old) {
       if (p.price_old) { old.textContent = money(p.price_old); old.style.display = ""; }
       else old.style.display = "none";
+    }
+    const save = document.querySelector(".pdp-price .save");
+    if (save) {
+      if (p.price_old && p.price_old > p.price_now) {
+        save.style.display = "";
+        const word = t("pdp.save");
+        save.textContent = word + "\u00a0" + money(p.price_old - p.price_now);
+      } else save.style.display = "none";
     }
     // Real gallery from the CRM: override the placeholder images when media exist.
     const urls = (p.media || []).map((m) => mediaUrl(m.key)).filter(Boolean);

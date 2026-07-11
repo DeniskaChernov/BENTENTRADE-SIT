@@ -228,8 +228,8 @@
     if(save){
       if(prod.old){
         save.style.display = "";
-        const word = {ru:"Экономия",uz:"Tejash",en:"Save"}[lang()] || "Экономия";
-        save.textContent = word + " " + fmtN(prod.old - prod.now);
+        const word = {ru:"Экономия",uz:"Tejash",en:"Save"}[lang()] || t("pdp.save");
+        save.textContent = word + "\u00a0" + fmtN(prod.old - prod.now);
       } else save.style.display = "none";
     }
     const badge = $(".pdp-stage .badge-sale");

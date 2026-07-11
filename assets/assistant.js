@@ -138,7 +138,7 @@
       setTimeout(()=> botSay(d.reply, 1500), 900);
     });
 
-    // re-localize on language change
+    document.addEventListener("btt:lang", applyLang);
     new MutationObserver(()=> applyLang()).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
     applyLang();
   });

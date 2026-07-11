@@ -1062,7 +1062,7 @@ html.acc-loading .acc-skeleton{display:block}
     border-radius:0;border-right:1px solid var(--line);max-height:100vh;overflow:auto;
     box-shadow:24px 0 64px -32px rgba(27,25,22,.22);
   }
-  .acc-side.is-open{transform:none;}
+  .acc-side.is-open{transform:none;z-index:110;}
   .acc-nav{flex-direction:column;}
   .acc-nav .sep{display:block;}
   .acc-stats{grid-template-columns:1fr;}
@@ -1139,7 +1139,7 @@ html.acc-loading .acc-skeleton{display:block}
   .values{grid-template-columns:1fr;}
 }
 @media (max-width:600px){
-  .prod-grid,.catalog-grid{grid-template-columns:1fr 1fr;gap:14px;}
+  .prod-grid,.catalog-grid{grid-template-columns:1fr;gap:16px;}
   .ab-stats{grid-template-columns:1fr 1fr;}
 }
 @media (max-width:600px){
@@ -1182,6 +1182,10 @@ html.acc-loading .acc-skeleton{display:block}
   .promo{min-height:min(80vw,400px);}
   .promo .pill.br{left:12px;right:auto;transform:none;}
 }
+@media (max-width:520px){
+  .pdp-price{flex-direction:column;align-items:flex-start;gap:8px;}
+  .pdp-price .save{align-self:flex-start;}
+}
 @media (max-width:420px){
   .hero__title{font-size:clamp(28px,8.6vw,40px);}
   .mobile-drawer{width:100vw;padding-inline:clamp(16px,5vw,24px);}
@@ -1190,6 +1194,7 @@ html.acc-loading .acc-skeleton{display:block}
   .lang{margin-left:2px;}
   .lang button{padding:6px 8px;font-size:11.5px;}
   .brand img{height:34px;}
+  .promo .pill.bc{max-width:92vw;white-space:normal;text-align:center;}
 }
 @media (max-width:360px){
   .icon-btn{width:34px;height:34px;}
@@ -1234,12 +1239,15 @@ html.acc-loading .acc-skeleton{display:block}
 .pdp-stars{display:flex;gap:2px;color:var(--copper-bright);}
 .pdp-stars svg{width:16px;height:16px;}
 .pdp-price{
-  display:flex;align-items:baseline;gap:14px;margin:22px 0 4px;
-  padding:18px 22px;border-radius:var(--r-lg);width:fit-content;
+  display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;margin:22px 0 4px;
+  padding:18px 22px;border-radius:var(--r-lg);width:100%;max-width:100%;box-sizing:border-box;
 }
-.pdp-price .now{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.02em;}
-.pdp-price .old{font-size:19px;color:var(--muted-2);text-decoration:line-through;}
-.pdp-price .save{font-size:12.5px;font-weight:800;color:#fff;background:var(--copper-bright);padding:5px 11px;border-radius:var(--r-pill);align-self:center;}
+.pdp-price .now{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.02em;white-space:nowrap;flex-shrink:0;}
+.pdp-price .old{font-size:19px;color:var(--muted-2);text-decoration:line-through;white-space:nowrap;flex-shrink:0;}
+.pdp-price .save{
+  font-size:12.5px;font-weight:800;color:#fff;background:var(--copper-bright);
+  padding:6px 12px;border-radius:var(--r-pill);align-self:center;white-space:nowrap;flex-shrink:0;
+}
 .pdp-desc{color:var(--muted);font-size:16px;line-height:1.65;margin-top:18px;max-width:48ch;}
 
 .pdp-opt{margin-top:26px;}
@@ -1321,10 +1329,10 @@ html.acc-loading .acc-skeleton{display:block}
 /* ============================================================
    CART / FAVORITES DRAWERS (cart.js)
    ============================================================ */
-.drawer-scrim{position:fixed;inset:0;background:rgba(27,25,22,.45);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;z-index:120;}
+.drawer-scrim{position:fixed;inset:0;background:rgba(27,25,22,.45);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;z-index:9600;}
 .drawer-scrim.on{opacity:1;visibility:visible;}
 .drawer{
-  position:fixed;top:0;right:0;height:100dvh;width:min(420px,92vw);z-index:121;
+  position:fixed;top:0;right:0;height:100dvh;width:min(420px,92vw);z-index:9601;
   display:flex;flex-direction:column;transform:translateX(100%);
   background:var(--paper);border-left:1px solid var(--line);
   box-shadow:-24px 0 64px -32px rgba(27,25,22,.2);
@@ -1420,7 +1428,7 @@ a.dl-name:hover{color:var(--copper);}
 .co-msg-row{display:flex;flex-direction:column;gap:10px;width:100%;}
 
 /* ---- toast ---- */
-.btt-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,18px);z-index:200;
+.btt-toast{position:fixed;left:50%;bottom:calc(26px + var(--cookie-banner-h,0px));transform:translate(-50%,18px);z-index:200;
   background:var(--ink);color:var(--on-dark);padding:13px 20px;border-radius:var(--r-pill);
   font-size:14px;font-weight:600;box-shadow:0 18px 40px -16px rgba(27,25,22,.6);
   max-width:min(92vw,420px);text-align:center;opacity:0;visibility:hidden;
@@ -1428,7 +1436,7 @@ a.dl-name:hover{color:var(--copper);}
 .btt-toast.on{opacity:1;visibility:visible;transform:translate(-50%,0);}
 
 /* ---- toast (account feedback) ---- */
-.toast-wrap{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:140;display:flex;flex-direction:column;gap:10px;align-items:center;pointer-events:none;}
+.toast-wrap{position:fixed;left:50%;bottom:calc(26px + var(--cookie-banner-h,0px));transform:translateX(-50%);z-index:140;display:flex;flex-direction:column;gap:10px;align-items:center;pointer-events:none;}
 .toast{
   background:var(--ink);color:var(--on-dark);font-size:14px;font-weight:600;
   padding:13px 20px;border-radius:var(--r-pill);box-shadow:0 18px 40px -16px rgba(27,25,22,.6);
@@ -1503,7 +1511,7 @@ a.dl-name:hover{color:var(--copper);}
 .status--cancel{background:rgba(150,150,150,.16);color:var(--muted);}
 
 /* ---- address modal ---- */
-.addr-modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(27,25,22,.5);backdrop-filter:blur(3px);}
+.addr-modal{position:fixed;inset:0;z-index:9600;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(27,25,22,.5);backdrop-filter:blur(3px);}
 .addr-modal.on{display:flex;}
 .addr-modal__box{background:var(--surface-bg,#fff);border-radius:var(--r-lg);padding:26px;width:min(440px,100%);max-height:90vh;overflow:auto;box-shadow:0 30px 70px -24px rgba(0,0,0,.5);}
 .addr-modal__def{display:flex;align-items:center;gap:8px;margin:6px 0 4px;font-size:14px;color:var(--muted);cursor:pointer;}

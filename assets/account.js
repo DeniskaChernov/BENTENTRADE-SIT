@@ -264,7 +264,7 @@
 
   let favSyncTimer;
   function pushFavs(){
-    if(!window.BTT_API) return;
+    if(!window.BTT_API || (window.BTT_COOKIES && !window.BTT_COOKIES.hasConsent())) return;
     clearTimeout(favSyncTimer);
     favSyncTimer=setTimeout(()=>{
       try{ window.BTT_API.putFavorites(Object.keys(getFavs())); }catch(e){}
@@ -272,12 +272,18 @@
   }
 
   async function hydrateAccount(){
-    // The account area is for signed-in users only: never show demo content.
-    // No API client, a failed check, or no user → send them to the login page.
     if(!window.BTT_API){ document.documentElement.classList.remove("acc-loading"); window.location.replace("login.html"); return; }
     let me;
     try{ me=await window.BTT_API.me(); }
-    catch(e){ document.documentElement.classList.remove("acc-loading"); window.location.replace("login.html"); return; }
+    catch(e){
+      document.documentElement.classList.remove("acc-loading");
+      if(window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(e)){
+        window.BTT_COOKIES.showBanner();
+        return;
+      }
+      window.location.replace("login.html");
+      return;
+    }
     if(!me || !me.user){ document.documentElement.classList.remove("acc-loading"); window.location.replace("login.html"); return; }
     const u=me.user;
 
@@ -398,7 +404,17 @@
           newsletter: news ? (news.getAttribute("aria-checked")==="true") : true,
         };
         if(window.BTT_API){
-          try{ await window.BTT_API.updateProfile(payload); }catch(err){}
+          try{
+            await window.BTT_API.updateProfile(payload);
+          }catch(err){
+            if(window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(err)){
+              window.BTT_COOKIES.showBanner();
+              toast(t("cookie.required"));
+              return;
+            }
+            toast(t("auth.err.generic"));
+            return;
+          }
         }
         if(ok){ ok.classList.add("show"); setTimeout(()=>ok.classList.remove("show"), 2600); }
       });
