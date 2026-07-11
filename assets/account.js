@@ -103,6 +103,23 @@
     const src=(imgs&&imgs[0])?imgs[0].thumb:"";
     return '<img src="'+esc(src)+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">';
   }
+  function orderTimeline(status){
+    const s = status || "new";
+    if(s === "cancelled"){
+      const c = ST.cancelled;
+      return '<ol class="order-steps"><li class="order-step is-cancel is-current">'+esc(c[lang()]||c.en)+'</li></ol>';
+    }
+    const flow = ["new","processing","shipped","delivered"];
+    const cur = Math.max(0, flow.indexOf(s));
+    const steps = flow.map(function(key, i){
+      const st = ST[key] || ST.new;
+      let cls = "order-step";
+      if(i < cur) cls += " is-done";
+      else if(i === cur) cls += " is-current";
+      return '<li class="'+cls+'">'+esc(st[lang()]||st.en)+'</li>';
+    }).join("");
+    return '<ol class="order-steps">'+steps+'</ol>';
+  }
   function orderCard(o, withActions){
     const st=ST[o.status]||ST.new; const lbl=st[lang()]||st.en;
     const items=o.items||[];
@@ -112,12 +129,15 @@
       ? '<div class="order__actions"><button class="btn btn--dark btn--sm" data-order-repeat="'+esc(ids.join(","))+'">'+esc(t("acc.ord.repeat"))+'</button></div>'
       : "";
     return '<div class="order">'+
+      '<button type="button" class="order__hit" aria-expanded="false" aria-label="'+esc(t("acc.ord.expand"))+'">'+
       '<div class="order__top"><div><div class="order__id">#'+esc(o.public_id||("BT-"+o.id))+'</div>'+
       '<div class="order__date">'+esc(fmtDate(o.created_at))+'</div></div>'+
       '<span class="status '+st.cls+'">'+esc(lbl)+'</span></div>'+
       '<div class="order__body"><div class="order__thumbs">'+ids.map(orderThumb).join("")+'</div>'+
       '<div class="order__meta"><span>'+esc(itemsLabel(count))+'</span></div>'+
-      '<div class="order__total">'+esc((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(o.total,{raw:true}):(o.total+" сум"))+'</div></div>'+actions+'</div>';
+      '<div class="order__total">'+esc((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(o.total,{raw:true}):(o.total+" сум"))+'</div></div>'+
+      '</button>'+
+      '<div class="order__timeline" hidden>'+orderTimeline(o.status)+'</div>'+actions+'</div>';
   }
 
   function repeatSnapshot(id){
@@ -134,6 +154,29 @@
         let added=0;
         ids.forEach(id=>{ const s=repeatSnapshot(id); if(s&&window.BTT_CART){ window.BTT_CART.addToCart(s,1); added++; } });
         if(added) toast(t("toast.repeat"));
+      });
+    });
+  }
+  function wireOrderExpand(root){
+    (root||document).querySelectorAll(".order__hit").forEach(btn=>{
+      if(btn.dataset.expandWired) return;
+      btn.dataset.expandWired="1";
+      btn.addEventListener("click",()=>{
+        const order = btn.closest(".order");
+        if(!order) return;
+        const tl = order.querySelector(".order__timeline");
+        const open = !order.classList.contains("is-open");
+        document.querySelectorAll(".order.is-open").forEach(o=>{
+          if(o === order) return;
+          o.classList.remove("is-open");
+          const hit = o.querySelector(".order__hit");
+          const other = o.querySelector(".order__timeline");
+          if(hit) hit.setAttribute("aria-expanded","false");
+          if(other) other.hidden = true;
+        });
+        order.classList.toggle("is-open", open);
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        if(tl) tl.hidden = !open;
       });
     });
   }
@@ -159,6 +202,7 @@
     const statN=document.querySelector('[data-acc-panel="overview"] .acc-stats .acc-stat .n');
     if(statN) statN.textContent=orders.length;
     wireRepeat();
+    wireOrderExpand();
   }
 
   const CHECK_SVG='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>';
@@ -458,10 +502,8 @@
     else if(mobLabel) mobLabel.textContent=tabLabel("overview");
 
     // Repeat-order buttons are wired via wireRepeat() (guarded, re-run on render).
+    // Order expand is wired via wireOrderExpand().
     // Address add/edit are wired via wireAddresses() (opens the real modal).
-    document.querySelectorAll("[data-order-track]").forEach(b=>{
-      b.addEventListener("click",()=> toast(t("toast.track").replace("{id}", b.getAttribute("data-order-track"))));
-    });
     document.querySelectorAll("[data-order-review]").forEach(b=>{
       b.addEventListener("click",()=> toast(t("toast.review")));
     });
@@ -487,6 +529,7 @@
     renderWishlist();
     syncStats();
     wireRepeat();
+    wireOrderExpand();
     wireAddresses();
     hydrateAccount();
 

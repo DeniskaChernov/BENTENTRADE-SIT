@@ -147,34 +147,37 @@
 
       <!-- ORDERS -->
       <section class="acc-panel" data-acc-panel="orders">
-        <div class="acc-h"><div><h1 data-i18n="acc.nav.orders">Заказы</h1><p data-i18n="acc.ord.sub">История ваших покупок и их статусы.</p></div></div>
+        <div class="acc-h"><div><h1 data-i18n="acc.nav.orders">Заказы</h1><p data-i18n="acc.ord.sub">История покупок. Нажмите на заказ — снизу раскроются этапы.</p></div></div>
 
         <div class="order" data-acc-demo>
+          <button type="button" class="order__hit" aria-expanded="false">
           <div class="order__top">
             <div><div class="order__id">#BT-2048</div><div class="order__date" data-i18n="acc.ord.date2048">14 июня 2026</div></div>
             <span class="status status--ship" data-i18n="acc.st.ship">В пути</span>
           </div>
           <div class="order__body">
             <div class="order__thumbs" data-order-thumbs="p1,p2"></div>
-            <div class="order__meta"><span data-i18n="acc.items2">2 товара</span> · <span data-i18n="acc.ord.deliver">доставка 18–20 июня</span></div>
+            <div class="order__meta"><span data-i18n="acc.items2">2 товара</span></div>
             <div class="order__total">$1 120</div>
           </div>
+          </button>
           <div class="order__actions">
-            <button class="btn btn--ghost btn--sm" data-order-track="#BT-2048" data-i18n="acc.ord.track">Отследить</button>
             <button class="btn btn--dark btn--sm" data-order-repeat="p1,p2" data-i18n="acc.ord.repeat">Повторить заказ</button>
           </div>
         </div>
 
         <div class="order" data-acc-demo>
+          <button type="button" class="order__hit" aria-expanded="false">
           <div class="order__top">
             <div><div class="order__id">#BT-2031</div><div class="order__date" data-i18n="acc.ord.date2031">2 июня 2026</div></div>
             <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
           </div>
           <div class="order__body">
             <div class="order__thumbs" data-order-thumbs="p3"></div>
-            <div class="order__meta"><span data-i18n="acc.items1">1 товар</span> · <span data-i18n="acc.ord.delivered">доставлен 6 июня</span></div>
+            <div class="order__meta"><span data-i18n="acc.items1">1 товар</span></div>
             <div class="order__total">$95</div>
           </div>
+          </button>
           <div class="order__actions">
             <button class="btn btn--ghost btn--sm" data-order-review="#BT-2031" data-i18n="acc.ord.review">Оставить отзыв</button>
             <button class="btn btn--dark btn--sm" data-order-repeat="p3" data-i18n="acc.ord.repeat">Повторить заказ</button>
@@ -182,6 +185,7 @@
         </div>
 
         <div class="order" data-acc-demo>
+          <button type="button" class="order__hit" aria-expanded="false">
           <div class="order__top">
             <div><div class="order__id">#BT-1998</div><div class="order__date" data-i18n="acc.ord.date1998">18 мая 2026</div></div>
             <span class="status status--done" data-i18n="acc.st.done">Доставлен</span>
@@ -191,6 +195,7 @@
             <div class="order__meta"><span data-i18n="acc.items3">3 товара</span></div>
             <div class="order__total">$1 512</div>
           </div>
+          </button>
           <div class="order__actions">
             <button class="btn btn--ghost btn--sm" data-order-review="#BT-1998" data-i18n="acc.ord.review">Оставить отзыв</button>
             <button class="btn btn--dark btn--sm" data-order-repeat="p4,p5,p11" data-i18n="acc.ord.repeat">Повторить заказ</button>
