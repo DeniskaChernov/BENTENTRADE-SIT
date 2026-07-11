@@ -79,8 +79,13 @@
     return u.split("?")[0];
   }
 
+  function isPublicReadPath(p) {
+    return p === "/data/articles.json" || p === "/data/articles-seo.json";
+  }
+
   function needsConsent(url) {
     var p = pathOf(url);
+    if (isPublicReadPath(p)) return false;
     return p.indexOf("/api/") === 0 || p.indexOf("/data/") === 0;
   }
 

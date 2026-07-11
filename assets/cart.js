@@ -190,7 +190,10 @@
     favEl=document.createElement("aside"); favEl.className="drawer drawer--fav"; favEl.setAttribute("aria-hidden","true");
     document.body.appendChild(scrim); document.body.appendChild(cartEl); document.body.appendChild(favEl);
   }
-  function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+  function esc(s){
+    if(window.BTT_UTIL && window.BTT_UTIL.esc) return window.BTT_UTIL.esc(s);
+    return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  }
 
   function renderCartBody(){
     if(!cartEl) return;
@@ -398,6 +401,9 @@
     if(apiOk){
       orderId=await persistOrder(f);
       if(!orderId){ showErr(root,t("errOrder")); if(btn){ btn.disabled=false; btn.textContent=t("coSubmit"); } return; }
+    }
+    if(!apiOk){
+      if(window.BTT_COOKIES && !window.BTT_COOKIES.hasConsent()) window.BTT_COOKIES.showBanner();
     }
     _lastOrderText=buildOrderText(f, orderId);
     write("btt_cart",{}); renderBadges(); renderDone(orderId);

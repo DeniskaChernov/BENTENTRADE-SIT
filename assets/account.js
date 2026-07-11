@@ -272,6 +272,7 @@
   }
 
   function showAccCookieGate(){
+    document.documentElement.classList.add("acc-cookie-wait");
     const acc = document.querySelector(".acc");
     if(acc) acc.style.display = "none";
     let gate = document.querySelector("[data-acc-cookie-gate]");
@@ -295,6 +296,7 @@
   }
 
   function hideAccCookieGate(){
+    document.documentElement.classList.remove("acc-cookie-wait");
     const gate = document.querySelector("[data-acc-cookie-gate]");
     if(gate) gate.hidden = true;
     const acc = document.querySelector(".acc");

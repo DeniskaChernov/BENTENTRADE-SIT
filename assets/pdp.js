@@ -228,7 +228,7 @@
     if(save){
       if(prod.old){
         save.style.display = "";
-        const word = {ru:"Экономия",uz:"Tejash",en:"Save"}[lang()] || t("pdp.save");
+        const word = t("pdp.save");
         save.textContent = word + "\u00a0" + fmtN(prod.old - prod.now);
       } else save.style.display = "none";
     }

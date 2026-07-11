@@ -99,7 +99,10 @@
     input.addEventListener("keydown", onKey);
   }
 
-  function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+  function esc(s){
+    if(window.BTT_UTIL && window.BTT_UTIL.esc) return window.BTT_UTIL.esc(s);
+    return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  }
   function norm(s){ return String(s).toLowerCase().trim(); }
 
   function render(){
