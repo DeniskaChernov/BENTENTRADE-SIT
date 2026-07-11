@@ -193,10 +193,18 @@
       if(prod){
         var pdpNow = document.querySelector(".pdp-price .now");
         var pdpOld = document.querySelector(".pdp-price .old");
+        var pdpSave = document.querySelector(".pdp-price .save");
         if(pdpNow) pdpNow.textContent = fmt(prod.now);
         if(pdpOld){
           if(prod.old){ pdpOld.textContent = fmt(prod.old); pdpOld.style.display = ""; }
           else pdpOld.style.display = "none";
+        }
+        if(pdpSave){
+          if(prod.old){
+            pdpSave.style.display = "";
+            var word = (window.BTT_I18N && window.BTT_I18N.t) ? window.BTT_I18N.t("pdp.save") : "Экономия";
+            pdpSave.textContent = word + "\u00a0" + fmt(prod.old - prod.now);
+          } else pdpSave.style.display = "none";
         }
       }
     }

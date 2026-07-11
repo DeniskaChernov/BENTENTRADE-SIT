@@ -624,7 +624,7 @@ html.no-js [data-stagger] > *{opacity:1;transform:none;filter:none;}
    Spotlight search (glass overlay)
    ============================================================ */
 .search-ov{
-  position:fixed;inset:0;z-index:200;display:flex;justify-content:center;
+  position:fixed;inset:0;z-index:9602;display:flex;justify-content:center;
   align-items:flex-start;padding:clamp(60px,14vh,140px) 20px 40px;
   background:rgba(27,25,22,.4);
   opacity:0;visibility:hidden;transition:opacity .35s ease, visibility .35s ease;

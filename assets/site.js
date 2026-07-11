@@ -25,7 +25,11 @@
     });
     document.querySelectorAll("[data-i18n-html]").forEach(el=>{
       const key = el.getAttribute("data-i18n-html");
-      if(d[key] != null) el.innerHTML = d[key];
+      if(d[key] == null) return;
+      const raw = String(d[key]);
+      el.innerHTML = raw
+        .replace(/<script\b[\s\S]*?<\/script>/gi, "")
+        .replace(/\son\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "");
     });
     const docTitle = document.querySelector("title[data-i18n-doc]");
     if(docTitle){
