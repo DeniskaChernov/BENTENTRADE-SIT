@@ -675,7 +675,7 @@ Object.assign(window.BTT_I18N.ru,{
   "pv.b3.t":"Хранение и ваши права","pv.b3.p1":"Данные хранятся столько, сколько необходимо для выполнения заказа и требований закона. Вы можете запросить их изменение или удаление, написав нам на ","pv.b3.p2":".",
   "ck.k":"Правовая информация","ck.title":"Файлы cookie","ck.sub":"Мы не отправляем данные на сервер, пока вы не примете cookie. После согласия — для заказов, каталога и форм.",
   "ck.b1.t":"Что такое cookie","ck.b1.p":"Cookie — небольшие файлы в браузере. Мы также используем localStorage для языка, темы, корзины и избранного — только на вашем устройстве.",
-  "ck.b2.t":"До принятия","ck.b2.l1":"Запросы к API и загрузка данных с сервера заблокированы.","ck.b2.l2":"Сайт работает в режиме просмотра со статическим каталогом.","ck.b2.l3":"Формы заказа и обратной связи не отправляют данные на сервер.",
+  "ck.b2.t":"До принятия","ck.b2.l1":"Запросы к API и загрузка данных с сервера заблокированы.","ck.b2.l2":"Каталог и личный кабинет работают с локальными данными; синхронизация с сервером — после согласия.","ck.b2.l3":"Формы заказа, входа и обратной связи не отправляют данные на сервер.",
   "ck.b3.t":"После принятия","ck.b3.l1":"Заказы, обращения, вход в аккаунт и синхронизация каталога с CRM.","ck.b3.l2":"Вы можете в любой момент очистить cookie в настройках браузера.","ck.b3.l3":"Подробнее о персональных данных — в ","ck.b3.link":"политике конфиденциальности","ck.b3.p2":"."
 });
 Object.assign(window.BTT_I18N.uz,{
@@ -708,7 +708,7 @@ Object.assign(window.BTT_I18N.uz,{
   "pv.b3.t":"Saqlash va huquqlaringiz","pv.b3.p1":"Ma’lumotlar buyurtmani bajarish va qonun talablari uchun zarur bo‘lgan muddat davomida saqlanadi. Ularni o‘zgartirish yoki o‘chirishni ","pv.b3.p2":" ga yozib so‘rashingiz mumkin.",
   "ck.k":"Huquqiy ma’lumot","ck.title":"Cookie fayllari","ck.sub":"Siz cookie qabul qilmaguningizcha ma’lumotlar serverga yuborilmaydi. Rozilikdan keyin — buyurtmalar, katalog va shakllar uchun.",
   "ck.b1.t":"Cookie nima","ck.b1.p":"Cookie — brauzerdagi kichik fayllar. Til, mavzu, savat va sevimlilar uchun localStorage ham ishlatiladi — faqat qurilmangizda.",
-  "ck.b2.t":"Qabul qilishdan oldin","ck.b2.l1":"API so‘rovlari va serverdan ma’lumot yuklash bloklangan.","ck.b2.l2":"Sayt statik katalog bilan ko‘rish rejimida ishlaydi.","ck.b2.l3":"Buyurtma va murojaat shakllari serverga ma’lumot yubormaydi.",
+  "ck.b2.t":"Qabul qilishdan oldin","ck.b2.l1":"API so‘rovlari va serverdan ma’lumot yuklash bloklangan.","ck.b2.l2":"Katalog va shaxsiy kabinet mahalliy ma’lumotlar bilan ishlaydi; server bilan sinxron — rozilikdan keyin.","ck.b2.l3":"Buyurtma, kirish va murojaat shakllari serverga ma’lumot yubormaydi.",
   "ck.b3.t":"Qabul qilgandan keyin","ck.b3.l1":"Buyurtmalar, murojaatlar, akkauntga kirish va CRM bilan katalog sinxronizatsiyasi.","ck.b3.l2":"Brauzer sozlamalarida cookie ni istalgan vaqtda tozalashingiz mumkin.","ck.b3.l3":"Shaxsiy ma’lumotlar haqida batafsil — ","ck.b3.link":"maxfiylik siyosatida","ck.b3.p2":"."
 });
 Object.assign(window.BTT_I18N.en,{
@@ -741,7 +741,7 @@ Object.assign(window.BTT_I18N.en,{
   "pv.b3.t":"Storage and your rights","pv.b3.p1":"Data is kept for as long as needed to fulfil the order and meet legal requirements. You can request changes or deletion by writing to ","pv.b3.p2":".",
   "ck.k":"Legal","ck.title":"Cookie policy","ck.sub":"We do not send data to the server until you accept cookies. After consent — for orders, catalog and forms.",
   "ck.b1.t":"What are cookies","ck.b1.p":"Cookies are small files in your browser. We also use localStorage for language, theme, cart and favourites — only on your device.",
-  "ck.b2.t":"Before you accept","ck.b2.l1":"API requests and server data loading are blocked.","ck.b2.l2":"The site works in browse-only mode with a static catalog.","ck.b2.l3":"Order and contact forms do not send data to the server.",
+  "ck.b2.t":"Before you accept","ck.b2.l1":"API requests and server data loading are blocked.","ck.b2.l2":"Catalog and account work with local data; server sync happens after you accept.","ck.b2.l3":"Order, login and contact forms do not send data to the server.",
   "ck.b3.t":"After you accept","ck.b3.l1":"Orders, enquiries, account login and catalog sync with the CRM.","ck.b3.l2":"You can clear cookies in your browser settings at any time.","ck.b3.l3":"More on personal data in our ","ck.b3.link":"privacy policy","ck.b3.p2":"."
 });
 Object.assign(window.BTT_I18N.ru,{

@@ -49,15 +49,16 @@ https://bententrade.uz/r/{qr_token}
 
 ### 1.1. Cookie consent (реализовано на сайте)
 
-До принятия cookie пользователем **запрещена любая передача данных на сервер**:
+До принятия cookie пользователем **запрещена любая передача данных на сервер**. При этом **каталог** (`catalog.html`, `product.html`) и **личный кабинет** (`account.html`, `login.html`) уже реализованы и остаются доступны — с локальными/встроенными данными и `localStorage`.
 
 | До согласия | После «Принять» |
 |-------------|-----------------|
-| Блокируются все запросы к `/api/*` и `/data/*` | Заказы, формы, auth, sync каталога с CRM |
-| Статический каталог и просмотр страниц работают | Поиск подгружает товары из API |
-| Корзина/избранное только в `localStorage` | События QR/CRM (при реализации) |
+| Блокируются все запросы к `/api/*` и `/data/*` | Заказы, формы, вход/регистрация, sync каталога с CRM |
+| Каталог и карточки товара — встроенный фолбэк + `products.js` | Актуальные цены, фото и товары из API (`catalog-sync.js`) |
+| Кабинет: корзина и избранное только в браузере | Профиль, заказы, адреса, избранное с сервера (`account.js`, `auth.js`) |
+| Корзина/checkout не отправляет заказ на сервер | `POST /api/orders` и остальные API |
 
-Реализация: `assets/cookies.js` (баннер), `assets/api.js` (gate), страница `cookies.html`. Ключ согласия: `localStorage.btt_cookie_consent = accepted`. Событие `btt:cookies-accepted` перезагружает каталог и поиск.
+Реализация: `assets/cookies.js` (баннер), `assets/api.js` (gate), страница `cookies.html`. Ключ согласия: `localStorage.btt_cookie_consent = accepted`. Событие `btt:cookies-accepted` перезагружает каталог, поиск и статьи.
 
 ---
 
@@ -92,13 +93,17 @@ https://bententrade.uz/r/{qr_token}
 
 ## 2. Что уже есть на сайте (база)
 
-| Есть сейчас | Не хватает для QR |
-|-------------|-------------------|
-| Каталог, корзина, checkout | Страница `/r/{qr_token}` |
-| `POST /api/orders`, `POST /api/contact` | Привязка к QR и дилеру |
-| Регистрация: email, password, name, phone | **Телефон** + имя/фамилия/страна; email не обязателен |
-| Админка `/admin`: заказы, заявки, товары | Каталог и QR **только из CRM**; на сайте — приём sync |
-| Telegram-уведомления | Параллельно webhooks в CRM |
+На сайте **уже реализованы** полноценный каталог и личный кабинет. Документ ниже описывает **доработки под QR/CRM**, а не создание витрины с нуля.
+
+| Уже реализовано | Файлы / API | Не хватает для QR |
+|-----------------|-------------|-------------------|
+| **Каталог** — фильтры, карточки, PDP, sync цен/фото с бэкенда | `catalog.html`, `product.html`, `assets/catalog-sync.js`, `assets/products.js`, `GET /api/products` | Страница `/r/{qr_token}` |
+| **Корзина и checkout** — localStorage + отправка заказа | `assets/cart.js`, `POST /api/orders` | Привязка заказа к QR и дилеру |
+| **Личный кабинет** — профиль, заказы, адреса, избранное | `account.html`, `login.html`, `assets/account.js`, `assets/auth.js`, `/api/me`, `/api/orders`, `/api/addresses`, `/api/favorites` | Регистрация **только по телефону** (сейчас email + пароль); визуальная «плюшка» по стране |
+| **Формы обратной связи** | `contacts.html`, `POST /api/contact` | Auth + скрытая атрибуция дилера |
+| **Cookie consent** — блок API до согласия | `assets/cookies.js`, `cookies.html` | — |
+| Админка `/admin`: заказы, заявки, товары | worker admin routes | Каталог и QR **только из CRM**; на сайте — приём sync |
+| Telegram-уведомления | — | Параллельно webhooks в CRM |
 
 **Интеграция:** две отдельные БД, обмен **webhooks** (см. раздел 1.1 и 8.8). Ниже — поля и контракты, которые CRM должна поддерживать на своей стороне.
 
@@ -917,19 +922,31 @@ QR-справочник **не хранится** на сайте постоян
 
 ## 12. Связь с текущим кодом Bententrade-Sit
 
+### Уже на сайте (не трогать при QR, только расширять)
+
+| Файл | Роль |
+|------|------|
+| `catalog.html`, `product.html` | Каталог и карточка товара |
+| `account.html`, `login.html` | Личный кабинет, вход/регистрация |
+| `assets/catalog-sync.js` | Hydrate каталога и PDP из API |
+| `assets/account.js`, `assets/auth.js` | Кабинет, профиль, заказы, адреса |
+| `assets/cart.js` | Корзина, checkout, избранное |
+| `assets/cookies.js`, `cookies.html` | Cookie consent, gate API |
+
+### Что менять при реализации QR/CRM
+
 | Файл | Что менять при реализации |
 |------|---------------------------|
 | `db/schema.pg.sql` + `migrations/` | Новые таблицы из раздела 9 |
 | `worker/routes/orders.ts` | Поля QR/dealer/source |
 | `worker/routes/contact.ts` | Auth + атрибуция |
-| `worker/routes/authRoutes.ts` | first_name, last_name, country, QR |
+| `worker/routes/authRoutes.ts` | first_name, last_name, country, QR; вход по телефону |
 | `worker/routes/admin.ts` | UI списков QR, событий, отзывов |
 | **Новые** `worker/crm-webhook.ts`, `worker/routes/qr.ts` | Прокси к CRM API + outbox webhooks |
-| `assets/site.js`, `assets/cart.js` | События, gate регистрации по телефону |
-| `assets/cookies.js`, `cookies.html` | Баннер согласия; блок API до accept |
+| `assets/site.js`, `assets/cart.js` | События QR, gate регистрации по телефону |
 | **Новые** `r.html`, `assets/qr.js` | Лендинг QR без данных дилера |
 | `assets/i18n.js` + регистрация | Локализация формы по стране |
 
 ---
 
-*Документ версии 1.5 — 2026-07-11. Cookie consent на сайте; отзывы: любой сразу на сайте, фото опционально, дубль партнёру без модерации.*
+*Документ версии 1.5.1 — 2026-07-11. Уточнено: каталог и личный кабинет уже на сайте; cookie consent блокирует только обмен с сервером.*
