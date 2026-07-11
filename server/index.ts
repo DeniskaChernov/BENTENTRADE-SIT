@@ -20,22 +20,17 @@ import admin from "../worker/routes/admin";
 import media from "../worker/routes/media";
 import { ADMIN_HTML } from "../worker/admin-ui";
 import { ADMIN_APP_JS } from "../worker/admin-app";
+import { applySecurityHeaders, applyCacheHeaders } from "../worker/security-headers";
 
 import { buildEnv, migrate, seedIfEmpty } from "./runtime";
 
 const app = new Hono();
 
-// Baseline security headers on every response.
 app.use("*", async (c: Context, next: Next) => {
   await next();
   try {
-    const h = c.res.headers;
-    h.set("X-Content-Type-Options", "nosniff");
-    h.set("X-Frame-Options", "SAMEORIGIN");
-    h.set("Referrer-Policy", "strict-origin-when-cross-origin");
-    h.set("X-Permitted-Cross-Domain-Policies", "none");
-    const p = c.req.path;
-    if (p.startsWith("/api") || p.startsWith("/admin")) h.set("X-Robots-Tag", "noindex, nofollow");
+    applySecurityHeaders(c.res.headers, c.req.path);
+    applyCacheHeaders(c.res.headers, c.req.path);
   } catch (e) { /* immutable headers — ignore */ }
 });
 

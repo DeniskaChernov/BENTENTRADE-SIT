@@ -16,12 +16,14 @@ function loadProducts() {
 }
 
 function loadArticles() {
-  try {
-    const data = JSON.parse(readFileSync(join(root, "data/articles.json"), "utf8"));
-    return (data.articles || []).map((a) => a.slug).filter(Boolean);
-  } catch {
-    return [];
+  const slugs = new Set();
+  for (const file of ["data/articles.json", "data/articles-seo.json"]) {
+    try {
+      const data = JSON.parse(readFileSync(join(root, file), "utf8"));
+      (data.articles || []).forEach((a) => { if (a.slug) slugs.add(a.slug); });
+    } catch { /* skip */ }
   }
+  return [...slugs];
 }
 
 function url(loc, priority, changefreq) {
@@ -52,8 +54,8 @@ function main() {
     lines.push(url(SITE + "/article.html?slug=" + encodeURIComponent(slug), "0.65", "monthly"));
   });
 
-  ["faq.html", "delivery.html", "returns.html", "care.html", "privacy.html"].forEach((p) => {
-    const pr = p === "privacy.html" ? "0.3" : p === "faq.html" || p === "care.html" ? "0.55" : "0.5";
+  ["faq.html", "delivery.html", "returns.html", "care.html", "privacy.html", "cookies.html"].forEach((p) => {
+    const pr = p === "privacy.html" || p === "cookies.html" ? "0.3" : p === "faq.html" || p === "care.html" ? "0.55" : "0.5";
     lines.push(url(SITE + "/" + p, pr, "monthly"));
   });
 

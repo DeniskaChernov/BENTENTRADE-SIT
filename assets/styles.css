@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesque:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap');
 
 /* ============================================================
    BENTENTRADE — design tokens
+   Google Fonts loaded from HTML (non-blocking) — see page <head>.
    ============================================================ */
 :root{
   /* Responsive breakpoints (reference values — CSS vars can't be used in @media):
@@ -682,3 +682,26 @@ html.no-js [data-stagger] > *{opacity:1;transform:none;filter:none;}
   .cookie-banner__link{text-align:center;}
 }
 [data-theme="dark"] .cookie-banner__in{background:var(--surface-2);border-color:var(--line);}
+
+/* Macro motion layer */
+.scroll-progress{
+  position:fixed;top:0;left:0;right:0;height:2px;z-index:80;pointer-events:none;
+  transform-origin:0 50%;transform:scaleX(0);
+  background:linear-gradient(90deg,var(--copper),var(--copper-bright));
+  transition:transform .12s linear;
+}
+.flow-section{animation:flowIn .7s var(--ease-out) both;animation-delay:calc(var(--flow-i, 0) * 40ms);}
+@keyframes flowIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+.motion-link{position:relative;}
+.nav a.motion-link::after,.foot-col a.motion-link::after{
+  content:"";position:absolute;left:14px;right:14px;bottom:6px;height:1.5px;
+  background:var(--copper-bright);transform:scaleX(0);transform-origin:left;
+  transition:transform .28s var(--ease-out);
+}
+.nav a.motion-link:hover::after,.foot-col a.motion-link:hover::after{transform:scaleX(1);}
+.chip--pulse{animation:chipPulse .38s var(--spring) both;}
+@keyframes chipPulse{0%{transform:scale(1);}45%{transform:scale(1.06);}100%{transform:scale(1.02);}}
+@media (prefers-reduced-motion:reduce){
+  .flow-section,.chip--pulse{animation:none!important;}
+  .scroll-progress{display:none;}
+}

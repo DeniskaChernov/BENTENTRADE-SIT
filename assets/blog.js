@@ -27,14 +27,57 @@
   async function loadStaticArticles() {
     if (staticArticles) return staticArticles;
     try {
-      const res = await (window.BTT_COOKIES && window.BTT_COOKIES.guardedFetch
-        ? window.BTT_COOKIES.guardedFetch("data/articles.json", { cache: "no-cache" })
-        : fetch("data/articles.json", { cache: "no-cache" }));
-      if (!res.ok) return [];
-      const data = await res.json();
-      staticArticles = (data && data.articles) || [];
+      const fetchOne = async (url) => {
+        const res = await (window.BTT_COOKIES && window.BTT_COOKIES.guardedFetch
+          ? window.BTT_COOKIES.guardedFetch(url, { cache: "default" })
+          : fetch(url, { cache: "default" }));
+        if (!res.ok) return [];
+        const data = await res.json();
+        return (data && data.articles) || [];
+      };
+      const [base, extra] = await Promise.all([
+        fetchOne("data/articles.json"),
+        fetchOne("data/articles-seo.json").catch(() => []),
+      ]);
+      const seen = new Set();
+      staticArticles = base.concat(extra).filter((a) => {
+        if (!a || !a.slug || seen.has(a.slug)) return false;
+        seen.add(a.slug);
+        return true;
+      });
+      staticArticles.sort((a, b) => String(b.published_at || "").localeCompare(String(a.published_at || "")));
       return staticArticles;
     } catch (e) { return []; }
+  }
+
+  function renderBody(text) {
+    if (!text) return "";
+    return String(text).split(/\n{2,}/).map((block) => {
+      const trimmed = block.trim();
+      if (!trimmed) return "";
+      if (trimmed.startsWith("## ")) {
+        return '<h2 class="article__h2">' + esc(trimmed.slice(3)) + "</h2>";
+      }
+      if (trimmed.startsWith("### ")) {
+        return '<h3 class="article__h3">' + esc(trimmed.slice(4)) + "</h3>";
+      }
+      const imgM = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+      if (imgM) {
+        const src = imgM[2].indexOf("http") === 0 ? imgM[2] : imgM[2].replace(/^\//, "");
+        return (
+          '<figure class="article__figure"><img src="' + esc(src) + '" alt="' + esc(imgM[1] || "") +
+          '" loading="lazy" decoding="async" width="1280" height="720"></figure>'
+        );
+      }
+      if (/^- /.test(trimmed)) {
+        const items = trimmed.split("\n")
+          .filter((l) => l.startsWith("- "))
+          .map((l) => "<li>" + esc(l.slice(2)) + "</li>")
+          .join("");
+        return '<ul class="article__list">' + items + "</ul>";
+      }
+      return "<p>" + esc(trimmed).replace(/\n/g, "<br>") + "</p>";
+    }).join("");
   }
 
   function localizeArticle(a) {
@@ -46,6 +89,7 @@
       title: loc.title || a.slug,
       excerpt: loc.excerpt || "",
       body: loc.body || "",
+      keywords: a.keywords || "",
     };
   }
 
@@ -127,7 +171,7 @@
         const title = a.title || a.slug || "";
         return (
           '<a class="blog-card reveal" href="article.html?slug=' + encodeURIComponent(a.slug) + '">' +
-          (img ? '<div class="blog-card__img"><img src="' + esc(img) + '" alt="' + esc(title) + '" loading="lazy"></div>' : "") +
+          (img ? '<div class="blog-card__img"><img src="' + esc(img) + '" alt="' + esc(title) + '" loading="lazy" decoding="async" width="640" height="400"></div>' : "") +
           '<div class="blog-card__body"><div class="blog-card__date">' + esc(fmtDate(a.published_at)) + "</div>" +
           "<h3>" + esc(title) + "</h3>" +
           (a.excerpt ? "<p>" + esc(a.excerpt) + "</p>" : "") +
@@ -135,7 +179,19 @@
         );
       }).join("") +
       "</div>";
-    root.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
+    const cards = root.querySelectorAll(".blog-card.reveal");
+    const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced || !("IntersectionObserver" in window)) {
+      cards.forEach((el) => el.classList.add("is-in"));
+      return;
+    }
+    cards.forEach((el, i) => { el.style.transitionDelay = (i * 70) + "ms"; });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -4% 0px", threshold: 0.06 });
+    cards.forEach((el) => io.observe(el));
   }
 
   async function renderSingle(root) {
@@ -169,7 +225,7 @@
     setMeta("og:url", pageUrl, "property");
     setCanonical(pageUrl);
     const kwTpl = t("meta.article.keywords") || "{title}, rotang, bententrade";
-    const kw = kwTpl.replace(/\{title\}/g, title).slice(0, 200);
+    const kw = (a.keywords || kwTpl.replace(/\{title\}/g, title)).slice(0, 200);
     setMeta("keywords", kw);
 
     const SEO = window.BTT_SEO || {};
@@ -191,7 +247,7 @@
       setMeta("og:image", abs, "property");
     }
 
-    const bodyHtml = esc(a.body || "").split(/\n{2,}/).map((p) => "<p>" + p.replace(/\n/g, "<br>") + "</p>").join("");
+    const bodyHtml = renderBody(a.body || "");
     let schemaEl = document.getElementById("article-schema");
     if (!schemaEl) {
       schemaEl = document.createElement("script");
