@@ -732,7 +732,9 @@ body:has(.drawer.on) .cookie-banner,
 body:has(.drawer-scrim.on) .cookie-banner,
 body:has(.search-ov.is-open) .cookie-banner,
 body:has(.bot-panel.open) .cookie-banner,
-body:has(.addr-modal.on) .cookie-banner{
+body:has(.addr-modal.on) .cookie-banner,
+body:has(.acc-side.is-open) .cookie-banner,
+body:has(.acc-scrim.on) .cookie-banner{
   opacity:0;pointer-events:none;transform:translateY(12px);
 }
 body.has-cookie-banner .bot-fab{bottom:calc(16px + var(--cookie-banner-h,0px));}
