@@ -726,7 +726,6 @@ a.mood-tile:hover img{transform:scale(1.04);}
   .cat-hero__card .lead{max-width:none;}
 }
 .account-flow{padding-block:clamp(36px,5vw,64px);}
-html.acc-loading [data-acc-demo],html.acc-cookie-wait [data-acc-demo]{display:none!important}
 html.acc-loading .acc-user,html.acc-cookie-wait .acc-user{display:none!important}
 html.acc-loading .acc-content,html.acc-cookie-wait .acc-content{opacity:0;pointer-events:none}
 html.acc-loading .acc-skeleton{display:block}
