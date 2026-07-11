@@ -485,10 +485,9 @@ Object.assign(window.BTT_I18N.en,{"type.eyebrow":"Quick pick","type.title":"Popu
 
 /* ---- account page ---- */
 Object.assign(window.BTT_I18N.ru,{
-  "acc.tier":"Постоянный клиент",
   "acc.nav.overview":"Обзор","acc.nav.orders":"Заказы","acc.nav.wishlist":"Избранное","acc.nav.addresses":"Адреса","acc.nav.settings":"Настройки","acc.nav.logout":"Выйти",
   "acc.ov.hi":"Здравствуйте,","acc.ov.sub":"Рады видеть вас снова. Вот сводка по вашему аккаунту.",
-  "acc.ov.s1":"Всего заказов","acc.ov.s2":"В избранном","acc.ov.s3":"Бонусных баллов",
+  "acc.ov.s1":"Всего заказов","acc.ov.s2":"В избранном",
   "acc.ov.recent":"Последние заказы","acc.ov.all":"Все заказы",
   "acc.st.ship":"В пути","acc.st.done":"Доставлен","acc.st.proc":"В обработке","acc.st.new":"Новый",
   "acc.items1":"1 товар","acc.items2":"2 товара","acc.items3":"3 товара",
@@ -502,10 +501,9 @@ Object.assign(window.BTT_I18N.ru,{
   "acc.set.prefs":"Предпочтения","acc.set.theme":"Тема оформления","acc.set.themehint":"Светлая / Тёмная","acc.set.switch":"Переключить","acc.set.lang":"Язык","acc.set.langhint":"Русский · O‘zbek · English","acc.set.news":"Рассылка","acc.set.newson":"Новинки и акции — включено"
 });
 Object.assign(window.BTT_I18N.uz,{
-  "acc.tier":"Doimiy mijoz",
   "acc.nav.overview":"Umumiy","acc.nav.orders":"Buyurtmalar","acc.nav.wishlist":"Sevimlilar","acc.nav.addresses":"Manzillar","acc.nav.settings":"Sozlamalar","acc.nav.logout":"Chiqish",
   "acc.ov.hi":"Salom,","acc.ov.sub":"Sizni yana ko‘rganimizdan xursandmiz. Akkaunt holati:",
-  "acc.ov.s1":"Jami buyurtmalar","acc.ov.s2":"Sevimlilarda","acc.ov.s3":"Bonus ballari",
+  "acc.ov.s1":"Jami buyurtmalar","acc.ov.s2":"Sevimlilarda",
   "acc.ov.recent":"So‘nggi buyurtmalar","acc.ov.all":"Barchasi",
   "acc.st.ship":"Yo‘lda","acc.st.done":"Yetkazilgan","acc.st.proc":"Tayyorlanmoqda","acc.st.new":"Yangi",
   "acc.items1":"1 mahsulot","acc.items2":"2 mahsulot","acc.items3":"3 mahsulot",
@@ -519,10 +517,9 @@ Object.assign(window.BTT_I18N.uz,{
   "acc.set.prefs":"Sozlamalar","acc.set.theme":"Mavzu","acc.set.themehint":"Yorug‘ / Qorong‘i","acc.set.switch":"Almashtirish","acc.set.lang":"Til","acc.set.langhint":"Rus · O‘zbek · English","acc.set.news":"Xabarnoma","acc.set.newson":"Yangiliklar va aksiyalar — yoqilgan"
 });
 Object.assign(window.BTT_I18N.en,{
-  "acc.tier":"Loyal customer",
   "acc.nav.overview":"Overview","acc.nav.orders":"Orders","acc.nav.wishlist":"Wishlist","acc.nav.addresses":"Addresses","acc.nav.settings":"Settings","acc.nav.logout":"Sign out",
   "acc.ov.hi":"Hello,","acc.ov.sub":"Good to see you again. Here is your account summary.",
-  "acc.ov.s1":"Total orders","acc.ov.s2":"In wishlist","acc.ov.s3":"Bonus points",
+  "acc.ov.s1":"Total orders","acc.ov.s2":"In wishlist",
   "acc.ov.recent":"Recent orders","acc.ov.all":"All orders",
   "acc.st.ship":"In transit","acc.st.done":"Delivered","acc.st.proc":"Processing","acc.st.new":"New",
   "acc.items1":"1 item","acc.items2":"2 items","acc.items3":"3 items",

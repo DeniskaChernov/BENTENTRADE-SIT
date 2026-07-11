@@ -69,17 +69,6 @@
     if(el) el.textContent=favCount();
   }
 
-  function hydrateOrderThumbs(){
-    document.querySelectorAll("[data-order-thumbs]").forEach(wrap=>{
-      const ids=(wrap.getAttribute("data-order-thumbs")||"").split(",").map(s=>s.trim()).filter(Boolean);
-      wrap.innerHTML=ids.map(id=>{
-        const imgs=window.BTT_PRODUCT_IMG?window.BTT_PRODUCT_IMG(id):null;
-        const src=(imgs&&imgs[0])?imgs[0].thumb:"";
-        return '<img src="'+esc(src)+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">';
-      }).join("");
-    });
-  }
-
   /* ---------------- API-backed hydration ---------------- */
   const ST = {
     new:        { ru:"Новый",      uz:"Yangi",         en:"New",        cls:"status--new" },
@@ -185,22 +174,28 @@
     const panel=document.querySelector('[data-acc-panel="orders"]');
     if(panel){
       panel.querySelectorAll(".order").forEach(n=>n.remove());
-      let empty=panel.querySelector("[data-acc-ord-empty]");
+      const empty=panel.querySelector("[data-acc-ord-empty]");
       if(!orders.length){
-        if(!empty){ empty=document.createElement("p"); empty.setAttribute("data-acc-ord-empty",""); empty.style.color="var(--muted)"; panel.appendChild(empty); }
-        empty.textContent=t("acc.ord.empty"); empty.hidden=false;
+        if(empty) empty.hidden=false;
       }else{
         if(empty) empty.hidden=true;
         panel.insertAdjacentHTML("beforeend", orders.map(o=>orderCard(o,true)).join(""));
       }
     }
-    const ovCard=document.querySelector('[data-acc-panel="overview"] .acc-card');
-    if(ovCard){
-      ovCard.querySelectorAll(".order").forEach(n=>n.remove());
-      ovCard.insertAdjacentHTML("beforeend", orders.slice(0,2).map(o=>orderCard(o,false)).join(""));
+    const ovWrap=document.querySelector("[data-acc-recent-wrap]");
+    const recentEmpty=document.querySelector("[data-acc-recent-empty]");
+    if(ovWrap){
+      ovWrap.querySelectorAll(".order").forEach(n=>n.remove());
+      const recent=orders.slice(0,2);
+      if(!recent.length){
+        if(recentEmpty) recentEmpty.hidden=false;
+      }else{
+        if(recentEmpty) recentEmpty.hidden=true;
+        ovWrap.insertAdjacentHTML("beforeend", recent.map(o=>orderCard(o,false)).join(""));
+      }
     }
-    const statN=document.querySelector('[data-acc-panel="overview"] .acc-stats .acc-stat .n');
-    if(statN) statN.textContent=orders.length;
+    const statOrders=document.querySelector("[data-acc-stat-orders]");
+    if(statOrders) statOrders.textContent=String(orders.length);
     wireRepeat();
     wireOrderExpand();
   }
@@ -221,10 +216,16 @@
     const grid=document.querySelector(".addr-grid");
     if(!grid) return;
     const addBtn=grid.querySelector("[data-addr-add]");
+    const emptyEl=grid.querySelector("[data-acc-addr-empty]");
     grid.querySelectorAll(".addr:not(.addr--add)").forEach(n=>n.remove());
-    const html=addresses.map(addrCard).join("");
-    if(addBtn) addBtn.insertAdjacentHTML("beforebegin", html);
-    else grid.insertAdjacentHTML("afterbegin", html);
+    if(!addresses.length){
+      if(emptyEl) emptyEl.hidden=false;
+    }else{
+      if(emptyEl) emptyEl.hidden=true;
+      const html=addresses.map(addrCard).join("");
+      if(addBtn) addBtn.insertAdjacentHTML("beforebegin", html);
+      else grid.insertAdjacentHTML("afterbegin", html);
+    }
     grid.__addresses=addresses;
     wireAddresses();
   }
@@ -365,10 +366,16 @@
     const u=me.user;
 
     // Header / sidebar identity
-    const nmeEl=document.querySelector(".acc-user .nm");
-    if(nmeEl && u.name) nmeEl.textContent=u.name;
+    const nmeEl=document.querySelector("[data-acc-user-name]") || document.querySelector(".acc-user .nm");
+    if(nmeEl) nmeEl.textContent=u.name || u.email || "—";
     const ava=document.querySelector(".acc-ava");
     if(ava){ const initials=(u.name||u.email||"?").trim().split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase(); ava.textContent=initials||"?"; }
+    const subEl=document.querySelector("[data-acc-user-sub]");
+    if(subEl){
+      const sub=u.phone||u.email||"";
+      if(sub){ subEl.textContent=sub; subEl.hidden=false; }
+      else subEl.hidden=true;
+    }
     const hiName=document.querySelector('[data-acc-panel="overview"] .acc-h h1');
     if(hiName && u.name){ hiName.innerHTML='<span data-i18n="acc.ov.hi">'+esc(t("acc.ov.hi"))+'</span>, '+esc(u.name.split(/\s+/)[0])+' 👋'; }
 
@@ -525,11 +532,8 @@
       });
     }
 
-    hydrateOrderThumbs();
     renderWishlist();
     syncStats();
-    wireRepeat();
-    wireOrderExpand();
     wireAddresses();
     hydrateAccount();
 

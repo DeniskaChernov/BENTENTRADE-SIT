@@ -1022,7 +1022,8 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 .acc-h p{color:var(--muted);margin-top:6px;}
 
 /* overview stat cards */
-.acc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;}
+.acc-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px;}
+.acc-empty{color:var(--muted);font-size:15px;line-height:1.55;margin:0 0 16px;}
 .acc-stat{border-radius:var(--r-lg);padding:22px 24px;}
 .acc-stat .n{font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.02em;line-height:1;}
 .acc-stat .n span{color:var(--copper-bright);}
@@ -1080,6 +1081,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 
 /* address cards */
 .addr-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.addr-grid .acc-empty{grid-column:1/-1;margin-bottom:0;}
 .addr{border:1.5px solid var(--line);border-radius:var(--r-lg);padding:22px 24px;position:relative;}
 .addr.is-default{border-color:var(--copper);}
 .addr__tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--copper);margin-bottom:12px;}
