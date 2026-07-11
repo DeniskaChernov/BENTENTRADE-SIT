@@ -312,6 +312,7 @@ BOT_DATABASE_URL        # опционально
 | Документ | Содержание |
 |----------|------------|
 | [CRM-QR-INTEGRATION.md](./CRM-QR-INTEGRATION.md) | QR, webhooks, поля БД, API-контракты |
+| [CRM-AGENT-GUIDE.md](./CRM-AGENT-GUIDE.md) | Пошаговый план для агента CRM, границы ответственности |
 | [DEPLOY.md](../DEPLOY.md) | Деплой сайта на Cloudflare |
 | `worker/routes/orders.ts` | API заказов сайта |
 | `assets/account.js` | Кабинет, раскрывающиеся этапы заказа |
