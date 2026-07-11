@@ -1503,7 +1503,7 @@ a.dl-name:hover{color:var(--copper);}
 .auth-form{display:none;}
 .auth-form.is-active{display:block;}
 .auth-hint{font-size:13px;color:var(--muted);margin-top:10px;}
-.auth-err{margin-top:12px;padding:10px 14px;border-radius:var(--r-md);background:rgba(200,60,50,.1);color:#c0392b;font-size:14px;font-weight:500;}
+.auth-err{margin-top:12px;padding:10px 14px;border-radius:var(--r-md);background:rgba(200,60,50,.1);color:#c0392b;font-size:14px;font-weight:500;line-height:1.45;text-wrap:pretty;}
 [data-theme="dark"] .auth-tabs button.is-active{background:var(--ink-2);color:var(--on-dark);}
 
 /* ---- account: extra order statuses ---- */

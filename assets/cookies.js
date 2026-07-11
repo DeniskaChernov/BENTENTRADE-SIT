@@ -119,7 +119,7 @@
 
   function showBanner() {
     if (!bannerEl) buildBanner();
-    if (hasConsent() || status() === "rejected") return;
+    if (hasConsent()) return;
     bannerEl.classList.add("is-on");
     bannerEl.setAttribute("aria-hidden", "false");
     watchBannerSize();
@@ -170,16 +170,18 @@
   }
 
   function reject() {
-    try {
-      localStorage.setItem(KEY, "rejected");
-    } catch (e) { /* ignore */ }
+    /* «Только просмотр» — скрыть до перезагрузки; согласие не даётся, API заблокирован. */
     hideBanner();
     document.dispatchEvent(new CustomEvent("btt:cookies-rejected"));
   }
 
   function init() {
     buildBanner();
-    if (!hasConsent() && status() !== "rejected") showBanner();
+    /* Миграция: старый «rejected» больше не подавляет баннер. */
+    try {
+      if (localStorage.getItem(KEY) === "rejected") localStorage.removeItem(KEY);
+    } catch (e) { /* ignore */ }
+    if (!hasConsent()) showBanner();
     document.addEventListener("btt:lang", applyBannerText);
   }
 
