@@ -1373,6 +1373,11 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   transition:background .2s ease;
   animation:dlIn .42s var(--ease-out) both;
 }
+@media (max-width:380px){
+  .dl-item{grid-template-columns:56px 1fr auto;gap:10px;padding:10px 6px;}
+  .dl-thumb{width:56px;height:56px;}
+  .dl-del{align-self:center;}
+}
 @keyframes dlIn{from{opacity:0;transform:translateX(10px);}to{opacity:1;transform:none;}}
 .dl-item:hover{background:var(--cream);}
 .dl-thumb{width:68px;height:68px;border-radius:var(--r-md);overflow:hidden;background:var(--cream-2);display:block;flex:none;}
@@ -1501,11 +1506,11 @@ a.dl-name:hover{color:var(--copper);}
 .faq-acc{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:12px;}
 .faq-item{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface-bg);box-shadow:var(--spatial-shadow);overflow:hidden;}
 .faq-h{margin:0;font:inherit;}
-.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;text-align:left;
+.faq-q{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;width:100%;text-align:left;
   background:none;border:0;cursor:pointer;padding:20px 24px;color:var(--text);
-  font-family:var(--display);font-weight:700;font-size:clamp(16px,2.1vw,19px);letter-spacing:-.01em;}
+  font-family:var(--display);font-weight:700;font-size:clamp(16px,2.1vw,19px);letter-spacing:-.01em;text-wrap:pretty;}
 .faq-q:focus-visible{outline:2px solid var(--copper);outline-offset:-2px;}
-.faq-chev{flex:none;width:22px;height:22px;color:var(--muted);transition:transform .25s ease;}
+.faq-chev{flex:none;width:22px;height:22px;color:var(--muted);transition:transform .25s ease;margin-top:2px;}
 .faq-q[aria-expanded="true"] .faq-chev{transform:rotate(180deg);}
 .faq-a{padding:0 24px 20px;}
 .faq-a p{color:var(--muted);line-height:1.62;margin:0;}
