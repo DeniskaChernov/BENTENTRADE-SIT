@@ -117,16 +117,25 @@
     const actions = withActions
       ? '<div class="order__actions"><button class="btn btn--dark btn--sm" data-order-repeat="'+esc(ids.join(","))+'">'+esc(t("acc.ord.repeat"))+'</button></div>'
       : "";
-    return '<div class="order">'+
+    return '<article class="order">'+
       '<div class="order__hit" role="button" tabindex="0" aria-expanded="false" aria-label="'+esc(t("acc.ord.expand"))+'">'+
-      '<div class="order__top"><div><div class="order__id">#'+esc(o.public_id||("BT-"+o.id))+'</div>'+
-      '<div class="order__date">'+esc(fmtDate(o.created_at))+'</div></div>'+
-      '<span class="status '+st.cls+'">'+esc(lbl)+'</span></div>'+
-      '<div class="order__body"><div class="order__thumbs">'+ids.map(orderThumb).join("")+'</div>'+
-      '<div class="order__meta"><span>'+esc(itemsLabel(count))+'</span></div>'+
-      '<div class="order__total">'+esc((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(o.total,{raw:true}):(o.total+" сум"))+'</div></div>'+
+      '<header class="order__head">'+
+        '<div class="order__info">'+
+          '<span class="order__id">#'+esc(o.public_id||("BT-"+o.id))+'</span>'+
+          '<span class="order__date">'+esc(fmtDate(o.created_at))+'</span>'+
+        '</div>'+
+        '<span class="status '+st.cls+'">'+esc(lbl)+'</span>'+
+        '<span class="order__total">'+esc((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(o.total,{raw:true}):(o.total+" сум"))+'</span>'+
+      '</header>'+
+      '<div class="order__foot">'+
+        '<div class="order__items">'+
+          '<div class="order__thumbs">'+ids.map(orderThumb).join("")+'</div>'+
+          '<span class="order__meta">'+esc(itemsLabel(count))+'</span>'+
+        '</div>'+
+        '<span class="order__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>'+
       '</div>'+
-      '<div class="order__timeline" hidden>'+orderTimeline(o.status)+'</div>'+actions+'</div>';
+      '</div>'+
+      '<div class="order__timeline" hidden>'+orderTimeline(o.status)+'</div>'+actions+'</article>';
   }
 
   function repeatSnapshot(id){
@@ -138,7 +147,8 @@
   function wireRepeat(){
     document.querySelectorAll("[data-order-repeat]").forEach(b=>{
       if(b.dataset.repeatWired) return; b.dataset.repeatWired="1";
-      b.addEventListener("click",()=>{
+      b.addEventListener("click",(e)=>{
+        e.stopPropagation();
         const ids=(b.getAttribute("data-order-repeat")||"").split(",").map(s=>s.trim()).filter(Boolean);
         let added=0;
         ids.forEach(id=>{ const s=repeatSnapshot(id); if(s&&window.BTT_CART){ window.BTT_CART.addToCart(s,1); added++; } });
