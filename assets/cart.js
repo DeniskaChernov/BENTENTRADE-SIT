@@ -72,7 +72,14 @@
         errOrder:"Couldn't place the order. Try again or message us.",
         close:"Close",less:"Less",more:"More"}
   };
-  function t(k){ return (STR[lang()]||STR.ru)[k]; }
+  function t(k){
+    if(window.BTT_I18N && window.BTT_I18N.t){
+      const v=window.BTT_I18N.t(k);
+      if(v!==k) return v;
+    }
+    const s=(STR[lang()]||STR.ru)[k];
+    return s!=null?s:k;
+  }
 
   /* ---------- storage ---------- */
   function read(key){ try{ const v=JSON.parse(localStorage.getItem(key)); return (v&&typeof v==="object"&&!Array.isArray(v))?v:{}; }catch(e){ return {}; } }
@@ -266,7 +273,7 @@
     });
     root.querySelectorAll("[data-dl-del]").forEach(b=>b.addEventListener("click",()=>setQty(b.getAttribute("data-dl-del"),0)));
     const co=root.querySelector("[data-cart-checkout]");
-    if(co) co.addEventListener("click", renderCheckout);
+    if(co) co.addEventListener("click", async ()=>{ await prefillCheckoutFromAccount(); renderCheckout(); });
     root.querySelectorAll("[data-cart-back]").forEach(b=>b.addEventListener("click", renderCartBody));
     const tg=root.querySelector("[data-order-tg]");
     if(tg) tg.addEventListener("click", ()=>openMsg("tg"));
@@ -275,6 +282,7 @@
     const form=root.querySelector("[data-co-form]");
     if(form){
       form.addEventListener("submit",e=>{ e.preventDefault(); submitOrder(root); });
+      form.addEventListener("input",()=>{ saveCheckout(readForm(root)); });
       const addr=root.querySelector("[data-co-addr]");
       root.querySelectorAll("[name=method]").forEach(r=>r.addEventListener("change",()=>{
         if(addr) addr.hidden = (root.querySelector("[name=method]:checked")||{}).value==="pickup";
@@ -295,6 +303,31 @@
   // Remembered contact details so the form survives re-renders / language switches.
   const getCheckout = ()=>read("btt_checkout");
   function saveCheckout(v){ write("btt_checkout", v); }
+
+  async function prefillCheckoutFromAccount(){
+    if(!window.BTT_API || (window.BTT_COOKIES && !window.BTT_COOKIES.hasConsent())) return;
+    try{
+      const me=await window.BTT_API.me();
+      if(!me||!me.user) return;
+      const u=me.user;
+      const ck=getCheckout();
+      let ch=false;
+      if(u.name&&!ck.name){ ck.name=u.name; ch=true; }
+      if(u.phone&&!ck.phone){ ck.phone=u.phone; ch=true; }
+      if(!ck.address){
+        try{
+          const ar=await window.BTT_API.listAddresses();
+          const addrs=ar.addresses||[];
+          const def=addrs.find(a=>a.is_default)||addrs[0];
+          if(def){
+            const line=[def.city,def.line].filter(Boolean).join(", ");
+            if(line){ ck.address=line; ch=true; }
+          }
+        }catch(e){}
+      }
+      if(ch) saveCheckout(ck);
+    }catch(e){}
+  }
 
   // Human-readable order text for the optional messenger hand-off.
   function buildOrderText(contact, orderId){
@@ -510,6 +543,7 @@
   document.addEventListener("DOMContentLoaded",function(){
     buildShell();
     renderCartBody(); renderFavBody(); renderBadges(); syncFavButtons();
+    prefillCheckoutFromAccount();
 
     wireProductButtons();
     window.BTT_syncFavs = syncFavButtons;
@@ -530,6 +564,7 @@
     });
 
     document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeAll(); });
+    document.addEventListener("btt:cookies-accepted", ()=>{ prefillCheckoutFromAccount(); });
     // re-localize drawers + re-sync hearts on language change
     new MutationObserver(()=>{ renderCartBody(); renderFavBody(); }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
   });
