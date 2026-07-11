@@ -213,6 +213,8 @@ p{margin:0;text-wrap:pretty;}
 .btn--dark:hover{background:var(--copper);}
 .btn--copper{background:var(--copper);color:#fff;}
 .btn--copper:hover{background:var(--copper-bright);}
+.btn--primary{background:var(--copper);color:#fff;}
+.btn--primary:hover{background:var(--copper-bright);}
 .btn--ghost{background:transparent;border:1.5px solid var(--line-2);color:var(--text);}
 .btn--ghost:hover{border-color:var(--ink);background:var(--ink);color:var(--on-dark);}
 .btn .arr{width:18px;height:18px;display:grid;place-items:center;}
