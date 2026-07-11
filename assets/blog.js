@@ -275,8 +275,13 @@
       '<a class="article__back" href="blog.html">← ' + esc(t("blog.back")) + "</a>" +
       '<div class="article__date">' + esc(fmtDate(a.published_at)) + "</div>" +
       "<h1>" + esc(title) + "</h1>" +
-      (img ? '<div class="article__cover"><img src="' + esc(img) + '" alt="' + esc(title) + '" loading="lazy" decoding="async"></div>' : "") +
-      '<div class="article__body">' + bodyHtml + "</div></article>";
+      (img ? '<div class="article__cover"><img src="' + esc(img) + '" alt="' + esc(title) + '" loading="eager" decoding="async" fetchpriority="high"></div>' : "") +
+      '<div class="article__body">' + bodyHtml + "</div>" +
+      '<div class="article__cta">' +
+      '<a class="btn btn--copper" href="catalog.html">' + esc(t("nav.catalog2") || t("nav.catalog")) + "</a>" +
+      '<a class="btn btn--ghost" href="contacts.html">' + esc(t("nav.contacts")) + "</a>" +
+      '<a class="btn btn--ghost" href="blog.html">' + esc(t("nav.blog")) + "</a>" +
+      "</div></article>";
     root.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
   }
 
