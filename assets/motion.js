@@ -12,7 +12,7 @@
   }
 
   function initLinkPolish() {
-    document.querySelectorAll(".nav a, .foot-col a, .blog-card__more").forEach(function (a) {
+    document.querySelectorAll(".nav a, .foot-col a").forEach(function (a) {
       if (a.classList.contains("motion-link")) return;
       a.classList.add("motion-link");
     });

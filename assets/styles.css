@@ -489,6 +489,7 @@ body.has-cookie-banner .site-foot{padding-bottom:calc(var(--cookie-banner-h, 0px
 .site-foot__top img{height:34px;width:auto;margin-bottom:18px;}
 .foot-col h5{font-family:var(--display);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-dark-muted);font-weight:700;margin-bottom:18px;}
 .foot-col a,.foot-col p{display:block;color:var(--on-dark);font-size:15px;margin-bottom:11px;opacity:.85;transition:opacity .2s,color .2s;overflow-wrap:anywhere;}
+.foot-col a{display:inline-block;width:auto;max-width:100%;}
 .foot-col a:hover{color:var(--copper-bright);opacity:1;}
 .site-foot__bottom{
   border-top:1px solid var(--on-dark-line);
@@ -775,12 +776,20 @@ body.has-cookie-banner .bot-panel{bottom:calc(12px + var(--cookie-banner-h,0px))
 .flow-section{animation:flowIn .7s var(--ease-out) both;animation-delay:calc(var(--flow-i, 0) * 40ms);}
 @keyframes flowIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
 .motion-link{position:relative;}
-.nav a.motion-link::after,.foot-col a.motion-link::after{
+.nav a.motion-link::after{
   content:"";position:absolute;left:14px;right:14px;bottom:6px;height:1.5px;
   background:var(--copper-bright);transform:scaleX(0);transform-origin:left;
   transition:transform .28s var(--ease-out);
 }
-.nav a.motion-link:hover::after,.foot-col a.motion-link:hover::after{transform:scaleX(1);}
+.foot-col a.motion-link::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;
+  background:var(--copper-bright);transform:scaleX(0);transform-origin:left;
+  transition:transform .28s var(--ease-out);
+}
+@media (hover:hover){
+  .nav a.motion-link:hover::after,.foot-col a.motion-link:hover::after{transform:scaleX(1);}
+}
+.nav a.motion-link:focus-visible::after,.foot-col a.motion-link:focus-visible::after{transform:scaleX(1);}
 .chip--pulse{animation:chipPulse .38s var(--spring) both;}
 @keyframes chipPulse{0%{transform:scale(1);}45%{transform:scale(1.06);}100%{transform:scale(1.02);}}
 @media (prefers-reduced-motion:reduce){
