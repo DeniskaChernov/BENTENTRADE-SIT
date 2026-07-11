@@ -82,7 +82,9 @@
 
     function add(text, who){
       const m=document.createElement("div");
-      m.className="bot-msg bot-msg--"+who; m.innerHTML=text;
+      m.className="bot-msg bot-msg--"+who;
+      if(who === "user") m.textContent = text;
+      else m.innerHTML = text;
       msgs.appendChild(m); msgs.scrollTop=msgs.scrollHeight;
       return m;
     }

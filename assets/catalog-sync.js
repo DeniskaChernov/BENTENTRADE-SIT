@@ -64,8 +64,8 @@
       '<button class="add" data-add data-i18n-aria="a11y.add" aria-label="' + esc(t("a11y.add")) + '">' + ADD_SVG + "</button>" +
       "</div><div>" +
       '<div class="product__cat">' + esc(p.category_label || "") + "</div>" +
-      '<div class="product__name" style="margin-top:4px">' + esc(p.name || "") + "</div>" +
-      '<div class="price" style="margin-top:8px"><span class="price__now">' + money(p.price_now) + "</span>" + old + "</div>" +
+      '<div class="product__name">' + esc(p.name || "") + "</div>" +
+      '<div class="price"><span class="price__now">' + money(p.price_now) + "</span>" + old + "</div>" +
       "</div>";
     return art;
   }

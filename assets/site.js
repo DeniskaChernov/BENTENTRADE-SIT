@@ -139,7 +139,7 @@
       const href = a.getAttribute("href");
       if(!href || href.startsWith("#") || href.startsWith("http") || href.startsWith("tel:") || href.startsWith("mailto:")) return;
       if(a.target === "_blank" || a.hasAttribute("download")) return;
-      if(a.closest(".bot-panel") || a.closest(".search-ov")) return;
+      if(a.closest(".bot-panel") || a.closest(".search-ov") || a.closest(".cookie-banner") || a.closest(".drawer") || a.closest(".mobile-drawer")) return;
       a.addEventListener("click", e=>{
         if(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
         e.preventDefault();

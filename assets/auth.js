@@ -21,11 +21,15 @@
     const tabsWrap = document.querySelector("[data-auth-tabs]");
     if (!tabsWrap) return;
 
-    // Already signed in → straight to the account.
-    try {
-      const me = await window.BTT_API.me();
-      if (me && me.user) { window.location.replace("account.html"); return; }
-    } catch (e) { /* backend offline — stay on the form */ }
+    // Already signed in → straight to the account (only after cookie consent).
+    if (!window.BTT_COOKIES || window.BTT_COOKIES.hasConsent()) {
+      try {
+        const me = await window.BTT_API.me();
+        if (me && me.user) { window.location.replace("account.html"); return; }
+      } catch (e) {
+        if (window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(e)) { /* wait for consent */ }
+      }
+    }
 
     const tabs = tabsWrap.querySelectorAll("[data-auth-tab]");
     const forms = document.querySelectorAll("[data-auth-form]");

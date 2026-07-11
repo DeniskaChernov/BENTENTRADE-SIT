@@ -86,7 +86,7 @@
     document.dispatchEvent(new CustomEvent("btt:favs-change"));
     // Best-effort server sync on every toggle (site-wide, not just the account
     // page). Anonymous users get a 401 which we simply ignore.
-    if(window.BTT_API && window.BTT_API.putFavorites){
+    if(window.BTT_API && window.BTT_API.putFavorites && (!window.BTT_COOKIES || window.BTT_COOKIES.hasConsent())){
       clearTimeout(_favSyncT);
       _favSyncT=setTimeout(()=>{
         try{ Promise.resolve(window.BTT_API.putFavorites(Object.keys(getFavs()))).catch(()=>{}); }catch(e){}

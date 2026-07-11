@@ -89,10 +89,32 @@
     return fetch(url, init);
   }
 
+  var bannerRO = null;
+
+  function syncBannerOffset() {
+    if (!bannerEl || !bannerEl.classList.contains("is-on")) {
+      document.body.classList.remove("has-cookie-banner");
+      document.documentElement.style.removeProperty("--cookie-banner-h");
+      return;
+    }
+    document.body.classList.add("has-cookie-banner");
+    var h = Math.ceil(bannerEl.getBoundingClientRect().height);
+    document.documentElement.style.setProperty("--cookie-banner-h", h + "px");
+  }
+
+  function watchBannerSize() {
+    if (!bannerEl || !("ResizeObserver" in window)) return;
+    if (bannerRO) bannerRO.disconnect();
+    bannerRO = new ResizeObserver(syncBannerOffset);
+    bannerRO.observe(bannerEl);
+    syncBannerOffset();
+  }
+
   function hideBanner() {
     if (!bannerEl) return;
     bannerEl.classList.remove("is-on");
     bannerEl.setAttribute("aria-hidden", "true");
+    syncBannerOffset();
   }
 
   function showBanner() {
@@ -100,6 +122,7 @@
     if (hasConsent() || status() === "rejected") return;
     bannerEl.classList.add("is-on");
     bannerEl.setAttribute("aria-hidden", "false");
+    watchBannerSize();
   }
 
   function applyBannerText() {
@@ -112,6 +135,7 @@
     if (accept) accept.textContent = t("cookie.banner.accept");
     if (reject) reject.textContent = t("cookie.banner.reject");
     if (more) more.textContent = t("cookie.banner.more");
+    syncBannerOffset();
   }
 
   function buildBanner() {
@@ -134,6 +158,7 @@
     bannerEl.querySelector("[data-cookie-accept]").addEventListener("click", accept);
     bannerEl.querySelector("[data-cookie-reject]").addEventListener("click", reject);
     applyBannerText();
+    window.addEventListener("resize", syncBannerOffset, { passive: true });
   }
 
   function accept() {
