@@ -58,22 +58,33 @@ function main() {
     lines.push("");
   });
 
-  // A couple of sample articles so the blog + CRM have content to show.
-  lines.push(
-    `INSERT OR REPLACE INTO articles (id, slug, status, published_at) VALUES ` +
-    `(1, 'iskusstvennyy-rotang', 'published', datetime('now'));`,
-  );
-  const art1 = {
-    ru: { title: "Что такое искусственный ротанг", excerpt: "Разбираемся, из чего сделано плетение и почему оно служит годами.", body: "Искусственный ротанг — это прочное волокно, окрашенное в массе. Оно не выгорает на солнце, не боится влаги и мороза и не требует особого ухода." },
-    uz: { title: "Sun'iy rotang nima", excerpt: "To'quv nimadan tayyorlangani va nega yillar xizmat qilishini ko'ramiz.", body: "Sun'iy rotang — massasiga bo'yalgan mustahkam tola. Quyoshda rangi o'chmaydi, namlik va sovuqdan qo'rqmaydi va alohida parvarish talab qilmaydi." },
-    en: { title: "What is synthetic rattan", excerpt: "A look at what the weave is made of and why it lasts for years.", body: "Synthetic rattan is a durable fibre dyed all the way through. It won't fade in the sun, isn't afraid of moisture or frost and needs no special care." },
-  };
-  for (const lang of LANGS) {
-    const a = art1[lang];
+  // Seed all blog & SEO articles into the database so the blog + CRM are rich and populated.
+  const a1Raw = JSON.parse(readFileSync(join(root, "data/articles.json"), "utf8"));
+  const a2Raw = JSON.parse(readFileSync(join(root, "data/articles-seo.json"), "utf8"));
+  const allArticles = [
+    ...(Array.isArray(a1Raw) ? a1Raw : a1Raw.articles || []),
+    ...(Array.isArray(a2Raw) ? a2Raw : a2Raw.articles || [])
+  ];
+
+  let artId = 1;
+  const seenSlugs = new Set();
+  for (const art of allArticles) {
+    if (!art.slug || seenSlugs.has(art.slug)) continue;
+    seenSlugs.add(art.slug);
+    const pub = art.published_at || "2026-03-01";
+    const cover = art.cover_media || "assets/hero-garden-furniture.png";
     lines.push(
-      `INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES ` +
-      `(1, ${q(lang)}, ${q(a.title)}, ${q(a.excerpt)}, ${q(a.body)});`,
+      `INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES ` +
+      `(${artId}, ${q(art.slug)}, ${q(cover)}, 'published', ${q(pub)});`,
     );
+    for (const lang of LANGS) {
+      const a = (art.i18n && (art.i18n[lang] || art.i18n.ru)) || {};
+      lines.push(
+        `INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES ` +
+        `(${artId}, ${q(lang)}, ${q(a.title || "")}, ${q(a.excerpt || "")}, ${q(a.body || "")});`,
+      );
+    }
+    artId++;
   }
   lines.push("");
   lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('phone', '+998 77 104 44 22');`);

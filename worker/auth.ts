@@ -11,11 +11,17 @@ type Ctx = Context<{ Bindings: Env; Variables: Variables }>;
 
 function b64(bytes: ArrayBuffer | Uint8Array): string {
   const arr = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
-  return Buffer.from(arr).toString("base64");
+  let s = "";
+  for (const b of arr) s += String.fromCharCode(b);
+  return btoa(s);
 }
 function unb64(s: string): Uint8Array {
-  return new Uint8Array(Buffer.from(s, "base64"));
+  const bin = atob(s);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
 }
+
 
 export async function hashPassword(password: string): Promise<string> {
   const salt = crypto.getRandomValues(new Uint8Array(16));

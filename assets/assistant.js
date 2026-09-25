@@ -143,6 +143,20 @@
       setTimeout(()=> botSay(d.reply, 1500), 900);
     });
 
+    function syncDynamicSettings(s) {
+      if (!s) return;
+      const phone = s.phone || "+998 77 104 44 22";
+      const tg = (s.telegram || "bententradeuz").replace(/^@/, "");
+      T.ru.ans["Связаться с менеджером"] = "Конечно! На связи в Telegram <a href='https://t.me/" + tg + "' target='_blank' rel='noopener'>@" + tg + "</a> и по телефону <a href='tel:" + phone.replace(/[^\d+]/g, "") + "'>" + phone + "</a>. Оформить заказ через корзину?";
+      T.uz.ans["Menejer bilan bog‘lanish"] = "Albatta! Telegramda <a href='https://t.me/" + tg + "' target='_blank' rel='noopener'>@" + tg + "</a> va telefon <a href='tel:" + phone.replace(/[^\d+]/g, "") + "'>" + phone + "</a>. Buyurtmani savat orqali rasmiylashtiraymi?";
+      T.en.ans["Talk to a manager"] = "Of course! We are on Telegram <a href='https://t.me/" + tg + "' target='_blank' rel='noopener'>@" + tg + "</a> and phone <a href='tel:" + phone.replace(/[^\d+]/g, "") + "'>" + phone + "</a>. Want to place the order via the cart?";
+    }
+    document.addEventListener("btt:settings", (e) => syncDynamicSettings(e.detail));
+    try {
+      const cached = sessionStorage.getItem("btt_settings");
+      if (cached) syncDynamicSettings(JSON.parse(cached));
+    } catch (_) {}
+
     document.addEventListener("btt:lang", applyLang);
     new MutationObserver(()=> applyLang()).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
     applyLang();

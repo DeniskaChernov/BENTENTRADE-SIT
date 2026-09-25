@@ -251,10 +251,571 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs) VALUES ('p50', 'uz', '«Oila» ovqat stoli', 'Bog‘ mebeli', 'Yengil alyumin karkasdagi sun’iy rotangdan bog‘ mebeli. Zich qo‘l to‘quvi quyoshda rangini yo‘qotmaydi, yomg‘ir va harorat o‘zgarishidan qo‘rqmaydi — to‘plam yil bo‘yi terassa, hovli yoki bog‘da turishi mumkin.', '["2 o‘rinli","3 o‘rinli","Burchak"]', '{"mat":"Sun’iy rotang + alyumin","dim":"Yostiqlar bilan, har faslga","fin":"UV-chidamli to‘quv","wt":"Alyumin karkas","seat":"Terassa, hovli, bog‘","made":"Toshkent, qo‘l mehnati"}');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs) VALUES ('p50', 'en', 'Family Dining Set', 'Garden furniture', 'Garden furniture in synthetic rattan over a light aluminium frame. The dense hand-weave won''t fade in the sun and shrugs off rain and temperature swings — the set can stay on the terrace, in the yard or garden all year round.', '["2-seater","3-seater","Corner"]', '{"mat":"Synthetic rattan + aluminium","dim":"With cushions, all-season","fin":"UV-stable weave","wt":"Aluminium frame","seat":"Terrace, yard, garden","made":"Tashkent, by hand"}');
 
-INSERT OR REPLACE INTO articles (id, slug, status, published_at) VALUES (1, 'iskusstvennyy-rotang', 'published', datetime('now'));
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'ru', 'Что такое искусственный ротанг', 'Разбираемся, из чего сделано плетение и почему оно служит годами.', 'Искусственный ротанг — это прочное волокно, окрашенное в массе. Оно не выгорает на солнце, не боится влаги и мороза и не требует особого ухода.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'uz', 'Sun''iy rotang nima', 'To''quv nimadan tayyorlangani va nega yillar xizmat qilishini ko''ramiz.', 'Sun''iy rotang — massasiga bo''yalgan mustahkam tola. Quyoshda rangi o''chmaydi, namlik va sovuqdan qo''rqmaydi va alohida parvarish talab qilmaydi.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'en', 'What is synthetic rattan', 'A look at what the weave is made of and why it lasts for years.', 'Synthetic rattan is a durable fibre dyed all the way through. It won''t fade in the sun, isn''t afraid of moisture or frost and needs no special care.');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (1, 'zachem-iskusstvennyy-rotang', 'assets/hero-rattan.png', 'published', '2026-02-10');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'ru', 'Зачем выбирать искусственный ротанг', 'Натуральный вид без гниения, выгорания и сложного ухода — разбираем главные преимущества материала для мебели и декора.', 'Искусственный ротанг — это полиэтиленовое волокно, окрашенное в массе. Оно выглядит как природное плетение, но не боится солнца, дождя и мороза.
+
+## Для сада и террасы
+
+Для садовой мебели это означает, что комплект может стоять на террасе круглый год: не нужно убирать в дом на зиму и пропитывать маслом.
+
+- Устойчив к УФ и перепадам температур
+- Не требует сезонного ухода маслом
+- Легко моется влажной тканью
+
+![Искусственный ротанг](assets/hero-rattan.png)
+
+## Для кашпо и корзин
+
+Материал не впитывает влагу и легко моется — идеален для кашпо на открытом воздухе и корзин в ванной.
+
+## Производство Bententrade
+
+В Bententrade мы плетём вручную из собственного ротанга — так контролируем плотность, цвет и качество каждой партии. Закажите образец или комплект через @bententradeuz.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'uz', 'Nima uchun sun’iy rotangni tanlash kerak', 'Tabiiy ko‘rinish — chirish, rang o‘zgarishi va murakkab parvarishsiz. Mebel va dekor uchun asosiy afzalliklar.', 'Sun’iy rotang — massada bo‘yalgan polietilen tolasi. U tabiiy to‘quvga o‘xshaydi, lekin quyosh, yomg‘ir va sovuqqa chidamli.
+
+Bog‘ mebeli uchun bu terassada yil bo‘yi turishi mumkinligini anglatadi: qishga uyga olib kirish yoki moy surtish shart emas. Gultuvak va savatlar uchun — material namlikni singdirmaydi va oson yuviladi.
+
+Bententrade’da o‘z rotangimizdan qo‘lda to‘qiymiz — har bir partiyaning zichligi, rangi va sifatini nazorat qilamiz.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'en', 'Why choose synthetic rattan', 'A natural look without rot, fading or fussy care — the main benefits for furniture and décor.', 'Synthetic rattan is polyethylene fibre coloured through the material. It looks like natural weaving but shrugs off sun, rain and frost.
+
+For garden furniture that means the set can stay on the terrace all year — no need to store indoors or oil the weave. For planters and baskets the material won''t absorb moisture and wipes clean easily.
+
+At Bententrade we weave by hand from our own rattan stock, so we control density, colour and batch quality.');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (2, 'kak-vybrat-luchshiy-rotang', 'assets/rattan-palette-hero.png', 'published', '2026-02-18');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (2, 'ru', 'Как выбрать лучший искусственный ротанг', 'Диаметр, профиль, плотность плетения и цвет — на что смотреть перед заказом мебели или материала.', 'Первое — профиль. Для мебели чаще берут полумесяц 8–10 мм: он гнётся ровно и держит форму сиденья. Для декора и каркаса подойдут круглые и плоские профили.
+
+## Плотность плетения
+
+Чем плотнее плетение, тем изделие прочнее и «дороже» выглядит на вид. Проверьте, нет ли просветов и перекосов.
+
+- Плотное плетение служит дольше
+- Рыхлое быстрее провисает на сиденьях
+- На улице выбирайте полумесяц 10 мм
+
+![Профиль полумесяц](assets/rattan-profile-0609-tobacco.png)
+
+## Цвет и окраска
+
+Хороший ротанг окрашен в массе, а не только снаружи. Наша палитра Tobacco, Woody, Brown, Graphite и Choco повторяет оттенки натурального дерева.
+
+### Нестандарт
+
+Если нужен нестандартный цвет или диаметр — изготовим на заказ. Напишите менеджеру в Telegram @bententradeuz.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (2, 'uz', 'Eng yaxshi sun’iy rotangni qanday tanlash', 'Diametr, profil, to‘quv zichligi va rang — mebel yoki material buyurtma qilishdan oldin nimalarga e’tibor berish kerak.', 'Birinchidan — profil. Mebel uchun ko‘pincha yarim oy 8–10 mm olinadi: o‘tirg‘ich shaklini tekis egiladi va ushlab turadi. Dekor va karkas uchun dumaloq va tekis profillar mos.
+
+Ikkinchidan — zichlik. To‘quv qanchalik zich bo‘lsa, buyum shunchalik mustahkam va qimmat ko‘rinadi. Bo‘shliqlar va egilishlar yo‘qligini tekshiring.
+
+Uchinchidan — rang. Yaxshi rotang faqat tashqarida emas, massada bo‘yalgan. Tobacco, Woody, Brown, Graphite va Choco palitramiz tabiiy yog‘och ranglarini takrorlaydi.
+
+Nostandart rang yoki diametr kerak bo‘lsa — buyurtmaga tayyorlaymiz. Telegram orqali menejerga yozing.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (2, 'en', 'How to pick the best synthetic rattan', 'Diameter, profile, weave density and colour — what to check before ordering furniture or material.', 'First, the profile. Furniture usually uses half-moon 8–10 mm: it bends evenly and holds seat shape. Round and flat profiles suit décor and frames.
+
+Second, density. The tighter the weave, the stronger and more premium the piece looks. Check for gaps and misalignment.
+
+Third, colour. Good rattan is coloured through the fibre, not just on the surface. Our Tobacco, Woody, Brown, Graphite and Choco palette echoes natural wood tones.
+
+Need a custom colour or diameter? We''ll make it to order — message our manager on Telegram.');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (3, 'pochemu-rabotayut-s-bententrade', 'assets/hero-garden-furniture.png', 'published', '2026-03-05');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (3, 'ru', 'Почему с нами работают дизайнеры и мебельщики', 'Своё производство в Ташкенте, стабильные партии ротанга и честная консультация — без навязанных решений.', 'Мы не перекупаем готовую мебель — сами плетём и производим ротанг. Это даёт контроль над сроками, цветом и качеством.
+
+Для B2B-клиентов держим склад профилей и помогаем с образцами. Для частных заказов — бесплатно подбираем комплект под террасу, балкон или интерьер.
+
+Доставляем по Узбекистану, собираем на месте и даём гарантию на плетение. Один менеджер ведёт заказ от заявки до доставки — в Telegram или WhatsApp.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (3, 'uz', 'Nima uchun dizaynerlar va mebelchilar biz bilan ishlaydi', 'Toshkentdagi o‘z ishlab chiqarish, barqaror rotang partiyalari va halol maslahat.', 'Tayyor mebelni qayta sotmaymiz — o‘zimiz to‘qiymiz va rotang ishlab chiqaramiz. Bu muddat, rang va sifatni nazorat qilish imkonini beradi.
+
+B2B mijozlar uchun profil omborini saqlaymiz va namunalar bilan yordam beramiz. Xususiy buyurtmalar uchun terassa, balkon yoki interyer uchun to‘plamni bepul tanlaymiz.
+
+O‘zbekiston bo‘ylab yetkazamiz, joyida yig‘amiz va to‘quvga kafolat beramiz. Bitta menejer buyurtmani arizadan yetkazib berishgacha olib boradi — Telegram yoki WhatsApp orqali.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (3, 'en', 'Why designers and makers work with us', 'Our own Tashkent workshop, consistent rattan batches and honest advice — no pushy upsells.', 'We don''t resell ready-made furniture — we weave and produce rattan ourselves. That means control over lead times, colour and quality.
+
+For trade clients we keep profile stock and help with samples. For private orders we match sets to terrace, balcony or interior free of charge.
+
+We deliver across Uzbekistan, assemble on site and warranty the weave. One manager handles the order from enquiry to delivery — on Telegram or WhatsApp.');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (4, 'uhod-za-mebelyu-iz-rotanga', 'assets/scene-dining-warm.png', 'published', '2026-03-12');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (4, 'ru', 'Уход за мебелью из искусственного ротанга', 'Достаточно влажной ткани и мягкого мыла — без масел, лака и сложной химии.', 'Искусственный ротанг не требует сезонного ухода. Раз в 2–4 недели протрите плетение влажной мягкой тканью с каплей нейтрального мыла.
+
+Не используйте абразивы и растворители — они могут повредить поверхность. После дождя просто дайте мебели высохнуть на воздухе.
+
+Подушки лучше хранить в чехлах или убирать в сухое место на зиму. Каркас из алюминия не ржавеет — достаточно периодически проверять крепёж.
+
+Если плетение повредилось — мы ремонтируем изделия и подбираем тот же оттенок профиля.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (4, 'uz', 'Sun’iy rotang mebeliga parvarish', 'Nam mato va yumshoq sovun yetadi — moy, lak va murakkab kimyo kerak emas.', 'Sun’iy rotang mavsumiy parvarish talab qilmaydi. 2–4 haftada bir marta neytral sovun tomchisi bilan nam yumshoq mato bilan artib turing.
+
+Abrasiv va erituvchilardan foydalanmang — sirt shikastlanishi mumkin. Yomg‘irdan keyin mebelni havoda quriting.
+
+Yostiqlarni qopqoqda saqlang yoki qishda quruq joyga olib qo‘ying. Alyumin karkas zanglamaydi — vaqti-vaqti bilan mahkamlashlarni tekshiring.
+
+To‘quv shikastlansa — buyumlarni ta’mirlaymiz va xuddi shu rangdagi profilni tanlaymiz.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (4, 'en', 'Caring for synthetic rattan furniture', 'A damp cloth and mild soap are enough — no oils, varnish or harsh chemicals.', 'Synthetic rattan needs no seasonal treatment. Every 2–4 weeks wipe the weave with a soft damp cloth and a drop of neutral soap.
+
+Avoid abrasives and solvents — they can mark the surface. After rain, let the furniture air-dry.
+
+Store cushions in covers or move them somewhere dry for winter. The aluminium frame won''t rust — just check fixings now and then.
+
+If the weave is damaged we repair pieces and match the same profile shade.');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (5, 'profil-polumesyats-dlya-mebeli', 'assets/rattan-profile-0609-tobacco.png', 'published', '2026-03-20');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (5, 'ru', 'Профиль «полумесяц» для мебели: когда он нужен', 'Почему полумесяц 10 мм — самый популярный профиль для садовых диванов и кресел.', 'Профиль полумесяц (half-moon) имеет плоскую внутреннюю сторону и округлую внешнюю. Это удобно для плотного плетения сидений: лента ложится ровно, без зазоров.
+
+Диаметр 10 мм — баланс между гибкостью и прочностью. Тоньше — для декора, толще — для каркасных элементов.
+
+В палитре Bententrade пять базовых оттенков с артикулами 0609, 1505, 0704 и 2404. Нужен другой цвет — изготовим под заказ от одной бухты.
+
+Запросите образец или прайс через сайт — привезём в шоурум или отправим курьером по Ташкенту.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (5, 'uz', 'Mebel uchun «yarim oy» profili: qachon kerak', 'Nima uchun yarim oy 10 mm bog‘ divanlari va kreslolar uchun eng mashhur profil.', 'Yarim oy profilining ichki tomoni tekis, tashqi tomoni yumaloq. O‘tirg‘ichlarni zich to‘qish uchun qulay: lenta tekis yotadi, bo‘shliqsiz.
+
+10 mm diametr — egilish va mustahkamlik muvozanati. Ingroq — dekor uchun, qalinroq — karkas uchun.
+
+Bententrade palitrasida 0609, 1505, 0704 va 2404 artikulli beshta asosiy rang. Boshqa rang kerak bo‘lsa — bir g‘ilofdan buyurtmaga tayyorlaymiz.
+
+Sayt orqali namuna yoki prays so‘rang — shourumga olib kelamiz yoki Toshkent bo‘ylab kuryer yuboramiz.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (5, 'en', 'Half-moon profile for furniture: when you need it', 'Why half-moon 10 mm is the most popular profile for garden sofas and armchairs.', 'The half-moon profile has a flat inner face and rounded outer face. That suits tight seat weaving — the strip lies flat without gaps.
+
+10 mm diameter balances flexibility and strength. Thinner for décor, thicker for frame elements.
+
+Bententrade''s palette has five base shades: articles 0609, 1505, 0704 and 2404. Need another colour? We''ll make it to order from a single coil.
+
+Request a sample or price list on the site — we''ll bring it to the showroom or courier across Tashkent.');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (6, 'rotang-dlya-terrasy', 'assets/scene-dining-warm.png', 'published', '2026-04-02');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (6, 'ru', 'Искусственный ротанг для террасы и веранды', 'Как подобрать мебель, которая переживёт солнце, дождь и перепады температур без ухода маслом.', 'Терраса и веранда — самые жёсткие условия для мебели: прямое солнце, ветер, ночная влага. Искусственный ротанг создан именно для таких зон.
+
+Для открытой площадки выбирайте плотное плетение на алюминиевом каркасе — он не ржавеет. Комплект из дивана и кресел или обеденная группа закрывают большинство сценариев: от завтрака до вечерних посиделок.
+
+Цвет лучше брать из палитры Tobacco, Woody или Graphite — они меньше маркие на улице. Подушки храните в чехлах или убирайте в дом на зиму.
+
+Не нашли нужный размер — сделаем на заказ. Напишите менеджеру в Telegram: подберём профиль и рассчитаем доставку по Ташкенту и области.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (6, 'uz', 'Terassa va veranda uchun sun’iy rotang', 'Quyosh, yomg‘ir va harorat o‘zgarishiga chidamli mebelni qanday tanlash kerak.', 'Terassa va veranda — mebel uchun eng qattiq sharoit: to‘g‘ridan-to‘g‘ri quyosh, shamol, tungi namlik. Sun’iy rotang aynan shunday zonalar uchun yaratilgan.
+
+Ochiq maydon uchun alyumin karkasdagi zich to‘qilgan mebelni tanlang — u zanglamaydi. Divan va kreslo to‘plami yoki ovqat stoli ko‘pchilik vazifalarni yopadi.
+
+Tobacco, Woody yoki Graphite palitrasi ko‘chada kamroq ifloslanadi. Yostiqlarni qopqoqda saqlang yoki qishda uyga olib qo‘ying.
+
+Kerakli o‘lcham topilmasa — buyurtmaga tayyorlaymiz. Telegram orqali menejerga yozing.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (6, 'en', 'Synthetic rattan for terrace and veranda', 'How to choose furniture that survives sun, rain and temperature swings without oiling.', 'Terraces and verandas are tough on furniture: direct sun, wind, night humidity. Synthetic rattan is built for exactly these zones.
+
+For open areas choose dense weave on an aluminium frame — it won''t rust. A sofa-and-chair set or dining group covers most scenarios.
+
+Colours from the Tobacco, Woody or Graphite palette stay cleaner outdoors. Store cushions in covers or move them indoors for winter.
+
+Can''t find the right size? We''ll make it to order — message our manager on Telegram.');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (7, 'mebel-iz-rotanga-na-zakaz', 'assets/hero-home-furniture.png', 'published', '2026-04-10');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (7, 'ru', 'Мебель из ротанга на заказ: цвет, размер, форма', 'Когда стандартный каталог не подходит — как мы делаем индивидуальные изделия в мастерской Bententrade.', 'Иногда нужен нестандартный диван по размеру ниши, кашпо под конкретное растение или оттенок, которого нет в палитре. Мы плетём на заказ в Ташкенте.
+
+Процесс простой: вы присылаете размеры, фото или эскиз — менеджер уточняет детали, подбирает профиль и называет срок. Обычно от 2 до 4 недель в зависимости от сложности.
+
+Можно заказать только материал (ротанг бухтами) или готовое изделие целиком. Цены в сумах, доставка по Узбекистану.
+
+Напишите в Telegram @bententradeuz или WhatsApp — ответим в рабочее время и пришлём примеры похожих работ.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (7, 'uz', 'Buyurtmaga rotang mebel: rang, o‘lcham, shakl', 'Standart katalog mos kelmasa — Bententrade ustaxonasida individual buyumlarni qanday yasaymiz.', 'Ba’zan nisha o‘lchamidagi divan, ma’lum o‘simlik uchun gultuvak yoki palitrada yo‘q rang kerak bo‘ladi. Biz Toshkentda buyurtmaga to‘qimiz.
+
+Jarayon oddiy: o‘lcham, foto yoki eskiz yuborasiz — menejer profil tanlaydi va muddat aytadi. Odatda 2–4 hafta.
+
+Faqat material (g‘iloflab rotang) yoki tayyor buyum buyurtma qilish mumkin. Narxlar so‘mda, O‘zbekiston bo‘ylab yetkazish.
+
+Telegram @bententradeuz yoki WhatsApp orqali yozing.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (7, 'en', 'Custom rattan furniture: colour, size, shape', 'When the standard catalogue isn''t enough — how we make bespoke pieces at Bententrade.', 'Sometimes you need a sofa sized for a niche, a planter for a specific plant or a shade not in the palette. We weave to order in Tashkent.
+
+Send dimensions, a photo or sketch — our manager confirms details, picks the profile and quotes lead time. Usually 2–4 weeks depending on complexity.
+
+You can order material by the coil or a finished piece. Prices in UZS, delivery across Uzbekistan.
+
+Message us on Telegram @bententradeuz or WhatsApp.');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (8, 'iskusstvennyy-i-naturalnyy-rotang', 'assets/bento-rattan.png', 'published', '2026-04-18');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (8, 'ru', 'Искусственный и натуральный ротанг: в чём разница', 'Сравниваем срок службы, уход, внешний вид и цену — чтобы вы не переплачивали за неподходящий материал.', 'Натуральный ротанг красив, но боится влаги и ультрафиолета: на улице быстро выцветает и трескается без регулярного ухода.
+
+Искусственный ротанг (PE) окрашен в массе, не гниёт и выдерживает мороз. Внешне отличить качественное плетение сложно — особенно в оттенках дерева.
+
+Для сада, террасы и уличного кафе мы рекомендуем только искусственный ротанг. Натуральный уместен в закрытых интерьерах с контролируемой влажностью.
+
+В Bententrade работаем с PE-профилями собственного производства — палитра Tobacco, Woody, Brown, Graphite, Choco. Закажите образец и сравните на месте.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (8, 'uz', 'Sun’iy va tabiiy rotang: farqi nima', 'Xizmat muddati, parvarish, ko‘rinish va narxni solishtiramiz.', 'Tabiiy rotang chiroyli, lekin namlik va ultrabinafsha nurdan qo‘rqadi: ochiq havoda tez rangini yo‘qotadi.
+
+Sun’iy rotang (PE) massada bo‘yalgan, chirmaydi va sovuqqa chidamli. Sifatli to‘quvni farqlash qiyin.
+
+Bog‘, terassa va ko‘cha kafesi uchun faqat sun’iy rotangni tavsiya qilamiz.
+
+Bententrade o‘z PE profillarida ishlaydi — Tobacco, Woody, Brown, Graphite, Choco. Namuna buyurtma qiling.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (8, 'en', 'Synthetic vs natural rattan: what''s the difference', 'We compare lifespan, care, look and price so you don''t overpay for the wrong material.', 'Natural rattan is beautiful but fears moisture and UV: outdoors it fades and cracks without regular care.
+
+Synthetic rattan (PE) is coloured through the fibre, won''t rot and handles frost. Quality weave is hard to tell from natural — especially in wood tones.
+
+For gardens, terraces and outdoor cafés we recommend synthetic rattan only.
+
+At Bententrade we work with our own PE profiles — Tobacco, Woody, Brown, Graphite, Choco. Order a sample and compare in person.');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (9, 'sadovaya-mebel-rotang-tashkent', 'assets/hero-garden-furniture.png', 'published', '2026-04-22');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (9, 'ru', 'Садовая мебель из ротанга в Ташкенте: как выбрать комплект', 'Диваны, кресла и обеденные группы для террасы и дачи — на что смотреть перед покупкой в Узбекистане.', 'Садовая мебель из искусственного ротанга — один из самых частых запросов в Ташкенте: жаркий климат, яркое солнце и перепады температур требуют материала, который не выцветает и не требует ежегодного ухода маслом.
+
+## Почему ротанг подходит для улицы Узбекистана
+
+Искусственный ротанг (PE) окрашен в массе, не впитывает влагу и выдерживает ультрафиолет. В отличие от натурального плетения, ему не страшны ночная роса и летние ливни — достаточно протереть влажной тканью.
+
+- Не гниёт и не трескается на морозе
+- Каркас из алюминия не ржавеет
+- Плетение держит форму 5–10 лет при нормальной эксплуатации
+
+![Садовая обеденная группа](assets/scene-dining-warm.png)
+
+## Какой комплект выбрать
+
+Для небольшой террасы подойдут два кресла и журнальный столик. Для семьи из 4–6 человек — угловой диван или обеденная группа на 4–8 мест.
+
+### Размеры и эргономика
+
+Перед заказом измерьте площадку: оставьте 70–90 см прохода вокруг стола. Сиденья с глубиной 48–52 см удобнее для длительных посиделок.
+
+## Цвет и плетение
+
+Для улицы лучше Tobacco, Woody или Graphite — меньше видны пыль и следы от рук. Плотное плетение полумесяц 10 мм выглядит премиально и служит дольше рыхлого.
+
+![Палитра профилей](assets/rattan-palette-hero.png)
+
+## Где купить в Ташкенте
+
+В Bententrade мебель плетётся в мастерской в Ташкенте — можно посмотреть образцы, подобрать комплект и заказать доставку по городу и области. Напишите в Telegram @bententradeuz — менеджер рассчитает комплект и сроки.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (9, 'uz', 'Toshkentda bog‘ mebeli: rotang to‘plamini qanday tanlash', 'Terassa va dacha uchun divan, kreslo va ovqat guruhlari — O‘zbekistonda xarid qilishdan oldin.', 'Sun’iy rotangdan bog‘ mebeli Toshkentda eng ko‘p qidiriladigan mahsulotlardan biri.
+
+## Nima uchun rotang mos
+
+PE tolasi quyosh va yomg‘irga chidamli, massada bo‘yalgan.
+
+- Chirmaydi
+- Alyumin karkas zanglamaydi
+- 5–10 yil xizmat qiladi
+
+![Ovqat guruhi](assets/scene-dining-warm.png)
+
+## Qanday to‘plam
+
+Kichik terassa — 2 kreslo va stol. Katta oila — burchakli divan yoki 6–8 o‘rinli stol.
+
+## Qayerdan sotib olish
+
+Bententrade Toshkentda ishlab chiqaradi. Telegram @bententradeuz.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (9, 'en', 'Garden rattan furniture in Tashkent: how to choose a set', 'Sofas, chairs and dining groups for terrace and dacha — what to check before buying in Uzbekistan.', 'Synthetic rattan garden furniture is a top search in Tashkent because heat and UV demand a low-maintenance material.
+
+## Why rattan works outdoors
+
+PE fibre is coloured through, won''t rot, and aluminium frames don''t rust.
+
+![Dining set](assets/scene-dining-warm.png)
+
+## Which set to pick
+
+Small terrace: two chairs and a coffee table. Family of six: corner sofa or dining for eight.
+
+## Buy in Tashkent
+
+Bententrade weaves in our Tashkent workshop. Message @bententradeuz on Telegram.');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (10, 'kashpo-iz-iskusstvennogo-rotanga', 'assets/bento-planter.png', 'published', '2026-04-28');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (10, 'ru', 'Кашпо из искусственного ротанга: для сада, террасы и интерьера', 'Плетёные кашпо не боятся дождя, легко моются и подчёркивают зелень — гид по размерам и формам.', 'Кашпо из искусственного ротанга совмещают декоративное плетение и практичность: влага не разрушает материал, а вес меньше, чем у керамики того же объёма.
+
+## Преимущества перед керамикой и пластиком
+
+- Устойчивы к УФ и морозу
+- Не трескаются от перепадов температуры
+- Можно мыть из шланга (без агрессивной химии)
+- Выглядят как премиальное плетение
+
+![Кашпо для террасы](assets/hero-planter.png)
+
+## Размеры под растения
+
+Для фикуса и монстеры — кашпо от 35 см диаметра с дренажом. Для трав и суккулентов — низкие широкие модели. На балконе используйте кашпо с поддоном.
+
+### Комплекты
+
+Набор из 3–5 кашпо одного стиля визуально собирает зону отдыха. В каталоге Bententrade есть готовые комплекты и индивидуальные размеры.
+
+## Уход
+
+Раз в месяц протрите плетение мягкой щёткой. Зимой кашпо можно оставить с растениями, если дренаж не застаивается.
+
+## Заказ в Ташкенте
+
+Подберём форму и цвет под ваш проект — @bententradeuz в Telegram.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (10, 'uz', 'Sun’iy rotang gultuvaklari', 'Bog‘, terassa va interyer uchun.', 'Rotang gultuvaklari namlikka chidamli.
+
+![Gultuvak](assets/hero-planter.png)
+
+Bententrade — @bententradeuz.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (10, 'en', 'Synthetic rattan planters', 'For garden, terrace and interior.', 'Won''t crack in frost, easy to wash.
+
+![Planter](assets/hero-planter.png)
+
+Order via @bententradeuz.');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (11, 'korziny-sunduki-rotang', 'assets/hero-home-furniture.png', 'published', '2026-05-05');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (11, 'ru', 'Корзины и сундуки из ротанга для хранения', 'Плетёные корзины для белья, игрушек и пикника — аккуратный дом и терраса без визуального шума.', 'Корзины и сундуки из искусственного ротанга решают задачу хранения без «пластикового» вида. Их ставят в спальню, ванную, на террасу и в детскую.
+
+## Где использовать
+
+- Корзина для белья в ванной — материал не боится влажности
+- Сундук на балконе — подушки и текстиль
+- Корзина для пикника — лёгкая, с крышкой
+
+![Мебель и хранение](assets/hero-home-furniture.png)
+
+## На что обратить внимание
+
+Выбирайте плотное дно и усиленный каркас, если планируете тяжёлые вещи. Крышка на сундуке защищает от пыли и дождя на открытой террасе.
+
+### Размеры
+
+Измерьте нишу под сундук заранее — мы делаем нестандартные габариты на заказ в Ташкенте.
+
+## Уход
+
+Протирка влажной тканью раз в 2–3 недели. Не ставьте острые предметы вплотную к плетению без прокладки.
+
+Закажите в каталоге или напишите @bententradeuz.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (11, 'uz', 'Rotang savatlar va sandiqlar', 'Uy va terassa uchun saqlash.', 'Savatlar namlikka chidamli.
+
+![Saqlash](assets/hero-home-furniture.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (11, 'en', 'Rattan baskets and chests', 'Storage for home and terrace.', 'Woven storage without plastic look.
+
+![Storage](assets/hero-home-furniture.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (12, 'kupit-rotang-buhtami', 'assets/hero-rattan.png', 'published', '2026-05-12');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (12, 'ru', 'Купить искусственный ротанг бухтами в Ташкенте', 'Профили полумесяц, круг и плоский — для мастерских, мебельщиков и B2B. Палитра и образцы.', 'Если вы мебельщик, дизайнер или открываете мастерскую, ротанг бухтами выгоднее готовой мебели: вы контролируете форму и маржу.
+
+## Какие профили бывают
+
+- Полумесяц 8–10 мм — мебель и сиденья
+- Круглый 6–8 мм — декор и детали
+- Плоский — обивка и рамки
+
+![Ротанг бухтами](assets/hero-rattan.png)
+
+## Как заказать
+
+1. Выберите профиль и цвет из палитры Tobacco, Woody, Brown, Graphite, Choco
+2. Укажите метраж или число бухт
+3. Получите образец перед крупной партией
+
+### Для B2B
+
+Стабильные партии, артикулы 0609, 1505, 0704, 2404. Склад в Ташкенте — самовывоз или доставка по Узбекистану.
+
+## Качество Bententrade
+
+Собственное производство — окраска в массе, контроль диаметра, без «пустого» ядра. Напишите @bententradeuz для прайса.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (12, 'uz', 'Toshkentda rotang g‘iloflab sotib olish', 'Ustalar va B2B uchun.', 'Profil va rang tanlang.
+
+![Rotang](assets/hero-rattan.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (12, 'en', 'Buy synthetic rattan by the coil in Tashkent', 'Profiles for workshops and B2B.', 'Half-moon, round and flat profiles.
+
+![Coils](assets/hero-rattan.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (13, 'mebel-rotang-dlya-kafe', 'assets/scene-dining-teal.png', 'published', '2026-05-20');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (13, 'ru', 'Мебель из ротанга для кафе и ресторанов', 'Уличные зоны, веранды и летние площадки — износостойкое плетение и быстрая замена подушек.', 'Для HoReCa в Ташкенте и по Узбекистану мебель из искусственного ротанга — баланс между эстетикой и износостойкостью. Гости видят «премиальное плетение», а персонал тратит минимум времени на уход.
+
+## Что ставят чаще всего
+
+- Обеденные группы на 4 места — для витрин и улицы
+- Барные стулья у стойки
+- Угловые диваны для lounge-зон
+
+![Зона кафе](assets/scene-dining-teal.png)
+
+## Коммерческая эксплуатация
+
+- Плотное плетение выдерживает ежедневную нагрузку
+- Подушки меняются по сезону (чехлы в комплекте)
+- Алюминиевый каркас — без коррозии от напитков и влаги
+
+### Логистика
+
+Поставляем партиями, собираем на объекте. Возможен нестандарт под планировку зала.
+
+## Связь с Bententrade
+
+Коммерческое предложение и 3D-подбор по фото зала — @bententradeuz.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (13, 'uz', 'Kafe va restoranlar uchun rotang mebel', 'Ko‘cha zonalar va verandalar.', 'Izosh qoplamasi va tez parvarish.
+
+![Kafe](assets/scene-dining-teal.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (13, 'en', 'Rattan furniture for cafés and restaurants', 'Outdoor seating that lasts.', 'Dense weave, aluminium frame.
+
+![Café](assets/scene-dining-teal.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (14, 'pletennaya-mebel-dlya-doma', 'assets/scene-dining-cream.png', 'published', '2026-05-28');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (14, 'ru', 'Плетёная мебель из ротанга для дома и гостиной', 'Кресла, комоды и стеллажи — тёплая фактура без тяжёлого ухода, подходит для квартиры.', 'Плетёная мебель в интерьере возвращает ощущение натуральности, но искусственный ротанг не требует климат-контроля как лоза.
+
+## Куда ставить в квартире
+
+- Гостиная — кресло-качалка или пара кресел у окна
+- Прихожая — узкий комод для обуви и аксессуаров
+- Спальня — корзины и прикроватные столики
+
+![Интерьер с плетением](assets/scene-dining-cream.png)
+
+## Стиль и сочетания
+
+Ротанг хорошо работает с льном, хлопком и светлым деревом. Цвета Woody и Tobacco тёплые; Graphite — для современных интерьеров.
+
+### Размеры для типовых квартир
+
+Компактные модели не перегружают пространство 18–25 м². Закажите индивидуальный размер под нишу.
+
+## Доставка
+
+По Ташкенту — 1–3 дня после готовности. @bententradeuz');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (14, 'uz', 'Uy va mehmonxona uchun to‘qima mebel', 'Kreslo, komod, javon.', 'Interyerda tabiiy ko‘rinish.
+
+![Uy](assets/scene-dining-cream.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (14, 'en', 'Woven rattan furniture for home', 'Living room chairs and storage.', 'Warm texture, easy care.
+
+![Home](assets/scene-dining-cream.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (15, 'dostavka-rotanga-po-uzbekistanu', 'assets/hero-garden-furniture.png', 'published', '2026-06-05');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (15, 'ru', 'Доставка мебели и ротанга по Узбекистану', 'Ташкент, область и регионы — сборка, упаковка и сроки. Как мы организуем логистику.', 'Bententrade доставляет плетёную мебель, кашпо и ротанг бухтами по Узбекистану. Ниже — как устроен процесс, чтобы вы заранее планировали сроки.
+
+## Ташкент и Ташкентская область
+
+- Доставка 1–3 рабочих дня после готовности
+- Сборка на месте для крупной мебели
+- Оплата по договорённости: наличные, перевод
+
+## Регионы
+
+Отправляем в Самарканд, Бухару, Фергану, Наманган и другие города. Срок зависит от объёма — менеджер назовёт дату при оформлении.
+
+![Доставка комплекта](assets/hero-garden-furniture.png)
+
+## Упаковка
+
+Мебель фиксируется стрейч-плёнкой и картоном на углах. Бухты ротанга — в плотной упаковке, без перегибов.
+
+### Самовывоз
+
+Шоурум в Ташкенте — можно забрать заказ самостоятельно по согласованию.
+
+## Оформить доставку
+
+Telegram @bententradeuz или форма на сайте после принятия cookie.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (15, 'uz', 'O‘zbekiston bo‘ylab yetkazib berish', 'Toshkent va viloyatlar.', '1–3 kun ichida Toshkent.
+
+![Yetkazish](assets/hero-garden-furniture.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (15, 'en', 'Delivery across Uzbekistan', 'Tashkent and regions.', 'Assembly on site in capital.
+
+![Delivery](assets/hero-garden-furniture.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (16, 'rotang-dlya-balkona', 'assets/bento-rattan.png', 'published', '2026-06-12');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (16, 'ru', 'Мебель из ротанга для балкона и лоджии', 'Компактные кресла, столики и кашпо — легко переставить и не боится перепадов температуры.', 'Балкон и лоджия в многоэтажках Ташкента — мини-терраса. Мебель должна быть лёгкой, узкой и устойчивой к солнцу через стекло.
+
+## Оптимальные модели
+
+- Складное или узкое кресло 55–60 см шириной
+- Прикроватный/балконный столик 40×40 см
+- Высокое кашпо для вертикального озеленения
+
+![Компактный ротанг](assets/bento-rattan.png)
+
+## Материалы
+
+Искусственный ротанг не высыхает как натуральный при нагреве от панорамного окна. Металлический каркас фиксируйте от опрокидывания ветром.
+
+### Хранение
+
+На зиму кресла можно оставить на застеклённом балконе; подушки — в квартиру.
+
+## Заказ
+
+Подберём габариты по вашим замерам — @bententradeuz.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (16, 'uz', 'Balkon va lodjiya uchun rotang', 'Ixcham kreslo va stol.', 'Quyoshga chidamli.
+
+![Balkon](assets/bento-rattan.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (16, 'en', 'Rattan for balcony and loggia', 'Compact chairs and tables.', 'UV-stable PE weave.
+
+![Balcony](assets/bento-rattan.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (17, 'palitra-tsvetov-rotanga-bententrade', 'assets/rattan-palette-hero.png', 'published', '2026-06-20');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'ru', 'Палитра цветов искусственного ротанга Bententrade', 'Tobacco, Woody, Brown, Graphite, Choco — как выбрать оттенок под интерьер и фасад.', 'Цвет ротанга задаёт характер всей зоны отдыха. В Bententrade палитра построена на натуральных древесных тонах — без кислотных оттенков, которые выгорают неравномерно.
+
+## Базовые цвета
+
+- **Tobacco (0609)** — тёплый табак, универсален для сада
+- **Woody (1505)** — светлое дерево, освежает интерьер
+- **Brown (0704)** — глубокий коричневый для контраста с бетоном
+- **Graphite** — современный серо-коричневый
+- **Choco (2404)** — насыщенный шоколад для акцентов
+
+![Палитра профилей](assets/rattan-palette-hero.png)
+
+## Как сочетать
+
+На открытом воздухе Tobacco и Graphite меньше маркие. В интерьере Woody визуально расширяет пространство.
+
+### Образцы
+
+Закажите набор образцов 15–20 см — привезём в Ташкент или отправим с заказом. @bententradeuz
+
+## Нестандарт
+
+Любой цвет под заказ от одной бухты — согласуем эталон до производства.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'uz', 'Bententrade rotang rang palitrasi', 'Tobacco, Woody, Graphite.', '5 asosiy rang.
+
+![Palitra](assets/rattan-palette-hero.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'en', 'Bententrade rattan colour palette', 'Wood tones for outdoor and indoor.', 'Five base shades plus custom.
+
+![Palette](assets/rattan-palette-hero.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (18, 'oformlenie-terassi-rotangom', 'assets/scene-dining-warm.png', 'published', '2026-06-28');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (18, 'ru', 'Как оформить террасу ротанговой мебелью', 'Зонирование, свет, текстиль и растения — пошаговый гид для уютной террасы в Ташкенте.', 'Терраса — продолжение гостиной на воздухе. Ротанговая мебель задаёт стиль, но важны пропорции, свет и аксессуары.
+
+## Шаг 1: зонирование
+
+Выделите dining (стол+стулья), lounge (диван+кресла) и green (кашпо). Между зонами оставьте проход 80 см.
+
+## Шаг 2: мебель
+
+Выберите один цвет плетения — Tobacco или Woody для тепла. Добавьте один акцент: кашпо или столик другого оттенка.
+
+![Терраса с обеденной зоной](assets/scene-dining-warm.png)
+
+## Шаг 3: текстиль
+
+Подушки из Sunbrella или аналога, светлые покрывала. Храните в чехлах на зиму.
+
+### Освещение
+
+Тёплый LED 2700–3000K по периметру — терраса usable вечером.
+
+## Шаг 4: растения
+
+Высокие кашпо из ротанга с фикусом или оливой визуально «потолок» зоны.
+
+## Реализация с Bententrade
+
+Комплект под ключ + доставка — @bententradeuz. Можем изготовить нестандартные размеры под вашу планировку.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (18, 'uz', 'Terassani rotang bilan bezash', 'Zonalar va yoritish.', '4 qadamli qo‘llanma.
+
+![Terassa](assets/scene-dining-warm.png)
+
+@bententradeuz');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (18, 'en', 'Terrace styling with rattan furniture', 'Zones, light and plants.', 'Step-by-step guide.
+
+![Terrace](assets/scene-dining-warm.png)
+
+@bententradeuz');
 
 INSERT OR REPLACE INTO settings (key, value) VALUES ('phone', '+998 77 104 44 22');
 INSERT OR REPLACE INTO settings (key, value) VALUES ('whatsapp', '998771044422');

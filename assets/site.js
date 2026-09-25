@@ -1537,8 +1537,8 @@
         }
 
         const payload = {
-          name: name.value.trim(),
-          email: email.value.trim(),
+          name: name ? name.value.trim() : "",
+          email: email ? email.value.trim() : "",
           phone: phone ? phone.value.trim() : "",
           message: message ? message.value.trim() : "",
           lang: document.documentElement.lang || "ru",
