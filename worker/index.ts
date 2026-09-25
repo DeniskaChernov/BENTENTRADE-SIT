@@ -25,6 +25,11 @@ app.use("*", async (c, next) => {
   } catch (e) { /* immutable response headers — ignore */ }
 });
 
+app.onError((err, c) => {
+  console.error("Worker unhandled error:", err);
+  return c.json({ error: "server_error", message: err.message }, 500);
+});
+
 // Resolve the session for every request (cookie -> KV).
 app.use("*", sessionMiddleware);
 

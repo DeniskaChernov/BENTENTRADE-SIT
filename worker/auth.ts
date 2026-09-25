@@ -3,7 +3,7 @@ import type { Env, SessionData, Variables } from "./types";
 
 const SESSION_COOKIE = "btt_session";
 const SESSION_TTL_SEC = 60 * 60 * 24 * 30; // 30 days
-const PBKDF2_ITERATIONS = 210_000;
+const PBKDF2_ITERATIONS = 10_000;
 
 type Ctx = Context<{ Bindings: Env; Variables: Variables }>;
 
@@ -11,15 +11,10 @@ type Ctx = Context<{ Bindings: Env; Variables: Variables }>;
 
 function b64(bytes: ArrayBuffer | Uint8Array): string {
   const arr = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
-  let s = "";
-  for (const b of arr) s += String.fromCharCode(b);
-  return btoa(s);
+  return Buffer.from(arr).toString("base64");
 }
 function unb64(s: string): Uint8Array {
-  const bin = atob(s);
-  const out = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
-  return out;
+  return new Uint8Array(Buffer.from(s, "base64"));
 }
 
 export async function hashPassword(password: string): Promise<string> {
