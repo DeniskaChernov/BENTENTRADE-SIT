@@ -1755,4 +1755,25 @@
       }, 300);
     }
   }
+
+  // Quick CRM link in footer for authenticated administrators
+  try {
+    if (window.BTT_API && typeof window.BTT_API.me === "function") {
+      window.BTT_API.me().then(res => {
+        if (res && res.user && res.user.role === "admin") {
+          const footLegal = document.querySelector(".foot-legal");
+          if (footLegal && !footLegal.querySelector(".foot-crm-link")) {
+            const a = document.createElement("a");
+            a.href = "/admin";
+            a.className = "foot-crm-link";
+            a.style.cssText = "color:var(--copper);font-weight:700;display:inline-flex;align-items:center;gap:4px;margin-left:12px;";
+            a.innerHTML = '<span style="font-size:12px;">⚙</span> <span>CRM</span>';
+            a.title = "Панель управления магазином";
+            footLegal.appendChild(a);
+          }
+        }
+      }).catch(()=>{});
+    }
+  } catch(e){}
 })();
+

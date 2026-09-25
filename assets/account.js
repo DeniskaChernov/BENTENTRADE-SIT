@@ -414,6 +414,22 @@
       if(sub){ subEl.textContent=sub; subEl.hidden=false; }
       else subEl.hidden=true;
     }
+
+    // Admin link if user has admin role
+    if(u.role === "admin" && !document.querySelector(".acc-admin-btn")){
+      const nav=document.querySelector("[data-acc-nav]");
+      if(nav){
+        const adminBtn=document.createElement("a");
+        adminBtn.href="/admin";
+        adminBtn.className="acc-admin-btn";
+        adminBtn.style.cssText="display:flex;align-items:center;gap:10px;padding:10px 14px;margin-bottom:8px;border-radius:10px;background:linear-gradient(135deg,rgba(189,115,53,0.18),rgba(189,115,53,0.06));border:1px solid rgba(189,115,53,0.3);color:var(--copper);font-weight:600;font-size:13.5px;text-decoration:none;";
+        adminBtn.innerHTML='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Панель управления (CRM)</span>';
+        const sep=nav.querySelector(".sep");
+        if(sep) nav.insertBefore(adminBtn, sep);
+        else nav.appendChild(adminBtn);
+      }
+    }
+
     const hiName=document.querySelector('[data-acc-panel="overview"] .acc-h h1');
     if(hiName && u.name){ hiName.innerHTML='<span data-i18n="acc.ov.hi">'+esc(t("acc.ov.hi"))+'</span>, '+esc(u.name.split(/\s+/)[0])+' 👋'; }
 
