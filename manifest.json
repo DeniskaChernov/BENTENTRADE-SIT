@@ -1,0 +1,21 @@
+{
+  "name": "Bententrade — Мебель из ротанга",
+  "short_name": "Bententrade",
+  "description": "Премиальная мебель, кашпо и корзины из искусственного ротанга в Ташкенте с гарантией 3 года.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0e0d0b",
+  "theme_color": "#bd7335",
+  "icons": [
+    {
+      "src": "/assets/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/btt-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

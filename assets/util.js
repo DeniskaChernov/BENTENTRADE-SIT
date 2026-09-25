@@ -70,8 +70,10 @@
   /** Catalog prices in products.js are USD units; display only in UZS. */
   var UZS_PER_USD = 12500;
 
-  function toUzs(usdAmount) {
-    return Math.round(Number(usdAmount) || 0) * UZS_PER_USD;
+  function toUzs(amount) {
+    var val = Number(amount) || 0;
+    if (val >= 10000) return Math.round(val);
+    return Math.round(val * UZS_PER_USD);
   }
 
   function formatMoney(amount, opts) {
@@ -87,10 +89,30 @@
 
   function managerUrl(text) {
     var msg = encodeURIComponent(text || "");
+    var s = null;
+    try {
+      s = window._btt_settings || JSON.parse(sessionStorage.getItem("btt_settings") || "{}");
+    } catch(e){}
+    var tg = (s && s.telegram) ? String(s.telegram).replace(/^@/, "") : "bententradeuz";
+    var wa = (s && s.whatsapp) ? String(s.whatsapp).replace(/[^\d]/g, "") : "998771044422";
     return {
-      telegram: "https://t.me/bententradeuz" + (msg ? "?text=" + msg : ""),
-      whatsapp: "https://wa.me/998771044422" + (msg ? "?text=" + msg : ""),
+      telegram: "https://t.me/" + tg + (msg ? "?text=" + msg : ""),
+      whatsapp: "https://wa.me/" + wa + (msg ? "?text=" + msg : ""),
     };
+  }
+
+  function formatPhone(val) {
+    var raw = String(val || "");
+    var digits = raw.replace(/\D/g, "");
+    if (!digits) return "";
+    if (digits.indexOf("998") === 0) digits = digits.slice(3);
+    if (digits.length > 9) digits = digits.slice(0, 9);
+    var res = "+998";
+    if (digits.length > 0) res += " " + digits.slice(0, 2);
+    if (digits.length > 2) res += " " + digits.slice(2, 5);
+    if (digits.length > 5) res += " " + digits.slice(5, 7);
+    if (digits.length > 7) res += " " + digits.slice(7, 9);
+    return res;
   }
 
   window.BTT_UTIL = {
@@ -105,6 +127,7 @@
     UZS_PER_USD: UZS_PER_USD,
     toUzs: toUzs,
     formatMoney: formatMoney,
+    formatPhone: formatPhone,
     parseMoneyText: parseMoneyText,
     managerUrl: managerUrl,
   };

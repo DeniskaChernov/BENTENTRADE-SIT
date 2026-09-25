@@ -8,20 +8,35 @@
 import "dotenv/config";
 import pg from "pg";
 import { readFile, writeFile, mkdir, unlink } from "node:fs/promises";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync, mkdirSync } from "node:fs";
 import { join, dirname, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
+import { createRequire } from "node:module";
 import vm from "node:vm";
 
+const req = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 
-/* --- keep TIMESTAMPTZ/ TIMESTAMP as "YYYY-MM-DD HH:MM:SS" strings (SQLite-like) --- */
-pg.types.setTypeParser(1114, (v) => (v == null ? v : String(v).slice(0, 19)));
-pg.types.setTypeParser(1184, (v) => (v == null ? v : String(v).slice(0, 19)));
-
 const connectionString = process.env.DATABASE_URL;
+export const isSqlite = !connectionString;
+
+let sqliteDb: any = null;
+if (isSqlite) {
+  const { DatabaseSync } = req("node:sqlite");
+  const dataDir = join(ROOT, "data");
+  if (!existsSync(dataDir)) mkdirSync(dataDir, { recursive: true });
+  sqliteDb = new DatabaseSync(join(dataDir, "bententrade.db"));
+  sqliteDb.exec("PRAGMA foreign_keys = ON;");
+}
+
+/* --- keep TIMESTAMPTZ/ TIMESTAMP as "YYYY-MM-DD HH:MM:SS" strings (SQLite-like) --- */
+if (!isSqlite) {
+  pg.types.setTypeParser(1114, (v) => (v == null ? v : String(v).slice(0, 19)));
+  pg.types.setTypeParser(1184, (v) => (v == null ? v : String(v).slice(0, 19)));
+}
+
 const ssl =
   process.env.DATABASE_SSL === "true" || /[?&]sslmode=require/.test(connectionString || "")
     ? { rejectUnauthorized: false }
@@ -32,13 +47,16 @@ const ssl =
 // search_path is set at connection startup (no race with the first query).
 export const PG_SCHEMA = (process.env.PG_SCHEMA || "bententrade").replace(/[^a-z0-9_]/gi, "");
 
-export const pool = new pg.Pool({
-  connectionString,
-  ssl,
-  max: 8,
-  connectionTimeoutMillis: 10_000,
-  options: `-c search_path=${PG_SCHEMA} -c timezone=UTC`,
-});
+export const pool = !isSqlite
+  ? new pg.Pool({
+      connectionString,
+      ssl,
+      max: 8,
+      connectionTimeoutMillis: 10_000,
+      options: `-c search_path=${PG_SCHEMA} -c timezone=UTC`,
+    })
+  : (null as any);
+
 
 /* ----------------------- SQL compatibility ----------------------- */
 // Tables whose INSERT should return a generated id (used as D1 last_row_id).
@@ -85,22 +103,37 @@ class Stmt {
     this.sql = sql;
     this.params = params;
   }
-  // D1 semantics: bind() returns a NEW immutable statement (routes rely on this
-  // when reusing one prepared statement across a batch).
   bind(...args: unknown[]) {
     return new Stmt(this.sql, args);
   }
   async all<T = any>() {
+    if (isSqlite) {
+      const rows = sqliteDb.prepare(this.sql).all(...this.params);
+      return { results: rows as T[] };
+    }
     const { text } = buildQuery(this.sql, this.params);
     const r = await pool.query(text, this.params as any[]);
     return { results: r.rows as T[] };
   }
   async first<T = any>() {
+    if (isSqlite) {
+      const row = sqliteDb.prepare(this.sql).get(...this.params);
+      return (row as T) ?? null;
+    }
     const { text } = buildQuery(this.sql, this.params);
     const r = await pool.query(text, this.params as any[]);
     return (r.rows[0] as T) ?? null;
   }
   async run() {
+    if (isSqlite) {
+      const res = sqliteDb.prepare(this.sql).run(...this.params);
+      return {
+        meta: {
+          changes: Number(res.changes) || 0,
+          last_row_id: res.lastInsertRowid != null ? Number(res.lastInsertRowid) : undefined,
+        },
+      };
+    }
     return execRun(this.sql, this.params);
   }
 }
@@ -110,6 +143,26 @@ const DB = {
     return new Stmt(sql);
   },
   async batch(stmts: Stmt[]) {
+    if (isSqlite) {
+      sqliteDb.exec("BEGIN");
+      try {
+        const out = [];
+        for (const s of stmts) {
+          const res = sqliteDb.prepare(s.sql).run(...s.params);
+          out.push({
+            meta: {
+              changes: Number(res.changes) || 0,
+              last_row_id: res.lastInsertRowid != null ? Number(res.lastInsertRowid) : undefined,
+            },
+          });
+        }
+        sqliteDb.exec("COMMIT");
+        return out;
+      } catch (e) {
+        sqliteDb.exec("ROLLBACK");
+        throw e;
+      }
+    }
     const client = await pool.connect();
     try {
       await client.query("BEGIN");
@@ -133,6 +186,13 @@ const DB = {
 /* --------------------------- KV (sessions / rate-limit) --------------------------- */
 const SESSIONS = {
   async get(k: string) {
+    if (isSqlite) {
+      const now = Math.floor(Date.now() / 1000);
+      const row = sqliteDb
+        .prepare("SELECT v FROM kv_store WHERE k = ? AND (expires_at IS NULL OR expires_at > ?)")
+        .get(k, now) as { v: string } | undefined;
+      return row ? row.v : null;
+    }
     const r = await pool.query(
       "SELECT v FROM kv_store WHERE k = $1 AND (expires_at IS NULL OR expires_at > now())",
       [k],
@@ -140,6 +200,17 @@ const SESSIONS = {
     return r.rows[0] ? (r.rows[0].v as string) : null;
   },
   async put(k: string, v: string, opts?: { expirationTtl?: number }) {
+    if (isSqlite) {
+      const ttl = opts && opts.expirationTtl ? Math.floor(Number(opts.expirationTtl)) : 0;
+      const exp = ttl > 0 ? Math.floor(Date.now() / 1000) + ttl : null;
+      sqliteDb
+        .prepare(
+          `INSERT INTO kv_store (k, v, expires_at) VALUES (?, ?, ?)
+           ON CONFLICT (k) DO UPDATE SET v = excluded.v, expires_at = excluded.expires_at`,
+        )
+        .run(k, v, exp);
+      return;
+    }
     const ttl = opts && opts.expirationTtl ? Math.floor(Number(opts.expirationTtl)) : 0;
     const exp = ttl > 0 ? `now() + interval '${ttl} seconds'` : "NULL";
     await pool.query(
@@ -149,6 +220,10 @@ const SESSIONS = {
     );
   },
   async delete(k: string) {
+    if (isSqlite) {
+      sqliteDb.prepare("DELETE FROM kv_store WHERE k = ?").run(k);
+      return;
+    }
     await pool.query("DELETE FROM kv_store WHERE k = $1", [k]);
   },
 };
@@ -231,6 +306,52 @@ export function buildEnv() {
 
 /* ------------------------------ migrate + seed ------------------------------ */
 export async function migrate() {
+  if (isSqlite) {
+    const schema = readFileSync(join(ROOT, "migrations", "0001_init.sql"), "utf8");
+    sqliteDb.exec(schema);
+    try { sqliteDb.exec("ALTER TABLE orders ADD COLUMN delivery_method TEXT DEFAULT 'delivery';"); } catch (e) { /* already exists */ }
+    try { sqliteDb.exec("ALTER TABLE orders ADD COLUMN payment_method TEXT DEFAULT 'cash_or_pos';"); } catch (e) { /* already exists */ }
+    sqliteDb.exec(`
+      CREATE TABLE IF NOT EXISTS kv_store (
+        k          TEXT PRIMARY KEY,
+        v          TEXT NOT NULL,
+        expires_at INTEGER
+      );
+      CREATE INDEX IF NOT EXISTS idx_kv_expires ON kv_store(expires_at);
+
+      CREATE TABLE IF NOT EXISTS reviews (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        product_id TEXT NOT NULL,
+        user_id INTEGER,
+        author_name TEXT NOT NULL,
+        city TEXT,
+        rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
+        text TEXT NOT NULL,
+        is_verified INTEGER DEFAULT 0,
+        status TEXT DEFAULT 'approved',
+        created_at INTEGER NOT NULL
+      );
+      CREATE INDEX IF NOT EXISTS idx_reviews_product ON reviews(product_id, status);
+
+      INSERT OR IGNORE INTO reviews (id, product_id, author_name, city, rating, text, is_verified, status, created_at) VALUES
+        (1, 'p1', 'Тимур Ш.', 'Ташкент', 5, 'Заказывали угловой комплект «Лагуна» для террасы. Доставили точно в срок, распаковали, помогли установить. Плетение безупречное, швы ровные, каркас монолитный.', 1, 'approved', 1751712000000),
+        (2, 'p1', 'Наргиза М.', 'Ташкент', 5, 'Потрясающий диван! Цвет «Вуди» идеально подошёл к нашей плитке. На солнце не нагревается, сидеть очень комфортно. Спасибо мастерской Bententrade!', 1, 'approved', 1751020800000),
+        (3, 'p2', 'Сардор А.', 'Ташкент', 5, 'Покупали для летней террасы ресторана. Алюминиевый каркас невероятно удобен при ежедневной уборке — лёгкий, но монолитно устойчивый. Гости часто спрашивают, где брали.', 1, 'approved', 1750416000000),
+        (4, 'p3', 'Елена В.', 'Бухара', 5, 'Превосходная работа! Плетение монолитное, ни одного торчащего хвостика. Доставили в Бухару без единой царапины. Всем рекомендую Bententrade как надёжного производителя в Узбекистане.', 1, 'approved', 1749811200000);
+
+      INSERT OR IGNORE INTO settings (key, value) VALUES
+        ('sms_provider', 'disabled'),
+        ('sms_from', '4546'),
+        ('sms_notify_created', '1'),
+        ('sms_notify_status', '1'),
+        ('sms_tpl_created', 'Bententrade: Ваш заказ #{order_id} на сумму {total} принят! Скоро свяжемся.'),
+        ('sms_tpl_shipped', 'Bententrade: Заказ #{order_id} передан в доставку курьеру. Ожидайте звонка.'),
+        ('sms_tpl_delivered', 'Bententrade: Заказ #{order_id} доставлен. Спасибо за выбор Bententrade!'),
+        ('sms_tpl_cancelled', 'Bententrade: Заказ #{order_id} отменен. Свяжитесь с нами: +998 77 104 44 22');
+
+    `);
+    return;
+  }
   // Ensure the dedicated schema exists before creating tables in it.
   await pool.query(`CREATE SCHEMA IF NOT EXISTS ${PG_SCHEMA}`);
   const schema = readFileSync(join(ROOT, "db", "schema.pg.sql"), "utf8");
@@ -253,6 +374,13 @@ function loadFrontendData() {
 
 /** Seed products/articles/settings from the front-end data if the DB is empty. */
 export async function seedIfEmpty() {
+  if (isSqlite) {
+    const row = sqliteDb.prepare("SELECT COUNT(*) AS n FROM products").get() as { n: number };
+    if ((row?.n ?? 0) > 0) return false;
+    const seedSql = readFileSync(join(ROOT, "migrations", "seed.sql"), "utf8");
+    sqliteDb.exec(seedSql);
+    return true;
+  }
   const { rows } = await pool.query("SELECT COUNT(*)::int AS n FROM products");
   if ((rows[0]?.n ?? 0) > 0) return false;
 

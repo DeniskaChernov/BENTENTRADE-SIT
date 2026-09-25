@@ -29,17 +29,21 @@ app.post("/register", async (c) => {
   const exists = await c.env.DB.prepare(`SELECT id FROM users WHERE email = ?`).bind(email).first();
   if (exists) return c.json({ error: "email_taken" }, 409);
 
+  const countRow = await c.env.DB.prepare(`SELECT COUNT(*) as n FROM users`).first<{ n: number }>();
+  const isFirstUser = !countRow || Number(countRow.n) === 0;
+  const role = isFirstUser ? "admin" : "customer";
+
   const hash = await hashPassword(password);
   const ins = await c.env.DB.prepare(
-    `INSERT INTO users (email, password_hash, name, phone, role) VALUES (?, ?, ?, ?, 'customer')`,
+    `INSERT INTO users (email, password_hash, name, phone, role) VALUES (?, ?, ?, ?, ?)`,
   )
-    .bind(email, hash, name, phone)
+    .bind(email, hash, name, phone, role)
     .run();
 
   const userId = ins.meta.last_row_id as number;
-  const sid = await createSession(c.env, { userId, role: "customer", createdAt: Date.now() });
+  const sid = await createSession(c.env, { userId, role, createdAt: Date.now() });
   setSessionCookie(c, sid);
-  return c.json({ ok: true, user: { id: userId, email, name, role: "customer" } });
+  return c.json({ ok: true, user: { id: userId, email, name, role } });
 });
 
 /** POST /api/auth/login */

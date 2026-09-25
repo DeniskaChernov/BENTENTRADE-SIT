@@ -68,8 +68,10 @@ CREATE TABLE IF NOT EXISTS orders (
   customer_email TEXT,
   address        TEXT,
   comment        TEXT,
+  delivery_method TEXT NOT NULL DEFAULT 'delivery',
+  payment_method TEXT NOT NULL DEFAULT 'cash_or_pos',
   lang           TEXT,
-  currency       TEXT NOT NULL DEFAULT '$',
+  currency       TEXT NOT NULL DEFAULT 'сум',
   total          INTEGER NOT NULL DEFAULT 0,
   status         TEXT NOT NULL DEFAULT 'new',
   created_at     TEXT NOT NULL DEFAULT (datetime('now'))
@@ -131,3 +133,10 @@ CREATE TABLE IF NOT EXISTS settings (
   key   TEXT PRIMARY KEY,
   value TEXT
 );
+
+CREATE TABLE IF NOT EXISTS kv_store (
+  k          TEXT PRIMARY KEY,
+  v          TEXT NOT NULL,
+  expires_at INTEGER
+);
+CREATE INDEX IF NOT EXISTS idx_kv_expires ON kv_store(expires_at);

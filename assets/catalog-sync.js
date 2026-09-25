@@ -66,6 +66,11 @@
       '<div class="product__cat">' + esc(p.category_label || "") + "</div>" +
       '<div class="product__name">' + esc(p.name || "") + "</div>" +
       '<div class="price"><span class="price__now">' + money(p.price_now) + "</span>" + old + "</div>" +
+      '<div class="product-swatches" aria-label="Цвета плетения">' +
+      '<span class="product-swatch is-active" style="--swatch-color:#5C4033" title="Шоколад"></span>' +
+      '<span class="product-swatch" style="--swatch-color:#C2B280" title="Песочный"></span>' +
+      '<span class="product-swatch" style="--swatch-color:#2F353B" title="Графит"></span>' +
+      "</div>" +
       "</div>";
     return art;
   }
@@ -115,7 +120,7 @@
     if (frag.childNodes.length) grid.appendChild(frag);
     if (changed) {
       document.dispatchEvent(new CustomEvent("btt:related-rendered", { detail: { grid } }));
-      const active = document.querySelector('.cat-chips .chip.is-active') || document.querySelector('.cat-chips .chip[data-cat="all"]');
+      const active = document.querySelector('[data-chips] .chip.is-active') || document.querySelector('.cat-chips .chip.is-active') || document.querySelector('[data-chips] .chip[data-cat="all"]') || document.querySelector('.cat-chips .chip[data-cat="all"]');
       if (active) active.click();
     }
   }
@@ -143,7 +148,7 @@
     const el = document.querySelector("[data-cat-count]");
     const P = window.BTT_PRODUCTS;
     if (!el || !P) return;
-    const n = Object.keys(P).filter((k) => /^p\d+$/.test(k)).length;
+    const n = Object.keys(P).length;
     if (n) el.textContent = String(n);
   }
 
@@ -158,7 +163,7 @@
     });
     const frag = document.createDocumentFragment();
     let added = false;
-    Object.keys(P).sort((a, b) => +a.slice(1) - +b.slice(1)).forEach((pid) => {
+    Object.keys(P).sort((a, b) => a.localeCompare(b, undefined, { numeric: true })).forEach((pid) => {
       if (seen.has(pid)) return;
       const row = P[pid];
       frag.appendChild(buildCard({
@@ -246,6 +251,15 @@
 
   // Apply a CRM product onto the static PDP markup (runs after pdp.js re-render).
   function applyPDP(p) {
+    if (!window.BTT_PRODUCTS) window.BTT_PRODUCTS = {};
+    window.BTT_PRODUCTS[p.id] = {
+      cat: p.category || "furniture",
+      look: p.look || "sofa",
+      now: p.price_now,
+      old: p.price_old || 0,
+      stock: p.stock ?? 1,
+    };
+
     // Name / breadcrumb / category / description straight from the CRM.
     const h1 = document.querySelector(".pdp-info h1");
     if (h1 && p.name) { h1.textContent = p.name; document.title = "Bententrade — " + p.name; }
@@ -255,6 +269,17 @@
     if (catEl && p.category_label) catEl.textContent = p.category_label;
     const desc = document.querySelector(".pdp-desc");
     if (desc && p.description) desc.textContent = p.description;
+
+    // Specifications from CRM.
+    if (p.specs && typeof p.specs === "object") {
+      const keys = ["mat", "dim", "fin", "wt", "seat", "made"];
+      const specVals = document.querySelectorAll(".pdp-detail .spec-row .v");
+      keys.forEach((k, idx) => {
+        if (p.specs[k] && specVals[idx]) {
+          specVals[idx].textContent = p.specs[k];
+        }
+      });
+    }
 
     // Sizes (index-based, mirrors pdp.js).
     if (Array.isArray(p.sizes) && p.sizes.length) {
@@ -279,6 +304,18 @@
         save.textContent = word + "\u00a0" + money(p.price_old - p.price_now);
       } else save.style.display = "none";
     }
+
+    // Mobile sticky dock & lightbox.
+    const stickyTitle = document.querySelector("[data-sticky-title]");
+    if (stickyTitle && p.name) stickyTitle.textContent = p.name;
+    const stickyPrice = document.querySelector("[data-sticky-price]");
+    if (stickyPrice) stickyPrice.textContent = money(p.price_now);
+    const stickyOld = document.querySelector("[data-sticky-old]");
+    if (stickyOld) {
+      if (p.price_old) { stickyOld.textContent = money(p.price_old); stickyOld.style.display = ""; }
+      else stickyOld.style.display = "none";
+    }
+
     // Real gallery from the CRM: override the placeholder images when media exist.
     const urls = (p.media || []).map((m) => mediaUrl(m.key)).filter(Boolean);
     if (urls.length) {
@@ -293,6 +330,10 @@
         if (urls[i]) { if (tImg) tImg.src = urls[i]; btn.style.display = ""; btn.classList.toggle("is-active", i === 0); }
         else { btn.style.display = "none"; btn.classList.remove("is-active"); }
       });
+      const stickyImg = document.querySelector("[data-sticky-img]");
+      if (stickyImg) stickyImg.src = urls[0];
+      const lbImg = document.querySelector("[data-lightbox-img]");
+      if (lbImg) lbImg.src = urls[0];
     }
   }
 

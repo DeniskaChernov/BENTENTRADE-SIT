@@ -7,6 +7,11 @@ import { serve } from "@hono/node-server";
 import { serveStatic } from "@hono/node-server/serve-static";
 import { Hono } from "hono";
 
+if (typeof (process as any).loadEnvFile === "function") {
+  try { (process as any).loadEnvFile(); } catch (_) {}
+}
+
+
 import type { Context, Next } from "hono";
 import { sessionMiddleware, requireAuth } from "../worker/auth";
 
@@ -18,6 +23,7 @@ import authRoutes from "../worker/routes/authRoutes";
 import account from "../worker/routes/account";
 import admin from "../worker/routes/admin";
 import media from "../worker/routes/media";
+import reviews from "../worker/routes/reviews";
 import { ADMIN_HTML } from "../worker/admin-ui";
 import { ADMIN_APP_JS } from "../worker/admin-app";
 import { applySecurityHeaders, applyCacheHeaders } from "../worker/security-headers";
@@ -52,12 +58,30 @@ app.use("/api/*", sessionMiddleware);
 // API health (includes DB readiness for monitoring).
 app.get("/api/health", (c) => c.json({ ok: dbReady, ts: Date.now() }));
 
+// Public settings (contact info, manager telegram, whatsapp, phone).
+app.get("/api/settings", async (c: Context) => {
+  const env: any = (c as any).env;
+  const { results } = await env.DB.prepare(`SELECT key, value FROM settings`).all<{ key: string; value: string }>();
+  const map: Record<string, string> = {
+    phone: "+998 77 104 44 22",
+    whatsapp: "998771044422",
+    telegram: "bententradeuz",
+    email: "hello@bententrade.uz",
+  };
+  for (const r of results || []) {
+    if (r.key && r.value) map[r.key] = r.value;
+  }
+  return c.json({ ok: true, settings: map });
+});
+
 // Public API.
 app.route("/api/products", products);
 app.route("/api/articles", articles);
 app.route("/api/contact", contact);
 app.route("/api/orders", orders); // POST public; GET checks session internally
 app.route("/api/auth", authRoutes);
+app.route("/api/reviews", reviews);
+
 
 // Authenticated customer API.
 app.use("/api/account/*", requireAuth);
@@ -79,7 +103,13 @@ app.get("/admin/app.js", (c) =>
 );
 
 // ---- static site (only expose front-end files, never server code) ----
-const STATIC_ALLOW = /^\/(assets\/.+|data\/.+|[a-z0-9_.-]+\.html|favicon\.(?:ico|svg)|robots\.txt|sitemap\.xml|manifest\.webmanifest)$/i;
+import { readFileSync, existsSync } from "node:fs";
+let notFoundHtml = "";
+try {
+  if (existsSync("./404.html")) notFoundHtml = readFileSync("./404.html", "utf-8");
+} catch (_) {}
+
+const STATIC_ALLOW = /^\/(assets\/.+|data\/.+|[a-z0-9_.-]+\.html|favicon\.(?:ico|svg|png)|robots\.txt|sitemap\.xml|manifest\.json|manifest\.webmanifest|sw\.js)$/i;
 app.use("*", async (c: Context, next: Next) => {
   const p = c.req.path;
   if (p === "/" || p === "/health" || STATIC_ALLOW.test(p)) return next();
@@ -87,6 +117,11 @@ app.use("*", async (c: Context, next: Next) => {
 });
 app.get("/", serveStatic({ path: "./index.html" }));
 app.use("*", serveStatic({ root: "./" }));
+
+app.notFound((c) => {
+  if (notFoundHtml) return c.html(notFoundHtml, 404);
+  return c.text("404 Not Found", 404);
+});
 
 // ------------------------------- boot -------------------------------
 const ENV = buildEnv();

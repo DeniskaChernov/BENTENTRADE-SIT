@@ -12,9 +12,13 @@
 
   async function request(path, opts) {
     if (window.BTT_COOKIES && !window.BTT_COOKIES.hasConsent()) {
-      const err = new Error("cookie_consent_required");
-      err.code = "cookie_consent_required";
-      throw err;
+      if (path.indexOf("/api/auth/") === 0 || path.indexOf("/api/admin/") === 0) {
+        try { window.BTT_COOKIES.accept(); } catch (_) {}
+      } else {
+        const err = new Error("cookie_consent_required");
+        err.code = "cookie_consent_required";
+        throw err;
+      }
     }
     opts = opts || {};
     const init = {
@@ -59,6 +63,10 @@
     product: (id) => request("/api/products/" + encodeURIComponent(id) + "?lang=" + lang()),
     articles: () => request("/api/articles?lang=" + lang()),
     article: (slug) => request("/api/articles/" + encodeURIComponent(slug) + "?lang=" + lang()),
+    settings: () => request("/api/settings"),
+    reviews: (productId) => request("/api/reviews?product_id=" + encodeURIComponent(productId || "")),
+    createReview: (payload) => request("/api/reviews", { method: "POST", body: payload }),
+
 
     // auth
     me: () => request("/api/auth/me"),

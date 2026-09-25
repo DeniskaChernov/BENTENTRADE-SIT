@@ -52,6 +52,20 @@ app.get("/:id", async (c) => {
     .bind(id)
     .all();
 
+  let parsedSizes: any[] = [];
+  try {
+    parsedSizes = i18n?.sizes ? JSON.parse(i18n.sizes) : [];
+  } catch {
+    parsedSizes = i18n?.sizes ? [i18n.sizes] : [];
+  }
+
+  let parsedSpecs: Record<string, string> = {};
+  try {
+    parsedSpecs = i18n?.specs ? JSON.parse(i18n.specs) : {};
+  } catch {
+    parsedSpecs = {};
+  }
+
   return c.json({
     lang,
     product: {
@@ -59,8 +73,8 @@ app.get("/:id", async (c) => {
       name: i18n?.name ?? "",
       category_label: i18n?.category_label ?? "",
       description: i18n?.description ?? "",
-      sizes: i18n?.sizes ? JSON.parse(i18n.sizes) : [],
-      specs: i18n?.specs ? JSON.parse(i18n.specs) : {},
+      sizes: parsedSizes,
+      specs: parsedSpecs,
       media: media.results,
     },
   });

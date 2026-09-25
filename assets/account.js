@@ -109,6 +109,60 @@
     }).join("");
     return '<ol class="order-steps">'+steps+'</ol>';
   }
+
+  function formatOptions(optStr){
+    if(!optStr) return "";
+    try{
+      const parsed = typeof optStr === "string" ? JSON.parse(optStr) : optStr;
+      if(parsed && typeof parsed === "object"){
+        const vals = Object.values(parsed).filter(Boolean);
+        if(vals.length) return vals.join(" · ");
+      }
+    }catch(e){}
+    return String(optStr);
+  }
+
+  function orderDetailsHtml(o){
+    const items = o.items || [];
+    const fmt = (window.BTT_UTIL && window.BTT_UTIL.formatMoney) ? window.BTT_UTIL.formatMoney : (n => n + " сум");
+    const isPickup = o.delivery_method === "pickup";
+    const isQuick = o.delivery_method === "quick_order";
+    const methodLabel = isPickup ? (t("coPickup") || "Самовывоз") : (isQuick ? "⚡ Быстрый заказ" : (t("coDelivery") || "Доставка"));
+    const payMap = {
+      cash_or_pos: "При получении (наличными или терминалом)",
+      click_payme: "Click / Payme (онлайн)",
+      card_or_invoice: "Перевод на карту / Счёт юрлица"
+    };
+    const payLabel = payMap[o.payment_method] || "При получении";
+    const payLine = '<span class="order-detail-pay"><b>' + esc(t("coPayment") || "Оплата") + ':</b> ' + esc(payLabel) + '</span>';
+    const addrLine = (!isPickup && o.address) ? '<div class="order-detail-meta"><b>' + esc(t("coAddress") || "Адрес") + ':</b> ' + esc(o.address) + '</div>' : '';
+
+    const itemsRows = items.map(function(it){
+      const imgs = it.product_id ? (window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(it.product_id) : null) : null;
+      const thumb = (imgs && imgs[0]) ? imgs[0].thumb : "";
+      const opt = formatOptions(it.options);
+      const totalItemPrice = (it.unit_price || 0) * (it.qty || 1);
+      return '<div class="order-item-row">' +
+        (thumb ? '<img src="' + esc(thumb) + '" class="order-item-row__img" alt="" loading="lazy">' : '<div class="order-item-row__noimg"></div>') +
+        '<div class="order-item-row__info">' +
+          '<div class="order-item-row__name">' + esc(it.name || "—") + '</div>' +
+          (opt ? '<div class="order-item-row__opt">' + esc(opt) + '</div>' : '') +
+          '<div class="order-item-row__qty">' + (it.qty || 1) + ' × ' + esc(fmt(it.unit_price || 0, { raw: true })) + '</div>' +
+        '</div>' +
+        '<div class="order-item-row__price">' + esc(fmt(totalItemPrice, { raw: true })) + '</div>' +
+      '</div>';
+    }).join("");
+
+    return '<div class="order-details-pane">' +
+      '<div class="order-detail-header">' +
+        '<span class="order-detail-method"><b>' + esc(t("coMethod") || "Способ") + ':</b> ' + esc(methodLabel) + '</span>' +
+        payLine +
+        addrLine +
+      '</div>' +
+      (itemsRows ? '<div class="order-items-list">' + itemsRows + '</div>' : '') +
+    '</div>';
+  }
+
   function orderCard(o, withActions){
     const st=ST[o.status]||ST.new; const lbl=st[lang()]||st.en;
     const items=o.items||[];
@@ -117,7 +171,7 @@
     const actions = withActions
       ? '<div class="order__actions"><button class="btn btn--dark btn--sm" data-order-repeat="'+esc(ids.join(","))+'">'+esc(t("acc.ord.repeat"))+'</button></div>'
       : "";
-    return '<article class="order">'+
+    return '<article class="order" data-order-public="'+esc(o.public_id||o.id)+'">'+
       '<div class="order__hit" role="button" tabindex="0" aria-expanded="false" aria-label="'+esc(t("acc.ord.expand"))+'">'+
       '<header class="order__head">'+
         '<div class="order__info">'+
@@ -135,14 +189,22 @@
         '<span class="order__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>'+
       '</div>'+
       '</div>'+
-      '<div class="order__timeline" hidden>'+orderTimeline(o.status)+'</div>'+actions+'</article>';
+      '<div class="order__timeline" hidden>'+orderTimeline(o.status)+orderDetailsHtml(o)+'</div>'+actions+'</article>';
   }
 
-  function repeatSnapshot(id){
-    const P=window.BTT_PRODUCTS||{}, p=P[id]; if(!p) return null;
+  function repeatSnapshot(id, fallbackItem){
+    const P=window.BTT_PRODUCTS||{}, p=P[id];
     const d=(window.BTT_I18N&&window.BTT_I18N[lang()])||(window.BTT_I18N&&window.BTT_I18N.ru)||{};
     const imgs=window.BTT_PRODUCT_IMG?window.BTT_PRODUCT_IMG(id):null;
-    return { id, name:d[id+".name"]||id, price:p.now, img:(imgs&&imgs[0])?imgs[0].thumb:"" };
+    const thumb=(imgs&&imgs[0])?imgs[0].thumb:(fallbackItem?fallbackItem.img:"");
+    if(p){
+      const uzsPrice = (window.BTT_UTIL && window.BTT_UTIL.toUzs) ? window.BTT_UTIL.toUzs(p.now) : Math.round(p.now * 12500);
+      return { id, name:d[id+".name"]||p.name||id, price:uzsPrice, img:thumb };
+    }
+    if(fallbackItem){
+      return { id, name:fallbackItem.name||id, price:fallbackItem.unit_price||0, img:thumb };
+    }
+    return null;
   }
   function wireRepeat(){
     document.querySelectorAll("[data-order-repeat]").forEach(b=>{
@@ -221,7 +283,7 @@
       : '<div class="addr__tag">'+HOME_SVG+'<span>'+esc(a.label||t("acc.addr.office"))+'</span></div>';
     const line2=[a.city,a.line].filter(Boolean).map(esc).join(", ");
     return '<div class="addr'+(a.is_default?" is-default":"")+'" data-addr-id="'+a.id+'">'+
-      '<a class="addr__edit" href="#" data-addr-edit>'+esc(t("acc.addr.edit"))+'</a>'+tag+
+      '<button type="button" class="addr__edit" data-addr-edit>'+esc(t("acc.addr.edit"))+'</button>'+tag+
       '<h4>'+esc(a.recipient||"")+'</h4>'+
       '<p>'+line2+(a.phone?'<br>'+esc(a.phone):"")+'</p></div>';
   }
@@ -329,49 +391,12 @@
     }, 400);
   }
 
-  function showAccCookieGate(){
-    document.documentElement.classList.add("acc-cookie-wait");
-    const acc = document.querySelector(".acc");
-    if(acc) acc.style.display = "none";
-    let gate = document.querySelector("[data-acc-cookie-gate]");
-    if(!gate){
-      gate = document.createElement("section");
-      gate.className = "acc-cookie-gate";
-      gate.setAttribute("data-acc-cookie-gate", "");
-      gate.innerHTML =
-        '<div class="info-block">' +
-        '<h2>' + esc(t("acc.cookie.title")) + "</h2>" +
-        '<p>' + esc(t("acc.cookie.sub")) + "</p>" +
-        '<button type="button" class="btn btn--copper" data-acc-cookie-accept>' + esc(t("cookie.banner.accept")) + "</button>" +
-        "</div>";
-      const main = document.querySelector("main");
-      if(main) main.appendChild(gate);
-      gate.querySelector("[data-acc-cookie-accept]")?.addEventListener("click", ()=>{
-        if(window.BTT_COOKIES && window.BTT_COOKIES.accept) window.BTT_COOKIES.accept();
-      });
-    }
-    gate.hidden = false;
-  }
-
-  function hideAccCookieGate(){
-    document.documentElement.classList.remove("acc-cookie-wait");
-    const gate = document.querySelector("[data-acc-cookie-gate]");
-    if(gate) gate.hidden = true;
-    const acc = document.querySelector(".acc");
-    if(acc) acc.style.display = "";
-  }
-
   async function hydrateAccount(){
     if(!window.BTT_API){ document.documentElement.classList.remove("acc-loading"); window.location.replace("login.html"); return; }
     let me;
     try{ me=await window.BTT_API.me(); }
     catch(e){
       document.documentElement.classList.remove("acc-loading");
-      if(window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(e)){
-        showAccCookieGate();
-        window.BTT_COOKIES.showBanner();
-        return;
-      }
       window.location.replace("login.html");
       return;
     }
@@ -423,7 +448,7 @@
       const serverIds=favRes.favorites||[];
       if(serverIds.length){
         const local=getFavs(); let changed=false;
-        serverIds.forEach(id=>{ if(!local[id]){ const p=(window.BTT_PRODUCTS||{})[id]; const d=(window.BTT_I18N&&window.BTT_I18N[lang()])||{}; const imgs=window.BTT_PRODUCT_IMG?window.BTT_PRODUCT_IMG(id):null; local[id]={name:(d[id+".name"]||id),price:p?p.now:0,img:(imgs&&imgs[0])?imgs[0].thumb:""}; changed=true; } });
+        serverIds.forEach(id=>{ if(!local[id]){ const p=(window.BTT_PRODUCTS||{})[id]; const d=(window.BTT_I18N&&window.BTT_I18N[lang()])||{}; const imgs=window.BTT_PRODUCT_IMG?window.BTT_PRODUCT_IMG(id):null; const uzsPrice = p ? ((window.BTT_UTIL && window.BTT_UTIL.toUzs) ? window.BTT_UTIL.toUzs(p.now) : Math.round(p.now * 12500)) : 0; local[id]={name:(d[id+".name"]||id),price:uzsPrice,img:(imgs&&imgs[0])?imgs[0].thumb:""}; changed=true; } });
         if(changed){ if(window.BTT_CART&&window.BTT_CART.setFavs) window.BTT_CART.setFavs(local); else localStorage.setItem("btt_favs",JSON.stringify(local)); renderWishlist(); syncStats(); }
       }
       pushFavs();
@@ -492,6 +517,8 @@
       if(willOpen) openDrawer(); else closeDrawer();
     });
     if(scrim) scrim.addEventListener("click", closeDrawer);
+    const sideClose = document.querySelector("[data-acc-side-close]");
+    if(sideClose) sideClose.addEventListener("click", closeDrawer);
 
     const logout = document.querySelector("[data-acc-logout]");
     if(logout) logout.addEventListener("click", async ()=>{
@@ -520,11 +547,6 @@
             if(subEl && payload.phone){ subEl.textContent=payload.phone; subEl.hidden=false; }
             toast(t("toast.saved"));
           }catch(err){
-            if(window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(err)){
-              window.BTT_COOKIES.showBanner();
-              toast(t("cookie.required"));
-              return;
-            }
             toast(t("auth.err.generic"));
             return;
           }
@@ -562,7 +584,6 @@
     hydrateAccount();
 
     document.addEventListener("btt:cookies-accepted", ()=>{
-      hideAccCookieGate();
       document.documentElement.classList.add("acc-loading");
       hydrateAccount();
     });

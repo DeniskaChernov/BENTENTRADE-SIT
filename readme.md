@@ -42,4 +42,4 @@
 
 - Шрифты: Hanken Grotesque, Cormorant Garamond (Google Fonts)
 - Цвета: `--ink`, `--copper`, `--cream`, `--paper` — см. `assets/styles.css`
-- Фото: loremflickr (заглушки); заменить на реальные снимки в `products.js` / `hero.js`
+- Фото: локальные оптимизированные ассеты в `assets/`, автоматическая синхронизация фото из CRM/D1 через `catalog-sync.js`

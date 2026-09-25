@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import type { Env, Variables } from "../types";
-import { str, isPhone, rateLimit, clientIp, escapeHtml } from "../util";
+import { str, isPhone, isEmail, rateLimit, clientIp, escapeHtml } from "../util";
 import { notifyTelegram } from "../telegram";
 
 const app = new Hono<{ Bindings: Env; Variables: Variables }>();
@@ -20,11 +20,13 @@ app.post("/", async (c) => {
   const name = str(body.name, 120);
   const phone = str(body.phone, 40);
   const email = str(body.email, 160);
-  const message = str(body.message, 4000);
   const lang = str(body.lang, 4) || "ru";
+  const message = str(body.message, 4000) || (lang === "uz" ? "Maslahat uchun so'rov" : lang === "en" ? "Consultation request" : "Заявка на консультацию");
+  const hasPhone = phone && phone.replace(/\D/g, "").length >= 7;
+  const hasEmail = isEmail(email);
 
-  if (!name || !message || (!isPhone(phone) && !email)) {
-    return c.json({ error: "validation", fields: ["name", "phone_or_email", "message"] }, 422);
+  if (!name || (!hasPhone && !hasEmail)) {
+    return c.json({ error: "validation", fields: ["name", "phone_or_email"] }, 422);
   }
 
   const res = await c.env.DB.prepare(

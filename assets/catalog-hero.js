@@ -88,19 +88,35 @@
     const cfg = CFG[current];
     const L = cfg[curLang()] || cfg.ru;
     const hero = document.querySelector(".page-hero--cat");
-    if(!hero) return;
-    const img = hero.querySelector(".page-hero__collage img");
-    const k = hero.querySelector(".eyebrow");
-    const t = hero.querySelector("h1");
-    const s = hero.querySelector(".lead");
-    if(img && cfg.img){
-      img.removeAttribute("onerror");
-      img.src = cfg.img;
+    if(hero){
+      const img = hero.querySelector(".page-hero__collage img");
+      const k = hero.querySelector(".eyebrow");
+      const t = hero.querySelector("h1");
+      const s = hero.querySelector(".lead");
+      if(img && cfg.img){
+        img.removeAttribute("onerror");
+        img.src = cfg.img;
+      }
+      [k,t,s].forEach(el=> el && el.removeAttribute("data-i18n"));
+      if(k) k.textContent = L.k;
+      if(t) t.textContent = L.t;
+      if(s) s.textContent = L.s;
     }
-    [k,t,s].forEach(el=> el && el.removeAttribute("data-i18n"));
-    if(k) k.textContent = L.k;
-    if(t) t.textContent = L.t;
-    if(s) s.textContent = L.s;
+    const topTitle = document.querySelector(".cat-top-title");
+    const topSub = document.querySelector(".cat-top-sub");
+    const topCrumb = document.querySelector(".cat-breadcrumbs__current");
+    if(topTitle){
+      topTitle.removeAttribute("data-i18n");
+      topTitle.textContent = L.t;
+    }
+    if(topSub){
+      topSub.removeAttribute("data-i18n");
+      topSub.textContent = L.s;
+    }
+    if(topCrumb){
+      topCrumb.removeAttribute("data-i18n");
+      topCrumb.textContent = L.k;
+    }
   }
 
   function syncUrl(chipCat){
@@ -108,8 +124,12 @@
     history.replaceState(null, "", next);
   }
 
+  function isCatalogPage(){
+    return /catalog\.html$/i.test(location.pathname.split("/").pop() || "") || !!document.querySelector(".cat-top-bar");
+  }
+
   document.addEventListener("DOMContentLoaded", function(){
-    if(!document.querySelector(".page-hero--cat")) return;
+    if(!isCatalogPage()) return;
     renderHero(readHeroCat());
 
     document.addEventListener("btt:cat-change", function(e){
@@ -122,5 +142,6 @@
     document.querySelectorAll(".lang button").forEach(b=>{
       b.addEventListener("click", ()=> setTimeout(()=> renderHero(current), 0));
     });
+    document.addEventListener("btt:lang", ()=> setTimeout(()=> renderHero(current), 0));
   });
 })();

@@ -39,20 +39,7 @@
     }
     tabs.forEach((b) => b.addEventListener("click", () => showTab(b.dataset.authTab)));
 
-    function syncCookieHints() {
-      const show = window.BTT_COOKIES && !window.BTT_COOKIES.hasConsent();
-      document.querySelectorAll("[data-auth-cookie-hint]").forEach((el) => {
-        el.hidden = !show;
-      });
-    }
-    syncCookieHints();
-    document.addEventListener("btt:cookies-accepted", syncCookieHints);
-
     function errText(err) {
-      if (window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(err)) {
-        window.BTT_COOKIES.showBanner();
-        return t("cookie.required");
-      }
       const code = (err && err.data && err.data.error) || "";
       const map = {
         invalid_credentials: "auth.err.creds",

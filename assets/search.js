@@ -37,20 +37,25 @@
     { href:"sadovaya-mebel-rotang.html", k:"lp.garden.title" }
   ];
 
+  function productThumb(id){
+    const imgs = window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(id) : null;
+    return (imgs && imgs[0]) ? imgs[0].thumb : null;
+  }
+
   function staticProducts(){
     const d = (window.BTT_I18N && window.BTT_I18N[lang()]) || {};
     const P = window.BTT_PRODUCTS;
     const out = [];
     if(P){
-      Object.keys(P).sort((a,b)=>+a.slice(1)-+b.slice(1)).forEach(id=>{
+      Object.keys(P).sort((a,b)=>a.localeCompare(b, undefined, { numeric: true })).forEach(id=>{
         const name = d[id+".name"];
-        if(name) out.push({ id, name, cat:d[id+".cat"]||"", img:null, q:name });
+        if(name) out.push({ id, name, cat:d[id+".cat"]||"", img:productThumb(id), q:name });
       });
       if(out.length) return out;
     }
     for(let i=1;i<=15;i++){
       const name = d["p"+i+".name"], cat = d["p"+i+".cat"];
-      if(name) out.push({ id:"p"+i, name, cat:cat||"", img:null, q:name });
+      if(name) out.push({ id:"p"+i, name, cat:cat||"", img:productThumb("p"+i), q:name });
     }
     return out;
   }
@@ -87,12 +92,16 @@
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>'+
           '<input class="search-box__input" type="text" autocomplete="off" spellcheck="false" placeholder="'+esc(t("srch.ph"))+'" data-i18n-ph="srch.ph" aria-label="'+esc(t("srch.ph"))+'" data-i18n-aria="srch.ph">'+
           '<span class="search-box__kbd">ESC</span>'+
+          '<button type="button" class="search-box__close" aria-label="'+esc(t("bot.aria.close") || "Закрыть")+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>'+
         '</div>'+
         '<div class="search-box__body"></div>'+
       '</div>';
     document.body.appendChild(ov);
     input = ov.querySelector(".search-box__input");
     body = ov.querySelector(".search-box__body");
+
+    const closeBtn = ov.querySelector(".search-box__close");
+    if(closeBtn) closeBtn.addEventListener("click", close);
 
     ov.addEventListener("click", e=>{ if(e.target === ov) close(); });
     input.addEventListener("input", render);
@@ -103,7 +112,7 @@
     if(window.BTT_UTIL && window.BTT_UTIL.esc) return window.BTT_UTIL.esc(s);
     return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   }
-  function norm(s){ return String(s).toLowerCase().trim(); }
+  function norm(s){ return String(s).toLowerCase().replace(/[‘’`]/g, "'").trim(); }
 
   function render(){
     const q = norm(input.value);
@@ -179,24 +188,37 @@
   }
   function go(i){ const it = items[i]; if(it) window.location.href = it.href; }
 
+  let lastFocus = null;
+
   function open(){
     if(!ov) build();
+    lastFocus = document.activeElement;
     loadApiProducts();
     input.value = "";
     render();
     ov.classList.add("is-open");
+    ov.setAttribute("aria-hidden", "false");
     document.documentElement.style.overflow = "hidden";
     setTimeout(()=> input.focus(), 40);
   }
   function close(){
     if(!ov) return;
     ov.classList.remove("is-open");
+    ov.setAttribute("aria-hidden", "true");
     document.documentElement.style.overflow = "";
+    if(lastFocus && typeof lastFocus.focus === "function"){
+      try{ lastFocus.focus(); }catch(_){}
+      lastFocus = null;
+    }
   }
 
   document.addEventListener("DOMContentLoaded", function(){
-    document.querySelectorAll("[data-i18n-aria='tool.search'], [aria-label='Поиск'], [aria-label='Qidiruv'], [aria-label='Search']").forEach(btn=>{
+    document.querySelectorAll("[data-search-open], [data-i18n-aria='tool.search'], [aria-label='Поиск'], [aria-label='Qidiruv'], [aria-label='Search']").forEach(btn=>{
       btn.addEventListener("click", e=>{ e.preventDefault(); open(); });
+    });
+    document.addEventListener("click", e=>{
+      const btn = e.target.closest("[data-search-open]");
+      if(btn){ e.preventDefault(); open(); }
     });
     document.addEventListener("keydown", e=>{
       if((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k"){ e.preventDefault(); open(); }

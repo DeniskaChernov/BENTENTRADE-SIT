@@ -73,9 +73,9 @@
     const P = window.BTT_PRODUCTS || {};
     const cat = activeCategory();
     return Object.keys(P)
-      .filter((k) => /^p\d+$/.test(k))
+      .filter((id) => id && P[id])
       .filter((id) => !cat || (P[id] && P[id].cat === cat) || (cat === "planterMix" && P[id] && (P[id].cat === "planter" || P[id].cat === "basket")))
-      .sort((a, b) => +a.slice(1) - +b.slice(1));
+      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
   }
 
   function injectItemList() {

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -7,6 +7,7 @@
 <meta name="keywords" data-i18n-meta="meta.care.keywords" content="">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#bd7335">
 <link rel="canonical" href="https://bententrade.uz/care.html">
 <meta property="og:type" content="website">
@@ -17,12 +18,13 @@
 <meta property="og:image" content="https://bententrade.uz/assets/btt-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="assets/styles.css" as="style">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesque:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesque:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap"></noscript>
+<link rel="preload" href="assets/styles.css?v=20260921-6" as="style">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Unbounded:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Unbounded:wght@400;500;600;700;800;900&display=swap"></noscript>
 <title data-i18n-doc="meta.care.title">Bententrade — Уход за плетением</title>
-<link rel="stylesheet" href="assets/styles.css">
-<link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/styles.css?v=20260921-6">
+<link rel="stylesheet" href="assets/pages.css?v=20260921-6">
+<link rel="stylesheet" href="assets/help.css?v=20260921-6">
 <script>(function(){try{if(localStorage.getItem('btt_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 </head>
 <body>
@@ -59,12 +61,16 @@
   <a href="about.html" data-i18n="nav.about">О нас</a>
   <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
   <div class="mobile-drawer__tools">
-    <button type="button" class="mobile-drawer__tool" data-cart-open>
+    <button type="button" class="mobile-drawer__tool" data-search-open data-i18n-aria="tool.search" aria-label="Поиск">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+      <span data-i18n="tool.search">Поиск</span>
+    </button>
+    <button type="button" class="mobile-drawer__tool" data-cart-open data-i18n-aria="tool.cart" aria-label="Корзина">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
       <span data-i18n="tool.cart">Корзина</span>
       <span class="count" data-cart-count style="display:none">0</span>
     </button>
-    <button type="button" class="mobile-drawer__tool" data-fav-open>
+    <button type="button" class="mobile-drawer__tool" data-fav-open data-i18n-aria="tool.fav" aria-label="Избранное">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>
       <span data-i18n="tool.fav">Избранное</span>
       <span class="count" data-fav-count style="display:none">0</span>
@@ -72,35 +78,99 @@
   </div>
 </nav>
 
-<main id="main">
-<section class="page-hero">
-  <div class="page-hero__in">
-    <div class="page-hero__card reveal">
-      <div class="eyebrow" data-i18n="care.k">Помощь</div>
-      <h1 data-i18n="care.title">Уход за плетением</h1>
-      <p class="lead" data-i18n="care.sub">Искусственный ротанг неприхотлив — вот всё, что нужно знать.</p>
+<main id="main" class="help-flow">
+<!-- Top Bar with breadcrumbs and editorial title -->
+<section class="help-top-bar wrap">
+  <nav class="help-breadcrumbs" aria-label="Хлебные крошки">
+    <a href="index.html" data-i18n="nav.home">Главная</a>
+    <span class="help-breadcrumbs__sep" aria-hidden="true">/</span>
+    <span data-i18n="care.k">Помощь</span>
+    <span class="help-breadcrumbs__sep" aria-hidden="true">/</span>
+    <span class="help-breadcrumbs__current" data-i18n="care.title">Уход за плетением</span>
+  </nav>
+  <div class="help-top-header">
+    <div class="help-top-header__info">
+      <h1 class="help-top-title" data-i18n="care.title">Уход за плетением</h1>
+      <p class="help-top-sub" data-i18n="care.sub">Искусственный ротанг неприхотлив: не выгорает на солнце, не боится влаги и мороза. Вот всё, что нужно знать.</p>
+    </div>
+    <div class="help-top-badge">
+      <span class="help-badge-dot" aria-hidden="true"></span>
+      <span>3 года гарантии · Не требует пропитки маслом</span>
     </div>
   </div>
 </section>
 
-<section class="wrap section">
-  <div class="info-doc">
-    <div class="info-block reveal"><h2 data-i18n="care.b1.t">Регулярный уход</h2>
-      <ul>
+<section class="wrap section info-doc" style="padding-top:12px">
+  <!-- 3 Bento Feature Cards -->
+  <div class="help-bento-grid">
+    <!-- Card 1: Regular Care -->
+    <div class="help-bento-card info-block reveal">
+      <div class="help-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+      </div>
+      <h2 class="help-card-title" data-i18n="care.b1.t">Регулярный уход</h2>
+      <ul class="help-card-list">
         <li data-i18n="care.b1.l1">Протирайте плетение влажной мягкой тканью по мере загрязнения.</li>
         <li data-i18n="care.b1.l2">Для въевшейся грязи используйте тёплую воду с мягким мылом.</li>
         <li data-i18n="care.b1.l3">Труднодоступные места удобно чистить мягкой щёткой.</li>
       </ul>
+      <p class="help-card-desc" style="margin-top:auto;font-size:13px;opacity:0.85">Для освежения террасной мебели достаточно ополоснуть её водой из садового шланга.</p>
     </div>
-    <div class="info-block reveal"><h2 data-i18n="care.b2.t">Чего лучше избегать</h2>
-      <ul>
+
+    <!-- Card 2: What to Avoid -->
+    <div class="help-bento-card info-block reveal">
+      <div class="help-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+      </div>
+      <h2 class="help-card-title" data-i18n="care.b2.t">Чего лучше избегать</h2>
+      <ul class="help-card-list">
         <li data-i18n="care.b2.l1">Агрессивных растворителей и абразивных порошков.</li>
         <li data-i18n="care.b2.l2">Мойки под высоким давлением — струя может деформировать плетение.</li>
         <li data-i18n="care.b2.l3">Долгого контакта подушек с влагой — их лучше просушивать.</li>
       </ul>
+      <p class="help-card-desc" style="margin-top:auto;font-size:13px;opacity:0.85">Синтетический ротанг химически стоек, но сильные растворители могут повредить защитный УФ-слой.</p>
     </div>
-    <div class="info-block reveal"><h2 data-i18n="care.b3.t">Зимой</h2>
-      <p data-i18n="care.b3.p">Само плетение и каркас переносят мороз. На зиму достаточно убрать в помещение текстиль и подушки, а мебель при желании накрыть чехлом от пыли.</p>
+
+    <!-- Card 3: Winter & Off-Season -->
+    <div class="help-bento-card info-block reveal">
+      <div class="help-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"/></svg>
+      </div>
+      <h2 class="help-card-title" data-i18n="care.b3.t">Зимой</h2>
+      <p class="help-card-desc" data-i18n="care.b3.p" style="line-height:1.65">Само плетение и каркас переносят мороз. На зиму достаточно убрать в помещение текстиль и подушки, а мебель при желании накрыть чехлом от пыли.</p>
+      <ul class="help-card-list" style="margin-top:auto">
+        <li>Алюминиевый каркас не ржавеет при сырости и снеге.</li>
+        <li>Полимерное волокно сохраняет эластичность от -35°C до +55°C.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Cushion Care Note -->
+  <div class="help-step-card reveal" style="padding:28px 32px;display:flex;flex-direction:row;align-items:center;gap:24px;flex-wrap:wrap">
+    <div class="help-card-icon" style="width:42px;height:42px;flex-shrink:0" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 7.65l.77.78L12 20.66l7.65-7.65.77-.78a5.4 5.4 0 0 0 0-7.65z"/></svg>
+    </div>
+    <div style="flex:1;min-width:240px">
+      <h3 style="font-family:var(--f-serif,'Soyuz Grotesk','Unbounded',sans-serif);font-size:20px;font-weight:700;margin:0 0 6px;color:var(--text)">Уход за подушками и съёмными чехлами</h3>
+      <p style="font-size:14.5px;color:var(--muted);line-height:1.6;margin:0">Все подушки комплектуются скрытыми молниями. Ткань обработана влаго- и грязеотталкивающим составом. Чехлы можно стирать в деликатном режиме при температуре 30°C без отжима.</p>
+    </div>
+  </div>
+
+  <!-- Help CTA Banner -->
+  <div class="help-cta-banner reveal">
+    <div>
+      <h3 class="help-cta-title">Нужен совет или защитный чехол?</h3>
+      <p class="help-cta-text">Свяжитесь с мастерами Bententrade: подскажем, как удалить сложное пятно или сошьем индивидуальный влагостойкий чехол под точные габариты вашей мебели.</p>
+    </div>
+    <div class="help-cta-actions">
+      <a class="help-cta-btn-tg" href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+        <span>Написать в Telegram</span>
+      </a>
+      <a class="help-cta-btn-call" href="tel:+998771044422">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>+998 77 104 44 22</span>
+      </a>
     </div>
   </div>
 </section>
@@ -111,21 +181,32 @@
     <div class="foot-col"><img src="assets/btt-logo.png" alt="Bententrade"><p data-i18n="foot.tag" style="color:var(--on-dark-muted);max-width:30ch">Мебель, кашпо и корзины из искусственного ротанга.</p></div>
     <div class="foot-col"><h5 data-i18n="foot.menu">Меню</h5><a href="index.html" data-i18n="nav.home">Главная</a><a href="catalog.html" data-i18n="nav.catalog">Каталог</a><a href="blog.html" data-i18n="nav.blog">Статьи</a><a href="about.html" data-i18n="nav.about">О нас</a><a href="contacts.html" data-i18n="nav.contacts">Контакты</a></div>
     <div class="foot-col"><h5 data-i18n="foot.help">Помощь</h5><a href="faq.html" data-i18n="foot.faq">Вопросы и ответы</a><a href="delivery.html" data-i18n="foot.delivery">Доставка</a><a href="returns.html" data-i18n="foot.returns">Возврат</a><a href="care.html" data-i18n="foot.care">Уход за плетением</a></div>
-    <div class="foot-col"><h5 data-i18n="foot.contacts">Контакты</h5><p data-i18n="co.i.addr.v">Ташкент, ул. Амира Темура, 15</p><a href="tel:+998771044422" data-i18n="co.i.phone.v">+998 77 104 44 22</a><a href="mailto:hello@bententrade.uz">hello@bententrade.uz</a></div>
+    <div class="foot-col"><h5 data-i18n="foot.contacts">Контакты</h5><p data-i18n="co.i.addr.v">Ташкент, ул. Амира Темура, 15</p><a href="tel:+998771044422" data-i18n="co.i.phone.v">+998 77 104 44 22</a><a href="mailto:hello@bententrade.uz">hello@bententrade.uz</a>
+      <div class="foot-social">
+        <a class="foot-social__link" href="https://www.instagram.com/bententradeuz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </a>
+        <a class="foot-social__link" href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2-.06-.06-.16-.04-.23-.02-.1.02-1.74 1.1-4.91 3.25-.46.32-.88.47-1.26.46-.42-.01-1.22-.24-1.82-.43-.73-.24-1.31-.37-1.26-.78.03-.21.32-.43.88-.66 3.44-1.5 5.74-2.49 6.89-2.97 3.28-1.37 3.97-1.61 4.41-1.62.1 0 .32.02.46.14.12.1.15.24.17.34-.01.07.01.22 0 .34z"/></svg>
+        </a>
+        <a class="foot-social__link" href="https://wa.me/998771044422" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.41a8.197 8.197 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m-3.53 4.27c-.19 0-.5.07-.76.35-.26.28-1 1-1 2.43s1.02 2.82 1.16 3.02c.14.19 2.01 3.07 4.87 4.31.68.29 1.21.47 1.63.6.68.22 1.3.19 1.79.12.55-.08 1.69-.69 1.93-1.36.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33-.28-.14-1.69-.83-1.95-.93-.26-.09-.45-.14-.64.14-.19.28-.74.93-.9 1.12-.17.19-.33.21-.62.07-.28-.14-1.2-.44-2.28-1.41-.85-.75-1.42-1.68-1.59-1.96-.17-.28-.02-.44.12-.58.13-.13.28-.33.43-.5.14-.17.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.56-.01z"/></svg>
+        </a>
+      </div></div>
   </div>
   <div class="site-foot__bottom"><span data-i18n="foot.since">С 2024 ГОДА</span><span data-i18n="foot.copy">© 2026 BENTENTRADE. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span><span class="foot-legal"><a href="cookies.html" data-i18n="foot.cookies">ФАЙЛЫ COOKIE</a><a href="privacy.html" data-i18n="foot.privacy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></span></div>
 </footer>
 
-<script src="assets/util.js"></script>
-<script src="assets/cookies.js"></script>
-<script src="assets/api.js"></script>
-<script src="assets/i18n.js"></script>
-<script src="assets/assistant.js"></script>
-<script src="assets/search.js"></script>
-<script src="assets/site.js"></script>
-<script src="assets/cart.js"></script>
-<script src="assets/motion.js"></script>
-<script src="assets/fx.js"></script>
-<script src="assets/care-seo.js"></script>
+<script src="assets/util.js?v=20260921-6"></script>
+<script src="assets/cookies.js?v=20260921-6"></script>
+<script src="assets/api.js?v=20260921-6"></script>
+<script src="assets/i18n.js?v=20260921-6"></script>
+<script src="assets/assistant.js?v=20260921-6"></script>
+<script src="assets/search.js?v=20260921-6"></script>
+<script src="assets/site.js?v=20260921-6"></script>
+<script src="assets/cart.js?v=20260921-6"></script>
+<script src="assets/motion.js?v=20260921-6"></script>
+<script src="assets/fx.js?v=20260921-6"></script>
+<script src="assets/care-seo.js?v=20260921-6"></script>
 </body>
 </html>

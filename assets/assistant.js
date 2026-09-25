@@ -15,7 +15,7 @@
         "Садовая мебель":"Диваны, кресла и обеденные группы из искусственного ротанга — всесезонные, на алюминиевом каркасе. Смотрите в <a href='catalog.html?cat=furniture'>каталоге</a>. Подобрать под размер террасы?",
         "Кашпо":"Плетёные кашпо с дренажом и вкладышем — для дома, балкона и сада. Вся подборка в <a href='catalog.html?cat=planterMix'>каталоге</a>. Подсказать по размеру?",
         "Корзины и сундуки":"Сундуки и корзины для белья из искусственного ротанга — с подкладкой и крышкой. Смотрите в <a href='catalog.html?cat=planterMix'>каталоге</a>. Нужен размер S/M/L?",
-        "Доставка":"Доставляем по всему Узбекистану за 7–10 дней, по Ташкенту — быстрее. Изделия привозим в собранном виде. Назовёте город — подскажу сроки.",
+        "Доставка":"Доставляем по Ташкенту за 1–2 дня сервисами Яндекс / Labo в сопровождении менеджера, по всему Узбекистану — за 2–4 дня (службами BTS / EMS). Самовывоз из нашего шоурума (ул. Амира Темура, 15) — бесплатно в день заказа. Подсказать условия?",
         "Связаться с менеджером":"Конечно! Денис на связи в Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> и по телефону <a href='tel:+998771044422'>+998 77 104 44 22</a>. Оформить заказ через корзину?"
       },
       fallback:"Спасибо за вопрос! Я передам его менеджеру — он ответит детально. Пока можете посмотреть <a href='catalog.html'>каталог</a> или выбрать тему ниже 👇",
@@ -30,7 +30,7 @@
         "Bog‘ mebeli":"Sun’iy rotangdan divan, kreslo va ovqat to‘plamlari — har faslga mos, alyumin karkasda. <a href='catalog.html?cat=furniture'>Katalog</a>ni ko‘ring. Terassa o‘lchamiga moslab beraymi?",
         "Gultuvak":"Drenaj va vkladishli to‘qilgan gultuvaklar — uy, balkon va bog‘ uchun. Hammasi <a href='catalog.html?cat=planterMix'>katalogda</a>. O‘lcham bo‘yicha aytaymi?",
         "Savat va sandiq":"Sun’iy rotangdan kir savati va sandiqlar — astar va qopqoq bilan. <a href='catalog.html?cat=planterMix'>Katalog</a>ni ko‘ring. S/M/L o‘lcham kerakmi?",
-        "Yetkazib berish":"O‘zbekiston bo‘ylab 7–10 kun, Toshkent bo‘ylab tezroq. Buyumlarni yig‘ilgan holda yetkazamiz. Shaharni ayting — muddatni aytaman.",
+        "Yetkazib berish":"Toshkent bo‘ylab shaxsiy menejer hamrohligida Yandex / Labo orqali 1–2 kunda, butun O‘zbekiston bo‘ylab esa BTS / EMS orqali 2–4 kunda yetkazamiz. Shourumdan (Amir Temur ko‘chasi, 15) olib ketish — buyurtma kunining o‘zida bepul.",
         "Menejer bilan bog‘lanish":"Albatta! Denis Telegramda <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> va telefon <a href='tel:+998771044422'>+998 77 104 44 22</a>. Buyurtmani savat orqali rasmiylashtiraymi?"
       },
       fallback:"Savolingiz uchun rahmat! Menejerga yetkazaman. Hozircha <a href='catalog.html'>katalog</a>ni ko‘ring yoki quyidan mavzu tanlang 👇",
@@ -45,7 +45,7 @@
         "Garden furniture":"Sofas, armchairs and dining sets in synthetic rattan — all-season, on an aluminium frame. Browse the <a href='catalog.html?cat=furniture'>catalog</a>. Want me to match it to your terrace?",
         "Planters":"Woven planters with drainage and a liner — for home, balcony and garden. See them all in the <a href='catalog.html?cat=planterMix'>catalog</a>. Want sizing help?",
         "Baskets & chests":"Synthetic-rattan laundry baskets and chests — with a liner and lid. See the <a href='catalog.html?cat=planterMix'>catalog</a>. Need an S/M/L size?",
-        "Delivery":"We ship across Uzbekistan in 7–10 days, faster within Tashkent. Pieces arrive fully assembled. Tell me your city for exact timing.",
+        "Delivery":"We deliver in Tashkent within 1–2 days via Yandex / Labo with personal manager escort, and across Uzbekistan in 2–4 business days (BTS / EMS courier). Showroom pickup (15 Amir Temur St) is free on the same day.",
         "Talk to a manager":"Of course! Denis is on Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> and phone <a href='tel:+998771044422'>+998 77 104 44 22</a>. Want to place the order via the cart?"
       },
       fallback:"Thanks for your question! I'll pass it to our manager for a detailed reply. Meanwhile, check the <a href='catalog.html'>catalog</a> or pick a topic below 👇",

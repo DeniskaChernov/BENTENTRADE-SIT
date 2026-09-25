@@ -10,6 +10,7 @@ import authRoutes from "./routes/authRoutes";
 import account from "./routes/account";
 import admin from "./routes/admin";
 import media from "./routes/media";
+import reviews from "./routes/reviews";
 import { ADMIN_HTML } from "./admin-ui";
 import { ADMIN_APP_JS } from "./admin-app";
 import { applySecurityHeaders, applyCacheHeaders } from "./security-headers";
@@ -30,12 +31,29 @@ app.use("*", sessionMiddleware);
 // Health check.
 app.get("/api/health", (c) => c.json({ ok: true, ts: Date.now() }));
 
+// Public settings (contact info, manager telegram, whatsapp, phone).
+app.get("/api/settings", async (c) => {
+  const { results } = await c.env.DB.prepare(`SELECT key, value FROM settings`).all<{ key: string; value: string }>();
+  const map: Record<string, string> = {
+    phone: "+998 77 104 44 22",
+    whatsapp: "998771044422",
+    telegram: "bententradeuz",
+    email: "hello@bententrade.uz",
+  };
+  for (const r of results) {
+    if (r.key && r.value) map[r.key] = r.value;
+  }
+  return c.json({ ok: true, settings: map });
+});
+
 // Public API.
 app.route("/api/products", products);
 app.route("/api/articles", articles);
 app.route("/api/contact", contact);
 app.route("/api/orders", orders); // POST public; GET checks session internally
 app.route("/api/auth", authRoutes);
+app.route("/api/reviews", reviews);
+
 
 // Authenticated customer API.
 app.use("/api/account/*", requireAuth);

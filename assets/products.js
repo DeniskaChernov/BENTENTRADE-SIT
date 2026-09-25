@@ -19,20 +19,38 @@
   const CAT = window.BTT_CAT_IMG;
 
   const LOOK = {
-    sofa:       CAT.furniture,
-    dining:     CAT.furniture,
-    lounge:     CAT.furniture,
-    chair:      CAT.furniture,
-    corner:     CAT.furniture,
-    planterT:   CAT.planter,
-    planterS:   CAT.planter,
-    planterSet: CAT.planter,
-    chest:      CAT.basket,
-    laundry:    CAT.basket,
-    rocker:     CAT.indoor,
-    coffee:     CAT.indoor,
-    cabinet:    CAT.indoor,
-    shelf:      CAT.indoor
+    sofa:       "assets/hero-garden-furniture.png",
+    lounge:     "assets/scene-dining-warm.png",
+    dining:     "assets/prod-table-dining-room.jpg",
+    chair:      "assets/prod-chair-corda.jpg",
+    corner:     "assets/prod-sofa-monaco.jpg",
+    planterT:   "assets/hero-planter.png",
+    planterS:   "assets/prod-planter-cube.jpg",
+    planterSet: "assets/prod-planters-trio.jpg",
+    chest:      "assets/prod-chest-boston.jpg",
+    laundry:    "assets/prod-basket-nordic.jpg",
+    rocker:     "assets/hero-home-furniture.png",
+    coffee:     "assets/prod-table-vertex-white.jpg",
+    cabinet:    "assets/prod-dresser-riviera.jpg",
+    shelf:      "assets/hero-twisted-rattan.png"
+  };
+
+  const ITEM_IMG = {
+    p1:  "assets/prod-sofa-monaco.jpg",
+    p2:  "assets/scene-dining-warm.png",
+    p3:  "assets/hero-planter.png",
+    p4:  "assets/prod-table-dining-room.jpg",
+    p5:  "assets/prod-chair-corda.jpg",
+    p6:  "assets/prod-chest-boston.jpg",
+    p7:  "assets/prod-planter-cube.jpg",
+    p8:  "assets/prod-table-vertex-black.jpg",
+    p9:  "assets/prod-planters-trio.jpg",
+    p10: "assets/hero-garden-furniture.png",
+    p11: "assets/prod-basket-nordic.jpg",
+    p12: "assets/prod-dresser-riviera.jpg",
+    p13: "assets/prod-table-vertex-white.jpg",
+    p14: "assets/prod-dresser-riviera.jpg",
+    p15: "assets/hero-twisted-rattan.png"
   };
 
   /* Prices in USD units; BTT_UTIL.formatMoney converts to UZS for display. */
@@ -95,28 +113,31 @@
   };
 
   const SCENE = [
+    "assets/hero-garden-furniture.png",
+    "assets/prod-sofa-monaco.jpg",
+    "assets/prod-table-dining-room.jpg",
+    "assets/prod-chair-corda.jpg",
+    "assets/prod-table-vertex-white.jpg",
+    "assets/prod-table-vertex-black.jpg",
+    "assets/prod-table-marble-detail.jpg",
     "assets/scene-dining-warm.png",
-    "assets/scene-dining-teal.png",
-    "assets/scene-dining-cream.png",
-    "assets/scene-dining-grey.png",
-    "assets/scene-dining-light.png",
-    "assets/scene-dining-beige.png",
-    "assets/scene-dining-azure.png",
-    "assets/scene-dining-marble.png",
-    "assets/scene-dining-contrast.png",
+    "assets/hero-planter.png",
+    "assets/prod-planter-cube.jpg",
+    "assets/prod-planters-trio.jpg",
+    "assets/prod-chest-boston.jpg",
+    "assets/prod-basket-nordic.jpg",
+    "assets/prod-dresser-riviera.jpg",
+    "assets/hero-home-furniture.png",
+    "assets/hero-twisted-rattan.png",
+    "assets/scene-dining-azure.png"
   ];
 
   function imgsFor(src, id){
     const n = parseInt(String(id || "p0").slice(1), 10) || 0;
     const picks = [src];
-    for (let i = 0; i < 3 && picks.length < 4; i++) {
-      const s = SCENE[(n + i * 3) % SCENE.length];
+    for (let i = 0; i < SCENE.length && picks.length < 4; i++) {
+      const s = SCENE[(n + i * 2 + 1) % SCENE.length];
       if (s !== src && !picks.includes(s)) picks.push(s);
-    }
-    while (picks.length < 4) {
-      const s = SCENE[picks.length % SCENE.length];
-      if (!picks.includes(s)) picks.push(s);
-      else break;
     }
     return picks.slice(0, 4).map(s => ({ thumb: s, full: s }));
   }
@@ -124,7 +145,7 @@
   window.BTT_PRODUCT_IMG = id => {
     const p = window.BTT_PRODUCTS[id];
     if(!p) return null;
-    const src = LOOK[p.look] || CAT[p.cat] || CAT.furniture;
+    const src = (ITEM_IMG && ITEM_IMG[id]) || LOOK[p.look] || CAT[p.cat] || CAT.furniture;
     return imgsFor(src, id);
   };
 

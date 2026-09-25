@@ -108,13 +108,15 @@ assets/
 
 ---
 
-## 3. Типографика
+## 3. Типографика (4 фирменных шрифта)
 
-- **Дисплей/текст:** `Hanken Grotesque` (`--display`, `--body`).
-- **Акцент-курсив:** `Cormorant Garamond` (`--serif`) — eyebrow, подписи героя.
-- Заголовки: `font-weight:800`, `letter-spacing:-.02em`.
+- **Montserrat** (`--font-body`, `--body`): Основной UI, параграфы, формы, таблицы, кнопки, навигация, характеристики и футер. Максимальная читаемость на всех мобильных экранах.
+- **Unbounded** (`--font-display`, `--display`): Современный геометрический акцент для цен (`.price__now`, `.drawer-total b`), числовой статистики (`.stat__num`), бейджей, тегов и категорий.
+- **Druk Text Wide Cyr** (`--font-wide`): Высокоимпульсивный ультра-широкий заголовочный шрифт для главного экрана (`.hero__title`), баннеров и промо-заголовков.
+- **Soyuz Grotesk** (`--font-editorial`, `--serif`, `--f-serif`): Фирменный советско-модернистский редакционный гротеск для заголовков разделов, атмосферных заголовков (`.atmo-hero__title`), статей журнала и страниц О нас / Доставка / Контакты.
+- Заголовки: `font-weight: 700..900`, `letter-spacing: -.01em..-.02em`.
 - Шкала: `.display-1` … `.display-3`, `.lead`, `.eyebrow`, `.kicker`.
-- Минимум 12.5px (служебный), основной 16px.
+- Минимум 12.5px (служебный микротекст), основной текст 15–16px.
 
 ---
 
@@ -211,7 +213,7 @@ API: `window.BTT_CART = { openCart, openFav, addToCart, wireProductButtons, getF
 - **Новый товар:** запись в `BTT_PRODUCTS`, ключи `pN.name`/`pN.cat` в i18n, карточка в `catalog.html` с `data-cat`.
 - **PDP:** `product.html?id=pN`, данные подтянет `pdp.js`.
 - **Цвета/тип** — только через токены в `styles.css`.
-- **Фото** — `loremflickr` с lock в `products.js` / `hero.js`; заменить на реальные при продакшене.
+- **Фото** — локальные оптимизированные ассеты в `assets/`, поддержка автоматической синхронизации фото из CRM/D1 через `catalog-sync.js`.
 
 ---
 
@@ -224,14 +226,14 @@ API: `window.BTT_CART = { openCart, openFav, addToCart, wireProductButtons, getF
 - Герой L-форма (Union), 4 слайда, ссылки в каталог с `?cat=`
 - Bento-направления на главной → каталог с нужной категорией
 - Каталог: герой меняется по `?cat=` / `#hash` / чипам (`catalog-hero.js`)
-- PDP: галерея из `BTT_PRODUCT_IMG`, без Unsplash-заглушек
+- PDP: галерея из `BTT_PRODUCT_IMG`, без внешних заглушек
 - Единый футер, i18n, тёмная тема на всех страницах
 
 ### Чеклист перед продакшеном
 
-- [ ] Заменить loremflickr на реальные фото товаров
-- [ ] Подключить бэкенд / CRM для форм (контакты, заказы)
-- [ ] Проверить Lighthouse на продакшен-хостинге
-- [ ] Добавить favicon и Open Graph meta
+- [x] Локальные визуальные ассеты для всех товаров и категорий
+- [x] Подключен бэкенд / CRM для форм и заказов (Cloudflare Workers/D1/Hono + локальный Node/Postgres сервер)
+- [x] Проверен Lighthouse на доступность и производительность
+- [x] Добавлен favicon и Open Graph / Twitter Card meta
 
 ---

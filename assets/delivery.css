@@ -1,0 +1,706 @@
+/* ============================================================
+   BENTENTRADE — DELIVERY & SHIPPING (LUXURY EDITORIAL AESTHETIC)
+   ============================================================ */
+
+.delivery-flow {
+  min-height: 100vh;
+}
+
+/* Top Bar & Breadcrumbs */
+.delivery-top-bar {
+  padding-top: calc(var(--head-h, 72px) + 24px);
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.delivery-breadcrumbs {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.delivery-breadcrumbs a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.delivery-breadcrumbs a:hover {
+  color: var(--copper-bright);
+}
+
+.delivery-breadcrumbs__sep {
+  opacity: 0.45;
+}
+
+.delivery-breadcrumbs__current {
+  color: var(--copper-bright);
+  font-weight: 600;
+}
+
+.delivery-top-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.delivery-top-header__info {
+  max-width: 760px;
+}
+
+.delivery-top-title {
+  font-family: var(--f-serif, 'Soyuz Grotesk', 'Unbounded', sans-serif);
+  font-size: clamp(34px, 4.2vw, 54px);
+  font-weight: 700;
+  line-height: 1.08;
+  color: var(--text);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+
+.delivery-top-sub {
+  font-size: clamp(14.5px, 1.15vw, 16.5px);
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 64ch;
+}
+
+.delivery-top-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 8px 18px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  box-shadow: 0 2px 10px -2px rgba(22, 19, 15, 0.07);
+}
+
+.delivery-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--copper-bright);
+  box-shadow: 0 0 8px var(--copper-bright);
+}
+
+[data-theme="dark"] .delivery-top-badge {
+  background: #1a1714;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ================= DELIVERY CALCULATOR ================= */
+.del-calc-section {
+  padding-top: 10px;
+  padding-bottom: 52px;
+}
+
+.del-calc {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: clamp(26px, 4vw, 48px);
+  box-shadow: 0 16px 40px -14px rgba(22, 19, 15, 0.08);
+}
+
+[data-theme="dark"] .del-calc {
+  background: #181512;
+  border-color: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 20px 48px -20px rgba(0, 0, 0, 0.6);
+}
+
+.del-calc__header {
+  max-width: 720px;
+  margin-bottom: 28px;
+}
+
+.del-calc__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--copper-bright);
+  margin-bottom: 8px;
+}
+
+.del-calc__title {
+  font-family: var(--f-serif, 'Soyuz Grotesk', 'Unbounded', sans-serif);
+  font-size: clamp(26px, 2.8vw, 38px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+  margin: 0 0 10px 0;
+  letter-spacing: -0.015em;
+}
+
+.del-calc__sub {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* City Selector Chips */
+.del-calc__cities {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 14px;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 30px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.del-calc__cities::-webkit-scrollbar {
+  display: none;
+}
+
+.del-calc__city-btn {
+  flex: none;
+  padding: 10px 20px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.del-calc__city-btn:hover {
+  border-color: var(--copper);
+  color: var(--copper-bright);
+  transform: translateY(-1px);
+}
+
+.del-calc__city-btn.is-active {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: #fff;
+  box-shadow: 0 4px 14px -2px rgba(184, 115, 51, 0.4);
+}
+
+[data-theme="dark"] .del-calc__city-btn {
+  background: #201c18;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .del-calc__city-btn.is-active {
+  background: var(--copper);
+  color: #fff;
+}
+
+/* Calculator Live Card */
+.del-calc__card {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.del-calc__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.del-calc__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--copper-bright);
+  padding: 6px 14px;
+  background: color-mix(in oklab, var(--copper) 12%, transparent);
+  border-radius: var(--r-pill);
+}
+
+.del-calc__city-active {
+  font-family: var(--f-serif, 'Soyuz Grotesk', 'Unbounded', sans-serif);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Grid Tiles */
+.del-calc__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.del-calc__tile {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.25s var(--ease-out), border-color 0.25s ease;
+}
+
+.del-calc__tile:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--line) 40%, var(--copper));
+}
+
+.del-calc__tile-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.del-calc__tile-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-sm);
+  background: color-mix(in oklab, var(--copper) 12%, transparent);
+  color: var(--copper-bright);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.del-calc__tile-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.del-calc__tile-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.del-calc__tile-val {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.del-calc__tile--featured {
+  grid-column: span 2;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--copper) 10%, var(--bg)) 0%, var(--bg) 100%);
+  border-color: color-mix(in oklab, var(--copper) 35%, var(--line));
+}
+
+.del-calc__tile-val--highlight {
+  font-size: 15.5px;
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+/* Pickup Bar */
+.del-calc__pickup-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 18px 22px;
+}
+
+.del-calc__pickup-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: color-mix(in oklab, #27ae60 14%, transparent);
+  color: #27ae60;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.del-calc__pickup-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.del-calc__pickup-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.del-calc__pickup-text strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* Calculator Footer */
+.del-calc__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.del-calc__footer-note {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.del-calc__footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ================= STANDARDS SECTION ================= */
+.delivery-standards-section {
+  padding-bottom: 56px;
+}
+
+.delivery-section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 38px auto;
+}
+
+.delivery-section-header .del-calc__eyebrow {
+  justify-content: center;
+}
+
+.delivery-section-title {
+  font-family: var(--f-serif, 'Soyuz Grotesk', 'Unbounded', sans-serif);
+  font-size: clamp(30px, 3.4vw, 44px);
+  font-weight: 700;
+  line-height: 1.12;
+  color: var(--text);
+  margin: 0 0 10px 0;
+  letter-spacing: -0.015em;
+}
+
+.delivery-section-sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.delivery-standards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.delivery-standard-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.3s ease;
+  box-shadow: 0 8px 24px -10px rgba(22, 19, 15, 0.07);
+}
+
+.delivery-standard-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--line) 40%, var(--copper));
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.14);
+}
+
+.delivery-standard-num {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--copper);
+  line-height: 1;
+}
+
+.delivery-standard-title {
+  font-family: var(--f-serif, 'Soyuz Grotesk', 'Unbounded', sans-serif);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text);
+  margin: 0;
+}
+
+.delivery-standard-desc {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+
+[data-theme="dark"] .delivery-standard-card {
+  background: #181512;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ================= 4 STEPS SECTION ================= */
+.delivery-steps-section {
+  padding-bottom: 56px;
+}
+
+.delivery-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.delivery-step-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.delivery-step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--copper);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.delivery-step-title {
+  font-family: var(--f-serif, 'Soyuz Grotesk', 'Unbounded', sans-serif);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.delivery-step-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+
+[data-theme="dark"] .delivery-step-card {
+  background: #181512;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ================= CTA BANNER ================= */
+.delivery-cta-section {
+  padding-bottom: 72px;
+}
+
+.delivery-cta-banner {
+  position: relative;
+  border-radius: var(--r-xl);
+  padding: clamp(36px, 5vw, 60px);
+  background: linear-gradient(135deg, #181512 0%, #26201a 100%);
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  box-shadow: 0 20px 48px -18px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.delivery-cta-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(80% 120% at 100% 0%, color-mix(in oklab, var(--copper-bright) 28%, transparent), transparent 60%);
+  pointer-events: none;
+}
+
+.delivery-cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.delivery-cta-title {
+  font-family: var(--f-serif, 'Soyuz Grotesk', 'Unbounded', sans-serif);
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.delivery-cta-sub {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0;
+}
+
+.delivery-cta-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.delivery-cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 26px;
+  border-radius: var(--r-pill);
+  background: var(--copper);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14.5px;
+  text-decoration: none;
+  transition: transform 0.2s var(--ease-out), background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px -2px rgba(184, 115, 51, 0.45);
+}
+
+.delivery-cta-btn-primary:hover {
+  background: var(--copper-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -2px rgba(184, 115, 51, 0.6);
+  color: #fff;
+}
+
+.delivery-cta-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14.5px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.delivery-cta-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 980px) {
+  .delivery-standards-grid {
+    grid-template-columns: 1fr;
+  }
+  .delivery-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .delivery-top-bar {
+    padding-top: calc(var(--head-h, 56px) + 16px);
+    padding-bottom: 16px;
+    gap: 10px;
+  }
+  .delivery-top-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding-bottom: 16px;
+  }
+  .del-calc__grid {
+    grid-template-columns: 1fr;
+  }
+  .del-calc__tile--featured {
+    grid-column: span 1;
+  }
+  .delivery-steps-grid {
+    grid-template-columns: 1fr;
+  }
+  .delivery-cta-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 24px;
+  }
+  .delivery-cta-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  .delivery-cta-btn-primary,
+  .delivery-cta-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .delivery-top-badge {
+    white-space: normal;
+    text-align: center;
+  }
+  .del-calc {
+    padding: 20px 16px;
+    border-radius: var(--r-lg);
+  }
+  .delivery-standard-card,
+  .delivery-step-card {
+    padding: 20px 16px;
+    border-radius: var(--r-lg);
+  }
+  .delivery-cta-banner {
+    padding: 24px 18px;
+    border-radius: var(--r-lg);
+  }
+  .del-calc__pickup-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+}
+

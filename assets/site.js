@@ -72,6 +72,12 @@
       b.classList.toggle("is-active", b.dataset.lang === lang);
       b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
     });
+    document.querySelectorAll(".quickview-btn").forEach(btn=>{
+      const qvLabel = d["quickview.btn"] || "Быстрый просмотр";
+      btn.setAttribute("aria-label", qvLabel);
+      const span = btn.querySelector("span");
+      if(span) span.textContent = qvLabel;
+    });
   }
 
   function setLang(lang){
@@ -130,9 +136,14 @@
     targets.forEach(el=>io.observe(el));
   }
 
-  /* ---- page enter / leave fade between static pages ---- */
+  /* ---- page transitions (native 2026 View Transitions with fallback) ---- */
   function initPageTransitions(){
     if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // Modern browsers support @view-transition { navigation: auto; } natively on compositor thread
+    if("onpagereveal" in window || (window.CSS && CSS.supports("view-transition-name", "root"))){
+      return;
+    }
 
     document.body.classList.add("is-entering");
     requestAnimationFrame(()=>{
@@ -148,7 +159,7 @@
         if(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
         e.preventDefault();
         document.body.classList.add("is-leaving");
-        setTimeout(()=>{ location.href = href; }, 380);
+        setTimeout(()=>{ location.href = href; }, 160);
       });
     });
   }
@@ -202,11 +213,13 @@
 
   function updateCatCount(grid){
     const cnt = document.querySelector("[data-cat-count]");
+    const mobCnt = document.querySelector("[data-mob-count]");
     const empty = document.querySelector("[data-cat-empty]");
     if(!grid) return;
     const cards = Array.from(grid.querySelectorAll("[data-product]"));
     const shown = cards.filter(c=> c.style.display !== "none").length;
     if(cnt) cnt.textContent = String(shown);
+    if(mobCnt) mobCnt.textContent = String(shown);
     if(empty) empty.hidden = shown > 0;
   }
 
@@ -378,8 +391,8 @@
 
   function productIdFromCard(card){
     const see = card.querySelector("a[href*='product.html?id=']");
-    const m = see && (see.getAttribute("href")||"").match(/id=(p\d+)/);
-    return m ? m[1] : null;
+    const m = see && (see.getAttribute("href")||"").match(/[?&]id=([^&#]+)/);
+    return m ? decodeURIComponent(m[1]) : null;
   }
 
   function isMtoProduct(id){
@@ -468,10 +481,29 @@
   function initFaq(){
     document.querySelectorAll("[data-faq] .faq-q").forEach(btn=>{
       const panel = document.getElementById(btn.getAttribute("aria-controls"));
+      const item = btn.closest(".faq-item");
       btn.addEventListener("click", ()=>{
         const open = btn.getAttribute("aria-expanded") === "true";
-        btn.setAttribute("aria-expanded", open ? "false" : "true");
-        if(panel) panel.hidden = open;
+        const next = !open;
+        btn.setAttribute("aria-expanded", next ? "true" : "false");
+        if(item) item.classList.toggle("is-open", next);
+        if(window.navigator && window.navigator.vibrate) try{ window.navigator.vibrate(8); }catch(_){}
+        if(panel){
+          if(next){
+            panel.removeAttribute("hidden");
+          } else {
+            const onEnd = (e)=>{
+              if(e.target === panel && btn.getAttribute("aria-expanded") === "false"){
+                panel.setAttribute("hidden", "");
+                panel.removeEventListener("transitionend", onEnd);
+              }
+            };
+            panel.addEventListener("transitionend", onEnd);
+            setTimeout(()=>{
+              if(btn.getAttribute("aria-expanded") === "false") panel.setAttribute("hidden", "");
+            }, 360);
+          }
+        }
       });
     });
   }
@@ -498,6 +530,17 @@
       scrim.addEventListener("click", ()=> setOpen(false));
     }
 
+    let closeBtn = drawer.querySelector(".mobile-drawer__close");
+    if(!closeBtn){
+      closeBtn = document.createElement("button");
+      closeBtn.type = "button";
+      closeBtn.className = "mobile-drawer__close";
+      closeBtn.setAttribute("aria-label", ((dict[lng] || dict.ru || {})["bot.aria.close"]) || "Закрыть");
+      closeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+      drawer.prepend(closeBtn);
+    }
+    closeBtn.addEventListener("click", () => setOpen(false));
+
     const links = Array.from(drawer.querySelectorAll(":scope > a"));
     const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -520,6 +563,73 @@
     document.addEventListener("keydown", e=>{
       if(e.key === "Escape" && drawer.classList.contains("open")) setOpen(false);
     });
+
+    let sx = 0, sy = 0, dx = 0, startTime = 0, isDragging = false, isHoriz = null;
+    drawer.addEventListener("touchstart", e => {
+      if(e.touches.length !== 1 || !drawer.classList.contains("open")) return;
+      const t = e.touches[0];
+      sx = t.clientX; sy = t.clientY; dx = 0;
+      startTime = performance.now();
+      isDragging = false; isHoriz = null;
+    }, { passive: true });
+
+    drawer.addEventListener("touchmove", e => {
+      if(e.touches.length !== 1 || !drawer.classList.contains("open")) return;
+      const t = e.touches[0];
+      const diffX = t.clientX - sx;
+      const diffY = t.clientY - sy;
+      if(isHoriz === null){
+        if(Math.abs(diffX) > 8 || Math.abs(diffY) > 8){
+          isHoriz = Math.abs(diffX) > Math.abs(diffY);
+        }
+      }
+      if(!isHoriz) return;
+      if(diffX > 0){
+        dx = diffX;
+        drawer.style.transform = "translateX(" + dx + "px)";
+        drawer.style.transition = "none";
+        if(scrim) scrim.style.opacity = String(Math.max(0, 1 - dx / drawer.offsetWidth));
+        isDragging = true;
+      } else {
+        dx = diffX * 0.2;
+        drawer.style.transform = "translateX(" + dx + "px)";
+        drawer.style.transition = "none";
+      }
+    }, { passive: true });
+
+    drawer.addEventListener("touchend", () => {
+      if(!isDragging){
+        drawer.style.transform = "";
+        drawer.style.transition = "";
+        if(scrim) scrim.style.opacity = "";
+        return;
+      }
+      const dt = Math.max(1, performance.now() - startTime);
+      const vx = dx / dt;
+      drawer.style.transition = "transform 0.32s cubic-bezier(0.16, 1, 0.3, 1)";
+      if(scrim) scrim.style.transition = "opacity 0.32s ease";
+
+      if(dx > drawer.offsetWidth * 0.28 || (vx > 0.3 && dx > 35)){
+        drawer.style.transform = "translateX(100%)";
+        if(scrim) scrim.style.opacity = "0";
+        setTimeout(() => {
+          drawer.style.transform = "";
+          drawer.style.transition = "";
+          if(scrim){ scrim.style.opacity = ""; scrim.style.transition = ""; }
+          setOpen(false);
+        }, 320);
+      } else {
+        drawer.style.transform = "translateX(0)";
+        if(scrim) scrim.style.opacity = "1";
+        setTimeout(() => {
+          drawer.style.transform = "";
+          drawer.style.transition = "";
+          if(scrim){ scrim.style.opacity = ""; scrim.style.transition = ""; }
+        }, 320);
+      }
+      isDragging = false;
+      isHoriz = null;
+    }, { passive: true });
   }
 
   function initInPageNav(){
@@ -543,16 +653,389 @@
     }
   }
 
+  /* ================= QUICK VIEW MODAL ================= */
+  let qvScrim = null, qvModal = null, lastQvFocus = null;
+  function buildQuickViewShell(){
+    if(qvModal) return;
+    qvScrim = document.createElement("div");
+    qvScrim.className = "qv-scrim";
+    qvScrim.setAttribute("aria-hidden", "true");
+    qvScrim.addEventListener("click", closeQuickView);
+
+    qvModal = document.createElement("aside");
+    qvModal.className = "qv-modal";
+    qvModal.setAttribute("aria-hidden", "true");
+    qvModal.setAttribute("role", "dialog");
+    qvModal.setAttribute("aria-modal", "true");
+
+    document.body.appendChild(qvScrim);
+    document.body.appendChild(qvModal);
+
+    document.addEventListener("keydown", e=>{
+      if(e.key === "Escape" && qvModal.classList.contains("on")) closeQuickView();
+    });
+  }
+
+  function closeQuickView(){
+    if(!qvModal) return;
+    qvScrim.classList.remove("on");
+    qvModal.classList.remove("on");
+    qvScrim.setAttribute("aria-hidden", "true");
+    qvModal.setAttribute("aria-hidden", "true");
+    document.documentElement.style.overflow = "";
+    if(lastQvFocus && typeof lastQvFocus.focus === "function"){
+      try{ lastQvFocus.focus(); }catch(_){}
+      lastQvFocus = null;
+    }
+  }
+
+  function openQuickView(pid){
+    lastQvFocus = document.activeElement;
+    buildQuickViewShell();
+    const P = window.BTT_PRODUCTS || {};
+    const prod = P[pid];
+    if(!prod) return;
+
+    const l = getLang();
+    const d = dict[l] || dict.ru || {};
+    const t = k => d[k] || (dict.ru||{})[k] || k;
+    const esc = s => (window.BTT_UTIL && window.BTT_UTIL.esc) ? window.BTT_UTIL.esc(s) : String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+    const fmt = (n) => (window.BTT_UTIL && window.BTT_UTIL.formatMoney) ? window.BTT_UTIL.formatMoney(n) : String(n);
+
+    const name = t(pid + ".name") || pid;
+    const cat = t(pid + ".cat") || prod.cat;
+    const CATTEXT = window.BTT_PRODUCT_CAT || {};
+    const cInfo = CATTEXT[prod.cat] || CATTEXT.furniture || {};
+    const cDesc = (cInfo[l] || cInfo.ru || {}).desc || "";
+    const imgs = window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(pid) : null;
+    const photos = imgs && imgs.length ? imgs : [{ thumb: "assets/hero-garden-furniture.png", full: "assets/hero-garden-furniture.png" }];
+
+    const oldPriceHtml = prod.old ? '<span class="old">' + esc(fmt(prod.old)) + '</span>' : '';
+    const isMto = window.BTT_IS_MTO ? window.BTT_IS_MTO(pid) : prod.stock === 0;
+
+    let thumbsHtml = photos.map((im, i)=>
+      '<button type="button" class="qv-thumb' + (i === 0 ? ' is-active' : '') + '" data-qv-thumb="' + i + '" aria-label="Фото ' + (i + 1) + '">' +
+        '<img src="' + esc(im.thumb) + '" alt="">' +
+      '</button>'
+    ).join("");
+
+    let stagesHtml = photos.map((im, i)=>
+      '<img src="' + esc(im.full) + '" alt="" class="' + (i === 0 ? 'is-on' : '') + '" style="' + (i === 0 ? '' : 'display:none;opacity:0;') + '">'
+    ).join("");
+
+    qvModal.innerHTML =
+      '<button type="button" class="qv-close" data-qv-close aria-label="' + esc(t("quickview.close") || "Закрыть") + '">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>' +
+      '</button>' +
+      '<div class="qv-grid">' +
+        '<div class="qv-gallery">' +
+          '<div class="qv-stage" data-qv-stage>' + stagesHtml + '</div>' +
+          '<div class="qv-thumbs">' + thumbsHtml + '</div>' +
+        '</div>' +
+        '<div class="qv-info">' +
+          '<div class="qv-cat">' + esc(cat) + '</div>' +
+          '<h3 class="qv-name">' + esc(name) + '</h3>' +
+          '<div class="qv-price">' +
+            '<span class="now">' + esc(fmt(prod.now)) + '</span>' +
+            oldPriceHtml +
+          '</div>' +
+          '<p class="qv-desc">' + esc(cDesc) + '</p>' +
+          '<div class="qv-actions">' +
+            (isMto
+              ? '<a class="btn btn--copper" href="product.html?id=' + esc(pid) + '">' + esc(t("pdp.sticky.order") || "Сделать на заказ") + '</a>'
+              : '<button type="button" class="btn btn--dark" data-qv-add>' + esc(t("pdp.add") || "Добавить в корзину") + '</button>' +
+                '<button type="button" class="btn btn--copper" data-qv-quick-buy>' + esc(t("pdp.quickBuy") || "Купить в 1 клик") + '</button>'
+            ) +
+          '</div>' +
+          '<a class="qv-full-link" href="product.html?id=' + esc(pid) + '">' +
+            '<span>' + esc(t("quickview.full") || "Перейти к товару") + '</span> &rarr;' +
+          '</a>' +
+        '</div>' +
+      '</div>';
+
+    // wire thumbnail clicks
+    const qvStageImgs = Array.from(qvModal.querySelectorAll("[data-qv-stage] img"));
+    const qvThumbBtns = Array.from(qvModal.querySelectorAll("[data-qv-thumb]"));
+    qvThumbBtns.forEach((btn, i)=>{
+      btn.addEventListener("click", ()=>{
+        qvThumbBtns.forEach(b=>b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        qvStageImgs.forEach((img, k)=>{
+          if(k === i){
+            img.style.display = "";
+            img.classList.add("is-on");
+            img.style.opacity = "1";
+          } else {
+            img.style.display = "none";
+            img.classList.remove("is-on");
+            img.style.opacity = "0";
+          }
+        });
+      });
+    });
+
+    // wire close button
+    const closeBtn = qvModal.querySelector("[data-qv-close]");
+    if(closeBtn) closeBtn.addEventListener("click", closeQuickView);
+
+    // wire add to cart
+    const addBtn = qvModal.querySelector("[data-qv-add]");
+    if(addBtn){
+      addBtn.addEventListener("click", (e)=>{
+        if(window.BTT_CART && window.BTT_CART.addToCart){
+          const snap = {
+            id: pid,
+            name: name,
+            price: (window.BTT_UTIL && window.BTT_UTIL.toUzs) ? window.BTT_UTIL.toUzs(prod.now) : Math.round(prod.now * 12500),
+            img: photos[0].thumb
+          };
+          window.BTT_CART.addToCart(snap, 1);
+          addBtn.textContent = t("pdp.added") || "Добавлено ✓";
+          addBtn.classList.add("added");
+          if(navigator.vibrate) try{ navigator.vibrate(20); }catch(_){}
+          if(window.BTT_FX && window.BTT_FX.burstParticles && e.clientX && e.clientY){
+            window.BTT_FX.burstParticles(e.clientX, e.clientY, 8);
+          }
+          setTimeout(()=>{
+            closeQuickView();
+          }, 600);
+        }
+      });
+    }
+
+    // wire 1-click buy
+    const qkBtn = qvModal.querySelector("[data-qv-quick-buy]");
+    if(qkBtn){
+      qkBtn.addEventListener("click", ()=>{
+        const snap = {
+          id: pid,
+          name: name,
+          price: (window.BTT_UTIL && window.BTT_UTIL.toUzs) ? window.BTT_UTIL.toUzs(prod.now) : Math.round(prod.now * 12500),
+          img: photos[0].thumb,
+          qty: 1
+        };
+        closeQuickView();
+        if(window.BTT_CART && window.BTT_CART.openQuickOrder){
+          window.BTT_CART.openQuickOrder(snap);
+        }
+      });
+    }
+
+    qvScrim.classList.add("on");
+    qvModal.classList.add("on");
+    qvScrim.setAttribute("aria-hidden", "false");
+    qvModal.setAttribute("aria-hidden", "false");
+    document.documentElement.style.overflow = "hidden";
+    setTimeout(()=>{
+      const focusTarget = qvModal.querySelector("[data-qv-close], [data-qv-add], button");
+      if(focusTarget) focusTarget.focus();
+    }, 50);
+  }
+
+  function wireQuickViewTriggers(root){
+    const scope = root || document;
+    scope.querySelectorAll(".product[data-product]").forEach(card=>{
+      const see = card.querySelector("a.see, a[href*='product.html?id=']");
+      if(!see) return;
+      const m = (see.getAttribute("href")||"").match(/[?&]id=([^&#]+)/);
+      if(!m) return;
+      const pid = decodeURIComponent(m[1]);
+
+      const media = card.querySelector(".product__media");
+      if(media && !media.querySelector(".quickview-btn")){
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "quickview-btn";
+        btn.setAttribute("data-quickview", pid);
+        const d = dict[getLang()] || dict.ru || {};
+        const qvLabel = d["quickview.btn"] || "Быстрый просмотр";
+        btn.setAttribute("aria-label", qvLabel);
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>' + qvLabel + '</span>';
+        media.appendChild(btn);
+      }
+    });
+
+    scope.querySelectorAll("[data-quickview]").forEach(btn=>{
+      if(btn.dataset.qvWired) return;
+      btn.dataset.qvWired = "1";
+      btn.addEventListener("click", (e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        openQuickView(btn.dataset.quickview);
+      });
+    });
+  }
+
+  /* ---- catalog mobile sidebar drawer ---- */
+  function initCatalogSidebarDrawer(){
+    const trigger = document.querySelector("[data-cat-sidebar-trigger]");
+    const sidebar = document.querySelector("#catalog-sidebar");
+    const scrim = document.querySelector("[data-cat-sidebar-scrim]");
+    const closeBtn = document.querySelector("[data-cat-sidebar-close]");
+    if(!sidebar) return;
+
+    function open(){
+      sidebar.classList.add("is-open");
+      if(scrim) scrim.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+      if(trigger) trigger.setAttribute("aria-expanded", "true");
+      if(closeBtn) setTimeout(()=> closeBtn.focus(), 150);
+    }
+    function close(){
+      sidebar.classList.remove("is-open");
+      if(scrim) scrim.classList.remove("is-open");
+      document.body.style.overflow = "";
+      if(trigger){
+        trigger.setAttribute("aria-expanded", "false");
+        trigger.focus();
+      }
+    }
+
+    if(trigger) trigger.addEventListener("click", open);
+    if(closeBtn) closeBtn.addEventListener("click", close);
+    if(scrim) scrim.addEventListener("click", close);
+
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape" && sidebar.classList.contains("is-open")){
+        close();
+      }
+    });
+
+    // Mobile swipe left to dismiss drawer
+    let startX = 0, startY = 0;
+    sidebar.addEventListener("touchstart", (e)=>{
+      if(!e.touches || !e.touches[0]) return;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, { passive: true });
+
+    sidebar.addEventListener("touchend", (e)=>{
+      if(!e.changedTouches || !e.changedTouches[0]) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+      if(dx < -45 && Math.abs(dx) > Math.abs(dy) * 1.2){
+        close();
+      }
+    }, { passive: true });
+
+    const chips = sidebar.querySelectorAll(".chip");
+    chips.forEach(c=>{
+      c.addEventListener("click", ()=>{
+        if(window.matchMedia && window.matchMedia("(max-width: 959px)").matches){
+          setTimeout(close, 240);
+        }
+      });
+    });
+  }
+
+  /* ---- dynamic CMS settings hydration (phone, email, socials) ---- */
+  function applySiteSettings(s){
+    if(!s || typeof s !== "object") return;
+    if(s.phone){
+      const rawPhone = String(s.phone).trim();
+      const cleanPhone = rawPhone.replace(/[^\d+]/g, "");
+      document.querySelectorAll('a[href^="tel:"]').forEach(el=>{
+        el.href = "tel:" + cleanPhone;
+        if(el.children.length === 0){
+          el.textContent = rawPhone;
+        } else {
+          for(const node of el.childNodes){
+            if(node.nodeType === Node.TEXT_NODE && node.nodeValue && /\+?\d[\d\s-]{5,}/.test(node.nodeValue)){
+              node.nodeValue = " " + rawPhone;
+            }
+          }
+        }
+      });
+      document.querySelectorAll("[data-btt-phone]").forEach(el=> el.textContent = rawPhone);
+    }
+    if(s.email){
+      const email = String(s.email).trim();
+      document.querySelectorAll('a[href^="mailto:"]').forEach(el=>{
+        el.href = "mailto:" + email;
+        if(el.children.length === 0){
+          el.textContent = email;
+        }
+      });
+      document.querySelectorAll("[data-btt-email]").forEach(el=> el.textContent = email);
+    }
+    if(s.telegram){
+      const tg = String(s.telegram).trim().replace(/^@/, "");
+      document.querySelectorAll('a[href*="t.me/"]').forEach(el=>{
+        el.href = "https://t.me/" + tg;
+      });
+    }
+    if(s.whatsapp){
+      const wa = String(s.whatsapp).trim().replace(/[^\d]/g, "");
+      document.querySelectorAll('a[href*="wa.me/"]').forEach(el=>{
+        el.href = "https://wa.me/" + wa;
+      });
+    }
+  }
+
+  function hydrateSiteSettings(){
+    try {
+      const cached = sessionStorage.getItem("btt_settings");
+      if(cached) applySiteSettings(JSON.parse(cached));
+    } catch(e){}
+
+    if(window.BTT_API && typeof window.BTT_API.settings === "function"){
+      window.BTT_API.settings().then(res=>{
+        if(res && res.ok && res.settings){
+          applySiteSettings(res.settings);
+          try { sessionStorage.setItem("btt_settings", JSON.stringify(res.settings)); } catch(e){}
+          document.dispatchEvent(new CustomEvent("btt:settings", { detail: res.settings }));
+        }
+      }).catch(()=>{});
+    }
+  }
+  window.BTT_HYDRATE_SETTINGS = hydrateSiteSettings;
+
+  /* ---- PWA service worker registration ---- */
+  function initServiceWorker(){
+    if("serviceWorker" in navigator && location.protocol.startsWith("http")){
+      window.addEventListener("load", ()=>{
+        navigator.serviceWorker.register("/sw.js").catch(()=>{});
+      });
+    }
+  }
+
+  /* ---- automatic Uzbekistan phone input mask (+998 XX XXX XX XX) ---- */
+  function initPhoneMasking(){
+    document.addEventListener("input", (e)=>{
+      const el = e.target;
+      if(el && (el.matches('input[type="tel"]') || el.matches('input[name="phone"]'))){
+        const raw = el.value;
+        const digits = raw.replace(/\D/g, "");
+        if(!digits || digits === "9" || digits === "99" || digits === "998"){
+          if(e.inputType && e.inputType.startsWith("delete")){
+            el.value = "";
+            return;
+          }
+        }
+        if(window.BTT_UTIL && window.BTT_UTIL.formatPhone){
+          const formatted = window.BTT_UTIL.formatPhone(raw);
+          if(formatted !== el.value){
+            el.value = formatted;
+          }
+        }
+      }
+    });
+  }
+
   /* ---- wire up on load ---- */
   document.addEventListener("DOMContentLoaded", function(){
     applyTheme(getTheme());
     applyLang(getLang());
+    hydrateSiteSettings();
+    initServiceWorker();
+    initPhoneMasking();
     if(window.BTT_SEO) window.BTT_SEO.refresh(getLang());
     initA11y();
     initReveal();
     initParallax();
     initHeaderScroll();
     initCatToolbar();
+    initCatalogSidebarDrawer();
     initCounters();
     initPageTransitions();
     initMobileNav();
@@ -561,15 +1044,15 @@
     initFaq();
     applyProductMeta();
     initCustomOrder();
+    wireQuickViewTriggers();
 
-    document.querySelector("[data-cat-reset]")?.addEventListener("click", ()=>{
-      document.querySelector('.cat-chips .chip[data-cat="all"]')?.click();
-    });
+
 
     document.addEventListener("btt:related-rendered", (e)=>{
       const grid = e.detail && e.detail.grid;
       if(!grid) return;
       applyProductMeta(grid);
+      wireQuickViewTriggers(grid);
       const cards = Array.from(grid.querySelectorAll(".reveal"));
       const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if(reduced || !("IntersectionObserver" in window)){
@@ -610,12 +1093,24 @@
     }
 
     let activeCat = "all";
+    let activeToggle = null;
+    let activeSort = "featured";
+    let liveSearchQ = "";
 
     function getSearchQ(){
       return (urlParams.get("q") || "").toLowerCase().trim();
     }
 
+    function getCombinedSearchQ(){
+      return (liveSearchQ || getSearchQ() || "").toLowerCase().trim();
+    }
+
     function applyCatalogFilters(grid, cat, q){
+      if(!grid) return;
+      if(grid.id === "catalog-grid"){
+        applyCatalogState(grid);
+        return;
+      }
       const cards = Array.from(grid.querySelectorAll("[data-product]"));
       cards.forEach(card=>{
         const txt = (card.textContent || "").toLowerCase();
@@ -623,20 +1118,264 @@
         card.style.display = show ? "" : "none";
       });
       updateCatCount(grid);
-      const note = document.querySelector("[data-search-note]");
-      if(note){
+    }
+
+    function applyCatalogState(grid){
+      if(!grid || grid.id !== "catalog-grid") return;
+      const q = getCombinedSearchQ();
+      const cards = Array.from(grid.querySelectorAll("[data-product]"));
+      const editorials = Array.from(grid.querySelectorAll("[data-editorial]"));
+
+      // 1. Filtering products
+      let shownCount = 0;
+      const toShow = [];
+      const toHide = [];
+      cards.forEach(card=>{
+        const txt = (card.textContent || "").toLowerCase().replace(/[‘’`]/g, "'");
+        const normQ = q.toLowerCase().replace(/[‘’`]/g, "'");
+        const catMatch = cardMatchesCat(card, activeCat);
+        const searchMatch = !q || txt.includes(normQ);
+
+        let toggleMatch = true;
+        if(activeToggle === "instock"){
+          const isMto = card.querySelector(".badge-mto") !== null;
+          toggleMatch = !isMto;
+        } else if(activeToggle === "sale"){
+          const hasSale = card.querySelector(".badge-sale") !== null;
+          toggleMatch = hasSale;
+        } else if(activeToggle === "mto"){
+          const isMto = card.querySelector(".badge-mto") !== null;
+          toggleMatch = isMto;
+        }
+
+        const show = catMatch && searchMatch && toggleMatch;
+        if(show){
+          toShow.push(card);
+          shownCount++;
+        } else {
+          toHide.push(card);
+        }
+      });
+
+      const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if(reduced){
+        toHide.forEach(card=>{ card.style.display = "none"; });
+        toShow.forEach(card=>{ card.style.display = ""; });
+      } else {
+        toHide.forEach(card=>{
+          if(card.style.display !== "none"){
+            card.classList.remove("is-filter-in");
+            card.classList.add("is-filter-out");
+            setTimeout(()=>{ card.style.display = "none"; card.classList.remove("is-filter-out"); updateCatCount(grid); }, 280);
+          }
+        });
+        toShow.forEach((card, i)=>{
+          const wasHidden = card.style.display === "none";
+          card.style.display = "";
+          if(wasHidden){
+            card.classList.remove("is-filter-in");
+            void card.offsetWidth;
+            card.style.animationDelay = (i * 35) + "ms";
+            card.classList.add("is-filter-in");
+            card.addEventListener("animationend", ()=> card.classList.remove("is-filter-in"), { once:true });
+          }
+        });
+      }
+
+      // 2. Sorting products
+      if(activeSort !== "featured"){
+        const visibleCards = cards.filter(c=> c.style.display !== "none");
+        visibleCards.sort((a, b)=>{
+          if(activeSort === "price-asc" || activeSort === "price-desc"){
+            const getPrice = (el)=>{
+              const pEl = el.querySelector(".price__now");
+              if(!pEl) return 0;
+              return parseInt(pEl.textContent.replace(/[^\d]/g, ""), 10) || 0;
+            };
+            const pA = getPrice(a);
+            const pB = getPrice(b);
+            return activeSort === "price-asc" ? pA - pB : pB - pA;
+          }
+          if(activeSort === "discount"){
+            const getDisc = (el)=>{
+              const b = el.querySelector(".badge-sale");
+              if(!b) return 0;
+              return parseInt(b.textContent.replace(/[^\d]/g, ""), 10) || 0;
+            };
+            return getDisc(b) - getDisc(a);
+          }
+          if(activeSort === "new"){
+            const getId = (el)=>{
+              const see = el.querySelector("a.see, a[href*='product.html?id=']");
+              if(!see) return "";
+              const m = (see.getAttribute("href") || "").match(/[?&]id=([^&#]+)/);
+              return m ? decodeURIComponent(m[1]) : "";
+            };
+            return getId(b).localeCompare(getId(a), undefined, { numeric: true });
+          }
+          return 0;
+        });
+        visibleCards.forEach(c=> grid.appendChild(c));
+      }
+
+      // 3. Editorial cards handling
+      editorials.forEach(ed=>{
+        if(q || activeToggle){
+          ed.style.display = "none";
+        } else {
+          const edCats = (ed.getAttribute("data-editorial-cat") || "all").split(" ");
+          const match = activeCat === "all" || edCats.includes(activeCat);
+          ed.style.display = match ? "" : "none";
+        }
+      });
+
+      // 4. Update count badge & empty state
+      updateCatCount(grid);
+      const emptyEl = document.querySelector("[data-cat-empty]");
+      if(emptyEl) emptyEl.hidden = shownCount > 0;
+
+      // 5. Update search note & reset button
+      const searchNote = document.querySelector("[data-search-note]");
+      if(searchNote){
         if(q){
           const d = dict[getLang()] || dict.ru || {};
           const tpl = d["cat.searchNote"] || "«{q}» — {n}";
-          const shown = cards.filter(c=> c.style.display !== "none").length;
-          note.textContent = tpl.replace("{q}", urlParams.get("q") || "").replace("{n}", String(shown));
-          note.style.display = "";
+          searchNote.textContent = tpl.replace("{q}", q).replace("{n}", String(shownCount));
+          searchNote.style.display = "";
         } else {
-          note.textContent = "";
-          note.style.display = "none";
+          searchNote.textContent = "";
+          searchNote.style.display = "none";
         }
       }
+
+      const resetBtn = document.querySelector("[data-smart-reset]");
+      if(resetBtn){
+        const isFiltered = activeCat !== "all" || activeToggle !== null || q !== "";
+        resetBtn.hidden = !isFiltered;
+      }
+
+      const clearBtn = document.querySelector("[data-cat-search-clear]");
+      if(clearBtn){
+        clearBtn.hidden = !q;
+      }
     }
+
+    // Sync visual story category cards
+    function syncVisualCards(cat){
+      document.querySelectorAll(".cat-visual-card").forEach(vCard=>{
+        const isMatch = vCard.dataset.cat === cat;
+        vCard.classList.toggle("is-active", isMatch);
+        if(isMatch && vCard.scrollIntoView && window.matchMedia && window.matchMedia("(max-width:760px)").matches){
+          vCard.scrollIntoView({ inline:"nearest", behavior:"smooth", block:"nearest" });
+        }
+      });
+    }
+
+    document.querySelectorAll(".cat-visual-card").forEach(vCard=>{
+      vCard.addEventListener("click", ()=>{
+        const cat = vCard.dataset.cat;
+        const matchingChip = document.querySelector(`[data-chips] .chip[data-cat="${cat}"]`) || document.querySelector(`.cat-chips .chip[data-cat="${cat}"]`);
+        if(matchingChip) matchingChip.click();
+      });
+    });
+
+    function morphState(fn){
+      if(window.BTT_MOTION && window.BTT_MOTION.viewTransition){
+        window.BTT_MOTION.viewTransition(fn);
+      } else if(document.startViewTransition && (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches)){
+        document.startViewTransition(fn);
+      } else if(typeof fn === "function"){
+        fn();
+      }
+    }
+
+    // Smart toggles (in-stock / sale / mto)
+    document.querySelectorAll(".smart-toggle").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const toggleType = btn.dataset.toggle;
+        morphState(()=>{
+          if(activeToggle === toggleType){
+            activeToggle = null;
+            btn.classList.remove("is-active");
+          } else {
+            document.querySelectorAll(".smart-toggle").forEach(b=> b.classList.remove("is-active"));
+            activeToggle = toggleType;
+            btn.classList.add("is-active");
+          }
+          const grid = document.querySelector("#catalog-grid");
+          if(grid) applyCatalogState(grid);
+        });
+      });
+    });
+
+    // Live search in catalog
+    const searchInput = document.querySelector("[data-cat-search-input]");
+    const searchClear = document.querySelector("[data-cat-search-clear]");
+    if(searchInput){
+      if(urlParams.get("q")){
+        searchInput.value = urlParams.get("q");
+        liveSearchQ = urlParams.get("q");
+      }
+      searchInput.addEventListener("input", ()=>{
+        liveSearchQ = searchInput.value;
+        const grid = document.querySelector("#catalog-grid");
+        if(grid) applyCatalogState(grid);
+      });
+      if(searchClear){
+        searchClear.addEventListener("click", ()=>{
+          searchInput.value = "";
+          liveSearchQ = "";
+          const grid = document.querySelector("#catalog-grid");
+          if(grid) morphState(()=> applyCatalogState(grid));
+          searchInput.focus();
+        });
+      }
+    }
+
+    // Pre-apply filter toggle from URL (?filter=sale, ?filter=instock, ?filter=mto)
+    const qFilter = urlParams.get("filter");
+    if(qFilter && ["instock", "sale", "mto"].includes(qFilter)){
+      activeToggle = qFilter;
+      const tBtn = document.querySelector(`.smart-toggle[data-toggle="${qFilter}"]`);
+      if(tBtn) tBtn.classList.add("is-active");
+    }
+
+    // Sort control in catalog
+    const sortSelect = document.querySelector("[data-cat-sort]");
+    if(sortSelect){
+      const qSort = urlParams.get("sort");
+      if(qSort && Array.from(sortSelect.options).some(o => o.value === qSort)){
+        sortSelect.value = qSort;
+        activeSort = qSort;
+      }
+      sortSelect.addEventListener("change", ()=>{
+        activeSort = sortSelect.value;
+        const grid = document.querySelector("#catalog-grid");
+        if(grid) morphState(()=> applyCatalogState(grid));
+      });
+    }
+
+    // Reset button (sidebar and grid empty-state)
+    function resetAllCatalogFilters(){
+      morphState(()=>{
+        activeToggle = null;
+        liveSearchQ = "";
+        if(searchInput) searchInput.value = "";
+        const searchClear = document.querySelector("[data-cat-search-clear]");
+        if(searchClear) searchClear.hidden = true;
+        document.querySelectorAll(".smart-toggle").forEach(b=> b.classList.remove("is-active"));
+        const allChip = document.querySelector("[data-chips] .chip[data-cat='all']") || document.querySelector(".cat-chips .chip[data-cat='all']");
+        if(allChip) allChip.click();
+        else {
+          activeCat = "all";
+          const grid = document.querySelector("#catalog-grid");
+          if(grid) applyCatalogState(grid);
+        }
+      });
+    }
+    document.querySelectorAll("[data-smart-reset], [data-cat-reset]").forEach(btn=>{
+      btn.addEventListener("click", resetAllCatalogFilters);
+    });
 
     // category chips (catalog + home)
     document.querySelectorAll("[data-chips]").forEach(group=>{
@@ -648,10 +1387,11 @@
         const cat = chip.dataset.cat;
         activeCat = cat;
         const grid = document.querySelector(group.dataset.target);
-        const q = getSearchQ();
         if(grid){
-          if(q && grid.id === "catalog-grid") applyCatalogFilters(grid, cat, q);
-          else filterProducts(grid, cat);
+          morphState(()=>{
+            if(grid.id === "catalog-grid") applyCatalogState(grid);
+            else filterProducts(grid, cat);
+          });
         }
         if(chip.scrollIntoView && window.matchMedia && window.matchMedia("(max-width:720px)").matches){
           chip.scrollIntoView({ inline:"nearest", behavior: opts.instant ? "auto" : "smooth", block:"nearest" });
@@ -675,12 +1415,83 @@
           const resolved = resolveChipCat(hash);
           const match = Array.from(chips).find(c=>c.dataset.cat===resolved);
           if(match) activate(match, { instant:true });
-        } else if(getSearchQ()){
+        } else if(getCombinedSearchQ()){
           const grid = document.querySelector(group.dataset.target);
-          if(grid && grid.id === "catalog-grid") applyCatalogFilters(grid, activeCat, getSearchQ());
+          if(grid && grid.id === "catalog-grid") applyCatalogState(grid);
         }
       }
     });
+
+    document.addEventListener("btt:cat-change", e=>{
+      const cat = e.detail && e.detail.cat;
+      if(cat){
+        syncVisualCards(cat);
+      }
+    });
+
+    window.addEventListener("popstate", ()=>{
+      const params = new URLSearchParams(location.search);
+      const cat = params.get("cat") || "all";
+      const resolved = resolveChipCat(cat);
+      const chip = document.querySelector(`[data-chips] .chip[data-cat="${resolved}"]`) || document.querySelector(`.cat-chips .chip[data-cat="${resolved}"]`);
+      if(chip && !chip.classList.contains("is-active")){
+        chip.click();
+      }
+    });
+
+    /* Catalog Grid View Switcher (standard 4-col vs editorial 2-col wide) */
+    function initCatalogView(){
+      const toggler = document.querySelector("[data-view-toggler]");
+      const grid = document.querySelector("#catalog-grid");
+      if(!toggler || !grid) return;
+      const btns = toggler.querySelectorAll(".cat-view-btn");
+      const savedView = localStorage.getItem("btt_cat_view") || "grid";
+
+      function setView(view, save){
+        const updateDOM = ()=>{
+          btns.forEach(b=>{
+            const isMatch = b.dataset.view === view;
+            b.classList.toggle("is-active", isMatch);
+            b.setAttribute("aria-pressed", isMatch ? "true" : "false");
+          });
+          grid.classList.toggle("is-grid-wide", view === "wide");
+        };
+
+        if(window.BTT_MOTION && window.BTT_MOTION.viewTransition && save){
+          window.BTT_MOTION.viewTransition(updateDOM);
+        } else {
+          updateDOM();
+        }
+        if(save) try{ localStorage.setItem("btt_cat_view", view); }catch(e){}
+      }
+
+      setView(savedView, false);
+      btns.forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const v = btn.dataset.view || "grid";
+          setView(v, true);
+        });
+      });
+    }
+
+    /* Product Weave Color Swatches */
+    function initProductSwatches(){
+      document.querySelectorAll(".product-swatches").forEach(swGroup=>{
+        const swatches = swGroup.querySelectorAll(".product-swatch");
+        swatches.forEach(sw=>{
+          sw.addEventListener("click", (e)=>{
+            e.preventDefault();
+            e.stopPropagation();
+            swatches.forEach(s=> s.classList.remove("is-active"));
+            sw.classList.add("is-active");
+          });
+        });
+      });
+    }
+
+    initCatalogView();
+    initProductSwatches();
+    document.addEventListener("btt:related-rendered", initProductSwatches);
 
     // contact form
     const form = document.querySelector("[data-contact-form]");
@@ -709,8 +1520,16 @@
         const message = form.querySelector("[name='message']");
         let valid = true;
         if(!name || !name.value.trim()){ name && name.closest(".field")?.classList.add("is-invalid"); valid = false; }
-        if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
-          email && email.closest(".field")?.classList.add("is-invalid"); valid = false;
+
+        const emVal = email ? email.value.trim() : "";
+        const phVal = phone ? phone.value.trim() : "";
+        const isEmValid = emVal && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emVal);
+        const isPhValid = phVal && phVal.replace(/\D/g, "").length >= 7;
+
+        if(!isEmValid && !isPhValid){
+          if(email) email.closest(".field")?.classList.add("is-invalid");
+          if(phone) phone.closest(".field")?.classList.add("is-invalid");
+          valid = false;
         }
         if(!valid){
           if(err){ err.textContent = errMsg(); err.hidden = false; err.classList.add("show"); }
@@ -761,5 +1580,179 @@
         }
       });
     }
+
+    /* ---- interactive delivery calculator (delivery.html) ---- */
+    initDeliveryCalc();
   });
+
+  /* ---- interactive delivery calculator data & engine ---- */
+  const DELIVERY_CITIES = {
+    tashkent: {
+      key: "city.tashkent",
+      service: { ru: "Яндекс Доставка / Грузовое такси (Labo / Porter)", uz: "Yandex Yetkazish / Yuk taksisi (Labo / Porter)", en: "Yandex Freight / Cargo taxi (Labo / Porter)" },
+      manager: { ru: "Персональный менеджер приедет вместе с товаром прямо к вам — проверит сохранность, поможет распаковать и передаст гарантию 3 года", uz: "Shaxsiy menejer mahsulot bilan birga bevosita huzuringizga yetib boradi — butunligini tekshiradi, qadoqdan ochishga yordam beradi va 3 yillik kafolatni topshiradi", en: "A personal manager arrives with the goods directly to you — inspects integrity, assists with unboxing, and hands over 3-year warranty" },
+      time: { ru: "1–2 рабочих дня из наличия", uz: "Mavjudidan 1–2 ish kuni", en: "1–2 business days in stock" },
+      price: { ru: "По прямому тарифу сервиса доставки (Яндекс Доставка / Labo) без наценок", uz: "Yetkazish xizmati (Yandex Yetkazish / Labo) to‘g‘ridan-to‘g‘ri tarifi bo‘yicha ustamasiz", en: "At direct carrier rate (Yandex Freight / Labo) with zero markup" },
+      pack: { ru: "В собранном виде · Защитная воздушно-пузырьковая плёнка и картон (сборщик не нужен)", uz: "Yig‘ilgan holda · Pufakchali plyonka va qalin karton himoyasi (usta shart emas)", en: "Fully assembled · Bubble wrap & heavy-duty carton (no assembler needed)" },
+      assembly: { ru: "В собранном виде · Защитная воздушно-пузырьковая плёнка и картон (сборщик не нужен)", uz: "Yig‘ilgan holda · Pufakchali plyonka va qalin karton himoyasi (usta shart emas)", en: "Fully assembled · Bubble wrap & heavy-duty carton (no assembler needed)" },
+      pickup: { ru: "Шоурум Bententrade (ул. Амира Темура, 15) — бесплатно, в день заказа. Поможем погрузить", uz: "Bententrade shourumi (Amir Temur ko‘chasi, 15) — bepul, buyurtma kuni. Ortishga yordam beramiz", en: "Bententrade showroom (15 Amir Temur St) — free, same day. Loading assistance included" },
+      badge: { ru: "Сервисы: Яндекс / Labo + Менеджер", uz: "Xizmatlar: Yandex / Labo + Menejer", en: "Carriers: Yandex / Labo + Manager" },
+      shortTime: { ru: "1–2 дня", uz: "1–2 kun", en: "1–2 days" }
+    },
+    tashkent_reg: {
+      key: "city.tashkent_reg",
+      service: { ru: "Грузовое такси (Labo / Porter) или междугородний курьер", uz: "Yuk taksisi (Labo / Porter) yoki shaharlararo kuryer", en: "Cargo taxi (Labo / Porter) or regional courier" },
+      manager: { ru: "Менеджер сопровождает доставку или выезжает на объект для осмотра и передачи гарантийных документов", uz: "Menejer yetkazib berishga hamrohlik qiladi yoki ob’ektga ko‘rik va kafolat hujjatlarini topshirish uchun yetib keladi", en: "Manager escorts delivery or arrives on-site for inspection and warranty handover" },
+      time: { ru: "1–3 рабочих дня", uz: "1–3 ish kuni", en: "1–3 business days" },
+      price: { ru: "По прямому тарифу перевозчика (Labo / Porter) без наценок", uz: "Tashuvchi (Labo / Porter) to‘g‘ridan-to‘g‘ri tarifi bo‘yicha ustamasiz", en: "At direct carrier rate (Labo / Porter) with zero markup" },
+      pack: { ru: "В собранном виде · Усиленная защита углов и торцов, прямо до ворот дома", uz: "Yig‘ilgan holda · Burchak va chetlari kuchaytirilgan, to‘g‘ridan-to‘g‘ri darvozagacha", en: "Fully assembled · Reinforced edge protection, delivered to your gate" },
+      assembly: { ru: "В собранном виде · Усиленная защита углов и торцов, прямо до ворот дома", uz: "Yig‘ilgan holda · Burchak va chetlari kuchaytirilgan, to‘g‘ridan-to‘g‘ri darvozagacha", en: "Fully assembled · Reinforced edge protection, delivered to your gate" },
+      pickup: { ru: "Шоурум Bententrade в Ташкенте — бесплатно, или самовывоз со склада", uz: "Bententrade shourumi (Toshkent) — bepul, yoki ombordan olib ketish", en: "Bententrade showroom (Tashkent) — free, or warehouse pickup" },
+      badge: { ru: "Сервисы: Грузовое такси / Labo", uz: "Xizmatlar: Yuk taksisi / Labo", en: "Carriers: Cargo Taxi / Labo" },
+      shortTime: { ru: "1–3 дня", uz: "1–3 kun", en: "1–3 days" }
+    },
+    samarkand: {
+      key: "city.samarkand",
+      service: { ru: "Транспортная компания BTS Express / FarGo / EMU", uz: "BTS Express / FarGo / EMU transport kompaniyasi", en: "BTS Express / FarGo / EMU freight logistics" },
+      manager: { ru: "Куратор заказа контролирует логистику отгрузки, лично координирует передачу и сопровождает приемку товара", uz: "Buyurtma kuratori jo‘natish logistikasini nazorat qiladi, topshirishni shaxsan muvofiqlashtiradi va qabul qilishga hamroh bo‘ladi", en: "Order manager controls transit logistics, directly coordinates handover and escorts product acceptance" },
+      time: { ru: "3–5 рабочих дней с момента передачи перевозчику", uz: "Tashuvchiga topshirilgandan keyin 3–5 ish kuni", en: "3–5 business days from carrier handover" },
+      price: { ru: "По тарифу транспортной компании (BTS Express / FarGo) без комиссий и наценок", uz: "Transport kompaniyasi (BTS Express / FarGo) tarifi bo‘yicha komissiya va ustamasiz", en: "At freight carrier tariff (BTS Express / FarGo) with zero markup" },
+      pack: { ru: "В собранном виде · Защитная деревянная обрешётка + пузырьковая плёнка (сборка не требуется)", uz: "Yig‘ilgan holda · Yog‘och qoplama + pufakchali plyonka (yig‘ish talab qilinmaydi)", en: "Fully assembled · Wooden crating + bubble wrap (no assembly required)" },
+      assembly: { ru: "В собранном виде · Защитная деревянная обрешётка + пузырьковая плёнка (сборка не требуется)", uz: "Yig‘ilgan holda · Yog‘och qoplama + pufakchali plyonka (yig‘ish talab qilinmaydi)", en: "Fully assembled · Wooden crating + bubble wrap (no assembly required)" },
+      pickup: { ru: "Терминал BTS / FarGo в Самарканде или автодоставка перевозчиком до адреса", uz: "Samarqanddagi BTS / FarGo terminali yoki manzilgacha avtoyetkazish", en: "BTS / FarGo Samarkand depot or carrier delivery to address" },
+      badge: { ru: "Сервисы: BTS Express / FarGo", uz: "Xizmatlar: BTS Express / FarGo", en: "Carriers: BTS Express / FarGo" },
+      shortTime: { ru: "3–5 дней", uz: "3–5 kun", en: "3–5 days" }
+    },
+    bukhara: {
+      key: "city.bukhara",
+      service: { ru: "Транспортная служба BTS Express / FarGo (регулярный рейс)", uz: "BTS Express / FarGo transport xizmati (muntazam reys)", en: "BTS Express / FarGo freight service (scheduled transit)" },
+      manager: { ru: "Куратор заказа контролирует логистику отгрузки, лично координирует передачу и сопровождает приемку товара", uz: "Buyurtma kuratori jo‘natish logistikasini nazorat qiladi, topshirishni shaxsan muvofiqlashtiradi va qabul qilishga hamroh bo‘ladi", en: "Order manager controls transit logistics, directly coordinates handover and escorts product acceptance" },
+      time: { ru: "4–6 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 4–6 ish kuni", en: "4–6 business days from dispatch" },
+      price: { ru: "По тарифу службы доставки (BTS Express / FarGo) без магазинных наценок", uz: "Yetkazish xizmati (BTS Express / FarGo) tarifi bo‘yicha ustamasiz", en: "At carrier service tariff (BTS Express / FarGo) with zero shop markup" },
+      pack: { ru: "В собранном виде · Жёсткая фиксация в защитной таре против сколов (готов к использованию)", uz: "Yig‘ilgan holda · Qattiq fiksatsiyalangan qadoq (foydalanishga tayyor)", en: "Fully assembled · Rigid secure crating preventing any transit scuffs" },
+      assembly: { ru: "В собранном виде · Жёсткая фиксация в защитной таре против сколов (готов к использованию)", uz: "Yig‘ilgan holda · Qattiq fiksatsiyalangan qadoq (foydalanishga tayyor)", en: "Fully assembled · Rigid secure crating preventing any transit scuffs" },
+      pickup: { ru: "Пункт выдачи BTS / FarGo в Бухаре или доставка курьером службы", uz: "Buxorodagi BTS / FarGo tarqatish punkti yoki xizmat kuryeri", en: "Bukhara BTS / FarGo hub or carrier courier to door" },
+      badge: { ru: "Сервисы: BTS / FarGo", uz: "Xizmatlar: BTS / FarGo", en: "Carriers: BTS / FarGo" },
+      shortTime: { ru: "4–6 дней", uz: "4–6 kun", en: "4–6 days" }
+    },
+    fergana: {
+      key: "city.fergana",
+      service: { ru: "Транспортные службы BTS Express / FarGo / EMU (Ферганская долина)", uz: "BTS Express / FarGo / EMU xizmatlari (Farg‘ona vodiysi)", en: "BTS Express / FarGo / EMU freight carriers (Fergana Valley)" },
+      manager: { ru: "Куратор заказа контролирует логистику отгрузки, лично координирует передачу и сопровождает приемку товара", uz: "Buyurtma kuratori jo‘natish logistikasini nazorat qiladi, topshirishni shaxsan muvofiqlashtiradi va qabul qilishga hamroh bo‘ladi", en: "Order manager controls transit logistics, directly coordinates handover and escorts product acceptance" },
+      time: { ru: "3–5 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 3–5 ish kuni", en: "3–5 business days from dispatch" },
+      price: { ru: "По тарифу транспортных служб (BTS / FarGo / EMU) без наценок", uz: "Transport xizmatlari (BTS / FarGo / EMU) tarifi bo‘yicha ustamasiz", en: "At carrier service tariffs (BTS / FarGo / EMU) with zero markup" },
+      pack: { ru: "В собранном виде · Защитная обрешётка для безопасной перевозки через перевал", uz: "Yig‘ilgan holda · Dovondan xavfsiz o‘tish uchun maxsus yog‘och qoplama", en: "Fully assembled · Reinforced wooden crate for mountain pass transit" },
+      assembly: { ru: "В собранном виде · Защитная обрешётка для безопасной перевозки через перевал", uz: "Yig‘ilgan holda · Dovondan xavfsiz o‘tish uchun maxsus yog‘och qoplama", en: "Fully assembled · Reinforced wooden crate for mountain pass transit" },
+      pickup: { ru: "Пункты выдачи в Фергане, Андижане, Намангане или доставка до адреса", uz: "Farg‘ona, Andijon, Namangandagi punktlar yoki manzilgacha yetkazish", en: "Pick-up hubs across Fergana, Andijan, Namangan or address delivery" },
+      badge: { ru: "Сервисы: BTS / FarGo / EMU", uz: "Xizmatlar: BTS / FarGo / EMU", en: "Carriers: BTS / FarGo / EMU" },
+      shortTime: { ru: "3–5 дней", uz: "3–5 kun", en: "3–5 days" }
+    },
+    south: {
+      key: "city.south",
+      service: { ru: "Транспортные службы BTS Express / FarGo (Карши, Навои, Термез)", uz: "BTS Express / FarGo xizmatlari (Qarshi, Navoiy, Termiz)", en: "BTS Express / FarGo freight (Karshi, Navoi, Termez)" },
+      manager: { ru: "Куратор заказа контролирует логистику отгрузки, лично координирует передачу и сопровождает приемку товара", uz: "Buyurtma kuratori jo‘natish logistikasini nazorat qiladi, topshirishni shaxsan muvofiqlashtiradi va qabul qilishga hamroh bo‘ladi", en: "Order manager controls transit logistics, directly coordinates handover and escorts product acceptance" },
+      time: { ru: "5–7 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 5–7 ish kuni", en: "5–7 business days from dispatch" },
+      price: { ru: "По прямому тарифу перевозчика (BTS Express / FarGo) без комиссий", uz: "Tashuvchi (BTS Express / FarGo) to‘g‘ridan-to‘g‘ri tarifi bo‘yicha komissiyasiz", en: "At direct carrier rate (BTS Express / FarGo) with zero commission" },
+      pack: { ru: "В собранном виде · Многослойная упаковка и обрешётка для дальних дистанций", uz: "Yig‘ilgan holda · Uzoq masofalar uchun ko‘p qavatli o‘ram va qoplama", en: "Fully assembled · Heavy-duty long-haul protective crating" },
+      assembly: { ru: "В собранном виде · Многослойная упаковка и обрешётка для дальних дистанций", uz: "Yig‘ilgan holda · Uzoq masofalar uchun ko‘p qavatli o‘ram va qoplama", en: "Fully assembled · Heavy-duty long-haul protective crating" },
+      pickup: { ru: "Региональные терминалы BTS / FarGo или автокурьер до объекта", uz: "BTS / FarGo mintaqaviy terminallari yoki ob’ektgacha avtokuryer", en: "Regional BTS / FarGo terminals or vehicle courier to site" },
+      badge: { ru: "Сервисы: BTS / FarGo", uz: "Xizmatlar: BTS / FarGo", en: "Carriers: BTS / FarGo" },
+      shortTime: { ru: "5–7 дней", uz: "5–7 kun", en: "5–7 days" }
+    },
+    khorezm: {
+      key: "city.khorezm",
+      service: { ru: "Грузовая транспортная служба BTS Express / EMU (Ургенч, Хива, Нукус)", uz: "BTS Express / EMU yuk transport xizmati (Urganch, Xiva, Nukus)", en: "BTS Express / EMU freight service (Urgench, Khiva, Nukus)" },
+      manager: { ru: "Куратор заказа контролирует логистику отгрузки, лично координирует передачу и сопровождает приемку товара", uz: "Buyurtma kuratori jo‘natish logistikasini nazorat qiladi, topshirishni shaxsan muvofiqlashtiradi va qabul qilishga hamroh bo‘ladi", en: "Order manager controls transit logistics, directly coordinates handover and escorts product acceptance" },
+      time: { ru: "5–8 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 5–8 ish kuni", en: "5–8 business days from dispatch" },
+      price: { ru: "По прямому тарифу транспортной компании без наценок", uz: "Transport kompaniyasi to‘g‘ridan-to‘g‘ri tarifi bo‘yicha ustamasiz", en: "At direct carrier tariff with zero markup" },
+      pack: { ru: "В собранном виде · Усиленный деревянный каркас (сборка на месте не требуется)", uz: "Yig‘ilgan holda · Kuchaytirilgan yog‘och karkas (joyida yig‘ish shart emas)", en: "Fully assembled · Reinforced wooden transit frame (no on-site assembly)" },
+      assembly: { ru: "В собранном виде · Усиленный деревянный каркас (сборка на месте не требуется)", uz: "Yig‘ilgan holda · Kuchaytirilgan yog‘och karkas (joyida yig‘ish shart emas)", en: "Fully assembled · Reinforced wooden transit frame (no on-site assembly)" },
+      pickup: { ru: "Пункты выдачи в Ургенче и Нукусе или доставка до ворот", uz: "Urganch va Nukusdagi tarqatish punktlari yoki darvozagacha yetkazish", en: "Urgench & Nukus hubs or direct delivery to gate" },
+      badge: { ru: "Сервисы: BTS Express / EMU", uz: "Xizmatlar: BTS Express / EMU", en: "Carriers: BTS Express / EMU" },
+      shortTime: { ru: "5–8 дней", uz: "5–8 kun", en: "5–8 days" }
+    }
+  };
+  window.BTT_DELIVERY_CITIES = DELIVERY_CITIES;
+
+  function initDeliveryCalc(){
+    const calc = document.querySelector(".del-calc");
+    if(!calc) return;
+    const btns = calc.querySelectorAll(".del-calc__city-btn");
+    const badgeEl = calc.querySelector("[data-calc-badge]");
+    const cityTitleEl = calc.querySelector("[data-calc-city-title]");
+    const serviceEl = calc.querySelector("[data-calc-service]");
+    const managerEl = calc.querySelector("[data-calc-manager]");
+    const timeEl = calc.querySelector("[data-calc-time]");
+    const priceEl = calc.querySelector("[data-calc-price]");
+    const packEl = calc.querySelector("[data-calc-pack]") || calc.querySelector("[data-calc-assembly]");
+    const pickupEl = calc.querySelector("[data-calc-pickup]");
+    const cardEl = calc.querySelector("[data-del-calc-card]");
+
+    let activeCityKey = localStorage.getItem("btt_city") || "tashkent";
+    if(!DELIVERY_CITIES[activeCityKey]) activeCityKey = "tashkent";
+
+    function renderCity(cityKey, animate){
+      const data = DELIVERY_CITIES[cityKey];
+      if(!data) return;
+      const l = getLang();
+      const d = dict[l] || dict.ru || {};
+
+      btns.forEach(b=>{
+        const isSel = b.dataset.city === cityKey;
+        b.classList.toggle("is-active", isSel);
+        b.setAttribute("aria-selected", isSel ? "true" : "false");
+      });
+
+      if(animate && cardEl){
+        cardEl.style.opacity = "0.4";
+        cardEl.style.transform = "translateY(4px)";
+      }
+
+      setTimeout(()=>{
+        if(badgeEl) badgeEl.textContent = data.badge[l] || data.badge.ru;
+        if(cityTitleEl) cityTitleEl.textContent = d[data.key] || cityKey;
+        if(serviceEl) serviceEl.textContent = (data.service && (data.service[l] || data.service.ru)) || "";
+        if(managerEl) managerEl.textContent = (data.manager && (data.manager[l] || data.manager.ru)) || "";
+        if(timeEl) timeEl.textContent = data.time[l] || data.time.ru;
+        if(priceEl) priceEl.textContent = data.price[l] || data.price.ru;
+        if(packEl) packEl.textContent = (data.pack && (data.pack[l] || data.pack.ru)) || (data.assembly && (data.assembly[l] || data.assembly.ru)) || "";
+        if(pickupEl) pickupEl.textContent = data.pickup[l] || data.pickup.ru;
+
+        if(animate && cardEl){
+          cardEl.style.transition = "opacity 0.25s ease, transform 0.25s ease";
+          cardEl.style.opacity = "1";
+          cardEl.style.transform = "translateY(0)";
+        }
+      }, animate ? 120 : 0);
+    }
+
+    btns.forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const c = btn.dataset.city;
+        if(c === activeCityKey) return;
+        activeCityKey = c;
+        try{ localStorage.setItem("btt_city", c); }catch(e){}
+        if(window.navigator && window.navigator.vibrate) window.navigator.vibrate(10);
+        renderCity(c, true);
+        btn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        document.dispatchEvent(new CustomEvent("btt:city-change", { detail: { city: c } }));
+      });
+    });
+
+    renderCity(activeCityKey, false);
+
+    document.addEventListener("btt:lang", ()=> renderCity(activeCityKey, false));
+    document.addEventListener("btt:city-change", e=>{
+      if(e.detail && e.detail.city && e.detail.city !== activeCityKey){
+        activeCityKey = e.detail.city;
+        renderCity(activeCityKey, false);
+      }
+    });
+
+    if(location.hash === "#calc"){
+      setTimeout(()=>{
+        calc.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300);
+    }
+  }
 })();

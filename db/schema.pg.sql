@@ -80,6 +80,7 @@ CREATE INDEX IF NOT EXISTS idx_orders_user ON orders(user_id);
 CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
 -- Added after initial release; idempotent so existing databases pick it up on boot.
 ALTER TABLE orders ADD COLUMN IF NOT EXISTS delivery_method TEXT;
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS payment_method TEXT DEFAULT 'cash_or_pos';
 
 CREATE TABLE IF NOT EXISTS order_items (
   id         SERIAL PRIMARY KEY,

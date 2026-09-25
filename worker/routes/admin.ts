@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import type { Env, Variables } from "../types";
 import { requireAdmin } from "../auth";
 import { str } from "../util";
+import { sendSms, notifyOrderSms } from "../sms";
 
 const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
@@ -14,11 +15,20 @@ const LANGS = ["ru", "uz", "en"] as const;
 
 app.get("/products", async (c) => {
   const { results } = await c.env.DB.prepare(
-    `SELECT p.id, p.category, p.price_now, p.price_old, p.active, p.sort, i.name
+    `SELECT p.id, p.category, p.look, p.price_now, p.price_old, p.active, p.sort, i.name,
+            (SELECT m.key FROM media m WHERE m.product_id = p.id ORDER BY m.sort ASC, m.id ASC LIMIT 1) AS image
      FROM products p LEFT JOIN product_i18n i ON i.product_id = p.id AND i.lang = 'ru'
      ORDER BY p.sort ASC, p.id ASC`,
   ).all();
   return c.json({ products: results });
+});
+
+app.put("/products/:id/active", async (c) => {
+  const id = c.req.param("id");
+  const b = await c.req.json().catch(() => ({}));
+  const active = b.active === 0 || b.active === false ? 0 : 1;
+  const r = await c.env.DB.prepare(`UPDATE products SET active = ? WHERE id = ?`).bind(active, id).run();
+  return c.json({ ok: true, active, updated: r.meta.changes });
 });
 
 app.get("/products/:id", async (c) => {
@@ -136,7 +146,13 @@ app.put("/orders/:id/status", async (c) => {
   const b = await c.req.json().catch(() => ({}));
   const status = str(b.status, 20);
   if (!ORDER_STATUSES.includes(status)) return c.json({ error: "bad_status" }, 422);
+  const order = await c.env.DB.prepare(`SELECT * FROM orders WHERE id = ?`).bind(id).first<any>();
   const r = await c.env.DB.prepare(`UPDATE orders SET status = ? WHERE id = ?`).bind(status, id).run();
+  if (order && order.customer_phone) {
+    await notifyOrderSms(c.env, { ...order, status }, "status_change", status).catch((e) =>
+      console.warn("[sms:status] Failed:", (e as Error).message),
+    );
+  }
   return c.json({ ok: true, updated: r.meta.changes });
 });
 
@@ -164,11 +180,25 @@ app.put("/requests/:id/status", async (c) => {
 
 app.get("/articles", async (c) => {
   const { results } = await c.env.DB.prepare(
-    `SELECT a.id, a.slug, a.status, a.published_at, i.title
+    `SELECT a.id, a.slug, a.cover_media, a.status, a.published_at, i.title, i.excerpt
      FROM articles a LEFT JOIN article_i18n i ON i.article_id = a.id AND i.lang = 'ru'
      ORDER BY a.id DESC`,
   ).all();
   return c.json({ articles: results });
+});
+
+app.put("/articles/:id/status", async (c) => {
+  const id = Number(c.req.param("id"));
+  const b = await c.req.json().catch(() => ({}));
+  const status = b.status === "published" ? "published" : "draft";
+  const r = await c.env.DB.prepare(
+    `UPDATE articles SET status = ?, updated_at = datetime('now'),
+       published_at = CASE WHEN ? = 'published' AND published_at IS NULL THEN datetime('now') ELSE published_at END
+     WHERE id = ?`,
+  )
+    .bind(status, status, id)
+    .run();
+  return c.json({ ok: true, status, updated: r.meta.changes });
 });
 
 app.get("/articles/:id", async (c) => {
@@ -292,6 +322,29 @@ app.post("/media", async (c) => {
   return c.json({ ok: true, id: r.meta.last_row_id, key, url: `/media/${key}` });
 });
 
+app.put("/media/:id/primary", async (c) => {
+  const id = Number(c.req.param("id"));
+  const row = await c.env.DB.prepare(`SELECT product_id, article_id FROM media WHERE id = ?`).bind(id).first<{ product_id: string | null; article_id: number | null }>();
+  if (!row) return c.json({ error: "not_found" }, 404);
+  if (row.product_id) {
+    await c.env.DB.prepare(`UPDATE media SET sort = sort + 10 WHERE product_id = ?`).bind(row.product_id).run();
+    await c.env.DB.prepare(`UPDATE media SET sort = 0 WHERE id = ?`).bind(id).run();
+  } else if (row.article_id) {
+    await c.env.DB.prepare(`UPDATE media SET sort = sort + 10 WHERE article_id = ?`).bind(row.article_id).run();
+    await c.env.DB.prepare(`UPDATE media SET sort = 0 WHERE id = ?`).bind(id).run();
+  }
+  return c.json({ ok: true });
+});
+
+app.put("/media/:id/link", async (c) => {
+  const id = Number(c.req.param("id"));
+  const b = await c.req.json().catch(() => ({}));
+  const productId = str(b.product_id, 40) || null;
+  const articleId = b.article_id ? Number(b.article_id) : null;
+  await c.env.DB.prepare(`UPDATE media SET product_id = ?, article_id = ? WHERE id = ?`).bind(productId, articleId, id).run();
+  return c.json({ ok: true });
+});
+
 app.delete("/media/:id", async (c) => {
   const id = Number(c.req.param("id"));
   const row = await c.env.DB.prepare(`SELECT key FROM media WHERE id = ?`).bind(id).first<{ key: string }>();
@@ -336,4 +389,51 @@ app.get("/stats", async (c) => {
   });
 });
 
+/* ================================== sms ================================= */
+
+app.post("/sms/test", async (c) => {
+  const b = await c.req.json().catch(() => ({}));
+  const phone = str(b.phone, 30);
+  const message = str(b.message, 500) || "Bententrade: Тестовое SMS-сообщение успешно доставлено!";
+  if (!phone) return c.json({ error: "phone_required" }, 422);
+
+  const res = await sendSms(c.env, { phone, message });
+  return c.json(res);
+});
+
+/* ================================= reviews =============================== */
+
+app.get("/reviews", async (c) => {
+  try {
+    const { results } = await c.env.DB.prepare(
+      `SELECT r.id, r.product_id, r.author_name, r.city, r.rating, r.text, r.is_verified, r.status, r.created_at,
+              COALESCE(i.name, r.product_id) AS product_name
+       FROM reviews r
+       LEFT JOIN product_i18n i ON i.product_id = r.product_id AND i.lang = 'ru'
+       ORDER BY r.created_at DESC LIMIT 100`,
+    ).all();
+    return c.json({ reviews: results || [] });
+  } catch (err) {
+    return c.json({ reviews: [] });
+  }
+});
+
+app.put("/reviews/:id/status", async (c) => {
+  const id = Number(c.req.param("id"));
+  const b = await c.req.json().catch(() => ({}));
+  const status = str(b.status, 20) || "approved";
+  if (!["approved", "pending", "rejected"].includes(status)) {
+    return c.json({ error: "invalid_status" }, 422);
+  }
+  const r = await c.env.DB.prepare(`UPDATE reviews SET status = ? WHERE id = ?`).bind(status, id).run();
+  return c.json({ ok: true, id, status, updated: r.meta.changes });
+});
+
+app.delete("/reviews/:id", async (c) => {
+  const id = Number(c.req.param("id"));
+  const r = await c.env.DB.prepare(`DELETE FROM reviews WHERE id = ?`).bind(id).run();
+  return c.json({ ok: true, id, deleted: r.meta.changes });
+});
+
 export default app;
+

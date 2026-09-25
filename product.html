@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +6,7 @@
 <meta name="description" content="Карточка товара Bententrade — искусственный ротанг, характеристики и доставка.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#bd7335">
 <link rel="canonical" href="https://bententrade.uz/product.html">
 <meta property="og:type" content="product">
@@ -20,12 +21,12 @@
 <meta name="twitter:image" content="https://bententrade.uz/assets/btt-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="assets/styles.css" as="style">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesque:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesque:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap"></noscript>
+<link rel="preload" href="assets/styles.css?v=20260921-6" as="style">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Unbounded:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Unbounded:wght@400;500;600;700;800;900&display=swap"></noscript>
 <title>Bententrade — Садовый диван «Лагуна»</title>
-<link rel="stylesheet" href="assets/styles.css">
-<link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/styles.css?v=20260921-6">
+<link rel="stylesheet" href="assets/pages.css?v=20260921-6">
 <script>(function(){try{if(localStorage.getItem('btt_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 </head>
 <body>
@@ -62,12 +63,16 @@
   <a href="about.html" data-i18n="nav.about">О нас</a>
   <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
   <div class="mobile-drawer__tools">
-    <button type="button" class="mobile-drawer__tool" data-cart-open>
+    <button type="button" class="mobile-drawer__tool" data-search-open data-i18n-aria="tool.search" aria-label="Поиск">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+      <span data-i18n="tool.search">Поиск</span>
+    </button>
+    <button type="button" class="mobile-drawer__tool" data-cart-open data-i18n-aria="tool.cart" aria-label="Корзина">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
       <span data-i18n="tool.cart">Корзина</span>
       <span class="count" data-cart-count style="display:none">0</span>
     </button>
-    <button type="button" class="mobile-drawer__tool" data-fav-open>
+    <button type="button" class="mobile-drawer__tool" data-fav-open data-i18n-aria="tool.fav" aria-label="Избранное">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>
       <span data-i18n="tool.fav">Избранное</span>
       <span class="count" data-fav-count style="display:none">0</span>
@@ -90,16 +95,19 @@
     <div class="pdp-gal reveal">
       <div class="pdp-gal__thumbs">
         <button class="pdp-thumb is-active" data-thumb data-i18n-aria="pdp.thumb" aria-label="Фото 1"><img src="assets/hero-garden-furniture.png" alt="" loading="lazy"></button>
-        <button class="pdp-thumb" data-thumb data-i18n-aria="pdp.thumb" aria-label="Фото 2"><img src="" alt="" loading="lazy" onerror="this.style.display='none'"></button>
-        <button class="pdp-thumb" data-thumb data-i18n-aria="pdp.thumb" aria-label="Фото 3"><img src="" alt="" loading="lazy" onerror="this.style.display='none'"></button>
-        <button class="pdp-thumb" data-thumb data-i18n-aria="pdp.thumb" aria-label="Фото 4"><img src="" alt="" loading="lazy" onerror="this.style.display='none'"></button>
+        <button class="pdp-thumb" data-thumb data-i18n-aria="pdp.thumb" aria-label="Фото 2"><img src="assets/scene-dining-grey.png" alt="" loading="lazy"></button>
+        <button class="pdp-thumb" data-thumb data-i18n-aria="pdp.thumb" aria-label="Фото 3"><img src="assets/scene-dining-azure.png" alt="" loading="lazy"></button>
+        <button class="pdp-thumb" data-thumb data-i18n-aria="pdp.thumb" aria-label="Фото 4"><img src="assets/scene-dining-warm.png" alt="" loading="lazy"></button>
       </div>
       <div class="pdp-stage" data-stage>
         <span class="badge-sale">-30%</span>
+        <button class="pdp-stage__zoom" data-pdp-zoom-trigger data-i18n-aria="pdp.zoom.tip" aria-label="Нажмите для увеличения">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+        </button>
         <img class="is-on" src="assets/hero-garden-furniture.png" alt="" loading="eager" fetchpriority="high" decoding="async">
-        <img src="" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'">
-        <img src="" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'">
-        <img src="" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        <img src="assets/scene-dining-grey.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-azure.png" alt="" loading="lazy" decoding="async">
+        <img src="assets/scene-dining-warm.png" alt="" loading="lazy" decoding="async">
       </div>
     </div>
 
@@ -107,7 +115,7 @@
     <div class="pdp-info reveal">
       <div class="product__cat" data-i18n="p1.cat">Садовая мебель</div>
       <h1 data-i18n="p1.name">Садовый диван «Лагуна»</h1>
-      <div class="pdp-rate">
+      <div class="pdp-rate" role="button" tabindex="0" data-pdp-reviews-open aria-haspopup="dialog" aria-label="Открыть отзывы">
         <span class="pdp-stars" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
@@ -119,8 +127,8 @@
       </div>
 
       <div class="pdp-price">
-        <span class="now">$780</span>
-        <span class="old">$980</span>
+        <span class="now">9&nbsp;750&nbsp;000&nbsp;сум</span>
+        <span class="old">12&nbsp;250&nbsp;000&nbsp;сум</span>
         <span class="save" data-i18n="pdp.save">Экономия</span>
       </div>
 
@@ -128,18 +136,18 @@
 
       <!-- finish -->
       <div class="pdp-opt">
-        <div class="pdp-opt__lab"><span data-i18n="pdp.opt.finish">Отделка</span></div>
-        <div class="pdp-swatches" data-select>
-          <button class="swatch is-active" style="background:#3a3a3c" data-i18n-aria="pdp.fin.natural" aria-label="Графит"></button>
-          <button class="swatch" style="background:#cbb088" data-i18n-aria="pdp.fin.walnut" aria-label="Бежевый"></button>
-          <button class="swatch" style="background:#6f4e35" data-i18n-aria="pdp.fin.smoke" aria-label="Мокко"></button>
+        <div class="pdp-opt__lab"><span><span data-i18n="pdp.opt.finish">Цвет плетения</span>:</span> <b class="opt-val" data-finish-val>Графит</b></div>
+        <div class="pdp-swatches" data-select="finish">
+          <button class="swatch is-active" style="background:#3a3a3c" data-finish-key="pdp.fin.natural" data-color-fallback="Графит" data-i18n-aria="pdp.fin.natural" aria-label="Графит"></button>
+          <button class="swatch" style="background:#cbb088" data-finish-key="pdp.fin.walnut" data-color-fallback="Бежевый" data-i18n-aria="pdp.fin.walnut" aria-label="Бежевый"></button>
+          <button class="swatch" style="background:#6f4e35" data-finish-key="pdp.fin.smoke" data-color-fallback="Мокко" data-i18n-aria="pdp.fin.smoke" aria-label="Мокко"></button>
         </div>
       </div>
 
       <!-- size -->
       <div class="pdp-opt">
-        <div class="pdp-opt__lab"><span data-i18n="pdp.opt.size">Размер</span></div>
-        <div class="size-row" data-select>
+        <div class="pdp-opt__lab"><span><span data-i18n="pdp.opt.size">Размер</span>:</span> <b class="opt-val" data-size-val>180 × 90</b></div>
+        <div class="size-row" data-select="size">
           <button class="size-btn">160 × 80</button>
           <button class="size-btn is-active">180 × 90</button>
           <button class="size-btn">200 × 100</button>
@@ -154,7 +162,8 @@
           <button data-qu data-i18n-aria="pdp.qty.plus" aria-label="Увеличить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
         </div>
         <button class="btn btn--dark" data-add data-i18n="pdp.add">Добавить в корзину</button>
-        <a class="btn btn--copper" data-pdp-mto href="#" hidden data-i18n="mto.card">Сделать на заказ</a>
+        <button type="button" class="btn btn--copper pdp-quick-buy-btn" data-pdp-quick-buy data-i18n="pdp.quickBuy">Купить в 1 клик</button>
+        <a class="btn btn--copper" data-pdp-mto href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" hidden data-i18n="mto.card">Сделать на заказ</a>
         <button class="pdp-fav" data-fav data-i18n-aria="tool.fav" aria-label="Избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
       </div>
 
@@ -162,7 +171,7 @@
       <div class="pdp-trust">
         <div class="trust">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></span>
-          <div><div class="t" data-i18n="pdp.t1.t">Доставка 7–10 дней</div><div class="d" data-i18n="pdp.t1.d">Бесплатно по Узбекистану</div></div>
+          <div><div class="t" data-i18n="pdp.t1.t">Доставка сервисами</div><div class="d" data-i18n="pdp.t1.d">Менеджер приедет с товаром</div></div>
         </div>
         <div class="trust">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 5 6v5c0 4 3 7 7 9 4-2 7-5 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg></span>
@@ -170,12 +179,40 @@
         </div>
         <div class="trust">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 4 4 14l-1 5 5-1L18 8z"/><path d="m12 6 4 4"/></svg></span>
-          <div><div class="t" data-i18n="pdp.t3.t">Сборка включена</div><div class="d" data-i18n="pdp.t3.d">Наш мастер соберёт на месте</div></div>
+          <div><div class="t" data-i18n="pdp.t3.t">Готово к использованию</div><div class="d" data-i18n="pdp.t3.d">Привозим в собранном виде</div></div>
         </div>
         <div class="trust">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg></span>
           <div><div class="t" data-i18n="pdp.t4.t">Возврат 14 дней</div><div class="d" data-i18n="pdp.t4.d">Если не подошёл размер</div></div>
         </div>
+      </div>
+
+      <!-- dynamic delivery estimate -->
+      <div class="pdp-delivery-badge" data-pdp-delivery-badge>
+        <span class="pdp-delivery-badge__icon">🚚</span>
+        <div class="pdp-delivery-badge__body">
+          <div class="pdp-delivery-badge__title">
+            <span data-i18n="pdp.del.dest">Отправка в</span>
+            <div style="position:relative;display:inline-block">
+              <button type="button" class="pdp-city-picker-btn" data-pdp-city-picker aria-haspopup="true" aria-expanded="false">
+                <span data-pdp-city-label>Ташкент</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="pdp-city-popover" data-pdp-city-popover role="menu">
+                <button type="button" class="pdp-city-opt" data-city="tashkent" data-i18n="city.tashkent">Ташкент</button>
+                <button type="button" class="pdp-city-opt" data-city="tashkent_reg" data-i18n="city.tashkent_reg">Ташкентская обл.</button>
+                <button type="button" class="pdp-city-opt" data-city="samarkand" data-i18n="city.samarkand">Самарканд</button>
+                <button type="button" class="pdp-city-opt" data-city="bukhara" data-i18n="city.bukhara">Бухара</button>
+                <button type="button" class="pdp-city-opt" data-city="fergana" data-i18n="city.fergana">Фергана / Андижан</button>
+                <button type="button" class="pdp-city-opt" data-city="south" data-i18n="city.south">Карши / Навои / Термез</button>
+                <button type="button" class="pdp-city-opt" data-city="khorezm" data-i18n="city.khorezm">Ургенч / Нукус</button>
+              </div>
+            </div>
+            <span class="pdp-delivery-badge__time" data-pdp-est-time>1–2 дня</span>
+          </div>
+          <div class="pdp-delivery-badge__sub" data-pdp-est-sub>По тарифу сервиса · Менеджер приедет с товаром</div>
+        </div>
+        <a class="pdp-delivery-badge__calc-link" href="delivery.html#calc" data-i18n="pdp.del.details">Условия отправки</a>
       </div>
 
       <div class="pdp-custom">
@@ -228,29 +265,303 @@
   </section>
 </main>
 
+<!-- STICKY MOBILE BUY DOCK -->
+<aside class="pdp-sticky-bar" data-pdp-sticky aria-hidden="true">
+  <div class="pdp-sticky-bar__inner">
+    <div class="pdp-sticky-bar__media">
+      <img src="assets/hero-garden-furniture.png" alt="" data-sticky-img loading="lazy">
+    </div>
+    <div class="pdp-sticky-bar__info">
+      <div class="pdp-sticky-bar__title" data-sticky-title>Садовый диван «Лагуна»</div>
+      <div class="pdp-sticky-bar__meta">
+        <span class="pdp-sticky-bar__price" data-sticky-price>9&nbsp;750&nbsp;000&nbsp;сум</span>
+        <span class="pdp-sticky-bar__old" data-sticky-old style="display:none">12&nbsp;250&nbsp;000&nbsp;сум</span>
+        <span class="pdp-sticky-bar__opt" data-sticky-opt>Графит · 180×90</span>
+      </div>
+    </div>
+    <div class="pdp-sticky-bar__action">
+      <button class="btn btn--dark btn--sm pdp-sticky-bar__btn" data-sticky-add data-i18n="pdp.sticky.buy">В корзину</button>
+      <a class="btn btn--copper btn--sm pdp-sticky-bar__mto" data-sticky-mto href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" hidden data-i18n="pdp.sticky.order">Сделать на заказ</a>
+    </div>
+  </div>
+</aside>
+
+<!-- FULLSCREEN PHOTO LIGHTBOX -->
+<div class="pdp-lightbox" data-pdp-lightbox aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="pdp-lightbox__scrim" data-lightbox-close></div>
+  <div class="pdp-lightbox__content">
+    <button class="pdp-lightbox__close" data-lightbox-close data-i18n-aria="pdp.zoom.close" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="pdp-lightbox__main">
+      <button class="pdp-lightbox__nav pdp-lightbox__nav--prev" data-lightbox-prev aria-label="Предыдущее фото">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="pdp-lightbox__img-wrap">
+        <img src="assets/hero-garden-furniture.png" alt="" data-lightbox-img>
+      </div>
+      <button class="pdp-lightbox__nav pdp-lightbox__nav--next" data-lightbox-next aria-label="Следующее фото">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+    <div class="pdp-lightbox__thumbs" data-lightbox-thumbs></div>
+  </div>
+</div>
+
+<!-- PDP VERIFIED REVIEWS DRAWER -->
+<div class="reviews-scrim" data-reviews-scrim data-reviews-close></div>
+<aside class="reviews-drawer" data-reviews-drawer aria-label="Отзывы покупателей" aria-hidden="true">
+  <div class="reviews-drawer__head">
+    <div class="reviews-drawer__head-title">
+      <h3 data-i18n="reviews.title">Отзывы покупателей</h3>
+      <span class="reviews-count-badge">128</span>
+    </div>
+    <button type="button" class="reviews-drawer__close" data-reviews-close data-i18n-aria="reviews.close" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="reviews-drawer__body">
+    <!-- Summary score -->
+    <div class="reviews-summary-card">
+      <div class="reviews-summary-score">
+        <div class="reviews-summary-num">4.9</div>
+        <div class="reviews-summary-stars" aria-label="Оценка 4.9 из 5">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+        </div>
+        <div class="reviews-summary-sub" data-i18n="pdp.rate">4.9 · 128 отзывов</div>
+      </div>
+
+      <div class="reviews-breakdown">
+        <div class="reviews-bar-row">
+          <span>5★</span>
+          <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:92%"></div></div>
+          <span>92%</span>
+        </div>
+        <div class="reviews-bar-row">
+          <span>4★</span>
+          <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:7%"></div></div>
+          <span>7%</span>
+        </div>
+        <div class="reviews-bar-row">
+          <span>3★</span>
+          <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:1%"></div></div>
+          <span>1%</span>
+        </div>
+        <div class="reviews-bar-row">
+          <span>2★</span>
+          <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:0%"></div></div>
+          <span>0%</span>
+        </div>
+        <div class="reviews-bar-row">
+          <span>1★</span>
+          <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:0%"></div></div>
+          <span>0%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommendation -->
+    <div class="reviews-recommend-band">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span data-i18n="reviews.recommend">98% покупателей рекомендуют этот товар</span>
+    </div>
+
+    <!-- Filter chips -->
+    <div class="reviews-filters" role="tablist">
+      <button type="button" class="reviews-filter-btn is-active" data-review-filter="all" data-i18n="reviews.filter.all">Все (128)</button>
+      <button type="button" class="reviews-filter-btn" data-review-filter="photo" data-i18n="reviews.filter.photo">С фото (34)</button>
+      <button type="button" class="reviews-filter-btn" data-review-filter="five" data-i18n="reviews.filter.five">5 звёзд (118)</button>
+      <button type="button" class="reviews-filter-btn" data-review-filter="assembly" data-i18n="reviews.filter.assembly">О сборке (42)</button>
+    </div>
+
+    <!-- Reviews list -->
+    <div class="reviews-list" data-reviews-list>
+      <!-- Review 1 -->
+      <article class="review-item" data-has-photo="true" data-stars="5" data-tag="assembly">
+        <div class="review-item__head">
+          <div>
+            <div class="review-item__author">
+              <span>Азиз Рахимов</span>
+              <span class="review-item__verified" title="Проверенная покупка">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span data-i18n="reviews.verified">Проверенная покупка</span>
+              </span>
+            </div>
+            <div class="review-item__date">Ташкент · 12 августа 2026</div>
+          </div>
+          <div class="review-item__stars" aria-label="5 звёзд">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+          </div>
+        </div>
+        <p class="review-item__text">Заказывали мебель для веранды в загородный дом. Привезли точно в срок и сразу в собранном виде — не пришлось тратить выходной на сборку. Плетение ровное и очень плотное, цвет графит вживую смотрится ещё благороднее, чем на мониторе. Всё лето простоял на солнце — ни намёка на выгорание!</p>
+        <div class="review-item__photos">
+          <div class="review-item__thumb" data-review-photo="assets/hero-garden-furniture.png"><img src="assets/hero-garden-furniture.png" alt="Отзыв клиента фото 1" loading="lazy"></div>
+          <div class="review-item__thumb" data-review-photo="assets/scene-dining-warm.png"><img src="assets/scene-dining-warm.png" alt="Отзыв клиента фото 2" loading="lazy"></div>
+        </div>
+      </article>
+
+      <!-- Review 2 -->
+      <article class="review-item" data-has-photo="true" data-stars="5" data-tag="assembly">
+        <div class="review-item__head">
+          <div>
+            <div class="review-item__author">
+              <span>Дильноза Каримова</span>
+              <span class="review-item__verified" title="Проверенная покупка">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span data-i18n="reviews.verified">Проверенная покупка</span>
+              </span>
+            </div>
+            <div class="review-item__date">Самарканд · 28 июля 2026</div>
+          </div>
+          <div class="review-item__stars" aria-label="5 звёзд">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+          </div>
+        </div>
+        <p class="review-item__text">Очень переживала за доставку в Самарканд, но пришло в идеальном виде в защитной деревянной обрешётке. Подушки приятные, ткань водоотталкивающая — капли скатываются сами. Огромное спасибо консультантам в Telegram за терпение и подбор оттенка под плитку!</p>
+        <div class="review-item__photos">
+          <div class="review-item__thumb" data-review-photo="assets/rattan-palette-hero.png"><img src="assets/rattan-palette-hero.png" alt="Отзыв клиента фото" loading="lazy"></div>
+        </div>
+      </article>
+
+      <!-- Review 3 -->
+      <article class="review-item" data-has-photo="false" data-stars="5" data-tag="quality">
+        <div class="review-item__head">
+          <div>
+            <div class="review-item__author">
+              <span>Тимур Ш.</span>
+              <span class="review-item__verified" title="Проверенная покупка">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span data-i18n="reviews.verified">Проверенная покупка</span>
+              </span>
+            </div>
+            <div class="review-item__date">Ташкент · 5 июля 2026</div>
+          </div>
+          <div class="review-item__stars" aria-label="5 звёзд">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+          </div>
+        </div>
+        <p class="review-item__text">Покупали для летней террасы ресторана. Алюминиевый каркас невероятно удобен при ежедневной уборке — лёгкий, но монолитно устойчивый. Гости часто спрашивают, где брали. Будем дозаказывать кашпо в том же стиле.</p>
+      </article>
+
+      <!-- Review 4 -->
+      <article class="review-item" data-has-photo="false" data-stars="5" data-tag="assembly">
+        <div class="review-item__head">
+          <div>
+            <div class="review-item__author">
+              <span>Елена В.</span>
+              <span class="review-item__verified" title="Проверенная покупка">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span data-i18n="reviews.verified">Проверенная покупка</span>
+              </span>
+            </div>
+            <div class="review-item__date">Бухара · 18 июня 2026</div>
+          </div>
+          <div class="review-item__stars" aria-label="5 звёзд">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg>
+          </div>
+        </div>
+        <p class="review-item__text">Превосходная работа! Плетение монолитное, ни одного торчащего хвостика. Доставили в Бухару без единой царапины. Всем рекомендую Bententrade как надёжного производителя в Узбекистане.</p>
+      </article>
+    </div>
+
+    <!-- Review Form Panel -->
+    <div class="review-form-pane" data-review-form-pane>
+      <h4>Написать отзыв о товаре</h4>
+      <form class="review-form" data-review-submit-form novalidate>
+        <div class="review-field">
+          <label>Ваша оценка:</label>
+          <div class="star-picker" data-star-picker>
+            <button type="button" class="star-picker-btn is-active" data-star-val="1" aria-label="1 звезда"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg></button>
+            <button type="button" class="star-picker-btn is-active" data-star-val="2" aria-label="2 звезды"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg></button>
+            <button type="button" class="star-picker-btn is-active" data-star-val="3" aria-label="3 звезды"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg></button>
+            <button type="button" class="star-picker-btn is-active" data-star-val="4" aria-label="4 звезды"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg></button>
+            <button type="button" class="star-picker-btn is-active" data-star-val="5" aria-label="5 звёзд"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9Z"/></svg></button>
+          </div>
+          <input type="hidden" name="rating" value="5" data-star-input>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="review-field">
+            <label for="rev-author">Ваше имя:</label>
+            <input id="rev-author" name="author_name" required placeholder="Как вас зовут">
+          </div>
+          <div class="review-field">
+            <label for="rev-city">Город:</label>
+            <input id="rev-city" name="city" placeholder="Ташкент">
+          </div>
+        </div>
+        <div class="review-field">
+          <label for="rev-text">Текст отзыва:</label>
+          <textarea id="rev-text" name="text" required placeholder="Расскажите о качестве плетения, удобстве мебели или доставке..."></textarea>
+        </div>
+        <div class="review-form-actions">
+          <button type="button" class="btn btn--ghost btn--sm" data-review-cancel>Отмена</button>
+          <button type="submit" class="btn btn--copper btn--sm" data-review-submit>Опубликовать</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="reviews-drawer__foot">
+    <button type="button" class="btn btn--copper" data-pdp-review-toggle>Написать отзыв</button>
+    <a class="btn btn--ghost" data-pdp-reviews-tg href="https://t.me/bententradeuz?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BE%D1%82%D0%B7%D1%8B%D0%B2%20%D0%BE%20%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B5." target="_blank" rel="noopener noreferrer">Отзыв с фото в TG</a>
+  </div>
+</aside>
+
 <!-- FOOTER -->
 <footer class="site-foot">
   <div class="site-foot__top">
     <div class="foot-col"><img src="assets/btt-logo.png" alt="Bententrade"><p data-i18n="foot.tag" style="color:var(--on-dark-muted);max-width:30ch">Мебель, кашпо и корзины из искусственного ротанга.</p></div>
     <div class="foot-col"><h5 data-i18n="foot.menu">Меню</h5><a href="index.html" data-i18n="nav.home">Главная</a><a href="catalog.html" data-i18n="nav.catalog">Каталог</a><a href="blog.html" data-i18n="nav.blog">Статьи</a><a href="about.html" data-i18n="nav.about">О нас</a><a href="contacts.html" data-i18n="nav.contacts">Контакты</a></div>
     <div class="foot-col"><h5 data-i18n="foot.help">Помощь</h5><a href="faq.html" data-i18n="foot.faq">Вопросы и ответы</a><a href="delivery.html" data-i18n="foot.delivery">Доставка</a><a href="returns.html" data-i18n="foot.returns">Возврат</a><a href="care.html" data-i18n="foot.care">Уход за плетением</a></div>
-    <div class="foot-col"><h5 data-i18n="foot.contacts">Контакты</h5><p data-i18n="co.i.addr.v">Ташкент, ул. Амира Темура, 15</p><a href="tel:+998771044422" data-i18n="co.i.phone.v">+998 77 104 44 22</a><a href="mailto:hello@bententrade.uz">hello@bententrade.uz</a></div>
+    <div class="foot-col"><h5 data-i18n="foot.contacts">Контакты</h5><p data-i18n="co.i.addr.v">Ташкент, ул. Амира Темура, 15</p><a href="tel:+998771044422" data-i18n="co.i.phone.v">+998 77 104 44 22</a><a href="mailto:hello@bententrade.uz">hello@bententrade.uz</a>
+      <div class="foot-social">
+        <a class="foot-social__link" href="https://www.instagram.com/bententradeuz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </a>
+        <a class="foot-social__link" href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2-.06-.06-.16-.04-.23-.02-.1.02-1.74 1.1-4.91 3.25-.46.32-.88.47-1.26.46-.42-.01-1.22-.24-1.82-.43-.73-.24-1.31-.37-1.26-.78.03-.21.32-.43.88-.66 3.44-1.5 5.74-2.49 6.89-2.97 3.28-1.37 3.97-1.61 4.41-1.62.1 0 .32.02.46.14.12.1.15.24.17.34-.01.07.01.22 0 .34z"/></svg>
+        </a>
+        <a class="foot-social__link" href="https://wa.me/998771044422" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.41a8.197 8.197 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m-3.53 4.27c-.19 0-.5.07-.76.35-.26.28-1 1-1 2.43s1.02 2.82 1.16 3.02c.14.19 2.01 3.07 4.87 4.31.68.29 1.21.47 1.63.6.68.22 1.3.19 1.79.12.55-.08 1.69-.69 1.93-1.36.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33-.28-.14-1.69-.83-1.95-.93-.26-.09-.45-.14-.64.14-.19.28-.74.93-.9 1.12-.17.19-.33.21-.62.07-.28-.14-1.2-.44-2.28-1.41-.85-.75-1.42-1.68-1.59-1.96-.17-.28-.02-.44.12-.58.13-.13.28-.33.43-.5.14-.17.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.56-.01z"/></svg>
+        </a>
+      </div></div>
   </div>
   <div class="site-foot__bottom"><span data-i18n="foot.since">С 2024 ГОДА</span><span data-i18n="foot.copy">© 2026 BENTENTRADE. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span><span class="foot-legal"><a href="cookies.html" data-i18n="foot.cookies">ФАЙЛЫ COOKIE</a><a href="privacy.html" data-i18n="foot.privacy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></span></div>
 </footer>
 
-<script src="assets/util.js"></script>
-<script src="assets/cookies.js"></script>
-<script src="assets/api.js"></script>
-<script src="assets/i18n.js"></script>
-<script src="assets/assistant.js"></script>
-<script src="assets/search.js"></script>
-<script src="assets/products.js"></script>
-<script src="assets/site.js"></script>
-<script src="assets/cart.js"></script>
-<script src="assets/motion.js"></script>
-<script src="assets/fx.js"></script>
-<script src="assets/pdp.js"></script>
-<script src="assets/catalog-sync.js"></script>
+<script src="assets/util.js?v=20260921-6"></script>
+<script src="assets/cookies.js?v=20260921-6"></script>
+<script src="assets/api.js?v=20260921-6"></script>
+<script src="assets/i18n.js?v=20260921-6"></script>
+<script src="assets/assistant.js?v=20260921-6"></script>
+<script src="assets/search.js?v=20260921-6"></script>
+<script src="assets/products.js?v=20260921-6"></script>
+<script src="assets/site.js?v=20260921-6"></script>
+<script src="assets/cart.js?v=20260921-6"></script>
+<script src="assets/motion.js?v=20260921-6"></script>
+<script src="assets/fx.js?v=20260921-6"></script>
+<script src="assets/pdp.js?v=20260921-6"></script>
+<script src="assets/catalog-sync.js?v=20260921-6"></script>
 </body>
 </html>

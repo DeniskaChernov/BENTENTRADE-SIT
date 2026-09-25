@@ -1,28 +1,30 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" data-i18n-meta="meta.delivery.desc" content="">
-<meta name="keywords" data-i18n-meta="meta.delivery.keywords" content="">
+<meta name="description" data-i18n-meta="meta.delivery.desc" content="Условия и сроки доставки садовой мебели, кашпо и корзин Bententrade по Ташкенту и Узбекистану. Тариф перевозчика, личное сопровождение менеджером.">
+<meta name="keywords" data-i18n-meta="meta.delivery.keywords" content="rattan delivery tashkent, furniture delivery uzbekistan, bententrade shipping">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#bd7335">
 <link rel="canonical" href="https://bententrade.uz/delivery.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bententrade">
-<meta property="og:title" data-i18n-meta="meta.delivery.title" content="">
-<meta property="og:description" data-i18n-meta="meta.delivery.desc" content="">
+<meta property="og:title" data-i18n-meta="meta.delivery.title" content="Bententrade — Доставка и отправка">
+<meta property="og:description" data-i18n-meta="meta.delivery.desc" content="Сроки и тарифы доставки мебели по Ташкенту и всему Узбекистану.">
 <meta property="og:url" content="https://bententrade.uz/delivery.html">
 <meta property="og:image" content="https://bententrade.uz/assets/btt-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="assets/styles.css" as="style">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesque:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesque:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap"></noscript>
-<title data-i18n-doc="meta.delivery.title">Bententrade — Доставка</title>
-<link rel="stylesheet" href="assets/styles.css">
-<link rel="stylesheet" href="assets/pages.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Unbounded:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Unbounded:wght@400;500;600;700;800;900&display=swap"></noscript>
+<title data-i18n-doc="meta.delivery.title">Bententrade — Доставка и отправка</title>
+<link rel="stylesheet" href="assets/styles.css?v=20260921-6">
+<link rel="stylesheet" href="assets/pages.css?v=20260921-6">
+<link rel="stylesheet" href="assets/delivery.css?v=20260921-6">
 <script>(function(){try{if(localStorage.getItem('btt_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 </head>
 <body>
@@ -59,12 +61,16 @@
   <a href="about.html" data-i18n="nav.about">О нас</a>
   <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
   <div class="mobile-drawer__tools">
-    <button type="button" class="mobile-drawer__tool" data-cart-open>
+    <button type="button" class="mobile-drawer__tool" data-search-open data-i18n-aria="tool.search" aria-label="Поиск">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+      <span data-i18n="tool.search">Поиск</span>
+    </button>
+    <button type="button" class="mobile-drawer__tool" data-cart-open data-i18n-aria="tool.cart" aria-label="Корзина">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
       <span data-i18n="tool.cart">Корзина</span>
       <span class="count" data-cart-count style="display:none">0</span>
     </button>
-    <button type="button" class="mobile-drawer__tool" data-fav-open>
+    <button type="button" class="mobile-drawer__tool" data-fav-open data-i18n-aria="tool.fav" aria-label="Избранное">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>
       <span data-i18n="tool.fav">Избранное</span>
       <span class="count" data-fav-count style="display:none">0</span>
@@ -72,38 +78,209 @@
   </div>
 </nav>
 
-<main id="main">
-<section class="page-hero">
-  <div class="page-hero__in">
-    <div class="page-hero__card reveal">
-      <div class="eyebrow" data-i18n="del.k">Помощь</div>
-      <h1 data-i18n="del.title">Доставка</h1>
-      <p class="lead" data-i18n="del.sub">Привозим мебель в собранном виде и бережно упаковываем кашпо и корзины.</p>
+<main id="main" class="delivery-flow">
+
+<!-- Top Bar with breadcrumbs and editorial title -->
+<section class="delivery-top-bar wrap">
+  <nav class="delivery-breadcrumbs" aria-label="Хлебные крошки">
+    <a href="index.html" data-i18n="nav.home">Главная</a>
+    <span class="delivery-breadcrumbs__sep" aria-hidden="true">/</span>
+    <span class="delivery-breadcrumbs__current" data-i18n="del.title">Доставка</span>
+  </nav>
+  <div class="delivery-top-header">
+    <div class="delivery-top-header__info">
+      <h1 class="delivery-top-title" data-i18n="del.title">Доставка и отправка</h1>
+      <p class="delivery-top-sub" data-i18n="del.sub">Привозим мебель в собранном виде и бережно упаковываем кашпо и корзины. Персональный менеджер встретит груз вместе с вами по Ташкенту и Узбекистану.</p>
+    </div>
+    <div class="delivery-top-badge">
+      <span class="delivery-badge-dot" aria-hidden="true"></span>
+      <span>Прямой тариф перевозчика · Самовывоз 0 сум</span>
     </div>
   </div>
 </section>
 
-<section class="wrap section">
-  <div class="info-doc">
-    <div class="info-block reveal"><h2 data-i18n="del.b1.t">Сроки и зоны</h2>
-      <ul>
-        <li data-i18n="del.b1.l1">Ташкент — 3–7 рабочих дней.</li>
-        <li data-i18n="del.b1.l2">Регионы Узбекистана — 7–10 рабочих дней.</li>
-        <li data-i18n="del.b1.l3">Изделия под заказ — сроки согласуем отдельно.</li>
-      </ul>
+<!-- ===== INTERACTIVE DELIVERY CALCULATOR ===== -->
+<section class="wrap del-calc-section" id="calc">
+  <div class="del-calc reveal">
+    <div class="del-calc__header">
+      <div class="del-calc__eyebrow">
+        <span aria-hidden="true">◆</span>
+        <span data-i18n="del.calc.k">Интерактивный расчёт</span>
+      </div>
+      <h2 class="del-calc__title" data-i18n="del.calc.title">Сроки и условия доставки в ваш город</h2>
+      <p class="del-calc__sub" data-i18n="del.calc.sub">Выберите регион — покажем тариф сервиса доставки, сроки и условия сопровождения персональным менеджером.</p>
     </div>
-    <div class="info-block reveal"><h2 data-i18n="del.b2.t">Стоимость</h2>
-      <ul>
-        <li data-i18n="del.b2.l1">Бесплатно по Узбекистану при заказе от 1 250 000 сум.</li>
-        <li data-i18n="del.b2.l2">Для меньших заказов стоимость рассчитывается по адресу.</li>
-        <li data-i18n="del.b2.l3">Самовывоз из шоурума в Ташкенте — бесплатно.</li>
-      </ul>
+
+    <!-- City Selector Chips -->
+    <div class="del-calc__cities" role="tablist" aria-label="Города доставки">
+      <button type="button" class="del-calc__city-btn is-active" role="tab" aria-selected="true" data-city="tashkent" data-i18n="city.tashkent">Ташкент</button>
+      <button type="button" class="del-calc__city-btn" role="tab" aria-selected="false" data-city="tashkent_reg" data-i18n="city.tashkent_reg">Ташкентская обл.</button>
+      <button type="button" class="del-calc__city-btn" role="tab" aria-selected="false" data-city="samarkand" data-i18n="city.samarkand">Самарканд</button>
+      <button type="button" class="del-calc__city-btn" role="tab" aria-selected="false" data-city="bukhara" data-i18n="city.bukhara">Бухара</button>
+      <button type="button" class="del-calc__city-btn" role="tab" aria-selected="false" data-city="fergana" data-i18n="city.fergana">Фергана / Андижан</button>
+      <button type="button" class="del-calc__city-btn" role="tab" aria-selected="false" data-city="south" data-i18n="city.south">Карши / Навои / Термез</button>
+      <button type="button" class="del-calc__city-btn" role="tab" aria-selected="false" data-city="khorezm" data-i18n="city.khorezm">Ургенч / Нукус</button>
     </div>
-    <div class="info-block reveal"><h2 data-i18n="del.b3.t">Как это происходит</h2>
-      <p data-i18n="del.b3.p">После оформления заказа мы связываемся с вами, подтверждаем адрес и удобное время. Мебель доставляется в собранном виде — достаточно распаковать и пользоваться.</p>
+
+    <!-- Live Card -->
+    <div class="del-calc__card" data-del-calc-card>
+      <div class="del-calc__top">
+        <span class="del-calc__badge" data-calc-badge>Сервисы: Яндекс / Labo + Менеджер</span>
+        <span class="del-calc__city-active" data-calc-city-title>Ташкент</span>
+      </div>
+
+      <div class="del-calc__grid">
+        <div class="del-calc__tile">
+          <div class="del-calc__tile-head">
+            <span class="del-calc__tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect width="16" height="13" x="1" y="6" rx="2"/><path d="M17 9l4 3v5a2 2 0 0 1-2 2h-2"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="17.5" cy="18.5" r="2.5"/></svg></span>
+            <span class="del-calc__tile-label" data-i18n="del.calc.service">Служба отправки</span>
+          </div>
+          <div class="del-calc__tile-val" data-calc-service>Яндекс Доставка / Грузовое такси (Labo / Porter)</div>
+        </div>
+
+        <div class="del-calc__tile del-calc__tile--featured">
+          <div class="del-calc__tile-head">
+            <span class="del-calc__tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg></span>
+            <span class="del-calc__tile-label" data-i18n="del.calc.manager">Личное сопровождение</span>
+          </div>
+          <div class="del-calc__tile-val del-calc__tile-val--highlight" data-calc-manager>Персональный менеджер приедет вместе с товаром прямо к вам — проверит сохранность, поможет распаковать и передаст гарантию 3 года</div>
+        </div>
+
+        <div class="del-calc__tile">
+          <div class="del-calc__tile-head">
+            <span class="del-calc__tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <span class="del-calc__tile-label" data-i18n="del.calc.time">Срок доставки</span>
+          </div>
+          <div class="del-calc__tile-val" data-calc-time>1–2 рабочих дня из наличия</div>
+        </div>
+
+        <div class="del-calc__tile">
+          <div class="del-calc__tile-head">
+            <span class="del-calc__tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span>
+            <span class="del-calc__tile-label" data-i18n="del.calc.price">Оплата перевозки</span>
+          </div>
+          <div class="del-calc__tile-val" data-calc-price>По прямому тарифу сервиса доставки (Яндекс Доставка / Labo) без наценок</div>
+        </div>
+
+        <div class="del-calc__tile" style="grid-column: span 2;">
+          <div class="del-calc__tile-head">
+            <span class="del-calc__tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
+            <span class="del-calc__tile-label" data-i18n="del.calc.pack">Упаковка и готовность</span>
+          </div>
+          <div class="del-calc__tile-val" data-calc-pack>В собранном виде · Защитная воздушно-пузырьковая плёнка и картон (сборщик не нужен)</div>
+        </div>
+      </div>
+
+      <div class="del-calc__pickup-bar">
+        <span class="del-calc__pickup-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        <div class="del-calc__pickup-text">
+          <strong data-i18n="del.calc.pickup.title">Самовывоз из шоурума:</strong>
+          <span data-calc-pickup>Ташкент, ул. Амира Темура, 15 — бесплатно, в день заказа. Поможем аккуратно погрузить в автомобиль.</span>
+        </div>
+      </div>
+
+      <div class="del-calc__footer">
+        <span class="del-calc__footer-note" data-i18n="del.calc.note">Нужна доставка к точной дате или в другой посёлок?</span>
+        <div class="del-calc__footer-actions">
+          <a class="btn btn--ghost btn--sm" href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            <span>Telegram</span>
+          </a>
+          <a class="btn btn--ghost btn--sm" href="https://wa.me/998771044422" target="_blank" rel="noopener noreferrer">
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- ===== SECTION: 3 STANDARDS ===== -->
+<section class="wrap delivery-standards-section">
+  <div class="delivery-section-header reveal">
+    <div class="del-calc__eyebrow">
+      <span aria-hidden="true">◆</span>
+      <span>Стандарты Bententrade</span>
+    </div>
+    <h2 class="delivery-section-title">Сервис белых перчаток</h2>
+    <p class="delivery-section-sub">Заботимся о каждом заказе с момента упаковки в мастерской до первой чашки кофе на вашей террасе.</p>
+  </div>
+
+  <div class="delivery-standards-grid">
+    <div class="delivery-standard-card reveal">
+      <div class="delivery-standard-num">01</div>
+      <h3 class="delivery-standard-title" data-i18n="del.b1.t">Собрано на 100% — сборщик не нужен</h3>
+      <p class="delivery-standard-desc">Мебель приезжает полностью готовой к эксплуатации: никаких сотен винтов, схем и потерянных ключей. Распаковали — и можно отдыхать.</p>
+    </div>
+
+    <div class="delivery-standard-card reveal">
+      <div class="delivery-standard-num">02</div>
+      <h3 class="delivery-standard-title" data-i18n="del.b2.t">Честный тариф без наценок</h3>
+      <p class="delivery-standard-desc">Мы не прячем доставку в ценник изделий: вы платите ровно по счётчику грузового такси (Яндекс/Labo) или тарифу логистической компании (BTS Express / EMU).</p>
+    </div>
+
+    <div class="delivery-standard-card reveal">
+      <div class="delivery-standard-num">03</div>
+      <h3 class="delivery-standard-title" data-i18n="del.b3.t">Личное сопровождение менеджером</h3>
+      <p class="delivery-standard-desc">Наш менеджер приезжает вместе с машиной: контролирует бережную выгрузку, помогает расставить мебель, проверяет качество плетения и передаёт гарантийный талон на 3 года.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION: 4 STEPS ===== -->
+<section class="wrap delivery-steps-section">
+  <div class="delivery-section-header reveal">
+    <div class="del-calc__eyebrow">
+      <span aria-hidden="true">◆</span>
+      <span>Этапы отправки</span>
+    </div>
+    <h2 class="delivery-section-title">Как проходит доставка</h2>
+    <p class="delivery-section-sub">Прозрачный и надёжный процесс от мастерской в Ташкенте до вашего дома.</p>
+  </div>
+
+  <div class="delivery-steps-grid">
+    <div class="delivery-step-card reveal">
+      <div class="delivery-step-badge">1</div>
+      <h3 class="delivery-step-title">Согласование</h3>
+      <p class="delivery-step-desc">Менеджер уточняет адрес, удобное время прибытия и габариты въезда во двор или подъезд.</p>
+    </div>
+    <div class="delivery-step-card reveal">
+      <div class="delivery-step-badge">2</div>
+      <h3 class="delivery-step-title">Упаковка</h3>
+      <p class="delivery-step-desc">Мягкая воздушно-пузырьковая плёнка, защитные уголки и пятислойный картон защищают плетение от трения.</p>
+    </div>
+    <div class="delivery-step-card reveal">
+      <div class="delivery-step-badge">3</div>
+      <h3 class="delivery-step-title">Транспортировка</h3>
+      <p class="delivery-step-desc">Отправляем на оборудованных машинах с крепёжными ремнями по прямому тарифу перевозчика.</p>
+    </div>
+    <div class="delivery-step-card reveal">
+      <div class="delivery-step-badge">4</div>
+      <h3 class="delivery-step-title">Приёмка и гарантия</h3>
+      <p class="delivery-step-desc">Вместе осматриваем заказ, проверяем комплектацию и передаём официальный гарантийный талон на 3 года.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION: CTA BANNER ===== -->
+<section class="wrap delivery-cta-section">
+  <aside class="delivery-cta-banner reveal">
+    <div class="delivery-cta-content">
+      <h2 class="delivery-cta-title">Нужен точный расчёт доставки в ваш район?</h2>
+      <p class="delivery-cta-sub">Напишите менеджеру в Telegram — он рассчитает стоимость грузового такси или междугородней логистики под ваш объём заказа за 5 минут.</p>
+    </div>
+    <div class="delivery-cta-actions">
+      <a class="delivery-cta-btn-primary" href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        <span>Рассчитать в Telegram</span>
+      </a>
+      <a class="delivery-cta-btn-secondary" href="catalog.html">
+        <span data-i18n="nav.catalog">Каталог</span>
+      </a>
+    </div>
+  </aside>
+</section>
+
 </main>
 
 <footer class="site-foot">
@@ -111,21 +288,32 @@
     <div class="foot-col"><img src="assets/btt-logo.png" alt="Bententrade"><p data-i18n="foot.tag" style="color:var(--on-dark-muted);max-width:30ch">Мебель, кашпо и корзины из искусственного ротанга.</p></div>
     <div class="foot-col"><h5 data-i18n="foot.menu">Меню</h5><a href="index.html" data-i18n="nav.home">Главная</a><a href="catalog.html" data-i18n="nav.catalog">Каталог</a><a href="blog.html" data-i18n="nav.blog">Статьи</a><a href="about.html" data-i18n="nav.about">О нас</a><a href="contacts.html" data-i18n="nav.contacts">Контакты</a></div>
     <div class="foot-col"><h5 data-i18n="foot.help">Помощь</h5><a href="faq.html" data-i18n="foot.faq">Вопросы и ответы</a><a href="delivery.html" data-i18n="foot.delivery">Доставка</a><a href="returns.html" data-i18n="foot.returns">Возврат</a><a href="care.html" data-i18n="foot.care">Уход за плетением</a></div>
-    <div class="foot-col"><h5 data-i18n="foot.contacts">Контакты</h5><p data-i18n="co.i.addr.v">Ташкент, ул. Амира Темура, 15</p><a href="tel:+998771044422" data-i18n="co.i.phone.v">+998 77 104 44 22</a><a href="mailto:hello@bententrade.uz">hello@bententrade.uz</a></div>
+    <div class="foot-col"><h5 data-i18n="foot.contacts">Контакты</h5><p data-i18n="co.i.addr.v">Ташкент, ул. Амира Темура, 15</p><a href="tel:+998771044422" data-i18n="co.i.phone.v">+998 77 104 44 22</a><a href="mailto:hello@bententrade.uz">hello@bententrade.uz</a>
+      <div class="foot-social">
+        <a class="foot-social__link" href="https://www.instagram.com/bententradeuz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </a>
+        <a class="foot-social__link" href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2-.06-.06-.16-.04-.23-.02-.1.02-1.74 1.1-4.91 3.25-.46.32-.88.47-1.26.46-.42-.01-1.22-.24-1.82-.43-.73-.24-1.31-.37-1.26-.78.03-.21.32-.43.88-.66 3.44-1.5 5.74-2.49 6.89-2.97 3.28-1.37 3.97-1.61 4.41-1.62.1 0 .32.02.46.14.12.1.15.24.17.34-.01.07.01.22 0 .34z"/></svg>
+        </a>
+        <a class="foot-social__link" href="https://wa.me/998771044422" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.41a8.197 8.197 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m-3.53 4.27c-.19 0-.5.07-.76.35-.26.28-1 1-1 2.43s1.02 2.82 1.16 3.02c.14.19 2.01 3.07 4.87 4.31.68.29 1.21.47 1.63.6.68.22 1.3.19 1.79.12.55-.08 1.69-.69 1.93-1.36.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33-.28-.14-1.69-.83-1.95-.93-.26-.09-.45-.14-.64.14-.19.28-.74.93-.9 1.12-.17.19-.33.21-.62.07-.28-.14-1.2-.44-2.28-1.41-.85-.75-1.42-1.68-1.59-1.96-.17-.28-.02-.44.12-.58.13-.13.28-.33.43-.5.14-.17.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.56-.01z"/></svg>
+        </a>
+      </div></div>
   </div>
   <div class="site-foot__bottom"><span data-i18n="foot.since">С 2024 ГОДА</span><span data-i18n="foot.copy">© 2026 BENTENTRADE. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span><span class="foot-legal"><a href="cookies.html" data-i18n="foot.cookies">ФАЙЛЫ COOKIE</a><a href="privacy.html" data-i18n="foot.privacy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></span></div>
 </footer>
 
-<script src="assets/util.js"></script>
-<script src="assets/cookies.js"></script>
-<script src="assets/api.js"></script>
-<script src="assets/i18n.js"></script>
-<script src="assets/assistant.js"></script>
-<script src="assets/search.js"></script>
-<script src="assets/site.js"></script>
-<script src="assets/cart.js"></script>
-<script src="assets/motion.js"></script>
-<script src="assets/fx.js"></script>
-<script src="assets/page-seo.js"></script>
+<script src="assets/util.js?v=20260921-6"></script>
+<script src="assets/cookies.js?v=20260921-6"></script>
+<script src="assets/api.js?v=20260921-6"></script>
+<script src="assets/i18n.js?v=20260921-6"></script>
+<script src="assets/assistant.js?v=20260921-6"></script>
+<script src="assets/search.js?v=20260921-6"></script>
+<script src="assets/site.js?v=20260921-6"></script>
+<script src="assets/cart.js?v=20260921-6"></script>
+<script src="assets/motion.js?v=20260921-6"></script>
+<script src="assets/fx.js?v=20260921-6"></script>
+<script src="assets/page-seo.js?v=20260921-6"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -7,6 +7,7 @@
 <meta name="keywords" data-i18n-meta="meta.catalog.keywords" content="каталог ротанг, мебель из ротанга, кашпо ротанг, корзины ротанг">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#bd7335">
 <link rel="canonical" href="https://bententrade.uz/catalog.html">
 <meta property="og:type" content="website">
@@ -21,12 +22,11 @@
 <meta name="twitter:image" content="https://bententrade.uz/assets/btt-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="assets/styles.css" as="style">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesque:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesque:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap"></noscript>
+<link rel="preload" href="assets/styles.css?v=20260921-6" as="style">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Unbounded:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <title data-i18n-doc="meta.catalog.title">Bententrade — Каталог</title>
-<link rel="stylesheet" href="assets/styles.css">
-<link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/styles.css?v=20260921-6">
+<link rel="stylesheet" href="assets/pages.css?v=20260921-6">
 <script>(function(){try{if(localStorage.getItem('btt_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 </head>
 <body>
@@ -63,12 +63,16 @@
   <a href="about.html" data-i18n="nav.about">О нас</a>
   <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
   <div class="mobile-drawer__tools">
-    <button type="button" class="mobile-drawer__tool" data-cart-open>
+    <button type="button" class="mobile-drawer__tool" data-search-open data-i18n-aria="tool.search" aria-label="Поиск">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+      <span data-i18n="tool.search">Поиск</span>
+    </button>
+    <button type="button" class="mobile-drawer__tool" data-cart-open data-i18n-aria="tool.cart" aria-label="Корзина">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
       <span data-i18n="tool.cart">Корзина</span>
       <span class="count" data-cart-count style="display:none">0</span>
     </button>
-    <button type="button" class="mobile-drawer__tool" data-fav-open>
+    <button type="button" class="mobile-drawer__tool" data-fav-open data-i18n-aria="tool.fav" aria-label="Избранное">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>
       <span data-i18n="tool.fav">Избранное</span>
       <span class="count" data-fav-count style="display:none">0</span>
@@ -77,76 +81,180 @@
 </nav>
 
 <main id="main" class="catalog-flow">
-<section class="page-hero page-hero--cat">
-  <div class="page-hero__collage" aria-hidden="true">
-    <img src="assets/hero-garden-furniture.png" alt="" data-i18n-alt="cat.hero.alt" loading="eager" fetchpriority="high" decoding="async">
-  </div>
-  <div class="cat-hero__scrim" aria-hidden="true"></div>
-  <div class="cat-hero__bento" data-stagger data-stagger="60">
-    <div class="cat-hero__card reveal">
-      <div class="eyebrow" data-i18n="cat.hero.k">Каталог</div>
-      <h1 data-i18n="cat.hero.title">Мебель, кашпо и корзины</h1>
-      <p class="lead" data-i18n="cat.hero.sub">Плетёные изделия ручной работы для дома, дачи и сада — вся коллекция в одном месте.</p>
-      <a class="btn btn--ghost btn--icon-end cat-hero__cta" href="#catalog-grid"><span data-i18n="cat.hero.cta">К товарам</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+<section class="cat-top-bar wrap">
+  <nav class="cat-breadcrumbs" aria-label="Хлебные крошки">
+    <a href="index.html" data-i18n="nav.home">Главная</a>
+    <span class="cat-breadcrumbs__sep" aria-hidden="true">/</span>
+    <span class="cat-breadcrumbs__current" data-i18n="cat.hero.k">Каталог</span>
+  </nav>
+  <div class="cat-top-header">
+    <div class="cat-top-header__info">
+      <h1 class="cat-top-title" data-i18n="cat.hero.title">Мебель, кашпо и корзины</h1>
+      <p class="cat-top-sub" data-i18n="cat.hero.sub">Плетёные изделия ручной работы для дома, дачи и сада — вся коллекция в одном месте.</p>
+    </div>
+    <div class="cat-top-count-badge">
+      <span class="cat-count-dot" aria-hidden="true"></span>
+      <span data-i18n="cat.countPrefix">Найдено:</span>
+      <strong data-cat-count>15</strong>
+      <span data-i18n="cat.results">товаров</span>
+      <span data-search-note style="display:none;margin-left:8px;color:var(--copper);font-weight:600"></span>
     </div>
   </div>
 </section>
 
-<section class="wrap section section--catalog">
-  <div class="cat-toolbar-wrap">
-  <div class="cat-toolbar-sentinel" aria-hidden="true"></div>
-  <div class="cat-toolbar">
-    <div class="cat-count"><span data-cat-count>15</span> <span data-i18n="cat.results">товаров</span><span data-search-note style="display:none;margin-left:10px;color:var(--copper);font-weight:600"></span></div>
-    <div class="cat-chips" data-chips data-target="#catalog-grid">
-      <button class="chip is-active" data-cat="all" data-i18n="chip.all">Всё</button>
-      <button class="chip" data-cat="furniture" data-i18n="chip.furniture">Садовая мебель</button>
-      <button class="chip" data-cat="planterMix" data-i18n="chip.planterMix">Кашпо, сундуки и корзины</button>
-      <button class="chip" data-cat="indoor" data-i18n="chip.indoor">Мебель для дома</button>
-      <button class="chip" data-cat="rattan" data-i18n="chip.rattan">Искусственный ротанг</button>
+<section class="wrap section section--catalog catalog-layout">
+  <!-- LEFT STICKY FILTER SIDEBAR -->
+  <aside class="catalog-sidebar" id="catalog-sidebar" aria-label="Фильтры каталога">
+    <div class="catalog-sidebar__inner">
+      <div class="catalog-sidebar__head">
+        <div class="catalog-sidebar__head-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="14" y1="18" x2="20" y2="18"/></svg>
+          <span data-i18n="cat.filterTitle">Фильтры</span>
+        </div>
+        <button type="button" class="catalog-sidebar__close" data-cat-sidebar-close aria-label="Закрыть фильтры">&times;</button>
+      </div>
+
+      <!-- Search -->
+      <div class="catalog-sidebar__block">
+        <div class="cat-search-box">
+          <svg class="cat-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="search" class="cat-search-input" placeholder="Поиск по каталогу..." data-cat-search-input data-i18n-ph="cat.searchPlaceholder" aria-label="Поиск по каталогу">
+          <button type="button" class="cat-search-clear" data-cat-search-clear aria-label="Очистить поиск" hidden>&times;</button>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="catalog-sidebar__block">
+        <div class="catalog-sidebar__section-title" data-i18n="cat.catTitle">Категории</div>
+        <nav class="cat-sidebar-chips" data-chips data-target="#catalog-grid" aria-label="Категории каталога">
+          <button type="button" class="chip is-active" data-cat="all">
+            <span class="chip-label" data-i18n="chip.all">Всё</span>
+            <span class="chip-count">15</span>
+          </button>
+          <button type="button" class="chip" data-cat="furniture">
+            <span class="chip-label" data-i18n="chip.furniture">Садовая мебель</span>
+            <span class="chip-count">6</span>
+          </button>
+          <button type="button" class="chip" data-cat="planterMix">
+            <span class="chip-label" data-i18n="chip.planterMix">Кашпо, сундуки и корзины</span>
+            <span class="chip-count">5</span>
+          </button>
+          <button type="button" class="chip" data-cat="indoor">
+            <span class="chip-label" data-i18n="chip.indoor">Мебель для дома</span>
+            <span class="chip-count">4</span>
+          </button>
+          <button type="button" class="chip" data-cat="rattan">
+            <span class="chip-label" data-i18n="chip.rattan">Искусственный ротанг</span>
+            <span class="chip-badge">MTO</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Status Toggles -->
+      <div class="catalog-sidebar__block">
+        <div class="catalog-sidebar__section-title" data-i18n="cat.statusTitle">Статус и скидки</div>
+        <div class="cat-sidebar-toggles">
+          <button type="button" class="smart-toggle" data-toggle="instock">
+            <span class="smart-toggle__indicator" aria-hidden="true"></span>
+            <span data-i18n="filter.instock">В наличии</span>
+          </button>
+          <button type="button" class="smart-toggle" data-toggle="sale">
+            <span class="smart-toggle__badge" aria-hidden="true">%</span>
+            <span data-i18n="filter.sale">Со скидкой</span>
+          </button>
+          <button type="button" class="smart-toggle" data-toggle="mto">
+            <span class="smart-toggle__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+            <span data-i18n="filter.mto">Под заказ</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sorting -->
+      <div class="catalog-sidebar__block">
+        <div class="catalog-sidebar__section-title" data-i18n="cat.sortLabel">Сортировка</div>
+        <div class="cat-sort-select-wrap">
+          <select id="catalog-sort" class="cat-sort-select" data-cat-sort aria-label="Сортировка товаров">
+            <option value="featured" data-i18n="sort.featured">По популярности</option>
+            <option value="price-asc" data-i18n="sort.priceAsc">Сначала доступные (&uarr;)</option>
+            <option value="price-desc" data-i18n="sort.priceDesc">Сначала премиальные (&darr;)</option>
+            <option value="discount" data-i18n="sort.discount">По скидке (%)</option>
+            <option value="new" data-i18n="sort.new">Новинки</option>
+          </select>
+          <svg class="cat-sort-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+      </div>
+
+      <!-- Reset -->
+      <div class="catalog-sidebar__block catalog-sidebar__block--reset">
+        <button type="button" class="smart-reset-btn" data-smart-reset hidden>
+          <span data-i18n="filter.reset">Сбросить фильтры</span> &times;
+        </button>
+      </div>
     </div>
-  </div>
-  </div>
+  </aside>
 
-  <div class="custom-order reveal" style="margin-bottom:clamp(24px,3vw,36px)">
-    <div class="custom-order__text">
-      <h3 data-i18n="mto.banner.title">Не нашли нужный искусственный ротанг?</h3>
-      <p data-i18n="mto.banner.sub">Сделаем на заказ — подберём цвет, диаметр и профиль под ваш проект.</p>
+  <!-- RIGHT CONTENT COLUMN -->
+  <div class="catalog-content">
+    <!-- Mobile Controls / View Switcher -->
+    <div class="catalog-top-controls">
+      <button type="button" class="cat-mob-filter-trigger" data-cat-sidebar-trigger aria-label="Открыть фильтры">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="14" y1="18" x2="20" y2="18"/></svg>
+        <span data-i18n="cat.filterTitle">Фильтры</span>
+        <span class="cat-mob-count" data-mob-count>15</span>
+      </button>
+
+      <div class="cat-view-toggler" data-view-toggler aria-label="Вид сетки каталога">
+        <button type="button" class="cat-view-btn is-active" data-view="grid" data-i18n-title="cat.view.grid" title="Сетка каталога" aria-label="Сетка каталога" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </button>
+        <button type="button" class="cat-view-btn" data-view="wide" data-i18n-title="cat.view.wide" title="Крупный вид" aria-label="Крупный вид" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="18"/><rect x="13" y="3" width="8" height="18"/></svg>
+        </button>
+      </div>
     </div>
-    <a class="btn btn--copper btn--icon-end" data-mto-chat href="#"><span data-i18n="mto.banner.cta">Сделать на заказ</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-  </div>
 
-  <div class="cat-empty" data-cat-empty hidden>
-    <p data-i18n="cat.empty">В этой категории пока нет товаров. Попробуйте другой фильтр.</p>
-    <button type="button" class="btn btn--ghost btn--sm" data-cat-reset data-i18n="chip.all">Всё</button>
-  </div>
+    <div class="cat-empty" data-cat-empty hidden>
+      <p data-i18n="cat.empty">В этой категории пока нет товаров. Попробуйте другой фильтр.</p>
+      <button type="button" class="btn btn--ghost btn--sm" data-cat-reset data-i18n="chip.all">Всё</button>
+    </div>
 
-  <div class="catalog-grid" id="catalog-grid" data-stagger data-stagger="90">
+    <div class="catalog-grid" id="catalog-grid" data-stagger data-stagger="90">
     <article class="product reveal" data-product data-cat="furniture">
       <div class="product__media media">
         <span class="badge-sale">-20%</span>
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy">
+        <img src="assets/prod-sofa-monaco.jpg" alt="" loading="lazy">
         <a class="see" href="product.html?id=p1" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p1.cat"></div>
         <div class="product__name" data-i18n="p1.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$780</span><span class="price__old">$980</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">9&nbsp;750&nbsp;000&nbsp;сум</span><span class="price__old">12&nbsp;250&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
     <article class="product reveal" data-product data-cat="furniture">
       <div class="product__media media">
         <span class="badge-sale">-19%</span>
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy">
+        <img src="assets/scene-dining-warm.png" alt="" loading="lazy">
         <a class="see" href="product.html?id=p2" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p2.cat"></div>
         <div class="product__name" data-i18n="p2.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$340</span><span class="price__old">$420</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">4&nbsp;250&nbsp;000&nbsp;сум</span><span class="price__old">5&nbsp;250&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
     <article class="product reveal" data-product data-cat="planter">
@@ -160,88 +268,156 @@
       <div>
         <div class="product__cat" data-i18n="p3.cat"></div>
         <div class="product__name" data-i18n="p3.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$95</span><span class="price__old">$130</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">1&nbsp;187&nbsp;500&nbsp;сум</span><span class="price__old">1&nbsp;625&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
     <article class="product reveal" data-product data-cat="furniture">
       <div class="product__media media">
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy">
+        <img src="assets/prod-table-dining-room.jpg" alt="" loading="lazy">
         <a class="see" href="product.html?id=p4" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p4.cat"></div>
         <div class="product__name" data-i18n="p4.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$1180</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">14&nbsp;750&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
     <article class="product reveal" data-product data-cat="furniture">
       <div class="product__media media">
         <span class="badge-sale">-24%</span>
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy">
+        <img src="assets/prod-chair-corda.jpg" alt="" loading="lazy">
         <a class="see" href="product.html?id=p5" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p5.cat"></div>
         <div class="product__name" data-i18n="p5.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$260</span><span class="price__old">$340</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">3&nbsp;250&nbsp;000&nbsp;сум</span><span class="price__old">4&nbsp;250&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
+
+    <!-- Editorial In-Grid Insert: Personal Manager Escort & Freight Delivery -->
+    <aside class="catalog-editorial editorial--delivery reveal" data-editorial data-editorial-cat="all furniture indoor">
+      <div class="catalog-editorial__bg">
+        <img src="assets/scene-dining-azure.png" alt="" loading="lazy">
+        <div class="catalog-editorial__scrim"></div>
+      </div>
+      <div class="catalog-editorial__content">
+        <div class="editorial-badge" data-i18n="ed.del.badge">Сервис Bententrade</div>
+        <h3 class="catalog-editorial__title" data-i18n="ed.del.title">Личное сопровождение менеджером</h3>
+        <p class="catalog-editorial__desc" data-i18n="ed.del.desc">
+          Отправляем заказ проверенными грузовыми службами (Яндекс Доставка, Labo, Porter). Наш менеджер приедет прямо к вам вместе с машиной, поможет распаковать, осмотреть плетение и вручит гарантию 3 года.
+        </p>
+        <div class="catalog-editorial__perks">
+          <div class="editorial-perk">
+            <span class="editorial-perk__icon">&check;</span>
+            <span class="editorial-perk__text" data-i18n="ed.del.p1">Без наценок на доставку</span>
+          </div>
+          <div class="editorial-perk">
+            <span class="editorial-perk__icon">&check;</span>
+            <span class="editorial-perk__text" data-i18n="ed.del.p2">Личный осмотр и распаковка</span>
+          </div>
+          <div class="editorial-perk">
+            <span class="editorial-perk__icon">&check;</span>
+            <span class="editorial-perk__text" data-i18n="ed.del.p3">Гарантийный талон 3 года</span>
+          </div>
+        </div>
+        <div class="catalog-editorial__actions">
+          <a href="delivery.html" class="btn btn--white btn--sm" data-i18n="ed.del.cta">Узнать о доставке &rarr;</a>
+        </div>
+      </div>
+    </aside>
+
     <article class="product reveal" data-product data-cat="basket">
       <div class="product__media media">
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/bento-planter.png" alt="" loading="lazy">
+        <img src="assets/prod-chest-boston.jpg" alt="" loading="lazy">
         <a class="see" href="product.html?id=p6" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p6.cat"></div>
         <div class="product__name" data-i18n="p6.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$180</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#5c4434" title="Мокко"></span>
+          <span class="product-swatch" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#2a2521" title="Графит"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">2&nbsp;250&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
     <article class="product reveal" data-product data-cat="planter">
       <div class="product__media media">
         <span class="badge-sale">-25%</span>
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/hero-planter.png" alt="" loading="lazy">
+        <img src="assets/prod-planter-cube.jpg" alt="" loading="lazy">
         <a class="see" href="product.html?id=p7" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p7.cat"></div>
         <div class="product__name" data-i18n="p7.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$48</span><span class="price__old">$64</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">600&nbsp;000&nbsp;сум</span><span class="price__old">800&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
     <article class="product reveal" data-product data-cat="furniture">
       <div class="product__media media">
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/hero-garden-furniture.png" alt="" loading="lazy">
+        <img src="assets/prod-table-vertex-black.jpg" alt="" loading="lazy">
         <a class="see" href="product.html?id=p8" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p8.cat"></div>
         <div class="product__name" data-i18n="p8.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$155</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">1&nbsp;937&nbsp;500&nbsp;сум</span></div>
       </div>
     </article>
     <article class="product reveal" data-product data-cat="planter">
       <div class="product__media media">
         <span class="badge-sale">-25%</span>
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/hero-planter.png" alt="" loading="lazy">
+        <img src="assets/prod-planters-trio.jpg" alt="" loading="lazy">
         <a class="see" href="product.html?id=p9" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p9.cat"></div>
         <div class="product__name" data-i18n="p9.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$210</span><span class="price__old">$280</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">2&nbsp;625&nbsp;000&nbsp;сум</span><span class="price__old">3&nbsp;500&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
     <article class="product reveal" data-product data-cat="furniture">
@@ -255,79 +431,146 @@
       <div>
         <div class="product__cat" data-i18n="p10.cat"></div>
         <div class="product__name" data-i18n="p10.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$1640</span><span class="price__old">$1990</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">20&nbsp;500&nbsp;000&nbsp;сум</span><span class="price__old">24&nbsp;875&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
+
+    <!-- Editorial In-Grid Insert: Custom Projects (MTO) -->
+    <aside class="catalog-editorial editorial--custom reveal" data-editorial data-editorial-cat="all rattan planterMix">
+      <div class="catalog-editorial__bg">
+        <img src="assets/bento-twisted-rattan.png" alt="" loading="lazy">
+        <div class="catalog-editorial__scrim"></div>
+      </div>
+      <div class="catalog-editorial__content">
+        <div class="editorial-badge editorial-badge--copper" data-i18n="ed.mto.badge">MTO • На заказ</div>
+        <h3 class="catalog-editorial__title" data-i18n="ed.mto.title">Мебель по вашим размерам и эскизам</h3>
+        <p class="catalog-editorial__desc" data-i18n="ed.mto.desc">
+          Не нашли нужную форму или оттенок? Изготовим комплект мебели или партию кашпо точно под параметры вашей террасы, балкона или ресторана.
+        </p>
+        <div class="catalog-editorial__perks">
+          <div class="editorial-perk">
+            <span class="editorial-perk__icon">&starf;</span>
+            <span class="editorial-perk__text" data-i18n="ed.mto.p1">24 оттенка ротанга</span>
+          </div>
+          <div class="editorial-perk">
+            <span class="editorial-perk__icon">&starf;</span>
+            <span class="editorial-perk__text" data-i18n="ed.mto.p2">Расчёт за 15 минут</span>
+          </div>
+          <div class="editorial-perk">
+            <span class="editorial-perk__icon">&starf;</span>
+            <span class="editorial-perk__text" data-i18n="ed.mto.p3">Доставка по РУз</span>
+          </div>
+        </div>
+        <div class="catalog-editorial__actions">
+          <a href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" class="btn btn--copper btn--sm" data-mto-chat><span data-i18n="ed.mto.cta">Рассчитать в Telegram</span> &rarr;</a>
+        </div>
+      </div>
+    </aside>
+
     <article class="product reveal" data-product data-cat="basket">
       <div class="product__media media">
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/bento-planter.png" alt="" loading="lazy">
+        <img src="assets/prod-basket-nordic.jpg" alt="" loading="lazy">
         <a class="see" href="product.html?id=p11" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p11.cat"></div>
         <div class="product__name" data-i18n="p11.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$72</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#5c4434" title="Мокко"></span>
+          <span class="product-swatch" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#2a2521" title="Графит"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">900&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
     <article class="product reveal" data-product data-cat="indoor">
       <div class="product__media media">
         <span class="badge-sale">-19%</span>
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/hero-home-furniture.png" alt="" loading="lazy">
+        <img src="assets/prod-dresser-riviera.jpg" alt="" loading="lazy">
         <a class="see" href="product.html?id=p12" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p12.cat"></div>
         <div class="product__name" data-i18n="p12.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$290</span><span class="price__old">$360</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">3&nbsp;625&nbsp;000&nbsp;сум</span><span class="price__old">4&nbsp;500&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
     <article class="product reveal" data-product data-cat="indoor">
       <div class="product__media media">
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/hero-home-furniture.png" alt="" loading="lazy">
+        <img src="assets/prod-table-vertex-white.jpg" alt="" loading="lazy">
         <a class="see" href="product.html?id=p13" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p13.cat"></div>
         <div class="product__name" data-i18n="p13.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$210</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">2&nbsp;625&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
     <article class="product reveal" data-product data-cat="indoor">
       <div class="product__media media">
         <span class="badge-sale">-21%</span>
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/hero-home-furniture.png" alt="" loading="lazy">
+        <img src="assets/prod-dresser-riviera.jpg" alt="" loading="lazy">
         <a class="see" href="product.html?id=p14" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p14.cat"></div>
         <div class="product__name" data-i18n="p14.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$540</span><span class="price__old">$680</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">6&nbsp;750&nbsp;000&nbsp;сум</span><span class="price__old">8&nbsp;500&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
     <article class="product reveal" data-product data-cat="indoor">
       <div class="product__media media">
         <span class="badge-sale">-18%</span>
         <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
-        <img src="assets/hero-home-furniture.png" alt="" loading="lazy">
+        <img src="assets/hero-twisted-rattan.png" alt="" loading="lazy">
         <a class="see" href="product.html?id=p15" data-i18n="see">Подробнее</a>
         <button class="add" data-add data-i18n-aria="a11y.add" aria-label="В корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
       </div>
       <div>
         <div class="product__cat" data-i18n="p15.cat"></div>
         <div class="product__name" data-i18n="p15.name" style="margin-top:4px"></div>
-        <div class="price" style="margin-top:8px"><span class="price__now">$320</span><span class="price__old">$390</span></div>
+        <div class="product-swatches" aria-label="Цвета плетения">
+          <span class="product-swatch is-active" style="--swatch-color:#2a2521" title="Графит"></span>
+          <span class="product-swatch" style="--swatch-color:#c8b29b" title="Бежевый"></span>
+          <span class="product-swatch" style="--swatch-color:#5c4434" title="Мокко"></span>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">4&nbsp;000&nbsp;000&nbsp;сум</span><span class="price__old">4&nbsp;875&nbsp;000&nbsp;сум</span></div>
       </div>
     </article>
   </div>
+  </div>
 </section>
+
+<!-- Mobile Drawer Scrim -->
+<div class="catalog-sidebar-scrim" data-cat-sidebar-scrim aria-hidden="true"></div>
 </main>
 
 <!-- FOOTER -->
@@ -336,24 +579,35 @@
     <div class="foot-col"><img src="assets/btt-logo.png" alt="Bententrade"><p data-i18n="foot.tag" style="color:var(--on-dark-muted);max-width:30ch">Мебель, кашпо и корзины из искусственного ротанга.</p></div>
     <div class="foot-col"><h5 data-i18n="foot.menu">Меню</h5><a href="index.html" data-i18n="nav.home">Главная</a><a href="catalog.html" data-i18n="nav.catalog">Каталог</a><a href="blog.html" data-i18n="nav.blog">Статьи</a><a href="about.html" data-i18n="nav.about">О нас</a><a href="contacts.html" data-i18n="nav.contacts">Контакты</a></div>
     <div class="foot-col"><h5 data-i18n="foot.help">Помощь</h5><a href="faq.html" data-i18n="foot.faq">Вопросы и ответы</a><a href="delivery.html" data-i18n="foot.delivery">Доставка</a><a href="returns.html" data-i18n="foot.returns">Возврат</a><a href="care.html" data-i18n="foot.care">Уход за плетением</a></div>
-    <div class="foot-col"><h5 data-i18n="foot.contacts">Контакты</h5><p data-i18n="co.i.addr.v">Ташкент, ул. Амира Темура, 15</p><a href="tel:+998771044422" data-i18n="co.i.phone.v">+998 77 104 44 22</a><a href="mailto:hello@bententrade.uz">hello@bententrade.uz</a></div>
+    <div class="foot-col"><h5 data-i18n="foot.contacts">Контакты</h5><p data-i18n="co.i.addr.v">Ташкент, ул. Амира Темура, 15</p><a href="tel:+998771044422" data-i18n="co.i.phone.v">+998 77 104 44 22</a><a href="mailto:hello@bententrade.uz">hello@bententrade.uz</a>
+      <div class="foot-social">
+        <a class="foot-social__link" href="https://www.instagram.com/bententradeuz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </a>
+        <a class="foot-social__link" href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2-.06-.06-.16-.04-.23-.02-.1.02-1.74 1.1-4.91 3.25-.46.32-.88.47-1.26.46-.42-.01-1.22-.24-1.82-.43-.73-.24-1.31-.37-1.26-.78.03-.21.32-.43.88-.66 3.44-1.5 5.74-2.49 6.89-2.97 3.28-1.37 3.97-1.61 4.41-1.62.1 0 .32.02.46.14.12.1.15.24.17.34-.01.07.01.22 0 .34z"/></svg>
+        </a>
+        <a class="foot-social__link" href="https://wa.me/998771044422" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.41a8.197 8.197 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m-3.53 4.27c-.19 0-.5.07-.76.35-.26.28-1 1-1 2.43s1.02 2.82 1.16 3.02c.14.19 2.01 3.07 4.87 4.31.68.29 1.21.47 1.63.6.68.22 1.3.19 1.79.12.55-.08 1.69-.69 1.93-1.36.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33-.28-.14-1.69-.83-1.95-.93-.26-.09-.45-.14-.64.14-.19.28-.74.93-.9 1.12-.17.19-.33.21-.62.07-.28-.14-1.2-.44-2.28-1.41-.85-.75-1.42-1.68-1.59-1.96-.17-.28-.02-.44.12-.58.13-.13.28-.33.43-.5.14-.17.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.56-.01z"/></svg>
+        </a>
+      </div></div>
   </div>
   <div class="site-foot__bottom"><span data-i18n="foot.since">С 2024 ГОДА</span><span data-i18n="foot.copy">© 2026 BENTENTRADE. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span><span class="foot-legal"><a href="cookies.html" data-i18n="foot.cookies">ФАЙЛЫ COOKIE</a><a href="privacy.html" data-i18n="foot.privacy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></span></div>
 </footer>
 
-<script src="assets/util.js"></script>
-<script src="assets/cookies.js"></script>
-<script src="assets/api.js"></script>
-<script src="assets/i18n.js"></script>
-<script src="assets/assistant.js"></script>
-<script src="assets/search.js"></script>
-<script src="assets/products.js"></script>
-<script src="assets/catalog-seo.js"></script>
-<script src="assets/site.js"></script>
-<script src="assets/cart.js"></script>
-<script src="assets/catalog-sync.js"></script>
-<script src="assets/catalog-hero.js"></script>
-<script src="assets/motion.js"></script>
-<script src="assets/fx.js"></script>
+<script src="assets/util.js?v=20260921-6"></script>
+<script src="assets/cookies.js?v=20260921-6"></script>
+<script src="assets/api.js?v=20260921-6"></script>
+<script src="assets/i18n.js?v=20260921-6"></script>
+<script src="assets/assistant.js?v=20260921-6"></script>
+<script src="assets/search.js?v=20260921-6"></script>
+<script src="assets/products.js?v=20260921-6"></script>
+<script src="assets/site.js?v=20260921-6"></script>
+<script src="assets/cart.js?v=20260921-6"></script>
+<script src="assets/motion.js?v=20260921-6"></script>
+<script src="assets/fx.js?v=20260921-6"></script>
+<script src="assets/catalog-hero.js?v=20260921-6"></script>
+<script src="assets/catalog-seo.js?v=20260921-6"></script>
+<script src="assets/catalog-sync.js?v=20260921-6"></script>
 </body>
 </html>
