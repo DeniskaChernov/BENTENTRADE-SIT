@@ -7,7 +7,7 @@ export interface Env {
   /** KV namespace for auth sessions. */
   SESSIONS: KVNamespace;
   /** R2 bucket for media (product photos, article images). */
-  MEDIA: R2Bucket;
+  MEDIA?: R2Bucket;
 
   /** Public site origin, e.g. https://bententrade.uz */
   SITE_ORIGIN: string;

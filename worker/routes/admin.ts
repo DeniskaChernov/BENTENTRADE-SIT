@@ -311,6 +311,9 @@ app.post("/media", async (c) => {
   const alt = str(form.get("alt"), 200);
   const scope = productId ? `products/${productId}` : articleId ? `articles/${articleId}` : "misc";
   const key = `${scope}/${crypto.randomUUID()}.${ext}`;
+  if (!c.env.MEDIA) {
+    return c.json({ error: "r2_disabled", message: "R2 storage is not enabled on Cloudflare yet." }, 503);
+  }
   await c.env.MEDIA.put(key, file.stream(), {
     httpMetadata: { contentType: file.type || "application/octet-stream" },
   });
@@ -348,7 +351,7 @@ app.put("/media/:id/link", async (c) => {
 app.delete("/media/:id", async (c) => {
   const id = Number(c.req.param("id"));
   const row = await c.env.DB.prepare(`SELECT key FROM media WHERE id = ?`).bind(id).first<{ key: string }>();
-  if (row) await c.env.MEDIA.delete(row.key).catch(() => {});
+  if (row && c.env.MEDIA) await c.env.MEDIA.delete(row.key).catch(() => {});
   const r = await c.env.DB.prepare(`DELETE FROM media WHERE id = ?`).bind(id).run();
   return c.json({ ok: true, deleted: r.meta.changes });
 });

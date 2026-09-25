@@ -10,7 +10,8 @@
   // See .assetsignore for files that must NOT be published as public assets.
   "assets": {
     "directory": "./",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
   },
 
   "observability": { "enabled": true },
@@ -20,7 +21,7 @@
     {
       "binding": "DB",
       "database_name": "bententrade_db",
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "database_id": "28146444-5830-4507-885e-6dfecbb67dfa",
       "migrations_dir": "migrations"
     }
   ],
@@ -29,15 +30,7 @@
   "kv_namespaces": [
     {
       "binding": "SESSIONS",
-      "id": "REPLACE_WITH_KV_NAMESPACE_ID"
-    }
-  ],
-
-  // R2 — media (real product photos, article images).
-  "r2_buckets": [
-    {
-      "binding": "MEDIA",
-      "bucket_name": "bententrade-media"
+      "id": "2dc065b8ed7d42809affaecdea099449"
     }
   ],
 

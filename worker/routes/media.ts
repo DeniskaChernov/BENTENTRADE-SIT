@@ -5,6 +5,7 @@ const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
 /** GET /media/* — serve an object from R2 (public read). */
 app.get("/*", async (c) => {
+  if (!c.env.MEDIA) return c.notFound();
   const key = c.req.path.replace(/^\/media\//, "");
   if (!key) return c.notFound();
   const obj = await c.env.MEDIA.get(key);

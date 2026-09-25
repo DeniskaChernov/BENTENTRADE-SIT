@@ -74,8 +74,22 @@ app.get("/admin/app.js", (c) =>
   }),
 );
 
-// Anything else that reached the Worker (i.e. not a static asset and not an
-// API/admin route) is delegated to the static assets binding for a clean 404.
-app.all("*", (c) => c.env.ASSETS.fetch(c.req.raw));
+// Anything else that reached the Worker is delegated to the static assets binding.
+// On 404 for non-API routes, serve the branded 404.html.
+app.all("*", async (c) => {
+  const res = await c.env.ASSETS.fetch(c.req.raw);
+  if (res.status === 404 && !c.req.path.startsWith("/api/")) {
+    const notFoundUrl = new URL("/404.html", c.req.url);
+    const notFoundRes = await c.env.ASSETS.fetch(new Request(notFoundUrl.toString(), c.req.raw));
+    if (notFoundRes.ok) {
+      return new Response(notFoundRes.body, {
+        status: 404,
+        headers: notFoundRes.headers,
+      });
+    }
+  }
+  return res;
+});
 
 export default app;
+
