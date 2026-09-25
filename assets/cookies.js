@@ -80,7 +80,12 @@
   }
 
   function isPublicReadPath(p) {
-    return p === "/data/articles.json" || p === "/data/articles-seo.json";
+    if (p === "/data/articles.json" || p === "/data/articles-seo.json") return true;
+    if (p === "/api/products" || p.indexOf("/api/products/") === 0) return true;
+    if (p === "/api/settings" || p === "/api/health") return true;
+    if (p === "/api/articles" || p.indexOf("/api/articles/") === 0) return true;
+    if (p === "/api/reviews") return true;
+    return false;
   }
 
   function needsConsent(url) {

@@ -10,19 +10,32 @@
 
   const BASE = ""; // same origin
 
+  function isPublicRead(path, method) {
+    if (method && method !== "GET") return false;
+    const clean = path.split("?")[0];
+    if (clean === "/api/products" || clean.indexOf("/api/products/") === 0) return true;
+    if (clean === "/api/settings" || clean === "/api/health") return true;
+    if (clean === "/api/articles" || clean.indexOf("/api/articles/") === 0) return true;
+    if (clean === "/api/reviews") return true;
+    return false;
+  }
+
   async function request(path, opts) {
-    if (window.BTT_COOKIES && !window.BTT_COOKIES.hasConsent()) {
-      if (path.indexOf("/api/auth/") === 0 || path.indexOf("/api/admin/") === 0) {
-        try { window.BTT_COOKIES.accept(); } catch (_) {}
-      } else {
-        const err = new Error("cookie_consent_required");
-        err.code = "cookie_consent_required";
-        throw err;
+    opts = opts || {};
+    const method = opts.method || "GET";
+    if (!isPublicRead(path, method)) {
+      if (window.BTT_COOKIES && !window.BTT_COOKIES.hasConsent()) {
+        if (path.indexOf("/api/auth/") === 0 || path.indexOf("/api/admin/") === 0) {
+          try { window.BTT_COOKIES.accept(); } catch (_) {}
+        } else {
+          const err = new Error("cookie_consent_required");
+          err.code = "cookie_consent_required";
+          throw err;
+        }
       }
     }
-    opts = opts || {};
     const init = {
-      method: opts.method || "GET",
+      method: method,
       headers: {},
       credentials: "same-origin",
     };
