@@ -511,8 +511,7 @@
         p.classList.toggle("is-active", on);
         if(on && !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)){
           p.classList.remove("acc-panel--in");
-          void p.offsetWidth;
-          p.classList.add("acc-panel--in");
+          requestAnimationFrame(() => p.classList.add("acc-panel--in"));
         }
       });
       if(mobLabel) mobLabel.textContent=tabLabel(name);

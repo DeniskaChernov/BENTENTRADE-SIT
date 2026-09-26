@@ -61,16 +61,20 @@
     art.className = "product reveal";
     art.setAttribute("data-product", "");
     art.setAttribute("data-cat", p.category || "");
+    art.setAttribute("data-slug", p.slug || p.id);
+    art.setAttribute("data-id", p.id);
+    art.setAttribute("data-price", String(p.price_now));
     const disc = p.price_old && p.price_old > p.price_now
       ? Math.round((1 - p.price_now / p.price_old) * 100) : 0;
     const sale = disc ? '<span class="badge-sale">-' + disc + "%</span>" : "";
     const mto = p.stock === 0 ? '<span class="badge-mto" data-i18n="mto.badge">' + esc(t("mto.badge")) + "</span>" : "";
     const old = p.price_old ? '<span class="price__old">' + money(p.price_old) + "</span>" : "";
+    const href = p.slug ? ("/catalog/" + encodeURIComponent(p.slug)) : ("product.html?id=" + esc(p.id));
     art.innerHTML =
       '<div class="product__media media">' + sale + mto +
       '<button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="' + esc(t("a11y.fav")) + '">' + FAV_SVG + "</button>" +
       '<img src="' + esc(productImg(p)) + '" alt="' + esc(p.name || "") + '" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">' +
-      '<a class="see" href="product.html?id=' + esc(p.id) + '" data-i18n="see">' + esc(t("see")) + "</a>" +
+      '<a class="see" href="' + href + '" data-i18n="see">' + esc(t("see")) + "</a>" +
       '<button class="add" data-add data-i18n-aria="a11y.add" aria-label="' + esc(t("a11y.add")) + '">' + ADD_SVG + "</button>" +
       "</div><div>" +
       '<div class="product__cat">' + esc(p.category_label || "") + "</div>" +

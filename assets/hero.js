@@ -146,8 +146,7 @@
     if(!instant && window.matchMedia && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
       if(els.pocketInner){
         els.pocketInner.classList.remove("is-anim");
-        void els.pocketInner.offsetWidth;
-        els.pocketInner.classList.add("is-anim");
+        requestAnimationFrame(() => els.pocketInner.classList.add("is-anim"));
       }
     }
 

@@ -289,9 +289,10 @@
   function bump(el){
     if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     el.classList.remove("is-bump");
-    void el.offsetWidth;
-    el.classList.add("is-bump");
-    el.addEventListener("animationend", ()=> el.classList.remove("is-bump"), { once:true });
+    requestAnimationFrame(()=>{
+      el.classList.add("is-bump");
+      el.addEventListener("animationend", ()=> el.classList.remove("is-bump"), { once:true });
+    });
   }
   // reflect saved favorites onto product/PDP heart buttons
   function syncFavButtons(){
@@ -1104,9 +1105,10 @@
         const prodName = snap && snap.name ? ": " + snap.name : "";
         if(on){
           btn.classList.remove("is-popping");
-          void btn.offsetWidth;
-          btn.classList.add("is-popping");
-          setTimeout(()=>btn.classList.remove("is-popping"), 500);
+          requestAnimationFrame(()=>{
+            btn.classList.add("is-popping");
+            setTimeout(()=>btn.classList.remove("is-popping"), 500);
+          });
           if(window.BTT_FX && window.BTT_FX.burstParticles && e.clientX && e.clientY){
             window.BTT_FX.burstParticles(e.clientX, e.clientY, 8);
           }
