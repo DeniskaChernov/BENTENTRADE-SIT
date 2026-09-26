@@ -85,17 +85,42 @@ const VALID_PRODUCT_SLUGS = new Set([
   "stol-taper-rotang-135", "stol-taper-80", "stol-vertex-80", "stol-taper-135", "stol-corda-135"
 ]);
 
-// Clean PDP URLs: /catalog/:slug -> product.html?id=:slug
+// Clean PDP URLs: /catalog/:slug -> serves product.html with status 200
 app.get("/catalog/:slug", async (c) => {
   const slug = c.req.param("slug");
   if (VALID_PRODUCT_SLUGS.has(slug)) {
-    const url = new URL("/product.html", c.req.url);
+    const url = new URL("/product", c.req.url);
     url.searchParams.set("id", slug);
-    return c.env.ASSETS.fetch(new Request(url.toString(), c.req.raw));
+    const res = await c.env.ASSETS.fetch(new Request(url.toString(), c.req.raw));
+    if (res.status >= 300 && res.status < 400) {
+      const loc = res.headers.get("Location") || "/product";
+      const followUrl = new URL(loc, c.req.url);
+      const followedRes = await c.env.ASSETS.fetch(new Request(followUrl.toString(), c.req.raw));
+      return new Response(followedRes.body, {
+        status: 200,
+        headers: {
+          ...Object.fromEntries(followedRes.headers.entries()),
+          "content-type": "text/html; charset=utf-8",
+        },
+      });
+    }
+    return new Response(res.body, {
+      status: 200,
+      headers: {
+        ...Object.fromEntries(res.headers.entries()),
+        "content-type": "text/html; charset=utf-8",
+      },
+    });
   }
-  const notFoundUrl = new URL("/404.html", c.req.url);
+  const notFoundUrl = new URL("/404", c.req.url);
   const notFoundRes = await c.env.ASSETS.fetch(new Request(notFoundUrl.toString(), c.req.raw));
-  return new Response(notFoundRes.body, { status: 404, headers: notFoundRes.headers });
+  return new Response(notFoundRes.body, {
+    status: 404,
+    headers: {
+      ...Object.fromEntries(notFoundRes.headers.entries()),
+      "content-type": "text/html; charset=utf-8",
+    },
+  });
 });
 
 // Legacy redirect: /product?id=:slug -> /catalog/:slug
