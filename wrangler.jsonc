@@ -34,13 +34,13 @@
     }
   ],
 
-  // R2 bucket for media assets (product photos, article media)
-  "r2_buckets": [
-    {
-      "binding": "MEDIA",
-      "bucket_name": "bententrade-media"
-    }
-  ],
+  // R2 bucket for media assets (uncomment once R2 is enabled in Cloudflare Dashboard):
+  // "r2_buckets": [
+  //   {
+  //     "binding": "MEDIA",
+  //     "bucket_name": "bententrade-media"
+  //   }
+  // ],
 
   "vars": {
     "SITE_ORIGIN": "https://bententrade.uz"
