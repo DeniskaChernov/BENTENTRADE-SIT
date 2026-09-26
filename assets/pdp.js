@@ -1,5 +1,5 @@
 /* ============================================================
-   BTT — Product Detail Page (PDP) Interactions & Data Hydration
+   BTT - Product Detail Page (PDP) Interactions & Data Hydration
    Accurate 15-SKU Single Source of Truth
    Clean URLs: /catalog/:slug or ?id=:slug
    No fake reviews, no fake ratings, factual specs & LDSP warning.
@@ -37,7 +37,7 @@
   window.BTT_PDP_PRODUCT = prod;
 
   if(!prod){
-    document.title = "BTT — 404";
+    document.title = "BTT - 404";
     const show404 = function(){
       const main = document.querySelector("main") || document.body;
       if(main){
@@ -125,7 +125,7 @@
       "@type": "Product",
       "name": nm,
       "image": image,
-      "description": nm + " — " + catLabel + ". BTT — мебель для дома и сада.",
+      "description": nm + " - " + catLabel + ". BTT - мебель для дома и сада.",
       "sku": prod.slug.toUpperCase(),
       "brand": { "@type": "Brand", "name": "BTT" },
       "offers": offerObj
@@ -266,7 +266,7 @@
     if(priceEl) priceEl.textContent = money(prod.now);
 
     // Dimensions
-    $$("[data-pdp-dim-val], [data-pdp-spec-dim]").forEach(el => el.textContent = prod.dimensions || "—");
+    $$("[data-pdp-dim-val], [data-pdp-spec-dim]").forEach(el => el.textContent = prod.dimensions || "-");
 
     // Table caution warning
     const warnBoxes = $$("[data-pdp-table-warning], [data-pdp-table-warning-detail]");
@@ -305,9 +305,9 @@
 
     // Page meta
     const pageUrl = "https://bententrade.uz/catalog/" + encodeURIComponent(prod.slug);
-    document.title = "BTT — " + nm;
-    setMetaPair("description", nm + " — " + cat + ". BTT — мебель для дома и сада.");
-    setMetaPair("og:title", "BTT — " + nm);
+    document.title = "BTT - " + nm;
+    setMetaPair("description", nm + " - " + cat + ". BTT - мебель для дома и сада.");
+    setMetaPair("og:title", "BTT - " + nm);
     setMetaPair("og:url", pageUrl);
     setCanonical(pageUrl);
     updateSchema(nm, pageUrl);

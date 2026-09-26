@@ -153,7 +153,7 @@ console.log('\n--- SCENARIO J: HoReCa Landing Page ---');
 test('horeca.html exists and is properly structured', () => {
   expect(fs.existsSync(path.join(ROOT, 'horeca.html'))).toBeTruthy();
   const hrc = fs.readFileSync(path.join(ROOT, 'horeca.html'), 'utf8');
-  expect(hrc).toContain('BTT — Мебель для HoReCa');
+  expect(hrc).toContain('BTT - Мебель для HoReCa');
   expect(hrc).toContain('assets/horeca.css');
   expect(hrc).toContain('data-contact-form');
   expect(hrc).toContain('@bententradeuz');

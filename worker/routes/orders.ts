@@ -8,7 +8,7 @@ const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
 type InItem = { id?: string; name?: string; qty?: number; price?: number; options?: unknown };
 
-/** POST /api/orders — persist an order and its items, return a real order id. */
+/** POST /api/orders - persist an order and its items, return a real order id. */
 app.post("/", async (c) => {
   if (!(await rateLimit(c.env, `order:${clientIp(c)}`, 10, 3600))) {
     return c.json({ error: "rate_limited" }, 429);
@@ -78,7 +78,7 @@ app.post("/", async (c) => {
     }
     return {
       id,
-      name: str(i.name, 200) || id || "—",
+      name: str(i.name, 200) || id || "-",
       qty,
       unit_price: unitPrice,
       options: i.options ? JSON.stringify(i.options).slice(0, 500) : null,
@@ -142,8 +142,8 @@ app.post("/", async (c) => {
   };
 
   const header = isQuick
-    ? `⚡ <b>БЫСТРЫЙ ЗАКАЗ В 1 КЛИК ${publicId}</b> — ${fmtMoney(total)}`
-    : `<b>Новый заказ ${publicId}</b> — ${fmtMoney(total)}`;
+    ? `⚡ <b>БЫСТРЫЙ ЗАКАЗ В 1 КЛИК ${publicId}</b> - ${fmtMoney(total)}`
+    : `<b>Новый заказ ${publicId}</b> - ${fmtMoney(total)}`;
 
   await notifyTelegram(
     c.env,
@@ -164,7 +164,7 @@ app.post("/", async (c) => {
             if (vals.length) optStr = ` (${vals.join(", ")})`;
           } catch {}
         }
-        return `• ${escapeHtml(it.name)}${escapeHtml(optStr)} ×${it.qty} — ${fmtMoney(it.unit_price * it.qty)}`;
+        return `• ${escapeHtml(it.name)}${escapeHtml(optStr)} ×${it.qty} - ${fmtMoney(it.unit_price * it.qty)}`;
       }).join("\n"),
   );
 
@@ -185,7 +185,7 @@ app.post("/", async (c) => {
   return c.json({ ok: true, orderId: publicId, total, subtotal, discount, promo: promoPct > 0 ? promo : undefined, currency });
 });
 
-/** GET /api/orders — current user's orders (auth required via mount). */
+/** GET /api/orders - current user's orders (auth required via mount). */
 app.get("/", async (c) => {
   const session = c.get("session");
   if (!session) return c.json({ error: "unauthorized" }, 401);

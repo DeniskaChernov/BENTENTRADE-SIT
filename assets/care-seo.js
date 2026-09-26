@@ -1,4 +1,4 @@
-/* Bententrade — HowTo schema for the care page. */
+/* Bententrade - HowTo schema for the care page. */
 (function () {
   "use strict";
   if (!document.querySelector(".info-doc")) return;

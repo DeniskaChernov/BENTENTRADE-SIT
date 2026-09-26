@@ -91,7 +91,7 @@ app.get("/favorites", async (c) => {
   return c.json({ favorites: results.map((r) => r.product_id) });
 });
 
-/** PUT /api/account/favorites — replace the whole set (sync from client). */
+/** PUT /api/account/favorites - replace the whole set (sync from client). */
 app.put("/favorites", async (c) => {
   const userId = uid(c);
   if (!userId) return c.json({ error: "unauthorized" }, 401);

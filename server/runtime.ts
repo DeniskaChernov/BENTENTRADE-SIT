@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE — Node/Railway runtime.
+   BENTENTRADE - Node/Railway runtime.
    Provides drop-in replacements for the Cloudflare bindings the
    Hono routes expect (c.env.DB / c.env.SESSIONS / c.env.MEDIA),
    backed by PostgreSQL and the local filesystem, so the existing
@@ -336,7 +336,7 @@ export async function migrate() {
       INSERT OR IGNORE INTO reviews (id, product_id, author_name, city, rating, text, is_verified, status, created_at) VALUES
         (1, 'p1', 'Тимур Ш.', 'Ташкент', 5, 'Заказывали угловой комплект «Лагуна» для террасы. Доставили точно в срок, распаковали, помогли установить. Плетение безупречное, швы ровные, каркас монолитный.', 1, 'approved', 1751712000000),
         (2, 'p1', 'Наргиза М.', 'Ташкент', 5, 'Потрясающий диван! Цвет «Вуди» идеально подошёл к нашей плитке. На солнце не нагревается, сидеть очень комфортно. Спасибо мастерской Bententrade!', 1, 'approved', 1751020800000),
-        (3, 'p2', 'Сардор А.', 'Ташкент', 5, 'Покупали для летней террасы ресторана. Алюминиевый каркас невероятно удобен при ежедневной уборке — лёгкий, но монолитно устойчивый. Гости часто спрашивают, где брали.', 1, 'approved', 1750416000000),
+        (3, 'p2', 'Сардор А.', 'Ташкент', 5, 'Покупали для летней террасы ресторана. Алюминиевый каркас невероятно удобен при ежедневной уборке - лёгкий, но монолитно устойчивый. Гости часто спрашивают, где брали.', 1, 'approved', 1750416000000),
         (4, 'p3', 'Елена В.', 'Бухара', 5, 'Превосходная работа! Плетение монолитное, ни одного торчащего хвостика. Доставили в Бухару без единой царапины. Всем рекомендую Bententrade как надёжного производителя в Узбекистане.', 1, 'approved', 1749811200000);
 
       INSERT OR IGNORE INTO settings (key, value) VALUES
@@ -432,8 +432,8 @@ export async function seedIfEmpty() {
     const art = await client.query("SELECT id FROM articles WHERE slug = 'iskusstvennyy-rotang'");
     const aid = art.rows[0]?.id;
     const art1: Record<string, { title: string; excerpt: string; body: string }> = {
-      ru: { title: "Что такое искусственный ротанг", excerpt: "Разбираемся, из чего сделано плетение и почему оно служит годами.", body: "Искусственный ротанг — это прочное волокно, окрашенное в массе. Оно не выгорает на солнце, не боится влаги и мороза и не требует особого ухода." },
-      uz: { title: "Sun'iy rotang nima", excerpt: "To'quv nimadan tayyorlangani va nega yillar xizmat qilishini ko'ramiz.", body: "Sun'iy rotang — massasiga bo'yalgan mustahkam tola. Quyoshda rangi o'chmaydi, namlik va sovuqdan qo'rqmaydi va alohida parvarish talab qilmaydi." },
+      ru: { title: "Что такое искусственный ротанг", excerpt: "Разбираемся, из чего сделано плетение и почему оно служит годами.", body: "Искусственный ротанг - это прочное волокно, окрашенное в массе. Оно не выгорает на солнце, не боится влаги и мороза и не требует особого ухода." },
+      uz: { title: "Sun'iy rotang nima", excerpt: "To'quv nimadan tayyorlangani va nega yillar xizmat qilishini ko'ramiz.", body: "Sun'iy rotang - massasiga bo'yalgan mustahkam tola. Quyoshda rangi o'chmaydi, namlik va sovuqdan qo'rqmaydi va alohida parvarish talab qilmaydi." },
       en: { title: "What is synthetic rattan", excerpt: "A look at what the weave is made of and why it lasts for years.", body: "Synthetic rattan is a durable fibre dyed all the way through. It won't fade in the sun, isn't afraid of moisture or frost and needs no special care." },
     };
     if (aid) {

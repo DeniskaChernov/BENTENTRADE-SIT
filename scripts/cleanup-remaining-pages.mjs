@@ -34,21 +34,21 @@ for (const file of files) {
   );
   content = content.replace(
     /<span data-i18n="foot\.since">С 2024 ГОДА<\/span><span data-i18n="foot\.copy">© 2026 BENTENTRADE\. ВСЕ ПРАВА ЗАЩИЩЕНЫ\.<\/span>/g,
-    '<span>BTT — мебель для дома и сада</span><span data-i18n="foot.copy">© 2026 BTT. Все права защищены.</span>'
+    '<span>BTT - мебель для дома и сада</span><span data-i18n="foot.copy">© 2026 BTT. Все права защищены.</span>'
   );
   content = content.replace(
     /<meta property="og:site_name" content="Bententrade">/g,
     '<meta property="og:site_name" content="BTT">'
   );
   content = content.replace(
-    /(<title[^>]*>)Bententrade — /g,
-    '$1BTT — '
+    /(<title[^>]*>)Bententrade - /g,
+    '$1BTT - '
   );
 
   if (file === "rotang-tashkent.html") {
     content = content.replace(
-      "Приезжайте в наш шоурум на ул. Амира Темура, 15 или напишите менеджеру в Telegram — пришлём электронную карту цветов и прайс-лист.",
-      "Напишите менеджеру в Telegram — пришлём электронный каталог и актуальный прайс-лист."
+      "Приезжайте в наш шоурум на ул. Амира Темура, 15 или напишите менеджеру в Telegram - пришлём электронную карту цветов и прайс-лист.",
+      "Напишите менеджеру в Telegram - пришлём электронный каталог и актуальный прайс-лист."
     );
   }
 

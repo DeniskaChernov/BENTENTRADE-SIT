@@ -1,7 +1,7 @@
-# Bententrade — Design Code / Дизайн-система
+# Bententrade - Design Code / Дизайн-система
 
 Полное описание дизайна и кода сайта Bententrade для дальнейшей работы.
-Сайт: мебель, кашпо и корзины из **искусственного ротанга**. Гео — Узбекистан + экспорт.
+Сайт: мебель, кашпо и корзины из **искусственного ротанга**. Гео - Узбекистан + экспорт.
 Стиль по референсу **CAIRIS / Apple**: светлая тёплая база, медный (copper) акцент, крупная типографика, органичные формы, **liquid-поверхности без blur**. Поддержаны **тёмная тема** и **3 языка (RU / UZ / EN)**.
 
 ---
@@ -9,27 +9,27 @@
 ## 1. Структура файлов
 
 ```
-index.html        Главная — герой L-форма (4 слайда), промо, коллекция, материалы
-catalog.html      Каталог — герой, sticky-фильтры, сетка товаров
-about.html        О нас — история, ценности, статистика (reveal)
-product.html      PDP — галерея, опции, характеристики, похожие; гидратация ?id=p1…p15
-contacts.html     Контакты — форма с валидацией, карта, реквизиты
-account.html      Личный кабинет — обзор, заказы, избранное (из localStorage), адреса, настройки
+index.html        Главная - герой L-форма (4 слайда), промо, коллекция, материалы
+catalog.html      Каталог - герой, sticky-фильтры, сетка товаров
+about.html        О нас - история, ценности, статистика (reveal)
+product.html      PDP - галерея, опции, характеристики, похожие; гидратация ?id=p1…p15
+contacts.html     Контакты - форма с валидацией, карта, реквизиты
+account.html      Личный кабинет - обзор, заказы, избранное (из localStorage), адреса, настройки
 
 assets/
   styles.css      Токены, типографика, кнопки, шапка, карточки, футер, тёмная тема, liquid-поверхности
   pages.css       Раскладки страниц: герой, промо, каталог, about, контакты, аккаунт, PDP, drawer, бот
   i18n.js         Словарь RU/UZ/EN (window.BTT_I18N)
   site.js         Язык, тема, reveal, фильтры каталога, формы, --head-h, бургер
-  hero.js         Герой — 4 слайда, L-форма, автоплей, свайп
+  hero.js         Герой - 4 слайда, L-форма, автоплей, свайп
   catalog-sync.js Синхронизация каталога/главной/related с CRM (кэш по языку)
   util.js         Общие хелперы lang/t/esc и SVG-иконки карточек (window.BTT_UTIL)
   catalog-hero.js Синхронизация героя каталога с фильтрами (btt:cat-change)
-  products.js     Каталог данных — BTT_PRODUCTS, BTT_PRODUCT_IMG, BTT_PRODUCT_CAT
+  products.js     Каталог данных - BTT_PRODUCTS, BTT_PRODUCT_IMG, BTT_PRODUCT_CAT
   pdp.js          PDP: гидратация, галерея, похожие товары
   cart.js         Корзина + избранное (localStorage), drawer, wireProductButtons
   account.js      Вкладки кабинета, адреса, избранное, мобильный drawer
-  blog.js         Журнал — loading/error/empty, SEO meta на article
+  blog.js         Журнал - loading/error/empty, SEO meta на article
   search.js       Spotlight-поиск
   assistant.js    Чат-помощник «Бен»
   fx.js           Микро-анимации входа страницы
@@ -89,7 +89,7 @@ assets/
 | `--liquid-edge` | inset highlight |
 | `--spatial-shadow` | тень глубины |
 
-Классы: `.liquid`, `.liquid-glass`, `.glass`, `.surface` — сплошной фон + sheen, **blur отключён**.
+Классы: `.liquid`, `.liquid-glass`, `.glass`, `.surface` - сплошной фон + sheen, **blur отключён**.
 
 **Брейкпоинты** (эталонные значения в `@media`, см. комментарий в `styles.css`):
 
@@ -102,9 +102,9 @@ assets/
 | 600 | hero mobile, promo |
 | 420 | узкие телефоны |
 
-**Тёмная тема** — `[data-theme="dark"]` переопределяет все токены выше (`--paper:#141109`, светлый `--text`, ярче медь). Переключатель — `[data-theme-toggle]`, значение в `localStorage.btt_theme`. Анти-FOUC — inline `<script>` в `<head>` каждой страницы.
+**Тёмная тема** - `[data-theme="dark"]` переопределяет все токены выше (`--paper:#141109`, светлый `--text`, ярче медь). Переключатель - `[data-theme-toggle]`, значение в `localStorage.btt_theme`. Анти-FOUC - inline `<script>` в `<head>` каждой страницы.
 
-Правило: **новые цвета не выдумывать** — только токены или `color-mix(in oklab, var(--copper) …)`.
+Правило: **новые цвета не выдумывать** - только токены или `color-mix(in oklab, var(--copper) …)`.
 
 ---
 
@@ -116,7 +116,7 @@ assets/
 - **Soyuz Grotesk** (`--font-editorial`, `--serif`, `--f-serif`): Фирменный советско-модернистский редакционный гротеск для заголовков разделов, атмосферных заголовков (`.atmo-hero__title`), статей журнала и страниц О нас / Доставка / Контакты.
 - Заголовки: `font-weight: 700..900`, `letter-spacing: -.01em..-.02em`.
 - Шкала: `.display-1` … `.display-3`, `.lead`, `.eyebrow`, `.kicker`.
-- Минимум 12.5px (служебный микротекст), основной текст 15–16px.
+- Минимум 12.5px (служебный микротекст), основной текст 15-16px.
 
 ---
 
@@ -133,7 +133,7 @@ assets/
 | Компонент | Классы / атрибуты |
 |---|---|
 | Кнопки | `.btn`, `.btn--dark`, `.btn--copper`, `.btn--ghost`, `.btn--sm` |
-| Чипы | `.chip`, `.chip.is-active`; фильтр — `data-chips` + `data-cat` в `site.js` |
+| Чипы | `.chip`, `.chip.is-active`; фильтр - `data-chips` + `data-cat` в `site.js` |
 | Карточка товара | `.product`, `.product__media`, `[data-fav]`, `[data-add]`, `.see`, `.price` |
 | Шапка | `.site-head` (sticky), `.nav`, `.head-tools`, `[data-cart-count]`, `[data-fav-count]` |
 | Футер | `.site-foot` (тёмный), лого с медным filter |
@@ -141,7 +141,7 @@ assets/
 | Каталог | `.catalog-flow`, `.cat-toolbar-wrap` (sticky), `[data-cat-count]`, `.cat-empty` |
 | PDP | `.pdp-flow`, галерея, `pdp.js` + `btt:related-rendered` |
 | Аккаунт | `.account-flow`, `.acc-side` (drawer на моб.), `.acc-panel`, `[data-acc-wishlist]` |
-| Drawer | `.drawer`, `.drawer-scrim` — инжектится `cart.js` |
+| Drawer | `.drawer`, `.drawer-scrim` - инжектится `cart.js` |
 | Бот | `.bot-fab`, `.bot-panel` |
 
 ### Корзина и избранное (`cart.js`)
@@ -152,7 +152,7 @@ localStorage.btt_favs  → { id: {name, price, img} }
 ```
 
 API: `window.BTT_CART = { openCart, openFav, addToCart, wireProductButtons, getFavs, favCount }`.
-Событие `btt:favs-change` — при toggle/delete избранного.
+Событие `btt:favs-change` - при toggle/delete избранного.
 Кнопки `[data-add]` / `[data-fav]` вешает только `cart.js`.
 
 ---
@@ -167,7 +167,7 @@ API: `window.BTT_CART = { openCart, openFav, addToCart, wireProductButtons, getF
 3. Искусственный ротанг (`rattan`)
 4. Кашпо, сундуки и корзины (`planter`)
 
-Автоплей 7 с, пауза на hover, стрелки, точки, свайп. Смена языка — `MutationObserver` на `<html lang>`.
+Автоплей 7 с, пауза на hover, стрелки, точки, свайп. Смена языка - `MutationObserver` на `<html lang>`.
 
 ---
 
@@ -176,20 +176,20 @@ API: `window.BTT_CART = { openCart, openFav, addToCart, wireProductButtons, getF
 - `window.BTT_I18N = { ru, uz, en }` в `i18n.js`.
 - Разметка: `data-i18n`, `data-i18n-ph`, `data-i18n-aria`.
 - `site.js`: `localStorage.btt_lang`, `applyLang()`.
-- Товары: `pN.name`, `pN.cat` в i18n; цены/look — в `products.js`.
+- Товары: `pN.name`, `pN.cat` в i18n; цены/look - в `products.js`.
 
 ---
 
 ## 8. Анимации, производительность и a11y
 
-- `.reveal`, `.reveal--left/right`, `[data-stagger]` — появление секций (`site.js`); при `prefers-reduced-motion` сразу `.is-in`.
-- `.spatial`, parallax, page transitions, tilt (`fx.js`), count-up — отключены при reduced motion.
-- Герой: автоплей не стартует при reduced motion; стрелки/точки — `data-i18n-aria` (`hero.prev/next/slide`).
-- **Skip-link** — `site.js` вставляет ссылку `a11y.skip` → `#main`.
-- **Focus** — глобальный `:focus-visible` (медный outline); формы — ring через `box-shadow`.
-- **Мобильное меню** — `aria-expanded`, `aria-controls`, `aria-hidden`, Escape закрывает.
-- **Язык** — кнопки RU/UZ/EN с `aria-pressed`.
-- **Perf** — `preconnect` к Google Fonts; LCP героя: `fetchpriority="high"`; ниже fold — `loading="lazy"`; `decoding="async"`.
+- `.reveal`, `.reveal--left/right`, `[data-stagger]` - появление секций (`site.js`); при `prefers-reduced-motion` сразу `.is-in`.
+- `.spatial`, parallax, page transitions, tilt (`fx.js`), count-up - отключены при reduced motion.
+- Герой: автоплей не стартует при reduced motion; стрелки/точки - `data-i18n-aria` (`hero.prev/next/slide`).
+- **Skip-link** - `site.js` вставляет ссылку `a11y.skip` → `#main`.
+- **Focus** - глобальный `:focus-visible` (медный outline); формы - ring через `box-shadow`.
+- **Мобильное меню** - `aria-expanded`, `aria-controls`, `aria-hidden`, Escape закрывает.
+- **Язык** - кнопки RU/UZ/EN с `aria-pressed`.
+- **Perf** - `preconnect` к Google Fonts; LCP героя: `fetchpriority="high"`; ниже fold - `loading="lazy"`; `decoding="async"`.
 - `meta description` на каждой странице.
 
 ---
@@ -198,7 +198,7 @@ API: `window.BTT_CART = { openCart, openFav, addToCart, wireProductButtons, getF
 
 | Класс | Страница |
 |---|---|
-| `.home-flow` | index — секции после героя |
+| `.home-flow` | index - секции после героя |
 | `.catalog-flow` | catalog |
 | `.pdp-flow` | product |
 | `.about-flow` | about |
@@ -212,14 +212,14 @@ API: `window.BTT_CART = { openCart, openFav, addToCart, wireProductButtons, getF
 - **Новая страница:** скопировать шапку/футер, anti-FOUC, подключить CSS + скрипты по образцу.
 - **Новый товар:** запись в `BTT_PRODUCTS`, ключи `pN.name`/`pN.cat` в i18n, карточка в `catalog.html` с `data-cat`.
 - **PDP:** `product.html?id=pN`, данные подтянет `pdp.js`.
-- **Цвета/тип** — только через токены в `styles.css`.
-- **Фото** — локальные оптимизированные ассеты в `assets/`, поддержка автоматической синхронизации фото из CRM/D1 через `catalog-sync.js`.
+- **Цвета/тип** - только через токены в `styles.css`.
+- **Фото** - локальные оптимизированные ассеты в `assets/`, поддержка автоматической синхронизации фото из CRM/D1 через `catalog-sync.js`.
 
 ---
 
 ## 11. Figma и финальный QA
 
-Макет: [Bententrade — Главная](https://www.figma.com/design/4Y0JGexl7JctEsm9a9PVoB).
+Макет: [Bententrade - Главная](https://www.figma.com/design/4Y0JGexl7JctEsm9a9PVoB).
 
 ### Сверено с макетом / логикой
 

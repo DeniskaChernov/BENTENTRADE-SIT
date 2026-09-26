@@ -32,7 +32,7 @@ app.get("/", async (c) => {
   }
 });
 
-/** POST /api/reviews — submit a new review */
+/** POST /api/reviews - submit a new review */
 app.post("/", async (c) => {
   if (!(await rateLimit(c.env, `review:${clientIp(c)}`, 5, 3600))) {
     return c.json({ error: "rate_limited" }, 429);

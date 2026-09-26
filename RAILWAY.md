@@ -9,7 +9,7 @@
   `assets/products.js` + `assets/i18n.js`.
 
 Те же роуты Hono (`worker/routes/*.ts`), что были на Cloudflare, работают без
-изменений — привязки CF заменены адаптерами:
+изменений - привязки CF заменены адаптерами:
 
 | Cloudflare | Railway |
 |---|---|
@@ -33,7 +33,7 @@
    ```
 
    (в UI: *New Variable → Add Reference → выбрать вашу базу → DATABASE_URL*).
-   Порт слушать не нужно задавать вручную — Railway передаёт `PORT` сам, сервер
+   Порт слушать не нужно задавать вручную - Railway передаёт `PORT` сам, сервер
    его читает.
 
 3. **Задайте остальные переменные** (сервис → *Variables*):
@@ -52,7 +52,7 @@
    `/data`, и выставьте `MEDIA_DIR=/data`.
 
 5. **Деплой.** Запушьте в `main` (или *Deploy* в UI). В логах при первом старте
-   увидите `[db] migrated + seeded`, дальше — `[db] migrated`.
+   увидите `[db] migrated + seeded`, дальше - `[db] migrated`.
 
 6. **Назначьте первого администратора.** Зарегистрируйтесь на сайте (`/login`),
    затем один раз вызовите bootstrap:
@@ -71,8 +71,8 @@
 ## Проверка после деплоя
 
 ```bash
-curl https://<домен>/health              # {"ok":true,...} — Railway healthcheck
-curl https://<домен>/api/health           # {"ok":true,...} — с учётом БД
+curl https://<домен>/health              # {"ok":true,...} - Railway healthcheck
+curl https://<домен>/api/health           # {"ok":true,...} - с учётом БД
 curl https://<домен>/api/products?lang=ru  # список товаров из БД
 ```
 
@@ -80,12 +80,12 @@ curl https://<домен>/api/products?lang=ru  # список товаров и
 
 Это **не поломка сайта**, а особенность Railway при redeploy:
 
-1. При новом деплое старый контейнер получает **SIGTERM** (особенно заметно с **Volume** — два деплоя не могут монтировать один диск одновременно).
+1. При новом деплое старый контейнер получает **SIGTERM** (особенно заметно с **Volume** - два деплоя не могут монтировать один диск одновременно).
 2. Если процесс выходит с ошибкой (раньше так делал `npm start`), Railway помечает деплой как **Crashed** и шлёт email.
 
 **Что сделано в репозитории:** `railway.toml` с `healthcheckPath = "/health"`, endpoint `/health`, запуск через `node --import tsx` (без npm-обёртки), graceful `SIGTERM → exit 0`, bind на `::`.
 
-Если письма всё ещё приходят — в Railway → **Project Settings → Notifications** отключите «Deploy crashed», либо добавьте переменную сервиса `RAILWAY_DEPLOYMENT_DRAINING_SECONDS=10` для плавной остановки старого контейнера.
+Если письма всё ещё приходят - в Railway → **Project Settings → Notifications** отключите «Deploy crashed», либо добавьте переменную сервиса `RAILWAY_DEPLOYMENT_DRAINING_SECONDS=10` для плавной остановки старого контейнера.
 
 ## Локальный запуск (для разработки)
 
@@ -95,7 +95,7 @@ npm install
 npm start                 # http://localhost:8080
 ```
 
-Ручные команды БД (обычно не нужны — сервер делает это сам на старте):
+Ручные команды БД (обычно не нужны - сервер делает это сам на старте):
 
 ```bash
 npm run pg:migrate   # применить db/schema.pg.sql

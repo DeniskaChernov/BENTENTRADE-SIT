@@ -1,4 +1,4 @@
-/* Bententrade — cookie consent: no server requests until accepted. */
+/* Bententrade - cookie consent: no server requests until accepted. */
 (function () {
   "use strict";
 
@@ -189,7 +189,7 @@
   }
 
   function reject() {
-    /* «Только просмотр» — скрыть до перезагрузки; согласие не даётся, API заблокирован. */
+    /* «Только просмотр» - скрыть до перезагрузки; согласие не даётся, API заблокирован. */
     hideBanner();
     document.dispatchEvent(new CustomEvent("btt:cookies-rejected"));
   }

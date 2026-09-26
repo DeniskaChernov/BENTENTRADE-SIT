@@ -27,13 +27,13 @@
           position: i + 1,
           item: {
             "@type": "Product",
-            name: color + " — " + spec,
+            name: color + " - " + spec,
             sku: p.sku.replace("g", ""),
             image: base + p.img,
             brand: { "@type": "Brand", name: "Bententrade" },
             category: "Synthetic rattan profile",
             material: "PE rattan",
-            description: spec + " — " + color + " (" + t("pal.art") + " " + p.sku.replace("g", "") + ")",
+            description: spec + " - " + color + " (" + t("pal.art") + " " + p.sku.replace("g", "") + ")",
           },
         };
       }),

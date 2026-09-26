@@ -3,7 +3,7 @@ import type { Env, Variables } from "../types";
 
 const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
-/** GET /media/* — serve an object from R2 (public read). */
+/** GET /media/* - serve an object from R2 (public read). */
 app.get("/*", async (c) => {
   if (!c.env.MEDIA) return c.notFound();
   const key = c.req.path.replace(/^\/media\//, "");

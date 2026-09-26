@@ -21,7 +21,7 @@ for (const [lang, dict] of Object.entries(I18N)) {
       const trimmed = v.trim();
       // Check for dangling endings: e.g. ending in preposition, dash without following text, or ellipsis
       if (
-        trimmed.endsWith('—') ||
+        trimmed.endsWith('-') ||
         /\b(из|в|на|с|по|под|для|что|как|который|которая|которое|которую|о|об|от|до|при|со)\s*$/i.test(trimmed)
       ) {
         console.log(`  [Suspicious ending in ${lang}] ${k}: "${trimmed}"`);
@@ -53,7 +53,7 @@ for (const file of htmlFiles) {
   for (const hm of headingMatches) {
     const rawText = hm[2].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
     if (
-      rawText.endsWith('—') ||
+      rawText.endsWith('-') ||
       /\b(из|в|на|с|по|под|для|что|как|который|которая|которое|которую|о|об|от|до|при|со)\s*$/i.test(rawText)
     ) {
       console.log(`  [Suspicious heading in ${file} <${hm[1]}>]: "${rawText}"`);

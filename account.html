@@ -13,7 +13,7 @@
 <link rel="preload" href="assets/styles.css" as="style">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Unbounded:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Unbounded:wght@400;500;600;700;800;900&display=swap"></noscript>
-<title data-i18n-doc="meta.account.title">BTT — Личный кабинет</title>
+<title data-i18n-doc="meta.account.title">BTT - Личный кабинет</title>
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="stylesheet" href="assets/pages.css">
 <script>(function(){try{if(localStorage.getItem('btt_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();document.documentElement.classList.add('acc-loading');</script>
@@ -25,6 +25,7 @@
     <nav class="nav">
       <a href="index.html" data-i18n="nav.home">Главная</a>
       <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+      <a href="horeca.html" data-i18n="nav.horeca">HoReCa</a>
       <a href="blog.html" data-i18n="nav.blog">Статьи</a>
       <a href="about.html" data-i18n="nav.about">О нас</a>
       <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
@@ -48,6 +49,7 @@
 <nav class="mobile-drawer">
   <a href="index.html" data-i18n="nav.home">Главная</a>
   <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+  <a href="horeca.html" data-i18n="nav.horeca">HoReCa</a>
   <a href="blog.html" data-i18n="nav.blog">Статьи</a>
   <a href="about.html" data-i18n="nav.about">О нас</a>
   <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
@@ -89,7 +91,7 @@
       <div class="acc-user">
         <div class="acc-ava">?</div>
         <div>
-          <div class="nm" data-acc-user-name>—</div>
+          <div class="nm" data-acc-user-name>-</div>
           <div class="tier" data-acc-user-sub hidden></div>
         </div>
       </div>
@@ -130,7 +132,7 @@
 
       <!-- ORDERS -->
       <section class="acc-panel" data-acc-panel="orders">
-        <div class="acc-h"><div><h1 data-i18n="acc.nav.orders">Заказы</h1><p data-i18n="acc.ord.sub">История покупок. Нажмите на заказ — снизу раскроются этапы.</p></div></div>
+        <div class="acc-h"><div><h1 data-i18n="acc.nav.orders">Заказы</h1><p data-i18n="acc.ord.sub">История покупок. Нажмите на заказ - снизу раскроются этапы.</p></div></div>
         <p class="acc-empty" data-acc-ord-empty hidden data-i18n="acc.ord.empty">Заказов пока нет.</p>
       </section>
 
@@ -138,7 +140,7 @@
       <section class="acc-panel" data-acc-panel="wishlist">
         <div class="acc-h"><div><h1 data-i18n="acc.nav.wishlist">Избранное</h1><p data-i18n="acc.wish.sub">Товары, которые вы сохранили на потом.</p></div></div>
         <div class="acc-wish-empty" data-acc-wish-empty hidden>
-          <p data-i18n="acc.wish.empty">В избранном пока пусто. Сохраняйте товары из каталога — они появятся здесь.</p>
+          <p data-i18n="acc.wish.empty">В избранном пока пусто. Сохраняйте товары из каталога - они появятся здесь.</p>
           <a class="btn btn--ghost btn--sm" href="catalog.html" data-i18n="acc.wish.goto">Перейти в каталог</a>
         </div>
         <div class="prod-grid acc-wish-grid" data-acc-wishlist></div>
@@ -174,7 +176,7 @@
           <div class="acc-rows">
             <div class="acc-row"><span class="k" data-i18n="acc.set.theme">Тема оформления</span><span class="v" data-i18n="acc.set.themehint">Светлая / Тёмная</span><button class="btn btn--ghost btn--sm" data-theme-toggle data-i18n="acc.set.switch">Переключить</button></div>
             <div class="acc-row"><span class="k" data-i18n="acc.set.lang">Язык</span><span class="v" data-i18n="acc.set.langhint">Русский · O‘zbek · English</span><div class="lang lang--acc"><button data-lang="ru">RU</button><button data-lang="uz">UZ</button><button data-lang="en">EN</button></div></div>
-            <div class="acc-row"><span class="k" data-i18n="acc.set.news">Рассылка</span><span class="v" data-news-label data-i18n="acc.set.newson">Новинки и акции — включено</span><button class="switch" role="switch" aria-checked="true" data-news-toggle data-i18n-aria="acc.set.news" aria-label="Рассылка"><span class="switch__dot"></span></button></div>
+            <div class="acc-row"><span class="k" data-i18n="acc.set.news">Рассылка</span><span class="v" data-news-label data-i18n="acc.set.newson">Новинки и акции - включено</span><button class="switch" role="switch" aria-checked="true" data-news-toggle data-i18n-aria="acc.set.news" aria-label="Рассылка"><span class="switch__dot"></span></button></div>
           </div>
         </div>
       </section>
@@ -200,7 +202,7 @@
         </a>
       </div></div>
   </div>
-  <div class="site-foot__bottom"><span>BTT — мебель для дома и сада</span><span data-i18n="foot.copy">© 2026 BTT. Все права защищены.</span><span class="foot-legal"><a href="cookies.html" data-i18n="foot.cookies">ФАЙЛЫ COOKIE</a><a href="privacy.html" data-i18n="foot.privacy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></span></div>
+  <div class="site-foot__bottom"><span>BTT - мебель для дома и сада</span><span data-i18n="foot.copy">© 2026 BTT. Все права защищены.</span><span class="foot-legal"><a href="cookies.html" data-i18n="foot.cookies">ФАЙЛЫ COOKIE</a><a href="privacy.html" data-i18n="foot.privacy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></span></div>
 </footer>
 
 <script src="assets/util.js"></script>

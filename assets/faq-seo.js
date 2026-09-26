@@ -1,4 +1,4 @@
-/* Bententrade — FAQPage schema from i18n (updates on language change). */
+/* Bententrade - FAQPage schema from i18n (updates on language change). */
 (function () {
   "use strict";
   if (!document.querySelector("[data-faq]")) return;

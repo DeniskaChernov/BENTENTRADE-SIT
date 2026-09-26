@@ -8,7 +8,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-// Source is a JPEG (despite the .png name) — decode to RGBA.
+// Source is a JPEG (despite the .png name) - decode to RGBA.
 const decoded = jpeg.decode(readFileSync(join(root, "assets", "btt-logo-full.png")), { formatAsRGBA: true });
 const width = decoded.width, height = decoded.height;
 const src = new PNG({ width, height });

@@ -1,8 +1,8 @@
-# Bententrade — деплой и эксплуатация
+# Bententrade - деплой и эксплуатация
 
 Стек: **Cloudflare Workers** (Hono API + CRM) + **Static Assets** (статический сайт из корня репозитория) + **D1** (БД) + **R2** (медиа) + **KV** (сессии).
 
-Один воркер обслуживает и статику, и `/api/*`, и `/admin` — CORS не нужен, домен один.
+Один воркер обслуживает и статику, и `/api/*`, и `/admin` - CORS не нужен, домен один.
 
 ## 1. Предварительно
 
@@ -32,7 +32,7 @@ npx wrangler secret put TELEGRAM_BOT_TOKEN       # (опционально) ув
 npx wrangler secret put TELEGRAM_CHAT_ID         # (опционально) чат/канал для уведомлений
 ```
 
-Локально те же переменные лежат в `.dev.vars` (файл в `.gitignore`), пример — `.dev.vars.example`.
+Локально те же переменные лежат в `.dev.vars` (файл в `.gitignore`), пример - `.dev.vars.example`.
 
 ## 4. Миграции и наполнение БД
 
@@ -84,12 +84,12 @@ npm run db:backup -- --local
 
 - Типы: `npm run typecheck`
 - Lighthouse: запустите после деплоя по продакшен-URL
-  (`npx lighthouse https://<домен> --view`) — статический фронтенд, кэш ассетов
+  (`npx lighthouse https://<домен> --view`) - статический фронтенд, кэш ассетов
   и security-заголовки уже настроены на стороне воркера.
 
 ## Безопасность (уже реализовано)
 
-- Пароли — PBKDF2-SHA256 (Web Crypto), сессии — в KV, cookie `HttpOnly`.
+- Пароли - PBKDF2-SHA256 (Web Crypto), сессии - в KV, cookie `HttpOnly`.
 - Middleware доступа: `requireAuth` (кабинет), `requireAdmin` (CRM).
 - Rate-limit (KV, фиксированное окно): `/api/contact`, `/api/orders`, `/api/auth/*`.
 - Серверная валидация входных данных; цены заказа пересчитываются из БД.

@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE — category-driven catalog hero
+   BENTENTRADE - category-driven catalog hero
    Swaps hero photo + copy from ?cat= / #hash; filtering is
    owned by site.js (chips + btt:cat-change).
    ============================================================ */
@@ -23,9 +23,9 @@
   const CFG = {
     all: {
       img: CAT.all,
-      ru:{k:"Каталог",t:"Мебель для дома и сада",s:"Плетёные, пластиковые и мягкие стулья, а также обеденные столы — вся коллекция BTT."},
-      uz:{k:"Katalog",t:"Uy va bog‘ uchun mebel",s:"To‘qilgan, plastik va yumshoq stullar, shuningdek ovqatlanish stollari — butun BTT to‘plami."},
-      en:{k:"Catalog",t:"Home & garden furniture",s:"Wicker, plastic and upholstered chairs, plus dining tables — the complete BTT collection."}
+      ru:{k:"Каталог",t:"Мебель для дома и сада",s:"Плетёные, пластиковые и мягкие стулья, а также обеденные столы - вся коллекция BTT."},
+      uz:{k:"Katalog",t:"Uy va bog‘ uchun mebel",s:"To‘qilgan, plastik va yumshoq stullar, shuningdek ovqatlanish stollari - butun BTT to‘plami."},
+      en:{k:"Catalog",t:"Home & garden furniture",s:"Wicker, plastic and upholstered chairs, plus dining tables - the complete BTT collection."}
     },
     "wicker-chairs": {
       img: CAT["wicker-chairs"],
@@ -35,8 +35,8 @@
     },
     "plastic-chairs": {
       img: CAT["plastic-chairs"],
-      ru:{k:"Пластиковые стулья",t:"Практичные стулья из пластика",s:"Лёгкие, прочные и износостойкие стулья — идеальны для дома, сада, летних террас и заведений."},
-      uz:{k:"Plastik stullar",t:"Qulay va chidamli plastik stullar",s:"Yengil, mustahkam va har qanday sharoitga chidamli plastik stullar — uy va kafe uchun."},
+      ru:{k:"Пластиковые стулья",t:"Практичные стулья из пластика",s:"Лёгкие, прочные и износостойкие стулья - идеальны для дома, сада, летних террас и заведений."},
+      uz:{k:"Plastik stullar",t:"Qulay va chidamli plastik stullar",s:"Yengil, mustahkam va har qanday sharoitga chidamli plastik stullar - uy va kafe uchun."},
       en:{k:"Plastic chairs",t:"Practical plastic chairs",s:"Lightweight, heavy-duty chairs engineered for home, garden and commercial terraces."}
     },
     "upholstered-chairs": {
@@ -53,33 +53,33 @@
     },
     furniture: {
       img: CAT.furniture,
-      ru:{k:"Садовая мебель",t:"Мебель для сада и террасы",s:"Диваны, кресла и обеденные группы — всесезонные, на лёгком алюминиевом каркасе."},
-      uz:{k:"Bog‘ mebeli",t:"Bog‘ va terassa mebeli",s:"Divan, kreslo va ovqat to‘plamlari — har faslga mos, yengil alyumin karkasda."},
-      en:{k:"Garden furniture",t:"Furniture for garden & terrace",s:"Sofas, armchairs and dining sets — all-season, on a light aluminium frame."}
+      ru:{k:"Садовая мебель",t:"Мебель для сада и террасы",s:"Диваны, кресла и обеденные группы - всесезонные, на лёгком алюминиевом каркасе."},
+      uz:{k:"Bog‘ mebeli",t:"Bog‘ va terassa mebeli",s:"Divan, kreslo va ovqat to‘plamlari - har faslga mos, yengil alyumin karkasda."},
+      en:{k:"Garden furniture",t:"Furniture for garden & terrace",s:"Sofas, armchairs and dining sets - all-season, on a light aluminium frame."}
     },
     planterMix: {
       img: CAT.planterMix,
-      ru:{k:"Кашпо, сундуки и корзины",t:"Кашпо, сундуки и корзины",s:"Плетёные кашпо, сундуки и корзины для белья — с вкладышем, дренажом и крышкой для дома, балкона и сада."},
-      uz:{k:"Gultuvak, sandiq va savatlar",t:"Gultuvak, sandiq va savatlar",s:"To‘qilgan gultuvak, sandiq va kir savatlari — vkladish, drenaj va qopqoq bilan uy, balkon va bog‘ uchun."},
-      en:{k:"Planters, chests & baskets",t:"Planters, chests & baskets",s:"Woven planters, chests and laundry baskets — with a liner, drainage and lid for home, balcony and garden."}
+      ru:{k:"Кашпо, сундуки и корзины",t:"Кашпо, сундуки и корзины",s:"Плетёные кашпо, сундуки и корзины для белья - с вкладышем, дренажом и крышкой для дома, балкона и сада."},
+      uz:{k:"Gultuvak, sandiq va savatlar",t:"Gultuvak, sandiq va savatlar",s:"To‘qilgan gultuvak, sandiq va kir savatlari - vkladish, drenaj va qopqoq bilan uy, balkon va bog‘ uchun."},
+      en:{k:"Planters, chests & baskets",t:"Planters, chests & baskets",s:"Woven planters, chests and laundry baskets - with a liner, drainage and lid for home, balcony and garden."}
     },
     indoor: {
       img: CAT.indoor,
-      ru:{k:"Мебель для дома",t:"Мебель для дома",s:"Кресла-качалки, столики, комоды и стеллажи — для гостиной, спальни и балкона."},
-      uz:{k:"Uy mebeli",t:"Uy mebeli",s:"Tebranma kreslo, stol, komod va stellajlar — mehmonxona, yotoqxona va balkon uchun."},
-      en:{k:"Home furniture",t:"Home furniture",s:"Rocking chairs, coffee tables, dressers and shelving — for the living room, bedroom and balcony."}
+      ru:{k:"Мебель для дома",t:"Мебель для дома",s:"Кресла-качалки, столики, комоды и стеллажи - для гостиной, спальни и балкона."},
+      uz:{k:"Uy mebeli",t:"Uy mebeli",s:"Tebranma kreslo, stol, komod va stellajlar - mehmonxona, yotoqxona va balkon uchun."},
+      en:{k:"Home furniture",t:"Home furniture",s:"Rocking chairs, coffee tables, dressers and shelving - for the living room, bedroom and balcony."}
     },
     rattan: {
       img: CAT.rattan,
-      ru:{k:"Искусственный ротанг",t:"Изделия из искусственного ротанга",s:"Мебель, кашпо и корзины из полиэтиленового волокна — не выгорает, не гниёт и служит годами."},
-      uz:{k:"Sun’iy rotang",t:"Sun’iy rotangdan buyumlar",s:"Polietilen tolidan mebel, gultuvak va savatlar — rangini yo‘qotmaydi, chirimaydi va yillar xizmat qiladi."},
-      en:{k:"Synthetic rattan",t:"Pieces in synthetic rattan",s:"Furniture, planters and baskets in polyethylene fibre — won’t fade, won’t rot and lasts for years."}
+      ru:{k:"Искусственный ротанг",t:"Изделия из искусственного ротанга",s:"Мебель, кашпо и корзины из полиэтиленового волокна - не выгорает, не гниёт и служит годами."},
+      uz:{k:"Sun’iy rotang",t:"Sun’iy rotangdan buyumlar",s:"Polietilen tolidan mebel, gultuvak va savatlar - rangini yo‘qotmaydi, chirimaydi va yillar xizmat qiladi."},
+      en:{k:"Synthetic rattan",t:"Pieces in synthetic rattan",s:"Furniture, planters and baskets in polyethylene fibre - won’t fade, won’t rot and lasts for years."}
     },
     twisted: {
       img: CAT.twisted,
-      ru:{k:"Крученый ротанг",t:"Крученый ротанг",s:"Плетём катушки из полиэтиленового волокна — от тонкого декора до толстого каркаса. Разные диаметры и цвета."},
-      uz:{k:"Burma rotang",t:"Burma rotang",s:"Polietilen tolidan g‘iloflar to‘qiyamiz — nozik dekor yoki qalin karkas uchun. Turli diametr va ranglar."},
-      en:{k:"Twisted rattan",t:"Twisted rattan",s:"We weave coils from polyethylene fibre — from fine decor to heavy frame gauges. Multiple diameters and colours."}
+      ru:{k:"Крученый ротанг",t:"Крученый ротанг",s:"Плетём катушки из полиэтиленового волокна - от тонкого декора до толстого каркаса. Разные диаметры и цвета."},
+      uz:{k:"Burma rotang",t:"Burma rotang",s:"Polietilen tolidan g‘iloflar to‘qiyamiz - nozik dekor yoki qalin karkas uchun. Turli diametr va ranglar."},
+      en:{k:"Twisted rattan",t:"Twisted rattan",s:"We weave coils from polyethylene fibre - from fine decor to heavy frame gauges. Multiple diameters and colours."}
     }
   };
 

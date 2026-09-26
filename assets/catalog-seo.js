@@ -1,4 +1,4 @@
-/* Bententrade — catalog page structured data + category SEO meta. */
+/* Bententrade - catalog page structured data + category SEO meta. */
 (function () {
   "use strict";
 

@@ -1,4 +1,4 @@
-/* Bententrade — 2026 motion engine
+/* Bententrade - 2026 motion engine
    1. Section rhythm & scroll-driven progress (with native compositor fallback).
    2. Magnetic elastic button attraction on desktop.
    3. Animated number roll counters.

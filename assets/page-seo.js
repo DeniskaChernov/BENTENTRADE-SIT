@@ -35,7 +35,7 @@
       mainEntity: {
         "@type": "Organization",
         "@id": SITE + "/#org",
-        name: "BTT — мебель для дома и сада",
+        name: "BTT - мебель для дома и сада",
         description: t("meta.about.desc"),
         areaServed: { "@type": "Country", name: "Uzbekistan" },
       },
@@ -57,7 +57,7 @@
         {
           "@type": "LocalBusiness",
           "@id": SITE + "/#org",
-          name: "BTT — мебель для дома и сада",
+          name: "BTT - мебель для дома и сада",
           telephone: "+998771044422",
           email: "hello@bententrade.uz",
           url: SITE + "/",

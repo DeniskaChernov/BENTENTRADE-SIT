@@ -5,7 +5,7 @@ import { notifyTelegram } from "../telegram";
 
 const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
-/** POST /api/contact — store a contact request + notify Telegram. */
+/** POST /api/contact - store a contact request + notify Telegram. */
 app.post("/", async (c) => {
   if (!(await rateLimit(c.env, `contact:${clientIp(c)}`, 5, 3600))) {
     return c.json({ error: "rate_limited" }, 429);

@@ -89,7 +89,7 @@ app.get("/me", async (c) => {
   return c.json({ user });
 });
 
-/** POST /api/auth/bootstrap-admin — promote a user to admin using a one-time token.
+/** POST /api/auth/bootstrap-admin - promote a user to admin using a one-time token.
  *  Body: { email, token }. Token is compared to the ADMIN_BOOTSTRAP_TOKEN secret. */
 app.post("/bootstrap-admin", async (c) => {
   // Tight rate-limit: this endpoint checks a secret token, so throttle brute force.

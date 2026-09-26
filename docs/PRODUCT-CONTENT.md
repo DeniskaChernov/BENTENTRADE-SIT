@@ -1,4 +1,4 @@
-# BTT — Product Content & Media Guidelines
+# BTT - Product Content & Media Guidelines
 
 > **Публичное название бренда:** BTT - мебель для дома и сада  
 > **Версия:** 2.0  

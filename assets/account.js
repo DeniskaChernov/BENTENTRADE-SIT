@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE — account page (tabs, wishlist sync, mobile drawer)
+   BENTENTRADE - account page (tabs, wishlist sync, mobile drawer)
    ============================================================ */
 (function(){
   "use strict";
@@ -145,7 +145,7 @@
       return '<div class="order-item-row">' +
         (thumb ? '<img src="' + esc(thumb) + '" class="order-item-row__img" alt="" loading="lazy">' : '<div class="order-item-row__noimg"></div>') +
         '<div class="order-item-row__info">' +
-          '<div class="order-item-row__name">' + esc(it.name || "—") + '</div>' +
+          '<div class="order-item-row__name">' + esc(it.name || "-") + '</div>' +
           (opt ? '<div class="order-item-row__opt">' + esc(opt) + '</div>' : '') +
           '<div class="order-item-row__qty">' + (it.qty || 1) + ' × ' + esc(fmt(it.unit_price || 0, { raw: true })) + '</div>' +
         '</div>' +
@@ -405,7 +405,7 @@
 
     // Header / sidebar identity
     const nmeEl=document.querySelector("[data-acc-user-name]") || document.querySelector(".acc-user .nm");
-    if(nmeEl) nmeEl.textContent=u.name || u.email || "—";
+    if(nmeEl) nmeEl.textContent=u.name || u.email || "-";
     const ava=document.querySelector(".acc-ava");
     if(ava){ const initials=(u.name||u.email||"?").trim().split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase(); ava.textContent=initials||"?"; }
     const subEl=document.querySelector("[data-acc-user-sub]");

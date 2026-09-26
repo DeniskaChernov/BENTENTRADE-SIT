@@ -1,11 +1,11 @@
 
 /* ============================================================
-   BENTENTRADE — Typography & Fonts
+   BENTENTRADE - Typography & Fonts
    Brand Typefaces:
-   1. Montserrat (Google Fonts) — UI, Body, Buttons, Navigation, Details
-   2. Druk Text Wide Cyr (Display Wide) — Hero Headlines, Big Impact Titles
-   3. Unbounded (Google Fonts) — Geometric Display, Tags, Prices, Accents
-   4. Soyuz Grotesk (Self-hosted) — Iconic Editorial Titles, Journal Headers
+   1. Montserrat (Google Fonts) - UI, Body, Buttons, Navigation, Details
+   2. Druk Text Wide Cyr (Display Wide) - Hero Headlines, Big Impact Titles
+   3. Unbounded (Google Fonts) - Geometric Display, Tags, Prices, Accents
+   4. Soyuz Grotesk (Self-hosted) - Iconic Editorial Titles, Journal Headers
    ============================================================ */
 @font-face {
   font-family: 'Soyuz Grotesk';
@@ -31,7 +31,7 @@
 }
 
 :root{
-  /* Responsive breakpoints (reference values — CSS vars can't be used in @media):
+  /* Responsive breakpoints (reference values - CSS vars can't be used in @media):
      1100 catalog 4→3 | 980 hero/split | 900 acc/pdp | 720 filters | 600 hero mobile | 420 narrow */
   /* base palette */
   --ink:#1b1916;
@@ -52,7 +52,7 @@
   --on-dark-muted:rgba(244,241,234,.58);
   --on-dark-line:rgba(244,241,234,.14);
 
-  /* typography — 4 brand typefaces */
+  /* typography - 4 brand typefaces */
   --font-body:'Montserrat',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
   --font-display:'Unbounded','Montserrat',system-ui,sans-serif;
   --font-wide:'Druk Text Wide Cyr','Druk Wide Cyr','Druk Wide','Unbounded',system-ui,sans-serif;
@@ -83,7 +83,7 @@
   --ease-flow:cubic-bezier(.22,1,.36,1); /* @kind other */
   --ease-out:cubic-bezier(.16,1,.3,1); /* @kind other */
 
-  /* liquid surface (specular depth — NO frosted blur) */
+  /* liquid surface (specular depth - NO frosted blur) */
   --surface-bg:linear-gradient(135deg, #ffffff 0%, #faf3ea 100%);
   --surface-brd:var(--line);
   --liquid-sheen:
@@ -140,7 +140,7 @@
 }
 
 /* ============================================================
-   Liquid glass & spatial surfaces — glossy depth, NO blur
+   Liquid glass & spatial surfaces - glossy depth, NO blur
    ============================================================ */
 .liquid,.liquid-glass,.glass,.surface{
   position:relative;overflow:hidden;
@@ -162,7 +162,7 @@
 }
 .liquid--dark::before,.glass--dark::before{opacity:.35;}
 
-/* spatial UI — floating depth */
+/* spatial UI - floating depth */
 .spatial{transform:translateZ(0);transition:transform .5s var(--ease-out),box-shadow .5s ease;}
 .spatial:hover{transform:translateY(-2px);box-shadow:0 32px 64px -40px rgba(27,25,22,.28), var(--liquid-edge);}
 [data-theme="dark"] .spatial:hover{box-shadow:0 32px 64px -36px rgba(0,0,0,.55), var(--liquid-edge);}
@@ -171,7 +171,7 @@
 .bento{display:grid;gap:12px;}
 .bento--6{grid-template-columns:repeat(6,1fr);}
 
-/* toolbar strip — solid, no blur */
+/* toolbar strip - solid, no blur */
 .glass-bar{
   display:flex;align-items:center;gap:12px;flex-wrap:wrap;
   padding:0;background:transparent;border:0;box-shadow:none;
@@ -253,7 +253,7 @@ p{margin:0;text-wrap:pretty;}
 .muted{color:var(--muted);}
 
 /* ============================================================
-   Buttons & pills — luxury tactile feedback & micro-interactions
+   Buttons & pills - luxury tactile feedback & micro-interactions
    ============================================================ */
 .btn{
   position:relative;overflow:hidden;
@@ -317,7 +317,7 @@ p{margin:0;text-wrap:pretty;}
 }
 .pill--ghost{background:rgba(22,19,15,.5);border-color:rgba(255,255,255,.2);color:#fff;}
 
-/* dark-theme contrast fixes — copper only on primary CTAs, not active chips/nav */
+/* dark-theme contrast fixes - copper only on primary CTAs, not active chips/nav */
 [data-theme="dark"] .btn--dark{background:var(--ink-3);color:var(--on-dark);}
 [data-theme="dark"] .btn--dark:hover{background:var(--ink-2);}
 [data-theme="dark"] .btn--ghost:hover{background:var(--ink-3);color:var(--text);border-color:var(--line-2);}
@@ -373,7 +373,7 @@ p{margin:0;text-wrap:pretty;}
 
 /* Floating "pill" navbar animation on scroll (desktop). Same navbar, just the
    motion from the shadcn header: detaches from the top, narrows, rounds,
-   blurs and lifts on a shadow — with an ease-out transition. */
+   blurs and lifts on a shadow - with an ease-out transition. */
 @media (min-width:901px){
   .site-head{
     transition:top .5s var(--ease-flow);
@@ -713,7 +713,7 @@ p{margin:0;text-wrap:pretty;}
 }
 
 /* ============================================================
-   3D tilt layer (fx.js) — pointer-tracked perspective + glare
+   3D tilt layer (fx.js) - pointer-tracked perspective + glare
    ============================================================ */
 .tilt{transition:transform .55s cubic-bezier(.2,.7,.2,1);will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden;}
 .tilt.tilt--active{transition:transform .09s linear;}
@@ -729,7 +729,7 @@ p{margin:0;text-wrap:pretty;}
 .product:has(.tilt--active),.bento-tile:has(.tilt--active),.mood-tile:has(.tilt--active),.scene-card:has(.tilt--active),.cat-card:has(.tilt--active){position:relative;z-index:5;}
 
 /* ============================================================
-   Spotlight border glow (fx.js) — cursor-following copper sheen
+   Spotlight border glow (fx.js) - cursor-following copper sheen
    ============================================================ */
 @media (hover: hover) and (pointer: fine) {
   .product__media,
@@ -777,7 +777,7 @@ p{margin:0;text-wrap:pretty;}
   }
 }
 
-/* dark stat block — liquid glass over imagery */
+/* dark stat block - liquid glass over imagery */
 .stats{
   position:relative;color:var(--on-dark);border-radius:var(--r-lg);padding:32px 36px;display:flex;gap:40px;
   background:#1a1714;border:1px solid rgba(255,255,255,.08);
@@ -876,9 +876,9 @@ body.is-entering main{opacity:0;transform:translateY(20px);filter:blur(6px);}
 body.is-leaving main{opacity:0;transform:translateY(-12px);filter:blur(4px);transition-duration:.38s;}
 
 /* ============================================================
-   Scroll reveal — JS adds .is-in when the element enters view
+   Scroll reveal - JS adds .is-in when the element enters view
    (.reveal stays hidden only until then; a no-JS / failed-observer
-    fallback re-shows everything — see .no-reveal below)
+    fallback re-shows everything - see .no-reveal below)
    ============================================================ */
 html{scroll-behavior:smooth;}
 
@@ -891,7 +891,7 @@ html{scroll-behavior:smooth;}
 }
 .reveal.is-in{opacity:1;transform:none;filter:none;}
 
-/* directional + scale variants — add alongside .reveal */
+/* directional + scale variants - add alongside .reveal */
 .reveal--left{transform:translateX(-48px);}
 .reveal--right{transform:translateX(48px);}
 .reveal--scale{transform:scale(.94);}
@@ -929,7 +929,7 @@ html.no-js [data-stagger] > *{opacity:1;transform:none;filter:none;}
 }
 
 /* ============================================================
-   Accessibility — skip link & keyboard focus
+   Accessibility - skip link & keyboard focus
    ============================================================ */
 .skip-link{
   position:fixed;left:var(--gut);top:12px;z-index:300;

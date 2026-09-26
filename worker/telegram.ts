@@ -1,6 +1,6 @@
 import type { Env } from "./types";
 
-/** Best-effort Telegram notification. Never throws — notifications are
+/** Best-effort Telegram notification. Never throws - notifications are
  *  a side-channel and must not break the primary request. */
 export async function notifyTelegram(env: Env, text: string): Promise<void> {
   const token = env.TELEGRAM_BOT_TOKEN;
@@ -18,6 +18,6 @@ export async function notifyTelegram(env: Env, text: string): Promise<void> {
       }),
     });
   } catch {
-    // swallow — logged by observability at the fetch layer if enabled
+    // swallow - logged by observability at the fetch layer if enabled
   }
 }

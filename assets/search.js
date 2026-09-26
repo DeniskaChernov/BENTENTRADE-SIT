@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE — Spotlight glass search (site-wide)
+   BENTENTRADE - Spotlight glass search (site-wide)
    Opens on the header search button or Cmd/Ctrl+K.
    ============================================================ */
 (function(){
@@ -15,7 +15,7 @@
     return ru[key] != null ? ru[key] : key;
   }
 
-  // category index — slug matches the catalog chips (site.js) and routes to catalog ?cat=
+  // category index - slug matches the catalog chips (site.js) and routes to catalog ?cat=
   const CATS = [
     { slug:"wicker-chairs",     k:"cat.wickerChairs",     img:"assets/hero-garden-furniture.png" },
     { slug:"plastic-chairs",    k:"cat.plasticChairs",    img:"assets/stul-roero.png" },

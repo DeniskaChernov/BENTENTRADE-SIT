@@ -11,7 +11,7 @@ const cmd = process.argv[2];
       console.log("[pg] schema applied");
     } else if (cmd === "seed") {
       const seeded = await seedIfEmpty();
-      console.log(seeded ? "[pg] seeded from front-end data" : "[pg] products already present — skipped");
+      console.log(seeded ? "[pg] seeded from front-end data" : "[pg] products already present - skipped");
     } else {
       console.log("usage: tsx scripts/pg-cli.ts <migrate|seed>");
       process.exitCode = 1;

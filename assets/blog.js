@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE — public articles/blog (list + single), API-driven.
+   BENTENTRADE - public articles/blog (list + single), API-driven.
    Robust fail-safe dictionary, automatic fallback covers,
    3-column luxury grid, editorial hero story, instant search.
    ============================================================ */
@@ -631,7 +631,7 @@
     const readTime = getReadTime(a);
     const dateStr = fmtDate(a.published_at);
 
-    document.title = title + " — Bententrade";
+    document.title = title + " - Bententrade";
     setMeta("description", desc);
     setMeta("og:title", title, "property");
     setMeta("og:description", desc, "property");

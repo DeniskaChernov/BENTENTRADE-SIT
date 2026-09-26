@@ -62,7 +62,7 @@ function main() {
 
   lines.push("</urlset>", "");
   writeFileSync(join(root, "sitemap.xml"), lines.join("\n"), "utf8");
-  console.log("Wrote sitemap.xml —", products.length, "canonical products,", articles.length, "articles.");
+  console.log("Wrote sitemap.xml -", products.length, "canonical products,", articles.length, "articles.");
 }
 
 main();

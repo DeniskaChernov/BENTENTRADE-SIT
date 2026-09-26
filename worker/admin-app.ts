@@ -371,7 +371,7 @@ export const ADMIN_APP_JS = String.raw`
           orders.map(function(o){
             return '<tr>' +
               '<td><span style="font-weight:700;color:var(--copper)">' + esc(o.public_id) + '</span></td>' +
-              '<td><b>' + esc(o.customer_name || "—") + '</b><br><small class="hint">' + esc(o.customer_phone || "") + '</small></td>' +
+              '<td><b>' + esc(o.customer_name || "-") + '</b><br><small class="hint">' + esc(o.customer_phone || "") + '</small></td>' +
               '<td><span style="font-weight:700">' + fmtMoney(o.total, o.currency) + '</span></td>' +
               '<td><span class="pill ' + esc(o.status) + '">' + esc(o.status) + '</span></td>' +
               '<td><small class="hint">' + esc((o.created_at || "").slice(0, 16)) + '</small></td>' +
@@ -399,7 +399,7 @@ export const ADMIN_APP_JS = String.raw`
     dlg.className = "dlg-wide";
     dlg.innerHTML =
       '<div class="dlg-header">' +
-        '<h2>Медиатека — Выбор изображения</h2>' +
+        '<h2>Медиатека - Выбор изображения</h2>' +
         '<button class="dlg-close" id="mp-close">' + ICONS.close + '</button>' +
       '</div>' +
       '<div class="dlg-body">' +
@@ -612,7 +612,7 @@ export const ADMIN_APP_JS = String.raw`
             return '<tr data-row-id="' + esc(p.id) + '">' +
               '<td><img src="' + imgUrl + '" class="tbl-thumb" onerror="this.src=\'/assets/favicon.png\'"></td>' +
               '<td>' +
-                '<div class="tbl-prod-name">' + esc(p.name || "—") + '</div>' +
+                '<div class="tbl-prod-name">' + esc(p.name || "-") + '</div>' +
                 '<div class="tbl-prod-id">ID: ' + esc(p.id) + ' · сорт: ' + p.sort + (p.look ? ' · ' + esc(p.look) : '') + '</div>' +
               '</td>' +
               '<td><span class="pill">' + esc(catName(p.category)) + '</span></td>' +
@@ -826,9 +826,9 @@ export const ADMIN_APP_JS = String.raw`
                 '<div class="side-by-side">' +
                   '<div class="ref-panel">' +
                     '<div class="ref-panel-title">Оригинал (RU)</div>' +
-                    '<div style="font-weight:600;margin-bottom:6px" id="ref-name-uz">' + esc((byLang.ru && byLang.ru.name) || "—") + '</div>' +
-                    '<div style="font-size:12px;color:var(--muted);margin-bottom:8px" id="ref-cat-uz">' + esc((byLang.ru && byLang.ru.category_label) || "—") + '</div>' +
-                    '<div style="font-size:12px;line-height:1.5" id="ref-desc-uz">' + esc((byLang.ru && byLang.ru.description) || "—") + '</div>' +
+                    '<div style="font-weight:600;margin-bottom:6px" id="ref-name-uz">' + esc((byLang.ru && byLang.ru.name) || "-") + '</div>' +
+                    '<div style="font-size:12px;color:var(--muted);margin-bottom:8px" id="ref-cat-uz">' + esc((byLang.ru && byLang.ru.category_label) || "-") + '</div>' +
+                    '<div style="font-size:12px;line-height:1.5" id="ref-desc-uz">' + esc((byLang.ru && byLang.ru.description) || "-") + '</div>' +
                   '</div>' +
                   '<div>' +
                     '<div class="field">' +
@@ -855,9 +855,9 @@ export const ADMIN_APP_JS = String.raw`
                 '<div class="side-by-side">' +
                   '<div class="ref-panel">' +
                     '<div class="ref-panel-title">Original (RU)</div>' +
-                    '<div style="font-weight:600;margin-bottom:6px" id="ref-name-en">' + esc((byLang.ru && byLang.ru.name) || "—") + '</div>' +
-                    '<div style="font-size:12px;color:var(--muted);margin-bottom:8px" id="ref-cat-en">' + esc((byLang.ru && byLang.ru.category_label) || "—") + '</div>' +
-                    '<div style="font-size:12px;line-height:1.5" id="ref-desc-en">' + esc((byLang.ru && byLang.ru.description) || "—") + '</div>' +
+                    '<div style="font-weight:600;margin-bottom:6px" id="ref-name-en">' + esc((byLang.ru && byLang.ru.name) || "-") + '</div>' +
+                    '<div style="font-size:12px;color:var(--muted);margin-bottom:8px" id="ref-cat-en">' + esc((byLang.ru && byLang.ru.category_label) || "-") + '</div>' +
+                    '<div style="font-size:12px;line-height:1.5" id="ref-desc-en">' + esc((byLang.ru && byLang.ru.description) || "-") + '</div>' +
                   '</div>' +
                   '<div>' +
                     '<div class="field">' +
@@ -999,7 +999,7 @@ export const ADMIN_APP_JS = String.raw`
                   '<span class="store-card-badge" id="prev-badge">Садовая мебель</span>' +
                 '</div>' +
                 '<div class="store-card-body">' +
-                  '<div class="store-card-cat" id="prev-cat">Коллекция: —</div>' +
+                  '<div class="store-card-cat" id="prev-cat">Коллекция: -</div>' +
                   '<div class="store-card-name" id="prev-name">Название товара</div>' +
                   '<div class="store-card-pricing">' +
                     '<span class="store-card-now" id="prev-now">0 UZS</span>' +
@@ -1069,9 +1069,9 @@ export const ADMIN_APP_JS = String.raw`
 
       // Update RU references for UZ and EN
       if (lang === "uz" || lang === "en") {
-        var ruN = dlg.querySelector('.p-name-inp[data-lang="ru"]').value || "—";
-        var ruC = dlg.querySelector('.p-cat-inp[data-lang="ru"]').value || "—";
-        var ruD = dlg.querySelector('.p-desc-inp[data-lang="ru"]').value || "—";
+        var ruN = dlg.querySelector('.p-name-inp[data-lang="ru"]').value || "-";
+        var ruC = dlg.querySelector('.p-cat-inp[data-lang="ru"]').value || "-";
+        var ruD = dlg.querySelector('.p-desc-inp[data-lang="ru"]').value || "-";
         var refN = dlg.querySelector("#ref-name-" + lang); if (refN) refN.textContent = ruN;
         var refC = dlg.querySelector("#ref-cat-" + lang); if (refC) refC.textContent = ruC;
         var refD = dlg.querySelector("#ref-desc-" + lang); if (refD) refD.textContent = ruD;
@@ -1625,7 +1625,7 @@ export const ADMIN_APP_JS = String.raw`
                   '<span class="switch-dot"></span>' +
                 '</button>' +
               '</td>' +
-              '<td><small class="hint">' + esc((a.published_at || "—").slice(0, 10)) + '</small></td>' +
+              '<td><small class="hint">' + esc((a.published_at || "-").slice(0, 10)) + '</small></td>' +
               '<td style="text-align:right">' +
                 '<div style="display:flex;gap:5px;justify-content:flex-end">' +
                   '<a href="/article.html?slug=' + encodeURIComponent(a.slug) + '" target="_blank" class="btn ghost sm icon-only" title="Открыть в блоге">' + ICONS.external + '</a>' +
@@ -1751,8 +1751,8 @@ export const ADMIN_APP_JS = String.raw`
                 '<div class="side-by-side">' +
                   '<div class="ref-panel">' +
                     '<div class="ref-panel-title">Оригинал (RU)</div>' +
-                    '<div style="font-weight:700;margin-bottom:6px" id="art-ref-title-uz">' + esc((byLang.ru && byLang.ru.title) || "—") + '</div>' +
-                    '<div style="font-size:12px;color:var(--ink-soft);line-height:1.4" id="art-ref-exc-uz">' + esc((byLang.ru && byLang.ru.excerpt) || "—") + '</div>' +
+                    '<div style="font-weight:700;margin-bottom:6px" id="art-ref-title-uz">' + esc((byLang.ru && byLang.ru.title) || "-") + '</div>' +
+                    '<div style="font-size:12px;color:var(--ink-soft);line-height:1.4" id="art-ref-exc-uz">' + esc((byLang.ru && byLang.ru.excerpt) || "-") + '</div>' +
                   '</div>' +
                   '<div>' +
                     '<div class="field">' +
@@ -1775,8 +1775,8 @@ export const ADMIN_APP_JS = String.raw`
                 '<div class="side-by-side">' +
                   '<div class="ref-panel">' +
                     '<div class="ref-panel-title">Original (RU)</div>' +
-                    '<div style="font-weight:700;margin-bottom:6px" id="art-ref-title-en">' + esc((byLang.ru && byLang.ru.title) || "—") + '</div>' +
-                    '<div style="font-size:12px;color:var(--ink-soft);line-height:1.4" id="art-ref-exc-en">' + esc((byLang.ru && byLang.ru.excerpt) || "—") + '</div>' +
+                    '<div style="font-weight:700;margin-bottom:6px" id="art-ref-title-en">' + esc((byLang.ru && byLang.ru.title) || "-") + '</div>' +
+                    '<div style="font-size:12px;color:var(--ink-soft);line-height:1.4" id="art-ref-exc-en">' + esc((byLang.ru && byLang.ru.excerpt) || "-") + '</div>' +
                   '</div>' +
                   '<div>' +
                     '<div class="field">' +
@@ -1833,14 +1833,14 @@ export const ADMIN_APP_JS = String.raw`
             '<!-- CARD 3: GOOGLE SERP PREVIEW -->' +
             '<div class="editor-card">' +
               '<div class="editor-card-header">' +
-                '<div class="editor-card-title">🔍 Google Поиск — Сниппет предпросмотра</div>' +
+                '<div class="editor-card-title">🔍 Google Поиск - Сниппет предпросмотра</div>' +
                 '<span class="hint" id="serp-status">Оптимальная длина</span>' +
               '</div>' +
               '<div class="serp-box">' +
                 '<div class="serp-url">' +
                   '<span>https://bententrade.uz</span> › blog › <span id="serp-slug-preview">' + esc(a.slug || "statya") + '</span>' +
                 '</div>' +
-                '<div class="serp-title" id="serp-title-preview">' + esc((byLang.ru && byLang.ru.title) || "Заголовок статьи") + ' — Блог Bententrade</div>' +
+                '<div class="serp-title" id="serp-title-preview">' + esc((byLang.ru && byLang.ru.title) || "Заголовок статьи") + ' - Блог Bententrade</div>' +
                 '<div class="serp-desc" id="serp-desc-preview">' + esc((byLang.ru && byLang.ru.excerpt) || "Краткое описание публикации в поисковой выдаче Google…") + '</div>' +
               '</div>' +
               '<div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--muted)">' +
@@ -1898,7 +1898,7 @@ export const ADMIN_APP_JS = String.raw`
             '<div class="editor-card">' +
               '<div class="editor-card-title">✅ Чек-лист качества</div>' +
               '<div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;font-size:12.5px" id="a-checklist">' +
-                '<div id="chk-title" style="display:flex;align-items:center;gap:6px;color:var(--muted)">○ Заголовок задан (30–60 симв.)</div>' +
+                '<div id="chk-title" style="display:flex;align-items:center;gap:6px;color:var(--muted)">○ Заголовок задан (30-60 симв.)</div>' +
                 '<div id="chk-slug" style="display:flex;align-items:center;gap:6px;color:var(--muted)">○ Слаг (URL) статьи настроен</div>' +
                 '<div id="chk-exc" style="display:flex;align-items:center;gap:6px;color:var(--muted)">○ Краткий анонс (до 160 симв.)</div>' +
                 '<div id="chk-cover" style="display:flex;align-items:center;gap:6px;color:var(--muted)">○ Обложка статьи выбрана</div>' +
@@ -1970,8 +1970,8 @@ export const ADMIN_APP_JS = String.raw`
       dlg.querySelectorAll(".art-body").forEach(function(p){ p.style.display = p.getAttribute("data-lang") === lang ? "" : "none"; });
 
       if (lang === "uz" || lang === "en") {
-        var ruT = dlg.querySelector('.art-title[data-lang="ru"]').value || "—";
-        var ruE = dlg.querySelector('.art-exc[data-lang="ru"]').value || "—";
+        var ruT = dlg.querySelector('.art-title[data-lang="ru"]').value || "-";
+        var ruE = dlg.querySelector('.art-exc[data-lang="ru"]').value || "-";
         var rTitle = dlg.querySelector("#art-ref-title-" + lang); if (rTitle) rTitle.textContent = ruT;
         var rExc = dlg.querySelector("#art-ref-exc-" + lang); if (rExc) rExc.textContent = ruE;
       }
@@ -2144,7 +2144,7 @@ export const ADMIN_APP_JS = String.raw`
       var exc = dlg.querySelector('.art-exc[data-lang="ru"]').value.trim() || "Краткое описание статьи…";
 
       dlg.querySelector("#serp-slug-preview").textContent = slug;
-      dlg.querySelector("#serp-title-preview").textContent = title + " — Блог Bententrade";
+      dlg.querySelector("#serp-title-preview").textContent = title + " - Блог Bententrade";
       dlg.querySelector("#serp-desc-preview").textContent = exc;
 
       var tLen = title.length;
@@ -2618,7 +2618,7 @@ export const ADMIN_APP_JS = String.raw`
             return '<tr data-ord-id="' + o.id + '">' +
               '<td><span style="font-weight:700;color:var(--copper)">' + esc(o.public_id) + '</span>' + (o.delivery_method === "quick_order" ? '<span class="pill" style="font-size:10.5px;padding:1px 6px;background:rgba(184,115,51,0.15);color:var(--copper);font-weight:700;margin-left:6px">⚡ 1 клик</span>' : '') + '</td>' +
               '<td>' +
-                '<div style="font-weight:600">' + esc(o.customer_name || "—") + '</div>' +
+                '<div style="font-weight:600">' + esc(o.customer_name || "-") + '</div>' +
                 '<div class="hint">' + esc(o.customer_phone || "") + (o.customer_email ? ' · ' + esc(o.customer_email) : '') + '</div>' +
               '</td>' +
               '<td><span style="font-weight:700;font-size:15px">' + fmtMoney(o.total, o.currency) + '</span></td>' +
@@ -2700,8 +2700,8 @@ export const ADMIN_APP_JS = String.raw`
             '</div>' +
           '</div>' +
           '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;color:var(--ink-soft)">' +
-            '<div><b>Телефон:</b> ' + esc(o.customer_phone || "—") + '</div>' +
-            '<div><b>Email:</b> ' + esc(o.customer_email || "—") + '</div>' +
+            '<div><b>Телефон:</b> ' + esc(o.customer_phone || "-") + '</div>' +
+            '<div><b>Email:</b> ' + esc(o.customer_email || "-") + '</div>' +
             '<div><b>Способ получения:</b> <span class="pill" style="vertical-align:middle">' + (o.delivery_method === "pickup" ? "Самовывоз" : (o.delivery_method === "quick_order" ? "⚡ Быстрый заказ" : "Доставка курьером")) + '</span></div>' +
             '<div><b>Оплата:</b> <span class="pill" style="vertical-align:middle;background:var(--copper-bg);color:var(--copper);font-weight:600">' + (o.payment_method === "click_payme" ? "Click / Payme" : (o.payment_method === "card_or_invoice" ? "Перевод / Счёт" : "При получении")) + '</span></div>' +
             '<div><b>Валюта:</b> ' + esc(o.currency || "сум") + '</div>' +
@@ -2781,7 +2781,7 @@ export const ADMIN_APP_JS = String.raw`
                 (r.phone ? '<div>' + esc(r.phone) + '</div>' : '') +
                 (r.email ? '<div class="hint">' + esc(r.email) + '</div>' : '') +
               '</td>' +
-              '<td><div style="max-width:320px;line-height:1.4">' + esc(r.message || "—") + '</div></td>' +
+              '<td><div style="max-width:320px;line-height:1.4">' + esc(r.message || "-") + '</div></td>' +
               '<td>' +
                 '<select data-r-status="' + r.id + '" style="padding:4px 8px;font-size:12px">' +
                   '<option value="new" ' + (r.status === "new" ? 'selected' : '') + '>Новая</option>' +
@@ -2898,7 +2898,7 @@ export const ADMIN_APP_JS = String.raw`
             return '<tr>' +
               '<td><span style="font-family:monospace;color:var(--muted)">#' + r.id + '</span></td>' +
               '<td><strong>' + esc(r.product_name || r.product_id) + '</strong><br><span style="font-size:11px;color:var(--muted)">' + esc(r.product_id) + '</span></td>' +
-              '<td><strong>' + esc(r.author_name) + '</strong>' + verifiedBadge + '<br><span style="font-size:12px;color:var(--muted)">' + esc(r.city || "—") + '</span></td>' +
+              '<td><strong>' + esc(r.author_name) + '</strong>' + verifiedBadge + '<br><span style="font-size:12px;color:var(--muted)">' + esc(r.city || "-") + '</span></td>' +
               '<td><span style="color:#f2a71b;font-size:14px">' + stars + '</span></td>' +
               '<td><div style="max-width:320px;font-size:13px;line-height:1.4;color:var(--ink-soft)">' + esc(r.text) + '</div></td>' +
               '<td>' +

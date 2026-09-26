@@ -12,7 +12,7 @@ function syncProductsJs() {
 
   const masterCode = JSON.stringify(master, null, 2);
 
-  const jsContent = `/* BTT — мебель для дома и сада
+  const jsContent = `/* BTT - мебель для дома и сада
    Product master data (exact 15 SKUs, Single Source of Truth).
    All prices are in UZS. Generated from data/products-master.json. */
 (function(){

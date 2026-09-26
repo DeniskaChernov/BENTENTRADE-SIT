@@ -1,4 +1,4 @@
-# BTT — Admin Access & Security Model
+# BTT - Admin Access & Security Model
 
 > **Публичное название бренда:** BTT - мебель для дома и сада  
 > **Версия:** 2.0  

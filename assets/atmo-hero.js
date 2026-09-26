@@ -1,39 +1,39 @@
-/* Bententrade — mid-page atmosphere hero (lifestyle carousel) */
+/* Bententrade - mid-page atmosphere hero (lifestyle carousel) */
 (function(){
   const SLIDES = [
     {
       img: "assets/hero-garden-furniture.png",
       loc: { ru:"Терраса и сад", uz:"Terassa va bog‘", en:"Terrace & garden" },
       title: { ru:"Мебель для открытого воздуха", uz:"Ochiq havoda mebel", en:"Outdoor furniture" },
-      sub: { ru:"Комплекты, столы и кресла из искусственного ротанга — не выгорают на солнце и не боятся дождя.", uz:"Sun’iy rotangdan to‘plamlar, stollar va kreslolar — quyoshda rangini yo‘qotmaydi.", en:"Synthetic rattan sets, tables and chairs — they won’t fade in the sun or fear the rain." },
+      sub: { ru:"Комплекты, столы и кресла из искусственного ротанга - не выгорают на солнце и не боятся дождя.", uz:"Sun’iy rotangdan to‘plamlar, stollar va kreslolar - quyoshda rangini yo‘qotmaydi.", en:"Synthetic rattan sets, tables and chairs - they won’t fade in the sun or fear the rain." },
       href: "catalog.html?cat=furniture"
     },
     {
       img: "assets/scene-dining-beige.png",
       loc: { ru:"Гостиная", uz:"Mehmonxona", en:"Living room" },
       title: { ru:"Уют, в который хочется вернуться", uz:"Qaytishni xohlagan qulaylik", en:"Comfort you want to come home to" },
-      sub: { ru:"Мягкий свет, натуральные фактуры и мебель, которая живёт в интерьере, а не на белом фоне.", uz:"Yumshoq yorug‘lik, tabiiy tekstura va ichkarida yashaydigan mebel.", en:"Soft light, natural textures and furniture that lives in the room — not on a white backdrop." },
+      sub: { ru:"Мягкий свет, натуральные фактуры и мебель, которая живёт в интерьере, а не на белом фоне.", uz:"Yumshoq yorug‘lik, tabiiy tekstura va ichkarida yashaydigan mebel.", en:"Soft light, natural textures and furniture that lives in the room - not on a white backdrop." },
       href: "catalog.html?cat=indoor"
     },
     {
       img: "assets/hero-planter.png",
       loc: { ru:"Сад и балкон", uz:"Bog‘ va balkon", en:"Garden & balcony" },
       title: { ru:"Кашпо и корзины с характером", uz:"Xarakterli gultuvak va savatlar", en:"Planters and baskets with character" },
-      sub: { ru:"Плетёные кашпо, сундуки и корзины — для зелени, хранения и декора на улице и дома.", uz:"To‘qilgan gultuvaklar, sandiqlar va savatlar — bog‘ va uy uchun.", en:"Woven planters, chests and baskets — for greenery, storage and décor indoors and out." },
+      sub: { ru:"Плетёные кашпо, сундуки и корзины - для зелени, хранения и декора на улице и дома.", uz:"To‘qilgan gultuvaklar, sandiqlar va savatlar - bog‘ va uy uchun.", en:"Woven planters, chests and baskets - for greenery, storage and décor indoors and out." },
       href: "catalog.html?cat=planterMix"
     },
     {
       img: "assets/scene-dining-warm.png",
       loc: { ru:"Вечер дома", uz:"Uyda kechki vaqt", en:"Evening at home" },
       title: { ru:"Тепло вечернего света", uz:"Kechki yorug‘lik iliqligi", en:"The warmth of evening light" },
-      sub: { ru:"Обеденная зона как центр семейных встреч — спокойно, стильно, по-настоящему.", uz:"Oila uchrashuvlari markazi — xotirjam va zamonaviy.", en:"A dining zone as the heart of family gatherings — calm, stylish, real." },
+      sub: { ru:"Обеденная зона как центр семейных встреч - спокойно, стильно, по-настоящему.", uz:"Oila uchrashuvlari markazi - xotirjam va zamonaviy.", en:"A dining zone as the heart of family gatherings - calm, stylish, real." },
       href: "catalog.html?cat=indoor"
     },
     {
       img: "assets/scene-dining-teal.png",
       loc: { ru:"Кухня-столовая", uz:"Oshxona-zal", en:"Kitchen-dining" },
       title: { ru:"Современная открытая планировка", uz:"Zamonaviy ochiq reja", en:"Modern open plan" },
-      sub: { ru:"Светлые деревянные поверхности и акцентная обивка — интерьер с характером.", uz:"Yorug‘ yog‘och va ta’kidli qoplamalar — xarakterli interyer.", en:"Light wood surfaces and bold upholstery — an interior with character." },
+      sub: { ru:"Светлые деревянные поверхности и акцентная обивка - интерьер с характером.", uz:"Yorug‘ yog‘och va ta’kidli qoplamalar - xarakterli interyer.", en:"Light wood surfaces and bold upholstery - an interior with character." },
       href: "catalog.html?cat=indoor"
     },
     {

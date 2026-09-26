@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE — site interactions
+   BENTENTRADE - site interactions
    ============================================================ */
 (function(){
   const LANGS = ["ru","uz","en"];
@@ -66,7 +66,7 @@
       const art = card.querySelector(".r-profile__art b");
       if(!img || !color) return;
       const spec = d["pal.spec"] || "Полумесяц · 10 мм";
-      img.setAttribute("alt", spec + " — " + color.textContent.trim() + (art ? " (" + art.textContent + ")" : ""));
+      img.setAttribute("alt", spec + " - " + color.textContent.trim() + (art ? " (" + art.textContent + ")" : ""));
     });
     document.querySelectorAll(".lang button").forEach(b=>{
       b.classList.toggle("is-active", b.dataset.lang === lang);
@@ -512,7 +512,7 @@
       btn.addEventListener("click", e=>{
         e.preventDefault();
         const d = dict[getLang()] || dict.ru || {};
-        openManagerChat(d["mto.banner.msg"] || "Здравствуйте! Не нашёл нужный ротанг — хочу сделать на заказ.");
+        openManagerChat(d["mto.banner.msg"] || "Здравствуйте! Не нашёл нужный ротанг - хочу сделать на заказ.");
       });
     });
   }
@@ -1187,7 +1187,7 @@
       if(activePriceMin !== null || activePriceMax !== null){
         let pText = "";
         if(activePriceMin !== null && activePriceMax !== null){
-          pText = `${activePriceMin.toLocaleString("ru-RU")} – ${activePriceMax.toLocaleString("ru-RU")} сум`;
+          pText = `${activePriceMin.toLocaleString("ru-RU")} - ${activePriceMax.toLocaleString("ru-RU")} сум`;
         } else if(activePriceMin !== null){
           pText = `от ${activePriceMin.toLocaleString("ru-RU")} сум`;
         } else {
@@ -1447,7 +1447,7 @@
       if(searchNote){
         if(q){
           const d = dict[getLang()] || dict.ru || {};
-          const tpl = d["cat.searchNote"] || "«{q}» — {n}";
+          const tpl = d["cat.searchNote"] || "«{q}» - {n}";
           searchNote.textContent = tpl.replace("{q}", q).replace("{n}", String(shownCount));
           searchNote.style.display = "";
         } else {
@@ -1860,7 +1860,7 @@
               return;
             }
             if(ex && ex.status === 422){ fail(); }
-            else { done(); } // network/backend down — don't punish the visitor
+            else { done(); } // network/backend down - don't punish the visitor
           }
         } else {
           done();
@@ -1878,85 +1878,85 @@
       key: "city.tashkent",
       service: { ru: "Яндекс Доставка / Грузовое такси (Labo / Porter)", uz: "Yandex Yetkazish / Yuk taksisi (Labo / Porter)", en: "Yandex Freight / Cargo taxi (Labo / Porter)" },
       manager: { ru: "Менеджер согласует удобное время отгрузки и передаёт контакты водителя", uz: "Menejer qulay jo‘natish vaqtini kelishib oladi va haydovchi kontaktlarini beradi", en: "Manager coordinates dispatch time and provides driver contacts" },
-      time: { ru: "1–2 рабочих дня из наличия", uz: "Mavjudidan 1–2 ish kuni", en: "1–2 business days in stock" },
+      time: { ru: "1-2 рабочих дня из наличия", uz: "Mavjudidan 1-2 ish kuni", en: "1-2 business days in stock" },
       price: { ru: "По прямому тарифу сервиса доставки (Яндекс Доставка / Labo) без наценок", uz: "Yetkazish xizmati (Yandex Yetkazish / Labo) to‘g‘ridan-to‘g‘ri tarifi bo‘yicha ustamasiz", en: "At direct carrier rate (Yandex Freight / Labo) with zero markup" },
       pack: { ru: "В собранном виде · Защитная воздушно-пузырьковая плёнка и картон (сборщик не нужен)", uz: "Yig‘ilgan holda · Pufakchali plyonka va qalin karton himoyasi (usta shart emas)", en: "Fully assembled · Bubble wrap & heavy-duty carton (no assembler needed)" },
       assembly: { ru: "В собранном виде · Защитная воздушно-пузырьковая плёнка и картон (сборщик не нужен)", uz: "Yig‘ilgan holda · Pufakchali plyonka va qalin karton himoyasi (usta shart emas)", en: "Fully assembled · Bubble wrap & heavy-duty carton (no assembler needed)" },
-      pickup: { ru: "Склад BTT в Ташкенте — бесплатно, по предварительной договорённости. Поможем погрузить", uz: "Toshkentdagi BTT ombori — oldindan kelishilgan holda bepul. Ortishga yordam beramiz", en: "BTT warehouse in Tashkent — free by appointment. Loading assistance provided" },
+      pickup: { ru: "Склад BTT в Ташкенте - бесплатно, по предварительной договорённости. Поможем погрузить", uz: "Toshkentdagi BTT ombori - oldindan kelishilgan holda bepul. Ortishga yordam beramiz", en: "BTT warehouse in Tashkent - free by appointment. Loading assistance provided" },
       badge: { ru: "Сервисы: Яндекс / Labo", uz: "Xizmatlar: Yandex / Labo", en: "Carriers: Yandex / Labo" },
-      shortTime: { ru: "1–2 дня", uz: "1–2 kun", en: "1–2 days" }
+      shortTime: { ru: "1-2 дня", uz: "1-2 kun", en: "1-2 days" }
     },
     tashkent_reg: {
       key: "city.tashkent_reg",
       service: { ru: "Грузовое такси (Labo / Porter) или междугородний курьер", uz: "Yuk taksisi (Labo / Porter) yoki shaharlararo kuryer", en: "Cargo taxi (Labo / Porter) or regional courier" },
       manager: { ru: "Менеджер координирует отгрузку и оформление заказа", uz: "Menejer buyurtmani jo‘natish va rasmiylashtirishni muvofiqlashtiradi", en: "Manager coordinates dispatch and paperwork" },
-      time: { ru: "1–3 рабочих дня", uz: "1–3 ish kuni", en: "1–3 business days" },
+      time: { ru: "1-3 рабочих дня", uz: "1-3 ish kuni", en: "1-3 business days" },
       price: { ru: "По прямому тарифу перевозчика (Labo / Porter) без наценок", uz: "Tashuvchi (Labo / Porter) to‘g‘ridan-to‘g‘ri tarifi bo‘yicha ustamasiz", en: "At direct carrier rate (Labo / Porter) with zero markup" },
       pack: { ru: "В собранном виде · Усиленная защита углов и торцов, прямо до ворот дома", uz: "Yig‘ilgan holda · Burchak va chetlari kuchaytirilgan, to‘g‘ridan-to‘g‘ri darvozagacha", en: "Fully assembled · Reinforced edge protection, delivered to your gate" },
       assembly: { ru: "В собранном виде · Усиленная защита углов и торцов, прямо до ворот дома", uz: "Yig‘ilgan holda · Burchak va chetlari kuchaytirilgan, to‘g‘ridan-to‘g‘ri darvozagacha", en: "Fully assembled · Reinforced edge protection, delivered to your gate" },
-      pickup: { ru: "Склад BTT в Ташкенте — бесплатно по предварительной договорённости", uz: "Toshkentdagi BTT ombori — kelishuv bo‘yicha bepul", en: "BTT warehouse in Tashkent — free by appointment" },
+      pickup: { ru: "Склад BTT в Ташкенте - бесплатно по предварительной договорённости", uz: "Toshkentdagi BTT ombori - kelishuv bo‘yicha bepul", en: "BTT warehouse in Tashkent - free by appointment" },
       badge: { ru: "Сервисы: Грузовое такси / Labo", uz: "Xizmatlar: Yuk taksisi / Labo", en: "Carriers: Cargo Taxi / Labo" },
-      shortTime: { ru: "1–3 дня", uz: "1–3 kun", en: "1–3 days" }
+      shortTime: { ru: "1-3 дня", uz: "1-3 kun", en: "1-3 days" }
     },
     samarkand: {
       key: "city.samarkand",
       service: { ru: "Транспортная компания BTS Express / FarGo / EMU", uz: "BTS Express / FarGo / EMU transport kompaniyasi", en: "BTS Express / FarGo / EMU freight logistics" },
       manager: { ru: "Менеджер оформляет накладную транспортной службы и передаёт трек-номер для отслеживания", uz: "Menejer yuk xatini rasmiylashtiradi va kuzatuv trek-raqamini beradi", en: "Manager books freight waybill and provides tracking details" },
-      time: { ru: "3–5 рабочих дней с момента передачи перевозчику", uz: "Tashuvchiga topshirilgandan keyin 3–5 ish kuni", en: "3–5 business days from carrier handover" },
+      time: { ru: "3-5 рабочих дней с момента передачи перевозчику", uz: "Tashuvchiga topshirilgandan keyin 3-5 ish kuni", en: "3-5 business days from carrier handover" },
       price: { ru: "По тарифу транспортной компании (BTS Express / FarGo) без комиссий и наценок", uz: "Transport kompaniyasi (BTS Express / FarGo) tarifi bo‘yicha komissiya va ustamasiz", en: "At freight carrier tariff (BTS Express / FarGo) with zero markup" },
       pack: { ru: "В собранном виде · Защитная деревянная обрешётка + пузырьковая плёнка (сборка не требуется)", uz: "Yig‘ilgan holda · Yog‘och qoplama + pufakchali plyonka (yig‘ish talab qilinmaydi)", en: "Fully assembled · Wooden crating + bubble wrap (no assembly required)" },
       assembly: { ru: "В собранном виде · Защитная деревянная обрешётка + пузырьковая плёнка (сборка не требуется)", uz: "Yig‘ilgan holda · Yog‘och qoplama + pufakchali plyonka (yig‘ish talab qilinmaydi)", en: "Fully assembled · Wooden crating + bubble wrap (no assembly required)" },
       pickup: { ru: "Терминал BTS / FarGo в Самарканде или автодоставка перевозчиком до адреса", uz: "Samarqanddagi BTS / FarGo terminali yoki manzilgacha avtoyetkazish", en: "BTS / FarGo Samarkand depot or carrier delivery to address" },
       badge: { ru: "Сервисы: BTS Express / FarGo", uz: "Xizmatlar: BTS Express / FarGo", en: "Carriers: BTS Express / FarGo" },
-      shortTime: { ru: "3–5 дней", uz: "3–5 kun", en: "3–5 days" }
+      shortTime: { ru: "3-5 дней", uz: "3-5 kun", en: "3-5 days" }
     },
     bukhara: {
       key: "city.bukhara",
       service: { ru: "Транспортная служба BTS Express / FarGo (регулярный рейс)", uz: "BTS Express / FarGo transport xizmati (muntazam reys)", en: "BTS Express / FarGo freight service (scheduled transit)" },
       manager: { ru: "Менеджер оформляет накладную транспортной службы и передаёт трек-номер для отслеживания", uz: "Menejer yuk xatini rasmiylashtiradi va kuzatuv trek-raqamini beradi", en: "Manager books freight waybill and provides tracking details" },
-      time: { ru: "4–6 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 4–6 ish kuni", en: "4–6 business days from dispatch" },
+      time: { ru: "4-6 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 4-6 ish kuni", en: "4-6 business days from dispatch" },
       price: { ru: "По тарифу службы доставки (BTS Express / FarGo) без магазинных наценок", uz: "Yetkazish xizmati (BTS Express / FarGo) tarifi bo‘yicha ustamasiz", en: "At carrier service tariff (BTS Express / FarGo) with zero shop markup" },
       pack: { ru: "В собранном виде · Жёсткая фиксация в защитной таре против сколов (готов к использованию)", uz: "Yig‘ilgan holda · Qattiq fiksatsiyalangan qadoq (foydalanishga tayyor)", en: "Fully assembled · Rigid secure crating preventing any transit scuffs" },
       assembly: { ru: "В собранном виде · Жёсткая фиксация в защитной таре против сколов (готов к использованию)", uz: "Yig‘ilgan holda · Qattiq fiksatsiyalangan qadoq (foydalanishga tayyor)", en: "Fully assembled · Rigid secure crating preventing any transit scuffs" },
       pickup: { ru: "Пункт выдачи BTS / FarGo в Бухаре или доставка курьером службы", uz: "Buxorodagi BTS / FarGo tarqatish punkti yoki xizmat kuryeri", en: "Bukhara BTS / FarGo hub or carrier courier to door" },
       badge: { ru: "Сервисы: BTS / FarGo", uz: "Xizmatlar: BTS / FarGo", en: "Carriers: BTS / FarGo" },
-      shortTime: { ru: "4–6 дней", uz: "4–6 kun", en: "4–6 days" }
+      shortTime: { ru: "4-6 дней", uz: "4-6 kun", en: "4-6 days" }
     },
     fergana: {
       key: "city.fergana",
       service: { ru: "Транспортные службы BTS Express / FarGo / EMU (Ферганская долина)", uz: "BTS Express / FarGo / EMU xizmatlari (Farg‘ona vodiysi)", en: "BTS Express / FarGo / EMU freight carriers (Fergana Valley)" },
       manager: { ru: "Менеджер оформляет накладную транспортной службы и передаёт трек-номер для отслеживания", uz: "Menejer yuk xatini rasmiylashtiradi va kuzatuv trek-raqamini beradi", en: "Manager books freight waybill and provides tracking details" },
-      time: { ru: "3–5 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 3–5 ish kuni", en: "3–5 business days from dispatch" },
+      time: { ru: "3-5 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 3-5 ish kuni", en: "3-5 business days from dispatch" },
       price: { ru: "По тарифу транспортных служб (BTS / FarGo / EMU) без наценок", uz: "Transport xizmatlari (BTS / FarGo / EMU) tarifi bo‘yicha ustamasiz", en: "At carrier service tariffs (BTS / FarGo / EMU) with zero markup" },
       pack: { ru: "В собранном виде · Защитная обрешётка для безопасной перевозки через перевал", uz: "Yig‘ilgan holda · Dovondan xavfsiz o‘tish uchun maxsus yog‘och qoplama", en: "Fully assembled · Reinforced wooden crate for mountain pass transit" },
       assembly: { ru: "В собранном виде · Защитная обрешётка для безопасной перевозки через перевал", uz: "Yig‘ilgan holda · Dovondan xavfsiz o‘tish uchun maxsus yog‘och qoplama", en: "Fully assembled · Reinforced wooden crate for mountain pass transit" },
       pickup: { ru: "Пункты выдачи в Фергане, Андижане, Намангане или доставка до адреса", uz: "Farg‘ona, Andijon, Namangandagi punktlar yoki manzilgacha yetkazish", en: "Pick-up hubs across Fergana, Andijan, Namangan or address delivery" },
       badge: { ru: "Сервисы: BTS / FarGo / EMU", uz: "Xizmatlar: BTS / FarGo / EMU", en: "Carriers: BTS / FarGo / EMU" },
-      shortTime: { ru: "3–5 дней", uz: "3–5 kun", en: "3–5 days" }
+      shortTime: { ru: "3-5 дней", uz: "3-5 kun", en: "3-5 days" }
     },
     south: {
       key: "city.south",
       service: { ru: "Транспортные службы BTS Express / FarGo (Карши, Навои, Термез)", uz: "BTS Express / FarGo xizmatlari (Qarshi, Navoiy, Termiz)", en: "BTS Express / FarGo freight (Karshi, Navoi, Termez)" },
       manager: { ru: "Менеджер оформляет накладную транспортной службы и передаёт трек-номер для отслеживания", uz: "Menejer yuk xatini rasmiylashtiradi va kuzatuv trek-raqamini beradi", en: "Manager books freight waybill and provides tracking details" },
-      time: { ru: "5–7 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 5–7 ish kuni", en: "5–7 business days from dispatch" },
+      time: { ru: "5-7 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 5-7 ish kuni", en: "5-7 business days from dispatch" },
       price: { ru: "По прямому тарифу перевозчика (BTS Express / FarGo) без комиссий", uz: "Tashuvchi (BTS Express / FarGo) to‘g‘ridan-to‘g‘ri tarifi bo‘yicha komissiyasiz", en: "At direct carrier rate (BTS Express / FarGo) with zero commission" },
       pack: { ru: "В собранном виде · Многослойная упаковка и обрешётка для дальних дистанций", uz: "Yig‘ilgan holda · Uzoq masofalar uchun ko‘p qavatli o‘ram va qoplama", en: "Fully assembled · Heavy-duty long-haul protective crating" },
       assembly: { ru: "В собранном виде · Многослойная упаковка и обрешётка для дальних дистанций", uz: "Yig‘ilgan holda · Uzoq masofalar uchun ko‘p qavatli o‘ram va qoplama", en: "Fully assembled · Heavy-duty long-haul protective crating" },
       pickup: { ru: "Региональные терминалы BTS / FarGo или автокурьер до объекта", uz: "BTS / FarGo mintaqaviy terminallari yoki ob’ektgacha avtokuryer", en: "Regional BTS / FarGo terminals or vehicle courier to site" },
       badge: { ru: "Сервисы: BTS / FarGo", uz: "Xizmatlar: BTS / FarGo", en: "Carriers: BTS / FarGo" },
-      shortTime: { ru: "5–7 дней", uz: "5–7 kun", en: "5–7 days" }
+      shortTime: { ru: "5-7 дней", uz: "5-7 kun", en: "5-7 days" }
     },
     khorezm: {
       key: "city.khorezm",
       service: { ru: "Грузовая транспортная служба BTS Express / EMU (Ургенч, Хива, Нукус)", uz: "BTS Express / EMU yuk transport xizmati (Urganch, Xiva, Nukus)", en: "BTS Express / EMU freight service (Urgench, Khiva, Nukus)" },
       manager: { ru: "Менеджер оформляет накладную транспортной службы и передаёт трек-номер для отслеживания", uz: "Menejer yuk xatini rasmiylashtiradi va kuzatuv trek-raqamini beradi", en: "Manager books freight waybill and provides tracking details" },
-      time: { ru: "5–8 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 5–8 ish kuni", en: "5–8 business days from dispatch" },
+      time: { ru: "5-8 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 5-8 ish kuni", en: "5-8 business days from dispatch" },
       price: { ru: "По прямому тарифу транспортной компании без наценок", uz: "Transport kompaniyasi to‘g‘ridan-to‘g‘ri tarifi bo‘yicha ustamasiz", en: "At direct carrier tariff with zero markup" },
       pack: { ru: "В собранном виде · Усиленный деревянный каркас (сборка на месте не требуется)", uz: "Yig‘ilgan holda · Kuchaytirilgan yog‘och karkas (joyida yig‘ish shart emas)", en: "Fully assembled · Reinforced wooden transit frame (no on-site assembly)" },
       assembly: { ru: "В собранном виде · Усиленный деревянный каркас (сборка на месте не требуется)", uz: "Yig‘ilgan holda · Kuchaytirilgan yog‘och karkas (joyida yig‘ish shart emas)", en: "Fully assembled · Reinforced wooden transit frame (no on-site assembly)" },
       pickup: { ru: "Пункты выдачи в Ургенче и Нукусе или доставка до ворот", uz: "Urganch va Nukusdagi tarqatish punktlari yoki darvozagacha yetkazish", en: "Urgench & Nukus hubs or direct delivery to gate" },
       badge: { ru: "Сервисы: BTS Express / EMU", uz: "Xizmatlar: BTS Express / EMU", en: "Carriers: BTS Express / EMU" },
-      shortTime: { ru: "5–8 дней", uz: "5–8 kun", en: "5–8 days" }
+      shortTime: { ru: "5-8 дней", uz: "5-8 kun", en: "5-8 days" }
     }
   };
   window.BTT_DELIVERY_CITIES = DELIVERY_CITIES;

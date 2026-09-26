@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE — Service Worker (PWA Offline Cache)
+   BENTENTRADE - Service Worker (PWA Offline Cache)
    Version: 20260922-fonts
    ============================================================ */
 const CACHE_NAME = "btt-shell-20260926-v2";

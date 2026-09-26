@@ -7,7 +7,7 @@ function pickLang(v: string | undefined): string {
   return v === "uz" || v === "en" ? v : "ru";
 }
 
-/** GET /api/articles?lang=ru — published articles. */
+/** GET /api/articles?lang=ru - published articles. */
 app.get("/", async (c) => {
   const lang = pickLang(c.req.query("lang"));
   const { results } = await c.env.DB.prepare(

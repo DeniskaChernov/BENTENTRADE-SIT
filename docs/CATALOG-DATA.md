@@ -1,4 +1,4 @@
-# BTT — Catalog Data & Single Source of Truth (SSOT)
+# BTT - Catalog Data & Single Source of Truth (SSOT)
 
 > **Публичное название бренда:** BTT - мебель для дома и сада  
 > **Версия:** 2.0 (Архитектурная консолидация)  
@@ -15,9 +15,9 @@ data/products-master.json
 ```
 
 Все производные артефакты **генерируются строго из него**:
-1. `assets/products.js` — клиентский каталог для витрины (`window.BTT_PRODUCTS`, `window.BTT_PRODUCT_MASTER`, `window.BTT_CANONICAL_SLUGS`).
-2. `migrations/seed.sql` — начальный сид для базы данных Cloudflare D1 (таблицы `products`, `product_aliases`, `product_i18n`, `media`).
-3. `sitemap.xml` — канонические URL страниц товаров (`/catalog/:slug`) без устаревших параметров вида `?id=...`.
+1. `assets/products.js` - клиентский каталог для витрины (`window.BTT_PRODUCTS`, `window.BTT_PRODUCT_MASTER`, `window.BTT_CANONICAL_SLUGS`).
+2. `migrations/seed.sql` - начальный сид для базы данных Cloudflare D1 (таблицы `products`, `product_aliases`, `product_i18n`, `media`).
+3. `sitemap.xml` - канонические URL страниц товаров (`/catalog/:slug`) без устаревших параметров вида `?id=...`.
 
 Для синхронизации используется команда:
 ```bash
@@ -81,7 +81,7 @@ npm run validate
 1. **Ровно 15 канонических товаров** (SKU). Никаких дубликатов, тестовых записей и скрытых позиций.
 2. **Гарантированная уникальность `slug` и `legacyId`**.
 3. **Отсутствие неподтвержденных маркетинговых обещаний**:
-   - `maxLoad: null` — максимальная нагрузка не придумывается (удалены неподтвержденные «выдерживает 120/150/180 кг»).
+   - `maxLoad: null` - максимальная нагрузка не придумывается (удалены неподтвержденные «выдерживает 120/150/180 кг»).
    - Из описаний удалены эмоциональные buzzwords («Премиальный», «Люкс», «Ударопрочный»).
 4. **Статус наличия (`status`)**:
    - По умолчанию установлен `"unknown"` («Наличие уточняйте»).
@@ -116,7 +116,7 @@ npm run validate
 
 ## 4. Таблица алиасов (`product_aliases`)
 
-Для обратной совместимости со старыми ссылками (`p1`–`p15`), в Cloudflare D1 создана таблица `product_aliases`:
+Для обратной совместимости со старыми ссылками (`p1`-`p15`), в Cloudflare D1 создана таблица `product_aliases`:
 
 ```sql
 CREATE TABLE IF NOT EXISTS product_aliases (

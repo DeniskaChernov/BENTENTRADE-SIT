@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE — tiny front-end API client (same-origin Worker).
+   BENTENTRADE - tiny front-end API client (same-origin Worker).
    All endpoints live under /api/* on the same domain, so there is
    no CORS and no base URL to configure. Every call degrades
    gracefully: if the backend is unavailable, callers fall back to

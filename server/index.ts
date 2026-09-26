@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE — Node server entry (Railway).
+   BENTENTRADE - Node server entry (Railway).
    Same Hono routes as the Cloudflare Worker, but running on Node
    with PostgreSQL + filesystem media, and serving the static site.
    ============================================================ */
@@ -37,10 +37,10 @@ app.use("*", async (c: Context, next: Next) => {
   try {
     applySecurityHeaders(c.res.headers, c.req.path);
     applyCacheHeaders(c.res.headers, c.req.path);
-  } catch (e) { /* immutable headers — ignore */ }
+  } catch (e) { /* immutable headers - ignore */ }
 });
 
-// Health check (always 200 — process is up; used by Railway before traffic switch).
+// Health check (always 200 - process is up; used by Railway before traffic switch).
 app.get("/health", (c) => c.json({ ok: true, ts: Date.now() }));
 
 // Flipped to true once the DB has migrated. Until then API calls (except the
@@ -128,11 +128,11 @@ const ENV = buildEnv();
 const port = Number(process.env.PORT || 8080);
 
 async function boot() {
-  // Listen first — Railway probes PORT during deploy; DB init must not block HTTP.
+  // Listen first - Railway probes PORT during deploy; DB init must not block HTTP.
   serve({
     fetch: (req: Request) => app.fetch(req, ENV),
     port,
-    // Bind all interfaces. Do NOT use process.env.HOSTNAME — Railway sets it to the container id.
+    // Bind all interfaces. Do NOT use process.env.HOSTNAME - Railway sets it to the container id.
     hostname: "0.0.0.0",
   }, (info) => {
     console.log(`Bententrade server on http://${info.address}:${info.port}`);
@@ -150,7 +150,7 @@ async function boot() {
 }
 
 // Railway stops the previous container with SIGTERM on every redeploy (0s drain by default).
-// Exit 0 so the old deploy is "Completed", not "Crashed" — avoids false crash emails.
+// Exit 0 so the old deploy is "Completed", not "Crashed" - avoids false crash emails.
 function onShutdown(signal: string) {
   console.log(`[server] ${signal} received, exiting`);
   process.exit(0);

@@ -22,7 +22,7 @@ app.use("*", async (c, next) => {
   try {
     applySecurityHeaders(c.res.headers, c.req.path);
     applyCacheHeaders(c.res.headers, c.req.path);
-  } catch (e) { /* immutable response headers — ignore */ }
+  } catch (e) { /* immutable response headers - ignore */ }
 });
 
 app.onError((err, c) => {

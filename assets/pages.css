@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE — page layouts
+   BENTENTRADE - page layouts
    ============================================================ */
 
 /* ---------- Mobile drawer ---------- */
@@ -158,7 +158,7 @@
 }
 .hero__img.is-on{opacity:1;transform:scale(1);}
 
-/* one gradient over the whole card — no inner panels */
+/* one gradient over the whole card - no inner panels */
 .hero__shade{
   position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
@@ -266,13 +266,13 @@
 }
 @keyframes heroText{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
 
-/* ================= PRODUCT LINES — Apple bento, image-fill tiles ================= */
+/* ================= PRODUCT LINES - Apple bento, image-fill tiles ================= */
 .lines{position:relative;padding:0;}
 .lines__head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:clamp(40px,5vw,64px);flex-wrap:wrap;}
 .lines__head .eyebrow{color:var(--copper);}
 .lines__head h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,3.4vw,44px);letter-spacing:-.03em;margin-top:14px;color:var(--text);text-wrap:balance;}
 
-/* 6-col bento — fixed row heights = perfectly even alignment */
+/* 6-col bento - fixed row heights = perfectly even alignment */
 .lines__bento{
   display:grid;
   grid-template-columns:repeat(6,1fr);
@@ -337,7 +337,7 @@
   .bento-tile:nth-child(1){min-height:min(68vw,340px);}
 }
 
-/* ================= ATMOSPHERE HERO — mid-page lifestyle carousel ================= */
+/* ================= ATMOSPHERE HERO - mid-page lifestyle carousel ================= */
 .atmo-hero{padding-block:clamp(8px,2vw,24px);position:relative;}
 .atmo-hero__card{
   position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;
@@ -419,7 +419,7 @@
 .split__mark svg{width:24px;height:24px;}
 .split__glass .lead{margin:0;color:var(--text);opacity:.9;max-width:46ch;}
 
-/* ================= MOOD BENTO — lifestyle scenes ================= */
+/* ================= MOOD BENTO - lifestyle scenes ================= */
 .mood{display:flex;flex-direction:column;gap:clamp(28px,4vw,48px);}
 .mood > .display-3{margin:0;max-width:18ch;}
 .mood__bento{
@@ -588,7 +588,7 @@ a.mood-tile:hover img{transform:scale(1.04);}
 .custom-order__text p{margin:0;color:var(--muted);font-size:clamp(14px,1.2vw,16px);max-width:42ch;line-height:1.5;}
 .section--tight{padding-block:clamp(16px,2.5vw,28px);}
 
-/* ================= ABOUT — CUSTOM ORDER ================= */
+/* ================= ABOUT - CUSTOM ORDER ================= */
 .ab-custom{
   display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,40px);align-items:center;
   padding:clamp(28px,4vw,44px);border-radius:var(--r-xl);
@@ -744,7 +744,7 @@ a.mood-tile:hover img{transform:scale(1.04);}
 }
 
 
-/* home collection — filter bar */
+/* home collection - filter bar */
 .home-filters{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:clamp(48px,6vw,72px);}
 .home-filters--solo{margin-bottom:clamp(40px,5vw,56px);}
 .home-filters .glass-bar{margin-left:auto;padding:10px 14px;border:none;background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;}
@@ -761,7 +761,7 @@ a.mood-tile:hover img{transform:scale(1.04);}
   .home-filters .cat-chips::-webkit-scrollbar{display:none;}
 }
 
-/* ================= HOME — shop by type (split block) ================= */
+/* ================= HOME - shop by type (split block) ================= */
 .type-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,18px);}
 .split .type-strip{margin-top:0;}
 .type-card{
@@ -816,7 +816,7 @@ a.mood-tile:hover img{transform:scale(1.04);}
   .type-card__ic{width:clamp(48px,34%,60px);height:clamp(48px,34%,60px);}
 }
 
-/* ================= HOME — section rhythm ================= */
+/* ================= HOME - section rhythm ================= */
 .home-flow .section--after-hero{padding-top:clamp(40px,5vw,64px);}
 .home-flow .section--compact{padding-top:0;}
 .home-flow .section--split-y{padding-block:clamp(40px,6vw,88px);}
@@ -827,11 +827,11 @@ a.mood-tile:hover img{transform:scale(1.04);}
   .home-flow .section--split-y{padding-block:clamp(32px,8vw,56px);}
 }
 
-/* ================= CATALOG — section rhythm ================= */
+/* ================= CATALOG - section rhythm ================= */
 .catalog-flow .section--catalog{padding-top:clamp(28px,4vw,44px);}
 .pdp-flow .section--compact{padding-top:0;}
 
-/* inner pages — section rhythm */
+/* inner pages - section rhythm */
 .about-flow .section--compact,
 .contacts-flow .section--compact{padding-top:0;}
 .contacts-flow .section--after-hero{padding-top:clamp(40px,5vw,64px);}
@@ -1084,7 +1084,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 
 /* catalog sticky toolbar 2.0 */
 /* ============================================================
-   CATALOG 4.0 — LEFT STICKY FILTER LAYOUT & DRAWER
+   CATALOG 4.0 - LEFT STICKY FILTER LAYOUT & DRAWER
    ============================================================ */
 .catalog-layout{
   display:grid;grid-template-columns:280px minmax(0,1fr);gap:clamp(28px, 3vw, 44px);
@@ -2833,7 +2833,7 @@ a.dl-name:hover{color:var(--copper);}
   .blog-featured__body{padding:24px 20px;}
 }
 
-/* Blog Grid — 3 IN A ROW ON DESKTOP */
+/* Blog Grid - 3 IN A ROW ON DESKTOP */
 .blog-empty,.blog-state{color:var(--muted);text-align:center;padding:48px 0;}
 .blog-state--error{display:flex;flex-direction:column;align-items:center;gap:16px;}
 .blog-state--loading{opacity:.72;}

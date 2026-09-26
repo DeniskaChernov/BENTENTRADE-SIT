@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE — tiny shared client helpers.
+   BENTENTRADE - tiny shared client helpers.
    Loaded before the feature scripts so they can reuse one copy of
    the language/i18n/escape helpers and the product-card SVG icons
    instead of each redefining them. Feature scripts still keep a

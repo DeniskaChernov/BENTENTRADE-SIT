@@ -1,4 +1,4 @@
-/* Bententrade — 2026 luxury visual interactions layer
+/* Bententrade - 2026 luxury visual interactions layer
    1. Pointer-tracked perspective tilt & specular glare on media cards.
    2. Luxury ambient copper spotlight tracking cursor coordinates (--glow-x, --glow-y).
    3. Micro-sparkle particle burst engine on interactive clicks.

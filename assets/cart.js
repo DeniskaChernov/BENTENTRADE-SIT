@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE — cart + favorites (site-wide, persistent)
+   BENTENTRADE - cart + favorites (site-wide, persistent)
    Self-injecting slide-in drawers. State lives in localStorage:
      btt_cart  → { id: {name, price, img, qty} }
      btt_favs  → { id: {name, price, img} }
@@ -35,15 +35,15 @@
   /* ---------- i18n helper ---------- */
   function lang(){ const s=localStorage.getItem("btt_lang"); return ["ru","uz","en"].includes(s)?s:"ru"; }
   const STR = {
-    ru:{cart:"Корзина",empty:"Корзина пуста",emptyHint:"Добавьте мебель из каталога — она появится здесь.",
+    ru:{cart:"Корзина",empty:"Корзина пуста",emptyHint:"Добавьте мебель из каталога - она появится здесь.",
         toCat:"Перейти в каталог",total:"Итого",checkout:"Оформить заказ",pcs:"шт.",
         done:"Заказ оформлен! Менеджер свяжется с вами.",remove:"Убрать",
         fav:"Избранное",favEmpty:"В избранном пусто",favHint:"Нажмите на сердечко у товара, чтобы сохранить его.",
         favAdded:"Добавлено в избранное",favRemoved:"Удалено из избранного",
         addCart:"В корзину",
-        ordTitle:"Подтверждение заказа",ordSub:"Отправьте заказ менеджеру — он подтвердит наличие, доставку и оплату.",
+        ordTitle:"Подтверждение заказа",ordSub:"Отправьте заказ менеджеру - он подтвердит наличие, доставку и оплату.",
         ordTg:"Оформить в Telegram",ordWa:"Оформить в WhatsApp",ordBack:"Вернуться в корзину",
-        ordCopied:"Заказ скопирован — вставьте его в чат с менеджером.",
+        ordCopied:"Заказ скопирован - вставьте его в чат с менеджером.",
         ordHead:"Заказ с сайта Bententrade",ordNote:"Заполню контакты и адрес в чате.",
         coName:"Имя",coNamePh:"Ваше имя",coPhone:"Телефон",coPhonePh:"+998 __ ___ __ __",
         coMethod:"Способ получения",coDelivery:"Доставка",coPickup:"Самовывоз",
@@ -58,22 +58,22 @@
         payCardInvoice:"Перевод на карту / Счёт юрлица",
         quickBuy:"Купить в 1 клик",
         quickOrderTitle:"Быстрый заказ в 1 клик",
-        quickOrderSub:"Оставьте телефон — менеджер свяжется с вами в течение 10 минут для подтверждения.",
+        quickOrderSub:"Оставьте телефон - менеджер свяжется с вами в течение 10 минут для подтверждения.",
         quickOrderBtn:"Подтвердить быстрый заказ",
         quickOrderDone:"Быстрый заказ принят!",
         managerTrustTitle:"Подтверждение и проверка заказа",
         managerTrustDesc:"Менеджер свяжется для согласования удобного времени доставки и подтвердит комплектацию перед отгрузкой",
         promoTag:"Промокод",promoPh:"Промокод (BENTEN2026)",promoApply:"Применить",promoErr:"Неверный промокод",
         quickOrder:"Или быстрый заказ в 1 клик:",discount:"Скидка"},
-    uz:{cart:"Savat",empty:"Savat bo‘sh",emptyHint:"Katalogdan mebel qo‘shing — u shu yerda paydo bo‘ladi.",
+    uz:{cart:"Savat",empty:"Savat bo‘sh",emptyHint:"Katalogdan mebel qo‘shing - u shu yerda paydo bo‘ladi.",
         toCat:"Katalogga o‘tish",total:"Jami",checkout:"Buyurtma berish",pcs:"dona",
         done:"Buyurtma qabul qilindi! Menejer bog‘lanadi.",remove:"Olib tashlash",
         fav:"Sevimlilar",favEmpty:"Sevimlilar bo‘sh",favHint:"Saqlash uchun mahsulotdagi yurakchani bosing.",
         favAdded:"Tanlanganlarga qo‘shildi",favRemoved:"Tanlanganlardan o‘chirildi",
         addCart:"Savatga",
-        ordTitle:"Buyurtma tasdiqlash",ordSub:"Buyurtmani menejerga yuboring — mavjudligi, yetkazish va to‘lovni tasdiqlaydi.",
+        ordTitle:"Buyurtma tasdiqlash",ordSub:"Buyurtmani menejerga yuboring - mavjudligi, yetkazish va to‘lovni tasdiqlaydi.",
         ordTg:"Telegramda rasmiylashtirish",ordWa:"WhatsAppda rasmiylashtirish",ordBack:"Savatga qaytish",
-        ordCopied:"Buyurtma nusxalandi — menejer chatiga joylang.",
+        ordCopied:"Buyurtma nusxalandi - menejer chatiga joylang.",
         ordHead:"Bententrade saytidan buyurtma",ordNote:"Kontakt va manzilni chatda to‘ldiraman.",
         coName:"Ism",coNamePh:"Ismingiz",coPhone:"Telefon",coPhonePh:"+998 __ ___ __ __",
         coMethod:"Olish usuli",coDelivery:"Yetkazib berish",coPickup:"Olib ketish",
@@ -89,22 +89,22 @@
         payCardInvoice:"Karta o‘tkazmasi / Tashkilot hisob raqami",
         quickBuy:"1-klikda xarid",
         quickOrderTitle:"1-klikda tezkor buyurtma",
-        quickOrderSub:"Telefoningizni qoldiring — menejer 10 daqiqa ichida bog‘lanadi.",
+        quickOrderSub:"Telefoningizni qoldiring - menejer 10 daqiqa ichida bog‘lanadi.",
         quickOrderBtn:"Tezkor buyurtmani tasdiqlash",
         quickOrderDone:"Tezkor buyurtma qabul qilindi!",
         managerTrustTitle:"Buyurtmani tasdiqlash va tekshirish",
         managerTrustDesc:"Menejer yetkazish vaqtini kelishish uchun bog‘lanadi va jo‘natishdan oldin to‘plamni tekshiradi",
         promoTag:"Promokod",promoPh:"Promokod (BENTEN2026)",promoApply:"Qo‘llash",promoErr:"Noto‘g‘ri promokod",
         quickOrder:"Yoki 1 bosishda tezkor buyurtma:",discount:"Chegirma"},
-    en:{cart:"Cart",empty:"Your cart is empty",emptyHint:"Add furniture from the catalog — it will show up here.",
+    en:{cart:"Cart",empty:"Your cart is empty",emptyHint:"Add furniture from the catalog - it will show up here.",
         toCat:"Go to catalog",total:"Total",checkout:"Checkout",pcs:"pcs",
         done:"Order placed! Our manager will be in touch.",remove:"Remove",
         fav:"Wishlist",favEmpty:"No saved items yet",favHint:"Tap the heart on a product to save it.",
         favAdded:"Added to wishlist",favRemoved:"Removed from wishlist",
         addCart:"Add to cart",
-        ordTitle:"Confirm your order",ordSub:"Send the order to our manager — they'll confirm stock, delivery and payment.",
+        ordTitle:"Confirm your order",ordSub:"Send the order to our manager - they'll confirm stock, delivery and payment.",
         ordTg:"Order via Telegram",ordWa:"Order via WhatsApp",ordBack:"Back to cart",
-        ordCopied:"Order copied — paste it into the chat with our manager.",
+        ordCopied:"Order copied - paste it into the chat with our manager.",
         ordHead:"Order from the Bententrade website",ordNote:"I'll add my contacts and address in the chat.",
         coName:"Name",coNamePh:"Your name",coPhone:"Phone",coPhonePh:"+998 __ ___ __ __",
         coMethod:"Fulfilment",coDelivery:"Delivery",coPickup:"Pickup",
@@ -120,7 +120,7 @@
         payCardInvoice:"Card transfer / Company invoice",
         quickBuy:"Buy in 1 click",
         quickOrderTitle:"Quick 1-click order",
-        quickOrderSub:"Leave your phone — our manager will call you within 10 minutes.",
+        quickOrderSub:"Leave your phone - our manager will call you within 10 minutes.",
         quickOrderBtn:"Confirm quick order",
         quickOrderDone:"Quick order received!",
         managerTrustTitle:"Order confirmation & package check",
@@ -625,7 +625,7 @@
     const c=getCart(); const ids=Object.keys(c); let rawTotal=0;
     const lines=ids.map((id,i)=>{ const it=c[id]; const sum=(it.price||0)*(it.qty||1); rawTotal+=sum;
       const optStr = it.options ? " (" + [it.options.finish, it.options.size].filter(Boolean).join(", ") + ")" : "";
-      return (i+1)+". "+it.name+optStr+" × "+(it.qty||1)+" — "+fmt(sum); });
+      return (i+1)+". "+it.name+optStr+" × "+(it.qty||1)+" - "+fmt(sum); });
     const promo = getPromo();
     const promoPct = PROMOS[promo] || 0;
     const discount = promoPct ? Math.round(rawTotal * promoPct / 100) : 0;
@@ -638,8 +638,8 @@
     out+="\n\n"+t("total")+": "+fmt(total);
     if(orderId) out+="\n"+t("ordTitle")+": № "+orderId;
     if(contact){
-      out+="\n\n"+t("coName")+": "+(contact.name||"—");
-      out+="\n"+t("coPhone")+": "+(contact.phone||"—");
+      out+="\n\n"+t("coName")+": "+(contact.name||"-");
+      out+="\n"+t("coPhone")+": "+(contact.phone||"-");
       out+="\n"+t("coMethod")+": "+(contact.method==="pickup"?t("coPickup"):t("coDelivery"));
       const payLabels = {
         cash_or_pos: t("payCashPos"),
