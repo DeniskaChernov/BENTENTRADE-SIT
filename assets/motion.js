@@ -40,7 +40,7 @@
 
   function initLinkPolish(root) {
     var scope = root || document;
-    scope.querySelectorAll(".nav a, .foot-col a").forEach(function (a) {
+    scope.querySelectorAll(".nav a, .foot-col a:not(.foot-social__link)").forEach(function (a) {
       if (!a.classList.contains("motion-link")) a.classList.add("motion-link");
     });
   }
