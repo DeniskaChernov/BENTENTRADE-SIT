@@ -160,9 +160,19 @@
   /* ---------- derive a product snapshot from DOM / PDP ---------- */
   function snapFromCard(card){
     if(!card) return null;
-    const see = card.querySelector(".see, a[href*='product.html']");
-    let id = null;
-    if(see){ const m=(see.getAttribute("href")||"").match(/[?&]id=([^&#]+)/); if(m) id=decodeURIComponent(m[1]); }
+    let id = card.dataset.slug || card.dataset.id || null;
+    if(!id){
+      const see = card.querySelector(".see, a[href*='product.html'], a[href*='/catalog/']");
+      if(see){
+        const href = see.getAttribute("href") || "";
+        const m = href.match(/[?&]id=([^&#]+)/);
+        if(m) id = decodeURIComponent(m[1]);
+        else {
+          const mSlug = href.match(/\/catalog\/([a-z0-9-]+)/i);
+          if(mSlug) id = mSlug[1];
+        }
+      }
+    }
     const name = (card.querySelector(".product__name")||{}).textContent || "";
     const priceEl = card.querySelector(".price__now");
     const price = priceEl ? parseInt((priceEl.textContent||"").replace(/[^\d]/g,""),10)||0 : 0;
@@ -174,7 +184,17 @@
     return { id, name:name.trim(), price, img, options: Object.keys(options).length ? options : undefined };
   }
   function snapFromPDP(){
-    const id = (new URLSearchParams(location.search).get("id"))||"p1";
+    let id = null;
+    if(window.BTT_PDP_PRODUCT && (window.BTT_PDP_PRODUCT.slug || window.BTT_PDP_PRODUCT.id)){
+      id = window.BTT_PDP_PRODUCT.slug || window.BTT_PDP_PRODUCT.id;
+    }
+    if(!id){
+      const slugMatch = location.pathname.match(/\/catalog\/([a-z0-9-]+)/i);
+      if(slugMatch) id = slugMatch[1];
+    }
+    if(!id){
+      id = (new URLSearchParams(location.search).get("id")) || "p1";
+    }
     const name = (document.querySelector(".pdp-info h1")||{}).textContent || "";
     const price = parseInt(((document.querySelector(".pdp-price .now")||{}).textContent||"").replace(/[^\d]/g,""),10)||0;
     const onImg = document.querySelector(".pdp-stage img.is-on") || document.querySelector(".pdp-stage img");
@@ -287,7 +307,7 @@
   let scrim, cartEl, favEl;
   function enableSwipeToDismiss(el, onDismiss){
     if(!el) return;
-    let sx = 0, sy = 0, dx = 0, startTime = 0, isDragging = false, isHoriz = null;
+    let sx = 0, sy = 0, dx = 0, startTime = 0, isDragging = false, isHoriz = null, drawerWidth = 360;
     el.addEventListener("touchstart", e => {
       if(e.touches.length !== 1) return;
       const t = e.touches[0];
@@ -295,6 +315,7 @@
       sy = t.clientY;
       dx = 0;
       startTime = performance.now();
+      drawerWidth = el.offsetWidth || 360;
       isDragging = false;
       isHoriz = null;
     }, { passive: true });
@@ -316,7 +337,7 @@
         dx = diffX;
         el.style.transform = "translateX(" + dx + "px)";
         el.style.transition = "none";
-        if(scrim) scrim.style.opacity = String(Math.max(0, 1 - dx / el.offsetWidth));
+        if(scrim) scrim.style.opacity = String(Math.max(0, 1 - dx / drawerWidth));
         isDragging = true;
       } else {
         dx = diffX * 0.2;
@@ -337,7 +358,7 @@
       el.style.transition = "transform 0.32s cubic-bezier(0.16, 1, 0.3, 1)";
       if(scrim) scrim.style.transition = "opacity 0.32s ease";
 
-      if(dx > el.offsetWidth * 0.28 || (vx > 0.3 && dx > 35)){
+      if(dx > drawerWidth * 0.28 || (vx > 0.3 && dx > 35)){
         el.style.transform = "translateX(100%)";
         if(scrim) scrim.style.opacity = "0";
         setTimeout(() => {

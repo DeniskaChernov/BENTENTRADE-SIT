@@ -165,12 +165,24 @@
   }
 
   /* ---- animate product cards when category chips change ---- */
-  const CHIP_URL_ALIAS = { planter: "planterMix", basket: "planterMix" };
+  /* ---- animate product cards when category chips change ---- */
+  const CHIP_URL_ALIAS = {
+    planter: "wicker-chairs",
+    basket: "wicker-chairs",
+    rattan: "wicker-chairs",
+    wicker: "wicker-chairs",
+    furniture: "wicker-chairs",
+    plastic: "plastic-chairs",
+    upholstered: "upholstered-chairs",
+    indoor: "upholstered-chairs",
+    table: "tables"
+  };
   const CHIP_CAT_GROUPS = {
-    planterMix: ["planter", "basket"],
-    rattan: ["furniture", "planter", "basket"],
-    twisted: ["twisted"],
-    "ind-storage": ["ind-cabinet", "ind-shelf"]
+    chairs: ["wicker-chairs", "plastic-chairs", "upholstered-chairs"],
+    "wicker-chairs": ["wicker-chairs"],
+    "plastic-chairs": ["plastic-chairs"],
+    "upholstered-chairs": ["upholstered-chairs"],
+    tables: ["tables"]
   };
   const HOME_SECTION_IDS = new Set([
     "product-lines", "home-collection",
@@ -201,10 +213,11 @@
 
   function cardMatchesCat(card, cat){
     if(cat === "all") return true;
-    const groups = CHIP_CAT_GROUPS[cat];
+    const resolved = CHIP_URL_ALIAS[cat] || cat;
+    const groups = CHIP_CAT_GROUPS[resolved] || CHIP_CAT_GROUPS[cat];
     const c = card.dataset.cat || "";
     if(groups) return groups.includes(c);
-    return c === cat;
+    return c === resolved || c === cat;
   }
 
   function resolveChipCat(cat){
@@ -234,17 +247,24 @@
       setTimeout(()=>{ card.style.display = "none"; card.classList.remove("is-filter-out"); updateCatCount(grid); }, 320);
     });
 
+    const needAnimate = [];
     toShow.forEach((card,i)=>{
       const wasHidden = card.style.display === "none";
       card.style.display = "";
       if(wasHidden){
         card.classList.remove("is-filter-in");
-        void card.offsetWidth;
         card.style.animationDelay = (i*60) + "ms";
-        card.classList.add("is-filter-in");
-        card.addEventListener("animationend", ()=> card.classList.remove("is-filter-in"), { once:true });
+        needAnimate.push(card);
       }
     });
+    if(needAnimate.length){
+      requestAnimationFrame(()=>{
+        needAnimate.forEach(card=>{
+          card.classList.add("is-filter-in");
+          card.addEventListener("animationend", ()=> card.classList.remove("is-filter-in"), { once:true });
+        });
+      });
+    }
     updateCatCount(grid);
   }
 
@@ -253,19 +273,33 @@
     const head = document.querySelector(".site-head");
     if(!head) return;
     let ticking = false;
-    function apply(){
-      head.classList.toggle("is-scrolled", window.scrollY > 10);
-      document.documentElement.style.setProperty("--head-h", head.offsetHeight + "px");
+    let wasScrolled = null;
+    function apply(forceRecalc){
+      const isScrolled = window.scrollY > 10;
+      if(isScrolled !== wasScrolled || forceRecalc){
+        wasScrolled = isScrolled;
+        head.classList.toggle("is-scrolled", isScrolled);
+        document.documentElement.style.setProperty("--head-h", head.offsetHeight + "px");
+      }
       ticking = false;
     }
-    window.addEventListener("resize", apply, { passive:true });
-    window.addEventListener("scroll", ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(apply); } }, { passive:true });
-    apply();
+    window.addEventListener("resize", () => apply(true), { passive:true });
+    window.addEventListener("scroll", ()=>{
+      if(!ticking){
+        ticking = true;
+        requestAnimationFrame(() => apply(false));
+      }
+    }, { passive:true });
+    apply(true);
   }
 
-  /* ---- parallax: large banner images drift against the scroll ---- */
+  /* ---- parallax: large banner images drift against the scroll (desktop pointer only) ---- */
   function initParallax(){
-    if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if(window.matchMedia && (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      window.matchMedia("(hover: none)").matches ||
+      window.matchMedia("(pointer: coarse)").matches
+    )) return;
     const sel = ".promo img, .final img, .material__img img, .ab-story__img img, .page-hero__collage img";
     const items = Array.from(document.querySelectorAll(sel)).map(el=>({
       el,
@@ -571,12 +605,13 @@
       if(e.key === "Escape" && drawer.classList.contains("open")) setOpen(false);
     });
 
-    let sx = 0, sy = 0, dx = 0, startTime = 0, isDragging = false, isHoriz = null;
+    let sx = 0, sy = 0, dx = 0, startTime = 0, isDragging = false, isHoriz = null, drawerWidth = 320;
     drawer.addEventListener("touchstart", e => {
       if(e.touches.length !== 1 || !drawer.classList.contains("open")) return;
       const t = e.touches[0];
       sx = t.clientX; sy = t.clientY; dx = 0;
       startTime = performance.now();
+      drawerWidth = drawer.offsetWidth || 320;
       isDragging = false; isHoriz = null;
     }, { passive: true });
 
@@ -595,7 +630,7 @@
         dx = diffX;
         drawer.style.transform = "translateX(" + dx + "px)";
         drawer.style.transition = "none";
-        if(scrim) scrim.style.opacity = String(Math.max(0, 1 - dx / drawer.offsetWidth));
+        if(scrim) scrim.style.opacity = String(Math.max(0, 1 - dx / drawerWidth));
         isDragging = true;
       } else {
         dx = diffX * 0.2;
@@ -616,7 +651,7 @@
       drawer.style.transition = "transform 0.32s cubic-bezier(0.16, 1, 0.3, 1)";
       if(scrim) scrim.style.transition = "opacity 0.32s ease";
 
-      if(dx > drawer.offsetWidth * 0.28 || (vx > 0.3 && dx > 35)){
+      if(dx > drawerWidth * 0.28 || (vx > 0.3 && dx > 35)){
         drawer.style.transform = "translateX(100%)";
         if(scrim) scrim.style.opacity = "0";
         setTimeout(() => {
@@ -1306,17 +1341,24 @@
             setTimeout(()=>{ card.style.display = "none"; card.classList.remove("is-filter-out"); updateCatCount(grid); }, 280);
           }
         });
+        const needAnimate = [];
         toShow.forEach((card, i)=>{
           const wasHidden = card.style.display === "none";
           card.style.display = "";
           if(wasHidden){
             card.classList.remove("is-filter-in");
-            void card.offsetWidth;
             card.style.animationDelay = (i * 35) + "ms";
-            card.classList.add("is-filter-in");
-            card.addEventListener("animationend", ()=> card.classList.remove("is-filter-in"), { once:true });
+            needAnimate.push(card);
           }
         });
+        if(needAnimate.length){
+          requestAnimationFrame(()=>{
+            needAnimate.forEach(card=>{
+              card.classList.add("is-filter-in");
+              card.addEventListener("animationend", ()=> card.classList.remove("is-filter-in"), { once:true });
+            });
+          });
+        }
       }
 
       // 2. Sorting products
@@ -1335,10 +1377,16 @@
           }
           if(activeSort === "new"){
             const getId = (el)=>{
-              const see = el.querySelector("a.see, a[href*='product.html?id=']");
+              if(el.dataset.id) return el.dataset.id;
+              if(el.dataset.slug) return el.dataset.slug;
+              const see = el.querySelector("a.see, a[href*='product.html'], a[href*='/catalog/']");
               if(!see) return "";
-              const m = (see.getAttribute("href") || "").match(/[?&]id=([^&#]+)/);
-              return m ? decodeURIComponent(m[1]) : "";
+              const href = see.getAttribute("href") || "";
+              const m = href.match(/[?&]id=([^&#]+)/);
+              if(m) return decodeURIComponent(m[1]);
+              const mSlug = href.match(/\/catalog\/([a-z0-9-]+)/i);
+              if(mSlug) return mSlug[1];
+              return "";
             };
             return getId(b).localeCompare(getId(a), undefined, { numeric: true });
           }

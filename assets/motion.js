@@ -80,11 +80,12 @@
       chip.dataset.springBound = "1";
       chip.addEventListener("click", function () {
         chip.classList.remove("chip--pulse");
-        void chip.offsetWidth;
-        chip.classList.add("chip--pulse");
-        chip.addEventListener("animationend", function () {
-          chip.classList.remove("chip--pulse");
-        }, { once: true });
+        requestAnimationFrame(function () {
+          chip.classList.add("chip--pulse");
+          chip.addEventListener("animationend", function () {
+            chip.classList.remove("chip--pulse");
+          }, { once: true });
+        });
       });
     });
   }

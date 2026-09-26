@@ -68,12 +68,11 @@
   const apiCache = {};
   function loadApiProducts(){
     if(!window.BTT_API) return;
-    if(window.BTT_COOKIES && !window.BTT_COOKIES.hasConsent()) return;
     const l = lang();
     if(apiCache[l]) return;
     window.BTT_API.products("all").then(res=>{
       apiCache[l] = (res.products || []).map(p=>({
-        id:p.id, name:p.name || "", cat:p.category_label || "",
+        id:p.id, slug:p.slug || p.id, name:p.name || "", cat:p.category_label || "",
         img:p.image ? ("/media/" + p.image) : null, q:p.name || ""
       }));
       if(ov && ov.classList.contains("is-open")) render();
@@ -158,7 +157,7 @@
 
     body.querySelectorAll(".search-item").forEach((el,i)=>{
       el.addEventListener("click", ()=> go(i));
-      el.addEventListener("mousemove", ()=>{ active=i; paint(); });
+      el.addEventListener("mouseenter", ()=>{ if(active !== i){ active=i; paint(); } });
     });
   }
 

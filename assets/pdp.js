@@ -26,6 +26,7 @@
 
   const currentSlug = resolveSlug();
   const prod = PRODUCTS[currentSlug] || PRODUCTS["stul-vertex"] || MASTER[0];
+  window.BTT_PDP_PRODUCT = prod;
 
   const $ = (s, root) => (root || document).querySelector(s);
   const $$ = (s, root) => Array.from((root || document).querySelectorAll(s));
@@ -313,20 +314,7 @@
     input.addEventListener("blur", ()=>{ input.value = clamp(parseInt(input.value, 10)); });
   });
 
-  // Cart add button on PDP
-  const addBtn = $(".pdp-buy [data-add]");
-  if(addBtn){
-    addBtn.addEventListener("click", e=>{
-      e.preventDefault();
-      const qtyInput = $(".pdp-buy [data-qty] input");
-      const qty = parseInt(qtyInput ? qtyInput.value : "1", 10) || 1;
-      if(window.BTT_CART && window.BTT_CART.add){
-        window.BTT_CART.add(prod.slug, qty);
-      }
-      addBtn.textContent = t("pdp.added") || "Добавлено ✓";
-      setTimeout(()=>{ addBtn.textContent = t("pdp.cta.add") || "Добавить в корзину"; }, 2000);
-    });
-  }
+  // Cart add button on PDP is handled authoritatively by cart.js (with qty, haptics, and checkmark icon)
 
   // Lightbox
   const lightbox = $("[data-pdp-lightbox]");
