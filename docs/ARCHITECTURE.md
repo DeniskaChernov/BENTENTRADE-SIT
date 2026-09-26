@@ -92,6 +92,28 @@ bententrade/
 
 Сейчас `site_db` = **Cloudflare D1** (SQLite), см. `wrangler.jsonc`, миграции в `migrations/`.
 
+### 3.3. Архитектура каталога и базы данных D1 (Версия 2.0)
+
+В рамках консолидации данных и архитектуры (2026-09):
+1. **Канонический бренд:** `BTT - мебель для дома и сада` (публичный бренд BTT).
+2. **Single Source of Truth (SSOT):** Файл `data/products-master.json` содержит ровно 15 канонических позиций мебели (SKU) со всеми характеристиками, размерами, подтвержденными фабричными цветами и переводами RU/UZ/EN.
+3. **Генерация артефактов:** Команда `npm run sync:master` синхронизирует мастер-файл в:
+   - `assets/products.js` (витрина)
+   - `migrations/seed.sql` (D1 база данных)
+   - `sitemap.xml` (SEO)
+4. **Таблица алиасов (`product_aliases`):**
+   ```sql
+   CREATE TABLE IF NOT EXISTS product_aliases (
+     alias TEXT PRIMARY KEY,
+     product_id TEXT NOT NULL REFERENCES products(id) ON DELETE CASCADE
+   );
+   ```
+   Все старые идентификаторы `p1`..`p15` вынесены в таблицу алиасов. Запросы к `/catalog/p1` перенаправляются через HTTP 301 Permanent Redirect на канонические страницы `/catalog/:slug`.
+5. **R2 Хранилище медиафайлов:**
+   В `wrangler.jsonc` подключен binding `MEDIA` на бакет `bententrade-media`.
+6. **Защита панели администратора:**
+   Эндпоинты `/admin`, `/admin/` и `/admin/app.js` защищены серверным middleware с проверкой сессии в Cloudflare KV. Поисковые роботы заблокированы через `robots.txt` и заголовок `X-Robots-Tag: noindex, nofollow`.
+
 При переносе CRM на Railway логично использовать **PostgreSQL** для `crm_db`. Сайт может остаться на D1 или мигрировать на Postgres — отдельное решение.
 
 ---

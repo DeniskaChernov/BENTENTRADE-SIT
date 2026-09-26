@@ -12,7 +12,7 @@ export function applySecurityHeaders(headers: Headers, path: string): void {
   headers.set("X-DNS-Prefetch-Control", "off");
   headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
 
-  if (path.startsWith("/api") || path.startsWith("/admin")) {
+  if (path.startsWith("/api") || path.startsWith("/admin") || path === "/login.html" || path === "/account.html") {
     headers.set("X-Robots-Tag", "noindex, nofollow");
     return;
   }

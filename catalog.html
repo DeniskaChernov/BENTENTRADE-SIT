@@ -223,6 +223,25 @@
         </div>
       </div>
 
+      <!-- Table Size Filter -->
+      <div class="catalog-sidebar__block">
+        <div class="catalog-sidebar__section-title" data-i18n="filter.tableSize">Размер стола</div>
+        <div class="cat-mat-list" id="cat-size-filter">
+          <label class="cat-mat-chip">
+            <input type="checkbox" value="Ø90">
+            <span data-i18n="size.d90">Ø90 см</span>
+          </label>
+          <label class="cat-mat-chip">
+            <input type="checkbox" value="80x80">
+            <span data-i18n="size.80x80">80 × 80 см</span>
+          </label>
+          <label class="cat-mat-chip">
+            <input type="checkbox" value="135x80">
+            <span data-i18n="size.135x80">135 × 80 см</span>
+          </label>
+        </div>
+      </div>
+
       <!-- Status Toggles -->
       <div class="catalog-sidebar__block">
         <div class="catalog-sidebar__section-title" data-i18n="cat.statusTitle">Статус</div>
@@ -239,7 +258,7 @@
         <div class="catalog-sidebar__section-title" data-i18n="cat.sortLabel">Сортировка</div>
         <div class="cat-sort-select-wrap">
           <select id="catalog-sort" class="cat-sort-select" data-cat-sort aria-label="Сортировка товаров">
-            <option value="featured" data-i18n="sort.featured">По популярности</option>
+            <option value="featured" data-i18n="sort.featured">По умолчанию</option>
             <option value="price-asc" data-i18n="sort.priceAsc">Сначала доступные (&uarr;)</option>
             <option value="price-desc" data-i18n="sort.priceDesc">Сначала премиальные (&darr;)</option>
           </select>
@@ -460,7 +479,7 @@
       </aside>
 
       <!-- 9. Taper Rotang 80x80 -->
-      <article class="product reveal" data-product data-slug="stol-taper-rotang-80" data-id="p9" data-cat="tables" data-price="615000" data-colors="" data-materials="лдсп металл ротанг" data-stock="1">
+      <article class="product reveal" data-product data-slug="stol-taper-rotang-80" data-id="p9" data-cat="tables" data-size="80x80" data-price="615000" data-colors="" data-materials="лдсп металл ротанг" data-stock="1">
         <div class="product__media media">
           <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
           <img src="assets/prod-table-dining-room.jpg" alt="Стол Taper Rotang 80×80" loading="lazy">
@@ -476,7 +495,7 @@
       </article>
 
       <!-- 10. Vertex D90 -->
-      <article class="product reveal" data-product data-slug="stol-vertex-d90" data-id="p10" data-cat="tables" data-price="680000" data-colors="white-marble" data-materials="лдсп металл" data-stock="1">
+      <article class="product reveal" data-product data-slug="stol-vertex-d90" data-id="p10" data-cat="tables" data-size="Ø90" data-price="680000" data-colors="white-marble" data-materials="лдсп металл" data-stock="1">
         <div class="product__media media">
           <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
           <img src="assets/prod-table-vertex-white.jpg" alt="Круглый стол Vertex D90" loading="lazy">
@@ -495,7 +514,7 @@
       </article>
 
       <!-- 11. Taper Rotang 135x80 -->
-      <article class="product reveal" data-product data-slug="stol-taper-rotang-135" data-id="p11" data-cat="tables" data-price="715000" data-colors="" data-materials="лдсп металл ротанг" data-stock="1">
+      <article class="product reveal" data-product data-slug="stol-taper-rotang-135" data-id="p11" data-cat="tables" data-size="135x80" data-price="715000" data-colors="" data-materials="лдсп металл ротанг" data-stock="1">
         <div class="product__media media">
           <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
           <img src="assets/prod-table-dining-room.jpg" alt="Стол Taper Rotang 135×80" loading="lazy">
@@ -511,7 +530,7 @@
       </article>
 
       <!-- 12. Taper 80x80 -->
-      <article class="product reveal" data-product data-slug="stol-taper-80" data-id="p12" data-cat="tables" data-price="734000" data-colors="" data-materials="лдсп металл" data-stock="1">
+      <article class="product reveal" data-product data-slug="stol-taper-80" data-id="p12" data-cat="tables" data-size="80x80" data-price="734000" data-colors="" data-materials="лдсп металл" data-stock="1">
         <div class="product__media media">
           <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
           <img src="assets/prod-table-dining-room.jpg" alt="Стол Taper 80×80" loading="lazy">
@@ -527,7 +546,7 @@
       </article>
 
       <!-- 13. Vertex 80x80 -->
-      <article class="product reveal" data-product data-slug="stol-vertex-80" data-id="p13" data-cat="tables" data-price="738000" data-colors="" data-materials="лдсп металл" data-stock="1">
+      <article class="product reveal" data-product data-slug="stol-vertex-80" data-id="p13" data-cat="tables" data-size="80x80" data-price="738000" data-colors="" data-materials="лдсп металл" data-stock="1">
         <div class="product__media media">
           <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
           <img src="assets/prod-table-vertex-black.jpg" alt="Стол Vertex 80×80" loading="lazy">
@@ -543,7 +562,7 @@
       </article>
 
       <!-- 14. Taper 135x80 -->
-      <article class="product reveal" data-product data-slug="stol-taper-135" data-id="p14" data-cat="tables" data-price="885000" data-colors="" data-materials="лдсп металл" data-stock="1">
+      <article class="product reveal" data-product data-slug="stol-taper-135" data-id="p14" data-cat="tables" data-size="135x80" data-price="885000" data-colors="" data-materials="лдсп металл" data-stock="1">
         <div class="product__media media">
           <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
           <img src="assets/prod-table-dining-room.jpg" alt="Стол Taper 135×80" loading="lazy">
@@ -559,7 +578,7 @@
       </article>
 
       <!-- 15. Corda 135x80 -->
-      <article class="product reveal" data-product data-slug="stol-corda-135" data-id="p15" data-cat="tables" data-price="949000" data-colors="" data-materials="лдсп металл" data-stock="1">
+      <article class="product reveal" data-product data-slug="stol-corda-135" data-id="p15" data-cat="tables" data-size="135x80" data-price="949000" data-colors="" data-materials="лдсп металл" data-stock="1">
         <div class="product__media media">
           <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
           <img src="assets/prod-table-dining-room.jpg" alt="Стол Corda 135×80" loading="lazy">
@@ -592,6 +611,7 @@
       <h5 data-i18n="foot.menu">Меню</h5>
       <a href="index.html" data-i18n="nav.home">Главная</a>
       <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+      <a href="horeca.html" data-i18n="nav.horeca">HoReCa</a>
       <a href="blog.html" data-i18n="nav.blog">Статьи</a>
       <a href="about.html" data-i18n="nav.about">О нас</a>
       <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>

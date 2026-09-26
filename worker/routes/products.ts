@@ -31,25 +31,45 @@ app.get("/", async (c) => {
 
 /** GET /api/products/:id?lang=ru */
 app.get("/:id", async (c) => {
-  const id = c.req.param("id");
+  const rawId = c.req.param("id");
   const lang = pickLang(c.req.query("lang"));
-  const product = await c.env.DB.prepare(
+
+  let product = await c.env.DB.prepare(
     `SELECT id, category, look, price_now, price_old, default_size FROM products WHERE id = ? AND active = 1`,
   )
-    .bind(id)
+    .bind(rawId)
     .first();
+
+  let canonicalId = rawId;
+  if (!product) {
+    const aliasRow = await c.env.DB.prepare(
+      `SELECT product_id FROM product_aliases WHERE alias = ?`,
+    )
+      .bind(rawId)
+      .first<{ product_id: string }>();
+
+    if (aliasRow?.product_id) {
+      canonicalId = aliasRow.product_id;
+      product = await c.env.DB.prepare(
+        `SELECT id, category, look, price_now, price_old, default_size FROM products WHERE id = ? AND active = 1`,
+      )
+        .bind(canonicalId)
+        .first();
+    }
+  }
+
   if (!product) return c.json({ error: "not_found" }, 404);
 
   const i18n = await c.env.DB.prepare(
     `SELECT name, category_label, description, sizes, specs FROM product_i18n WHERE product_id = ? AND lang = ?`,
   )
-    .bind(id, lang)
+    .bind(canonicalId, lang)
     .first<{ name: string; category_label: string; description: string; sizes: string; specs: string }>();
 
   const media = await c.env.DB.prepare(
     `SELECT key, alt, sort FROM media WHERE product_id = ? ORDER BY sort ASC`,
   )
-    .bind(id)
+    .bind(canonicalId)
     .all();
 
   let parsedSizes: any[] = [];

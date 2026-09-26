@@ -199,6 +199,22 @@
     ]);
   }
 
+  function renderHoreca() {
+    SEO.injectJsonLd("btt-page-horeca", {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: t("meta.horeca.title"),
+      description: t("meta.horeca.desc"),
+      url: SITE + "/horeca.html",
+      inLanguage: document.documentElement.lang || "ru",
+      about: { "@type": "Thing", name: "HoReCa furniture" }
+    });
+    injectBreadcrumb("btt-page-bc", [
+      { name: t("pdp.crumb.home") || "Главная", url: SITE + "/" },
+      { name: t("nav.horeca") || "HoReCa", url: SITE + "/horeca.html" },
+    ]);
+  }
+
   function render() {
     if (page === "about.html") renderAbout();
     else if (page === "contacts.html") renderContacts();
@@ -207,6 +223,7 @@
     else if (page === "returns.html") renderReturns();
     else if (page === "rotang-tashkent.html") renderLandingRotang();
     else if (page === "sadovaya-mebel-rotang.html") renderLandingGarden();
+    else if (page === "horeca.html" || page === "horeca") renderHoreca();
   }
 
   render();

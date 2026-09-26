@@ -115,6 +115,16 @@
     return res;
   }
 
+  function resolveProduct(idOrSlug) {
+    if (!idOrSlug) return null;
+    var s = String(idOrSlug).trim().toLowerCase();
+    var P = window.BTT_PRODUCTS || {};
+    if (P[s]) return P[s].slug || s;
+    return null;
+  }
+
+  window.BTT_RESOLVE_PRODUCT = resolveProduct;
+
   window.BTT_UTIL = {
     lang: lang,
     t: t,
@@ -130,6 +140,7 @@
     formatPhone: formatPhone,
     parseMoneyText: parseMoneyText,
     managerUrl: managerUrl,
+    resolveProduct: resolveProduct,
   };
 
   var OG_LOCALES = { ru: "ru_RU", uz: "uz_UZ", en: "en_US" };

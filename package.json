@@ -22,6 +22,9 @@
     "db:backup": "node scripts/backup-d1.mjs",
     "seed:gen": "node scripts/gen-seed.mjs",
     "sitemap:gen": "node scripts/gen-sitemap.mjs",
+    "sync:master": "node scripts/sync-master.mjs",
+    "validate": "node scripts/validate-products.mjs",
+    "test:smoke": "node scripts/smoke-test.mjs",
     "typecheck": "tsc --noEmit"
   },
   "engines": {

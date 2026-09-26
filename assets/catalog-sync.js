@@ -70,6 +70,24 @@
     const mto = p.stock === 0 ? '<span class="badge-mto" data-i18n="mto.badge">' + esc(t("mto.badge")) + "</span>" : "";
     const old = p.price_old ? '<span class="price__old">' + money(p.price_old) + "</span>" : "";
     const href = p.slug ? ("/catalog/" + encodeURIComponent(p.slug)) : ("product.html?id=" + esc(p.id));
+    const masterProd = (window.BTT_PRODUCTS && (window.BTT_PRODUCTS[p.slug] || window.BTT_PRODUCTS[p.id])) || p;
+    const confirmed = masterProd.confirmedColors || [];
+    let swatchesHtml = "";
+    if (confirmed.length > 0) {
+      swatchesHtml =
+        '<div class="product-swatches" aria-label="' + esc(t("colors.label") || "Цвета") + '">' +
+        confirmed.map(function(c, idx) {
+          const cName = (c.name && (c.name[lang()] || c.name.ru)) || c.id;
+          return '<span class="product-swatch' + (idx === 0 ? ' is-active' : '') + '" style="--swatch-color:' + esc(c.hex) + '" title="' + esc(cName) + '"></span>';
+        }).join('') +
+        '</div>';
+    } else {
+      swatchesHtml =
+        '<div class="product__color-note" data-i18n="pdp.askColors">' + esc(t("pdp.askColors") || "Цвета уточняйте у менеджера") + '</div>';
+    }
+
+    art.setAttribute("data-colors", confirmed.map(function(c){ return c.id; }).join(" "));
+
     art.innerHTML =
       '<div class="product__media media">' + sale + mto +
       '<button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="' + esc(t("a11y.fav")) + '">' + FAV_SVG + "</button>" +
@@ -79,12 +97,8 @@
       "</div><div>" +
       '<div class="product__cat">' + esc(p.category_label || "") + "</div>" +
       '<div class="product__name">' + esc(p.name || "") + "</div>" +
-      '<div class="price"><span class="price__now">' + money(p.price_now) + "</span>" + old + "</div>" +
-      '<div class="product-swatches" aria-label="Цвета плетения">' +
-      '<span class="product-swatch is-active" style="--swatch-color:#5C4033" title="Шоколад"></span>' +
-      '<span class="product-swatch" style="--swatch-color:#C2B280" title="Песочный"></span>' +
-      '<span class="product-swatch" style="--swatch-color:#2F353B" title="Графит"></span>' +
-      "</div>" +
+      swatchesHtml +
+      '<div class="price" style="margin-top:8px"><span class="price__now">' + money(p.price_now) + "</span>" + old + "</div>" +
       "</div>";
     return art;
   }

@@ -1142,6 +1142,7 @@
     let activePriceMax = null;
     const activeColors = new Set();
     const activeMaterials = new Set();
+    const activeSizes = new Set();
 
     function getSearchQ(){
       return (urlParams.get("q") || "").toLowerCase().trim();
@@ -1243,6 +1244,26 @@
         });
       });
 
+      activeSizes.forEach(sizeVal => {
+        const chipEl = Array.from(document.querySelectorAll("#cat-size-filter .cat-mat-chip")).find(el => {
+          const cb = el.querySelector("input");
+          return cb && cb.value === sizeVal;
+        });
+        const label = chipEl ? (chipEl.querySelector("span") || {}).textContent : sizeVal;
+        chips.push({
+          label: `${d["filter.tableSize"] || "Размер стола"}: ${label}`,
+          onRemove: () => {
+            activeSizes.delete(sizeVal);
+            if(chipEl){
+              const cb = chipEl.querySelector("input");
+              if(cb) cb.checked = false;
+              chipEl.classList.remove("is-selected");
+            }
+            applyCatalogState(grid);
+          }
+        });
+      });
+
       if(activeToggle === "instock"){
         chips.push({
           label: d["filter.instock"] || "В наличии",
@@ -1320,7 +1341,14 @@
           toggleMatch = card.dataset.stock !== "0" && !card.querySelector(".badge-mto");
         }
 
-        const show = catMatch && searchMatch && priceMatch && colorMatch && matMatch && toggleMatch;
+        // Table size match (if any activeSizes selected)
+        let sizeMatch = true;
+        if(activeSizes.size > 0){
+          const cardSize = card.dataset.size || "";
+          sizeMatch = cardSize ? activeSizes.has(cardSize) : false;
+        }
+
+        const show = catMatch && searchMatch && priceMatch && colorMatch && matMatch && toggleMatch && sizeMatch;
         if(show){
           toShow.push(card);
           shownCount++;
@@ -1397,7 +1425,7 @@
 
       // 3. Editorial cards handling
       editorials.forEach(ed=>{
-        if(q || activeToggle || activeColors.size > 0 || activeMaterials.size > 0 || activePriceMin !== null || activePriceMax !== null){
+        if(q || activeToggle || activeColors.size > 0 || activeMaterials.size > 0 || activeSizes.size > 0 || activePriceMin !== null || activePriceMax !== null){
           ed.style.display = "none";
         } else {
           const edCats = (ed.getAttribute("data-editorial-cat") || "all").split(" ");
@@ -1430,7 +1458,7 @@
 
       const resetBtn = document.querySelector("[data-smart-reset]");
       if(resetBtn){
-        const isFiltered = activeCat !== "all" || activeToggle !== null || q !== "" || activeColors.size > 0 || activeMaterials.size > 0 || activePriceMin !== null || activePriceMax !== null;
+        const isFiltered = activeCat !== "all" || activeToggle !== null || q !== "" || activeColors.size > 0 || activeMaterials.size > 0 || activeSizes.size > 0 || activePriceMin !== null || activePriceMax !== null;
         resetBtn.hidden = !isFiltered;
       }
 
@@ -1517,12 +1545,26 @@
     });
 
     // Material options
-    document.querySelectorAll(".cat-mat-chip").forEach(chip=>{
+    document.querySelectorAll("#cat-mat-filter .cat-mat-chip").forEach(chip=>{
       const cb = chip.querySelector("input");
       if(cb){
         cb.addEventListener("change", ()=>{
           if(cb.checked) activeMaterials.add(cb.value);
           else activeMaterials.delete(cb.value);
+          chip.classList.toggle("is-selected", cb.checked);
+          const grid = document.querySelector("#catalog-grid");
+          if(grid) applyCatalogState(grid);
+        });
+      }
+    });
+
+    // Table size options
+    document.querySelectorAll("#cat-size-filter .cat-mat-chip").forEach(chip=>{
+      const cb = chip.querySelector("input");
+      if(cb){
+        cb.addEventListener("change", ()=>{
+          if(cb.checked) activeSizes.add(cb.value);
+          else activeSizes.delete(cb.value);
           chip.classList.toggle("is-selected", cb.checked);
           const grid = document.querySelector("#catalog-grid");
           if(grid) applyCatalogState(grid);
@@ -1586,6 +1628,7 @@
         activePriceMax = null;
         activeColors.clear();
         activeMaterials.clear();
+        activeSizes.clear();
 
         const minIn = document.getElementById("cat-price-min");
         const maxIn = document.getElementById("cat-price-max");
@@ -1999,25 +2042,5 @@
       }, 300);
     }
   }
-
-  // Quick CRM link in footer for authenticated administrators
-  try {
-    if (window.BTT_API && typeof window.BTT_API.me === "function") {
-      window.BTT_API.me().then(res => {
-        if (res && res.user && res.user.role === "admin") {
-          const footLegal = document.querySelector(".foot-legal");
-          if (footLegal && !footLegal.querySelector(".foot-crm-link")) {
-            const a = document.createElement("a");
-            a.href = "/admin";
-            a.className = "foot-crm-link";
-            a.style.cssText = "color:var(--copper);font-weight:700;display:inline-flex;align-items:center;gap:4px;margin-left:12px;";
-            a.innerHTML = '<span style="font-size:12px;">⚙</span> <span>CRM</span>';
-            a.title = "Панель управления магазином";
-            footLegal.appendChild(a);
-          }
-        }
-      }).catch(()=>{});
-    }
-  } catch(e){}
 })();
 

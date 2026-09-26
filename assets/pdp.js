@@ -12,21 +12,46 @@
   const CATTEXT  = window.BTT_PRODUCT_CAT || {};
   const DICT     = window.BTT_I18N || {};
 
-  function resolveSlug(){
+  function resolveProductIdentifier(){
     const path = location.pathname;
     const catMatch = path.match(/\/catalog\/([a-z0-9-]+)/i);
-    if(catMatch && PRODUCTS[catMatch[1]]) return catMatch[1];
+    if(catMatch){
+      const raw = catMatch[1].toLowerCase();
+      if(PRODUCTS[raw]) return PRODUCTS[raw].slug || raw;
+    }
 
     const params = new URLSearchParams(location.search);
-    const id = params.get("id");
-    if(id && PRODUCTS[id]) return PRODUCTS[id].slug || id;
+    const id = params.get("id") || params.get("slug");
+    if(id){
+      const raw = id.trim().toLowerCase();
+      if(PRODUCTS[raw]) return PRODUCTS[raw].slug || raw;
+    }
 
+    // Default to first product ONLY if on /product without query params
+    if(catMatch || id) return null;
     return "stul-vertex";
   }
 
-  const currentSlug = resolveSlug();
-  const prod = PRODUCTS[currentSlug] || PRODUCTS["stul-vertex"] || MASTER[0];
+  const currentSlug = resolveProductIdentifier();
+  const prod = currentSlug ? PRODUCTS[currentSlug] : null;
   window.BTT_PDP_PRODUCT = prod;
+
+  if(!prod){
+    document.title = "BTT — 404";
+    const show404 = function(){
+      const main = document.querySelector("main") || document.body;
+      if(main){
+        main.innerHTML = '<div class="wrap" style="text-align:center;padding:120px 20px;">' +
+          '<h1 style="font-family:var(--font-head);font-size:3rem;margin-bottom:16px;">404</h1>' +
+          '<p style="font-size:1.1rem;color:var(--muted);margin-bottom:30px;">Товар не найден / Mahsulot topilmadi / Product not found</p>' +
+          '<a href="catalog.html" class="btn btn--copper" style="display:inline-flex;align-items:center;gap:8px;">' +
+          '<span>Каталог товаров</span></a></div>';
+      }
+    };
+    if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", show404);
+    else show404();
+    return;
+  }
 
   const $ = (s, root) => (root || document).querySelector(s);
   const $$ = (s, root) => Array.from((root || document).querySelectorAll(s));
@@ -83,6 +108,17 @@
     const imgs = window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(prod.slug) : null;
     const image = imgs && imgs[0] ? absUrl(imgs[0].full) : absUrl("assets/btt-logo.png");
     const catLabel = t(prod.slug + ".cat") || t("cat." + prod.category);
+    const offerObj = {
+      "@type": "Offer",
+      "url": pageUrl,
+      "priceCurrency": "UZS",
+      "price": prod.now,
+      "itemCondition": "https://schema.org/NewCondition",
+      "seller": { "@type": "Organization", "name": "BTT - мебель для дома и сада" }
+    };
+    if (prod.status === "in_stock" || prod.stock === 1) {
+      offerObj.availability = "https://schema.org/InStock";
+    }
 
     injectJsonLd("pdp-schema-product", {
       "@context": "https://schema.org",
@@ -92,15 +128,7 @@
       "description": nm + " — " + catLabel + ". BTT — мебель для дома и сада.",
       "sku": prod.slug.toUpperCase(),
       "brand": { "@type": "Brand", "name": "BTT" },
-      "offers": {
-        "@type": "Offer",
-        "url": pageUrl,
-        "priceCurrency": "UZS",
-        "price": prod.now,
-        "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition",
-        "seller": { "@type": "Organization", "name": "BTT - мебель для дома и сада" }
-      }
+      "offers": offerObj
     });
 
     injectJsonLd("pdp-schema-breadcrumb", {
