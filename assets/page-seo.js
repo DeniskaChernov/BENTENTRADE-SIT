@@ -35,9 +35,8 @@
       mainEntity: {
         "@type": "Organization",
         "@id": SITE + "/#org",
-        name: "Bententrade",
+        name: "BTT — мебель для дома и сада",
         description: t("meta.about.desc"),
-        foundingDate: "2024",
         areaServed: { "@type": "Country", name: "Uzbekistan" },
       },
     };
@@ -58,21 +57,20 @@
         {
           "@type": "LocalBusiness",
           "@id": SITE + "/#org",
-          name: "Bententrade",
+          name: "BTT — мебель для дома и сада",
           telephone: "+998771044422",
           email: "hello@bententrade.uz",
           url: SITE + "/",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "ул. Амира Темура, 15",
             addressLocality: "Ташкент",
             addressCountry: "UZ",
           },
           openingHoursSpecification: {
             "@type": "OpeningHoursSpecification",
             dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            opens: "09:00",
-            closes: "18:00",
+            opens: "10:00",
+            closes: "20:00",
           },
           contactPoint: {
             "@type": "ContactPoint",

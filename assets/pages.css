@@ -1211,6 +1211,77 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 }
 .smart-reset-btn:hover{background:rgba(220,38,38,.16);}
 
+/* Sidebar Price Filter */
+.cat-price-inputs{display:flex;align-items:center;gap:8px;}
+.cat-price-field{flex:1;position:relative;}
+.cat-price-input{
+  width:100%;height:38px;padding:0 8px 0 10px;border-radius:var(--r-md);
+  border:1px solid var(--line);background:var(--bg);color:var(--text);
+  font-size:12.5px;font-weight:600;box-sizing:border-box;outline:none;
+  transition:border-color .2s;
+}
+.cat-price-input:focus{border-color:var(--copper);box-shadow:0 0 0 2px rgba(184,115,51,.15);}
+.cat-price-sep{color:var(--muted);font-weight:600;}
+
+/* Sidebar Colors Filter */
+.cat-color-list{display:flex;flex-direction:column;gap:6px;}
+.cat-color-option{
+  display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:var(--r-md);
+  border:1px solid var(--line);background:var(--bg);cursor:pointer;user-select:none;
+  transition:border-color .2s,background .2s;
+}
+.cat-color-option:hover{background:var(--cream-2);border-color:var(--copper);}
+.cat-color-option.is-selected{background:var(--cream-2);border-color:var(--copper);font-weight:600;}
+.cat-color-option input{accent-color:var(--copper);margin:0;cursor:pointer;}
+.cat-color-swatch-circle{
+  width:16px;height:16px;border-radius:50%;border:1px solid rgba(0,0,0,.15);flex-shrink:0;
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.1);
+}
+.cat-color-label{font-size:12.5px;color:var(--text);flex:1;}
+
+/* Sidebar Materials Filter */
+.cat-mat-list{display:flex;flex-wrap:wrap;gap:6px;}
+.cat-mat-chip{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:var(--r-pill);
+  border:1px solid var(--line);background:var(--bg);font-size:12px;color:var(--text);
+  cursor:pointer;user-select:none;transition:all .2s ease;
+}
+.cat-mat-chip:hover{border-color:var(--copper);background:var(--cream-2);}
+.cat-mat-chip.is-selected{background:var(--ink);color:#fff;border-color:var(--ink);}
+[data-theme="dark"] .cat-mat-chip.is-selected{background:var(--copper);border-color:var(--copper);color:#fff;}
+.cat-mat-chip input{display:none;}
+
+/* Active Filter Chips Bar (Above Grid) */
+.cat-active-chips{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:16px;padding:10px 14px;
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);
+}
+.cat-active-chips:empty{display:none;}
+.cat-active-chip{
+  display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:var(--r-pill);
+  background:var(--cream-2);border:1px solid var(--line);font-size:12px;font-weight:600;color:var(--text);
+}
+[data-theme="dark"] .cat-active-chip{background:#26211c;border-color:rgba(255,255,255,.08);}
+.cat-active-chip-remove{
+  border:none;background:transparent;cursor:pointer;font-size:14px;line-height:1;
+  color:var(--muted);padding:0 2px;display:inline-flex;align-items:center;justify-content:center;
+}
+.cat-active-chip-remove:hover{color:var(--copper);}
+.cat-active-clear-all{
+  margin-left:auto;border:none;background:transparent;color:var(--copper);
+  font-size:12px;font-weight:600;cursor:pointer;text-decoration:underline;
+}
+.cat-active-clear-all:hover{color:var(--copper-bright);}
+
+/* Product card micro tags */
+.product__spec-tag{
+  display:inline-block;font-size:11px;font-weight:600;color:var(--copper);
+  background:rgba(184,115,51,.08);padding:2px 6px;border-radius:4px;margin-bottom:4px;
+}
+.product__color-note{
+  font-size:11px;color:var(--muted);margin-top:4px;font-style:italic;
+}
+
 /* RIGHT CONTENT & CONTROLS */
 .catalog-content{grid-column:2;min-width:0;width:100%;display:flex;flex-direction:column;}
 .catalog-sidebar-scrim{display:none;}

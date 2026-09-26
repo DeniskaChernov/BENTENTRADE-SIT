@@ -390,9 +390,16 @@
   }
 
   function productIdFromCard(card){
-    const see = card.querySelector("a[href*='product.html?id=']");
-    const m = see && (see.getAttribute("href")||"").match(/[?&]id=([^&#]+)/);
-    return m ? decodeURIComponent(m[1]) : null;
+    if(card.dataset && card.dataset.slug) return card.dataset.slug;
+    if(card.dataset && card.dataset.id) return card.dataset.id;
+    const see = card.querySelector("a[href*='product.html?id='], a[href*='/catalog/']");
+    if(!see) return null;
+    const href = see.getAttribute("href") || "";
+    const m = href.match(/[?&]id=([^&#]+)/);
+    if(m) return decodeURIComponent(m[1]);
+    const m2 = href.match(/\/catalog\/([^/?#]+)/);
+    if(m2) return decodeURIComponent(m2[1]);
+    return null;
   }
 
   function isMtoProduct(id){
@@ -1096,6 +1103,10 @@
     let activeToggle = null;
     let activeSort = "featured";
     let liveSearchQ = "";
+    let activePriceMin = null;
+    let activePriceMax = null;
+    const activeColors = new Set();
+    const activeMaterials = new Set();
 
     function getSearchQ(){
       return (urlParams.get("q") || "").toLowerCase().trim();
@@ -1120,6 +1131,118 @@
       updateCatCount(grid);
     }
 
+    function renderActiveChips(grid){
+      const container = document.getElementById("cat-active-chips");
+      if(!container) return;
+      const chips = [];
+      const d = dict[getLang()] || dict.ru || {};
+
+      if(activeCat !== "all"){
+        const catLabel = d["cat." + activeCat] || (document.querySelector(`.cat-sidebar-chips .chip[data-cat="${activeCat}"] .chip-label`) || {}).textContent || activeCat;
+        chips.push({
+          label: catLabel,
+          onRemove: () => {
+            const allChip = document.querySelector(".cat-sidebar-chips .chip[data-cat='all']");
+            if(allChip) allChip.click();
+          }
+        });
+      }
+
+      if(activePriceMin !== null || activePriceMax !== null){
+        let pText = "";
+        if(activePriceMin !== null && activePriceMax !== null){
+          pText = `${activePriceMin.toLocaleString("ru-RU")} – ${activePriceMax.toLocaleString("ru-RU")} сум`;
+        } else if(activePriceMin !== null){
+          pText = `от ${activePriceMin.toLocaleString("ru-RU")} сум`;
+        } else {
+          pText = `до ${activePriceMax.toLocaleString("ru-RU")} сум`;
+        }
+        chips.push({
+          label: pText,
+          onRemove: () => {
+            activePriceMin = null;
+            activePriceMax = null;
+            const minIn = document.getElementById("cat-price-min");
+            const maxIn = document.getElementById("cat-price-max");
+            if(minIn) minIn.value = "";
+            if(maxIn) maxIn.value = "";
+            applyCatalogState(grid);
+          }
+        });
+      }
+
+      activeColors.forEach(colorId => {
+        const opt = document.querySelector(`.cat-color-option[data-color="${colorId}"]`);
+        const label = opt ? (opt.querySelector(".cat-color-label") || {}).textContent : colorId;
+        chips.push({
+          label: `Цвет: ${label}`,
+          onRemove: () => {
+            activeColors.delete(colorId);
+            if(opt){
+              const cb = opt.querySelector("input");
+              if(cb) cb.checked = false;
+              opt.classList.remove("is-selected");
+            }
+            applyCatalogState(grid);
+          }
+        });
+      });
+
+      activeMaterials.forEach(matVal => {
+        const chipEl = Array.from(document.querySelectorAll(".cat-mat-chip")).find(el => {
+          const cb = el.querySelector("input");
+          return cb && cb.value === matVal;
+        });
+        const label = chipEl ? (chipEl.querySelector("span") || {}).textContent : matVal;
+        chips.push({
+          label: `Материал: ${label}`,
+          onRemove: () => {
+            activeMaterials.delete(matVal);
+            if(chipEl){
+              const cb = chipEl.querySelector("input");
+              if(cb) cb.checked = false;
+              chipEl.classList.remove("is-selected");
+            }
+            applyCatalogState(grid);
+          }
+        });
+      });
+
+      if(activeToggle === "instock"){
+        chips.push({
+          label: d["filter.instock"] || "В наличии",
+          onRemove: () => {
+            activeToggle = null;
+            document.querySelectorAll(".smart-toggle").forEach(b => b.classList.remove("is-active"));
+            applyCatalogState(grid);
+          }
+        });
+      }
+
+      if(chips.length === 0){
+        container.innerHTML = "";
+        container.hidden = true;
+        return;
+      }
+
+      container.hidden = false;
+      container.innerHTML = "";
+      chips.forEach(c => {
+        const tag = document.createElement("span");
+        tag.className = "cat-active-chip";
+        tag.innerHTML = `<span>${c.label}</span><button type="button" class="cat-active-chip-remove" aria-label="Удалить фильтр">&times;</button>`;
+        tag.querySelector("button").addEventListener("click", c.onRemove);
+        container.appendChild(tag);
+      });
+
+      const clearAll = document.createElement("button");
+      clearAll.type = "button";
+      clearAll.className = "cat-active-clear-all";
+      clearAll.textContent = d["filter.reset"] || "Сбросить всё";
+      clearAll.addEventListener("click", resetAllCatalogFilters);
+      container.appendChild(clearAll);
+    }
+
     function applyCatalogState(grid){
       if(!grid || grid.id !== "catalog-grid") return;
       const q = getCombinedSearchQ();
@@ -1136,19 +1259,33 @@
         const catMatch = cardMatchesCat(card, activeCat);
         const searchMatch = !q || txt.includes(normQ);
 
-        let toggleMatch = true;
-        if(activeToggle === "instock"){
-          const isMto = card.querySelector(".badge-mto") !== null;
-          toggleMatch = !isMto;
-        } else if(activeToggle === "sale"){
-          const hasSale = card.querySelector(".badge-sale") !== null;
-          toggleMatch = hasSale;
-        } else if(activeToggle === "mto"){
-          const isMto = card.querySelector(".badge-mto") !== null;
-          toggleMatch = isMto;
+        // Price match
+        let priceMatch = true;
+        const pVal = parseInt(card.dataset.price || (card.querySelector(".price__now") ? card.querySelector(".price__now").textContent.replace(/\D/g, "") : "0"), 10) || 0;
+        if(activePriceMin !== null && pVal < activePriceMin) priceMatch = false;
+        if(activePriceMax !== null && pVal > activePriceMax) priceMatch = false;
+
+        // Color match (if any activeColors selected)
+        let colorMatch = true;
+        if(activeColors.size > 0){
+          const cardColors = (card.dataset.colors || "").split(/\s+/).filter(Boolean);
+          colorMatch = cardColors.some(c => activeColors.has(c));
         }
 
-        const show = catMatch && searchMatch && toggleMatch;
+        // Material match (if any activeMaterials selected)
+        let matMatch = true;
+        if(activeMaterials.size > 0){
+          const cardMats = (card.dataset.materials || "").toLowerCase();
+          matMatch = Array.from(activeMaterials).some(m => cardMats.includes(m.toLowerCase()));
+        }
+
+        // Toggle match (instock)
+        let toggleMatch = true;
+        if(activeToggle === "instock"){
+          toggleMatch = card.dataset.stock !== "0" && !card.querySelector(".badge-mto");
+        }
+
+        const show = catMatch && searchMatch && priceMatch && colorMatch && matMatch && toggleMatch;
         if(show){
           toShow.push(card);
           shownCount++;
@@ -1196,14 +1333,6 @@
             const pB = getPrice(b);
             return activeSort === "price-asc" ? pA - pB : pB - pA;
           }
-          if(activeSort === "discount"){
-            const getDisc = (el)=>{
-              const b = el.querySelector(".badge-sale");
-              if(!b) return 0;
-              return parseInt(b.textContent.replace(/[^\d]/g, ""), 10) || 0;
-            };
-            return getDisc(b) - getDisc(a);
-          }
           if(activeSort === "new"){
             const getId = (el)=>{
               const see = el.querySelector("a.see, a[href*='product.html?id=']");
@@ -1220,7 +1349,7 @@
 
       // 3. Editorial cards handling
       editorials.forEach(ed=>{
-        if(q || activeToggle){
+        if(q || activeToggle || activeColors.size > 0 || activeMaterials.size > 0 || activePriceMin !== null || activePriceMax !== null){
           ed.style.display = "none";
         } else {
           const edCats = (ed.getAttribute("data-editorial-cat") || "all").split(" ");
@@ -1234,7 +1363,10 @@
       const emptyEl = document.querySelector("[data-cat-empty]");
       if(emptyEl) emptyEl.hidden = shownCount > 0;
 
-      // 5. Update search note & reset button
+      // 5. Active chips
+      renderActiveChips(grid);
+
+      // 6. Update search note & reset button
       const searchNote = document.querySelector("[data-search-note]");
       if(searchNote){
         if(q){
@@ -1250,7 +1382,7 @@
 
       const resetBtn = document.querySelector("[data-smart-reset]");
       if(resetBtn){
-        const isFiltered = activeCat !== "all" || activeToggle !== null || q !== "";
+        const isFiltered = activeCat !== "all" || activeToggle !== null || q !== "" || activeColors.size > 0 || activeMaterials.size > 0 || activePriceMin !== null || activePriceMax !== null;
         resetBtn.hidden = !isFiltered;
       }
 
@@ -1289,7 +1421,7 @@
       }
     }
 
-    // Smart toggles (in-stock / sale / mto)
+    // Smart toggles (in-stock)
     document.querySelectorAll(".smart-toggle").forEach(btn=>{
       btn.addEventListener("click", ()=>{
         const toggleType = btn.dataset.toggle;
@@ -1306,6 +1438,48 @@
           if(grid) applyCatalogState(grid);
         });
       });
+    });
+
+    // Price inputs
+    const minPriceInput = document.getElementById("cat-price-min");
+    const maxPriceInput = document.getElementById("cat-price-max");
+    if(minPriceInput || maxPriceInput){
+      const handlePriceChange = ()=>{
+        activePriceMin = minPriceInput && minPriceInput.value ? parseInt(minPriceInput.value, 10) : null;
+        activePriceMax = maxPriceInput && maxPriceInput.value ? parseInt(maxPriceInput.value, 10) : null;
+        const grid = document.querySelector("#catalog-grid");
+        if(grid) applyCatalogState(grid);
+      };
+      if(minPriceInput) minPriceInput.addEventListener("input", handlePriceChange);
+      if(maxPriceInput) maxPriceInput.addEventListener("input", handlePriceChange);
+    }
+
+    // Color options
+    document.querySelectorAll(".cat-color-option").forEach(opt=>{
+      const cb = opt.querySelector("input");
+      if(cb){
+        cb.addEventListener("change", ()=>{
+          if(cb.checked) activeColors.add(cb.value);
+          else activeColors.delete(cb.value);
+          opt.classList.toggle("is-selected", cb.checked);
+          const grid = document.querySelector("#catalog-grid");
+          if(grid) applyCatalogState(grid);
+        });
+      }
+    });
+
+    // Material options
+    document.querySelectorAll(".cat-mat-chip").forEach(chip=>{
+      const cb = chip.querySelector("input");
+      if(cb){
+        cb.addEventListener("change", ()=>{
+          if(cb.checked) activeMaterials.add(cb.value);
+          else activeMaterials.delete(cb.value);
+          chip.classList.toggle("is-selected", cb.checked);
+          const grid = document.querySelector("#catalog-grid");
+          if(grid) applyCatalogState(grid);
+        });
+      }
     });
 
     // Live search in catalog
@@ -1332,9 +1506,9 @@
       }
     }
 
-    // Pre-apply filter toggle from URL (?filter=sale, ?filter=instock, ?filter=mto)
+    // Pre-apply filter toggle from URL (?filter=instock)
     const qFilter = urlParams.get("filter");
-    if(qFilter && ["instock", "sale", "mto"].includes(qFilter)){
+    if(qFilter && qFilter === "instock"){
       activeToggle = qFilter;
       const tBtn = document.querySelector(`.smart-toggle[data-toggle="${qFilter}"]`);
       if(tBtn) tBtn.classList.add("is-active");
@@ -1360,6 +1534,28 @@
       morphState(()=>{
         activeToggle = null;
         liveSearchQ = "";
+        activePriceMin = null;
+        activePriceMax = null;
+        activeColors.clear();
+        activeMaterials.clear();
+
+        const minIn = document.getElementById("cat-price-min");
+        const maxIn = document.getElementById("cat-price-max");
+        if(minIn) minIn.value = "";
+        if(maxIn) maxIn.value = "";
+
+        document.querySelectorAll(".cat-color-option").forEach(opt => {
+          const cb = opt.querySelector("input");
+          if(cb) cb.checked = false;
+          opt.classList.remove("is-selected");
+        });
+
+        document.querySelectorAll(".cat-mat-chip").forEach(chip => {
+          const cb = chip.querySelector("input");
+          if(cb) cb.checked = false;
+          chip.classList.remove("is-selected");
+        });
+
         if(searchInput) searchInput.value = "";
         const searchClear = document.querySelector("[data-cat-search-clear]");
         if(searchClear) searchClear.hidden = true;
@@ -1590,31 +1786,31 @@
     tashkent: {
       key: "city.tashkent",
       service: { ru: "Яндекс Доставка / Грузовое такси (Labo / Porter)", uz: "Yandex Yetkazish / Yuk taksisi (Labo / Porter)", en: "Yandex Freight / Cargo taxi (Labo / Porter)" },
-      manager: { ru: "Персональный менеджер приедет вместе с товаром прямо к вам — проверит сохранность, поможет распаковать и передаст гарантию 3 года", uz: "Shaxsiy menejer mahsulot bilan birga bevosita huzuringizga yetib boradi — butunligini tekshiradi, qadoqdan ochishga yordam beradi va 3 yillik kafolatni topshiradi", en: "A personal manager arrives with the goods directly to you — inspects integrity, assists with unboxing, and hands over 3-year warranty" },
+      manager: { ru: "Менеджер согласует удобное время отгрузки и передаёт контакты водителя", uz: "Menejer qulay jo‘natish vaqtini kelishib oladi va haydovchi kontaktlarini beradi", en: "Manager coordinates dispatch time and provides driver contacts" },
       time: { ru: "1–2 рабочих дня из наличия", uz: "Mavjudidan 1–2 ish kuni", en: "1–2 business days in stock" },
       price: { ru: "По прямому тарифу сервиса доставки (Яндекс Доставка / Labo) без наценок", uz: "Yetkazish xizmati (Yandex Yetkazish / Labo) to‘g‘ridan-to‘g‘ri tarifi bo‘yicha ustamasiz", en: "At direct carrier rate (Yandex Freight / Labo) with zero markup" },
       pack: { ru: "В собранном виде · Защитная воздушно-пузырьковая плёнка и картон (сборщик не нужен)", uz: "Yig‘ilgan holda · Pufakchali plyonka va qalin karton himoyasi (usta shart emas)", en: "Fully assembled · Bubble wrap & heavy-duty carton (no assembler needed)" },
       assembly: { ru: "В собранном виде · Защитная воздушно-пузырьковая плёнка и картон (сборщик не нужен)", uz: "Yig‘ilgan holda · Pufakchali plyonka va qalin karton himoyasi (usta shart emas)", en: "Fully assembled · Bubble wrap & heavy-duty carton (no assembler needed)" },
-      pickup: { ru: "Шоурум Bententrade (ул. Амира Темура, 15) — бесплатно, в день заказа. Поможем погрузить", uz: "Bententrade shourumi (Amir Temur ko‘chasi, 15) — bepul, buyurtma kuni. Ortishga yordam beramiz", en: "Bententrade showroom (15 Amir Temur St) — free, same day. Loading assistance included" },
-      badge: { ru: "Сервисы: Яндекс / Labo + Менеджер", uz: "Xizmatlar: Yandex / Labo + Menejer", en: "Carriers: Yandex / Labo + Manager" },
+      pickup: { ru: "Склад BTT в Ташкенте — бесплатно, по предварительной договорённости. Поможем погрузить", uz: "Toshkentdagi BTT ombori — oldindan kelishilgan holda bepul. Ortishga yordam beramiz", en: "BTT warehouse in Tashkent — free by appointment. Loading assistance provided" },
+      badge: { ru: "Сервисы: Яндекс / Labo", uz: "Xizmatlar: Yandex / Labo", en: "Carriers: Yandex / Labo" },
       shortTime: { ru: "1–2 дня", uz: "1–2 kun", en: "1–2 days" }
     },
     tashkent_reg: {
       key: "city.tashkent_reg",
       service: { ru: "Грузовое такси (Labo / Porter) или междугородний курьер", uz: "Yuk taksisi (Labo / Porter) yoki shaharlararo kuryer", en: "Cargo taxi (Labo / Porter) or regional courier" },
-      manager: { ru: "Менеджер сопровождает доставку или выезжает на объект для осмотра и передачи гарантийных документов", uz: "Menejer yetkazib berishga hamrohlik qiladi yoki ob’ektga ko‘rik va kafolat hujjatlarini topshirish uchun yetib keladi", en: "Manager escorts delivery or arrives on-site for inspection and warranty handover" },
+      manager: { ru: "Менеджер координирует отгрузку и оформление заказа", uz: "Menejer buyurtmani jo‘natish va rasmiylashtirishni muvofiqlashtiradi", en: "Manager coordinates dispatch and paperwork" },
       time: { ru: "1–3 рабочих дня", uz: "1–3 ish kuni", en: "1–3 business days" },
       price: { ru: "По прямому тарифу перевозчика (Labo / Porter) без наценок", uz: "Tashuvchi (Labo / Porter) to‘g‘ridan-to‘g‘ri tarifi bo‘yicha ustamasiz", en: "At direct carrier rate (Labo / Porter) with zero markup" },
       pack: { ru: "В собранном виде · Усиленная защита углов и торцов, прямо до ворот дома", uz: "Yig‘ilgan holda · Burchak va chetlari kuchaytirilgan, to‘g‘ridan-to‘g‘ri darvozagacha", en: "Fully assembled · Reinforced edge protection, delivered to your gate" },
       assembly: { ru: "В собранном виде · Усиленная защита углов и торцов, прямо до ворот дома", uz: "Yig‘ilgan holda · Burchak va chetlari kuchaytirilgan, to‘g‘ridan-to‘g‘ri darvozagacha", en: "Fully assembled · Reinforced edge protection, delivered to your gate" },
-      pickup: { ru: "Шоурум Bententrade в Ташкенте — бесплатно, или самовывоз со склада", uz: "Bententrade shourumi (Toshkent) — bepul, yoki ombordan olib ketish", en: "Bententrade showroom (Tashkent) — free, or warehouse pickup" },
+      pickup: { ru: "Склад BTT в Ташкенте — бесплатно по предварительной договорённости", uz: "Toshkentdagi BTT ombori — kelishuv bo‘yicha bepul", en: "BTT warehouse in Tashkent — free by appointment" },
       badge: { ru: "Сервисы: Грузовое такси / Labo", uz: "Xizmatlar: Yuk taksisi / Labo", en: "Carriers: Cargo Taxi / Labo" },
       shortTime: { ru: "1–3 дня", uz: "1–3 kun", en: "1–3 days" }
     },
     samarkand: {
       key: "city.samarkand",
       service: { ru: "Транспортная компания BTS Express / FarGo / EMU", uz: "BTS Express / FarGo / EMU transport kompaniyasi", en: "BTS Express / FarGo / EMU freight logistics" },
-      manager: { ru: "Куратор заказа контролирует логистику отгрузки, лично координирует передачу и сопровождает приемку товара", uz: "Buyurtma kuratori jo‘natish logistikasini nazorat qiladi, topshirishni shaxsan muvofiqlashtiradi va qabul qilishga hamroh bo‘ladi", en: "Order manager controls transit logistics, directly coordinates handover and escorts product acceptance" },
+      manager: { ru: "Менеджер оформляет накладную транспортной службы и передаёт трек-номер для отслеживания", uz: "Menejer yuk xatini rasmiylashtiradi va kuzatuv trek-raqamini beradi", en: "Manager books freight waybill and provides tracking details" },
       time: { ru: "3–5 рабочих дней с момента передачи перевозчику", uz: "Tashuvchiga topshirilgandan keyin 3–5 ish kuni", en: "3–5 business days from carrier handover" },
       price: { ru: "По тарифу транспортной компании (BTS Express / FarGo) без комиссий и наценок", uz: "Transport kompaniyasi (BTS Express / FarGo) tarifi bo‘yicha komissiya va ustamasiz", en: "At freight carrier tariff (BTS Express / FarGo) with zero markup" },
       pack: { ru: "В собранном виде · Защитная деревянная обрешётка + пузырьковая плёнка (сборка не требуется)", uz: "Yig‘ilgan holda · Yog‘och qoplama + pufakchali plyonka (yig‘ish talab qilinmaydi)", en: "Fully assembled · Wooden crating + bubble wrap (no assembly required)" },
@@ -1626,7 +1822,7 @@
     bukhara: {
       key: "city.bukhara",
       service: { ru: "Транспортная служба BTS Express / FarGo (регулярный рейс)", uz: "BTS Express / FarGo transport xizmati (muntazam reys)", en: "BTS Express / FarGo freight service (scheduled transit)" },
-      manager: { ru: "Куратор заказа контролирует логистику отгрузки, лично координирует передачу и сопровождает приемку товара", uz: "Buyurtma kuratori jo‘natish logistikasini nazorat qiladi, topshirishni shaxsan muvofiqlashtiradi va qabul qilishga hamroh bo‘ladi", en: "Order manager controls transit logistics, directly coordinates handover and escorts product acceptance" },
+      manager: { ru: "Менеджер оформляет накладную транспортной службы и передаёт трек-номер для отслеживания", uz: "Menejer yuk xatini rasmiylashtiradi va kuzatuv trek-raqamini beradi", en: "Manager books freight waybill and provides tracking details" },
       time: { ru: "4–6 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 4–6 ish kuni", en: "4–6 business days from dispatch" },
       price: { ru: "По тарифу службы доставки (BTS Express / FarGo) без магазинных наценок", uz: "Yetkazish xizmati (BTS Express / FarGo) tarifi bo‘yicha ustamasiz", en: "At carrier service tariff (BTS Express / FarGo) with zero shop markup" },
       pack: { ru: "В собранном виде · Жёсткая фиксация в защитной таре против сколов (готов к использованию)", uz: "Yig‘ilgan holda · Qattiq fiksatsiyalangan qadoq (foydalanishga tayyor)", en: "Fully assembled · Rigid secure crating preventing any transit scuffs" },
@@ -1638,7 +1834,7 @@
     fergana: {
       key: "city.fergana",
       service: { ru: "Транспортные службы BTS Express / FarGo / EMU (Ферганская долина)", uz: "BTS Express / FarGo / EMU xizmatlari (Farg‘ona vodiysi)", en: "BTS Express / FarGo / EMU freight carriers (Fergana Valley)" },
-      manager: { ru: "Куратор заказа контролирует логистику отгрузки, лично координирует передачу и сопровождает приемку товара", uz: "Buyurtma kuratori jo‘natish logistikasini nazorat qiladi, topshirishni shaxsan muvofiqlashtiradi va qabul qilishga hamroh bo‘ladi", en: "Order manager controls transit logistics, directly coordinates handover and escorts product acceptance" },
+      manager: { ru: "Менеджер оформляет накладную транспортной службы и передаёт трек-номер для отслеживания", uz: "Menejer yuk xatini rasmiylashtiradi va kuzatuv trek-raqamini beradi", en: "Manager books freight waybill and provides tracking details" },
       time: { ru: "3–5 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 3–5 ish kuni", en: "3–5 business days from dispatch" },
       price: { ru: "По тарифу транспортных служб (BTS / FarGo / EMU) без наценок", uz: "Transport xizmatlari (BTS / FarGo / EMU) tarifi bo‘yicha ustamasiz", en: "At carrier service tariffs (BTS / FarGo / EMU) with zero markup" },
       pack: { ru: "В собранном виде · Защитная обрешётка для безопасной перевозки через перевал", uz: "Yig‘ilgan holda · Dovondan xavfsiz o‘tish uchun maxsus yog‘och qoplama", en: "Fully assembled · Reinforced wooden crate for mountain pass transit" },
@@ -1650,7 +1846,7 @@
     south: {
       key: "city.south",
       service: { ru: "Транспортные службы BTS Express / FarGo (Карши, Навои, Термез)", uz: "BTS Express / FarGo xizmatlari (Qarshi, Navoiy, Termiz)", en: "BTS Express / FarGo freight (Karshi, Navoi, Termez)" },
-      manager: { ru: "Куратор заказа контролирует логистику отгрузки, лично координирует передачу и сопровождает приемку товара", uz: "Buyurtma kuratori jo‘natish logistikasini nazorat qiladi, topshirishni shaxsan muvofiqlashtiradi va qabul qilishga hamroh bo‘ladi", en: "Order manager controls transit logistics, directly coordinates handover and escorts product acceptance" },
+      manager: { ru: "Менеджер оформляет накладную транспортной службы и передаёт трек-номер для отслеживания", uz: "Menejer yuk xatini rasmiylashtiradi va kuzatuv trek-raqamini beradi", en: "Manager books freight waybill and provides tracking details" },
       time: { ru: "5–7 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 5–7 ish kuni", en: "5–7 business days from dispatch" },
       price: { ru: "По прямому тарифу перевозчика (BTS Express / FarGo) без комиссий", uz: "Tashuvchi (BTS Express / FarGo) to‘g‘ridan-to‘g‘ri tarifi bo‘yicha komissiyasiz", en: "At direct carrier rate (BTS Express / FarGo) with zero commission" },
       pack: { ru: "В собранном виде · Многослойная упаковка и обрешётка для дальних дистанций", uz: "Yig‘ilgan holda · Uzoq masofalar uchun ko‘p qavatli o‘ram va qoplama", en: "Fully assembled · Heavy-duty long-haul protective crating" },
@@ -1662,7 +1858,7 @@
     khorezm: {
       key: "city.khorezm",
       service: { ru: "Грузовая транспортная служба BTS Express / EMU (Ургенч, Хива, Нукус)", uz: "BTS Express / EMU yuk transport xizmati (Urganch, Xiva, Nukus)", en: "BTS Express / EMU freight service (Urgench, Khiva, Nukus)" },
-      manager: { ru: "Куратор заказа контролирует логистику отгрузки, лично координирует передачу и сопровождает приемку товара", uz: "Buyurtma kuratori jo‘natish logistikasini nazorat qiladi, topshirishni shaxsan muvofiqlashtiradi va qabul qilishga hamroh bo‘ladi", en: "Order manager controls transit logistics, directly coordinates handover and escorts product acceptance" },
+      manager: { ru: "Менеджер оформляет накладную транспортной службы и передаёт трек-номер для отслеживания", uz: "Menejer yuk xatini rasmiylashtiradi va kuzatuv trek-raqamini beradi", en: "Manager books freight waybill and provides tracking details" },
       time: { ru: "5–8 рабочих дней с момента отправки", uz: "Yuborilgandan keyin 5–8 ish kuni", en: "5–8 business days from dispatch" },
       price: { ru: "По прямому тарифу транспортной компании без наценок", uz: "Transport kompaniyasi to‘g‘ridan-to‘g‘ri tarifi bo‘yicha ustamasiz", en: "At direct carrier tariff with zero markup" },
       pack: { ru: "В собранном виде · Усиленный деревянный каркас (сборка на месте не требуется)", uz: "Yig‘ilgan holda · Kuchaytirilgan yog‘och karkas (joyida yig‘ish shart emas)", en: "Fully assembled · Reinforced wooden transit frame (no on-site assembly)" },

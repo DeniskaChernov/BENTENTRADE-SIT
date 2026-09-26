@@ -17,10 +17,10 @@
 
   // category index — slug matches the catalog chips (site.js) and routes to catalog ?cat=
   const CATS = [
-    { slug:"furniture",  k:"chip.furniture",  img:"assets/hero-garden-furniture.png" },
-    { slug:"planterMix", k:"chip.planterMix", img:"assets/bento-planter.png" },
-    { slug:"indoor",     k:"chip.indoor",     img:"assets/hero-home-furniture.png" },
-    { slug:"rattan",     k:"chip.rattan",     img:"assets/bento-rattan.png" }
+    { slug:"wicker-chairs",     k:"cat.wickerChairs",     img:"assets/hero-garden-furniture.png" },
+    { slug:"plastic-chairs",    k:"cat.plasticChairs",    img:"assets/stul-roero.png" },
+    { slug:"upholstered-chairs",k:"cat.upholsteredChairs",img:"assets/stul-lira.png" },
+    { slug:"tables",            k:"cat.tables",           img:"assets/stol-taper-80.png" }
   ];
   const PAGES = [
     { href:"index.html",    k:"nav.home" },
@@ -31,10 +31,7 @@
     { href:"care.html",     k:"foot.care" },
     { href:"returns.html",  k:"foot.returns" },
     { href:"about.html",    k:"nav.about" },
-    { href:"about.html",    k:"chip.twisted", sub:"srch.material" },
-    { href:"contacts.html", k:"nav.contacts" },
-    { href:"rotang-tashkent.html", k:"lp.rotang.title" },
-    { href:"sadovaya-mebel-rotang.html", k:"lp.garden.title" }
+    { href:"contacts.html", k:"nav.contacts" }
   ];
 
   function productThumb(id){
@@ -44,18 +41,24 @@
 
   function staticProducts(){
     const d = (window.BTT_I18N && window.BTT_I18N[lang()]) || {};
-    const P = window.BTT_PRODUCTS;
+    const M = window.BTT_PRODUCT_MASTER;
     const out = [];
+    if(M && Array.isArray(M)){
+      M.forEach(item => {
+        const id = item.slug;
+        const name = d[item.slug + ".name"] || item.name_ru;
+        const cat = d[item.slug + ".cat"] || item.category;
+        out.push({ id, slug: item.slug, name, cat, img: productThumb(item.slug), q: name });
+      });
+      return out;
+    }
+    const P = window.BTT_PRODUCTS;
     if(P){
-      Object.keys(P).sort((a,b)=>a.localeCompare(b, undefined, { numeric: true })).forEach(id=>{
+      Object.keys(P).forEach(id=>{
         const name = d[id+".name"];
-        if(name) out.push({ id, name, cat:d[id+".cat"]||"", img:productThumb(id), q:name });
+        if(name) out.push({ id, slug: id, name, cat:d[id+".cat"]||"", img:productThumb(id), q:name });
       });
       if(out.length) return out;
-    }
-    for(let i=1;i<=15;i++){
-      const name = d["p"+i+".name"], cat = d["p"+i+".cat"];
-      if(name) out.push({ id:"p"+i, name, cat:cat||"", img:productThumb("p"+i), q:name });
     }
     return out;
   }
@@ -138,7 +141,7 @@
     if(prods.length){
       html += '<div class="search-sec">'+esc(t("srch.prods"))+'</div>';
       prods.forEach(p=>{
-        items.push({ href:"product.html?id="+encodeURIComponent(p.id) });
+        items.push({ href:"/catalog/"+encodeURIComponent(p.slug || p.id) });
         html += row(p.img || null, p.name, p.cat, items.length-1, p.name.slice(0,1));
       });
     }

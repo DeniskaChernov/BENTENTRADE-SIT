@@ -1,7 +1,7 @@
 {
-  "name": "Bententrade — Мебель из ротанга",
-  "short_name": "Bententrade",
-  "description": "Премиальная мебель, кашпо и корзины из искусственного ротанга в Ташкенте с гарантией 3 года.",
+  "name": "BTT — Мебель для дома и сада",
+  "short_name": "BTT",
+  "description": "Столы и стулья для дома, сада и бизнеса (HoReCa) в Ташкенте.",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#0e0d0b",

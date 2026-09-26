@@ -5,7 +5,7 @@
 
   const DICT = window.BTT_I18N || {};
   const SEO = window.BTT_SEO || {};
-  const FAQ_COUNT = 10;
+  const FAQ_COUNT = 8;
 
   function lang() {
     const l = document.documentElement.lang;

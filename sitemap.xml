@@ -2,87 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://bententrade.uz/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://bententrade.uz/catalog.html</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
-  <url><loc>https://bententrade.uz/catalog.html?cat=furniture</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://bententrade.uz/catalog.html?cat=planterMix</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://bententrade.uz/catalog.html?cat=indoor</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://bententrade.uz/catalog.html?cat=rattan</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://bententrade.uz/rotang-tashkent.html</loc><changefreq>monthly</changefreq><priority>0.88</priority></url>
-  <url><loc>https://bententrade.uz/sadovaya-mebel-rotang.html</loc><changefreq>monthly</changefreq><priority>0.88</priority></url>
+  <url><loc>https://bententrade.uz/catalog.html?cat=wicker-chairs</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog.html?cat=plastic-chairs</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog.html?cat=upholstered-chairs</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog.html?cat=tables</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://bententrade.uz/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://bententrade.uz/contacts.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://bententrade.uz/delivery.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://bententrade.uz/returns.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://bententrade.uz/faq.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://bententrade.uz/blog.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=zachem-iskusstvennyy-rotang</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=kak-vybrat-luchshiy-rotang</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=pochemu-rabotayut-s-bententrade</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=uhod-za-mebelyu-iz-rotanga</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=profil-polumesyats-dlya-mebeli</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=rotang-dlya-terrasy</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=mebel-iz-rotanga-na-zakaz</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=iskusstvennyy-i-naturalnyy-rotang</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=sadovaya-mebel-rotang-tashkent</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=kashpo-iz-iskusstvennogo-rotanga</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=korziny-sunduki-rotang</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=kupit-rotang-buhtami</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=mebel-rotang-dlya-kafe</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=pletennaya-mebel-dlya-doma</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=dostavka-rotanga-po-uzbekistanu</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=rotang-dlya-balkona</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=palitra-tsvetov-rotanga-bententrade</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/article.html?slug=oformlenie-terassi-rotangom</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
-  <url><loc>https://bententrade.uz/faq.html</loc><changefreq>monthly</changefreq><priority>0.55</priority></url>
-  <url><loc>https://bententrade.uz/delivery.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://bententrade.uz/returns.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://bententrade.uz/care.html</loc><changefreq>monthly</changefreq><priority>0.55</priority></url>
   <url><loc>https://bententrade.uz/privacy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://bententrade.uz/cookies.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p1</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p2</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p3</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p4</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p5</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p6</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p7</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p8</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p9</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p10</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p11</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p12</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p13</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p14</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p15</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p16</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p17</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p18</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p19</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p20</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p21</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p22</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p23</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p24</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p25</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p26</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p27</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p28</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p29</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p30</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p31</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p32</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p33</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p34</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p35</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p36</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p37</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p38</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p39</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p40</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p41</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p42</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p43</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p44</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p45</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p46</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p47</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p48</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p49</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bententrade.uz/product.html?id=p50</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- 15 Master SKUs (SEO Clean URLs) -->
+  <url><loc>https://bententrade.uz/catalog/stul-vertex</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stul-corda</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stul-roero</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stul-noero</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stul-todo</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stul-jardin</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stul-lira</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/kreslo-como</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stol-taper-rotang-80</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stol-vertex-d90</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stol-taper-rotang-135</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stol-taper-80</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stol-vertex-80</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stol-taper-135</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://bententrade.uz/catalog/stol-corda-135</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
 </urlset>

@@ -3053,23 +3053,23 @@ export const ADMIN_APP_JS = String.raw`
             '<div class="hint" style="font-size:11.5px">Доступные переменные: <code>{order_id}</code>, <code>{name}</code>, <code>{total}</code>, <code>{status}</code></div>' +
             '<div class="field">' +
               '<label>Новый заказ (принят)</label>' +
-              '<textarea id="st-tpl-created" rows="2" style="font-size:12px">' + esc(s.sms_tpl_created || "Bententrade: Ваш заказ #{order_id} на сумму {total} принят! Скоро свяжемся с вами.") + '</textarea>' +
+              '<textarea id="st-tpl-created" rows="2" style="font-size:12px">' + esc(s.sms_tpl_created || "BTT: Ваш заказ #{order_id} на сумму {total} принят! Скоро свяжемся с вами.") + '</textarea>' +
             '</div>' +
             '<div class="field">' +
               '<label>Статус: В обработке</label>' +
-              '<textarea id="st-tpl-processing" rows="2" style="font-size:12px">' + esc(s.sms_tpl_processing || "Bententrade: Заказ #{order_id} взят в работу мастерами производства. Срок готовности уточнит менеджер.") + '</textarea>' +
+              '<textarea id="st-tpl-processing" rows="2" style="font-size:12px">' + esc(s.sms_tpl_processing || "BTT: Заказ #{order_id} передан на комплектацию. Срок уточнит менеджер.") + '</textarea>' +
             '</div>' +
             '<div class="field">' +
               '<label>Статус: Отправлен</label>' +
-              '<textarea id="st-tpl-shipped" rows="2" style="font-size:12px">' + esc(s.sms_tpl_shipped || "Bententrade: Заказ #{order_id} передан курьеру/в службу доставки. Ожидайте прибытия.") + '</textarea>' +
+              '<textarea id="st-tpl-shipped" rows="2" style="font-size:12px">' + esc(s.sms_tpl_shipped || "BTT: Заказ #{order_id} передан курьеру/в службу доставки. Ожидайте прибытия.") + '</textarea>' +
             '</div>' +
             '<div class="field">' +
               '<label>Статус: Доставлен</label>' +
-              '<textarea id="st-tpl-delivered" rows="2" style="font-size:12px">' + esc(s.sms_tpl_delivered || "Bententrade: Заказ #{order_id} успешно доставлен! Гарантия 3 года. Спасибо за выбор Bententrade.") + '</textarea>' +
+              '<textarea id="st-tpl-delivered" rows="2" style="font-size:12px">' + esc(s.sms_tpl_delivered || "BTT: Заказ #{order_id} успешно доставлен! Спасибо за выбор BTT.") + '</textarea>' +
             '</div>' +
             '<div class="field">' +
               '<label>Статус: Отменён</label>' +
-              '<textarea id="st-tpl-cancelled" rows="2" style="font-size:12px">' + esc(s.sms_tpl_cancelled || "Bententrade: Заказ #{order_id} отменен. Свяжитесь с нами при любых вопросах: +998 77 104 44 22") + '</textarea>' +
+              '<textarea id="st-tpl-cancelled" rows="2" style="font-size:12px">' + esc(s.sms_tpl_cancelled || "BTT: Заказ #{order_id} отменен. Свяжитесь с нами при любых вопросах: +998 77 104 44 22") + '</textarea>' +
             '</div>' +
           '</div>' +
         '</details>' +

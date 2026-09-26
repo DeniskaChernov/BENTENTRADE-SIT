@@ -7,49 +7,52 @@
 (function(){
   const T = {
     ru:{
-      name:"Бен", role:"Онлайн-помощник", badge:"1",
+      name:"Бен", role:"Онлайн-помощник BTT", badge:"1",
       ph:"Напишите сообщение…",
-      hi:"Здравствуйте! Я Бен, помощник Bententrade 🌿 Помогу подобрать изделия из искусственного ротанга. С чего начнём?",
-      quick:["Садовая мебель","Кашпо","Корзины и сундуки","Доставка","Связаться с менеджером"],
+      hi:"Здравствуйте! Я помощник BTT 🌿 Помогу подобрать обеденные столы, плетёные, пластиковые и мягкие стулья. С чего начнём?",
+      quick:["Плетёные стулья","Пластиковые стулья","Мягкие стулья","Обеденные столы","Доставка","Связаться с менеджером"],
       ans:{
-        "Садовая мебель":"Диваны, кресла и обеденные группы из искусственного ротанга — всесезонные, на алюминиевом каркасе. Смотрите в <a href='catalog.html?cat=furniture'>каталоге</a>. Подобрать под размер террасы?",
-        "Кашпо":"Плетёные кашпо с дренажом и вкладышем — для дома, балкона и сада. Вся подборка в <a href='catalog.html?cat=planterMix'>каталоге</a>. Подсказать по размеру?",
-        "Корзины и сундуки":"Сундуки и корзины для белья из искусственного ротанга — с подкладкой и крышкой. Смотрите в <a href='catalog.html?cat=planterMix'>каталоге</a>. Нужен размер S/M/L?",
-        "Доставка":"Доставляем по Ташкенту за 1–2 дня сервисами Яндекс / Labo в сопровождении менеджера, по всему Узбекистану — за 2–4 дня (службами BTS / EMS). Самовывоз из нашего шоурума (ул. Амира Темура, 15) — бесплатно в день заказа. Подсказать условия?",
-        "Связаться с менеджером":"Конечно! Денис на связи в Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> и по телефону <a href='tel:+998771044422'>+998 77 104 44 22</a>. Оформить заказ через корзину?"
+        "Плетёные стулья":"Плетёные стулья Vertex и Corda на прочном металлокаркасе с мягкими текстильными подушками в комплекте. Смотрите в <a href='catalog.html?cat=wicker-chairs'>каталоге</a>. Подсказать характеристики?",
+        "Пластиковые стулья":"Практичные пластиковые стулья: ROERO и NOERO (до 120 кг), JARDIN (до 150 кг) и усиленный TODO (до 180 кг). Все модели в <a href='catalog.html?cat=plastic-chairs'>каталоге</a>. Какая нагрузка требуется?",
+        "Мягкие стулья":"Элегантные стулья LIRA и комфортные кресла COMO на прочном металлокаркасе — идеальны для дома и HoReCa. Смотрите в <a href='catalog.html?cat=upholstered-chairs'>каталоге</a>.",
+        "Обеденные столы":"Столы на металлокаркасе со столешницей из ЛДСП (Taper, Vertex, Corda) размерами 80×80 см, 135×80 см и круглый Ø90 см. Рекомендуются для помещений и крытых пространств. Смотрите в <a href='catalog.html?cat=tables'>каталоге</a>.",
+        "Доставка":"Доставка по Ташкенту осуществляется за 1–2 рабочих дня по прямому тарифу сервиса доставки (Яндекс / Labo / Porter). Также возможен самовывоз со склада в Ташкенте по предварительной договорённости.",
+        "Связаться с менеджером":"Конечно! Мы на связи в Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> и по телефону <a href='tel:+998771044422'>+998 77 104 44 22</a>. Ответим на любые вопросы!"
       },
-      fallback:"Спасибо за вопрос! Я передам его менеджеру — он ответит детально. Пока можете посмотреть <a href='catalog.html'>каталог</a> или выбрать тему ниже 👇",
+      fallback:"Спасибо за вопрос! Я передам его менеджеру — он ответит детально. Пока можете посмотреть <a href='catalog.html'>каталог BTT</a> или выбрать категорию ниже 👇",
       reply:"Понял! Менеджер свяжется с вами в ближайшее время. Что-нибудь ещё?"
     },
     uz:{
-      name:"Ben", role:"Onlayn yordamchi", badge:"1",
+      name:"Ben", role:"BTT onlayn yordamchisi", badge:"1",
       ph:"Xabar yozing…",
-      hi:"Salom! Men Ben, Bententrade yordamchisi 🌿 Sun’iy rotangdan yasalgan buyumlarni tanlashda yordam beraman. Nimadan boshlaymiz?",
-      quick:["Bog‘ mebeli","Gultuvak","Savat va sandiq","Yetkazib berish","Menejer bilan bog‘lanish"],
+      hi:"Salom! Men BTT yordamchisiman 🌿 Ovqat stollari, to‘qilgan, plastik va yumshoq stullarni tanlashda yordam beraman. Nimadan boshlaymiz?",
+      quick:["To‘qilgan stullar","Plastik stullar","Yumshoq stullar","Ovqat stollari","Yetkazib berish","Menejer bilan bog‘lanish"],
       ans:{
-        "Bog‘ mebeli":"Sun’iy rotangdan divan, kreslo va ovqat to‘plamlari — har faslga mos, alyumin karkasda. <a href='catalog.html?cat=furniture'>Katalog</a>ni ko‘ring. Terassa o‘lchamiga moslab beraymi?",
-        "Gultuvak":"Drenaj va vkladishli to‘qilgan gultuvaklar — uy, balkon va bog‘ uchun. Hammasi <a href='catalog.html?cat=planterMix'>katalogda</a>. O‘lcham bo‘yicha aytaymi?",
-        "Savat va sandiq":"Sun’iy rotangdan kir savati va sandiqlar — astar va qopqoq bilan. <a href='catalog.html?cat=planterMix'>Katalog</a>ni ko‘ring. S/M/L o‘lcham kerakmi?",
-        "Yetkazib berish":"Toshkent bo‘ylab shaxsiy menejer hamrohligida Yandex / Labo orqali 1–2 kunda, butun O‘zbekiston bo‘ylab esa BTS / EMS orqali 2–4 kunda yetkazamiz. Shourumdan (Amir Temur ko‘chasi, 15) olib ketish — buyurtma kunining o‘zida bepul.",
-        "Menejer bilan bog‘lanish":"Albatta! Denis Telegramda <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> va telefon <a href='tel:+998771044422'>+998 77 104 44 22</a>. Buyurtmani savat orqali rasmiylashtiraymi?"
+        "To‘qilgan stullar":"Metall karkasli va yumshoq yostiqchali Vertex va Corda to‘qilgan stullari. <a href='catalog.html?cat=wicker-chairs'>Katalog</a>da ko‘ring.",
+        "Plastik stullar":"Amaliy plastik stullar: ROERO va NOERO (120 kg gacha), JARDIN (150 kg gacha) va baquvvat TODO (180 kg gacha). <a href='catalog.html?cat=plastic-chairs'>Katalog</a>da tanlang.",
+        "Yumshoq stullar":"Uylar va kafelar uchun qulay metall karkasli LIRA stullari va COMO kreslolari. <a href='catalog.html?cat=upholstered-chairs'>Katalog</a>da ko‘ring.",
+        "Ovqat stollari":"LDSP ustki qismli va metall karkasli Taper, Vertex, Corda stollari (80×80 sm, 135×80 sm va dumaloq Ø90 sm). <a href='catalog.html?cat=tables'>Katalog</a>da ko‘ring.",
+        "Yetkazib berish":"Toshkent bo‘ylab yetkazish 1–2 ish kunida to‘g‘ridan-to‘g‘ri kuryer tarifi bo‘yicha amalga oshiriladi. Toshkentdagi ombordan kelishuv asosida olib ketish ham mumkin.",
+        "Menejer bilan bog‘lanish":"Albatta! Telegramda <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> va telefon <a href='tel:+998771044422'>+998 77 104 44 22</a> orqali bog‘laning."
       },
-      fallback:"Savolingiz uchun rahmat! Menejerga yetkazaman. Hozircha <a href='catalog.html'>katalog</a>ni ko‘ring yoki quyidan mavzu tanlang 👇",
+      fallback:"Savolingiz uchun rahmat! Tez orada javob beramiz. Hozircha <a href='catalog.html'>BTT katalogi</a>ni ko‘rishingiz mumkin 👇",
       reply:"Tushunarli! Menejer tez orada bog‘lanadi. Yana biror narsa kerakmi?"
     },
     en:{
-      name:"Ben", role:"Online assistant", badge:"1",
+      name:"Ben", role:"BTT Assistant", badge:"1",
       ph:"Type a message…",
-      hi:"Hi! I'm Ben, the Bententrade assistant 🌿 I can help you pick synthetic-rattan pieces. Where shall we start?",
-      quick:["Garden furniture","Planters","Baskets & chests","Delivery","Talk to a manager"],
+      hi:"Hello! I'm your BTT assistant 🌿 I can help you choose dining tables, wicker, plastic, and upholstered chairs. Where shall we start?",
+      quick:["Wicker chairs","Plastic chairs","Upholstered chairs","Dining tables","Delivery","Talk to a manager"],
       ans:{
-        "Garden furniture":"Sofas, armchairs and dining sets in synthetic rattan — all-season, on an aluminium frame. Browse the <a href='catalog.html?cat=furniture'>catalog</a>. Want me to match it to your terrace?",
-        "Planters":"Woven planters with drainage and a liner — for home, balcony and garden. See them all in the <a href='catalog.html?cat=planterMix'>catalog</a>. Want sizing help?",
-        "Baskets & chests":"Synthetic-rattan laundry baskets and chests — with a liner and lid. See the <a href='catalog.html?cat=planterMix'>catalog</a>. Need an S/M/L size?",
-        "Delivery":"We deliver in Tashkent within 1–2 days via Yandex / Labo with personal manager escort, and across Uzbekistan in 2–4 business days (BTS / EMS courier). Showroom pickup (15 Amir Temur St) is free on the same day.",
-        "Talk to a manager":"Of course! Denis is on Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> and phone <a href='tel:+998771044422'>+998 77 104 44 22</a>. Want to place the order via the cart?"
+        "Wicker chairs":"Vertex and Corda wicker chairs on sturdy metal frames with soft cushions included. Browse them in the <a href='catalog.html?cat=wicker-chairs'>catalog</a>.",
+        "Plastic chairs":"Durable plastic chairs: ROERO and NOERO (up to 120 kg), JARDIN (up to 150 kg), and reinforced TODO (up to 180 kg). View all in the <a href='catalog.html?cat=plastic-chairs'>catalog</a>.",
+        "Upholstered chairs":"Elegant LIRA chairs and comfortable COMO armchairs on sturdy metal frames — perfect for home and HoReCa. See the <a href='catalog.html?cat=upholstered-chairs'>catalog</a>.",
+        "Dining tables":"Chipboard dining tables on metal frames (Taper, Vertex, Corda) in 80×80 cm, 135×80 cm, and Ø90 cm round. Best for indoor and covered spaces. View in the <a href='catalog.html?cat=tables'>catalog</a>.",
+        "Delivery":"Delivery across Tashkent in 1–2 business days at direct courier rates (Yandex / Labo / Porter). Warehouse pickup in Tashkent is also available by appointment.",
+        "Talk to a manager":"Of course! Reach us on Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> or call <a href='tel:+998771044422'>+998 77 104 44 22</a>."
       },
-      fallback:"Thanks for your question! I'll pass it to our manager for a detailed reply. Meanwhile, check the <a href='catalog.html'>catalog</a> or pick a topic below 👇",
-      reply:"Got it! Our manager will reach out shortly. Anything else?"
+      fallback:"Thank you for reaching out! You can explore the <a href='catalog.html'>BTT catalog</a> or choose a topic below 👇",
+      reply:"Understood! Our manager will get back to you shortly. Can I help with anything else?"
     }
   };
 

@@ -1,235 +1,441 @@
-/* Bententrade — product catalogue data (artificial-rattan range)
-   PLACEHOLDER / FALLBACK: static SKUs for offline storefront and SEO.
-   When the CRM API is available, catalog-sync.js patches prices, names and photos;
-   new CRM products replace or extend this list without editing HTML.
-   Category hero / card imagery: local assets (replace per SKU when CRM photos exist). */
+/* BTT — мебель для дома и сада
+   Product master data (exact 15 SKUs, Single Source of Truth).
+   All prices are in UZS. */
 (function(){
   "use strict";
 
+  // Easily adjustable price for Corda 135x80 table:
+  var BTT_PRICE_STOL_CORDA_135 = 949000;
+
+  var MASTER = [
+    {
+      slug: "stul-vertex",
+      legacyId: "p1",
+      model: "Vertex",
+      category: "wicker-chairs",
+      price: 499000,
+      dimensions: "57 × 63 × 75 см",
+      materials: ["металл", "кручёный искусственный ротанг", "текстиль"],
+      maxLoad: null,
+      confirmedColors: [
+        { id: "beige", name: { ru: "Бежевый", uz: "Bej", en: "Beige" }, hex: "#C2B280" }
+      ],
+      isTable: false,
+      stock: 1,
+      images: [
+        "assets/prod-chair-corda.jpg",
+        "assets/scene-dining-warm.png",
+        "assets/hero-garden-furniture.png"
+      ]
+    },
+    {
+      slug: "stul-corda",
+      legacyId: "p2",
+      model: "Corda",
+      category: "wicker-chairs",
+      price: 499000,
+      dimensions: "57 × 63 × 77 см",
+      materials: ["металл", "искусственный ротанг", "текстиль"],
+      maxLoad: null,
+      confirmedColors: [],
+      isTable: false,
+      stock: 1,
+      images: [
+        "assets/prod-chair-corda.jpg",
+        "assets/scene-dining-warm.png",
+        "assets/hero-garden-furniture.png"
+      ]
+    },
+    {
+      slug: "stul-roero",
+      legacyId: "p3",
+      model: "ROERO",
+      category: "plastic-chairs",
+      price: 168000,
+      dimensions: "74 × 46 × 48 см",
+      materials: ["пластик"],
+      maxLoad: "120 кг",
+      confirmedColors: [
+        { id: "grey", name: { ru: "Серый", uz: "Kulrang", en: "Grey" }, hex: "#808080" }
+      ],
+      isTable: false,
+      stock: 1,
+      images: [
+        "assets/hero-garden-furniture.png",
+        "assets/scene-dining-grey.png"
+      ]
+    },
+    {
+      slug: "stul-noero",
+      legacyId: "p4",
+      model: "NOERO",
+      category: "plastic-chairs",
+      price: 192000,
+      dimensions: "82 × 48 × 49 см",
+      materials: ["пластик"],
+      maxLoad: "120 кг",
+      confirmedColors: [
+        { id: "cappuccino", name: { ru: "Капучино", uz: "Kapuchino", en: "Cappuccino" }, hex: "#A88D73" }
+      ],
+      isTable: false,
+      stock: 1,
+      images: [
+        "assets/hero-garden-furniture.png",
+        "assets/scene-dining-warm.png"
+      ]
+    },
+    {
+      slug: "stul-todo",
+      legacyId: "p5",
+      model: "TODO",
+      category: "plastic-chairs",
+      price: 216000,
+      dimensions: "80 × 51 × 51 см",
+      materials: ["пластик"],
+      maxLoad: "180 кг",
+      confirmedColors: [
+        { id: "black", name: { ru: "Чёрный", uz: "Qora", en: "Black" }, hex: "#222222" }
+      ],
+      isTable: false,
+      stock: 1,
+      images: [
+        "assets/hero-garden-furniture.png",
+        "assets/prod-table-vertex-black.jpg"
+      ]
+    },
+    {
+      slug: "stul-jardin",
+      legacyId: "p6",
+      model: "JARDIN",
+      category: "plastic-chairs",
+      price: 324000,
+      dimensions: "73.5 × 53.5 × 55.5 см",
+      materials: ["пластик"],
+      maxLoad: "150 кг",
+      confirmedColors: [
+        { id: "cappuccino", name: { ru: "Капучино", uz: "Kapuchino", en: "Cappuccino" }, hex: "#A88D73" }
+      ],
+      isTable: false,
+      stock: 1,
+      images: [
+        "assets/hero-garden-furniture.png",
+        "assets/scene-dining-warm.png"
+      ]
+    },
+    {
+      slug: "stul-lira",
+      legacyId: "p7",
+      model: "LIRA",
+      category: "upholstered-chairs",
+      price: 354000,
+      dimensions: "95 × 55 × 48 см",
+      materials: ["металл", "текстиль"],
+      maxLoad: null,
+      confirmedColors: [],
+      isTable: false,
+      stock: 1,
+      images: [
+        "assets/hero-home-furniture.png",
+        "assets/scene-dining-azure.png"
+      ]
+    },
+    {
+      slug: "kreslo-como",
+      legacyId: "p8",
+      model: "COMO",
+      category: "upholstered-chairs",
+      price: 486000,
+      dimensions: "82 × 63 × 60 см",
+      materials: ["металл", "текстиль"],
+      maxLoad: null,
+      confirmedColors: [],
+      isTable: false,
+      stock: 1,
+      images: [
+        "assets/hero-home-furniture.png",
+        "assets/scene-dining-warm.png"
+      ]
+    },
+    {
+      slug: "stol-taper-rotang-80",
+      legacyId: "p9",
+      model: "Taper Rotang 80x80",
+      category: "tables",
+      price: 615000,
+      dimensions: "80 × 80 × 75 см",
+      materials: ["ЛДСП", "металл", "искусственный ротанг"],
+      maxLoad: null,
+      confirmedColors: [],
+      isTable: true,
+      stock: 1,
+      images: [
+        "assets/prod-table-dining-room.jpg",
+        "assets/prod-table-marble-detail.jpg"
+      ]
+    },
+    {
+      slug: "stol-vertex-d90",
+      legacyId: "p10",
+      model: "Vertex D90",
+      category: "tables",
+      price: 680000,
+      dimensions: "Ø90 × 75 см",
+      materials: ["ЛДСП", "металл"],
+      maxLoad: null,
+      confirmedColors: [
+        { id: "white-marble", name: { ru: "Белый мрамор", uz: "Oq marmar", en: "White Marble" }, hex: "#E8E6E1" }
+      ],
+      isTable: true,
+      stock: 1,
+      images: [
+        "assets/prod-table-vertex-white.jpg",
+        "assets/prod-table-marble-detail.jpg"
+      ]
+    },
+    {
+      slug: "stol-taper-rotang-135",
+      legacyId: "p11",
+      model: "Taper Rotang 135x80",
+      category: "tables",
+      price: 715000,
+      dimensions: "135 × 80 × 75 см",
+      materials: ["ЛДСП", "металл", "искусственный ротанг"],
+      maxLoad: null,
+      confirmedColors: [],
+      isTable: true,
+      stock: 1,
+      images: [
+        "assets/prod-table-dining-room.jpg",
+        "assets/prod-table-marble-detail.jpg"
+      ]
+    },
+    {
+      slug: "stol-taper-80",
+      legacyId: "p12",
+      model: "Taper 80x80",
+      category: "tables",
+      price: 734000,
+      dimensions: "80 × 80 × 75 см",
+      materials: ["ЛДСП", "металл"],
+      maxLoad: null,
+      confirmedColors: [],
+      isTable: true,
+      stock: 1,
+      images: [
+        "assets/prod-table-dining-room.jpg",
+        "assets/prod-table-marble-detail.jpg"
+      ]
+    },
+    {
+      slug: "stol-vertex-80",
+      legacyId: "p13",
+      model: "Vertex 80x80",
+      category: "tables",
+      price: 738000,
+      dimensions: "80 × 80 × 75 см",
+      materials: ["ЛДСП", "металл"],
+      maxLoad: null,
+      confirmedColors: [],
+      isTable: true,
+      stock: 1,
+      images: [
+        "assets/prod-table-vertex-black.jpg",
+        "assets/prod-table-marble-detail.jpg"
+      ]
+    },
+    {
+      slug: "stol-taper-135",
+      legacyId: "p14",
+      model: "Taper 135x80",
+      category: "tables",
+      price: 885000,
+      dimensions: "135 × 80 × 75 см",
+      materials: ["ЛДСП", "металл"],
+      maxLoad: null,
+      confirmedColors: [],
+      isTable: true,
+      stock: 1,
+      images: [
+        "assets/prod-table-dining-room.jpg",
+        "assets/prod-table-marble-detail.jpg"
+      ]
+    },
+    {
+      slug: "stol-corda-135",
+      legacyId: "p15",
+      model: "Corda 135x80",
+      category: "tables",
+      price: BTT_PRICE_STOL_CORDA_135,
+      dimensions: "135 × 80 × 75 см",
+      materials: ["ЛДСП", "металл"],
+      maxLoad: null,
+      confirmedColors: [],
+      isTable: true,
+      stock: 1,
+      images: [
+        "assets/prod-table-dining-room.jpg",
+        "assets/prod-table-marble-detail.jpg"
+      ]
+    }
+  ];
+
+  window.BTT_PRODUCT_MASTER = MASTER;
+
+  // Build dictionary for fast lookup by slug and legacyId (p1..p15)
+  var PRODUCTS = {};
+  MASTER.forEach(function(item){
+    var obj = {
+      id: item.slug,
+      slug: item.slug,
+      legacyId: item.legacyId,
+      model: item.model,
+      cat: item.category,
+      category: item.category,
+      now: item.price,
+      old: 0, // No fake old prices
+      stock: item.stock,
+      dimensions: item.dimensions,
+      materials: item.materials,
+      maxLoad: item.maxLoad,
+      confirmedColors: item.confirmedColors,
+      isTable: item.isTable,
+      images: item.images
+    };
+    PRODUCTS[item.slug] = obj;
+    if(item.legacyId) PRODUCTS[item.legacyId] = obj;
+  });
+
+  window.BTT_PRODUCTS = PRODUCTS;
+
   window.BTT_CAT_IMG = {
-    all:       "assets/hero-garden-furniture.png",
-    furniture: "assets/hero-garden-furniture.png",
-    planter:   "assets/hero-planter.png",
-    basket:    "assets/bento-planter.png",
-    indoor:    "assets/hero-home-furniture.png",
-    rattan:    "assets/bento-rattan.png",
-    twisted:   "assets/hero-twisted-rattan.png"
+    all:                 "assets/hero-garden-furniture.png",
+    "wicker-chairs":     "assets/prod-chair-corda.jpg",
+    "plastic-chairs":    "assets/hero-garden-furniture.png",
+    "upholstered-chairs":"assets/hero-home-furniture.png",
+    tables:              "assets/prod-table-dining-room.jpg",
+    // legacy category aliases
+    furniture:           "assets/prod-chair-corda.jpg",
+    indoor:              "assets/hero-home-furniture.png",
+    planter:             "assets/hero-garden-furniture.png",
+    basket:              "assets/hero-home-furniture.png"
   };
 
-  const CAT = window.BTT_CAT_IMG;
-
-  const LOOK = {
-    sofa:       "assets/hero-garden-furniture.png",
-    lounge:     "assets/scene-dining-warm.png",
-    dining:     "assets/prod-table-dining-room.jpg",
-    chair:      "assets/prod-chair-corda.jpg",
-    corner:     "assets/prod-sofa-monaco.jpg",
-    planterT:   "assets/hero-planter.png",
-    planterS:   "assets/prod-planter-cube.jpg",
-    planterSet: "assets/prod-planters-trio.jpg",
-    chest:      "assets/prod-chest-boston.jpg",
-    laundry:    "assets/prod-basket-nordic.jpg",
-    rocker:     "assets/hero-home-furniture.png",
-    coffee:     "assets/prod-table-vertex-white.jpg",
-    cabinet:    "assets/prod-dresser-riviera.jpg",
-    shelf:      "assets/hero-twisted-rattan.png"
-  };
-
-  const ITEM_IMG = {
-    p1:  "assets/prod-sofa-monaco.jpg",
-    p2:  "assets/scene-dining-warm.png",
-    p3:  "assets/hero-planter.png",
-    p4:  "assets/prod-table-dining-room.jpg",
-    p5:  "assets/prod-chair-corda.jpg",
-    p6:  "assets/prod-chest-boston.jpg",
-    p7:  "assets/prod-planter-cube.jpg",
-    p8:  "assets/prod-table-vertex-black.jpg",
-    p9:  "assets/prod-planters-trio.jpg",
-    p10: "assets/hero-garden-furniture.png",
-    p11: "assets/prod-basket-nordic.jpg",
-    p12: "assets/prod-dresser-riviera.jpg",
-    p13: "assets/prod-table-vertex-white.jpg",
-    p14: "assets/prod-dresser-riviera.jpg",
-    p15: "assets/hero-twisted-rattan.png"
-  };
-
-  /* Prices in USD units; BTT_UTIL.formatMoney converts to UZS for display. */
-  window.BTT_PRODUCTS = {
-    p1: {cat:"furniture", look:"sofa",      now:780, old:980, stock:1},
-    p2: {cat:"furniture", look:"lounge",    now:340, old:420, stock:1},
-    p3: {cat:"planter",   look:"planterT",  now:95,  old:130, stock:1},
-    p4: {cat:"furniture", look:"dining",    now:1180,old:0,   stock:1},
-    p5: {cat:"furniture", look:"chair",     now:260, old:340, stock:1},
-    p6: {cat:"basket",    look:"chest",     now:180, old:0,   stock:1},
-    p7: {cat:"planter",   look:"planterS",  now:48,  old:64,  stock:1},
-    p8: {cat:"furniture", look:"chair",     now:155, old:0,   stock:1},
-    p9: {cat:"planter",   look:"planterSet",now:210, old:280, stock:1},
-    p10:{cat:"furniture", look:"corner",    now:1640,old:1990,stock:0},
-    p11:{cat:"basket",    look:"laundry",   now:72,  old:0,   stock:1},
-    p12:{cat:"indoor",    look:"rocker",    now:290, old:360, stock:1},
-    p13:{cat:"indoor",    look:"coffee",    now:210, old:0,   stock:1},
-    p14:{cat:"indoor",    look:"cabinet",   now:540, old:680, stock:0},
-    p15:{cat:"indoor",    look:"shelf",     now:320, old:390, stock:1},
-    p16:{cat:"furniture", look:"lounge",    now:420, old:520, stock:1},
-    p17:{cat:"furniture", look:"chair",     now:185, old:0,   stock:1},
-    p18:{cat:"planter",   look:"planterT",  now:125, old:160, stock:1},
-    p19:{cat:"planter",   look:"planterS",  now:68,  old:0,   stock:1},
-    p20:{cat:"basket",    look:"chest",     now:95,  old:120, stock:1},
-    p21:{cat:"basket",    look:"laundry",   now:58,  old:0,   stock:1},
-    p22:{cat:"indoor",    look:"coffee",    now:175, old:220, stock:1},
-    p23:{cat:"indoor",    look:"rocker",    now:380, old:0,   stock:1},
-    p24:{cat:"furniture", look:"sofa",      now:890, old:1100,stock:1},
-    p25:{cat:"furniture", look:"dining",    now:520, old:0,   stock:1},
-    p26:{cat:"furniture", look:"lounge",    now:395, old:480, stock:1},
-    p27:{cat:"furniture", look:"dining",    now:980, old:0,   stock:1},
-    p28:{cat:"furniture", look:"chair",     now:220, old:280, stock:1},
-    p29:{cat:"furniture", look:"sofa",      now:720, old:890, stock:1},
-    p30:{cat:"planter",   look:"planterT",  now:110, old:0,   stock:1},
-    p31:{cat:"planter",   look:"planterS",  now:42,  old:55,  stock:1},
-    p32:{cat:"planter",   look:"planterSet",now:245, old:310, stock:1},
-    p33:{cat:"basket",    look:"chest",     now:165, old:0,   stock:1},
-    p34:{cat:"basket",    look:"laundry",   now:64,  old:82,  stock:1},
-    p35:{cat:"basket",    look:"chest",     now:88,  old:0,   stock:1},
-    p36:{cat:"indoor",    look:"rocker",    now:310, old:390, stock:1},
-    p37:{cat:"indoor",    look:"coffee",    now:195, old:0,   stock:1},
-    p38:{cat:"indoor",    look:"cabinet",   now:490, old:620, stock:0},
-    p39:{cat:"indoor",    look:"shelf",     now:275, old:340, stock:1},
-    p40:{cat:"furniture", look:"corner",    now:1720,old:0,   stock:0},
-    p41:{cat:"furniture", look:"lounge",    now:450, old:0,   stock:1},
-    p42:{cat:"furniture", look:"chair",     now:198, old:250, stock:1},
-    p43:{cat:"planter",   look:"planterT",  now:138, old:175, stock:1},
-    p44:{cat:"planter",   look:"planterS",  now:55,  old:0,   stock:1},
-    p45:{cat:"basket",    look:"laundry",   now:52,  old:0,   stock:1},
-    p46:{cat:"basket",    look:"chest",     now:142, old:180, stock:1},
-    p47:{cat:"indoor",    look:"rocker",    now:265, old:0,   stock:1},
-    p48:{cat:"indoor",    look:"coffee",    now:168, old:210, stock:1},
-    p49:{cat:"furniture", look:"sofa",      now:650, old:800, stock:1},
-    p50:{cat:"furniture", look:"dining",    now:1050,old:1280,stock:1}
-  };
-
-  window.BTT_IS_MTO = id => {
-    const p = window.BTT_PRODUCTS[id];
+  window.BTT_IS_MTO = function(id) {
+    var p = window.BTT_PRODUCTS[id];
     return !!(p && p.stock === 0);
   };
 
-  const SCENE = [
-    "assets/hero-garden-furniture.png",
-    "assets/prod-sofa-monaco.jpg",
-    "assets/prod-table-dining-room.jpg",
-    "assets/prod-chair-corda.jpg",
-    "assets/prod-table-vertex-white.jpg",
-    "assets/prod-table-vertex-black.jpg",
-    "assets/prod-table-marble-detail.jpg",
-    "assets/scene-dining-warm.png",
-    "assets/hero-planter.png",
-    "assets/prod-planter-cube.jpg",
-    "assets/prod-planters-trio.jpg",
-    "assets/prod-chest-boston.jpg",
-    "assets/prod-basket-nordic.jpg",
-    "assets/prod-dresser-riviera.jpg",
-    "assets/hero-home-furniture.png",
-    "assets/hero-twisted-rattan.png",
-    "assets/scene-dining-azure.png"
-  ];
-
-  function imgsFor(src, id){
-    const n = parseInt(String(id || "p0").slice(1), 10) || 0;
-    const picks = [src];
-    for (let i = 0; i < SCENE.length && picks.length < 4; i++) {
-      const s = SCENE[(n + i * 2 + 1) % SCENE.length];
-      if (s !== src && !picks.includes(s)) picks.push(s);
-    }
-    return picks.slice(0, 4).map(s => ({ thumb: s, full: s }));
-  }
-
-  window.BTT_PRODUCT_IMG = id => {
-    const p = window.BTT_PRODUCTS[id];
+  window.BTT_PRODUCT_IMG = function(id) {
+    var p = window.BTT_PRODUCTS[id];
     if(!p) return null;
-    const src = (ITEM_IMG && ITEM_IMG[id]) || LOOK[p.look] || CAT[p.cat] || CAT.furniture;
-    return imgsFor(src, id);
+    var imgs = p.images && p.images.length ? p.images : ["assets/prod-chair-corda.jpg"];
+    return imgs.map(function(s){ return { thumb: s, full: s }; });
   };
 
   window.BTT_PRODUCT_CAT = {
-    furniture:{
-      sizes:{ru:["2-местный","3-местный","Угловой"],uz:["2 o‘rinli","3 o‘rinli","Burchak"],en:["2-seater","3-seater","Corner"]}, defSize:1,
-      ru:{desc:"Садовая мебель из искусственного ротанга на лёгком алюминиевом каркасе. Плотное ручное плетение не выгорает на солнце, не боится дождя и перепадов температур — комплект круглый год может стоять на террасе, во дворе или в саду.",
-          mat:"Искусственный ротанг + алюминий",dim:"С подушками, всесезонный",fin:"UV-стойкое плетение",wt:"Каркас алюминий",seat:"Терраса, двор, сад",made:"Ташкент, ручная работа"},
-      uz:{desc:"Yengil alyumin karkasdagi sun’iy rotangdan bog‘ mebeli. Zich qo‘l to‘quvi quyoshda rangini yo‘qotmaydi, yomg‘ir va harorat o‘zgarishidan qo‘rqmaydi — to‘plam yil bo‘yi terassa, hovli yoki bog‘da turishi mumkin.",
-          mat:"Sun’iy rotang + alyumin",dim:"Yostiqlar bilan, har faslga",fin:"UV-chidamli to‘quv",wt:"Alyumin karkas",seat:"Terassa, hovli, bog‘",made:"Toshkent, qo‘l mehnati"},
-      en:{desc:"Garden furniture in synthetic rattan over a light aluminium frame. The dense hand-weave won't fade in the sun and shrugs off rain and temperature swings — the set can stay on the terrace, in the yard or garden all year round.",
-          mat:"Synthetic rattan + aluminium",dim:"With cushions, all-season",fin:"UV-stable weave",wt:"Aluminium frame",seat:"Terrace, yard, garden",made:"Tashkent, by hand"}
+    "wicker-chairs": {
+      ru: {
+        name: "Плетёные стулья",
+        desc: "Стулья на металлическом каркасе с плетением из искусственного ротанга и мягкими подушками.",
+        dim: "Для дома, террас и кафе",
+        mat: "Металл, искусственный ротанг, текстиль"
+      },
+      uz: {
+        name: "To‘qilgan stullar",
+        desc: "Metall karkasli, sun’iy rotang to‘quvli va yumshoq yostiqli qulay stullar.",
+        dim: "Uy, terrasa va kafelar uchun",
+        mat: "Metall, sun’iy rotang, to‘qimachilik"
+      },
+      en: {
+        name: "Wicker chairs",
+        desc: "Comfortable chairs on a metal frame with synthetic rattan weave and soft cushions.",
+        dim: "For homes, terraces and cafes",
+        mat: "Metal, synthetic rattan, textile"
+      }
     },
-    planter:{
-      sizes:{ru:["Ø30 см","Ø40 см","Ø55 см"],uz:["Ø30 sm","Ø40 sm","Ø55 sm"],en:["Ø30 cm","Ø40 cm","Ø55 cm"]}, defSize:1,
-      ru:{desc:"Кашпо, плетённое вручную из искусственного ротанга, со скрытым внутренним вкладышем и дренажом. Лёгкое, не гниёт и не трескается — одинаково хорошо смотрится с живыми растениями дома, на балконе и в саду.",
-          mat:"Искусственный ротанг",dim:"Со вкладышем и дренажом",fin:"Влагостойкое плетение",wt:"Лёгкое",seat:"Дом, балкон, сад",made:"Ташкент, ручная работа"},
-      uz:{desc:"Sun’iy rotangdan qo‘lda to‘qilgan gultuvak, yashirin ichki vkladish va drenaj bilan. Yengil, chirimaydi va yorilmaydi — uy, balkon va bog‘da jonli o‘simliklar bilan birdek chiroyli ko‘rinadi.",
-          mat:"Sun’iy rotang",dim:"Vkladish va drenaj bilan",fin:"Namlikka chidamli to‘quv",wt:"Yengil",seat:"Uy, balkon, bog‘",made:"Toshkent, qo‘l mehnati"},
-      en:{desc:"A planter hand-woven from synthetic rattan, with a hidden inner liner and drainage. Light, rot- and crack-proof — it looks equally good with live plants indoors, on the balcony and in the garden.",
-          mat:"Synthetic rattan",dim:"With liner & drainage",fin:"Moisture-resistant weave",wt:"Lightweight",seat:"Home, balcony, garden",made:"Tashkent, by hand"}
+    "plastic-chairs": {
+      ru: {
+        name: "Пластиковые стулья",
+        desc: "Практичные, лёгкие и долговечные пластиковые стулья с допустимой нагрузкой от 120 до 180 кг.",
+        dim: "Для дома, террасы, фудкортов и кафе",
+        mat: "Прочный износостойкий пластик"
+      },
+      uz: {
+        name: "Plastik stullar",
+        desc: "120 dan 180 kg gacha yuk ko‘taradigan qulay, yengil va mustahkam plastik stullar.",
+        dim: "Uy, terrasa, fudkort va kafelar uchun",
+        mat: "Pishiq, sifatli plastik"
+      },
+      en: {
+        name: "Plastic chairs",
+        desc: "Practical, lightweight and durable plastic chairs with load capacities from 120 kg to 180 kg.",
+        dim: "For home, terrace, food courts and cafes",
+        mat: "Durable high-grade plastic"
+      }
     },
-    basket:{
-      sizes:{ru:["S","M","L"],uz:["S","M","L"],en:["S","M","L"]}, defSize:1,
-      ru:{desc:"Сундук и корзина для белья из искусственного ротанга с мягкой тканевой подкладкой и крышкой. Держит форму, не цепляет ткань и проветривается — для хранения белья, пледов, игрушек и мелочей в спальне или ванной.",
-          mat:"Искусственный ротанг + подкладка",dim:"С крышкой и подкладкой",fin:"Гладкое плетение",wt:"Складная подкладка",seat:"Бельё, пледы, хранение",made:"Ташкент, ручная работа"},
-      uz:{desc:"Sun’iy rotangdan yumshoq mato astarli va qopqoqli sandiq hamda kir savati. Shaklini saqlaydi, matoga ilashmaydi va shamollatiladi — yotoqxona yoki hammomda kir, pled, o‘yinchoq va mayda buyumlar uchun.",
-          mat:"Sun’iy rotang + astar",dim:"Qopqoq va astar bilan",fin:"Silliq to‘quv",wt:"Yig‘iladigan astar",seat:"Kir, pled, saqlash",made:"Toshkent, qo‘l mehnati"},
-      en:{desc:"A chest and laundry basket in synthetic rattan with a soft fabric liner and lid. Holds its shape, won't snag fabric and stays ventilated — for laundry, throws, toys and bits in the bedroom or bathroom.",
-          mat:"Synthetic rattan + liner",dim:"With lid & liner",fin:"Smooth weave",wt:"Foldable liner",seat:"Laundry, throws, storage",made:"Tashkent, by hand"}
+    "upholstered-chairs": {
+      ru: {
+        name: "Мягкие стулья",
+        desc: "Стулья и кресла на металлическом каркасе с текстильной обивкой для комфортной обеденной зоны.",
+        dim: "Для гостиной, кухни и банкетных залов",
+        mat: "Металл, мягкий текстиль"
+      },
+      uz: {
+        name: "Yumshoq stullar",
+        desc: "Qulay ovqatlanish hududi uchun metall karkasdagi yumshoq matoli stul va kreslolar.",
+        dim: "Mehmonxona, oshxona va banket zallari uchun",
+        mat: "Metall, yumshoq to‘qimachilik"
+      },
+      en: {
+        name: "Upholstered chairs",
+        desc: "Chairs and armchairs on a sturdy metal frame with soft textile upholstery for dining comfort.",
+        dim: "For living rooms, kitchens and banquet venues",
+        mat: "Metal, soft textile"
+      }
     },
-    indoor:{
-      sizes:{ru:["Компакт","Стандарт","Большой"],uz:["Ixcham","Standart","Katta"],en:["Compact","Standard","Large"]}, defSize:1,
-      ru:{desc:"Мебель для дома из искусственного ротанга: лёгкая, тёплая на вид и практичная. Плетение не боится влаги и перепадов, легко протирается влажной тканью — под гостиную, спальню, прихожую или балкон.",
-          mat:"Искусственный ротанг + каркас",dim:"Для интерьера, всесезонно",fin:"Гладкое плетение",wt:"Лёгкий каркас",seat:"Гостиная, спальня, балкон",made:"Ташкент, ручная работа"},
-      uz:{desc:"Sun’iy rotangdan uy mebeli: yengil, ko‘rinishi issiq va amaliy. To‘quv namlik va o‘zgarishlardan qo‘rqmaydi, nam mato bilan oson artiladi — mehmonxona, yotoqxona, dahliz yoki balkon uchun.",
-          mat:"Sun’iy rotang + karkas",dim:"Interyer uchun, har faslga",fin:"Silliq to‘quv",wt:"Yengil karkas",seat:"Mehmonxona, yotoqxona, balkon",made:"Toshkent, qo‘l mehnati"},
-      en:{desc:"Home furniture in synthetic rattan: light, warm-looking and practical. The weave shrugs off humidity and temperature swings and wipes clean with a damp cloth — right for the living room, bedroom, hallway or balcony.",
-          mat:"Synthetic rattan + frame",dim:"For interiors, all-season",fin:"Smooth weave",wt:"Light frame",seat:"Living room, bedroom, balcony",made:"Tashkent, by hand"}
+    tables: {
+      ru: {
+        name: "Столы",
+        desc: "Обеденные столы на прочном металлическом каркасе со столешницей из ЛДСП. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        dim: "Для кухни, столовой, закрытых веранд и HoReCa",
+        mat: "ЛДСП, металл"
+      },
+      uz: {
+        name: "Stollar",
+        desc: "Mustahkam metall karkas va LDSP ustki qismga ega ovqat stollari. Xonalar va yopiq maydonlar uchun. LDSP ustki qismini to‘g‘ridan-to‘g‘ri yog‘ingarchilikdan himoya qilish tavsiya etiladi.",
+        dim: "Oshxona, yopiq ayvonlar va HoReCa uchun",
+        mat: "LDSP, metall"
+      },
+      en: {
+        name: "Tables",
+        desc: "Dining tables on a solid metal frame with chipboard tabletop. For indoor and covered spaces. It is recommended to protect the chipboard tabletop from direct precipitation.",
+        dim: "For kitchens, dining areas, covered terraces and HoReCa",
+        mat: "Chipboard, metal"
+      }
     }
   };
 
+  // Helper to format prices on static elements
   function formatStaticPrices(){
     var fmt = window.BTT_UTIL && window.BTT_UTIL.formatMoney;
     var P = window.BTT_PRODUCTS;
     if(!fmt || !P) return;
+
     document.querySelectorAll("[data-product]").forEach(function(card){
-      var see = card.querySelector("a[href*='product.html?id=']");
+      var see = card.querySelector("a[href*='catalog/'], a[href*='product.html?id=']");
       if(!see) return;
-      var m = (see.getAttribute("href") || "").match(/id=(p\d+)/);
-      if(!m) return;
-      var p = P[m[1]];
-      if(!p) return;
+      var href = see.getAttribute("href") || "";
+      var slugMatch = href.match(/\/catalog\/([a-z0-9-]+)/i) || href.match(/id=([a-z0-9-]+)/i);
+      if(!slugMatch) return;
+      var prod = P[slugMatch[1]];
+      if(!prod) return;
       var now = card.querySelector(".price__now");
       var old = card.querySelector(".price__old");
-      if(now) now.textContent = fmt(p.now);
-      if(old){
-        if(p.old){ old.textContent = fmt(p.old); old.style.display = ""; }
-        else old.style.display = "none";
-      }
+      if(now) now.textContent = fmt(prod.now);
+      if(old) old.style.display = "none"; // No fake old prices
     });
-    if(/product\.html$/i.test(location.pathname.split("/").pop() || "")){
-      var params = new URLSearchParams(location.search);
-      var pid = params.get("id") || "p1";
-      var prod = P[pid];
-      if(prod){
-        var pdpNow = document.querySelector(".pdp-price .now");
-        var pdpOld = document.querySelector(".pdp-price .old");
-        var pdpSave = document.querySelector(".pdp-price .save");
-        if(pdpNow) pdpNow.textContent = fmt(prod.now);
-        if(pdpOld){
-          if(prod.old){ pdpOld.textContent = fmt(prod.old); pdpOld.style.display = ""; }
-          else pdpOld.style.display = "none";
-        }
-        if(pdpSave){
-          if(prod.old){
-            pdpSave.style.display = "";
-            var word = (window.BTT_I18N && window.BTT_I18N.t) ? window.BTT_I18N.t("pdp.save") : "Экономия";
-            pdpSave.textContent = word + "\u00a0" + fmt(prod.old - prod.now);
-          } else pdpSave.style.display = "none";
-        }
-      }
-    }
   }
+
   if(typeof document !== "undefined"){
     if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", formatStaticPrices);
     else formatStaticPrices();

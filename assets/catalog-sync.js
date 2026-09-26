@@ -14,7 +14,14 @@
     : (String(Math.round(Number(n) * 12500)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0сум");
   const mediaUrl = (key) => (key ? "/media/" + key : "");
   const esc = U.esc || ((s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])));
-  const idFromHref = (href) => { const m = (href || "").match(/[?&]id=([^&]+)/); return m ? decodeURIComponent(m[1]) : null; };
+  const idFromHref = (href) => {
+    if (!href) return null;
+    const m = href.match(/[?&]id=([^&#]+)/);
+    if (m) return decodeURIComponent(m[1]);
+    const m2 = href.match(/\/catalog\/([^/?#]+)/);
+    if (m2) return decodeURIComponent(m2[1]);
+    return null;
+  };
 
   const FAV_SVG = U.FAV_SVG || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>';
   const ADD_SVG = U.ADD_SVG || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>';
@@ -26,16 +33,19 @@
   function productImg(p) {
     if (p.image) return mediaUrl(p.image);
     if (window.BTT_PRODUCT_IMG) { const im = window.BTT_PRODUCT_IMG(p.id); if (im && im[0]) return im[0].full; }
-    const cat = p.category || "furniture";
+    const cat = p.category || "tables";
     const C = window.BTT_CAT_IMG || {};
-    return C[cat] || C.furniture || "assets/hero-garden-furniture.png";
+    return C[cat] || C["wicker-chairs"] || "assets/hero-garden-furniture.png";
   }
 
   function hydrateStaticProductImgs(root) {
     if (!window.BTT_PRODUCT_IMG || !root) return;
     root.querySelectorAll("[data-product]").forEach((card) => {
-      const see = card.querySelector("a[href*='product.html?id=']");
-      const id = see && idFromHref(see.getAttribute("href"));
+      let id = card.dataset.slug || card.dataset.id;
+      if (!id) {
+        const see = card.querySelector("a[href*='product.html?id='], a[href*='/catalog/']");
+        id = see && idFromHref(see.getAttribute("href"));
+      }
       if (!id) return;
       const im = window.BTT_PRODUCT_IMG(id);
       const img = card.querySelector(".product__media img");
@@ -77,10 +87,13 @@
 
   // Patch one card in place from the CRM data. Returns { id, product } or null.
   function patchCard(card, map) {
-    const see = card.querySelector("a[href*='product.html?id=']");
-    const id = see && idFromHref(see.getAttribute("href"));
+    let id = card.dataset.slug || card.dataset.id;
+    if (!id) {
+      const see = card.querySelector("a[href*='product.html?id='], a[href*='/catalog/']");
+      id = see && idFromHref(see.getAttribute("href"));
+    }
     if (!id) return null;
-    const p = map[id];
+    const p = map[id] || (window.BTT_PRODUCTS && window.BTT_PRODUCTS[id] ? map[window.BTT_PRODUCTS[id].slug] : null);
     if (!p) return { id: id, product: null };
     const now = card.querySelector(".price__now");
     if (now) now.textContent = money(p.price_now);

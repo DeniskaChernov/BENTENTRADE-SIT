@@ -79,6 +79,34 @@ app.get("/admin/app.js", (c) =>
   }),
 );
 
+const VALID_PRODUCT_SLUGS = new Set([
+  "stul-vertex", "stul-corda", "stul-roero", "stul-noero", "stul-todo", "stul-jardin",
+  "stul-lira", "kreslo-como", "stol-taper-rotang-80", "stol-vertex-d90",
+  "stol-taper-rotang-135", "stol-taper-80", "stol-vertex-80", "stol-taper-135", "stol-corda-135"
+]);
+
+// Clean PDP URLs: /catalog/:slug -> product.html?id=:slug
+app.get("/catalog/:slug", async (c) => {
+  const slug = c.req.param("slug");
+  if (VALID_PRODUCT_SLUGS.has(slug)) {
+    const url = new URL("/product.html", c.req.url);
+    url.searchParams.set("id", slug);
+    return c.env.ASSETS.fetch(new Request(url.toString(), c.req.raw));
+  }
+  const notFoundUrl = new URL("/404.html", c.req.url);
+  const notFoundRes = await c.env.ASSETS.fetch(new Request(notFoundUrl.toString(), c.req.raw));
+  return new Response(notFoundRes.body, { status: 404, headers: notFoundRes.headers });
+});
+
+// Legacy redirect: /product?id=:slug -> /catalog/:slug
+app.get("/product", (c) => {
+  const id = c.req.query("id");
+  if (id && VALID_PRODUCT_SLUGS.has(id)) {
+    return c.redirect(`/catalog/${id}`, 301);
+  }
+  return c.redirect("/catalog.html", 301);
+});
+
 // Anything else that reached the Worker is delegated to the static assets binding.
 // On 404 for non-API routes, serve the branded 404.html.
 app.all("*", async (c) => {

@@ -167,11 +167,11 @@ export interface OrderSmsPayload {
 }
 
 const DEFAULT_TEMPLATES: Record<string, string> = {
-  created: "Bententrade: Ваш заказ #{order_id} на сумму {total} принят! Скоро свяжемся с вами.",
-  processing: "Bententrade: Заказ #{order_id} взят в работу мастерами производства. Срок готовности уточнит менеджер.",
-  shipped: "Bententrade: Заказ #{order_id} передан курьеру/в службу доставки. Ожидайте прибытия.",
-  delivered: "Bententrade: Заказ #{order_id} успешно доставлен! Гарантия 3 года. Спасибо за выбор Bententrade.",
-  cancelled: "Bententrade: Заказ #{order_id} отменен. Свяжитесь с нами при любых вопросах: +998 77 104 44 22",
+  created: "BTT: Ваш заказ #{order_id} на сумму {total} принят! Скоро свяжемся с вами.",
+  processing: "BTT: Заказ #{order_id} передан на комплектацию. Срок уточнит менеджер.",
+  shipped: "BTT: Заказ #{order_id} передан курьеру/в службу доставки. Ожидайте прибытия.",
+  delivered: "BTT: Заказ #{order_id} успешно доставлен! Спасибо за выбор BTT.",
+  cancelled: "BTT: Заказ #{order_id} отменен. Свяжитесь с нами при любых вопросах: +998 77 104 44 22",
 };
 
 /** Render template placeholders */
