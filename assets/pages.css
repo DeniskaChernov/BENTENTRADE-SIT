@@ -141,9 +141,7 @@
   background:#12100e;
   overflow:hidden;
   min-height:clamp(560px,70dvh,760px);
-  box-shadow:0 24px 64px -28px rgba(27,25,22,.36), inset 0 1px 0 rgba(255,255,255,.08);
-  opacity:0;transform:translateY(32px) scale(.985);filter:blur(10px);
-  transition:opacity 1s var(--ease-flow),transform 1.05s var(--ease-out),filter 1s ease;
+  opacity:1;transform:none;filter:none;
 }
 .hero__card.is-entered{opacity:1;transform:none;filter:none;}
 [data-theme="dark"] .hero__card{
@@ -344,9 +342,7 @@
 .atmo-hero__card{
   position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;
   border-radius:var(--r-xl);background:#12100e;overflow:hidden;
-  min-height:clamp(480px,62dvh,680px);box-shadow:var(--spatial-shadow);
-  opacity:0;transform:translateY(24px) scale(.99);filter:blur(8px);
-  transition:opacity .9s var(--ease-flow),transform .95s var(--ease-out),filter .9s ease;
+  opacity:1;transform:none;filter:none;
 }
 .atmo-hero__card.is-entered{opacity:1;transform:none;filter:none;}
 .atmo-hero__bg{position:absolute;inset:0;z-index:0;overflow:hidden;border-radius:inherit;}

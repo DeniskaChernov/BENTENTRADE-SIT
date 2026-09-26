@@ -1209,6 +1209,8 @@ body.has-cookie-banner .bot-panel{bottom:calc(12px + var(--cookie-banner-h,0px))
   }
 }
 
+.hero{animation:none!important;opacity:1!important;transform:none!important;}
+.hero.flow-section{animation:none!important;}
 .flow-section{animation:flowIn .7s var(--ease-out) both;animation-delay:calc(var(--flow-i, 0) * 40ms);}
 @keyframes flowIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
 .motion-link{position:relative;}
