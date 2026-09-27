@@ -182,6 +182,58 @@ test('sitemap.xml has all canonical URLs and no query params', () => {
   expect(sitemap).notToContain('?id=');
 });
 
+// SCENARIO L: Advanced System Security & Hardening
+console.log('\n--- SCENARIO L: Advanced System Security & Hardening ---');
+test('authRoutes.ts implements secure password change with rotation and rate limits', () => {
+  const code = fs.readFileSync(path.join(ROOT, 'worker/routes/authRoutes.ts'), 'utf8');
+  expect(code).toContain('app.post("/change-password"');
+  expect(code).toContain('pwchg:acc:');
+  expect(code).toContain('verifyPassword');
+  expect(code).toContain('hashPassword');
+  expect(code).toContain('destroySession');
+  expect(code).toContain('createSession');
+});
+
+test('account.ts prevents address flooding and validates IDs', () => {
+  const code = fs.readFileSync(path.join(ROOT, 'worker/routes/account.ts'), 'utf8');
+  expect(code).toContain('address_limit_reached');
+  expect(code).toContain('Number.isInteger(id)');
+  expect(code).toContain('acc:addr:');
+  expect(code).toContain('acc:prof:');
+});
+
+test('worker/index.ts limits payload sizes and blocks vulnerability scanner probes', () => {
+  const code = fs.readFileSync(path.join(ROOT, 'worker/index.ts'), 'utf8');
+  expect(code).toContain('payload_too_large');
+  expect(code).toContain('wp-admin');
+  expect(code).toContain('xmlrpc');
+  expect(code).toContain('phpmyadmin');
+});
+
+test('media.ts guards against directory traversal and MIME sniffing', () => {
+  const code = fs.readFileSync(path.join(ROOT, 'worker/routes/media.ts'), 'utf8');
+  expect(code).toContain('key.includes("..")');
+  expect(code).toContain('X-Content-Type-Options');
+  expect(code).toContain('nosniff');
+});
+
+test('Zero em-dash or en-dash in worker routes and server code', () => {
+  const files = [
+    'worker/index.ts',
+    'worker/auth.ts',
+    'worker/routes/authRoutes.ts',
+    'worker/routes/account.ts',
+    'worker/routes/media.ts',
+    'worker/security-headers.ts',
+    'server/index.ts',
+  ];
+  for (const f of files) {
+    const content = fs.readFileSync(path.join(ROOT, f), 'utf8');
+    if (content.includes('\u2014')) throw new Error(`Found em-dash in ${f}`);
+    if (content.includes('\u2013')) throw new Error(`Found en-dash in ${f}`);
+  }
+});
+
 console.log('\n=======================================');
 console.log(`TOTAL TESTS: ${passed + failed} | PASSED: ${passed} | FAILED: ${failed}`);
 if (failed > 0) {

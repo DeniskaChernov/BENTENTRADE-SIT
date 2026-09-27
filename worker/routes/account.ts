@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import type { Env, Variables } from "../types";
-import { str, isPhone } from "../util";
+import { str, isPhone, rateLimit } from "../util";
 
 const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
@@ -13,6 +13,9 @@ function uid(c: { get: (k: "session") => any }): number | null {
 app.put("/profile", async (c) => {
   const userId = uid(c);
   if (!userId) return c.json({ error: "unauthorized" }, 401);
+  if (!(await rateLimit(c.env, `acc:prof:${userId}`, 15, 60))) {
+    return c.json({ error: "rate_limited" }, 429);
+  }
   const body = await c.req.json().catch(() => ({}));
   const name = str(body.name, 120);
   const phone = str(body.phone, 40);
@@ -40,6 +43,13 @@ app.get("/addresses", async (c) => {
 app.post("/addresses", async (c) => {
   const userId = uid(c);
   if (!userId) return c.json({ error: "unauthorized" }, 401);
+  if (!(await rateLimit(c.env, `acc:addr:${userId}`, 20, 60))) {
+    return c.json({ error: "rate_limited" }, 429);
+  }
+  const countRow = await c.env.DB.prepare(`SELECT COUNT(*) as n FROM addresses WHERE user_id = ?`).bind(userId).first<{ n: number }>();
+  if (countRow && Number(countRow.n) >= 15) {
+    return c.json({ error: "address_limit_reached", message: "Maximum 15 addresses allowed per account" }, 422);
+  }
   const b = await c.req.json().catch(() => ({}));
   const isDefault = b.is_default ? 1 : 0;
   if (isDefault) {
@@ -57,6 +67,9 @@ app.put("/addresses/:id", async (c) => {
   const userId = uid(c);
   if (!userId) return c.json({ error: "unauthorized" }, 401);
   const id = Number(c.req.param("id"));
+  if (!Number.isInteger(id) || id <= 0) {
+    return c.json({ error: "invalid_id" }, 400);
+  }
   const b = await c.req.json().catch(() => ({}));
   const isDefault = b.is_default ? 1 : 0;
   if (isDefault) {
@@ -74,6 +87,9 @@ app.delete("/addresses/:id", async (c) => {
   const userId = uid(c);
   if (!userId) return c.json({ error: "unauthorized" }, 401);
   const id = Number(c.req.param("id"));
+  if (!Number.isInteger(id) || id <= 0) {
+    return c.json({ error: "invalid_id" }, 400);
+  }
   const r = await c.env.DB.prepare(`DELETE FROM addresses WHERE id = ? AND user_id = ?`).bind(id, userId).run();
   return c.json({ ok: true, deleted: r.meta.changes });
 });
@@ -95,9 +111,12 @@ app.get("/favorites", async (c) => {
 app.put("/favorites", async (c) => {
   const userId = uid(c);
   if (!userId) return c.json({ error: "unauthorized" }, 401);
+  if (!(await rateLimit(c.env, `acc:fav:${userId}`, 30, 60))) {
+    return c.json({ error: "rate_limited" }, 429);
+  }
   const b = await c.req.json().catch(() => ({}));
   const ids = Array.isArray(b.favorites)
-    ? [...new Set(b.favorites.map((x: unknown) => str(x, 20)).filter(Boolean))].slice(0, 200)
+    ? [...new Set(b.favorites.map((x: unknown) => str(x, 80)).filter(Boolean))].slice(0, 100)
     : [];
   await c.env.DB.prepare(`DELETE FROM favorites WHERE user_id = ?`).bind(userId).run();
   if (ids.length) {

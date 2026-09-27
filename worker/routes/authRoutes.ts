@@ -105,6 +105,61 @@ app.get("/me", async (c) => {
   return c.json({ user });
 });
 
+/** POST /api/auth/change-password */
+app.post("/change-password", async (c) => {
+  const session = c.get("session");
+  if (!session || !session.userId) {
+    return c.json({ error: "unauthorized" }, 401);
+  }
+  const ip = clientIp(c);
+  // Rate-limit password changes (max 5 attempts per hour per account and per IP)
+  if (
+    !(await rateLimit(c.env, `pwchg:acc:${session.userId}`, 5, 3600)) ||
+    !(await rateLimit(c.env, `pwchg:ip:${ip}`, 10, 3600))
+  ) {
+    return c.json({ error: "rate_limited" }, 429);
+  }
+
+  const body = await c.req.json().catch(() => ({}));
+  const currentPassword = str(body.currentPassword || body.current_password, 200);
+  const newPassword = str(body.newPassword || body.new_password, 200);
+
+  if (!currentPassword) {
+    return c.json({ error: "current_password_required" }, 422);
+  }
+  if (newPassword.length < 8) {
+    return c.json({ error: "weak_password" }, 422);
+  }
+
+  const user = await c.env.DB.prepare(
+    `SELECT id, password_hash, role FROM users WHERE id = ?`,
+  )
+    .bind(session.userId)
+    .first<{ id: number; password_hash: string; role: "customer" | "admin" }>();
+
+  if (!user || !(await verifyPassword(currentPassword, user.password_hash))) {
+    return c.json({ error: "invalid_current_password" }, 400);
+  }
+
+  const newHash = await hashPassword(newPassword);
+  await c.env.DB.prepare(`UPDATE users SET password_hash = ? WHERE id = ?`)
+    .bind(newHash, user.id)
+    .run();
+
+  // Session rotation: destroy previous session to prevent fixation and generate fresh session ID
+  const oldSid = c.get("sessionId");
+  if (oldSid) await destroySession(c.env, oldSid);
+
+  const newSid = await createSession(c.env, {
+    userId: user.id,
+    role: user.role,
+    createdAt: Date.now(),
+  });
+  setSessionCookie(c, newSid);
+
+  return c.json({ ok: true, message: "Password updated successfully" });
+});
+
 /** POST /api/auth/bootstrap-admin - promote a user to admin using a one-time token.
  *  Body: { email, token }. Token is compared to the ADMIN_BOOTSTRAP_TOKEN secret. */
 app.post("/bootstrap-admin", async (c) => {

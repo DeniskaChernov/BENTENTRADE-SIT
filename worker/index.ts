@@ -24,7 +24,11 @@ app.use("*", async (c, next) => {
     return c.text("Not found", 404);
   }
   // Block sensitive file extension probes
-  if (/\.(sql|db|sqlite|env|bak|log|conf|config|pem|key|crt|cert|sh|ps1|ts)$/i.test(path)) {
+  if (/\.(sql|db|sqlite|env|bak|log|conf|config|pem|key|crt|cert|sh|ps1|ts|yml|yaml|ini|lock|dist)$/i.test(path)) {
+    return c.text("Not found", 404);
+  }
+  // Block common CMS/admin/scanner probes
+  if (/(?:wp-admin|wp-login|wp-content|wp-includes|xmlrpc\.php|phpmyadmin|cgi-bin|\.aws|\.svn|actuator|composer\.(?:json|lock)|package-lock\.json|Dockerfile|web\.config|server-status)/i.test(path)) {
     return c.text("Not found", 404);
   }
   await next();
@@ -43,10 +47,23 @@ app.use("*", async (c, next) => {
   }
 });
 
-// CSRF & Cross-Origin Mutation Protection for API requests
+// CSRF & Cross-Origin Mutation Protection & Payload Limiting for API requests
 app.use("/api/*", async (c, next) => {
   const method = c.req.method.toUpperCase();
   if (["POST", "PUT", "DELETE", "PATCH"].includes(method)) {
+    // Payload size limiting (defense against memory exhaustion / DOS)
+    const contentLength = c.req.header("content-length");
+    if (contentLength) {
+      const len = parseInt(contentLength, 10);
+      if (!isNaN(len)) {
+        // Media uploads in admin allow up to 10MB; all other API mutations capped at 512KB
+        const maxBytes = c.req.path.startsWith("/api/admin/media") ? 10 * 1024 * 1024 : 512 * 1024;
+        if (len > maxBytes) {
+          return c.json({ error: "payload_too_large", maxBytes }, 413);
+        }
+      }
+    }
+
     const origin = c.req.header("origin");
     if (origin) {
       const allowedHosts = new Set([

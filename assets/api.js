@@ -86,6 +86,7 @@
     login: (email, password) => request("/api/auth/login", { method: "POST", body: { email, password } }),
     register: (payload) => request("/api/auth/register", { method: "POST", body: payload }),
     logout: () => request("/api/auth/logout", { method: "POST" }),
+    changePassword: (payload) => request("/api/auth/change-password", { method: "POST", body: payload }),
 
     // account (auth required)
     myOrders: () => request("/api/orders"),
