@@ -1452,7 +1452,8 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 .catalog-grid,
 #catalog-grid,
 .catalog-layout .catalog-grid,
-.catalog-layout #catalog-grid{
+.catalog-layout #catalog-grid,
+[data-related-grid]{
   display:grid !important;
   grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
   gap:16px !important;
@@ -1470,7 +1471,8 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 
 /* Card Architecture: Full-Bleed Media, Prominent Image, Compact Details */
 .catalog-layout .product,
-#catalog-grid .product{
+#catalog-grid .product,
+[data-related-grid] .product{
   display:flex;
   flex-direction:column;
   background:var(--paper);
@@ -1482,26 +1484,30 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   transition:transform .35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .35s ease, border-color .3s ease;
 }
 .catalog-layout .product:hover,
-#catalog-grid .product:hover{
+#catalog-grid .product:hover,
+[data-related-grid] .product:hover{
   transform:translateY(-4px);
   box-shadow:0 18px 42px -12px rgba(22,19,15,.16);
   border-color:color-mix(in oklab, var(--line) 30%, var(--copper));
 }
 [data-theme="dark"] .catalog-layout .product,
-[data-theme="dark"] #catalog-grid .product{
+[data-theme="dark"] #catalog-grid .product,
+[data-theme="dark"] [data-related-grid] .product{
   background:#171412;
   border-color:rgba(255,255,255,.08);
   box-shadow:0 8px 24px -12px rgba(0,0,0,.5);
 }
 [data-theme="dark"] .catalog-layout .product:hover,
-[data-theme="dark"] #catalog-grid .product:hover{
+[data-theme="dark"] #catalog-grid .product:hover,
+[data-theme="dark"] [data-related-grid] .product:hover{
   box-shadow:0 20px 48px -12px rgba(0,0,0,.7);
   border-color:rgba(184,115,51,.5);
 }
 
 /* Product Media - Large, Prominent Image (Dominates the Card) */
 .catalog-layout .product__media,
-#catalog-grid .product__media{
+#catalog-grid .product__media,
+[data-related-grid] .product__media{
   width:100% !important;
   aspect-ratio:1 / 1 !important;
   min-height:0 !important;
@@ -1513,7 +1519,8 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   overflow:hidden;
 }
 .catalog-layout .product__media img,
-#catalog-grid .product__media img{
+#catalog-grid .product__media img,
+[data-related-grid] .product__media img{
   position:absolute;
   inset:0;
   width:100% !important;
@@ -1522,21 +1529,27 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   object-position:center center !important;
   transition:transform .6s cubic-bezier(.16, 1, 0.3, 1);
 }
+.product__media img[src*="prod-table-dining-room"]{
+  object-position:center 64% !important;
+}
 .catalog-layout .product:hover .product__media img,
-#catalog-grid .product:hover .product__media img{
+#catalog-grid .product:hover .product__media img,
+[data-related-grid] .product:hover .product__media img{
   transform:scale(1.05);
 }
 
 /* Card Details Typography & Spacing - Compact, Clean, Secondary to Image */
 .catalog-layout .product > div:not(.product__media),
-#catalog-grid .product > div:not(.product__media){
+#catalog-grid .product > div:not(.product__media),
+[data-related-grid] .product > div:not(.product__media){
   padding:12px 14px 14px !important;
   display:flex;
   flex-direction:column;
   flex:1 1 auto;
 }
 .catalog-layout .product__cat,
-#catalog-grid .product__cat{
+#catalog-grid .product__cat,
+[data-related-grid] .product__cat{
   font-size:11px;
   font-weight:600;
   text-transform:uppercase;
@@ -1546,7 +1559,8 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   margin-bottom:2px;
 }
 .catalog-layout .product__name,
-#catalog-grid .product__name{
+#catalog-grid .product__name,
+[data-related-grid] .product__name{
   font-size:15px !important;
   font-weight:700;
   line-height:1.24;
@@ -1560,21 +1574,24 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   min-height:36px;
 }
 .catalog-layout .product-swatches,
-#catalog-grid .product-swatches{
+#catalog-grid .product-swatches,
+[data-related-grid] .product-swatches{
   display:inline-flex;
   align-items:center;
   gap:5px;
   margin-top:6px;
 }
 .catalog-layout .product-swatch,
-#catalog-grid .product-swatch{
+#catalog-grid .product-swatch,
+[data-related-grid] .product-swatch{
   width:13px;
   height:13px;
   border-radius:50%;
   border:1.2px solid rgba(0,0,0,.15);
 }
 .catalog-layout .price,
-#catalog-grid .price{
+#catalog-grid .price,
+[data-related-grid] .price{
   margin-top:auto;
   padding-top:8px;
   display:flex;
@@ -1582,14 +1599,16 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   gap:8px;
 }
 .catalog-layout .price__now,
-#catalog-grid .price__now{
+#catalog-grid .price__now,
+[data-related-grid] .price__now{
   font-size:16.5px !important;
   font-weight:800;
   color:var(--text);
   letter-spacing:-.015em;
 }
 .catalog-layout .price__old,
-#catalog-grid .price__old{
+#catalog-grid .price__old,
+[data-related-grid] .price__old{
   font-size:12.5px;
   color:var(--muted);
   text-decoration:line-through;
@@ -1597,7 +1616,8 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 
 /* In-media action buttons */
 .catalog-layout .product__media .fav,
-#catalog-grid .product__media .fav{
+#catalog-grid .product__media .fav,
+[data-related-grid] .product__media .fav{
   width:32px !important;
   height:32px !important;
   top:8px !important;
@@ -1608,11 +1628,13 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   box-shadow:0 2px 8px rgba(0,0,0,.1) !important;
 }
 .catalog-layout .product__media .fav svg,
-#catalog-grid .product__media .fav svg{
+#catalog-grid .product__media .fav svg,
+[data-related-grid] .product__media .fav svg{
   width:15px;height:15px;
 }
 .catalog-layout .product__media .add,
-#catalog-grid .product__media .add{
+#catalog-grid .product__media .add,
+[data-related-grid] .product__media .add{
   width:34px !important;
   height:34px !important;
   bottom:8px !important;
@@ -1624,11 +1646,13 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   box-shadow:0 3px 10px rgba(0,0,0,.2) !important;
 }
 .catalog-layout .product__media .add svg,
-#catalog-grid .product__media .add svg{
+#catalog-grid .product__media .add svg,
+[data-related-grid] .product__media .add svg{
   width:16px;height:16px;
 }
 .catalog-layout .product__media .badge-sale,
-#catalog-grid .product__media .badge-sale{
+#catalog-grid .product__media .badge-sale,
+[data-related-grid] .product__media .badge-sale{
   top:8px !important;
   right:8px !important;
   font-size:11px !important;
@@ -1637,21 +1661,20 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   border-radius:var(--r-pill);
 }
 .catalog-layout .product__media .see,
-#catalog-grid .product__media .see{
-  bottom:8px !important;
-  left:8px !important;
-  font-size:11.5px;
-  padding:5px 12px;
-  border-radius:var(--r-pill);
+#catalog-grid .product__media .see,
+[data-related-grid] .product__media .see,
+.product__media:has(.quickview-btn) .see{
+  display:none !important;
 }
 
-/* Catalog Breakpoints: 4 in row -> 3 in row -> 2 in row */
+/* Catalog and Related Breakpoints: 4 in row -> 3 in row -> 2 in row */
 @media (max-width:1380px){
   .catalog-layout{grid-template-columns:230px minmax(0,1fr);gap:18px;}
   .catalog-grid,
   #catalog-grid,
   .catalog-layout .catalog-grid,
-  .catalog-layout #catalog-grid{
+  .catalog-layout #catalog-grid,
+  [data-related-grid]{
     grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
     gap:16px !important;
   }
@@ -1661,7 +1684,8 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   .catalog-grid,
   #catalog-grid,
   .catalog-layout .catalog-grid,
-  .catalog-layout #catalog-grid{
+  .catalog-layout #catalog-grid,
+  [data-related-grid]{
     grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
     gap:14px !important;
   }
@@ -1670,21 +1694,25 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   .catalog-grid,
   #catalog-grid,
   .catalog-layout .catalog-grid,
-  .catalog-layout #catalog-grid{
+  .catalog-layout #catalog-grid,
+  [data-related-grid]{
     grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
     gap:10px !important;
   }
   .catalog-layout .product > div:not(.product__media),
-  #catalog-grid .product > div:not(.product__media){
+  #catalog-grid .product > div:not(.product__media),
+  [data-related-grid] .product > div:not(.product__media){
     padding:8px 10px 10px !important;
   }
   .catalog-layout .product__name,
-  #catalog-grid .product__name{
+  #catalog-grid .product__name,
+  [data-related-grid] .product__name{
     font-size:13px !important;
     min-height:32px;
   }
   .catalog-layout .price__now,
-  #catalog-grid .price__now{
+  #catalog-grid .price__now,
+  [data-related-grid] .price__now{
     font-size:14.5px !important;
   }
 }

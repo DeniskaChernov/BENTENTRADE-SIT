@@ -877,11 +877,20 @@
   function wireQuickViewTriggers(root){
     const scope = root || document;
     scope.querySelectorAll(".product[data-product]").forEach(card=>{
-      const see = card.querySelector("a.see, a[href*='product.html?id=']");
-      if(!see) return;
-      const m = (see.getAttribute("href")||"").match(/[?&]id=([^&#]+)/);
-      if(!m) return;
-      const pid = decodeURIComponent(m[1]);
+      let pid = card.dataset.slug || card.dataset.id;
+      if(!pid){
+        const see = card.querySelector("a.see, a[href*='product.html?id='], a[href*='/catalog/']");
+        if(see){
+          const href = see.getAttribute("href") || "";
+          const m = href.match(/[?&]id=([^&#]+)/);
+          if(m) pid = decodeURIComponent(m[1]);
+          else {
+            const mSlug = href.match(/\/catalog\/([a-z0-9-]+)/i);
+            if(mSlug) pid = mSlug[1];
+          }
+        }
+      }
+      if(!pid) return;
 
       const media = card.querySelector(".product__media");
       if(media && !media.querySelector(".quickview-btn")){

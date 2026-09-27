@@ -226,29 +226,55 @@
     if(!grid) return;
     const sameCat = MASTER.filter(m => m.slug !== prod.slug && m.category === prod.category);
     const otherCat = MASTER.filter(m => m.slug !== prod.slug && m.category !== prod.category);
-    const related = sameCat.concat(otherCat).slice(0, 3);
+    const related = sameCat.concat(otherCat).slice(0, 4);
     const seeTxt = t("see") || "Подробнее";
+    const l = lang();
 
     grid.innerHTML = related.map(item => {
       const nm = t(item.slug + ".name") || item.model;
       const cat = t(item.slug + ".cat") || t("cat." + item.category);
       const img = item.images && item.images[0] ? item.images[0] : "assets/prod-chair-corda.jpg";
-      const cleanUrl = "catalog/" + esc(item.slug);
+      const cleanUrl = "/catalog/" + esc(item.slug);
 
-      return '<article class="product reveal" data-product data-cat="' + esc(item.category) + '">' +
-        '<div class="product__media media">' +
-        '<button class="fav" data-fav data-prod-id="' + esc(item.slug) + '" aria-label="' + esc(t("a11y.fav")||"В избранное") + '">' + FAV_SVG + '</button>' +
-        '<img src="' + esc(img) + '" alt="' + esc(nm) + '" loading="lazy" decoding="async">' +
-        '<a class="see" href="' + esc(cleanUrl) + '">' + esc(seeTxt) + '</a>' +
-        '<button class="add" data-add data-prod-id="' + esc(item.slug) + '" aria-label="' + esc(t("a11y.add")||"В корзину") + '">' + ADD_SVG + '</button>' +
+      const disc = item.price_old && item.price_old > item.price
+        ? Math.round((1 - item.price / item.price_old) * 100) : 0;
+      const sale = disc ? '<span class="badge-sale">-' + disc + "%</span>" : "";
+      const mto = item.stock === 0 ? '<span class="badge-mto" data-i18n="mto.badge">' + esc(t("mto.badge") || "Под заказ") + "</span>" : "";
+      const old = item.price_old ? '<span class="price__old">' + money(item.price_old) + "</span>" : "";
+
+      const confirmed = item.confirmedColors || [];
+      let swatchesHtml = "";
+      if (confirmed.length > 0) {
+        swatchesHtml =
+          '<div class="product-swatches" aria-label="' + esc(t("colors.label") || "Цвета") + '">' +
+          confirmed.map(function(c, idx) {
+            const cName = (c.name && (c.name[l] || c.name.ru)) || c.id;
+            return '<span class="product-swatch' + (idx === 0 ? ' is-active' : '') + '" style="--swatch-color:' + esc(c.hex) + '" title="' + esc(cName) + '"></span>';
+          }).join('') +
+          '</div>';
+      }
+
+      return '<article class="product reveal" data-product ' +
+        'data-slug="' + esc(item.slug) + '" ' +
+        'data-id="' + esc(item.legacyId || item.slug) + '" ' +
+        'data-cat="' + esc(item.category) + '" ' +
+        'data-price="' + item.price + '">' +
+        '<div class="product__media media">' + sale + mto +
+        '<button class="fav" data-fav data-prod-id="' + esc(item.slug) + '" data-i18n-aria="a11y.fav" aria-label="' + esc(t("a11y.fav")||"В избранное") + '">' + FAV_SVG + '</button>' +
+        '<img src="' + esc(img) + '" alt="' + esc(nm) + '" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">' +
+        '<a class="see" href="' + esc(cleanUrl) + '" data-i18n="see">' + esc(seeTxt) + '</a>' +
+        '<button class="add" data-add data-prod-id="' + esc(item.slug) + '" data-i18n-aria="a11y.add" aria-label="' + esc(t("a11y.add")||"В корзину") + '">' + ADD_SVG + '</button>' +
         '</div>' +
         '<div>' +
         '<div class="product__cat">' + esc(cat) + '</div>' +
-        '<div class="product__name" style="margin-top:4px">' + esc(nm) + '</div>' +
-        '<div class="price" style="margin-top:8px"><span class="price__now">' + money(item.price) + '</span></div>' +
+        '<div class="product__name">' + esc(nm) + '</div>' +
+        swatchesHtml +
+        '<div class="price"><span class="price__now">' + money(item.price) + '</span>' + old + '</div>' +
         '</div>' +
         '</article>';
     }).join("");
+
+    document.dispatchEvent(new CustomEvent("btt:related-rendered", { detail: { grid } }));
   }
 
   function render(){
@@ -399,9 +425,17 @@
   }
 
   // Initial load
-  setImages();
-  render();
-  renderRelated();
+  function initPDP(){
+    setImages();
+    render();
+    renderRelated();
+  }
+
+  if(document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPDP);
+  } else {
+    initPDP();
+  }
 
   document.addEventListener("btt:lang", ()=>{
     render();
