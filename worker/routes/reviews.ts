@@ -45,6 +45,11 @@ app.post("/", async (c) => {
     return c.json({ error: "bad_json" }, 400);
   }
 
+  // Silent honeypot check: trap automated spam bots without exposing detection
+  if (body.website || body._hp || body.company_name_confirm) {
+    return c.json({ ok: true });
+  }
+
   const productId = str(body.product_id, 80);
   const authorName = str(body.author_name, 100);
   const city = str(body.city, 80) || "Ташкент";
@@ -53,6 +58,12 @@ app.post("/", async (c) => {
 
   if (!productId || !authorName || !text || text.length < 5) {
     return c.json({ error: "validation", fields: ["product_id", "author_name", "text"] }, 422);
+  }
+
+  // Validate that the target product actually exists in the database
+  const prodExists = await c.env.DB.prepare(`SELECT id FROM products WHERE id = ?`).bind(productId).first();
+  if (!prodExists) {
+    return c.json({ error: "product_not_found" }, 422);
   }
 
   const session = c.get("session");
@@ -74,7 +85,8 @@ app.post("/", async (c) => {
   }
 
   const createdAt = Date.now();
-  const status = "approved"; // auto-approve with admin moderation
+  // Verified buyers get auto-approval; unverified submissions require admin review
+  const status = isVerified ? "approved" : "pending";
 
   const res = await c.env.DB.prepare(
     `INSERT INTO reviews (product_id, user_id, author_name, city, rating, text, is_verified, status, created_at)

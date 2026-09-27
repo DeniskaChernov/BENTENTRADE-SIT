@@ -20,6 +20,11 @@ app.post("/", async (c) => {
     return c.json({ error: "bad_json" }, 400);
   }
 
+  // Silent honeypot check: trap automated spam bots without exposing detection
+  if (body.website || body._hp || body.company_name_confirm) {
+    return c.json({ ok: true, orderId: "BT-9999" });
+  }
+
   const rawItems = Array.isArray(body.items) ? (body.items as InItem[]) : [];
   if (!rawItems.length) return c.json({ error: "empty_cart" }, 422);
 
@@ -47,25 +52,43 @@ app.post("/", async (c) => {
     return c.json({ error: "address_required" }, 422);
   }
 
+  // Rate-limit by phone number to prevent SMS bombing / order flooding
+  const cleanPhone = customerPhone.replace(/\D/g, "");
+  if (cleanPhone && !(await rateLimit(c.env, `order:phone:${cleanPhone}`, 5, 3600))) {
+    return c.json({ error: "rate_limited" }, 429);
+  }
+
+  const ALIAS_MAP: Record<string, string> = {
+    p1: "stul-vertex", p2: "stul-corda", p3: "stul-roero", p4: "stul-noero",
+    p5: "stul-todo", p6: "stul-jardin", p7: "stul-lira", p8: "kreslo-como",
+    p9: "stol-taper-rotang-80", p10: "stol-vertex-d90", p11: "stol-taper-rotang-135",
+    p12: "stol-taper-80", p13: "stol-vertex-80", p14: "stol-taper-135", p15: "stol-corda-135"
+  };
+
   // Resolve authoritative prices from DB where product id is known.
-  const ids = rawItems.map((i) => str(i.id, 40)).filter(Boolean);
+  const resolvedIds = rawItems.map((i) => {
+    const rawId = str(i.id, 40);
+    return ALIAS_MAP[rawId] || rawId;
+  }).filter(Boolean);
+
   const priceMap = new Map<string, number>();
-  if (ids.length) {
-    const placeholders = ids.map(() => "?").join(",");
+  if (resolvedIds.length) {
+    const placeholders = resolvedIds.map(() => "?").join(",");
     const { results } = await c.env.DB.prepare(
       `SELECT id, price_now FROM products WHERE id IN (${placeholders})`,
     )
-      .bind(...ids)
+      .bind(...resolvedIds)
       .all<{ id: string; price_now: number }>();
     for (const r of results) priceMap.set(r.id, r.price_now);
   }
 
   const UZS_RATE = 12500;
   const items = rawItems.map((i) => {
-    const id = str(i.id, 40) || null;
+    const rawId = str(i.id, 40) || null;
+    const resolvedId = rawId ? (ALIAS_MAP[rawId] || rawId) : null;
     const qty = Math.max(1, Math.min(99, Math.floor(Number(i.qty) || 1)));
     const clientPrice = Math.max(0, Math.floor(Number(i.price) || 0));
-    const dbPrice = id && priceMap.has(id) ? priceMap.get(id)! : null;
+    const dbPrice = resolvedId && priceMap.has(resolvedId) ? priceMap.get(resolvedId)! : null;
     let unitPrice = clientPrice;
     if (dbPrice != null) {
       if (currency === "сум" || currency === "UZS") {
@@ -77,8 +100,8 @@ app.post("/", async (c) => {
       }
     }
     return {
-      id,
-      name: str(i.name, 200) || id || "-",
+      id: resolvedId || rawId,
+      name: str(i.name, 200) || resolvedId || "-",
       qty,
       unit_price: unitPrice,
       options: i.options ? JSON.stringify(i.options).slice(0, 500) : null,

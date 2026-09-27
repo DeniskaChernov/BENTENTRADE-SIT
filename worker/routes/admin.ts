@@ -400,7 +400,7 @@ app.post("/sms/test", async (c) => {
   const message = str(b.message, 500) || "Bententrade: Тестовое SMS-сообщение успешно доставлено!";
   if (!phone) return c.json({ error: "phone_required" }, 422);
 
-  const res = await sendSms(c.env, { phone, message });
+  const res = await sendSms(c.env, { phone, message, skipRateLimit: true });
   return c.json(res);
 });
 

@@ -26,3 +26,12 @@ Bententrade-Sit
 Bententrade-Sit/**
 .wrangler
 .wrangler/**
+*.sql
+*.log
+*.bak
+*.pem
+*.key
+*.cert
+*.sh
+*.ps1
+*.ts

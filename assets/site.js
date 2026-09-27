@@ -741,7 +741,7 @@
     const l = getLang();
     const d = dict[l] || dict.ru || {};
     const t = k => d[k] || (dict.ru||{})[k] || k;
-    const esc = s => (window.BTT_UTIL && window.BTT_UTIL.esc) ? window.BTT_UTIL.esc(s) : String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+    const esc = s => (window.BTT_UTIL && window.BTT_UTIL.esc) ? window.BTT_UTIL.esc(s) : String(s == null ? "" : s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
     const fmt = (n) => (window.BTT_UTIL && window.BTT_UTIL.formatMoney) ? window.BTT_UTIL.formatMoney(n) : String(n);
 
     const name = t(pid + ".name") || pid;

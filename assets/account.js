@@ -10,7 +10,7 @@
 
   const lang = U.lang || function(){ const s=localStorage.getItem("btt_lang"); return ["ru","uz","en"].includes(s)?s:"ru"; };
   const t = U.t || function(k){ const I=window.BTT_I18N||{}; const d=I[lang()]||{}; if(d[k]!=null) return d[k]; const ru=I.ru||{}; return ru[k]!=null?ru[k]:k; };
-  const esc = U.esc || function(s){ return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); };
+  const esc = U.esc || function(s){ return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); };
 
   function getFavs(){
     if(window.BTT_CART&&window.BTT_CART.getFavs) return window.BTT_CART.getFavs();

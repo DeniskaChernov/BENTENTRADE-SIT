@@ -10,32 +10,56 @@ export function applySecurityHeaders(headers: Headers, path: string): void {
     "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
   );
   headers.set("X-DNS-Prefetch-Control", "off");
-  headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+  headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
 
-  if (path.startsWith("/api") || path.startsWith("/admin") || path === "/login.html" || path === "/account.html") {
+  if (path.startsWith("/api")) {
     headers.set("X-Robots-Tag", "noindex, nofollow");
+    headers.set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+    headers.set("Pragma", "no-cache");
     return;
   }
 
-  // Public site: CSP allows inline boot script (theme FOUC) and Google Fonts.
-  headers.set(
-    "Content-Security-Policy",
-    [
-      "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "font-src 'self' https://fonts.gstatic.com data:",
-      "img-src 'self' data: https:",
-      "connect-src 'self'",
-      "frame-ancestors 'self'",
-      "base-uri 'self'",
-      "form-action 'self'",
-      "object-src 'none'",
-    ].join("; "),
-  );
+  const isSensitivePage =
+    path.startsWith("/admin") ||
+    path === "/login.html" ||
+    path === "/account.html" ||
+    path === "/account" ||
+    path === "/login";
+  if (isSensitivePage) {
+    headers.set("X-Robots-Tag", "noindex, nofollow");
+    headers.set("X-Frame-Options", "DENY");
+  }
+
+  // Content-Security-Policy (with frame-ancestors 'none' for admin and auth pages)
+  const cspDirectives = [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline'",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "font-src 'self' https://fonts.gstatic.com data:",
+    "img-src 'self' data: https:",
+    "connect-src 'self'",
+    isSensitivePage ? "frame-ancestors 'none'" : "frame-ancestors 'self'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "object-src 'none'",
+    "upgrade-insecure-requests",
+  ];
+
+  headers.set("Content-Security-Policy", cspDirectives.join("; "));
 }
 
 export function applyCacheHeaders(headers: Headers, path: string): void {
+  const isSensitivePage =
+    path.startsWith("/admin") ||
+    path === "/login.html" ||
+    path === "/account.html" ||
+    path === "/account" ||
+    path === "/login";
+  if (isSensitivePage || path.startsWith("/api")) {
+    headers.set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+    headers.set("Pragma", "no-cache");
+    return;
+  }
   if (path.startsWith("/assets/")) {
     headers.set("Cache-Control", "public, max-age=31536000, immutable");
   } else if (path.startsWith("/data/")) {

@@ -53,3 +53,12 @@ export function escapeHtml(s: unknown): string {
     }
   });
 }
+
+/** Constant-time string comparison to prevent timing attacks. */
+export function timingSafeEqual(a: string, b: string): boolean {
+  if (typeof a !== "string" || typeof b !== "string") return false;
+  const aEnc = new TextEncoder().encode(a);
+  const bEnc = new TextEncoder().encode(b);
+  if (aEnc.byteLength !== bEnc.byteLength) return false;
+  return crypto.subtle.timingSafeEqual(aEnc, bEnc);
+}

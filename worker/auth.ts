@@ -3,7 +3,7 @@ import type { Env, SessionData, Variables } from "./types";
 
 const SESSION_COOKIE = "btt_session";
 const SESSION_TTL_SEC = 60 * 60 * 24 * 30; // 30 days
-const PBKDF2_ITERATIONS = 10_000;
+const PBKDF2_ITERATIONS = 100_000;
 
 type Ctx = Context<{ Bindings: Env; Variables: Variables }>;
 
@@ -122,9 +122,13 @@ export function setSessionCookie(c: Ctx, id: string): void {
 }
 
 export function clearSessionCookie(c: Ctx): void {
+  const secure =
+    new URL(c.req.url).protocol === "https:" ||
+    (c.req.header("x-forwarded-proto") || "").split(",")[0].trim() === "https";
   c.header(
     "Set-Cookie",
-    `${SESSION_COOKIE}=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0`,
+    `${SESSION_COOKIE}=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0` +
+      (secure ? "; Secure" : ""),
     { append: true },
   );
 }

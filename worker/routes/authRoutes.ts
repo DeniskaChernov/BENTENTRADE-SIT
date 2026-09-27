@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import type { Env, Variables } from "../types";
-import { str, isEmail, rateLimit, clientIp } from "../util";
+import { str, isEmail, rateLimit, clientIp, timingSafeEqual } from "../util";
 import {
   hashPassword,
   verifyPassword,
@@ -41,6 +41,11 @@ app.post("/register", async (c) => {
     .run();
 
   const userId = ins.meta.last_row_id as number;
+
+  // Destroy old session if any (session fixation defense)
+  const oldSid = c.get("sessionId");
+  if (oldSid) await destroySession(c.env, oldSid);
+
   const sid = await createSession(c.env, { userId, role, createdAt: Date.now() });
   setSessionCookie(c, sid);
   return c.json({ ok: true, user: { id: userId, email, name, role } });
@@ -48,12 +53,19 @@ app.post("/register", async (c) => {
 
 /** POST /api/auth/login */
 app.post("/login", async (c) => {
-  if (!(await rateLimit(c.env, `login:${clientIp(c)}`, 20, 900))) {
+  const ip = clientIp(c);
+  // IP-level throttle against brute force
+  if (!(await rateLimit(c.env, `login:ip:${ip}`, 15, 900))) {
     return c.json({ error: "rate_limited" }, 429);
   }
   const body = await c.req.json().catch(() => ({}));
   const email = str(body.email, 160).toLowerCase();
   const password = str(body.password, 200);
+
+  // Account-level throttle against distributed credential stuffing
+  if (email && !(await rateLimit(c.env, `login:acc:${email}`, 8, 900))) {
+    return c.json({ error: "rate_limited" }, 429);
+  }
 
   const user = await c.env.DB.prepare(
     `SELECT id, email, name, role, password_hash FROM users WHERE email = ?`,
@@ -64,6 +76,10 @@ app.post("/login", async (c) => {
   if (!user || !(await verifyPassword(password, user.password_hash))) {
     return c.json({ error: "invalid_credentials" }, 401);
   }
+
+  // Destroy old session if any (session fixation defense)
+  const oldSid = c.get("sessionId");
+  if (oldSid) await destroySession(c.env, oldSid);
 
   const sid = await createSession(c.env, { userId: user.id, role: user.role, createdAt: Date.now() });
   setSessionCookie(c, sid);
@@ -99,7 +115,7 @@ app.post("/bootstrap-admin", async (c) => {
   const body = await c.req.json().catch(() => ({}));
   const token = str(body.token, 200);
   const email = str(body.email, 160).toLowerCase();
-  if (!c.env.ADMIN_BOOTSTRAP_TOKEN || token !== c.env.ADMIN_BOOTSTRAP_TOKEN) {
+  if (!c.env.ADMIN_BOOTSTRAP_TOKEN || !timingSafeEqual(token, c.env.ADMIN_BOOTSTRAP_TOKEN)) {
     return c.json({ error: "forbidden" }, 403);
   }
   const r = await c.env.DB.prepare(`UPDATE users SET role = 'admin' WHERE email = ?`).bind(email).run();

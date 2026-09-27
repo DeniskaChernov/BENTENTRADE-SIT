@@ -13,7 +13,7 @@
     ? window.BTT_UTIL.formatMoney(n)
     : (String(Math.round(Number(n) * 12500)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0сум");
   const mediaUrl = (key) => (key ? "/media/" + key : "");
-  const esc = U.esc || ((s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])));
+  const esc = U.esc || ((s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])));
   const idFromHref = (href) => {
     if (!href) return null;
     const m = href.match(/[?&]id=([^&#]+)/);

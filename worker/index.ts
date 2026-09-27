@@ -18,11 +18,62 @@ import { applySecurityHeaders, applyCacheHeaders } from "./security-headers";
 const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
 app.use("*", async (c, next) => {
+  const path = c.req.path;
+  // Block directory traversal or hidden/dot files (.env, .git, etc.)
+  if (path.startsWith("/.") || path.includes("/.")) {
+    return c.text("Not found", 404);
+  }
+  // Block sensitive file extension probes
+  if (/\.(sql|db|sqlite|env|bak|log|conf|config|pem|key|crt|cert|sh|ps1|ts)$/i.test(path)) {
+    return c.text("Not found", 404);
+  }
   await next();
   try {
     applySecurityHeaders(c.res.headers, c.req.path);
     applyCacheHeaders(c.res.headers, c.req.path);
-  } catch (e) { /* immutable response headers - ignore */ }
+  } catch {
+    const newHeaders = new Headers(c.res.headers);
+    applySecurityHeaders(newHeaders, c.req.path);
+    applyCacheHeaders(newHeaders, c.req.path);
+    c.res = new Response(c.res.body, {
+      status: c.res.status,
+      statusText: c.res.statusText,
+      headers: newHeaders,
+    });
+  }
+});
+
+// CSRF & Cross-Origin Mutation Protection for API requests
+app.use("/api/*", async (c, next) => {
+  const method = c.req.method.toUpperCase();
+  if (["POST", "PUT", "DELETE", "PATCH"].includes(method)) {
+    const origin = c.req.header("origin");
+    if (origin) {
+      const allowedHosts = new Set([
+        "bententrade.uz",
+        "www.bententrade.uz",
+        "localhost",
+        "127.0.0.1",
+      ]);
+      if (c.env.SITE_ORIGIN) {
+        try { allowedHosts.add(new URL(c.env.SITE_ORIGIN).host); } catch {}
+      }
+      try {
+        const originHost = new URL(origin).host;
+        const isAllowed =
+          allowedHosts.has(originHost) ||
+          originHost.endsWith(".workers.dev") ||
+          originHost.startsWith("localhost:") ||
+          originHost.startsWith("127.0.0.1:");
+        if (!isAllowed) {
+          return c.json({ error: "forbidden_origin", message: "Cross-site request blocked" }, 403);
+        }
+      } catch {
+        return c.json({ error: "bad_origin" }, 400);
+      }
+    }
+  }
+  await next();
 });
 
 app.onError((err, c) => {
@@ -36,17 +87,32 @@ app.use("*", sessionMiddleware);
 // Health check.
 app.get("/api/health", (c) => c.json({ ok: true, ts: Date.now() }));
 
+// Strict whitelist of public settings keys exposed to the storefront
+const PUBLIC_SETTINGS_KEYS = new Set([
+  "brand",
+  "phone",
+  "whatsapp",
+  "telegram",
+  "email",
+  "working_hours",
+  "address",
+  "delivery_terms",
+]);
+
 // Public settings (contact info, manager telegram, whatsapp, phone).
 app.get("/api/settings", async (c) => {
   const { results } = await c.env.DB.prepare(`SELECT key, value FROM settings`).all<{ key: string; value: string }>();
   const map: Record<string, string> = {
+    brand: "BTT - мебель для дома и сада",
     phone: "+998 77 104 44 22",
     whatsapp: "998771044422",
     telegram: "bententradeuz",
     email: "hello@bententrade.uz",
   };
   for (const r of results) {
-    if (r.key && r.value) map[r.key] = r.value;
+    if (r.key && r.value && PUBLIC_SETTINGS_KEYS.has(r.key)) {
+      map[r.key] = r.value;
+    }
   }
   return c.json({ ok: true, settings: map });
 });

@@ -1,4 +1,5 @@
 import type { Env } from "./types";
+import { rateLimit } from "./util";
 
 let cachedToken: { token: string; expiresAt: number } | null = null;
 
@@ -111,7 +112,7 @@ async function sendEskizSms(
 /** General SMS send function based on configured provider */
 export async function sendSms(
   env: Env,
-  opts: { phone: string; message: string; settings?: SmsSettings },
+  opts: { phone: string; message: string; settings?: SmsSettings; skipRateLimit?: boolean },
 ): Promise<{ ok: boolean; provider: string; details?: any; error?: string }> {
   const settings = opts.settings || (await loadSmsSettings(env));
   const provider = (settings.sms_provider || "disabled").toLowerCase();
@@ -123,6 +124,15 @@ export async function sendSms(
 
   if (provider === "disabled") {
     return { ok: false, provider: "disabled", error: "sms_provider_disabled" };
+  }
+
+  // Rate limiting: maximum 3 SMS per phone per 1 hour to prevent SMS bombing
+  if (!opts.skipRateLimit) {
+    const allowed = await rateLimit(env, `sms:phone:${phone}`, 3, 3600);
+    if (!allowed) {
+      console.warn(`[sms] Rate limit exceeded for +${phone}`);
+      return { ok: false, provider, error: "sms_rate_limit_exceeded" };
+    }
   }
 
   if (provider === "mock" || provider === "test") {

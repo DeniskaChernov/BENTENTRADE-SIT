@@ -17,6 +17,11 @@ app.post("/", async (c) => {
     return c.json({ error: "bad_json" }, 400);
   }
 
+  // Silent honeypot check: trap automated spam bots without exposing detection
+  if (body.website || body._hp || body.company_name_confirm) {
+    return c.json({ ok: true, id: 0 });
+  }
+
   const name = str(body.name, 120);
   const phone = str(body.phone, 40);
   const email = str(body.email, 160);
@@ -27,6 +32,11 @@ app.post("/", async (c) => {
 
   if (!name || (!hasPhone && !hasEmail)) {
     return c.json({ error: "validation", fields: ["name", "phone_or_email"] }, 422);
+  }
+
+  const cleanPhone = phone.replace(/\D/g, "");
+  if (cleanPhone && !(await rateLimit(c.env, `contact:phone:${cleanPhone}`, 3, 3600))) {
+    return c.json({ error: "rate_limited" }, 429);
   }
 
   const res = await c.env.DB.prepare(
