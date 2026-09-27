@@ -567,12 +567,27 @@
   }
 }
 
+@media (max-width: 768px) {
+  .horeca-top-bar {
+    padding-top: calc(var(--head-h, 56px) + env(safe-area-inset-top, 0px) + 16px);
+    padding-bottom: 16px;
+    gap: 10px;
+  }
+  .horeca-top-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding-bottom: 16px;
+  }
+}
+
 @media (max-width: 680px) {
   .horeca-adv-grid {
     grid-template-columns: 1fr;
   }
   .horeca-products-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
   .horeca-steps-grid {
     grid-template-columns: 1fr;
@@ -580,8 +595,32 @@
   .horeca-form-grid {
     grid-template-columns: 1fr;
   }
-  .horeca-top-header {
-    flex-direction: column;
-    align-items: flex-start;
+  .horeca-form-card .field input,
+  .horeca-form-card .field textarea {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .horeca-products-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .horeca-top-badge {
+    white-space: normal;
+    text-align: center;
+  }
+  .horeca-adv-card,
+  .horeca-step-card,
+  .horeca-form-card,
+  .horeca-aside-card {
+    padding: 20px 16px;
+    border-radius: var(--r-lg);
+  }
+  .horeca-submit-btn,
+  .horeca-tg-btn {
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
   }
 }
