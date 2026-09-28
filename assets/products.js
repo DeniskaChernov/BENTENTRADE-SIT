@@ -31,8 +31,10 @@
     ],
     "isTable": false,
     "images": [
-      "assets/placeholder.svg",
-      "assets/scene-dining-warm.png"
+      "assets/prod-chair-vertex.jpg",
+      "assets/prod-chair-vertex-side.jpg",
+      "assets/prod-chair-vertex-detail-back.jpg",
+      "assets/prod-chair-vertex-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {
