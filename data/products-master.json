@@ -682,11 +682,22 @@
       "металл"
     ],
     "maxLoad": null,
-    "confirmedColors": [],
+    "confirmedColors": [
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29"
+      }
+    ],
     "isTable": true,
     "images": [
-      "assets/prod-table-dining-room.jpg",
-      "assets/prod-table-marble-detail.jpg"
+      "assets/prod-table-taper-80-black.jpg",
+      "assets/prod-table-taper-80-detail-top.jpg",
+      "assets/prod-table-taper-80-detail-leg.jpg"
     ],
     "i18n": {
       "ru": {
