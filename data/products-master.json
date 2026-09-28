@@ -473,11 +473,33 @@
       "искусственный ротанг"
     ],
     "maxLoad": null,
-    "confirmedColors": [],
+    "confirmedColors": [
+      {
+        "id": "white-marble",
+        "name": {
+          "ru": "Белый мрамор",
+          "uz": "Oq marmar",
+          "en": "White Marble"
+        },
+        "hex": "#E8E6E1"
+      },
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29"
+      }
+    ],
     "isTable": true,
     "images": [
-      "assets/prod-table-dining-room.jpg",
-      "assets/prod-table-marble-detail.jpg"
+      "assets/prod-table-taper-rotang-80-white.jpg",
+      "assets/prod-table-taper-rotang-80-black.jpg",
+      "assets/prod-table-taper-rotang-80-detail-white.jpg",
+      "assets/prod-table-taper-rotang-80-detail-black.jpg",
+      "assets/prod-table-taper-rotang-80-detail-leg.jpg"
     ],
     "i18n": {
       "ru": {
@@ -536,8 +558,9 @@
     ],
     "isTable": true,
     "images": [
-      "assets/prod-table-vertex-white.jpg",
-      "assets/prod-table-marble-detail.jpg"
+      "assets/prod-table-vertex-d90.jpg",
+      "assets/prod-table-vertex-d90-detail-top.jpg",
+      "assets/prod-table-vertex-d90-detail-leg.jpg"
     ],
     "i18n": {
       "ru": {
@@ -584,11 +607,32 @@
       "искусственный ротанг"
     ],
     "maxLoad": null,
-    "confirmedColors": [],
+    "confirmedColors": [
+      {
+        "id": "white-marble",
+        "name": {
+          "ru": "Белый мрамор",
+          "uz": "Oq marmar",
+          "en": "White Marble"
+        },
+        "hex": "#E8E6E1"
+      },
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29"
+      }
+    ],
     "isTable": true,
     "images": [
-      "assets/prod-table-dining-room.jpg",
-      "assets/prod-table-marble-detail.jpg"
+      "assets/prod-table-taper-rotang-135-white.jpg",
+      "assets/prod-table-taper-rotang-135-black.jpg",
+      "assets/prod-table-taper-rotang-135-detail-side.jpg",
+      "assets/prod-table-taper-rotang-135-detail-top.jpg"
     ],
     "i18n": {
       "ru": {
