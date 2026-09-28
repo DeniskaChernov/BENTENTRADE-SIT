@@ -640,7 +640,9 @@
       "assets/prod-table-taper-rotang-135-white.jpg",
       "assets/prod-table-taper-rotang-135-black.jpg",
       "assets/prod-table-taper-rotang-135-detail-side.jpg",
-      "assets/prod-table-taper-rotang-135-detail-top.jpg"
+      "assets/prod-table-taper-rotang-135-detail-top.jpg",
+      "assets/prod-table-taper-rotang-135-detail-black.jpg",
+      "assets/prod-table-taper-rotang-135-detail-black-edge.jpg"
     ],
     "i18n": {
       "ru": {

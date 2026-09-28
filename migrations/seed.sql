@@ -105,6 +105,8 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-rotang-135-black.jpg', 'stol-taper-rotang-135', 'Taper Rotang 135x80', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-rotang-135-detail-side.jpg', 'stol-taper-rotang-135', 'Taper Rotang 135x80', 2);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-rotang-135-detail-top.jpg', 'stol-taper-rotang-135', 'Taper Rotang 135x80', 3);
+INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-rotang-135-detail-black.jpg', 'stol-taper-rotang-135', 'Taper Rotang 135x80', 4);
+INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-rotang-135-detail-black-edge.jpg', 'stol-taper-rotang-135', 'Taper Rotang 135x80', 5);
 
 INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stol-taper-80', 'tables', 'stol-taper-80', 734000, 0, 0, 1, 11, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p12', 'stol-taper-80');
