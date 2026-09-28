@@ -332,8 +332,9 @@
     ],
     "isTable": false,
     "images": [
-      "assets/placeholder.svg",
-      "assets/scene-dining-warm.png"
+      "assets/prod-chair-jardin.jpg",
+      "assets/prod-chair-jardin-back.jpg",
+      "assets/prod-chair-jardin-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {
