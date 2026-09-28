@@ -73,11 +73,23 @@
       "текстиль"
     ],
     "maxLoad": null,
-    "confirmedColors": [],
+    "confirmedColors": [
+      {
+        "id": "beige",
+        "hex": "#C4A482",
+        "name": {
+          "ru": "Бежевый",
+          "uz": "Sarg‘ish",
+          "en": "Beige"
+        }
+      }
+    ],
     "isTable": false,
     "images": [
       "assets/prod-chair-corda.jpg",
-      "assets/scene-dining-warm.png"
+      "assets/prod-chair-corda-side.jpg",
+      "assets/prod-chair-corda-detail-back.jpg",
+      "assets/prod-chair-corda-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {
