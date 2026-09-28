@@ -149,8 +149,10 @@
     ],
     "isTable": false,
     "images": [
-      "assets/placeholder.svg",
-      "assets/scene-dining-grey.png"
+      "assets/prod-chair-roero.jpg",
+      "assets/prod-chair-roero-front.jpg",
+      "assets/prod-chair-roero-detail-back.jpg",
+      "assets/prod-chair-roero-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {
