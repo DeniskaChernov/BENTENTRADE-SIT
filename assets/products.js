@@ -504,6 +504,7 @@
       "assets/prod-table-taper-rotang-80-white.jpg",
       "assets/prod-table-taper-rotang-80-white-front.jpg",
       "assets/prod-table-taper-rotang-80-black.jpg",
+      "assets/prod-table-taper-rotang-80-black-front.jpg",
       "assets/prod-table-taper-rotang-80-detail-white.jpg",
       "assets/prod-table-taper-rotang-80-detail-black.jpg",
       "assets/prod-table-taper-rotang-80-detail-leg.jpg"
