@@ -27,8 +27,8 @@ function main() {
   // 1. Insert 15 canonical products & aliases
   MASTER.forEach((p, i) => {
     lines.push(
-      `INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort) VALUES ` +
-        `(${q(p.slug)}, ${q(p.category)}, ${q(p.slug)}, ${n(p.price)}, 0, 0, 1, ${i});`,
+      `INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ` +
+        `(${q(p.slug)}, ${q(p.category)}, ${q(p.slug)}, ${n(p.price)}, 0, 0, 1, ${i}, ${q(p.availability || "unknown")});`,
     );
 
     if (p.legacyId) {
@@ -51,8 +51,8 @@ function main() {
       };
 
       lines.push(
-        `INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs) VALUES ` +
-          `(${q(p.slug)}, ${q(lang)}, ${q(name)}, ${q(catLabel)}, ${q(desc)}, ${q(JSON.stringify(sizes))}, ${q(JSON.stringify(specs))});`,
+        `INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ` +
+          `(${q(p.slug)}, ${q(lang)}, ${q(name)}, ${q(catLabel)}, ${q(desc)}, ${q(JSON.stringify(sizes))}, ${q(JSON.stringify(specs))}, ${q(i18nObj.seo_title || "")}, ${q(i18nObj.seo_description || "")});`,
       );
     }
 

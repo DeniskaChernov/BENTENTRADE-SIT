@@ -35,8 +35,9 @@ function syncProductsJs() {
       now: item.price,
       price: item.price,
       old: 0,
-      status: item.status || "unknown",
-      stock: item.status === "in_stock" ? 1 : (item.status === "out_of_stock" ? 0 : null),
+      status: item.availability || item.status || "unknown",
+      availability: item.availability || item.status || "unknown",
+      stock: item.availability === "in_stock" ? 1 : (item.availability === "out_of_stock" ? 0 : null),
       dimensions: item.dimensions,
       materials: item.materials,
       maxLoad: item.maxLoad || null,
@@ -61,27 +62,27 @@ function syncProductsJs() {
   };
 
   window.BTT_CAT_IMG = {
-    all:                 "assets/hero-garden-furniture.png",
+    all:                 "assets/placeholder.svg",
     "wicker-chairs":     "assets/prod-chair-corda.jpg",
-    "plastic-chairs":    "assets/hero-garden-furniture.png",
-    "upholstered-chairs":"assets/hero-home-furniture.png",
+    "plastic-chairs":    "assets/placeholder.svg",
+    "upholstered-chairs":"assets/placeholder.svg",
     tables:              "assets/prod-table-dining-room.jpg",
     // legacy category aliases
     furniture:           "assets/prod-chair-corda.jpg",
-    indoor:              "assets/hero-home-furniture.png",
-    planter:             "assets/hero-garden-furniture.png",
-    basket:              "assets/hero-home-furniture.png"
+    indoor:              "assets/placeholder.svg",
+    planter:             "assets/placeholder.svg",
+    basket:              "assets/placeholder.svg"
   };
 
   window.BTT_IS_MTO = function(id) {
     var p = window.BTT_PRODUCTS[id];
-    return !!(p && p.stock === 0);
+    return !!(p && (p.availability === "on_request" || p.stock === 0));
   };
 
   window.BTT_PRODUCT_IMG = function(id) {
     var p = window.BTT_PRODUCTS[id];
     if(!p) return null;
-    var imgs = p.images && p.images.length ? p.images : ["assets/prod-chair-corda.jpg"];
+    var imgs = p.images && p.images.length ? p.images : ["assets/placeholder.svg"];
     return imgs.map(function(s){ return { thumb: s, full: s }; });
   };
 
@@ -109,21 +110,21 @@ function syncProductsJs() {
     "plastic-chairs": {
       ru: {
         name: "Пластиковые стулья",
-        desc: "Практичные, лёгкие и долговечные пластиковые стулья для дома, веранды и кафе.",
+        desc: "Практичные и лёгкие пластиковые стулья для дома, веранды и кафе.",
         dim: "Для дома, террасы, фудкортов и кафе",
-        mat: "Прочный износостойкий пластик"
+        mat: "Пластик"
       },
       uz: {
         name: "Plastik stullar",
-        desc: "Uy, ayvon va kafelar uchun qulay, yengil va mustahkam plastik stullar.",
+        desc: "Uy, ayvon va kafelar uchun qulay va yengil plastik stullar.",
         dim: "Uy, terrasa, fudkort va kafelar uchun",
-        mat: "Pishiq, sifatli plastik"
+        mat: "Plastik"
       },
       en: {
         name: "Plastic chairs",
-        desc: "Practical, lightweight and durable plastic chairs for home, patios and cafes.",
+        desc: "Practical and lightweight plastic chairs for home, patios and cafes.",
         dim: "For home, terrace, food courts and cafes",
-        mat: "Durable high-grade plastic"
+        mat: "Plastic"
       }
     },
     "upholstered-chairs": {

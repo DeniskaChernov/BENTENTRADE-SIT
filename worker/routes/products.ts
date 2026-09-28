@@ -19,6 +19,7 @@ app.get("/", async (c) => {
   }
   const sql =
     `SELECT p.id, p.category, p.look, p.price_now, p.price_old, p.default_size,
+            COALESCE(p.availability, 'unknown') AS availability,
             i.name, i.category_label,
             (SELECT m.key FROM media m WHERE m.product_id = p.id ORDER BY m.sort ASC, m.id ASC LIMIT 1) AS image
      FROM products p
@@ -35,7 +36,7 @@ app.get("/:id", async (c) => {
   const lang = pickLang(c.req.query("lang"));
 
   let product = await c.env.DB.prepare(
-    `SELECT id, category, look, price_now, price_old, default_size FROM products WHERE id = ? AND active = 1`,
+    `SELECT id, category, look, price_now, price_old, default_size, COALESCE(availability, 'unknown') AS availability FROM products WHERE id = ? AND active = 1`,
   )
     .bind(rawId)
     .first();
@@ -51,7 +52,7 @@ app.get("/:id", async (c) => {
     if (aliasRow?.product_id) {
       canonicalId = aliasRow.product_id;
       product = await c.env.DB.prepare(
-        `SELECT id, category, look, price_now, price_old, default_size FROM products WHERE id = ? AND active = 1`,
+        `SELECT id, category, look, price_now, price_old, default_size, COALESCE(availability, 'unknown') AS availability FROM products WHERE id = ? AND active = 1`,
       )
         .bind(canonicalId)
         .first();
@@ -61,10 +62,10 @@ app.get("/:id", async (c) => {
   if (!product) return c.json({ error: "not_found" }, 404);
 
   const i18n = await c.env.DB.prepare(
-    `SELECT name, category_label, description, sizes, specs FROM product_i18n WHERE product_id = ? AND lang = ?`,
+    `SELECT name, category_label, description, sizes, specs, seo_title, seo_description FROM product_i18n WHERE product_id = ? AND lang = ?`,
   )
     .bind(canonicalId, lang)
-    .first<{ name: string; category_label: string; description: string; sizes: string; specs: string }>();
+    .first<{ name: string; category_label: string; description: string; sizes: string; specs: string; seo_title: string; seo_description: string }>();
 
   const media = await c.env.DB.prepare(
     `SELECT key, alt, sort FROM media WHERE product_id = ? ORDER BY sort ASC`,
@@ -95,6 +96,8 @@ app.get("/:id", async (c) => {
       description: i18n?.description ?? "",
       sizes: parsedSizes,
       specs: parsedSpecs,
+      seo_title: i18n?.seo_title ?? "",
+      seo_description: i18n?.seo_description ?? "",
       media: media.results,
     },
   });

@@ -18,6 +18,10 @@
     if(catMatch){
       const raw = catMatch[1].toLowerCase();
       if(PRODUCTS[raw]) return PRODUCTS[raw].slug || raw;
+      if(window.BTT_RESOLVE_PRODUCT){
+        const r = window.BTT_RESOLVE_PRODUCT(raw);
+        if(r && r.slug) return r.slug;
+      }
     }
 
     const params = new URLSearchParams(location.search);
@@ -25,11 +29,13 @@
     if(id){
       const raw = id.trim().toLowerCase();
       if(PRODUCTS[raw]) return PRODUCTS[raw].slug || raw;
+      if(window.BTT_RESOLVE_PRODUCT){
+        const r = window.BTT_RESOLVE_PRODUCT(raw);
+        if(r && r.slug) return r.slug;
+      }
     }
 
-    // Default to first product ONLY if on /product without query params
-    if(catMatch || id) return null;
-    return "stul-vertex";
+    return null;
   }
 
   const currentSlug = resolveProductIdentifier();
@@ -116,8 +122,15 @@
       "itemCondition": "https://schema.org/NewCondition",
       "seller": { "@type": "Organization", "name": "BTT - мебель для дома и сада" }
     };
-    if (prod.status === "in_stock" || prod.stock === 1) {
+    const avail = prod.availability || "unknown";
+    if (avail === "in_stock" || (prod.status === "in_stock" || prod.stock === 1)) {
       offerObj.availability = "https://schema.org/InStock";
+    } else if (avail === "low_stock") {
+      offerObj.availability = "https://schema.org/LimitedAvailability";
+    } else if (avail === "out_of_stock") {
+      offerObj.availability = "https://schema.org/OutOfStock";
+    } else if (avail === "on_request") {
+      offerObj.availability = "https://schema.org/PreOrder";
     }
 
     injectJsonLd("pdp-schema-product", {
@@ -233,13 +246,21 @@
     grid.innerHTML = related.map(item => {
       const nm = t(item.slug + ".name") || item.model;
       const cat = t(item.slug + ".cat") || t("cat." + item.category);
-      const img = item.images && item.images[0] ? item.images[0] : "assets/prod-chair-corda.jpg";
+      const img = item.images && item.images[0] ? item.images[0] : "assets/placeholder.svg";
       const cleanUrl = "/catalog/" + esc(item.slug);
 
       const disc = item.price_old && item.price_old > item.price
         ? Math.round((1 - item.price / item.price_old) * 100) : 0;
       const sale = disc ? '<span class="badge-sale">-' + disc + "%</span>" : "";
-      const mto = item.stock === 0 ? '<span class="badge-mto" data-i18n="mto.badge">' + esc(t("mto.badge") || "Под заказ") + "</span>" : "";
+      const avail = item.availability || "unknown";
+      let availBadge = "";
+      if (avail === "on_request" || (avail === "unknown" && item.stock === 0)) {
+        availBadge = '<span class="badge-mto" data-i18n="mto.badge">' + esc(t("mto.badge") || "Под заказ") + "</span>";
+      } else if (avail === "out_of_stock") {
+        availBadge = '<span class="badge-mto badge-oos">' + esc(t("availability.out_of_stock") || "Нет в наличии") + "</span>";
+      } else if (avail === "low_stock") {
+        availBadge = '<span class="badge-sale badge-low">' + esc(t("availability.low_stock") || "Осталось мало") + "</span>";
+      }
       const old = item.price_old ? '<span class="price__old">' + money(item.price_old) + "</span>" : "";
 
       const confirmed = item.confirmedColors || [];
@@ -259,7 +280,7 @@
         'data-id="' + esc(item.legacyId || item.slug) + '" ' +
         'data-cat="' + esc(item.category) + '" ' +
         'data-price="' + item.price + '">' +
-        '<div class="product__media media">' + sale + mto +
+        '<div class="product__media media">' + sale + availBadge +
         '<button class="fav" data-fav data-prod-id="' + esc(item.slug) + '" data-i18n-aria="a11y.fav" aria-label="' + esc(t("a11y.fav")||"В избранное") + '">' + FAV_SVG + '</button>' +
         '<img src="' + esc(img) + '" alt="' + esc(nm) + '" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">' +
         '<a class="see" href="' + esc(cleanUrl) + '" data-i18n="see">' + esc(seeTxt) + '</a>' +
@@ -326,14 +347,29 @@
       usageEl.textContent = i18nEntry.usage;
     }
 
+    // Availability badge
+    const availEl = $("[data-pdp-avail]");
+    const avail = prod.availability || "unknown";
+    if(availEl){
+      if(avail === "unknown"){
+        availEl.style.display = "none";
+      } else {
+        availEl.style.display = "";
+        availEl.className = "badge-avail badge-avail--" + avail;
+        availEl.textContent = t("availability." + avail) || avail;
+      }
+    }
+
     renderSwatches();
     updateCTAs(nm);
 
     // Page meta
     const pageUrl = "https://bententrade.uz/catalog/" + encodeURIComponent(prod.slug);
-    document.title = "BTT - " + nm;
-    setMetaPair("description", nm + " - " + cat + ". BTT - мебель для дома и сада.");
-    setMetaPair("og:title", "BTT - " + nm);
+    const seoTitle = (i18nEntry && i18nEntry.seo_title) || ("BTT - " + nm);
+    const seoDesc = (i18nEntry && i18nEntry.seo_description) || (nm + " - " + cat + ". BTT - мебель для дома и сада.");
+    document.title = seoTitle;
+    setMetaPair("description", seoDesc);
+    setMetaPair("og:title", seoTitle);
     setMetaPair("og:url", pageUrl);
     setCanonical(pageUrl);
     updateSchema(nm, pageUrl);

@@ -73,7 +73,15 @@
     const disc = p.price_old && p.price_old > p.price_now
       ? Math.round((1 - p.price_now / p.price_old) * 100) : 0;
     const sale = disc ? '<span class="badge-sale">-' + disc + "%</span>" : "";
-    const mto = p.stock === 0 ? '<span class="badge-mto" data-i18n="mto.badge">' + esc(t("mto.badge")) + "</span>" : "";
+    const avail = p.availability || "unknown";
+    let availBadge = "";
+    if (avail === "on_request" || (avail === "unknown" && p.stock === 0)) {
+      availBadge = '<span class="badge-mto" data-i18n="mto.badge">' + esc(t("mto.badge") || "Под заказ") + "</span>";
+    } else if (avail === "out_of_stock") {
+      availBadge = '<span class="badge-mto badge-oos">' + esc(t("availability.out_of_stock") || "Нет в наличии") + "</span>";
+    } else if (avail === "low_stock") {
+      availBadge = '<span class="badge-sale badge-low">' + esc(t("availability.low_stock") || "Осталось мало") + "</span>";
+    }
     const old = p.price_old ? '<span class="price__old">' + money(p.price_old) + "</span>" : "";
     const href = p.slug ? ("/catalog/" + encodeURIComponent(p.slug)) : ("product.html?id=" + esc(p.id));
     const masterProd = (window.BTT_PRODUCTS && (window.BTT_PRODUCTS[p.slug] || window.BTT_PRODUCTS[p.id])) || p;
@@ -95,7 +103,7 @@
     art.setAttribute("data-colors", confirmed.map(function(c){ return c.id; }).join(" "));
 
     art.innerHTML =
-      '<div class="product__media media">' + sale + mto +
+      '<div class="product__media media">' + sale + availBadge +
       '<button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="' + esc(t("a11y.fav")) + '">' + FAV_SVG + "</button>" +
       '<img src="' + esc(productImg(p)) + '" alt="' + esc(p.name || "") + '" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">' +
       '<a class="see" href="' + href + '" data-i18n="see">' + esc(t("see")) + "</a>" +
@@ -268,7 +276,9 @@
   async function hydratePDP() {
     if (!document.querySelector(".pdp-info")) return;
     if (_pdp404) return;
-    const id = new URLSearchParams(location.search).get("id") || "p1";
+    const catMatch = location.pathname.match(/\/catalog\/([a-z0-9-]+)/i);
+    const id = (catMatch && catMatch[1]) || new URLSearchParams(location.search).get("id") || new URLSearchParams(location.search).get("slug");
+    if (!id) return;
     const lg = lang();
     if (_pdpCache[lg]) { applyPDP(_pdpCache[lg]); return; }
     let res;
@@ -294,8 +304,22 @@
       look: p.look || "sofa",
       now: p.price_now,
       old: p.price_old || 0,
-      stock: p.stock ?? 1,
+      availability: p.availability || "unknown",
+      stock: p.stock
     };
+
+    // Availability badge
+    const availEl = document.querySelector("[data-pdp-avail]");
+    const avail = p.availability || "unknown";
+    if (availEl) {
+      if (avail === "unknown") {
+        availEl.style.display = "none";
+      } else {
+        availEl.style.display = "";
+        availEl.className = "badge-avail badge-avail--" + avail;
+        availEl.textContent = t("availability." + avail) || avail;
+      }
+    }
 
     // Name / breadcrumb / category / description straight from the CRM.
     const h1 = document.querySelector(".pdp-info h1");

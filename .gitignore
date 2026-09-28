@@ -7,5 +7,5 @@ uploads/
 *.log
 .DS_Store
 Bententrade-Sit/
-data/
 *.db
+data/*.db

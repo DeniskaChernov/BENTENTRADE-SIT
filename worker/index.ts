@@ -270,6 +270,17 @@ app.get("/product", (c) => {
   return c.redirect("/catalog.html", 301);
 });
 
+// Legacy article redirects
+const ARTICLE_REDIRECTS: Record<string, string> = {
+  "/kashpo-iz-iskusstvennogo-rotanga": "/article.html?slug=kashpo-iz-iskusstvennogo-rotanga",
+  "/korziny-sunduki-rotang": "/article.html?slug=korziny-sunduki-rotang",
+  "/palitra-tsvetov-rotanga-bententrade": "/article.html?slug=palitra-tsvetov-rotanga-bententrade",
+};
+
+for (const [fromPath, toPath] of Object.entries(ARTICLE_REDIRECTS)) {
+  app.get(fromPath, (c) => c.redirect(toPath, 301));
+}
+
 // HoReCa landing page
 app.get("/horeca", async (c) => {
   const url = new URL("/horeca.html", c.req.url);

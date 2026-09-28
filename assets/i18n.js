@@ -53,9 +53,14 @@ window.BTT_I18N = {
 
     "promo.consult": "Консультация по подбору мебели",
     "promo.price": "Выгодные прямые цены",
-    "mto.badge": "В наличии",
+    "mto.badge": "Под заказ",
     "mto.card": "Уточнить наличие",
     "mto.msg": "Здравствуйте! Интересует: {name}",
+    "availability.unknown": "Уточняйте наличие",
+    "availability.in_stock": "В наличии",
+    "availability.low_stock": "Осталось мало",
+    "availability.out_of_stock": "Нет в наличии",
+    "availability.on_request": "Под заказ",
 
     "cat.eyebrow": "Коллекция BTT",
     "cat.title.1": "Столы и стулья",
@@ -444,9 +449,14 @@ window.BTT_I18N = {
 
     "promo.consult": "Mebel tanlash bo‘yicha bepul maslahat",
     "promo.price": "To‘g‘ridan-to‘g‘ri qulay narxlar",
-    "mto.badge": "Mavjud",
+    "mto.badge": "Buyurtma asosida",
     "mto.card": "Mavjudligini aniqlash",
     "mto.msg": "Assalomu alaykum! Qiziqtirgan mahsulot: {name}",
+    "availability.unknown": "Mavjudligini aniqlang",
+    "availability.in_stock": "Mavjud",
+    "availability.low_stock": "Kam qoldi",
+    "availability.out_of_stock": "Mavjud emas",
+    "availability.on_request": "Buyurtma asosida",
 
     "cat.eyebrow": "BTT kolleksiyasi",
     "cat.title.1": "Stollar va stullar",
@@ -827,9 +837,14 @@ window.BTT_I18N = {
 
     "promo.consult": "Personal furniture consultation",
     "promo.price": "Direct transparent prices",
-    "mto.badge": "In stock",
+    "mto.badge": "Made to order",
     "mto.card": "Check availability",
     "mto.msg": "Hello! I am interested in: {name}",
+    "availability.unknown": "Check availability",
+    "availability.in_stock": "In stock",
+    "availability.low_stock": "Low stock",
+    "availability.out_of_stock": "Out of stock",
+    "availability.on_request": "Made to order",
 
     "cat.eyebrow": "BTT Collection",
     "cat.title.1": "Tables & Chairs",

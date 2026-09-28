@@ -11,11 +11,39 @@ app.use("*", requireAdmin);
 
 const LANGS = ["ru", "uz", "en"] as const;
 
+export const ALLOWED_CATEGORIES = new Set([
+  "wicker-chairs",
+  "plastic-chairs",
+  "upholstered-chairs",
+  "tables",
+]);
+
+export const ALLOWED_AVAILABILITIES = new Set([
+  "unknown",
+  "in_stock",
+  "low_stock",
+  "out_of_stock",
+  "on_request",
+]);
+
+function validateProductSlug(slug: string): string | null {
+  if (!slug) return "id_required";
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+    return "invalid_slug_format";
+  }
+  if (/^p\d+$/i.test(slug)) {
+    return "legacy_id_not_allowed";
+  }
+  return null;
+}
+
 /* =============================== products ============================== */
 
 app.get("/products", async (c) => {
   const { results } = await c.env.DB.prepare(
-    `SELECT p.id, p.category, p.look, p.price_now, p.price_old, p.active, p.sort, i.name,
+    `SELECT p.id, p.category, p.look, p.price_now, p.price_old, p.active, p.sort,
+            COALESCE(p.availability, 'unknown') AS availability,
+            i.name,
             (SELECT m.key FROM media m WHERE m.product_id = p.id ORDER BY m.sort ASC, m.id ASC LIMIT 1) AS image
      FROM products p LEFT JOIN product_i18n i ON i.product_id = p.id AND i.lang = 'ru'
      ORDER BY p.sort ASC, p.id ASC`,
@@ -33,10 +61,12 @@ app.put("/products/:id/active", async (c) => {
 
 app.get("/products/:id", async (c) => {
   const id = c.req.param("id");
-  const product = await c.env.DB.prepare(`SELECT * FROM products WHERE id = ?`).bind(id).first();
+  const product = await c.env.DB.prepare(
+    `SELECT *, COALESCE(availability, 'unknown') AS availability FROM products WHERE id = ?`,
+  ).bind(id).first();
   if (!product) return c.json({ error: "not_found" }, 404);
   const { results } = await c.env.DB.prepare(
-    `SELECT lang, name, category_label, description, sizes, specs FROM product_i18n WHERE product_id = ?`,
+    `SELECT lang, name, category_label, description, sizes, specs, seo_title, seo_description FROM product_i18n WHERE product_id = ?`,
   )
     .bind(id)
     .all();
@@ -51,11 +81,12 @@ app.get("/products/:id", async (c) => {
 async function upsertProductI18n(c: any, id: string, i18n: any) {
   if (!i18n) return;
   const stmt = c.env.DB.prepare(
-    `INSERT INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs)
-     VALUES (?, ?, ?, ?, ?, ?, ?)
+    `INSERT INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
      ON CONFLICT(product_id, lang) DO UPDATE SET
        name = excluded.name, category_label = excluded.category_label,
-       description = excluded.description, sizes = excluded.sizes, specs = excluded.specs`,
+       description = excluded.description, sizes = excluded.sizes, specs = excluded.specs,
+       seo_title = excluded.seo_title, seo_description = excluded.seo_description`,
   );
   const batch = [];
   for (const lang of LANGS) {
@@ -63,50 +94,89 @@ async function upsertProductI18n(c: any, id: string, i18n: any) {
     if (!t) continue;
     const sizes = Array.isArray(t.sizes) ? JSON.stringify(t.sizes) : str(t.sizes, 500) || "[]";
     const specs = typeof t.specs === "object" && t.specs ? JSON.stringify(t.specs) : str(t.specs, 1000) || "{}";
-    batch.push(stmt.bind(id, lang, str(t.name, 200), str(t.category_label, 120), str(t.description, 4000), sizes, specs));
+    batch.push(stmt.bind(
+      id,
+      lang,
+      str(t.name, 200),
+      str(t.category_label, 120),
+      str(t.description, 4000),
+      sizes,
+      specs,
+      str(t.seo_title, 255) || null,
+      str(t.seo_description, 500) || null,
+    ));
   }
   if (batch.length) await c.env.DB.batch(batch);
 }
 
 app.post("/products", async (c) => {
   const b = await c.req.json().catch(() => ({}));
-  const id = str(b.id, 40);
-  if (!id) return c.json({ error: "id_required" }, 422);
-  const exists = await c.env.DB.prepare(`SELECT id FROM products WHERE id = ?`).bind(id).first();
+  const rawId = str(b.id, 60).toLowerCase().trim();
+  const slugErr = validateProductSlug(rawId);
+  if (slugErr) return c.json({ error: slugErr }, 422);
+
+  const category = str(b.category, 40);
+  if (!ALLOWED_CATEGORIES.has(category)) {
+    return c.json({ error: "invalid_category", allowed: Array.from(ALLOWED_CATEGORIES) }, 422);
+  }
+
+  const availability = str(b.availability, 20) || "unknown";
+  if (!ALLOWED_AVAILABILITIES.has(availability)) {
+    return c.json({ error: "invalid_availability", allowed: Array.from(ALLOWED_AVAILABILITIES) }, 422);
+  }
+
+  const exists = await c.env.DB.prepare(`SELECT id FROM products WHERE id = ?`).bind(rawId).first();
   if (exists) return c.json({ error: "id_taken" }, 409);
+
+  const aliasExists = await c.env.DB.prepare(`SELECT alias FROM product_aliases WHERE alias = ?`).bind(rawId).first();
+  if (aliasExists) return c.json({ error: "alias_collision" }, 409);
+
   await c.env.DB.prepare(
-    `INSERT INTO products (id, category, look, price_now, price_old, default_size, active, sort)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   )
     .bind(
-      id,
-      str(b.category, 40) || "furniture",
+      rawId,
+      category,
       str(b.look, 40),
       Math.max(0, Math.floor(Number(b.price_now) || 0)),
       Math.max(0, Math.floor(Number(b.price_old) || 0)),
       Math.max(0, Math.floor(Number(b.default_size) || 0)),
       b.active === 0 ? 0 : 1,
       Math.floor(Number(b.sort) || 0),
+      availability,
     )
     .run();
-  await upsertProductI18n(c, id, b.i18n);
-  return c.json({ ok: true, id });
+  await upsertProductI18n(c, rawId, b.i18n);
+  return c.json({ ok: true, id: rawId });
 });
 
 app.put("/products/:id", async (c) => {
   const id = c.req.param("id");
   const b = await c.req.json().catch(() => ({}));
+
+  const category = str(b.category, 40);
+  if (!ALLOWED_CATEGORIES.has(category)) {
+    return c.json({ error: "invalid_category", allowed: Array.from(ALLOWED_CATEGORIES) }, 422);
+  }
+
+  const availability = str(b.availability, 20) || "unknown";
+  if (!ALLOWED_AVAILABILITIES.has(availability)) {
+    return c.json({ error: "invalid_availability", allowed: Array.from(ALLOWED_AVAILABILITIES) }, 422);
+  }
+
   const r = await c.env.DB.prepare(
-    `UPDATE products SET category = ?, look = ?, price_now = ?, price_old = ?, default_size = ?, active = ?, sort = ? WHERE id = ?`,
+    `UPDATE products SET category = ?, look = ?, price_now = ?, price_old = ?, default_size = ?, active = ?, sort = ?, availability = ? WHERE id = ?`,
   )
     .bind(
-      str(b.category, 40) || "furniture",
+      category,
       str(b.look, 40),
       Math.max(0, Math.floor(Number(b.price_now) || 0)),
       Math.max(0, Math.floor(Number(b.price_old) || 0)),
       Math.max(0, Math.floor(Number(b.default_size) || 0)),
       b.active === 0 ? 0 : 1,
       Math.floor(Number(b.sort) || 0),
+      availability,
       id,
     )
     .run();

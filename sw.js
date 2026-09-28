@@ -1,8 +1,8 @@
 /* ============================================================
    BENTENTRADE - Service Worker (PWA Offline Cache)
-   Version: 20260922-fonts
+   Version: 20260928-v1
    ============================================================ */
-const CACHE_NAME = "btt-shell-20260926-v2";
+const CACHE_NAME = "btt-shell-20260928-v1";
 const STATIC_ASSETS = [
   "/",
   "/index.html",
@@ -18,6 +18,7 @@ const STATIC_ASSETS = [
   "/assets/site.js",
   "/assets/cart.js",
   "/assets/i18n.js",
+  "/assets/placeholder.svg",
   "/assets/fonts/soyuz-grotesk-bold.woff",
   "/assets/btt-logo.png",
   "/assets/favicon.png"

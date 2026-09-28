@@ -494,6 +494,17 @@ p{margin:0;text-wrap:pretty;}
   box-shadow:0 6px 16px -8px rgba(0,0,0,.45);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
+.badge-mto.badge-oos{background:rgba(198,40,40,.88);border-color:rgba(255,255,255,.25);}
+.badge-sale.badge-low{background:#e65100;}
+.badge-avail{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:3px 10px;border-radius:var(--r-pill);
+  font-size:12px;font-weight:700;letter-spacing:.02em;
+}
+.badge-avail--in_stock{background:rgba(46,125,50,.12);color:#2e7d32;border:1px solid rgba(46,125,50,.25);}
+.badge-avail--low_stock{background:rgba(230,81,0,.12);color:#e65100;border:1px solid rgba(230,81,0,.25);}
+.badge-avail--out_of_stock{background:rgba(198,40,40,.12);color:#c62828;border:1px solid rgba(198,40,40,.25);}
+.badge-avail--on_request{background:rgba(189,115,53,.12);color:var(--copper);border:1px solid rgba(189,115,53,.25);}
 .product__media .add.add--mto{background:var(--copper);color:#fff;border-color:var(--copper);}
 
 .product{

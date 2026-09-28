@@ -440,7 +440,7 @@
     if(!id) return false;
     if(window.BTT_IS_MTO) return window.BTT_IS_MTO(id);
     const p = (window.BTT_PRODUCTS||{})[id];
-    return !!(p && p.stock === 0);
+    return !!(p && (p.availability === "on_request" || p.stock === 0));
   }
 
   function mtoMessage(name){
@@ -753,7 +753,18 @@
     const photos = imgs && imgs.length ? imgs : [{ thumb: "assets/hero-garden-furniture.png", full: "assets/hero-garden-furniture.png" }];
 
     const oldPriceHtml = prod.old ? '<span class="old">' + esc(fmt(prod.old)) + '</span>' : '';
-    const isMto = window.BTT_IS_MTO ? window.BTT_IS_MTO(pid) : prod.stock === 0;
+    const isMto = window.BTT_IS_MTO ? window.BTT_IS_MTO(pid) : (prod.availability === "on_request" || prod.stock === 0);
+    const avail = prod.availability || "unknown";
+    let availBadge = "";
+    if (avail === "in_stock") {
+      availBadge = '<span class="badge-avail badge-avail--in_stock">' + esc(t("availability.in_stock") || "В наличии") + '</span>';
+    } else if (avail === "low_stock") {
+      availBadge = '<span class="badge-avail badge-avail--low_stock">' + esc(t("availability.low_stock") || "Осталось мало") + '</span>';
+    } else if (avail === "out_of_stock") {
+      availBadge = '<span class="badge-avail badge-avail--out_of_stock">' + esc(t("availability.out_of_stock") || "Нет в наличии") + '</span>';
+    } else if (avail === "on_request") {
+      availBadge = '<span class="badge-avail badge-avail--on_request">' + esc(t("availability.on_request") || "Под заказ") + '</span>';
+    }
 
     let thumbsHtml = photos.map((im, i)=>
       '<button type="button" class="qv-thumb' + (i === 0 ? ' is-active' : '') + '" data-qv-thumb="' + i + '" aria-label="Фото ' + (i + 1) + '">' +
@@ -777,9 +788,10 @@
         '<div class="qv-info">' +
           '<div class="qv-cat">' + esc(cat) + '</div>' +
           '<h3 class="qv-name">' + esc(name) + '</h3>' +
-          '<div class="qv-price">' +
+          '<div class="qv-price" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
             '<span class="now">' + esc(fmt(prod.now)) + '</span>' +
             oldPriceHtml +
+            availBadge +
           '</div>' +
           '<p class="qv-desc">' + esc(cDesc) + '</p>' +
           '<div class="qv-actions">' +

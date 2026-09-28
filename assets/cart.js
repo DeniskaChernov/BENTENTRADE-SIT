@@ -178,6 +178,10 @@
     const price = priceEl ? parseInt((priceEl.textContent||"").replace(/[^\d]/g,""),10)||0 : 0;
     const img = (card.querySelector("img")||{}).currentSrc || (card.querySelector("img")||{}).src || "";
     if(!id) id = "x-"+name.slice(0,18).replace(/\s+/g,"-").toLowerCase();
+    if(id && window.BTT_RESOLVE_PRODUCT){
+      const r = window.BTT_RESOLVE_PRODUCT(id);
+      if(r && r.slug) id = r.slug;
+    }
     const activeSwatch = card.querySelector(".product-swatch.is-active");
     const options = {};
     if(activeSwatch && activeSwatch.title) options.finish = activeSwatch.title.trim();
@@ -193,7 +197,11 @@
       if(slugMatch) id = slugMatch[1];
     }
     if(!id){
-      id = (new URLSearchParams(location.search).get("id")) || "p1";
+      id = (new URLSearchParams(location.search).get("id")) || (new URLSearchParams(location.search).get("slug")) || null;
+    }
+    if(id && window.BTT_RESOLVE_PRODUCT){
+      const r = window.BTT_RESOLVE_PRODUCT(id);
+      if(r && r.slug) id = r.slug;
     }
     const name = (document.querySelector(".pdp-info h1")||{}).textContent || "";
     const price = parseInt(((document.querySelector(".pdp-price .now")||{}).textContent||"").replace(/[^\d]/g,""),10)||0;
@@ -976,7 +984,7 @@
 
       saveCheckout({ name: name || saved.name, phone, payment });
 
-      const prodId = snap.id || "p1";
+      const prodId = snap.id || (window.BTT_PDP_PRODUCT && window.BTT_PDP_PRODUCT.slug) || "unknown";
       let orderId = null;
       if(window.BTT_API && window.BTT_API.createOrder){
         try{

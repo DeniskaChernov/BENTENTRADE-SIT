@@ -30,3 +30,37 @@ export type Variables = {
   session: SessionData | null;
   sessionId: string | null;
 };
+
+/** Product availability status unified model. */
+export type ProductAvailability = "unknown" | "in_stock" | "low_stock" | "out_of_stock" | "on_request";
+
+/** 4 canonical categories for storefront and CMS. */
+export type ProductCategory = "wicker-chairs" | "plastic-chairs" | "upholstered-chairs" | "tables";
+
+/** Single Source of Truth canonical product record. */
+export interface ProductMasterRecord {
+  id: string; // canonical slug, e.g. "stul-vertex"
+  category: ProductCategory;
+  look?: string | null;
+  price_now: number;
+  price_old?: number;
+  default_size?: number;
+  active: number;
+  sort: number;
+  availability: ProductAvailability;
+  created_at?: string;
+}
+
+/** Architecture definition for Sets (4 chairs + 1 table), referencing canonical product IDs without data duplication. */
+export interface ProductSet {
+  id: string; // e.g. "set-taper-corda-4"
+  slug: string;
+  chairProductId: string; // canonical slug of chair SKU
+  chairQuantity: number;  // e.g. 4
+  tableProductId: string; // canonical slug of table SKU
+  tableQuantity: number;  // e.g. 1
+  price: number;
+  active: number;
+  sort: number;
+  created_at?: string;
+}

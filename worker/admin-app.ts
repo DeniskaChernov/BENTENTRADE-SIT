@@ -6,10 +6,18 @@ export const ADMIN_APP_JS = String.raw`
   var app = document.getElementById("app");
   var LANGS = ["ru", "uz", "en"];
   var CATS = [
-    { id: "furniture", label: "Садовая мебель" },
-    { id: "planter", label: "Кашпо" },
-    { id: "basket", label: "Корзины и сундуки" },
-    { id: "indoor", label: "Мебель для дома" }
+    { id: "wicker-chairs", label: "Плетёные стулья" },
+    { id: "plastic-chairs", label: "Пластиковые стулья" },
+    { id: "upholstered-chairs", label: "Мягкие стулья" },
+    { id: "tables", label: "Столы" }
+  ];
+
+  var AVAILABILITIES = [
+    { id: "unknown", label: "Не подтверждено (unknown)" },
+    { id: "in_stock", label: "В наличии (in_stock)" },
+    { id: "low_stock", label: "Осталось мало (low_stock)" },
+    { id: "out_of_stock", label: "Нет в наличии (out_of_stock)" },
+    { id: "on_request", label: "Под заказ (on_request)" }
   ];
 
   var ICONS = {
@@ -53,9 +61,9 @@ export const ADMIN_APP_JS = String.raw`
   }
 
   function catFallback(cat){
-    if (cat === "planter") return "/assets/hero-planter.png";
-    if (cat === "indoor") return "/assets/hero-home-furniture.png";
-    return "/assets/hero-garden-furniture.png";
+    if (cat === "wicker-chairs") return "/assets/prod-chair-corda.jpg";
+    if (cat === "tables") return "/assets/prod-table-dining-room.jpg";
+    return "/assets/placeholder.svg";
   }
 
   function catName(catId){
@@ -806,15 +814,23 @@ export const ADMIN_APP_JS = String.raw`
               '<div class="p-pane" data-pl="ru">' +
                 '<div class="field">' +
                   '<label>Название товара (RU)</label>' +
-                  '<input class="p-name-inp" data-lang="ru" value="' + esc((byLang.ru && byLang.ru.name) || "") + '" placeholder="например: Садовый диван «Лагуна»">' +
+                  '<input class="p-name-inp" data-lang="ru" value="' + esc((byLang.ru && byLang.ru.name) || "") + '" placeholder="например: Стул «Vertex»">' +
                 '</div>' +
                 '<div class="field">' +
                   '<label>Подпись категории / Бейдж (RU)</label>' +
-                  '<input class="p-cat-inp" data-lang="ru" value="' + esc((byLang.ru && byLang.ru.category_label) || "") + '" placeholder="Садовая мебель">' +
+                  '<input class="p-cat-inp" data-lang="ru" value="' + esc((byLang.ru && byLang.ru.category_label) || "") + '" placeholder="Плетёные стулья">' +
                 '</div>' +
                 '<div class="field">' +
                   '<label>Описание товара (RU)</label>' +
-                  '<textarea class="p-desc-inp" data-lang="ru" style="min-height:110px" placeholder="Подробное описание комфорта, устойчивости к солнцу и осадкам…">' + esc((byLang.ru && byLang.ru.description) || "") + '</textarea>' +
+                  '<textarea class="p-desc-inp" data-lang="ru" style="min-height:110px" placeholder="Фактическое описание товара, размеры, материалы, назначение…">' + esc((byLang.ru && byLang.ru.description) || "") + '</textarea>' +
+                '</div>' +
+                '<div class="field">' +
+                  '<label>SEO Title (RU)</label>' +
+                  '<input class="p-seotitle-inp" data-lang="ru" value="' + esc((byLang.ru && byLang.ru.seo_title) || "") + '" placeholder="Купить Стул Vertex в Ташкенте - BTT">' +
+                '</div>' +
+                '<div class="field">' +
+                  '<label>SEO Description (RU)</label>' +
+                  '<textarea class="p-seodesc-inp" data-lang="ru" style="min-height:60px" placeholder="Описание для поисковой выдачи…">' + esc((byLang.ru && byLang.ru.seo_description) || "") + '</textarea>' +
                 '</div>' +
               '</div>' +
 
@@ -830,18 +846,25 @@ export const ADMIN_APP_JS = String.raw`
                     '<div style="font-size:12px;color:var(--muted);margin-bottom:8px" id="ref-cat-uz">' + esc((byLang.ru && byLang.ru.category_label) || "-") + '</div>' +
                     '<div style="font-size:12px;line-height:1.5" id="ref-desc-uz">' + esc((byLang.ru && byLang.ru.description) || "-") + '</div>' +
                   '</div>' +
-                  '<div>' +
                     '<div class="field">' +
                       '<label>Nomi (UZ)</label>' +
-                      '<input class="p-name-inp" data-lang="uz" value="' + esc((byLang.uz && byLang.uz.name) || "") + '" placeholder="Bog\' mebeli «Laguna»">' +
+                      '<input class="p-name-inp" data-lang="uz" value="' + esc((byLang.uz && byLang.uz.name) || "") + '" placeholder="«Vertex» stuli">' +
                     '</div>' +
                     '<div class="field">' +
                       '<label>Kategoriya belgisi (UZ)</label>' +
-                      '<input class="p-cat-inp" data-lang="uz" value="' + esc((byLang.uz && byLang.uz.category_label) || "") + '" placeholder="Bog\' mebellari">' +
+                      '<input class="p-cat-inp" data-lang="uz" value="' + esc((byLang.uz && byLang.uz.category_label) || "") + '" placeholder="To‘qilgan stullar">' +
                     '</div>' +
                     '<div class="field">' +
                       '<label>Tavsif (UZ)</label>' +
                       '<textarea class="p-desc-inp" data-lang="uz" style="min-height:110px" placeholder="Tavsif…">' + esc((byLang.uz && byLang.uz.description) || "") + '</textarea>' +
+                    '</div>' +
+                    '<div class="field">' +
+                      '<label>SEO Title (UZ)</label>' +
+                      '<input class="p-seotitle-inp" data-lang="uz" value="' + esc((byLang.uz && byLang.uz.seo_title) || "") + '" placeholder="Toshkentda Vertex stuli sotib olish - BTT">' +
+                    '</div>' +
+                    '<div class="field">' +
+                      '<label>SEO Description (UZ)</label>' +
+                      '<textarea class="p-seodesc-inp" data-lang="uz" style="min-height:60px" placeholder="Qidiruv tizimi uchun tavsif…">' + esc((byLang.uz && byLang.uz.seo_description) || "") + '</textarea>' +
                     '</div>' +
                   '</div>' +
                 '</div>' +
@@ -862,15 +885,23 @@ export const ADMIN_APP_JS = String.raw`
                   '<div>' +
                     '<div class="field">' +
                       '<label>Product Title (EN)</label>' +
-                      '<input class="p-name-inp" data-lang="en" value="' + esc((byLang.en && byLang.en.name) || "") + '" placeholder="Laguna Outdoor Sofa">' +
+                      '<input class="p-name-inp" data-lang="en" value="' + esc((byLang.en && byLang.en.name) || "") + '" placeholder="Vertex Chair">' +
                     '</div>' +
                     '<div class="field">' +
                       '<label>Category label (EN)</label>' +
-                      '<input class="p-cat-inp" data-lang="en" value="' + esc((byLang.en && byLang.en.category_label) || "") + '" placeholder="Outdoor Furniture">' +
+                      '<input class="p-cat-inp" data-lang="en" value="' + esc((byLang.en && byLang.en.category_label) || "") + '" placeholder="Wicker chairs">' +
                     '</div>' +
                     '<div class="field">' +
                       '<label>Description (EN)</label>' +
                       '<textarea class="p-desc-inp" data-lang="en" style="min-height:110px" placeholder="Product details…">' + esc((byLang.en && byLang.en.description) || "") + '</textarea>' +
+                    '</div>' +
+                    '<div class="field">' +
+                      '<label>SEO Title (EN)</label>' +
+                      '<input class="p-seotitle-inp" data-lang="en" value="' + esc((byLang.en && byLang.en.seo_title) || "") + '" placeholder="Buy Vertex Chair in Tashkent - BTT">' +
+                    '</div>' +
+                    '<div class="field">' +
+                      '<label>SEO Description (EN)</label>' +
+                      '<textarea class="p-seodesc-inp" data-lang="en" style="min-height:60px" placeholder="Search engine description…">' + esc((byLang.en && byLang.en.seo_description) || "") + '</textarea>' +
                     '</div>' +
                   '</div>' +
                 '</div>' +
@@ -938,6 +969,12 @@ export const ADMIN_APP_JS = String.raw`
                 '<select id="p-active">' +
                   '<option value="1" ' + (p.active !== 0 ? 'selected' : '') + '>Активен (виден клиентам)</option>' +
                   '<option value="0" ' + (p.active === 0 ? 'selected' : '') + '>Скрыт (черновик / архив)</option>' +
+                '</select>' +
+              '</div>' +
+              '<div class="field">' +
+                '<label>Наличие на складе</label>' +
+                '<select id="p-avail">' +
+                  AVAILABILITIES.map(function(a){ return '<option value="' + a.id + '" ' + ((p.availability || "unknown") === a.id ? 'selected' : '') + '>' + a.label + '</option>'; }).join("") +
                 '</select>' +
               '</div>' +
               '<div class="field">' +
@@ -1049,11 +1086,15 @@ export const ADMIN_APP_JS = String.raw`
       var ruN = dlg.querySelector('.p-name-inp[data-lang="ru"]').value;
       var ruC = dlg.querySelector('.p-cat-inp[data-lang="ru"]').value;
       var ruD = dlg.querySelector('.p-desc-inp[data-lang="ru"]').value;
+      var ruST = dlg.querySelector('.p-seotitle-inp[data-lang="ru"]').value;
+      var ruSD = dlg.querySelector('.p-seodesc-inp[data-lang="ru"]').value;
       if (!ruN) { toast("Сначала заполните название в RU!", "err"); return; }
       ["uz", "en"].forEach(function(l){
         dlg.querySelector('.p-name-inp[data-lang="' + l + '"]').value = ruN;
         dlg.querySelector('.p-cat-inp[data-lang="' + l + '"]').value = ruC;
         dlg.querySelector('.p-desc-inp[data-lang="' + l + '"]').value = ruD;
+        dlg.querySelector('.p-seotitle-inp[data-lang="' + l + '"]').value = ruST;
+        dlg.querySelector('.p-seodesc-inp[data-lang="' + l + '"]').value = ruSD;
       });
       toast("Все языки успешно заполнены из RU ✓");
       triggerAutosave();
@@ -1085,9 +1126,13 @@ export const ADMIN_APP_JS = String.raw`
         var ruN = dlg.querySelector('.p-name-inp[data-lang="ru"]').value;
         var ruC = dlg.querySelector('.p-cat-inp[data-lang="ru"]').value;
         var ruD = dlg.querySelector('.p-desc-inp[data-lang="ru"]').value;
+        var ruST = dlg.querySelector('.p-seotitle-inp[data-lang="ru"]').value;
+        var ruSD = dlg.querySelector('.p-seodesc-inp[data-lang="ru"]').value;
         dlg.querySelector('.p-name-inp[data-lang="' + targetLang + '"]').value = ruN;
         dlg.querySelector('.p-cat-inp[data-lang="' + targetLang + '"]').value = ruC;
         dlg.querySelector('.p-desc-inp[data-lang="' + targetLang + '"]').value = ruD;
+        dlg.querySelector('.p-seotitle-inp[data-lang="' + targetLang + '"]').value = ruST;
+        dlg.querySelector('.p-seodesc-inp[data-lang="' + targetLang + '"]').value = ruSD;
         toast("Данные скопированы в " + targetLang.toUpperCase() + " ✓");
         triggerAutosave();
       };
@@ -1394,6 +1439,7 @@ export const ADMIN_APP_JS = String.raw`
             price_old: +oldInp.value || 0,
             sort: +dlg.querySelector("#p-sort").value || 0,
             active: +dlg.querySelector("#p-active").value,
+            availability: dlg.querySelector("#p-avail").value,
             sizes: currentSizes,
             specs: currentSpecs,
             names: {
@@ -1410,6 +1456,16 @@ export const ADMIN_APP_JS = String.raw`
               ru: dlg.querySelector('.p-desc-inp[data-lang="ru"]').value,
               uz: dlg.querySelector('.p-desc-inp[data-lang="uz"]').value,
               en: dlg.querySelector('.p-desc-inp[data-lang="en"]').value
+            },
+            seo_titles: {
+              ru: dlg.querySelector('.p-seotitle-inp[data-lang="ru"]').value,
+              uz: dlg.querySelector('.p-seotitle-inp[data-lang="uz"]').value,
+              en: dlg.querySelector('.p-seotitle-inp[data-lang="en"]').value
+            },
+            seo_descs: {
+              ru: dlg.querySelector('.p-seodesc-inp[data-lang="ru"]').value,
+              uz: dlg.querySelector('.p-seodesc-inp[data-lang="uz"]').value,
+              en: dlg.querySelector('.p-seodesc-inp[data-lang="en"]').value
             },
             _savedAt: Date.now()
           };
@@ -1432,12 +1488,15 @@ export const ADMIN_APP_JS = String.raw`
           if (savedDraft.price_old != null) oldInp.value = savedDraft.price_old;
           if (savedDraft.sort != null) dlg.querySelector("#p-sort").value = savedDraft.sort;
           if (savedDraft.active != null) dlg.querySelector("#p-active").value = savedDraft.active;
+          if (savedDraft.availability) dlg.querySelector("#p-avail").value = savedDraft.availability;
           if (savedDraft.sizes) { currentSizes = savedDraft.sizes; renderChips(); }
           if (savedDraft.specs) { currentSpecs = savedDraft.specs; renderSpecs(); }
           LANGS.forEach(function(l){
             if (savedDraft.names && savedDraft.names[l]) dlg.querySelector('.p-name-inp[data-lang="' + l + '"]').value = savedDraft.names[l];
             if (savedDraft.cats && savedDraft.cats[l]) dlg.querySelector('.p-cat-inp[data-lang="' + l + '"]').value = savedDraft.cats[l];
             if (savedDraft.descs && savedDraft.descs[l]) dlg.querySelector('.p-desc-inp[data-lang="' + l + '"]').value = savedDraft.descs[l];
+            if (savedDraft.seo_titles && savedDraft.seo_titles[l]) dlg.querySelector('.p-seotitle-inp[data-lang="' + l + '"]').value = savedDraft.seo_titles[l];
+            if (savedDraft.seo_descs && savedDraft.seo_descs[l]) dlg.querySelector('.p-seodesc-inp[data-lang="' + l + '"]').value = savedDraft.seo_descs[l];
           });
           updatePricing();
           updateStorefrontPreview();
@@ -1478,9 +1537,14 @@ export const ADMIN_APP_JS = String.raw`
 
     // 8. Save product
     dlg.querySelector("#f-save").onclick = async function(){
-      var pid = dlg.querySelector("#p-id").value.trim().toLowerCase().replace(/[^a-z0-9_-]/g, "-");
+      var pid = dlg.querySelector("#p-id").value.trim().toLowerCase();
       if (!pid) {
         toast("Введите артикул (ID) товара!", "err");
+        dlg.querySelector("#p-id").focus();
+        return;
+      }
+      if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(pid) || /^p\d+$/.test(pid)) {
+        toast("Недопустимый ID. Используйте canonical slug (например: stul-vertex), а не p1-p15", "err");
         dlg.querySelector("#p-id").focus();
         return;
       }
@@ -1496,6 +1560,8 @@ export const ADMIN_APP_JS = String.raw`
           name: dlg.querySelector('.p-name-inp[data-lang="' + l + '"]').value.trim(),
           category_label: dlg.querySelector('.p-cat-inp[data-lang="' + l + '"]').value.trim(),
           description: dlg.querySelector('.p-desc-inp[data-lang="' + l + '"]').value.trim(),
+          seo_title: dlg.querySelector('.p-seotitle-inp[data-lang="' + l + '"]').value.trim() || null,
+          seo_description: dlg.querySelector('.p-seodesc-inp[data-lang="' + l + '"]').value.trim() || null,
           sizes: currentSizes,
           specs: specsObj
         };
@@ -1509,6 +1575,7 @@ export const ADMIN_APP_JS = String.raw`
         price_old: +oldInp.value || 0,
         sort: +dlg.querySelector("#p-sort").value || 0,
         active: +dlg.querySelector("#p-active").value,
+        availability: dlg.querySelector("#p-avail").value,
         i18n: i18n
       };
 

@@ -82,7 +82,7 @@ test('catalog-sync.js contains no fake hardcoded swatches (Шоколад, Пе�
 console.log('\n--- SCENARIO D: Schema.org Availability Logic ---');
 test('pdp.js conditionally emits InStock only when stock is verified', () => {
   const pdp = fs.readFileSync(path.join(ROOT, 'assets/pdp.js'), 'utf8');
-  expect(pdp).toContain('if (prod.status === "in_stock" || prod.stock === 1)');
+  expect(pdp.includes('avail === "in_stock"') || pdp.includes('prod.status === "in_stock"')).toBe(true);
   expect(pdp).toContain('offerObj.availability = "https://schema.org/InStock"');
 });
 
@@ -226,6 +226,42 @@ test('Zero em-dash or en-dash in worker routes and server code', () => {
     'worker/routes/media.ts',
     'worker/security-headers.ts',
     'server/index.ts',
+  ];
+  for (const f of files) {
+    const content = fs.readFileSync(path.join(ROOT, f), 'utf8');
+    if (content.includes('\u2014')) throw new Error(`Found em-dash in ${f}`);
+    if (content.includes('\u2013')) throw new Error(`Found en-dash in ${f}`);
+  }
+});
+
+// SCENARIO M: Product Master Fields & Migration
+console.log('\n--- SCENARIO M: Product Master Fields & Single Source of Truth ---');
+test('migrations/0004_product_master_fields.sql exists with availability and SEO fields', () => {
+  const mig = fs.readFileSync(path.join(ROOT, 'migrations/0004_product_master_fields.sql'), 'utf8');
+  expect(mig).toContain('ALTER TABLE products ADD COLUMN availability');
+  expect(mig).toContain('ALTER TABLE product_i18n ADD COLUMN seo_title');
+  expect(mig).toContain('ALTER TABLE product_i18n ADD COLUMN seo_description');
+});
+
+test('assets/placeholder.svg exists as neutral fallback for unconfirmed images', () => {
+  const ph = fs.readFileSync(path.join(ROOT, 'assets/placeholder.svg'), 'utf8');
+  expect(ph).toContain('<svg');
+});
+
+test('Zero em-dash or en-dash across all newly modified files', () => {
+  const files = [
+    'data/products-master.json',
+    'assets/products.js',
+    'assets/pdp.js',
+    'assets/catalog-sync.js',
+    'assets/cart.js',
+    'assets/i18n.js',
+    'worker/admin-app.ts',
+    'worker/routes/admin.ts',
+    'worker/routes/products.ts',
+    'worker/types.ts',
+    'worker/index.ts',
+    'sadovaya-mebel-rotang.html'
   ];
   for (const f of files) {
     const content = fs.readFileSync(path.join(ROOT, f), 'utf8');
