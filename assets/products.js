@@ -214,8 +214,10 @@
     ],
     "isTable": false,
     "images": [
-      "assets/placeholder.svg",
-      "assets/scene-dining-warm.png"
+      "assets/prod-chair-noero.jpg",
+      "assets/prod-chair-noero-detail-back.jpg",
+      "assets/prod-chair-noero-detail-seat.jpg",
+      "assets/prod-chair-noero-detail-leg.jpg"
     ],
     "i18n": {
       "ru": {
