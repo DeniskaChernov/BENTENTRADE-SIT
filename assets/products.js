@@ -502,6 +502,7 @@
     "isTable": true,
     "images": [
       "assets/prod-table-taper-rotang-80-white.jpg",
+      "assets/prod-table-taper-rotang-80-white-front.jpg",
       "assets/prod-table-taper-rotang-80-black.jpg",
       "assets/prod-table-taper-rotang-80-detail-white.jpg",
       "assets/prod-table-taper-rotang-80-detail-black.jpg",
