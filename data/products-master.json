@@ -269,7 +269,10 @@
     ],
     "isTable": false,
     "images": [
-      "assets/placeholder.svg"
+      "assets/prod-chair-todo.jpg",
+      "assets/prod-chair-todo-side.jpg",
+      "assets/prod-chair-todo-detail-back.jpg",
+      "assets/prod-chair-todo-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {
