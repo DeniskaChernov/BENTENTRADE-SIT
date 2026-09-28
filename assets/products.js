@@ -690,6 +690,15 @@
     "maxLoad": null,
     "confirmedColors": [
       {
+        "id": "white-marble",
+        "name": {
+          "ru": "Белый мрамор",
+          "uz": "Oq marmar",
+          "en": "White Marble"
+        },
+        "hex": "#E8E6E1"
+      },
+      {
         "id": "black-marble",
         "name": {
           "ru": "Чёрный мрамор",
@@ -701,7 +710,10 @@
     ],
     "isTable": true,
     "images": [
+      "assets/prod-table-taper-80-white.jpg",
       "assets/prod-table-taper-80-black.jpg",
+      "assets/prod-table-taper-80-detail-white-side.jpg",
+      "assets/prod-table-taper-80-detail-white-leg.jpg",
       "assets/prod-table-taper-80-detail-top.jpg",
       "assets/prod-table-taper-80-detail-leg.jpg"
     ],
