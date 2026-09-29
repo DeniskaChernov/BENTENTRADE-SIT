@@ -576,7 +576,7 @@ p{margin:0;text-wrap:pretty;}
 }
 
 .product__media{
-  aspect-ratio:1/1;border-radius:var(--r-lg);
+  aspect-ratio:3/4;border-radius:var(--r-lg);
   border:1px solid var(--line);
   box-shadow:0 4px 16px -6px rgba(22,19,15,.06);
   transition:box-shadow .35s ease,border-color .35s ease;

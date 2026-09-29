@@ -1489,6 +1489,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 /* Card Architecture: Full-Bleed Media, Prominent Image, Compact Details */
 .catalog-layout .product,
 #catalog-grid .product,
+.prod-grid .product,
 [data-related-grid] .product{
   display:flex;
   flex-direction:column;
@@ -1502,6 +1503,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 }
 .catalog-layout .product:hover,
 #catalog-grid .product:hover,
+.prod-grid .product:hover,
 [data-related-grid] .product:hover{
   transform:translateY(-4px);
   box-shadow:0 18px 42px -12px rgba(22,19,15,.16);
@@ -1509,6 +1511,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 }
 [data-theme="dark"] .catalog-layout .product,
 [data-theme="dark"] #catalog-grid .product,
+[data-theme="dark"] .prod-grid .product,
 [data-theme="dark"] [data-related-grid] .product{
   background:#171412;
   border-color:rgba(255,255,255,.08);
@@ -1516,6 +1519,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 }
 [data-theme="dark"] .catalog-layout .product:hover,
 [data-theme="dark"] #catalog-grid .product:hover,
+[data-theme="dark"] .prod-grid .product:hover,
 [data-theme="dark"] [data-related-grid] .product:hover{
   box-shadow:0 20px 48px -12px rgba(0,0,0,.7);
   border-color:rgba(184,115,51,.5);
@@ -1524,9 +1528,10 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 /* Product Media - Large, Prominent Image (Dominates the Card) */
 .catalog-layout .product__media,
 #catalog-grid .product__media,
+.prod-grid .product__media,
 [data-related-grid] .product__media{
   width:100% !important;
-  aspect-ratio:1 / 1 !important;
+  aspect-ratio:3 / 4 !important;
   min-height:0 !important;
   border-radius:0 !important;
   border:none !important;
@@ -1537,6 +1542,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 }
 .catalog-layout .product__media img,
 #catalog-grid .product__media img,
+.prod-grid .product__media img,
 [data-related-grid] .product__media img{
   position:absolute;
   inset:0;
@@ -1548,6 +1554,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 }
 .catalog-layout .product:hover .product__media img,
 #catalog-grid .product:hover .product__media img,
+.prod-grid .product:hover .product__media img,
 [data-related-grid] .product:hover .product__media img{
   transform:scale(1.05);
 }
@@ -1555,6 +1562,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 /* Card Details Typography & Spacing - Compact, Clean, Secondary to Image */
 .catalog-layout .product > div:not(.product__media),
 #catalog-grid .product > div:not(.product__media),
+.prod-grid .product > div:not(.product__media),
 [data-related-grid] .product > div:not(.product__media){
   padding:12px 14px 14px !important;
   display:flex;
@@ -1563,6 +1571,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 }
 .catalog-layout .product__cat,
 #catalog-grid .product__cat,
+.prod-grid .product__cat,
 [data-related-grid] .product__cat{
   font-size:11px;
   font-weight:600;
@@ -1574,6 +1583,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 }
 .catalog-layout .product__name,
 #catalog-grid .product__name,
+.prod-grid .product__name,
 [data-related-grid] .product__name{
   font-size:15px !important;
   font-weight:700;
