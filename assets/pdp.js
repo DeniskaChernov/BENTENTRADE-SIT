@@ -178,6 +178,9 @@
         stImg.style.display = "";
         stImg.src = imgs[i].full;
         stImg.classList.toggle("is-on", i === 0);
+        stImg.setAttribute("fetchpriority", i === 0 ? "high" : "low");
+        stImg.loading = i === 0 ? "eager" : "lazy";
+        stImg.decoding = "async";
       } else {
         stImg.style.display = "none";
         stImg.classList.remove("is-on");

@@ -1575,16 +1575,24 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 [data-related-grid] .product-swatches{
   display:inline-flex;
   align-items:center;
-  gap:5px;
-  margin-top:6px;
+  gap:6px;
+  margin-top:7px;
 }
 .catalog-layout .product-swatch,
 #catalog-grid .product-swatch,
 [data-related-grid] .product-swatch{
-  width:13px;
-  height:13px;
+  width:14px;
+  height:14px;
   border-radius:50%;
-  border:1.2px solid rgba(0,0,0,.15);
+  border:1px solid rgba(0,0,0,.18);
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.08);
+  transition:transform .2s var(--spring),box-shadow .2s ease;
+}
+.catalog-layout .product-swatch.is-active,
+#catalog-grid .product-swatch.is-active,
+[data-related-grid] .product-swatch.is-active{
+  outline:2px solid var(--copper);
+  outline-offset:1.5px;
 }
 .catalog-layout .price,
 #catalog-grid .price,
@@ -1602,6 +1610,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   font-weight:800;
   color:var(--text);
   letter-spacing:-.015em;
+  font-variant-numeric:tabular-nums;
 }
 .catalog-layout .price__old,
 #catalog-grid .price__old,
@@ -1623,6 +1632,15 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   background:rgba(255,255,255,.9) !important;
   border:1px solid rgba(0,0,0,.08) !important;
   box-shadow:0 2px 8px rgba(0,0,0,.1) !important;
+  transition:transform .22s var(--spring),background .2s ease,color .2s ease,box-shadow .2s ease !important;
+}
+.catalog-layout .product__media .fav:hover,
+#catalog-grid .product__media .fav:hover,
+[data-related-grid] .product__media .fav:hover{
+  transform:scale(1.08) !important;
+  background:#fff !important;
+  color:var(--copper-bright) !important;
+  box-shadow:0 4px 14px rgba(189,115,53,.3) !important;
 }
 .catalog-layout .product__media .fav svg,
 #catalog-grid .product__media .fav svg,
@@ -1641,6 +1659,14 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   color:#fff !important;
   border:none !important;
   box-shadow:0 3px 10px rgba(0,0,0,.2) !important;
+  transition:transform .22s var(--spring),background .2s ease,box-shadow .2s ease !important;
+}
+.catalog-layout .product__media .add:hover,
+#catalog-grid .product__media .add:hover,
+[data-related-grid] .product__media .add:hover{
+  transform:scale(1.08) !important;
+  background:var(--copper) !important;
+  box-shadow:0 6px 16px rgba(189,115,53,.35) !important;
 }
 .catalog-layout .product__media .add svg,
 #catalog-grid .product__media .add svg,
@@ -2093,11 +2119,11 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 
 .bot-panel{position:fixed;right:22px;bottom:22px;z-index:9601;width:min(384px,calc(100vw - 32px));height:min(572px,calc(100dvh - 96px));
   border-radius:24px;display:flex;flex-direction:column;overflow:hidden;
-  background:var(--paper);border:1px solid var(--line);
+  background:color-mix(in oklab, var(--paper) 94%, transparent);border:1px solid var(--line);
   box-shadow:0 32px 80px -36px rgba(27,25,22,.35), var(--liquid-edge);
   opacity:0;transform:translateY(22px) scale(.97);transform-origin:bottom right;pointer-events:none;
   transition:opacity .28s cubic-bezier(.2,.7,.2,1),transform .28s cubic-bezier(.2,.7,.2,1);
-  -webkit-backdrop-filter:none;backdrop-filter:none;
+  -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
 }
 .bot-panel.open{opacity:1;transform:none;pointer-events:auto;}
 .bot-head{display:flex;align-items:center;gap:13px;padding:16px 18px;background:var(--ink);color:var(--on-dark);}
@@ -3848,6 +3874,18 @@ a.dl-name:hover{color:var(--copper);}
   justify-content: flex-end;
 }
 
-
-
-
+/* ============================================================
+   PERFORMANCE & RENDERING LIGHTNESS (Offscreen DOM containment)
+   Reduces initial paint time and layout recalculations
+   ============================================================ */
+.catalog-editorial,
+.horeca-why,
+.horeca-products-grid,
+.blog-grid,
+.faq-list,
+.reviews-grid,
+.trust,
+.site-foot {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}

@@ -409,13 +409,15 @@ p{margin:0;text-wrap:pretty;}
 }
 @media (max-width:900px){
   .site-head{
-    background:color-mix(in oklab, var(--paper) 95%, transparent);
-    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    background:color-mix(in oklab, var(--paper) 92%, transparent);
+    -webkit-backdrop-filter:saturate(150%) blur(16px);backdrop-filter:saturate(150%) blur(16px);
     border:none;box-shadow:none;
+    transition:background .3s ease, border-color .3s ease, box-shadow .3s ease;
   }
   .site-head.is-scrolled{
-    background:color-mix(in oklab, var(--paper) 98%, transparent);
-    border:none;box-shadow:none;
+    background:color-mix(in oklab, var(--paper) 96%, transparent);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 4px 20px -8px rgba(27,25,22,.08);
   }
 }
 .nav a{
