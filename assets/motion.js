@@ -12,7 +12,7 @@
 
   function initSectionRhythm(root) {
     var scope = root || document;
-    scope.querySelectorAll(".home-flow > section:not(.hero), .catalog-flow > section:not(.cat-top-bar), .about-flow > section:not(.ab-hero)").forEach(function (sec, i) {
+    scope.querySelectorAll(".home-flow > section:not(.hero), .catalog-flow > section:not(.cat-top-bar), .about-flow > section:not(.ab-hero), .horeca-flow > section:not(.horeca-top-bar)").forEach(function (sec, i) {
       if (!sec.classList.contains("flow-section")) {
         sec.classList.add("flow-section");
         sec.style.setProperty("--flow-i", String(i));
@@ -31,7 +31,7 @@
           });
         }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
 
-        scope.querySelectorAll(".flow-section, .product, .bento-tile, .scene-card, .cat-card").forEach(function (el) {
+        scope.querySelectorAll(".flow-section, .product, .bento-tile, .scene-card, .cat-card, .horeca-adv-card, .horeca-step-card, .horeca-prod-card, .about-stat, .faq-item, .info-card").forEach(function (el) {
           io.observe(el);
         });
       }

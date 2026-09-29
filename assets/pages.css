@@ -157,7 +157,7 @@
 .hero__bg .hero__img.is-on{opacity:1;transform:scale(1);}
 .hero__img{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;
-  opacity:0;transition:opacity .9s var(--ease-flow),transform 1.1s var(--ease-out);transform:scale(1.04);
+  opacity:0;transition:opacity .95s cubic-bezier(.22, 1, .36, 1),transform 1.25s cubic-bezier(.16, 1, .3, 1);transform:scale(1.06);
 }
 .hero__img.is-on{opacity:1;transform:scale(1);}
 
@@ -265,9 +265,26 @@
 
 /* slide swap */
 @media (prefers-reduced-motion:no-preference){
-  .hero__main.is-swap,.hero__lead.is-swap{animation:heroText .6s cubic-bezier(.2,.7,.2,1);}
+  .hero__main.is-swap,
+  .hero__main.is-anim,
+  .hero__lead.is-swap,
+  .atmo-hero__main.is-swap,
+  .atmo-hero__main.is-anim {
+    animation: heroTextIn .55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
 }
-@keyframes heroText{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+@keyframes heroTextIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
 
 /* ================= PRODUCT LINES - Apple bento, image-fill tiles ================= */
 .lines{position:relative;padding:0;}
@@ -1593,6 +1610,12 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 [data-related-grid] .product-swatch.is-active{
   outline:2px solid var(--copper);
   outline-offset:1.5px;
+  animation:swatchSelectPulse .35s cubic-bezier(0.34, 1.4, 0.5, 1) both;
+}
+@keyframes swatchSelectPulse{
+  0%{transform:scale(0.86);}
+  50%{transform:scale(1.18);box-shadow:0 0 0 3px color-mix(in oklab, var(--copper) 45%, transparent);}
+  100%{transform:scale(1.0);}
 }
 .catalog-layout .price,
 #catalog-grid .price,
@@ -3138,6 +3161,7 @@ a.dl-name:hover{color:var(--copper);}
 .swatch.is-active{
   transform:scale(1.15);
   box-shadow:0 0 0 2px var(--paper),0 0 0 4.5px var(--copper);
+  animation:swatchSelectPulse .35s cubic-bezier(0.34, 1.4, 0.5, 1) both;
 }
 
 /* Mobile sticky purchase bar */

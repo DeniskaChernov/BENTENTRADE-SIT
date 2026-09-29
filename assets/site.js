@@ -231,8 +231,19 @@
     if(!grid) return;
     const cards = Array.from(grid.querySelectorAll("[data-product]"));
     const shown = cards.filter(c=> c.style.display !== "none").length;
-    if(cnt) cnt.textContent = String(shown);
-    if(mobCnt) mobCnt.textContent = String(shown);
+    const prev = parseInt((cnt ? cnt.textContent : "15") || "0", 10);
+    if(window.BTT_MOTION && window.BTT_MOTION.animateNumber && prev !== shown && !Number.isNaN(prev)){
+      if(cnt) window.BTT_MOTION.animateNumber(cnt, prev, shown, 280);
+      if(mobCnt) window.BTT_MOTION.animateNumber(mobCnt, prev, shown, 280);
+      const badge = document.querySelector(".cat-top-count-badge");
+      if(badge){
+        badge.classList.remove("is-bump");
+        requestAnimationFrame(() => badge.classList.add("is-bump"));
+      }
+    } else {
+      if(cnt) cnt.textContent = String(shown);
+      if(mobCnt) mobCnt.textContent = String(shown);
+    }
     if(empty) empty.hidden = shown > 0;
   }
 

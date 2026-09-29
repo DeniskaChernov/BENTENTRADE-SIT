@@ -299,6 +299,12 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  transition: transform 0.25s var(--spring, cubic-bezier(.34,1.4,.5,1)), color 0.2s ease;
+}
+
+.horeca-prod-card:hover .horeca-prod-link {
+  transform: translateX(4px);
+  color: var(--copper);
 }
 
 /* Steps Section */

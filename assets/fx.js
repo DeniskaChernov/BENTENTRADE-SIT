@@ -120,10 +120,10 @@
       scope.querySelectorAll(".bento-tile:not(.bento-tile--pal), .mood-tile, .scene-card").forEach(el => bindTilt(el, 5));
       scope.querySelectorAll(".pdp-stage").forEach(el => bindTilt(el, 5));
       scope.querySelectorAll(".material__img").forEach(el => bindTilt(el, 4));
-      scope.querySelectorAll(".cat-card, .cat-hero__preview, .blog-card, .type-card").forEach(el => bindTilt(el, 4));
+      scope.querySelectorAll(".cat-card, .cat-hero__preview, .blog-card, .type-card, .horeca-prod-card, .horeca-adv-card").forEach(el => bindTilt(el, 4));
 
       // Luxury ambient cursor spotlight
-      scope.querySelectorAll(".product__media, .bento-tile, .scene-card, .cat-card, .info-card, .cat-hero__preview, .blog-card, .type-card, .faq-item").forEach(bindSpotlight);
+      scope.querySelectorAll(".product__media, .bento-tile, .scene-card, .cat-card, .info-card, .cat-hero__preview, .blog-card, .type-card, .faq-item, .horeca-prod-card, .horeca-adv-card, .horeca-step-card").forEach(bindSpotlight);
     }
   }
 
@@ -134,6 +134,14 @@
 
   if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", () => run());
   else run();
+
+  document.addEventListener("click", (e) => {
+    if(isReduced()) return;
+    const target = e.target && e.target.closest && e.target.closest(".hero__cta, .swatch, .product-swatch, .cat-view-btn, .btn--copper");
+    if(target && e.clientX && e.clientY){
+      burstParticles(e.clientX, e.clientY, 6);
+    }
+  }, { passive: true });
 
   document.addEventListener("btt:related-rendered", (e) => {
     const grid = e.detail && e.detail.grid;
