@@ -141,20 +141,26 @@
 
       <!-- Dimensions -->
       <div class="pdp-opt" data-pdp-dim-opt>
-        <div class="pdp-opt__lab"><span data-i18n="pdp.spec.dimensions">Размеры</span>: <b class="opt-val" data-pdp-dim-val>57 × 63 × 75 см</b></div>
+        <div class="pdp-opt__lab"><span class="opt-label"><span data-i18n="pdp.spec.dimensions">Размеры</span>:</span><b class="opt-val" data-pdp-dim-val>57 × 63 × 75 см</b></div>
       </div>
 
       <!-- Buy & CTAs -->
-      <div class="pdp-buy" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
-        <div class="qty" data-qty>
-          <button data-qd data-i18n-aria="pdp.qty.minus" aria-label="Уменьшить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg></button>
-          <input type="text" value="1" inputmode="numeric" data-i18n-aria="pdp.qty" aria-label="Количество">
-          <button data-qu data-i18n-aria="pdp.qty.plus" aria-label="Увеличить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+      <div class="pdp-buy">
+        <div class="pdp-buy__main">
+          <div class="qty" data-qty>
+            <button type="button" data-qd data-i18n-aria="pdp.qty.minus" aria-label="Уменьшить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg></button>
+            <input type="text" value="1" inputmode="numeric" data-i18n-aria="pdp.qty" aria-label="Количество">
+            <button type="button" data-qu data-i18n-aria="pdp.qty.plus" aria-label="Увеличить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+          </div>
+          <button type="button" class="btn btn--dark pdp-buy__btn" data-add data-i18n="pdp.cta.add">Добавить в корзину</button>
+          <button type="button" class="pdp-fav" data-fav data-i18n-aria="tool.fav" aria-label="Избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
         </div>
-        <button class="btn btn--dark" data-add data-i18n="pdp.cta.add">Добавить в корзину</button>
-        <a class="btn btn--copper" data-pdp-tg-btn href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" data-i18n="pdp.cta.telegram">Заказать в Telegram</a>
-        <a class="btn btn--ghost" href="tel:+998771044422" data-i18n="pdp.cta.call">Позвонить</a>
-        <button class="pdp-fav" data-fav data-i18n-aria="tool.fav" aria-label="Избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <div class="pdp-buy__alt">
+          <a class="pdp-tg-link" data-pdp-tg-btn href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+            <span data-i18n="pdp.cta.telegram">Заказать в Telegram</span>
+          </a>
+        </div>
       </div>
 
       <!-- Trust Badges -->
