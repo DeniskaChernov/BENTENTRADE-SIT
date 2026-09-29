@@ -46,6 +46,7 @@ export const ADMIN_APP_JS = String.raw`
     eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>',
     sparkles: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l2.4 5 5 2.4-5 2.4-2.4 5-2.4-5-5-2.4 5-2.4z"/></svg>',
     link: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
+    telegram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-17.5 7.5a2.25 2.25 0 0 0 .126 4.148l4.47 1.523 1.748 5.244a1.5 1.5 0 0 0 2.41.677l2.84-2.367 4.78 3.51a2.25 2.25 0 0 0 3.528-1.408l3.5-16.5a2.25 2.25 0 0 0-2.38-2.542z"/></svg>',
   };
 
   function esc(s){
@@ -771,6 +772,32 @@ export const ADMIN_APP_JS = String.raw`
       ];
     }
 
+    // Parse initial confirmed colors
+    var currentColors = [];
+    try {
+      var spObj2 = byLang.ru && byLang.ru.specs;
+      var parsed2 = typeof spObj2 === "object" ? spObj2 : (spObj2 ? JSON.parse(spObj2) : null);
+      if (parsed2 && Array.isArray(parsed2.confirmed_colors)) {
+        currentColors = parsed2.confirmed_colors.slice();
+      }
+    } catch(e){}
+    if (!currentColors.length && id && window.BTT_PRODUCTS) {
+      var mp = window.BTT_PRODUCTS[id];
+      if (mp && Array.isArray(mp.confirmedColors)) {
+        currentColors = JSON.parse(JSON.stringify(mp.confirmedColors));
+      }
+    }
+
+    var COLOR_PRESETS = [
+      { id: "white-marble", hex: "#E8E6E1", ru: "Белый мрамор", uz: "Oq marmar", en: "White Marble" },
+      { id: "black-marble", hex: "#2B2A29", ru: "Чёрный мрамор", uz: "Qora marmar", en: "Black Marble" },
+      { id: "beige", hex: "#C2B280", ru: "Бежевый", uz: "Bej", en: "Beige" },
+      { id: "grey", hex: "#808080", ru: "Серый", uz: "Kulrang", en: "Grey" },
+      { id: "cappuccino", hex: "#A88D73", ru: "Капучино", uz: "Kapuchino", en: "Cappuccino" },
+      { id: "black", hex: "#222222", ru: "Чёрный", uz: "Qora", en: "Black" },
+      { id: "white", hex: "#FFFFFF", ru: "Белый", uz: "Oq", en: "White" }
+    ];
+
     var dlg = document.createElement("dialog");
     dlg.className = "dlg-wide";
     dlg.innerHTML =
@@ -923,6 +950,26 @@ export const ADMIN_APP_JS = String.raw`
               '<div class="gallery-grid" id="p-gallery-grid"></div>' +
             '</div>' +
 
+            '<!-- CARD: CONFIRMED COLOR SWATCHES -->' +
+            '<div class="editor-card">' +
+              '<div class="editor-card-header">' +
+                '<div class="editor-card-title">🎨 Подтверждённые цвета (Color Swatches)</div>' +
+                '<button type="button" class="btn ghost sm" id="p-add-color">' + ICONS.plus + ' Добавить цвет</button>' +
+              '</div>' +
+              '<div class="hint" style="margin-bottom:8px">Цветовые модификации отображаются кружками в каталоге и на странице товара, переключая соответствующее фото.</div>' +
+              '<div>' +
+                '<div class="hint" style="margin-bottom:6px">Быстрые шаблоны цветов:</div>' +
+                '<div style="display:flex;gap:6px;flex-wrap:wrap" id="p-color-presets">' +
+                  COLOR_PRESETS.map(function(pr){
+                    return '<button type="button" class="color-preset-btn" data-col-preset="' + pr.id + '">' +
+                      '<span class="color-preset-dot" style="background:' + pr.hex + '"></span> ' + pr.ru +
+                    '</button>';
+                  }).join("") +
+                '</div>' +
+              '</div>' +
+              '<div class="color-swatches-list" id="p-colors-list"></div>' +
+            '</div>' +
+
             '<!-- CARD 3: SIZES & VARIANTS CHIPS -->' +
             '<div class="editor-card">' +
               '<div class="editor-card-header">' +
@@ -1010,7 +1057,7 @@ export const ADMIN_APP_JS = String.raw`
               '<div class="editor-card-title">📁 Классификация</div>' +
               '<div class="field" style="margin-top:10px">' +
                 '<label>Уникальный ID / Артикул</label>' +
-                '<input id="p-id" ' + (isNew ? '' : 'disabled') + ' value="' + esc(p.id || "") + '" placeholder="например: p16 или sofa-venice">' +
+                '<input id="p-id" ' + (isNew ? '' : 'disabled') + ' value="' + esc(p.id || "") + '" placeholder="например: stul-vertex или stol-corda">' +
               '</div>' +
               '<div class="field">' +
                 '<label>Категория каталога</label>' +
@@ -1028,7 +1075,7 @@ export const ADMIN_APP_JS = String.raw`
             '<div class="editor-card">' +
               '<div class="editor-card-header">' +
                 '<div class="editor-card-title">' + ICONS.eye + ' Витрина (Live Card)</div>' +
-                (!isNew ? '<a href="/catalog.html#p=' + esc(p.id) + '" target="_blank" class="btn ghost sm" style="padding:2px 8px;font-size:11px">' + ICONS.external + ' В каталоге</a>' : '') +
+                (!isNew ? '<a href="/catalog/' + esc(p.id) + '" target="_blank" class="btn ghost sm" style="padding:2px 8px;font-size:11px">' + ICONS.external + ' В каталоге</a>' : '') +
               '</div>' +
               '<div class="store-card-preview" id="p-store-card">' +
                 '<div class="store-card-img-wrap">' +
@@ -1038,6 +1085,7 @@ export const ADMIN_APP_JS = String.raw`
                 '<div class="store-card-body">' +
                   '<div class="store-card-cat" id="prev-cat">Коллекция: -</div>' +
                   '<div class="store-card-name" id="prev-name">Название товара</div>' +
+                  '<div class="prev-swatches" id="prev-swatches"></div>' +
                   '<div class="store-card-pricing">' +
                     '<span class="store-card-now" id="prev-now">0 UZS</span>' +
                     '<span class="store-card-old" id="prev-old"></span>' +
@@ -1224,7 +1272,160 @@ export const ADMIN_APP_JS = String.raw`
     };
     renderSpecs();
 
-    // 4. Gallery & Media Management
+    // 3b. Confirmed Color Swatches logic
+    var colorsList = dlg.querySelector("#p-colors-list");
+    function renderColors(){
+      if (!colorsList) return;
+      if (!currentColors.length) {
+        colorsList.innerHTML = '<div class="hint" style="padding:10px 0">Цвета пока не добавлены. Выберите шаблон выше или нажмите «Добавить цвет».</div>';
+        return;
+      }
+      colorsList.innerHTML = currentColors.map(function(c, idx){
+        var hex = c.hex || "#ffffff";
+        var idVal = c.id || "";
+        var ruVal = c.ru || "";
+        var uzVal = c.uz || "";
+        var enVal = c.en || "";
+        var imgVal = c.image || "";
+
+        var imgOptions = '<option value="">(Без привязки фото)</option>';
+        var foundSelected = false;
+        attachedMedia.forEach(function(m, mIdx){
+          var u = m.url || ("/media/" + m.key);
+          var isSel = (imgVal === u);
+          if (isSel) foundSelected = true;
+          imgOptions += '<option value="' + esc(u) + '"' + (isSel ? ' selected' : '') + '>Фото ' + (mIdx + 1) + (mIdx === 0 ? ' (главное)' : '') + '</option>';
+        });
+        if (imgVal && !foundSelected) {
+          var label = imgVal.split("/").pop();
+          imgOptions += '<option value="' + esc(imgVal) + '" selected>' + esc(label) + '</option>';
+        }
+
+        return '<div class="color-variant-row" data-col-idx="' + idx + '">' +
+          '<div class="color-circle-wrap" title="Нажмите для выбора цвета">' +
+            '<span class="color-circle-visual" style="background:' + hex + '"></span>' +
+            '<input type="color" class="col-hex-inp" value="' + hex + '">' +
+          '</div>' +
+          '<input class="col-id-inp" value="' + esc(idVal) + '" placeholder="slug, напр. black">' +
+          '<input class="col-ru-inp" value="' + esc(ruVal) + '" placeholder="Название (RU)">' +
+          '<input class="col-uz-inp" value="' + esc(uzVal) + '" placeholder="Nomi (UZ)">' +
+          '<input class="col-en-inp" value="' + esc(enVal) + '" placeholder="Name (EN)">' +
+          '<select class="col-img-sel" title="Фото товара для этого цвета">' +
+            imgOptions +
+          '</select>' +
+          '<button type="button" class="btn ghost icon-only col-del" style="color:var(--err)" title="Удалить цвет">✕</button>' +
+        '</div>';
+      }).join("");
+
+      colorsList.querySelectorAll(".color-variant-row").forEach(function(row){
+        var idx = +row.getAttribute("data-col-idx");
+        var hexInp = row.querySelector(".col-hex-inp");
+        var visual = row.querySelector(".color-circle-visual");
+        var idInp = row.querySelector(".col-id-inp");
+        var ruInp = row.querySelector(".col-ru-inp");
+        var uzInp = row.querySelector(".col-uz-inp");
+        var enInp = row.querySelector(".col-en-inp");
+        var imgSel = row.querySelector(".col-img-sel");
+        var delBtn = row.querySelector(".col-del");
+
+        if (hexInp) {
+          hexInp.oninput = function(){
+            currentColors[idx].hex = hexInp.value;
+            if (visual) visual.style.background = hexInp.value;
+            updateStorefrontPreview();
+            triggerAutosave();
+          };
+        }
+        if (idInp) {
+          idInp.oninput = function(){
+            currentColors[idx].id = idInp.value.trim().toLowerCase();
+            updateStorefrontPreview();
+            triggerAutosave();
+          };
+        }
+        if (ruInp) {
+          ruInp.oninput = function(){
+            currentColors[idx].ru = ruInp.value;
+            updateStorefrontPreview();
+            triggerAutosave();
+          };
+        }
+        if (uzInp) {
+          uzInp.oninput = function(){
+            currentColors[idx].uz = uzInp.value;
+            triggerAutosave();
+          };
+        }
+        if (enInp) {
+          enInp.oninput = function(){
+            currentColors[idx].en = enInp.value;
+            triggerAutosave();
+          };
+        }
+        if (imgSel) {
+          imgSel.onchange = function(){
+            currentColors[idx].image = imgSel.value;
+            updateStorefrontPreview();
+            triggerAutosave();
+          };
+        }
+        if (delBtn) {
+          delBtn.onclick = function(){
+            currentColors.splice(idx, 1);
+            renderColors();
+            updateStorefrontPreview();
+            triggerAutosave();
+          };
+        }
+      });
+    }
+
+    var addColBtn = dlg.querySelector("#p-add-color");
+    if (addColBtn) {
+      addColBtn.onclick = function(){
+        currentColors.push({
+          id: "",
+          hex: "#888888",
+          ru: "",
+          uz: "",
+          en: "",
+          image: ""
+        });
+        renderColors();
+        updateStorefrontPreview();
+        triggerAutosave();
+      };
+    }
+
+    var colPresetsWrap = dlg.querySelector("#p-color-presets");
+    if (colPresetsWrap) {
+      colPresetsWrap.onclick = function(e){
+        var btn = e.target.closest("[data-col-preset]");
+        if (!btn) return;
+        var pId = btn.getAttribute("data-col-preset");
+        var pr = COLOR_PRESETS.find(function(x){ return x.id === pId; });
+        if (!pr) return;
+        var existing = currentColors.find(function(x){ return x.id === pr.id; });
+        if (existing) {
+          toast("Цвет «" + pr.ru + "» уже присутствует в списке");
+          return;
+        }
+        var defImg = attachedMedia.length > 0 ? (attachedMedia[0].url || ("/media/" + attachedMedia[0].key)) : "";
+        currentColors.push({
+          id: pr.id,
+          hex: pr.hex,
+          ru: pr.ru,
+          uz: pr.uz,
+          en: pr.en,
+          image: defImg
+        });
+        renderColors();
+        updateStorefrontPreview();
+        triggerAutosave();
+        toast("Цвет «" + pr.ru + "» добавлен ✓");
+      };
+    }
+    renderColors();
     var galleryGrid = dlg.querySelector("#p-gallery-grid");
     function renderGallery(){
       if (!attachedMedia.length) {
@@ -1277,6 +1478,7 @@ export const ADMIN_APP_JS = String.raw`
         };
       });
 
+      renderColors();
       updateStorefrontPreview();
     }
     renderGallery();
@@ -1415,6 +1617,30 @@ export const ADMIN_APP_JS = String.raw`
       } else {
         prevImg.src = catFallback(cat);
       }
+
+      var swWrap = dlg.querySelector("#prev-swatches");
+      if (swWrap) {
+        if (currentColors && currentColors.length > 0) {
+          swWrap.innerHTML = currentColors.map(function(c, cIdx){
+            var isAct = cIdx === 0;
+            return '<button type="button" class="prev-swatch' + (isAct ? ' active' : '') + '" style="background:' + (c.hex || '#ffffff') + '" data-prev-col-idx="' + cIdx + '" title="' + esc(c.ru || c.id) + '"></button>';
+          }).join("");
+          swWrap.querySelectorAll("[data-prev-col-idx]").forEach(function(sBtn){
+            sBtn.onclick = function(e){
+              e.stopPropagation();
+              swWrap.querySelectorAll(".prev-swatch").forEach(function(b){ b.classList.remove("active"); });
+              sBtn.classList.add("active");
+              var cIdx = +sBtn.getAttribute("data-prev-col-idx");
+              var col = currentColors[cIdx];
+              if (col && col.image) {
+                prevImg.src = col.image.startsWith("/") ? col.image : ("/" + col.image);
+              }
+            };
+          });
+        } else {
+          swWrap.innerHTML = "";
+        }
+      }
     }
 
     dlg.querySelector('.p-name-inp[data-lang="ru"]').oninput = function(){ updateStorefrontPreview(); triggerAutosave(); };
@@ -1441,6 +1667,7 @@ export const ADMIN_APP_JS = String.raw`
             active: +dlg.querySelector("#p-active").value,
             availability: dlg.querySelector("#p-avail").value,
             sizes: currentSizes,
+            colors: currentColors,
             specs: currentSpecs,
             names: {
               ru: dlg.querySelector('.p-name-inp[data-lang="ru"]').value,
@@ -1490,6 +1717,7 @@ export const ADMIN_APP_JS = String.raw`
           if (savedDraft.active != null) dlg.querySelector("#p-active").value = savedDraft.active;
           if (savedDraft.availability) dlg.querySelector("#p-avail").value = savedDraft.availability;
           if (savedDraft.sizes) { currentSizes = savedDraft.sizes; renderChips(); }
+          if (savedDraft.colors) { currentColors = savedDraft.colors; renderColors(); }
           if (savedDraft.specs) { currentSpecs = savedDraft.specs; renderSpecs(); }
           LANGS.forEach(function(l){
             if (savedDraft.names && savedDraft.names[l]) dlg.querySelector('.p-name-inp[data-lang="' + l + '"]').value = savedDraft.names[l];
@@ -1553,9 +1781,29 @@ export const ADMIN_APP_JS = String.raw`
       currentSpecs.forEach(function(s){
         if (s.k.trim()) specsObj[s.k.trim()] = s.v.trim();
       });
+      if (currentColors && currentColors.length > 0) {
+        specsObj.confirmed_colors = currentColors.map(function(c){
+          return {
+            id: (c.id || "").trim(),
+            hex: c.hex || "#ffffff",
+            image: c.image || "",
+            ru: (c.ru || "").trim(),
+            uz: (c.uz || "").trim(),
+            en: (c.en || "").trim()
+          };
+        });
+      }
 
       var i18n = {};
       LANGS.forEach(function(l){
+        var lSpecs = Object.assign({}, specsObj);
+        if (currentColors && currentColors.length > 0) {
+          var lColStr = currentColors.map(function(c){ return c[l] || c.ru || c.id; }).filter(Boolean).join(", ");
+          if (lColStr) {
+            lSpecs["Цвета"] = lColStr;
+            lSpecs["colors"] = lColStr;
+          }
+        }
         i18n[l] = {
           name: dlg.querySelector('.p-name-inp[data-lang="' + l + '"]').value.trim(),
           category_label: dlg.querySelector('.p-cat-inp[data-lang="' + l + '"]').value.trim(),
@@ -1563,7 +1811,7 @@ export const ADMIN_APP_JS = String.raw`
           seo_title: dlg.querySelector('.p-seotitle-inp[data-lang="' + l + '"]').value.trim() || null,
           seo_description: dlg.querySelector('.p-seodesc-inp[data-lang="' + l + '"]').value.trim() || null,
           sizes: currentSizes,
-          specs: specsObj
+          specs: lSpecs
         };
       });
 
@@ -2485,7 +2733,7 @@ export const ADMIN_APP_JS = String.raw`
         '<div style="font-weight:700;font-size:15px;margin-bottom:6px">Перетащите изображения сюда для загрузки</div>' +
         '<div class="hint">Поддерживаются JPEG, PNG, WebP, AVIF до 8 МБ</div>' +
         '<div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">' +
-          '<input id="m-global-pid" placeholder="ID товара (например, p1)" style="max-width:200px">' +
+          '<input id="m-global-pid" placeholder="ID товара (например, stul-vertex)" style="max-width:200px">' +
           '<button class="btn sm" id="m-global-btn">' + ICONS.plus + ' Выбрать файл на диске</button>' +
         '</div>' +
         '<input type="file" id="m-global-file" accept="image/*" style="display:none">' +
@@ -3154,6 +3402,53 @@ export const ADMIN_APP_JS = String.raw`
         '<div style="margin-top:auto;padding-top:14px">' +
           '<button class="btn" id="st-save-sms" style="width:100%">' + ICONS.check + ' Сохранить настройки SMS</button>' +
         '</div>' +
+      '</div>' +
+
+      '<!-- CARD 3: TELEGRAM NOTIFICATIONS -->' +
+      '<div style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:16px">' +
+        '<div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)">' +
+          '<div style="width:34px;height:34px;border-radius:8px;background:var(--panel3);display:flex;align-items:center;justify-content:center;color:#0088cc">' + ICONS.telegram + '</div>' +
+          '<div>' +
+            '<h4 style="font-size:15px;font-weight:700;margin:0">Уведомления Telegram</h4>' +
+            '<div class="hint" style="font-size:12px">Мгновенные оповещения о новых заказах и заявках</div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="field">' +
+          '<label>Токен Telegram-бота (Bot Token)</label>' +
+          '<input id="st-tg-token" type="password" value="' + esc(s.telegram_bot_token || "") + '" placeholder="123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ">' +
+          '<div class="hint">Токен вашего бота от @BotFather</div>' +
+        '</div>' +
+
+        '<div class="field">' +
+          '<label>ID чата или группы (Chat ID)</label>' +
+          '<input id="st-tg-chat" value="' + esc(s.telegram_chat_id || "") + '" placeholder="например: 123456789 или -100123456789">' +
+          '<div class="hint">ID личного чата или группы с добавленным ботом</div>' +
+        '</div>' +
+
+        '<div style="display:flex;flex-direction:column;gap:8px">' +
+          '<label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer">' +
+            '<input type="checkbox" id="st-tg-no"' + (s.telegram_notify_orders !== "0" ? ' checked' : '') + '> ' +
+            '<span>Оповещать о заказах из корзины и быстрых заказах</span>' +
+          '</label>' +
+          '<label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer">' +
+            '<input type="checkbox" id="st-tg-nl"' + (s.telegram_notify_leads !== "0" ? ' checked' : '') + '> ' +
+            '<span>Оповещать о заявках на консультацию и звонок</span>' +
+          '</label>' +
+        '</div>' +
+
+        '<!-- TEST TELEGRAM SECTION -->' +
+        '<div style="padding:12px;background:var(--panel2);border:1px solid var(--line);border-radius:8px">' +
+          '<label style="font-size:12px;font-weight:600;display:block;margin-bottom:6px">Проверка подключения Telegram</label>' +
+          '<div style="display:flex;gap:8px">' +
+            '<button type="button" class="btn sm ghost" id="st-tg-test-btn" style="width:100%">Отправить тест в Telegram</button>' +
+          '</div>' +
+          '<div id="st-tg-test-res" style="font-size:12px;margin-top:8px;line-height:1.4;display:none"></div>' +
+        '</div>' +
+
+        '<div style="margin-top:auto;padding-top:14px">' +
+          '<button class="btn" id="st-save-telegram" style="width:100%">' + ICONS.check + ' Сохранить настройки Telegram</button>' +
+        '</div>' +
       '</div>';
 
     // Toggle Eskiz fields display
@@ -3245,6 +3540,63 @@ export const ADMIN_APP_JS = String.raw`
       } finally {
         btn.disabled = false;
         btn.textContent = "Отправить тест";
+      }
+    };
+
+    // Save Telegram settings
+    document.getElementById("st-save-telegram").onclick = async function(){
+      var payload = {
+        telegram_bot_token: document.getElementById("st-tg-token").value.trim(),
+        telegram_chat_id: document.getElementById("st-tg-chat").value.trim(),
+        telegram_notify_orders: document.getElementById("st-tg-no").checked ? "1" : "0",
+        telegram_notify_leads: document.getElementById("st-tg-nl").checked ? "1" : "0"
+      };
+      try {
+        await api("/api/admin/settings", { method: "PUT", body: payload });
+        toast("Настройки Telegram сохранены! ✓");
+      } catch(err) {
+        toast("Ошибка сохранения: " + err.message, "err");
+      }
+    };
+
+    // Test Telegram
+    document.getElementById("st-tg-test-btn").onclick = async function(){
+      var btn = document.getElementById("st-tg-test-btn");
+      var resEl = document.getElementById("st-tg-test-res");
+      var tokenVal = document.getElementById("st-tg-token").value.trim();
+      var chatVal = document.getElementById("st-tg-chat").value.trim();
+
+      btn.disabled = true;
+      btn.textContent = "Отправка…";
+      resEl.style.display = "block";
+      resEl.textContent = "Отправка тестового сообщения…";
+      resEl.style.color = "var(--ink-soft)";
+
+      try {
+        var resp = await api("/api/admin/telegram/test", {
+          method: "POST",
+          body: {
+            token: tokenVal || undefined,
+            chat: chatVal || undefined,
+            message: "Bententrade CMS: Тестовое уведомление. Подключение к Telegram работает отлично! 🚀"
+          }
+        });
+        if (resp.ok) {
+          resEl.textContent = "✓ Тестовое сообщение успешно отправлено в Telegram!";
+          resEl.style.color = "var(--ok)";
+          toast("Тест Telegram успешно пройден ✓");
+        } else {
+          resEl.textContent = "✕ Ошибка: " + (resp.error || "Не удалось отправить сообщение");
+          resEl.style.color = "var(--err)";
+          toast("Ошибка Telegram: " + (resp.error || "failed"), "err");
+        }
+      } catch(err) {
+        resEl.textContent = "✕ Ошибка: " + err.message;
+        resEl.style.color = "var(--err)";
+        toast("Ошибка: " + err.message, "err");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Отправить тест в Telegram";
       }
     };
   }

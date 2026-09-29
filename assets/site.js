@@ -1357,7 +1357,14 @@
         let colorMatch = true;
         if(activeColors.size > 0){
           const cardColors = (card.dataset.colors || "").split(/\s+/).filter(Boolean);
-          colorMatch = cardColors.some(c => activeColors.has(c));
+          colorMatch = cardColors.some(c => {
+            if(activeColors.has(c)) return true;
+            if(activeColors.has("black") && (c === "black-marble" || c === "dark-grey")) return true;
+            if(activeColors.has("black-marble") && c === "black") return true;
+            if(activeColors.has("white") && c === "white-marble") return true;
+            if(activeColors.has("white-marble") && c === "white") return true;
+            return false;
+          });
         }
 
         // Material match (if any activeMaterials selected)
@@ -1824,19 +1831,28 @@
               }
             }
 
-            if(targetImg && img.getAttribute("src") !== targetImg && !img.src.endsWith(targetImg)){
-              img.style.transition = "opacity 0.18s ease";
-              img.style.opacity = "0.35";
-              const temp = new Image();
-              temp.onload = ()=>{
-                img.src = targetImg;
-                img.style.opacity = "1";
-              };
-              temp.onerror = ()=>{
-                img.src = targetImg;
-                img.style.opacity = "1";
-              };
-              temp.src = targetImg;
+            if(targetImg){
+              const cleanSrc = (targetImg.startsWith("http://") || targetImg.startsWith("https://") || targetImg.startsWith("/"))
+                ? targetImg
+                : ("/" + targetImg.replace(/^\.?\//, ""));
+
+              const curSrc = img.getAttribute("src") || img.src || "";
+              if(curSrc !== cleanSrc && !curSrc.endsWith(targetImg)){
+                img.style.transition = "opacity 0.18s ease";
+                img.style.opacity = "0.35";
+                const temp = new Image();
+                temp.onload = ()=>{
+                  img.src = cleanSrc;
+                  img.setAttribute("src", cleanSrc);
+                  img.style.opacity = "1";
+                };
+                temp.onerror = ()=>{
+                  img.src = cleanSrc;
+                  img.setAttribute("src", cleanSrc);
+                  img.style.opacity = "1";
+                };
+                temp.src = cleanSrc;
+              }
             }
           });
         });

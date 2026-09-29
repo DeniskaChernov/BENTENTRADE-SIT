@@ -3,6 +3,7 @@ import type { Env, Variables } from "../types";
 import { requireAdmin } from "../auth";
 import { str } from "../util";
 import { sendSms, notifyOrderSms } from "../sms";
+import { testTelegram } from "../telegram";
 
 const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
@@ -93,7 +94,7 @@ async function upsertProductI18n(c: any, id: string, i18n: any) {
     const t = i18n[lang];
     if (!t) continue;
     const sizes = Array.isArray(t.sizes) ? JSON.stringify(t.sizes) : str(t.sizes, 500) || "[]";
-    const specs = typeof t.specs === "object" && t.specs ? JSON.stringify(t.specs) : str(t.specs, 1000) || "{}";
+    const specs = typeof t.specs === "object" && t.specs ? JSON.stringify(t.specs) : str(t.specs, 10000) || "{}";
     batch.push(stmt.bind(
       id,
       lang,
@@ -471,6 +472,17 @@ app.post("/sms/test", async (c) => {
   if (!phone) return c.json({ error: "phone_required" }, 422);
 
   const res = await sendSms(c.env, { phone, message, skipRateLimit: true });
+  return c.json(res);
+});
+
+/* =============================== telegram =============================== */
+
+app.post("/telegram/test", async (c) => {
+  const b = await c.req.json().catch(() => ({}));
+  const token = str(b.token, 100) || undefined;
+  const chat = str(b.chat, 60) || undefined;
+  const message = str(b.message, 500) || undefined;
+  const res = await testTelegram(c.env, { token, chat, message });
   return c.json(res);
 });
 

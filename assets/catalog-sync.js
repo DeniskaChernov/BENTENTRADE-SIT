@@ -150,17 +150,61 @@
     if (nameEl && p.name) nameEl.textContent = p.name;
     const catEl = card.querySelector(".product__cat");
     if (catEl && !catEl.hasAttribute("data-i18n") && p.category_label) catEl.textContent = p.category_label;
+
+    // Ensure swatches match master confirmedColors
+    const masterProd = (window.BTT_PRODUCTS && (window.BTT_PRODUCTS[id] || (p.slug && window.BTT_PRODUCTS[p.slug]))) || p;
+    const confirmed = (masterProd && masterProd.confirmedColors) || [];
+    if (confirmed.length > 0) {
+      const colorIds = confirmed.map(function(c){ return c.id; });
+      if (colorIds.indexOf("black-marble") !== -1 && colorIds.indexOf("black") === -1) colorIds.push("black");
+      if (colorIds.indexOf("white-marble") !== -1 && colorIds.indexOf("white") === -1) colorIds.push("white");
+      card.setAttribute("data-colors", colorIds.join(" "));
+
+      let swWrap = card.querySelector(".product-swatches");
+      if (!swWrap || swWrap.children.length !== confirmed.length) {
+        if (!swWrap) {
+          swWrap = document.createElement("div");
+          swWrap.className = "product-swatches";
+          swWrap.setAttribute("aria-label", t("colors.label") || "Цвета");
+          const nEl = card.querySelector(".product__name");
+          if (nEl && nEl.parentNode) {
+            nEl.parentNode.insertBefore(swWrap, nEl.nextSibling);
+          }
+        }
+        swWrap.innerHTML = confirmed.map(function(c, idx) {
+          const cName = (c.name && (c.name[lang()] || c.name.ru)) || c.id;
+          const cImg = c.image || (idx === 0 ? productImg(p) : "");
+          return '<button type="button" class="product-swatch' + (idx === 0 ? ' is-active' : '') +
+            '" style="--swatch-color:' + esc(c.hex) +
+            '" data-color="' + esc(c.id) +
+            '" data-img="' + esc(cImg) +
+            '" title="' + esc(cName) +
+            '" aria-label="' + esc(cName) + '"></button>';
+        }).join('');
+      }
+    }
+
     const img = card.querySelector(".product__media img");
     const localized = t(id + ".name");
     if (img && localized) img.setAttribute("alt", localized);
     else if (img && p.name && !img.getAttribute("alt")) img.setAttribute("alt", p.name);
-    if (p.image && img) { img.src = mediaUrl(p.image); img.style.display = ""; }
+
+    const activeSwatch = card.querySelector(".product-swatch.is-active");
+    if (img) {
+      if (activeSwatch && activeSwatch.dataset.img) {
+        img.src = mediaUrl(activeSwatch.dataset.img);
+      } else if (p.image) {
+        img.src = mediaUrl(p.image);
+      }
+      img.style.display = "";
+    }
     return { id: id, product: p };
   }
 
   // Curated grids (e.g. home featured): patch prices/names/photos only.
   function patchGrid(grid, map) {
     grid.querySelectorAll("[data-product]").forEach((card) => patchCard(card, map));
+    if (window.BTT_INIT_SWATCHES) window.BTT_INIT_SWATCHES(grid);
   }
 
   // Catalog grid: patch + drop products removed in the CRM + append new ones.
@@ -180,6 +224,7 @@
       const active = document.querySelector('[data-chips] .chip.is-active') || document.querySelector('.cat-chips .chip.is-active') || document.querySelector('[data-chips] .chip[data-cat="all"]') || document.querySelector('.cat-chips .chip[data-cat="all"]');
       if (active) active.click();
     }
+    if (window.BTT_INIT_SWATCHES) window.BTT_INIT_SWATCHES(grid);
   }
 
   // One source of truth for the CRM product list, cached per language so that
@@ -203,35 +248,51 @@
 
   function syncCatalogCount() {
     const el = document.querySelector("[data-cat-count]");
-    const P = window.BTT_PRODUCTS;
-    if (!el || !P) return;
-    const n = Object.keys(P).length;
-    if (n) el.textContent = String(n);
+    const grid = document.querySelector("#catalog-grid");
+    if (!el) return;
+    if (grid) {
+      const cards = Array.from(grid.querySelectorAll("[data-product]"));
+      const shown = cards.filter(c => c.style.display !== "none").length;
+      el.textContent = String(shown || (window.BTT_CANONICAL_SLUGS && window.BTT_CANONICAL_SLUGS.length) || 15);
+    } else {
+      const n = (window.BTT_CANONICAL_SLUGS && window.BTT_CANONICAL_SLUGS.length) || 15;
+      el.textContent = String(n);
+    }
   }
 
   function appendMissingStaticProducts(grid) {
     const P = window.BTT_PRODUCTS;
+    const slugs = window.BTT_CANONICAL_SLUGS || [];
     if (!grid || !P) return false;
     const seen = new Set();
     grid.querySelectorAll("[data-product]").forEach((card) => {
-      const see = card.querySelector("a[href*='product.html?id=']");
+      const slug = card.dataset.slug || card.dataset.id;
+      if (slug) seen.add(slug);
+      const see = card.querySelector("a[href*='product.html?id='], a[href*='/catalog/']");
       const pid = see && idFromHref(see.getAttribute("href"));
       if (pid) seen.add(pid);
     });
     const frag = document.createDocumentFragment();
     let added = false;
-    Object.keys(P).sort((a, b) => a.localeCompare(b, undefined, { numeric: true })).forEach((pid) => {
+    const list = slugs.length ? slugs : Object.keys(P);
+    list.forEach((pid) => {
       if (seen.has(pid)) return;
       const row = P[pid];
+      if (!row) return;
       frag.appendChild(buildCard({
         id: pid,
-        category: row.cat,
+        slug: row.slug || pid,
+        category: row.cat || row.category,
         category_label: t(pid + ".cat"),
         name: t(pid + ".name"),
-        price_now: row.now,
+        price_now: row.now || row.price,
         price_old: row.old || 0,
         stock: row.stock,
+        availability: row.availability,
       }));
+      seen.add(pid);
+      if (row.slug) seen.add(row.slug);
+      if (row.legacyId) seen.add(row.legacyId);
       added = true;
     });
     if (added) {

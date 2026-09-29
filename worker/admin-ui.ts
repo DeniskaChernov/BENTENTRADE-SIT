@@ -875,6 +875,126 @@ export const ADMIN_HTML = `<!DOCTYPE html>
     color: #fff;
   }
 
+  /* Color Swatches Editor */
+  .color-swatches-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .color-variant-row {
+    display: grid;
+    grid-template-columns: 34px 105px 1fr 1fr 1fr 120px 30px;
+    gap: 8px;
+    align-items: center;
+    background: var(--panel3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+    transition: border-color 0.15s ease;
+  }
+  .color-variant-row:hover { border-color: var(--copper); }
+  @media (max-width: 900px) {
+    .color-variant-row {
+      grid-template-columns: 34px 1fr 1fr 30px;
+    }
+  }
+  .color-circle-wrap {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .color-circle-wrap input[type="color"] {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    border: none;
+    opacity: 0;
+  }
+  .color-circle-visual {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: block;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+  }
+  .color-variant-row input {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  .color-img-selector {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+  .color-img-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    object-fit: cover;
+    background: var(--panel2);
+    border: 1px solid var(--line);
+    flex-shrink: 0;
+  }
+  .color-preset-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 9px;
+    font-size: 11.5px;
+    border-radius: 12px;
+    background: var(--panel3);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .color-preset-btn:hover {
+    border-color: var(--copper);
+    color: var(--copper);
+    background: var(--copper-glow);
+  }
+  .color-preset-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: inline-block;
+  }
+  .prev-swatches {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .prev-swatch {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+  .prev-swatch:hover, .prev-swatch.active {
+    transform: scale(1.25);
+    border-color: #fff;
+    outline: 2px solid var(--copper);
+  }
+
   /* Size Chips / Tag Input */
   .chips-box {
     display: flex;
