@@ -1,4 +1,4 @@
-/* Bententrade - mid-page atmosphere hero (lifestyle carousel) */
+/* BTT - mid-page atmosphere hero (lifestyle carousel) */
 (function(){
   const SLIDES = [
     {

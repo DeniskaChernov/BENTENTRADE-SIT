@@ -266,7 +266,7 @@
       '<p class="muted" style="margin:0 auto 26px;max-width:420px">' + esc(t("pdp.notFoundSub") || "Возможно, товар снят с продажи или ссылка устарела.") + "</p>" +
       '<a class="btn btn--dark" href="catalog.html">' + esc(t("nav.catalog2") || "Каталог") + "</a>" +
       "</section>";
-    document.title = "Bententrade - 404";
+    document.title = "BTT - 404";
   }
 
   // Per-language cache so language switches never refetch or flash a 404.
@@ -323,7 +323,7 @@
 
     // Name / breadcrumb / category / description straight from the CRM.
     const h1 = document.querySelector(".pdp-info h1");
-    if (h1 && p.name) { h1.textContent = p.name; document.title = "Bententrade - " + p.name; }
+    if (h1 && p.name) { h1.textContent = p.name; document.title = "BTT - " + p.name; }
     const crumb = document.querySelector(".crumb .cur");
     if (crumb && p.name) crumb.textContent = p.name;
     const catEl = document.querySelector(".pdp-info .product__cat");

@@ -1,4 +1,4 @@
-/* Bententrade - cookie consent: no server requests until accepted. */
+/* BTT - cookie consent: no server requests until accepted. */
 (function () {
   "use strict";
 

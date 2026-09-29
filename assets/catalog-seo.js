@@ -1,4 +1,4 @@
-/* Bententrade - catalog page structured data + category SEO meta. */
+/* BTT - catalog page structured data + category SEO meta. */
 (function () {
   "use strict";
 

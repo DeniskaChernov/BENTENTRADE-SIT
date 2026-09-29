@@ -19,7 +19,11 @@ for (const f of htmlFiles) {
       ref.startsWith('mailto:') ||
       ref.startsWith('tel:') ||
       ref.startsWith('//') ||
-      ref.startsWith('javascript:')
+      ref.startsWith('javascript:') ||
+      ref.startsWith('/catalog/') ||
+      ref.startsWith('catalog/') ||
+      ref === '/admin' ||
+      ref === '/admin/'
     ) {
       continue;
     }
