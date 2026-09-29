@@ -213,7 +213,7 @@
         btn.type = "button";
         btn.className = "swatch" + (idx === 0 ? " is-active" : "");
         btn.style.background = c.hex;
-        const cName = (c.name && (c.name[curLang] || c.name.ru)) || c.id;
+        const cName = (c.name && (c.name[curLang] || c.name.ru)) || c[curLang] || c.ru || c.id;
         btn.setAttribute("aria-label", cName);
         btn.title = cName;
         btn.dataset.colorName = cName;
@@ -222,27 +222,32 @@
           btn.classList.add("is-active");
           if(valEl) valEl.textContent = cName;
           if(c.image){
+            const cleanImg = (c.image.startsWith("/") || c.image.startsWith("http")) ? c.image : ("/" + c.image);
             const thumbs = $$("[data-thumb]");
             let matchedIdx = -1;
             thumbs.forEach((th, i)=>{
               const tImg = th.querySelector("img");
-              if(tImg && (tImg.src === c.image || tImg.src.endsWith(c.image) || (tImg.getAttribute("src") === c.image))){
-                matchedIdx = i;
+              if(tImg){
+                const tSrc = tImg.getAttribute("src") || tImg.src || "";
+                const cleanTSrc = (tSrc.startsWith("/") || tSrc.startsWith("http")) ? tSrc : ("/" + tSrc);
+                if(cleanTSrc === cleanImg || cleanTSrc.endsWith(cleanImg) || cleanImg.endsWith(cleanTSrc)){
+                  matchedIdx = i;
+                }
               }
             });
             if(matchedIdx >= 0){
               thumbs[matchedIdx].click();
             } else {
               const stageImg = document.querySelector(".pdp-stage img.is-on") || document.querySelector(".pdp-stage img");
-              if(stageImg) stageImg.src = c.image;
+              if(stageImg) stageImg.src = cleanImg;
               const stickyImg = document.querySelector("[data-sticky-img]");
-              if(stickyImg) stickyImg.src = c.image;
+              if(stickyImg) stickyImg.src = cleanImg;
             }
           }
         });
         wrap.appendChild(btn);
       });
-      const firstColor = (confirmed[0].name && (confirmed[0].name[curLang] || confirmed[0].name.ru)) || confirmed[0].id;
+      const firstColor = (confirmed[0].name && (confirmed[0].name[curLang] || confirmed[0].name.ru)) || confirmed[0][curLang] || confirmed[0].ru || confirmed[0].id;
       if(valEl) valEl.textContent = firstColor;
       if(note) note.style.display = "none";
     } else {
@@ -290,8 +295,9 @@
         swatchesHtml =
           '<div class="product-swatches" aria-label="' + esc(t("colors.label") || "Цвета") + '">' +
           confirmed.map(function(c, idx) {
-            const cName = (c.name && (c.name[l] || c.name.ru)) || c.id;
-            const cImg = c.image || (idx === 0 ? img : "");
+            const cName = (c.name && (c.name[l] || c.name.ru)) || c[l] || c.ru || c.id;
+            const rawImg = c.image || (idx === 0 ? img : "");
+            const cImg = rawImg ? ((rawImg.startsWith("/") || rawImg.startsWith("http")) ? rawImg : ("/" + rawImg)) : "";
             return '<button type="button" class="product-swatch' + (idx === 0 ? ' is-active' : '') +
               '" style="--swatch-color:' + esc(c.hex) +
               '" data-color="' + esc(c.id) +

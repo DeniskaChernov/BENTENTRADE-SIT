@@ -423,6 +423,64 @@
       });
     }
 
+    // Hydrate confirmed color swatches from CRM specs
+    let cColors = null;
+    if (p.specs && typeof p.specs === "object" && Array.isArray(p.specs.confirmed_colors) && p.specs.confirmed_colors.length) {
+      cColors = p.specs.confirmed_colors;
+    }
+    if (cColors && window.BTT_PDP_PRODUCT) {
+      window.BTT_PDP_PRODUCT.confirmedColors = cColors;
+      const wrap = document.querySelector("[data-pdp-swatches]");
+      const note = document.querySelector("[data-pdp-color-note]");
+      const valEl = document.querySelector("[data-finish-val]");
+      if (wrap) {
+        wrap.innerHTML = "";
+        const curLang = lang();
+        cColors.forEach((c, idx) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "swatch" + (idx === 0 ? " is-active" : "");
+          btn.style.background = c.hex;
+          const cName = (c.name && (c.name[curLang] || c.name.ru)) || c[curLang] || c.ru || c.id;
+          btn.setAttribute("aria-label", cName);
+          btn.title = cName;
+          btn.dataset.colorName = cName;
+          btn.addEventListener("click", () => {
+            wrap.querySelectorAll(".swatch").forEach(b => b.classList.remove("is-active"));
+            btn.classList.add("is-active");
+            if (valEl) valEl.textContent = cName;
+            if (c.image) {
+              const cleanImg = (c.image.startsWith("/") || c.image.startsWith("http")) ? c.image : ("/" + c.image);
+              const thumbs = document.querySelectorAll("[data-thumb]");
+              let matchedIdx = -1;
+              thumbs.forEach((th, i) => {
+                const tImg = th.querySelector("img");
+                if (tImg) {
+                  const tSrc = tImg.getAttribute("src") || tImg.src || "";
+                  const cleanTSrc = (tSrc.startsWith("/") || tSrc.startsWith("http")) ? tSrc : ("/" + tSrc);
+                  if (cleanTSrc === cleanImg || cleanTSrc.endsWith(cleanImg) || cleanImg.endsWith(cleanTSrc)) {
+                    matchedIdx = i;
+                  }
+                }
+              });
+              if (matchedIdx >= 0) {
+                thumbs[matchedIdx].click();
+              } else {
+                const stageImg = document.querySelector(".pdp-stage img.is-on") || document.querySelector(".pdp-stage img");
+                if (stageImg) stageImg.src = cleanImg;
+                const stickyImg = document.querySelector("[data-sticky-img]");
+                if (stickyImg) stickyImg.src = cleanImg;
+              }
+            }
+          });
+          wrap.appendChild(btn);
+        });
+        const firstColor = (cColors[0].name && (cColors[0].name[curLang] || cColors[0].name.ru)) || cColors[0][curLang] || cColors[0].ru || cColors[0].id;
+        if (valEl) valEl.textContent = firstColor;
+        if (note) note.style.display = "none";
+      }
+    }
+
     const now = document.querySelector(".pdp-price .now");
     if (now) now.textContent = money(p.price_now);
     const old = document.querySelector(".pdp-price .old");
