@@ -894,11 +894,33 @@
       "металл"
     ],
     "maxLoad": null,
-    "confirmedColors": [],
+    "confirmedColors": [
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29"
+      },
+      {
+        "id": "white-marble",
+        "name": {
+          "ru": "Белый мрамор",
+          "uz": "Oq marmar",
+          "en": "White Marble"
+        },
+        "hex": "#E8E6E1"
+      }
+    ],
     "isTable": true,
     "images": [
-      "assets/prod-table-dining-room.jpg",
-      "assets/prod-table-marble-detail.jpg"
+      "assets/prod-table-corda-135-black.jpg",
+      "assets/prod-table-corda-135-white.jpg",
+      "assets/prod-table-corda-135-top-black.jpg",
+      "assets/prod-table-corda-135-top-white.jpg",
+      "assets/prod-table-corda-135-detail-black.jpg"
     ],
     "i18n": {
       "ru": {
