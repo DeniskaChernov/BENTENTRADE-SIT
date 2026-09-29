@@ -26,7 +26,8 @@
           "uz": "Bej",
           "en": "Beige"
         },
-        "hex": "#C2B280"
+        "hex": "#C2B280",
+        "image": "assets/prod-chair-vertex.jpg"
       }
     ],
     "isTable": false,
@@ -84,12 +85,13 @@
     "confirmedColors": [
       {
         "id": "beige",
-        "hex": "#C4A482",
         "name": {
           "ru": "Бежевый",
-          "uz": "Sarg‘ish",
+          "uz": "Bej",
           "en": "Beige"
-        }
+        },
+        "hex": "#C4A482",
+        "image": "assets/prod-chair-corda.jpg"
       }
     ],
     "isTable": false,
@@ -150,7 +152,8 @@
           "uz": "Kulrang",
           "en": "Grey"
         },
-        "hex": "#808080"
+        "hex": "#808080",
+        "image": "assets/prod-chair-roero.jpg"
       }
     ],
     "isTable": false,
@@ -211,7 +214,8 @@
           "uz": "Kapuchino",
           "en": "Cappuccino"
         },
-        "hex": "#A88D73"
+        "hex": "#A88D73",
+        "image": "assets/prod-chair-noero.jpg"
       }
     ],
     "isTable": false,
@@ -272,7 +276,8 @@
           "uz": "Qora",
           "en": "Black"
         },
-        "hex": "#222222"
+        "hex": "#222222",
+        "image": "assets/prod-chair-todo.jpg"
       }
     ],
     "isTable": false,
@@ -333,7 +338,8 @@
           "uz": "Kapuchino",
           "en": "Cappuccino"
         },
-        "hex": "#A88D73"
+        "hex": "#A88D73",
+        "image": "assets/prod-chair-jardin.jpg"
       }
     ],
     "isTable": false,
@@ -495,7 +501,8 @@
           "uz": "Oq marmar",
           "en": "White Marble"
         },
-        "hex": "#E8E6E1"
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-taper-rotang-80-white.jpg"
       },
       {
         "id": "black-marble",
@@ -504,14 +511,15 @@
           "uz": "Qora marmar",
           "en": "Black Marble"
         },
-        "hex": "#2B2A29"
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-taper-rotang-80-black.jpg"
       }
     ],
     "isTable": true,
     "images": [
       "assets/prod-table-taper-rotang-80-white.jpg",
-      "assets/prod-table-taper-rotang-80-white-front.jpg",
       "assets/prod-table-taper-rotang-80-black.jpg",
+      "assets/prod-table-taper-rotang-80-white-front.jpg",
       "assets/prod-table-taper-rotang-80-black-front.jpg",
       "assets/prod-table-taper-rotang-80-detail-white.jpg",
       "assets/prod-table-taper-rotang-80-detail-black.jpg",
@@ -569,12 +577,24 @@
           "uz": "Oq marmar",
           "en": "White Marble"
         },
-        "hex": "#E8E6E1"
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-vertex-d90.jpg"
+      },
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-vertex-black.jpg"
       }
     ],
     "isTable": true,
     "images": [
       "assets/prod-table-vertex-d90.jpg",
+      "assets/prod-table-vertex-black.jpg",
       "assets/prod-table-vertex-d90-detail-top.jpg",
       "assets/prod-table-vertex-d90-detail-leg.jpg"
     ],
@@ -631,7 +651,8 @@
           "uz": "Oq marmar",
           "en": "White Marble"
         },
-        "hex": "#E8E6E1"
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-taper-rotang-135-white.jpg"
       },
       {
         "id": "black-marble",
@@ -640,7 +661,8 @@
           "uz": "Qora marmar",
           "en": "Black Marble"
         },
-        "hex": "#2B2A29"
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-taper-rotang-135-black.jpg"
       }
     ],
     "isTable": true,
@@ -704,7 +726,8 @@
           "uz": "Oq marmar",
           "en": "White Marble"
         },
-        "hex": "#E8E6E1"
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-taper-80-white.jpg"
       },
       {
         "id": "black-marble",
@@ -713,7 +736,8 @@
           "uz": "Qora marmar",
           "en": "Black Marble"
         },
-        "hex": "#2B2A29"
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-taper-80-black.jpg"
       }
     ],
     "isTable": true,
@@ -769,9 +793,31 @@
       "металл"
     ],
     "maxLoad": null,
-    "confirmedColors": [],
+    "confirmedColors": [
+      {
+        "id": "white-marble",
+        "name": {
+          "ru": "Белый мрамор",
+          "uz": "Oq marmar",
+          "en": "White Marble"
+        },
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-vertex-d90.jpg"
+      },
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-vertex-black.jpg"
+      }
+    ],
     "isTable": true,
     "images": [
+      "assets/prod-table-vertex-d90.jpg",
       "assets/prod-table-vertex-black.jpg",
       "assets/prod-table-taper-80-detail-top.jpg"
     ],
@@ -827,7 +873,8 @@
           "uz": "Oq marmar",
           "en": "White Marble"
         },
-        "hex": "#E8E6E1"
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-taper-135-white.jpg"
       },
       {
         "id": "black-marble",
@@ -836,7 +883,8 @@
           "uz": "Qora marmar",
           "en": "Black Marble"
         },
-        "hex": "#2B2A29"
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-taper-135-black.jpg"
       }
     ],
     "isTable": true,
@@ -896,30 +944,32 @@
     "maxLoad": null,
     "confirmedColors": [
       {
-        "id": "black-marble",
-        "name": {
-          "ru": "Чёрный мрамор",
-          "uz": "Qora marmar",
-          "en": "Black Marble"
-        },
-        "hex": "#2B2A29"
-      },
-      {
         "id": "white-marble",
         "name": {
           "ru": "Белый мрамор",
           "uz": "Oq marmar",
           "en": "White Marble"
         },
-        "hex": "#E8E6E1"
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-corda-135-white.jpg"
+      },
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-corda-135-black.jpg"
       }
     ],
     "isTable": true,
     "images": [
-      "assets/prod-table-corda-135-black.jpg",
       "assets/prod-table-corda-135-white.jpg",
-      "assets/prod-table-corda-135-top-black.jpg",
+      "assets/prod-table-corda-135-black.jpg",
       "assets/prod-table-corda-135-top-white.jpg",
+      "assets/prod-table-corda-135-top-black.jpg",
       "assets/prod-table-corda-135-detail-black.jpg"
     ],
     "i18n": {

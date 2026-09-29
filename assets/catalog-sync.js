@@ -55,11 +55,17 @@
       if (!id) return;
       const im = window.BTT_PRODUCT_IMG(id);
       const img = card.querySelector(".product__media img");
-      if (im && im[0] && img) {
-        img.src = im[0].full;
+      const activeSwatch = card.querySelector(".product-swatch.is-active");
+      if (img) {
+        if (activeSwatch && activeSwatch.dataset.img) {
+          img.src = activeSwatch.dataset.img;
+        } else if (im && im[0]) {
+          img.src = im[0].full;
+        }
         img.removeAttribute("onerror");
       }
     });
+    if (window.BTT_INIT_SWATCHES) window.BTT_INIT_SWATCHES(root);
   }
 
   function buildCard(p) {
@@ -92,7 +98,13 @@
         '<div class="product-swatches" aria-label="' + esc(t("colors.label") || "Цвета") + '">' +
         confirmed.map(function(c, idx) {
           const cName = (c.name && (c.name[lang()] || c.name.ru)) || c.id;
-          return '<span class="product-swatch' + (idx === 0 ? ' is-active' : '') + '" style="--swatch-color:' + esc(c.hex) + '" title="' + esc(cName) + '"></span>';
+          const cImg = c.image || (idx === 0 ? productImg(p) : "");
+          return '<button type="button" class="product-swatch' + (idx === 0 ? ' is-active' : '') +
+            '" style="--swatch-color:' + esc(c.hex) +
+            '" data-color="' + esc(c.id) +
+            '" data-img="' + esc(cImg) +
+            '" title="' + esc(cName) +
+            '" aria-label="' + esc(cName) + '"></button>';
         }).join('') +
         '</div>';
     } else {

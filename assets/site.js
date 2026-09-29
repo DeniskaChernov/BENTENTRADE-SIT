@@ -1794,19 +1794,56 @@
     }
 
     /* Product Weave Color Swatches */
-    function initProductSwatches(){
-      document.querySelectorAll(".product-swatches").forEach(swGroup=>{
+    function initProductSwatches(root){
+      const context = (root && root.querySelectorAll) ? root : document;
+      context.querySelectorAll(".product-swatches").forEach(swGroup=>{
         const swatches = swGroup.querySelectorAll(".product-swatch");
         swatches.forEach(sw=>{
+          if(sw._hasSwatchListener) return;
+          sw._hasSwatchListener = true;
           sw.addEventListener("click", (e)=>{
             e.preventDefault();
             e.stopPropagation();
+            if(sw.classList.contains("is-active")) return;
             swatches.forEach(s=> s.classList.remove("is-active"));
             sw.classList.add("is-active");
+
+            const card = sw.closest(".product, [data-product]");
+            if(!card) return;
+            const img = card.querySelector(".product__media img");
+            if(!img) return;
+
+            let targetImg = sw.dataset.img;
+            if(!targetImg){
+              const slug = card.dataset.slug || card.dataset.id;
+              const p = window.BTT_PRODUCTS && (window.BTT_PRODUCTS[slug] || window.BTT_PRODUCTS[card.dataset.id]);
+              if(p && p.confirmedColors){
+                const colorId = sw.dataset.color;
+                const match = p.confirmedColors.find(c => c.id === colorId || c.hex === sw.style.getPropertyValue("--swatch-color"));
+                if(match && match.image) targetImg = match.image;
+              }
+            }
+
+            if(targetImg && img.getAttribute("src") !== targetImg && !img.src.endsWith(targetImg)){
+              img.style.transition = "opacity 0.18s ease";
+              img.style.opacity = "0.35";
+              const temp = new Image();
+              temp.onload = ()=>{
+                img.src = targetImg;
+                img.style.opacity = "1";
+              };
+              temp.onerror = ()=>{
+                img.src = targetImg;
+                img.style.opacity = "1";
+              };
+              temp.src = targetImg;
+            }
           });
         });
       });
     }
+
+    window.BTT_INIT_SWATCHES = initProductSwatches;
 
     initCatalogView();
     initProductSwatches();
