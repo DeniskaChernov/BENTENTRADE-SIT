@@ -10,7 +10,7 @@
     "wicker-chairs":    "assets/prod-chair-corda.jpg",
     "plastic-chairs":   "assets/hero-garden-furniture.png",
     "upholstered-chairs":"assets/hero-home-furniture.png",
-    tables:             "assets/prod-table-dining-room.jpg",
+    tables:             "assets/prod-table-corda-135-black.jpg",
     furniture:          "assets/hero-garden-furniture.png",
     planterMix:         "assets/bento-planter.png",
     planter:            "assets/hero-planter.png",

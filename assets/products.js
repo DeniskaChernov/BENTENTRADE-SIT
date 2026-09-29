@@ -773,7 +773,7 @@
     "isTable": true,
     "images": [
       "assets/prod-table-vertex-black.jpg",
-      "assets/prod-table-marble-detail.jpg"
+      "assets/prod-table-taper-80-detail-top.jpg"
     ],
     "i18n": {
       "ru": {
@@ -1002,7 +1002,7 @@
     "wicker-chairs":     "assets/prod-chair-corda.jpg",
     "plastic-chairs":    "assets/placeholder.svg",
     "upholstered-chairs":"assets/placeholder.svg",
-    tables:              "assets/prod-table-dining-room.jpg",
+    tables:              "assets/prod-table-corda-135-black.jpg",
     // legacy category aliases
     furniture:           "assets/prod-chair-corda.jpg",
     indoor:              "assets/placeholder.svg",

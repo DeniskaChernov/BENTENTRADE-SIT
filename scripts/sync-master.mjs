@@ -66,7 +66,7 @@ function syncProductsJs() {
     "wicker-chairs":     "assets/prod-chair-corda.jpg",
     "plastic-chairs":    "assets/placeholder.svg",
     "upholstered-chairs":"assets/placeholder.svg",
-    tables:              "assets/prod-table-dining-room.jpg",
+    tables:              "assets/prod-table-corda-135-black.jpg",
     // legacy category aliases
     furniture:           "assets/prod-chair-corda.jpg",
     indoor:              "assets/placeholder.svg",

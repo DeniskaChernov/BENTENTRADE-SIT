@@ -1529,9 +1529,6 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   object-position:center center !important;
   transition:transform .6s cubic-bezier(.16, 1, 0.3, 1);
 }
-.product__media img[src*="prod-table-dining-room"]{
-  object-position:center 64% !important;
-}
 .catalog-layout .product:hover .product__media img,
 #catalog-grid .product:hover .product__media img,
 [data-related-grid] .product:hover .product__media img{

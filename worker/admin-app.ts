@@ -62,7 +62,7 @@ export const ADMIN_APP_JS = String.raw`
 
   function catFallback(cat){
     if (cat === "wicker-chairs") return "/assets/prod-chair-corda.jpg";
-    if (cat === "tables") return "/assets/prod-table-dining-room.jpg";
+    if (cat === "tables") return "/assets/prod-table-corda-135-black.jpg";
     return "/assets/placeholder.svg";
   }
 

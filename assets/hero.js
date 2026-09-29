@@ -51,7 +51,7 @@
     },
     {
       cat: "tables",
-      sideImg: "assets/prod-table-dining-room.jpg",
+      sideImg: "assets/prod-table-corda-135-black.jpg",
       t1:      {ru:"Обеденные",               uz:"Ovqatlanish",            en:"Dining"},
       t2:      {ru:"столы",                   uz:"stollari",               en:"tables"},
       sub:     {ru:"Столы Taper, Vertex и Corda с прочным металлокаркасом и практичной столешницей из ЛДСП.",
