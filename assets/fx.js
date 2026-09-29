@@ -137,9 +137,9 @@
 
   document.addEventListener("click", (e) => {
     if(isReduced()) return;
-    const target = e.target && e.target.closest && e.target.closest(".hero__cta, .swatch, .product-swatch, .cat-view-btn, .btn--copper");
+    const target = e.target && e.target.closest && e.target.closest(".hero__cta, .swatch, .product-swatch, .cat-view-btn, .btn--copper, .pdp-thumb");
     if(target && e.clientX && e.clientY){
-      burstParticles(e.clientX, e.clientY, 6);
+      burstParticles(e.clientX, e.clientY, 5);
     }
   }, { passive: true });
 
