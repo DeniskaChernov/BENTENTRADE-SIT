@@ -553,6 +553,22 @@
           "assets/prod-chair-todo-soft-yellow-detail-seat.jpg",
           "assets/prod-chair-todo-soft-yellow-detail-back.jpg"
         ]
+      },
+      {
+        "id": "grey",
+        "name": {
+          "ru": "Серый",
+          "uz": "Kulrang",
+          "en": "Grey"
+        },
+        "hex": "#808080",
+        "image": "assets/prod-chair-todo-soft-gray.jpg",
+        "images": [
+          "assets/prod-chair-todo-soft-gray.jpg",
+          "assets/prod-chair-todo-soft-gray-side.jpg",
+          "assets/prod-chair-todo-soft-gray-detail-seat.jpg",
+          "assets/prod-chair-todo-soft-gray-detail-back.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -564,7 +580,11 @@
       "assets/prod-chair-todo-soft-yellow.jpg",
       "assets/prod-chair-todo-soft-yellow-side.jpg",
       "assets/prod-chair-todo-soft-yellow-detail-seat.jpg",
-      "assets/prod-chair-todo-soft-yellow-detail-back.jpg"
+      "assets/prod-chair-todo-soft-yellow-detail-back.jpg",
+      "assets/prod-chair-todo-soft-gray.jpg",
+      "assets/prod-chair-todo-soft-gray-side.jpg",
+      "assets/prod-chair-todo-soft-gray-detail-seat.jpg",
+      "assets/prod-chair-todo-soft-gray-detail-back.jpg"
     ],
     "i18n": {
       "ru": {
