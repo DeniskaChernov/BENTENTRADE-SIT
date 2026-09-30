@@ -9,3 +9,6 @@ uploads/
 Bententrade-Sit/
 *.db
 data/*.db
+
+# Temp Chrome profiles from headless tests
+.tmp-chrome-profile*

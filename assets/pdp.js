@@ -20,7 +20,7 @@
       if(PRODUCTS[raw]) return PRODUCTS[raw].slug || raw;
       if(window.BTT_RESOLVE_PRODUCT){
         const r = window.BTT_RESOLVE_PRODUCT(raw);
-        if(r && r.slug) return r.slug;
+        if(r) return typeof r === "string" ? r : (r.slug || raw);
       }
     }
 
@@ -31,7 +31,7 @@
       if(PRODUCTS[raw]) return PRODUCTS[raw].slug || raw;
       if(window.BTT_RESOLVE_PRODUCT){
         const r = window.BTT_RESOLVE_PRODUCT(raw);
-        if(r && r.slug) return r.slug;
+        if(r) return typeof r === "string" ? r : (r.slug || raw);
       }
     }
 

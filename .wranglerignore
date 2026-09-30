@@ -1,0 +1,3 @@
+
+# Temp Chrome profiles from headless tests
+.tmp-chrome-profile*

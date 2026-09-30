@@ -436,20 +436,36 @@
       if (wrap) {
         wrap.innerHTML = "";
         const curLang = lang();
+        // Respect ?color= URL parameter already applied by pdp.js
+        const requestedColor = new URLSearchParams(window.location.search).get("color") || "";
+        let activeIdx = 0;
+        if (requestedColor) {
+          const found = cColors.findIndex(c =>
+            (c.id && c.id.toLowerCase() === requestedColor.toLowerCase()) ||
+            (c.hex && c.hex.toLowerCase() === requestedColor.toLowerCase())
+          );
+          if (found >= 0) activeIdx = found;
+        }
         cColors.forEach((c, idx) => {
           const btn = document.createElement("button");
           btn.type = "button";
-          btn.className = "swatch" + (idx === 0 ? " is-active" : "");
+          btn.className = "swatch" + (idx === activeIdx ? " is-active" : "");
           btn.style.background = c.hex;
           const cName = (c.name && (c.name[curLang] || c.name.ru)) || c[curLang] || c.ru || c.id;
           btn.setAttribute("aria-label", cName);
           btn.title = cName;
           btn.dataset.colorName = cName;
+          btn.dataset.colorId = c.id || "";
           btn.addEventListener("click", () => {
             wrap.querySelectorAll(".swatch").forEach(b => b.classList.remove("is-active"));
             btn.classList.add("is-active");
             if (valEl) valEl.textContent = cName;
-            if (c.image) {
+            const colorImages = (c.images && c.images.length)
+              ? c.images
+              : (c.image ? [c.image] : null);
+            if (colorImages && window.BTT_PDP_PRODUCT && typeof window.setGallery === "function") {
+              window.setGallery(colorImages, 0);
+            } else if (c.image) {
               const cleanImg = (c.image.startsWith("/") || c.image.startsWith("http")) ? c.image : ("/" + c.image);
               const thumbs = document.querySelectorAll("[data-thumb]");
               let matchedIdx = -1;
@@ -472,11 +488,17 @@
                 if (stickyImg) stickyImg.src = cleanImg;
               }
             }
+            try {
+              const u = new URL(window.location.href);
+              u.searchParams.set("color", c.id || "");
+              window.history.replaceState({}, "", u.toString());
+            } catch(e) {}
           });
           wrap.appendChild(btn);
         });
-        const firstColor = (cColors[0].name && (cColors[0].name[curLang] || cColors[0].name.ru)) || cColors[0][curLang] || cColors[0].ru || cColors[0].id;
-        if (valEl) valEl.textContent = firstColor;
+        const activeColor = cColors[activeIdx];
+        const activeColorName = (activeColor.name && (activeColor.name[curLang] || activeColor.name.ru)) || activeColor[curLang] || activeColor.ru || activeColor.id;
+        if (valEl) valEl.textContent = activeColorName;
         if (note) note.style.display = "none";
       }
     }
