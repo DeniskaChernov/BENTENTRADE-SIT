@@ -288,6 +288,16 @@
         },
         "hex": "#EAA824",
         "image": "assets/prod-chair-todo-yellow.jpg"
+      },
+      {
+        "id": "grey",
+        "name": {
+          "ru": "Серый",
+          "uz": "Kulrang",
+          "en": "Grey"
+        },
+        "hex": "#808080",
+        "image": "assets/prod-chair-todo-gray.jpg"
       }
     ],
     "isTable": false,
@@ -299,7 +309,11 @@
       "assets/prod-chair-todo-yellow.jpg",
       "assets/prod-chair-todo-yellow-side.jpg",
       "assets/prod-chair-todo-yellow-detail-back.jpg",
-      "assets/prod-chair-todo-yellow-detail-seat.jpg"
+      "assets/prod-chair-todo-yellow-detail-seat.jpg",
+      "assets/prod-chair-todo-gray.jpg",
+      "assets/prod-chair-todo-gray-side.jpg",
+      "assets/prod-chair-todo-gray-detail-back.jpg",
+      "assets/prod-chair-todo-gray-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {
