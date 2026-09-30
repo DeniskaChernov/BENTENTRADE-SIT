@@ -164,6 +164,16 @@
         },
         "hex": "#222222",
         "image": "assets/prod-chair-roero-black.jpg"
+      },
+      {
+        "id": "white",
+        "name": {
+          "ru": "Белый",
+          "uz": "Oq",
+          "en": "White"
+        },
+        "hex": "#FFFFFF",
+        "image": "assets/prod-chair-roero-white.jpg"
       }
     ],
     "isTable": false,
@@ -175,7 +185,11 @@
       "assets/prod-chair-roero-black.jpg",
       "assets/prod-chair-roero-black-front.jpg",
       "assets/prod-chair-roero-black-detail-back.jpg",
-      "assets/prod-chair-roero-black-detail-seat.jpg"
+      "assets/prod-chair-roero-black-detail-seat.jpg",
+      "assets/prod-chair-roero-white.jpg",
+      "assets/prod-chair-roero-white-front.jpg",
+      "assets/prod-chair-roero-white-detail-back.jpg",
+      "assets/prod-chair-roero-white-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {
