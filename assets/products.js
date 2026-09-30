@@ -569,6 +569,22 @@
           "assets/prod-chair-todo-soft-gray-detail-seat.jpg",
           "assets/prod-chair-todo-soft-gray-detail-back.jpg"
         ]
+      },
+      {
+        "id": "red",
+        "name": {
+          "ru": "Красный",
+          "uz": "Qizil",
+          "en": "Red"
+        },
+        "hex": "#E32626",
+        "image": "assets/prod-chair-todo-soft-red.jpg",
+        "images": [
+          "assets/prod-chair-todo-soft-red.jpg",
+          "assets/prod-chair-todo-soft-red-side.jpg",
+          "assets/prod-chair-todo-soft-red-detail-seat.jpg",
+          "assets/prod-chair-todo-soft-red-detail-back.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -584,7 +600,11 @@
       "assets/prod-chair-todo-soft-gray.jpg",
       "assets/prod-chair-todo-soft-gray-side.jpg",
       "assets/prod-chair-todo-soft-gray-detail-seat.jpg",
-      "assets/prod-chair-todo-soft-gray-detail-back.jpg"
+      "assets/prod-chair-todo-soft-gray-detail-back.jpg",
+      "assets/prod-chair-todo-soft-red.jpg",
+      "assets/prod-chair-todo-soft-red-side.jpg",
+      "assets/prod-chair-todo-soft-red-detail-seat.jpg",
+      "assets/prod-chair-todo-soft-red-detail-back.jpg"
     ],
     "i18n": {
       "ru": {
