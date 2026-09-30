@@ -29,7 +29,7 @@ if (!fs.existsSync(MASTER_PATH)) {
 
 const products = JSON.parse(fs.readFileSync(MASTER_PATH, 'utf8'));
 assert(Array.isArray(products), 'products-master.json is a valid JSON array');
-assert(products.length === 15, `Exactly 15 canonical products defined (found ${products.length})`);
+assert(products.length === 16, `Exactly 16 canonical products defined (found ${products.length})`);
 
 const slugs = new Set();
 const legacyIds = new Set();
@@ -81,10 +81,10 @@ console.log('\n--- 2. Validating migrations/seed.sql ---');
 if (fs.existsSync(SEED_SQL_PATH)) {
   const seedSql = fs.readFileSync(SEED_SQL_PATH, 'utf8');
   const productInserts = (seedSql.match(/INSERT OR REPLACE INTO products/g) || []).length;
-  assert(productInserts === 15, `seed.sql has exactly 15 product records (found ${productInserts})`);
+  assert(productInserts === 16, `seed.sql has exactly 16 product records (found ${productInserts})`);
 
   const aliasInserts = (seedSql.match(/INSERT OR REPLACE INTO product_aliases/g) || []).length;
-  assert(aliasInserts === 15, `seed.sql has exactly 15 alias records (found ${aliasInserts})`);
+  assert(aliasInserts === 16, `seed.sql has exactly 16 alias records (found ${aliasInserts})`);
 } else {
   errors.push('migrations/seed.sql not found');
 }

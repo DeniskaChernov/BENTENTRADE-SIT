@@ -13,7 +13,7 @@ function syncProductsJs() {
   const masterCode = JSON.stringify(master, null, 2);
 
   const jsContent = `/* BTT - мебель для дома и сада
-   Product master data (exact 15 SKUs, Single Source of Truth).
+   Product master data (exact 16 SKUs, Single Source of Truth).
    All prices are in UZS. Generated from data/products-master.json. */
 (function(){
   "use strict";
@@ -22,7 +22,7 @@ function syncProductsJs() {
 
   window.BTT_PRODUCT_MASTER = MASTER;
 
-  // Build dictionary for fast lookup by canonical slug and legacyId (p1..p15)
+  // Build dictionary for fast lookup by canonical slug and legacyId (p1..p16)
   var PRODUCTS = {};
   MASTER.forEach(function(item){
     var obj = {

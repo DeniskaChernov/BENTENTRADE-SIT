@@ -1,5 +1,5 @@
 /* BTT - мебель для дома и сада
-   Product master data (exact 15 SKUs, Single Source of Truth).
+   Product master data (exact 16 SKUs, Single Source of Truth).
    All prices are in UZS. Generated from data/products-master.json. */
 (function(){
   "use strict";
@@ -510,6 +510,75 @@
     "currency": "сум"
   },
   {
+    "slug": "stul-todo-soft",
+    "legacyId": "p16",
+    "model": "TODO SOFT",
+    "category": "plastic-chairs",
+    "price": 264000,
+    "dimensions": "80 × 51 × 51 см",
+    "materials": [
+      "пластик",
+      "текстиль"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "black",
+        "name": {
+          "ru": "Чёрный",
+          "uz": "Qora",
+          "en": "Black"
+        },
+        "hex": "#222222",
+        "image": "assets/prod-chair-todo-soft.jpg",
+        "images": [
+          "assets/prod-chair-todo-soft.jpg",
+          "assets/prod-chair-todo-soft-side.jpg",
+          "assets/prod-chair-todo-soft-detail-seat.jpg",
+          "assets/prod-chair-todo-soft-detail-back.jpg"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/prod-chair-todo-soft.jpg",
+      "assets/prod-chair-todo-soft-side.jpg",
+      "assets/prod-chair-todo-soft-detail-seat.jpg",
+      "assets/prod-chair-todo-soft-detail-back.jpg"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стул «TODO SOFT»",
+        "category_label": "Пластиковые стулья",
+        "description": "Стул TODO SOFT сочетает эргономичный пластиковый каркас с мягким текстильным сиденьем для повышенного комфорта. Отличное решение для дома, террас и заведений HoReCa.",
+        "usage": "Для дома, кухни, террасы, кафе и ресторанов",
+        "seo_title": "Купить Стул «TODO SOFT» в Ташкенте - BTT",
+        "seo_description": "Стул «TODO SOFT» (Пластиковые стулья) от BTT. Размеры: 80 × 51 × 51 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«TODO SOFT» stuli",
+        "category_label": "Plastik stullar",
+        "description": "TODO SOFT stuli qulay plastik karkas va qo‘shimcha qulaylik beruvchi yumshoq mato o‘rindiqni birlashtiradi. Xonadon, terrasa va HoReCa muassasalari uchun ajoyib tanlov.",
+        "usage": "Uy, oshxona, terrasa, kafe va restoranlar uchun",
+        "seo_title": "Toshkentda «TODO SOFT» stuli sotib olish - BTT",
+        "seo_description": "BTT dan «TODO SOFT» stuli (Plastik stullar). O‘lchamlari: 80 × 51 × 51 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "TODO SOFT Chair",
+        "category_label": "Plastic chairs",
+        "description": "TODO SOFT chair combines an ergonomic plastic frame with a padded textile seat for enhanced comfort. Ideal for dining spaces, terraces, cafes and restaurants.",
+        "usage": "For dining areas, kitchens, terraces, cafes and restaurants",
+        "seo_title": "Buy TODO SOFT Chair in Tashkent - BTT",
+        "seo_description": "TODO SOFT Chair (Plastic chairs) by BTT. Dimensions: 80 × 51 × 51 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 5,
+    "currency": "сум"
+  },
+  {
     "slug": "stul-jardin",
     "legacyId": "p6",
     "model": "JARDIN",
@@ -572,7 +641,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 5,
+    "sort": 6,
     "currency": "сум"
   },
   {
@@ -622,7 +691,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 6,
+    "sort": 7,
     "currency": "сум"
   },
   {
@@ -672,7 +741,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 7,
+    "sort": 8,
     "currency": "сум"
   },
   {
@@ -761,7 +830,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 8,
+    "sort": 9,
     "currency": "сум"
   },
   {
@@ -844,7 +913,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 9,
+    "sort": 10,
     "currency": "сум"
   },
   {
@@ -930,7 +999,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 10,
+    "sort": 11,
     "currency": "сум"
   },
   {
@@ -1016,7 +1085,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 11,
+    "sort": 12,
     "currency": "сум"
   },
   {
@@ -1096,7 +1165,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 12,
+    "sort": 13,
     "currency": "сум"
   },
   {
@@ -1185,7 +1254,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 13,
+    "sort": 14,
     "currency": "сум"
   },
   {
@@ -1269,14 +1338,14 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 14,
+    "sort": 15,
     "currency": "сум"
   }
 ];
 
   window.BTT_PRODUCT_MASTER = MASTER;
 
-  // Build dictionary for fast lookup by canonical slug and legacyId (p1..p15)
+  // Build dictionary for fast lookup by canonical slug and legacyId (p1..p16)
   var PRODUCTS = {};
   MASTER.forEach(function(item){
     var obj = {

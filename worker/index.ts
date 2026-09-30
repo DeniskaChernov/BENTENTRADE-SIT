@@ -189,7 +189,7 @@ app.get("/admin/app.js", (c) => {
 });
 
 const VALID_PRODUCT_SLUGS = new Set([
-  "stul-vertex", "stul-corda", "stul-roero", "stul-noero", "stul-todo", "stul-jardin",
+  "stul-vertex", "stul-corda", "stul-roero", "stul-noero", "stul-todo", "stul-todo-soft", "stul-jardin",
   "stul-lira", "kreslo-como", "stol-taper-rotang-80", "stol-vertex-d90",
   "stol-taper-rotang-135", "stol-taper-80", "stol-vertex-80", "stol-taper-135", "stol-corda-135"
 ]);
@@ -210,6 +210,7 @@ const PRODUCT_ALIASES: Record<string, string> = {
   p13: "stol-vertex-80",
   p14: "stol-taper-135",
   p15: "stol-corda-135",
+  p16: "stul-todo-soft",
 };
 
 // Clean PDP URLs: /catalog/:slug -> serves product.html with status 200

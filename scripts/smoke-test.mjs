@@ -41,17 +41,17 @@ function expect(val) {
 
 console.log('=== RUNNING BTT COMPREHENSIVE SMOKE TEST SUITE ===\n');
 
-// SCENARIO A: SSOT and Exact 15 SKUs
-console.log('--- SCENARIO A: Single Source of Truth (15 SKUs) ---');
-test('Master file has exactly 15 SKUs', () => {
+// SCENARIO A: SSOT and Exact 16 SKUs
+console.log('--- SCENARIO A: Single Source of Truth (16 SKUs) ---');
+test('Master file has exactly 16 SKUs', () => {
   const master = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/products-master.json'), 'utf8'));
-  expect(master.length).toBe(15);
+  expect(master.length).toBe(16);
 });
 
-test('seed.sql inserts exactly 15 products', () => {
+test('seed.sql inserts exactly 16 products', () => {
   const seed = fs.readFileSync(path.join(ROOT, 'migrations/seed.sql'), 'utf8');
   const count = (seed.match(/INSERT OR REPLACE INTO products\s*\(/g) || []).length;
-  expect(count).toBe(15);
+  expect(count).toBe(16);
 });
 
 // SCENARIO B: Brand Identity

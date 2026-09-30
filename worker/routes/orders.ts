@@ -62,7 +62,8 @@ app.post("/", async (c) => {
     p1: "stul-vertex", p2: "stul-corda", p3: "stul-roero", p4: "stul-noero",
     p5: "stul-todo", p6: "stul-jardin", p7: "stul-lira", p8: "kreslo-como",
     p9: "stol-taper-rotang-80", p10: "stol-vertex-d90", p11: "stol-taper-rotang-135",
-    p12: "stol-taper-80", p13: "stol-vertex-80", p14: "stol-taper-135", p15: "stol-corda-135"
+    p12: "stol-taper-80", p13: "stol-vertex-80", p14: "stol-taper-135", p15: "stol-corda-135",
+    p16: "stul-todo-soft"
   };
 
   // Resolve authoritative prices from DB where product id is known.
