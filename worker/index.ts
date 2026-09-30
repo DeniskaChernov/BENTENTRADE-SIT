@@ -215,15 +215,21 @@ const PRODUCT_ALIASES: Record<string, string> = {
 
 // Clean PDP URLs: /catalog/:slug -> serves product.html with status 200
 app.get("/catalog/:slug", async (c) => {
-  const slug = c.req.param("slug");
+  const rawSlug = c.req.param("slug");
+  const slug = (rawSlug || "").toLowerCase().trim();
 
   // If a legacy alias was requested, 301 redirect to canonical slug
   if (PRODUCT_ALIASES[slug]) {
     return c.redirect(`/catalog/${PRODUCT_ALIASES[slug]}`, 301);
   }
 
+  // If uppercase was used for canonical slug, redirect to lowercase
+  if (rawSlug !== slug && VALID_PRODUCT_SLUGS.has(slug)) {
+    return c.redirect(`/catalog/${slug}`, 301);
+  }
+
   if (VALID_PRODUCT_SLUGS.has(slug)) {
-    const url = new URL("/product", c.req.url);
+    const url = new URL("/product.html", c.req.url);
     url.searchParams.set("id", slug);
     const reqUrl = new URL(c.req.url);
     for (const [k, v] of reqUrl.searchParams.entries()) {
@@ -231,7 +237,7 @@ app.get("/catalog/:slug", async (c) => {
     }
     const res = await c.env.ASSETS.fetch(new Request(url.toString(), c.req.raw));
     if (res.status >= 300 && res.status < 400) {
-      const loc = res.headers.get("Location") || "/product";
+      const loc = res.headers.get("Location") || "/product.html";
       const followUrl = new URL(loc, c.req.url);
       const followedRes = await c.env.ASSETS.fetch(new Request(followUrl.toString(), c.req.raw));
       return new Response(followedRes.body, {

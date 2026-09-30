@@ -1,4 +1,4 @@
--- Bententrade — PostgreSQL schema (Railway port of the D1/SQLite schema).
+-- Bententrade - PostgreSQL schema (Railway port of the D1/SQLite schema).
 -- Timestamps are TIMESTAMPTZ; the pg type parser returns them as
 -- "YYYY-MM-DD HH:MM:SS" strings so the app keeps working like it did on SQLite.
 

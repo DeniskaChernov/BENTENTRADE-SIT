@@ -17,10 +17,10 @@
 
   // category index - slug matches the catalog chips (site.js) and routes to catalog ?cat=
   const CATS = [
-    { slug:"wicker-chairs",     k:"cat.wickerChairs",     img:"assets/hero-garden-furniture.png" },
-    { slug:"plastic-chairs",    k:"cat.plasticChairs",    img:"assets/stul-roero.png" },
-    { slug:"upholstered-chairs",k:"cat.upholsteredChairs",img:"assets/stul-lira.png" },
-    { slug:"tables",            k:"cat.tables",           img:"assets/stol-taper-80.png" }
+    { slug:"wicker-chairs",     k:"cat.wickerChairs",     img:"assets/prod-chair-corda.jpg" },
+    { slug:"plastic-chairs",    k:"cat.plasticChairs",    img:"assets/prod-chair-roero.jpg" },
+    { slug:"upholstered-chairs",k:"cat.upholsteredChairs",img:"assets/hero-home-furniture.png" },
+    { slug:"tables",            k:"cat.tables",           img:"assets/prod-table-corda-135-black.jpg" }
   ];
   const PAGES = [
     { href:"index.html",    k:"nav.home" },
@@ -46,17 +46,19 @@
     if(M && Array.isArray(M)){
       M.forEach(item => {
         const id = item.slug;
-        const name = d[item.slug + ".name"] || item.name_ru;
-        const cat = d[item.slug + ".cat"] || item.category;
+        const name = d[item.slug + ".name"] || d[item.legacyId + ".name"] || (item.i18n && (item.i18n[lang()] || item.i18n.ru) && (item.i18n[lang()] || item.i18n.ru).name) || item.model;
+        const cat = d[item.slug + ".cat"] || d[item.legacyId + ".cat"] || d["cat." + item.category] || item.category;
         out.push({ id, slug: item.slug, name, cat, img: productThumb(item.slug), q: name });
       });
       return out;
     }
     const P = window.BTT_PRODUCTS;
     if(P){
-      Object.keys(P).forEach(id=>{
-        const name = d[id+".name"];
-        if(name) out.push({ id, slug: id, name, cat:d[id+".cat"]||"", img:productThumb(id), q:name });
+      Object.keys(P).filter(k => !/^p\d+$/.test(k)).forEach(id=>{
+        const p = P[id] || {};
+        const name = d[id+".name"] || d[p.legacyId+".name"] || p.model || id;
+        const cat = d[id+".cat"] || d[p.legacyId+".cat"] || d["cat." + p.cat] || p.cat || "";
+        out.push({ id, slug: p.slug || id, name, cat, img: productThumb(id), q: name });
       });
       if(out.length) return out;
     }

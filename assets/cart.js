@@ -498,7 +498,13 @@
         '<a class="btn btn--dark" href="catalog.html">'+esc(t("toCat"))+'</a></div>';
     } else {
       const rows=ids.map((id,i)=>{
-        const it=f[id]; const href=id?("product.html?id="+encodeURIComponent(id)):"catalog.html";
+        const it=f[id];
+        let slug=id;
+        if(id && window.BTT_RESOLVE_PRODUCT){
+          const r = window.BTT_RESOLVE_PRODUCT(id);
+          if(r) slug = (typeof r === "string") ? r : (r.slug || id);
+        }
+        const href=slug?("/catalog/"+encodeURIComponent(slug)):"catalog.html";
         return '<div class="dl-item" style="--dl-idx:'+i+'">'+
           '<a class="dl-thumb" href="'+href+'">'+(it.img?'<img src="'+esc(it.img)+'" alt="" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">':'')+'</a>'+
           '<div class="dl-main"><a class="dl-name" href="'+href+'">'+esc(it.name)+'</a>'+
@@ -1145,7 +1151,7 @@
       card.dataset.cardNavWired = "1";
       card.addEventListener("click",e=>{
         if(e.target.closest("button, a, input, textarea, label, [data-fav], [data-add], [data-pdp-quick-buy], [data-quick-buy]")) return;
-        const see = card.querySelector("a.see, a[href*='product.html?id=']");
+        const see = card.querySelector("a.see, a[href*='/catalog/'], a[href*='product.html']");
         const href = see ? see.getAttribute("href") : null;
         if(href){
           e.preventDefault();

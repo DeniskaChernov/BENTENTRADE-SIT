@@ -756,6 +756,7 @@
 
     const name = t(pid + ".name") || pid;
     const cat = t(pid + ".cat") || prod.cat;
+    const canonicalHref = "/catalog/" + encodeURIComponent(prod.slug || pid);
     const CATTEXT = window.BTT_PRODUCT_CAT || {};
     const cInfo = CATTEXT[prod.cat] || CATTEXT.furniture || {};
     const cDesc = (cInfo[l] || cInfo.ru || {}).desc || "";
@@ -806,12 +807,12 @@
           '<p class="qv-desc">' + esc(cDesc) + '</p>' +
           '<div class="qv-actions">' +
             (isMto
-              ? '<a class="btn btn--copper" href="product.html?id=' + esc(pid) + '">' + esc(t("pdp.sticky.order") || "Сделать на заказ") + '</a>'
+              ? '<a class="btn btn--copper" href="' + canonicalHref + '">' + esc(t("pdp.sticky.order") || "Сделать на заказ") + '</a>'
               : '<button type="button" class="btn btn--dark" data-qv-add>' + esc(t("pdp.add") || "Добавить в корзину") + '</button>' +
                 '<button type="button" class="btn btn--copper" data-qv-quick-buy>' + esc(t("pdp.quickBuy") || "Купить в 1 клик") + '</button>'
             ) +
           '</div>' +
-          '<a class="qv-full-link" href="product.html?id=' + esc(pid) + '">' +
+          '<a class="qv-full-link" href="' + canonicalHref + '">' +
             '<span>' + esc(t("quickview.full") || "Перейти к товару") + '</span> &rarr;' +
           '</a>' +
         '</div>' +
@@ -1906,11 +1907,13 @@
         const email = form.querySelector("[name='email']");
         const phone = form.querySelector("[name='phone']");
         const message = form.querySelector("[name='message']");
+        const company = form.querySelector("[name='company']");
         let valid = true;
         if(!name || !name.value.trim()){ name && name.closest(".field")?.classList.add("is-invalid"); valid = false; }
 
         const emVal = email ? email.value.trim() : "";
         const phVal = phone ? phone.value.trim() : "";
+        const compVal = company ? company.value.trim() : "";
         const isEmValid = emVal && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emVal);
         const isPhValid = phVal && phVal.replace(/\D/g, "").length >= 7;
 
@@ -1924,11 +1927,14 @@
           return;
         }
 
+        const msgText = message ? message.value.trim() : "";
+        const finalMessage = compVal ? ("Компания / заведение: " + compVal + (msgText ? ("\n" + msgText) : "")) : msgText;
+
         const payload = {
           name: name ? name.value.trim() : "",
           email: email ? email.value.trim() : "",
           phone: phone ? phone.value.trim() : "",
-          message: message ? message.value.trim() : "",
+          message: finalMessage,
           lang: document.documentElement.lang || "ru",
         };
 

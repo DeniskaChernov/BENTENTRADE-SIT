@@ -332,7 +332,16 @@
     patchGrid(grid, map);
   });
 
-  function knownStatic(id) { return !!(window.BTT_PRODUCTS && window.BTT_PRODUCTS[id]); }
+  function knownStatic(id) {
+    if (!id) return false;
+    const k = String(id).toLowerCase().trim();
+    if (window.BTT_PRODUCTS && window.BTT_PRODUCTS[k]) return true;
+    if (window.BTT_RESOLVE_PRODUCT) {
+      const r = window.BTT_RESOLVE_PRODUCT(k);
+      if (r && window.BTT_PRODUCTS && window.BTT_PRODUCTS[r]) return true;
+    }
+    return false;
+  }
 
   function showPdp404() {
     const main = document.querySelector("main.pdp-flow");
@@ -354,8 +363,9 @@
     if (!document.querySelector(".pdp-info")) return;
     if (_pdp404) return;
     const catMatch = location.pathname.match(/\/catalog\/([a-z0-9-]+)/i);
-    const id = (catMatch && catMatch[1]) || new URLSearchParams(location.search).get("id") || new URLSearchParams(location.search).get("slug");
-    if (!id) return;
+    const rawId = (catMatch && catMatch[1]) || new URLSearchParams(location.search).get("id") || new URLSearchParams(location.search).get("slug");
+    if (!rawId) return;
+    const id = rawId.toLowerCase().trim();
     const lg = lang();
     if (_pdpCache[lg]) { applyPDP(_pdpCache[lg]); return; }
     let res;

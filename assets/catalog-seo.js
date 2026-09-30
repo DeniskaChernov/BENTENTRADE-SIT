@@ -72,9 +72,12 @@
   function productsForSchema() {
     const P = window.BTT_PRODUCTS || {};
     const cat = activeCategory();
-    return Object.keys(P)
+    const slugs = (window.BTT_CANONICAL_SLUGS && window.BTT_CANONICAL_SLUGS.length)
+      ? window.BTT_CANONICAL_SLUGS
+      : Object.keys(P).filter(k => !/^p\d+$/.test(k));
+    return slugs
       .filter((id) => id && P[id])
-      .filter((id) => !cat || (P[id] && P[id].cat === cat) || (cat === "planterMix" && P[id] && (P[id].cat === "planter" || P[id].cat === "basket")))
+      .filter((id) => !cat || (P[id] && (P[id].cat === cat || P[id].category === cat)))
       .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
   }
 
@@ -87,12 +90,16 @@
     const listName = prefix ? t(prefix + ".title") : t("meta.catalog.title");
     const listDesc = prefix ? t(prefix + ".desc") : t("meta.catalog.desc");
 
-    const items = ids.map((id, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      url: SITE + "/product.html?id=" + encodeURIComponent(id),
-      name: productName(id),
-    }));
+    const items = ids.map((id, i) => {
+      const p = (window.BTT_PRODUCTS && window.BTT_PRODUCTS[id]) || {};
+      const slug = p.slug || id;
+      return {
+        "@type": "ListItem",
+        position: i + 1,
+        url: SITE + "/catalog/" + encodeURIComponent(slug),
+        name: productName(id),
+      };
+    });
 
     const SEO = window.BTT_SEO || {};
     if (SEO.injectJsonLd) {
@@ -107,14 +114,14 @@
 
       const crumbs = [
         { "@type": "ListItem", position: 1, name: t("pdp.crumb.home") || "Главная", item: SITE + "/" },
-        { "@type": "ListItem", position: 2, name: t("nav.catalog") || "Каталог", item: SITE + "/catalog.html" },
+        { "@type": "ListItem", position: 2, name: t("nav.catalog") || "Каталог", item: SITE + "/catalog" },
       ];
       if (cat && prefix) {
         crumbs.push({
           "@type": "ListItem",
           position: 3,
           name: t(prefix + ".short") || listName,
-          item: SITE + "/catalog.html?cat=" + encodeURIComponent(cat),
+          item: SITE + "/catalog?cat=" + encodeURIComponent(cat),
         });
       }
       SEO.injectJsonLd("btt-page-bc", {

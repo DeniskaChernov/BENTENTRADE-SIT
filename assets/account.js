@@ -28,6 +28,7 @@
 
   function productCard(id){
     const P=window.BTT_PRODUCTS||{}, p=P[id]; if(!p) return "";
+    const slug = p.slug || id;
     const imgs=window.BTT_PRODUCT_IMG?window.BTT_PRODUCT_IMG(id):null;
     const thumb=(imgs&&imgs[0])?imgs[0].thumb:"";
     const favs=getFavs();
@@ -35,13 +36,13 @@
     return '<article class="product" data-product data-cat="'+esc(p.cat)+'">'+
       '<div class="product__media media">'+
         '<button class="fav'+(on?" is-on":"")+'" data-fav data-i18n-aria="a11y.fav" aria-label="'+esc(t("a11y.fav"))+'">'+FAV_SVG+'</button>'+
-        '<img src="'+esc(thumb)+'" alt="'+esc(t(id+".name"))+'" loading="lazy" onerror="this.style.display=\'none\'">'+
-        '<a class="see" href="product.html?id='+esc(id)+'" data-i18n="see">'+esc(t("see"))+'</a>'+
+        '<img src="'+esc(thumb)+'" alt="'+esc(t(slug+".name")||t(id+".name"))+'" loading="lazy" onerror="this.style.display=\'none\'">'+
+        '<a class="see" href="/catalog/'+esc(slug)+'" data-i18n="see">'+esc(t("see"))+'</a>'+
         '<button class="add" data-add data-i18n-aria="a11y.add" aria-label="'+esc(t("a11y.add"))+'">'+ADD_SVG+'</button>'+
       '</div>'+
       '<div>'+
-        '<div class="product__cat">'+esc(t(id+".cat"))+'</div>'+
-        '<div class="product__name acc-prod-name">'+esc(t(id+".name"))+'</div>'+
+        '<div class="product__cat">'+esc(t(slug+".cat")||t(id+".cat"))+'</div>'+
+        '<div class="product__name acc-prod-name">'+esc(t(slug+".name")||t(id+".name"))+'</div>'+
         '<div class="price acc-prod-price"><span class="price__now">'+((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(p.now):p.now)+'</span>'+
         (p.old?'<span class="price__old">'+((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(p.old):p.old)+'</span>':"")+'</div>'+
       '</div>'+

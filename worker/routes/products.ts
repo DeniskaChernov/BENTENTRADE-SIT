@@ -32,7 +32,7 @@ app.get("/", async (c) => {
 
 /** GET /api/products/:id?lang=ru */
 app.get("/:id", async (c) => {
-  const rawId = c.req.param("id");
+  const rawId = (c.req.param("id") || "").toLowerCase().trim();
   const lang = pickLang(c.req.query("lang"));
 
   let product = await c.env.DB.prepare(
