@@ -165,7 +165,6 @@
   }
 
   /* ---- animate product cards when category chips change ---- */
-  /* ---- animate product cards when category chips change ---- */
   const CHIP_URL_ALIAS = {
     planter: "wicker-chairs",
     basket: "wicker-chairs",
@@ -231,7 +230,7 @@
     if(!grid) return;
     const cards = Array.from(grid.querySelectorAll("[data-product]"));
     const shown = cards.filter(c=> c.style.display !== "none").length;
-    const prev = parseInt((cnt ? cnt.textContent : "15") || "0", 10);
+    const prev = parseInt((cnt ? cnt.textContent : "16") || "0", 10);
     if(window.BTT_MOTION && window.BTT_MOTION.animateNumber && prev !== shown && !Number.isNaN(prev)){
       if(cnt) window.BTT_MOTION.animateNumber(cnt, prev, shown, 280);
       if(mobCnt) window.BTT_MOTION.animateNumber(mobCnt, prev, shown, 280);
@@ -1359,6 +1358,7 @@
           const cardColors = (card.dataset.colors || "").split(/\s+/).filter(Boolean);
           colorMatch = cardColors.some(c => {
             if(activeColors.has(c)) return true;
+            if((activeColors.has("grey") || activeColors.has("gray")) && (c === "grey" || c === "gray")) return true;
             if(activeColors.has("black") && (c === "black-marble" || c === "dark-grey")) return true;
             if(activeColors.has("black-marble") && c === "black") return true;
             if(activeColors.has("white") && c === "white-marble") return true;

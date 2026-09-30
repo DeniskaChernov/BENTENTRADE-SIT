@@ -1,6 +1,6 @@
 /* ============================================================
    BTT - Product Detail Page (PDP) Interactions & Data Hydration
-   Accurate 15-SKU Single Source of Truth
+   Accurate 16-SKU Single Source of Truth
    Clean URLs: /catalog/:slug or ?id=:slug
    No fake reviews, no fake ratings, factual specs & LDSP warning.
    ============================================================ */
@@ -215,6 +215,9 @@
       stickyImg.src = currentGallery[0].thumb;
     }
   }
+
+  window.setGallery = setGallery;
+  window.BTT_SET_GALLERY = setGallery;
 
   function showImg(i){
     if(!currentGallery.length) return;

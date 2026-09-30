@@ -180,7 +180,7 @@
     if(!id) id = "x-"+name.slice(0,18).replace(/\s+/g,"-").toLowerCase();
     if(id && window.BTT_RESOLVE_PRODUCT){
       const r = window.BTT_RESOLVE_PRODUCT(id);
-      if(r && r.slug) id = r.slug;
+      if(r) id = (typeof r === "string") ? r : (r.slug || id);
     }
     const activeSwatch = card.querySelector(".product-swatch.is-active");
     const options = {};
@@ -201,7 +201,7 @@
     }
     if(id && window.BTT_RESOLVE_PRODUCT){
       const r = window.BTT_RESOLVE_PRODUCT(id);
-      if(r && r.slug) id = r.slug;
+      if(r) id = (typeof r === "string") ? r : (r.slug || id);
     }
     const name = (document.querySelector(".pdp-info h1")||{}).textContent || "";
     const price = parseInt(((document.querySelector(".pdp-price .now")||{}).textContent||"").replace(/[^\d]/g,""),10)||0;

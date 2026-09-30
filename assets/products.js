@@ -701,7 +701,7 @@
         "image": "assets/prod-chair-jardin.jpg",
         "images": [
           "assets/prod-chair-jardin.jpg",
-          "assets/prod-chair-jardin-detail-back.jpg",
+          "assets/prod-chair-jardin-back.jpg",
           "assets/prod-chair-jardin-detail-seat.jpg"
         ]
       }

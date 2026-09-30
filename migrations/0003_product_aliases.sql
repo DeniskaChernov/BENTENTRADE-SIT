@@ -22,7 +22,8 @@ INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES
   ('p12', 'stol-taper-80'),
   ('p13', 'stol-vertex-80'),
   ('p14', 'stol-taper-135'),
-  ('p15', 'stol-corda-135');
+  ('p15', 'stol-corda-135'),
+  ('p16', 'stul-todo-soft');
 
 -- Migrate any existing order items from legacy alias to canonical slug
 UPDATE order_items

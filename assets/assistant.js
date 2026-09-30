@@ -13,7 +13,7 @@
       quick:["Плетёные стулья","Пластиковые стулья","Мягкие стулья","Обеденные столы","Доставка","Связаться с менеджером"],
       ans:{
         "Плетёные стулья":"Плетёные стулья Vertex и Corda на прочном металлокаркасе с мягкими текстильными подушками в комплекте. Смотрите в <a href='catalog.html?cat=wicker-chairs'>каталоге</a>. Подсказать характеристики?",
-        "Пластиковые стулья":"Практичные пластиковые стулья: ROERO и NOERO (до 120 кг), JARDIN (до 150 кг) и усиленный TODO (до 180 кг). Все модели в <a href='catalog.html?cat=plastic-chairs'>каталоге</a>. Какая нагрузка требуется?",
+        "Пластиковые стулья":"Практичные пластиковые стулья: ROERO и NOERO (до 120 кг), JARDIN (до 150 кг) и усиленный TODO / TODO SOFT (до 180 кг). Все модели в <a href='catalog.html?cat=plastic-chairs'>каталоге</a>. Какая нагрузка требуется?",
         "Мягкие стулья":"Элегантные стулья LIRA и комфортные кресла COMO на прочном металлокаркасе - идеальны для дома и HoReCa. Смотрите в <a href='catalog.html?cat=upholstered-chairs'>каталоге</a>.",
         "Обеденные столы":"Столы на металлокаркасе со столешницей из ЛДСП (Taper, Vertex, Corda) размерами 80×80 см, 135×80 см и круглый Ø90 см. Рекомендуются для помещений и крытых пространств. Смотрите в <a href='catalog.html?cat=tables'>каталоге</a>.",
         "Доставка":"Доставка по Ташкенту осуществляется за 1-2 рабочих дня по прямому тарифу сервиса доставки (Яндекс / Labo / Porter). Также возможен самовывоз со склада в Ташкенте по предварительной договорённости.",
@@ -29,7 +29,7 @@
       quick:["To‘qilgan stullar","Plastik stullar","Yumshoq stullar","Ovqat stollari","Yetkazib berish","Menejer bilan bog‘lanish"],
       ans:{
         "To‘qilgan stullar":"Metall karkasli va yumshoq yostiqchali Vertex va Corda to‘qilgan stullari. <a href='catalog.html?cat=wicker-chairs'>Katalog</a>da ko‘ring.",
-        "Plastik stullar":"Amaliy plastik stullar: ROERO va NOERO (120 kg gacha), JARDIN (150 kg gacha) va baquvvat TODO (180 kg gacha). <a href='catalog.html?cat=plastic-chairs'>Katalog</a>da tanlang.",
+        "Plastik stullar":"Amaliy plastik stullar: ROERO va NOERO (120 kg gacha), JARDIN (150 kg gacha) va baquvvat TODO / TODO SOFT (180 kg gacha). <a href='catalog.html?cat=plastic-chairs'>Katalog</a>da tanlang.",
         "Yumshoq stullar":"Uylar va kafelar uchun qulay metall karkasli LIRA stullari va COMO kreslolari. <a href='catalog.html?cat=upholstered-chairs'>Katalog</a>da ko‘ring.",
         "Ovqat stollari":"LDSP ustki qismli va metall karkasli Taper, Vertex, Corda stollari (80×80 sm, 135×80 sm va dumaloq Ø90 sm). <a href='catalog.html?cat=tables'>Katalog</a>da ko‘ring.",
         "Yetkazib berish":"Toshkent bo‘ylab yetkazish 1-2 ish kunida to‘g‘ridan-to‘g‘ri kuryer tarifi bo‘yicha amalga oshiriladi. Toshkentdagi ombordan kelishuv asosida olib ketish ham mumkin.",
@@ -45,7 +45,7 @@
       quick:["Wicker chairs","Plastic chairs","Upholstered chairs","Dining tables","Delivery","Talk to a manager"],
       ans:{
         "Wicker chairs":"Vertex and Corda wicker chairs on sturdy metal frames with soft cushions included. Browse them in the <a href='catalog.html?cat=wicker-chairs'>catalog</a>.",
-        "Plastic chairs":"Durable plastic chairs: ROERO and NOERO (up to 120 kg), JARDIN (up to 150 kg), and reinforced TODO (up to 180 kg). View all in the <a href='catalog.html?cat=plastic-chairs'>catalog</a>.",
+        "Plastic chairs":"Durable plastic chairs: ROERO and NOERO (up to 120 kg), JARDIN (up to 150 kg), and reinforced TODO / TODO SOFT (up to 180 kg). View all in the <a href='catalog.html?cat=plastic-chairs'>catalog</a>.",
         "Upholstered chairs":"Elegant LIRA chairs and comfortable COMO armchairs on sturdy metal frames - perfect for home and HoReCa. See the <a href='catalog.html?cat=upholstered-chairs'>catalog</a>.",
         "Dining tables":"Chipboard dining tables on metal frames (Taper, Vertex, Corda) in 80×80 cm, 135×80 cm, and Ø90 cm round. Best for indoor and covered spaces. View in the <a href='catalog.html?cat=tables'>catalog</a>.",
         "Delivery":"Delivery across Tashkent in 1-2 business days at direct courier rates (Yandex / Labo / Porter). Warehouse pickup in Tashkent is also available by appointment.",

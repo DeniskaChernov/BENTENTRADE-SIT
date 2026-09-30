@@ -19,11 +19,7 @@
 
 @font-face {
   font-family: 'Druk Text Wide Cyr';
-  src: url('fonts/druk-text-wide-cyr.woff2') format('woff2'),
-       url('fonts/druk-text-wide-cyr.woff') format('woff'),
-       url('fonts/druk-text-wide-cyr.otf') format('opentype'),
-       url('fonts/druk-text-wide-cyr.ttf') format('truetype'),
-       local('Druk Text Wide Cyr'), local('DrukTextWideCyr-Bold'), local('Druk Text Wide Cyr Bold'),
+  src: local('Druk Text Wide Cyr'), local('DrukTextWideCyr-Bold'), local('Druk Text Wide Cyr Bold'),
        local('Druk Wide Cyr'), local('DrukWideCyr-Bold'), local('Druk Wide Bold'), local('Druk Text Wide');
   font-weight: 700 900;
   font-style: normal;

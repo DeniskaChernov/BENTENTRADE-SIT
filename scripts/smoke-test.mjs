@@ -87,11 +87,11 @@ test('pdp.js conditionally emits InStock only when stock is verified', () => {
 });
 
 // SCENARIO E: Product Aliases
-console.log('\n--- SCENARIO E: Product Aliases (p1..p15) ---');
-test('migrations/0003_product_aliases.sql exists with 15 mappings', () => {
+console.log('\n--- SCENARIO E: Product Aliases (p1..p16) ---');
+test('migrations/0003_product_aliases.sql exists with 16 mappings', () => {
   const mig = fs.readFileSync(path.join(ROOT, 'migrations/0003_product_aliases.sql'), 'utf8');
   expect(mig).toContain('CREATE TABLE IF NOT EXISTS product_aliases');
-  for (let i = 1; i <= 15; i++) {
+  for (let i = 1; i <= 16; i++) {
     expect(mig).toContain(`'p${i}'`);
   }
 });

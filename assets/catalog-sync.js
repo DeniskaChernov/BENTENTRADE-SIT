@@ -248,16 +248,20 @@
 
   function syncCatalogCount() {
     const el = document.querySelector("[data-cat-count]");
+    const mobEl = document.querySelector("[data-mob-count]");
     const grid = document.querySelector("#catalog-grid");
-    if (!el) return;
+    if (!el && !mobEl) return;
+    let countStr = "16";
     if (grid) {
       const cards = Array.from(grid.querySelectorAll("[data-product]"));
       const shown = cards.filter(c => c.style.display !== "none").length;
-      el.textContent = String(shown || (window.BTT_CANONICAL_SLUGS && window.BTT_CANONICAL_SLUGS.length) || 15);
+      countStr = String(shown || (window.BTT_CANONICAL_SLUGS && window.BTT_CANONICAL_SLUGS.length) || 16);
     } else {
-      const n = (window.BTT_CANONICAL_SLUGS && window.BTT_CANONICAL_SLUGS.length) || 15;
-      el.textContent = String(n);
+      const n = (window.BTT_CANONICAL_SLUGS && window.BTT_CANONICAL_SLUGS.length) || 16;
+      countStr = String(n);
     }
+    if (el) el.textContent = countStr;
+    if (mobEl) mobEl.textContent = countStr;
   }
 
   function appendMissingStaticProducts(grid) {
@@ -372,14 +376,18 @@
   // Apply a CRM product onto the static PDP markup (runs after pdp.js re-render).
   function applyPDP(p) {
     if (!window.BTT_PRODUCTS) window.BTT_PRODUCTS = {};
-    window.BTT_PRODUCTS[p.id] = {
-      cat: p.category || "furniture",
-      look: p.look || "sofa",
-      now: p.price_now,
-      old: p.price_old || 0,
-      availability: p.availability || "unknown",
-      stock: p.stock
-    };
+    const existing = window.BTT_PRODUCTS[p.id] || (p.slug && window.BTT_PRODUCTS[p.slug]) || {};
+    const updated = Object.assign({}, existing, {
+      cat: p.category || existing.cat || "furniture",
+      look: p.look || existing.look || "sofa",
+      now: p.price_now != null ? p.price_now : existing.now,
+      price: p.price_now != null ? p.price_now : existing.price,
+      old: p.price_old != null ? p.price_old : (existing.old || 0),
+      availability: p.availability || existing.availability || "unknown",
+      stock: p.stock != null ? p.stock : existing.stock
+    });
+    window.BTT_PRODUCTS[p.id] = updated;
+    if (p.slug) window.BTT_PRODUCTS[p.slug] = updated;
 
     // Availability badge
     const availEl = document.querySelector("[data-pdp-avail]");
