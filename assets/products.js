@@ -278,6 +278,16 @@
         },
         "hex": "#222222",
         "image": "assets/prod-chair-todo.jpg"
+      },
+      {
+        "id": "yellow",
+        "name": {
+          "ru": "Жёлтый",
+          "uz": "Sariq",
+          "en": "Yellow"
+        },
+        "hex": "#EAA824",
+        "image": "assets/prod-chair-todo-yellow.jpg"
       }
     ],
     "isTable": false,
@@ -285,7 +295,11 @@
       "assets/prod-chair-todo.jpg",
       "assets/prod-chair-todo-side.jpg",
       "assets/prod-chair-todo-detail-back.jpg",
-      "assets/prod-chair-todo-detail-seat.jpg"
+      "assets/prod-chair-todo-detail-seat.jpg",
+      "assets/prod-chair-todo-yellow.jpg",
+      "assets/prod-chair-todo-yellow-side.jpg",
+      "assets/prod-chair-todo-yellow-detail-back.jpg",
+      "assets/prod-chair-todo-yellow-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {
