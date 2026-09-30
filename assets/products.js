@@ -537,6 +537,22 @@
           "assets/prod-chair-todo-soft-detail-seat.jpg",
           "assets/prod-chair-todo-soft-detail-back.jpg"
         ]
+      },
+      {
+        "id": "yellow",
+        "name": {
+          "ru": "Жёлтый",
+          "uz": "Sariq",
+          "en": "Yellow"
+        },
+        "hex": "#EAA824",
+        "image": "assets/prod-chair-todo-soft-yellow.jpg",
+        "images": [
+          "assets/prod-chair-todo-soft-yellow.jpg",
+          "assets/prod-chair-todo-soft-yellow-side.jpg",
+          "assets/prod-chair-todo-soft-yellow-detail-seat.jpg",
+          "assets/prod-chair-todo-soft-yellow-detail-back.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -544,7 +560,11 @@
       "assets/prod-chair-todo-soft.jpg",
       "assets/prod-chair-todo-soft-side.jpg",
       "assets/prod-chair-todo-soft-detail-seat.jpg",
-      "assets/prod-chair-todo-soft-detail-back.jpg"
+      "assets/prod-chair-todo-soft-detail-back.jpg",
+      "assets/prod-chair-todo-soft-yellow.jpg",
+      "assets/prod-chair-todo-soft-yellow-side.jpg",
+      "assets/prod-chair-todo-soft-yellow-detail-seat.jpg",
+      "assets/prod-chair-todo-soft-yellow-detail-back.jpg"
     ],
     "i18n": {
       "ru": {
