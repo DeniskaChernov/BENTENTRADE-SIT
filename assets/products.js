@@ -318,6 +318,16 @@
         },
         "hex": "#9E7E6B",
         "image": "assets/prod-chair-todo-coffee.jpg"
+      },
+      {
+        "id": "white",
+        "name": {
+          "ru": "Белый",
+          "uz": "Oq",
+          "en": "White"
+        },
+        "hex": "#FFFFFF",
+        "image": "assets/prod-chair-todo-white.jpg"
       }
     ],
     "isTable": false,
@@ -341,7 +351,11 @@
       "assets/prod-chair-todo-coffee.jpg",
       "assets/prod-chair-todo-coffee-side.jpg",
       "assets/prod-chair-todo-coffee-detail-back.jpg",
-      "assets/prod-chair-todo-coffee-detail-seat.jpg"
+      "assets/prod-chair-todo-coffee-detail-seat.jpg",
+      "assets/prod-chair-todo-white.jpg",
+      "assets/prod-chair-todo-white-side.jpg",
+      "assets/prod-chair-todo-white-detail-back.jpg",
+      "assets/prod-chair-todo-white-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {
