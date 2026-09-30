@@ -601,6 +601,22 @@
           "assets/prod-chair-todo-soft-coffee-detail-seat.jpg",
           "assets/prod-chair-todo-soft-coffee-detail-back.jpg"
         ]
+      },
+      {
+        "id": "white",
+        "name": {
+          "ru": "Белый",
+          "uz": "Oq",
+          "en": "White"
+        },
+        "hex": "#FFFFFF",
+        "image": "assets/prod-chair-todo-soft-white.jpg",
+        "images": [
+          "assets/prod-chair-todo-soft-white.jpg",
+          "assets/prod-chair-todo-soft-white-side.jpg",
+          "assets/prod-chair-todo-soft-white-detail-seat.jpg",
+          "assets/prod-chair-todo-soft-white-detail-back.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -624,7 +640,11 @@
       "assets/prod-chair-todo-soft-coffee.jpg",
       "assets/prod-chair-todo-soft-coffee-side.jpg",
       "assets/prod-chair-todo-soft-coffee-detail-seat.jpg",
-      "assets/prod-chair-todo-soft-coffee-detail-back.jpg"
+      "assets/prod-chair-todo-soft-coffee-detail-back.jpg",
+      "assets/prod-chair-todo-soft-white.jpg",
+      "assets/prod-chair-todo-soft-white-side.jpg",
+      "assets/prod-chair-todo-soft-white-detail-seat.jpg",
+      "assets/prod-chair-todo-soft-white-detail-back.jpg"
     ],
     "i18n": {
       "ru": {
