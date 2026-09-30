@@ -27,7 +27,13 @@
           "en": "Beige"
         },
         "hex": "#C2B280",
-        "image": "assets/prod-chair-vertex.jpg"
+        "image": "assets/prod-chair-vertex.jpg",
+        "images": [
+          "assets/prod-chair-vertex.jpg",
+          "assets/prod-chair-vertex-side.jpg",
+          "assets/prod-chair-vertex-detail-back.jpg",
+          "assets/prod-chair-vertex-detail-seat.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -91,7 +97,13 @@
           "en": "Beige"
         },
         "hex": "#C4A482",
-        "image": "assets/prod-chair-corda.jpg"
+        "image": "assets/prod-chair-corda.jpg",
+        "images": [
+          "assets/prod-chair-corda.jpg",
+          "assets/prod-chair-corda-side.jpg",
+          "assets/prod-chair-corda-detail-back.jpg",
+          "assets/prod-chair-corda-detail-seat.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -153,7 +165,13 @@
           "en": "Grey"
         },
         "hex": "#808080",
-        "image": "assets/prod-chair-roero.jpg"
+        "image": "assets/prod-chair-roero.jpg",
+        "images": [
+          "assets/prod-chair-roero.jpg",
+          "assets/prod-chair-roero-front.jpg",
+          "assets/prod-chair-roero-detail-back.jpg",
+          "assets/prod-chair-roero-detail-seat.jpg"
+        ]
       },
       {
         "id": "black",
@@ -163,7 +181,13 @@
           "en": "Black"
         },
         "hex": "#222222",
-        "image": "assets/prod-chair-roero-black.jpg"
+        "image": "assets/prod-chair-roero-black.jpg",
+        "images": [
+          "assets/prod-chair-roero-black.jpg",
+          "assets/prod-chair-roero-black-front.jpg",
+          "assets/prod-chair-roero-black-detail-back.jpg",
+          "assets/prod-chair-roero-black-detail-seat.jpg"
+        ]
       },
       {
         "id": "white",
@@ -173,7 +197,13 @@
           "en": "White"
         },
         "hex": "#FFFFFF",
-        "image": "assets/prod-chair-roero-white.jpg"
+        "image": "assets/prod-chair-roero-white.jpg",
+        "images": [
+          "assets/prod-chair-roero-white.jpg",
+          "assets/prod-chair-roero-white-front.jpg",
+          "assets/prod-chair-roero-white-detail-back.jpg",
+          "assets/prod-chair-roero-white-detail-seat.jpg"
+        ]
       },
       {
         "id": "orange",
@@ -183,7 +213,13 @@
           "en": "Orange"
         },
         "hex": "#D9633B",
-        "image": "assets/prod-chair-roero-orange.jpg"
+        "image": "assets/prod-chair-roero-orange.jpg",
+        "images": [
+          "assets/prod-chair-roero-orange.jpg",
+          "assets/prod-chair-roero-orange-front.jpg",
+          "assets/prod-chair-roero-orange-detail-back.jpg",
+          "assets/prod-chair-roero-orange-detail-seat.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -257,7 +293,13 @@
           "en": "Cappuccino"
         },
         "hex": "#A88D73",
-        "image": "assets/prod-chair-noero.jpg"
+        "image": "assets/prod-chair-noero.jpg",
+        "images": [
+          "assets/prod-chair-noero.jpg",
+          "assets/prod-chair-noero-detail-back.jpg",
+          "assets/prod-chair-noero-detail-seat.jpg",
+          "assets/prod-chair-noero-detail-leg.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -319,7 +361,13 @@
           "en": "Black"
         },
         "hex": "#222222",
-        "image": "assets/prod-chair-todo.jpg"
+        "image": "assets/prod-chair-todo.jpg",
+        "images": [
+          "assets/prod-chair-todo.jpg",
+          "assets/prod-chair-todo-side.jpg",
+          "assets/prod-chair-todo-detail-back.jpg",
+          "assets/prod-chair-todo-detail-seat.jpg"
+        ]
       },
       {
         "id": "yellow",
@@ -329,7 +377,13 @@
           "en": "Yellow"
         },
         "hex": "#EAA824",
-        "image": "assets/prod-chair-todo-yellow.jpg"
+        "image": "assets/prod-chair-todo-yellow.jpg",
+        "images": [
+          "assets/prod-chair-todo-yellow.jpg",
+          "assets/prod-chair-todo-yellow-side.jpg",
+          "assets/prod-chair-todo-yellow-detail-back.jpg",
+          "assets/prod-chair-todo-yellow-detail-seat.jpg"
+        ]
       },
       {
         "id": "grey",
@@ -339,7 +393,13 @@
           "en": "Grey"
         },
         "hex": "#808080",
-        "image": "assets/prod-chair-todo-gray.jpg"
+        "image": "assets/prod-chair-todo-gray.jpg",
+        "images": [
+          "assets/prod-chair-todo-gray.jpg",
+          "assets/prod-chair-todo-gray-side.jpg",
+          "assets/prod-chair-todo-gray-detail-back.jpg",
+          "assets/prod-chair-todo-gray-detail-seat.jpg"
+        ]
       },
       {
         "id": "red",
@@ -349,7 +409,13 @@
           "en": "Red"
         },
         "hex": "#E32626",
-        "image": "assets/prod-chair-todo-red.jpg"
+        "image": "assets/prod-chair-todo-red.jpg",
+        "images": [
+          "assets/prod-chair-todo-red.jpg",
+          "assets/prod-chair-todo-red-side.jpg",
+          "assets/prod-chair-todo-red-detail-back.jpg",
+          "assets/prod-chair-todo-red-detail-seat.jpg"
+        ]
       },
       {
         "id": "coffee",
@@ -359,7 +425,13 @@
           "en": "Coffee"
         },
         "hex": "#9E7E6B",
-        "image": "assets/prod-chair-todo-coffee.jpg"
+        "image": "assets/prod-chair-todo-coffee.jpg",
+        "images": [
+          "assets/prod-chair-todo-coffee.jpg",
+          "assets/prod-chair-todo-coffee-side.jpg",
+          "assets/prod-chair-todo-coffee-detail-back.jpg",
+          "assets/prod-chair-todo-coffee-detail-seat.jpg"
+        ]
       },
       {
         "id": "white",
@@ -369,7 +441,13 @@
           "en": "White"
         },
         "hex": "#FFFFFF",
-        "image": "assets/prod-chair-todo-white.jpg"
+        "image": "assets/prod-chair-todo-white.jpg",
+        "images": [
+          "assets/prod-chair-todo-white.jpg",
+          "assets/prod-chair-todo-white-side.jpg",
+          "assets/prod-chair-todo-white-detail-back.jpg",
+          "assets/prod-chair-todo-white-detail-seat.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -451,7 +529,12 @@
           "en": "Cappuccino"
         },
         "hex": "#A88D73",
-        "image": "assets/prod-chair-jardin.jpg"
+        "image": "assets/prod-chair-jardin.jpg",
+        "images": [
+          "assets/prod-chair-jardin.jpg",
+          "assets/prod-chair-jardin-detail-back.jpg",
+          "assets/prod-chair-jardin-detail-seat.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -614,7 +697,13 @@
           "en": "White Marble"
         },
         "hex": "#E8E6E1",
-        "image": "assets/prod-table-taper-rotang-80-white.jpg"
+        "image": "assets/prod-table-taper-rotang-80-white.jpg",
+        "images": [
+          "assets/prod-table-taper-rotang-80-white.jpg",
+          "assets/prod-table-taper-rotang-80-white-front.jpg",
+          "assets/prod-table-taper-rotang-80-detail-white.jpg",
+          "assets/prod-table-taper-rotang-80-detail-leg.jpg"
+        ]
       },
       {
         "id": "black-marble",
@@ -624,7 +713,13 @@
           "en": "Black Marble"
         },
         "hex": "#2B2A29",
-        "image": "assets/prod-table-taper-rotang-80-black.jpg"
+        "image": "assets/prod-table-taper-rotang-80-black.jpg",
+        "images": [
+          "assets/prod-table-taper-rotang-80-black.jpg",
+          "assets/prod-table-taper-rotang-80-black-front.jpg",
+          "assets/prod-table-taper-rotang-80-detail-black.jpg",
+          "assets/prod-table-taper-rotang-80-detail-leg.jpg"
+        ]
       }
     ],
     "isTable": true,
@@ -690,7 +785,12 @@
           "en": "White Marble"
         },
         "hex": "#E8E6E1",
-        "image": "assets/prod-table-vertex-d90.jpg"
+        "image": "assets/prod-table-vertex-d90.jpg",
+        "images": [
+          "assets/prod-table-vertex-d90.jpg",
+          "assets/prod-table-vertex-d90-detail-top.jpg",
+          "assets/prod-table-vertex-d90-detail-leg.jpg"
+        ]
       },
       {
         "id": "black-marble",
@@ -700,7 +800,12 @@
           "en": "Black Marble"
         },
         "hex": "#2B2A29",
-        "image": "assets/prod-table-vertex-black.jpg"
+        "image": "assets/prod-table-vertex-black.jpg",
+        "images": [
+          "assets/prod-table-vertex-black.jpg",
+          "assets/prod-table-vertex-d90-detail-top.jpg",
+          "assets/prod-table-vertex-d90-detail-leg.jpg"
+        ]
       }
     ],
     "isTable": true,
@@ -764,7 +869,12 @@
           "en": "White Marble"
         },
         "hex": "#E8E6E1",
-        "image": "assets/prod-table-taper-rotang-135-white.jpg"
+        "image": "assets/prod-table-taper-rotang-135-white.jpg",
+        "images": [
+          "assets/prod-table-taper-rotang-135-white.jpg",
+          "assets/prod-table-taper-rotang-135-detail-side.jpg",
+          "assets/prod-table-taper-rotang-135-detail-top.jpg"
+        ]
       },
       {
         "id": "black-marble",
@@ -774,7 +884,12 @@
           "en": "Black Marble"
         },
         "hex": "#2B2A29",
-        "image": "assets/prod-table-taper-rotang-135-black.jpg"
+        "image": "assets/prod-table-taper-rotang-135-black.jpg",
+        "images": [
+          "assets/prod-table-taper-rotang-135-black.jpg",
+          "assets/prod-table-taper-rotang-135-detail-black.jpg",
+          "assets/prod-table-taper-rotang-135-detail-black-edge.jpg"
+        ]
       }
     ],
     "isTable": true,
@@ -839,7 +954,13 @@
           "en": "White Marble"
         },
         "hex": "#E8E6E1",
-        "image": "assets/prod-table-taper-80-white.jpg"
+        "image": "assets/prod-table-taper-80-white.jpg",
+        "images": [
+          "assets/prod-table-taper-80-white.jpg",
+          "assets/prod-table-taper-80-detail-white-side.jpg",
+          "assets/prod-table-taper-80-detail-white-leg.jpg",
+          "assets/prod-table-taper-80-detail-top.jpg"
+        ]
       },
       {
         "id": "black-marble",
@@ -849,7 +970,12 @@
           "en": "Black Marble"
         },
         "hex": "#2B2A29",
-        "image": "assets/prod-table-taper-80-black.jpg"
+        "image": "assets/prod-table-taper-80-black.jpg",
+        "images": [
+          "assets/prod-table-taper-80-black.jpg",
+          "assets/prod-table-taper-80-detail-top.jpg",
+          "assets/prod-table-taper-80-detail-leg.jpg"
+        ]
       }
     ],
     "isTable": true,
@@ -914,7 +1040,11 @@
           "en": "White Marble"
         },
         "hex": "#E8E6E1",
-        "image": "assets/prod-table-vertex-d90.jpg"
+        "image": "assets/prod-table-vertex-d90.jpg",
+        "images": [
+          "assets/prod-table-vertex-d90.jpg",
+          "assets/prod-table-taper-80-detail-top.jpg"
+        ]
       },
       {
         "id": "black-marble",
@@ -924,7 +1054,11 @@
           "en": "Black Marble"
         },
         "hex": "#2B2A29",
-        "image": "assets/prod-table-vertex-black.jpg"
+        "image": "assets/prod-table-vertex-black.jpg",
+        "images": [
+          "assets/prod-table-vertex-black.jpg",
+          "assets/prod-table-taper-80-detail-top.jpg"
+        ]
       }
     ],
     "isTable": true,
@@ -986,7 +1120,13 @@
           "en": "White Marble"
         },
         "hex": "#E8E6E1",
-        "image": "assets/prod-table-taper-135-white.jpg"
+        "image": "assets/prod-table-taper-135-white.jpg",
+        "images": [
+          "assets/prod-table-taper-135-white.jpg",
+          "assets/prod-table-taper-135-detail-white-texture.jpg",
+          "assets/prod-table-taper-135-detail-white-edge.jpg",
+          "assets/prod-table-taper-135-white-scene.jpg"
+        ]
       },
       {
         "id": "black-marble",
@@ -996,7 +1136,13 @@
           "en": "Black Marble"
         },
         "hex": "#2B2A29",
-        "image": "assets/prod-table-taper-135-black.jpg"
+        "image": "assets/prod-table-taper-135-black.jpg",
+        "images": [
+          "assets/prod-table-taper-135-black.jpg",
+          "assets/prod-table-taper-135-detail-black.jpg",
+          "assets/prod-table-taper-135-detail-texture.png",
+          "assets/prod-table-taper-135-scene.jpg"
+        ]
       }
     ],
     "isTable": true,
@@ -1063,7 +1209,12 @@
           "en": "White Marble"
         },
         "hex": "#E8E6E1",
-        "image": "assets/prod-table-corda-135-white.jpg"
+        "image": "assets/prod-table-corda-135-white.jpg",
+        "images": [
+          "assets/prod-table-corda-135-white.jpg",
+          "assets/prod-table-corda-135-top-white.jpg",
+          "assets/prod-table-corda-135-detail-black.jpg"
+        ]
       },
       {
         "id": "black-marble",
@@ -1073,7 +1224,12 @@
           "en": "Black Marble"
         },
         "hex": "#2B2A29",
-        "image": "assets/prod-table-corda-135-black.jpg"
+        "image": "assets/prod-table-corda-135-black.jpg",
+        "images": [
+          "assets/prod-table-corda-135-black.jpg",
+          "assets/prod-table-corda-135-top-black.jpg",
+          "assets/prod-table-corda-135-detail-black.jpg"
+        ]
       }
     ],
     "isTable": true,

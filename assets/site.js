@@ -1854,6 +1854,22 @@
                 temp.src = cleanSrc;
               }
             }
+
+            const colorId = sw.dataset.color;
+            if(colorId){
+              const links = card.querySelectorAll("a.see, a[href*='product.html'], a[href*='/catalog/']");
+              links.forEach(a=>{
+                try {
+                  const href = a.getAttribute("href") || "";
+                  const u = new URL(href, window.location.origin);
+                  u.searchParams.set("color", colorId);
+                  const newHref = (href.startsWith("http://") || href.startsWith("https://"))
+                    ? u.toString()
+                    : (u.pathname + u.search + u.hash);
+                  a.setAttribute("href", newHref);
+                } catch(err){}
+              });
+            }
           });
         });
       });

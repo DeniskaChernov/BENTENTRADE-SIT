@@ -155,37 +155,80 @@
     });
   }
 
+  let openLightbox = function(i){};
+  let currentGallery = [];
+  let currentActiveIdx = 0;
+
+  function setGallery(images, initialIdx){
+    if(!images || !images.length){
+      const fallback = (prod && prod.images && prod.images.length) ? prod.images : ["assets/placeholder.svg"];
+      images = fallback;
+    }
+    currentGallery = images.map(it => {
+      if(typeof it === "string") return { thumb: it, full: it };
+      return { thumb: it.thumb || it.full, full: it.full || it.thumb };
+    });
+
+    currentActiveIdx = Math.max(0, Math.min(initialIdx || 0, currentGallery.length - 1));
+
+    // Render thumbs
+    const thumbsWrap = $(".pdp-gal__thumbs");
+    if(thumbsWrap){
+      thumbsWrap.innerHTML = currentGallery.map((im, i) =>
+        '<button type="button" class="pdp-thumb' + (i === currentActiveIdx ? ' is-active' : '') + '" data-thumb aria-label="' + esc((t("pdp.thumb") || "Фото {n}").replace("{n}", String(i + 1))) + '">' +
+          '<img src="' + esc(im.thumb) + '" alt="" loading="lazy" decoding="async">' +
+        '</button>'
+      ).join("");
+
+      const thumbBtns = $$(".pdp-thumb", thumbsWrap);
+      thumbBtns.forEach((th, i)=>{
+        th.addEventListener("click", () => showImg(i));
+        th.addEventListener("mouseenter", () => showImg(i));
+      });
+    }
+
+    // Render stage
+    const stageWrap = $("[data-stage]");
+    if(stageWrap){
+      const zoomHtml =
+        '<button class="pdp-stage__zoom" data-pdp-zoom-trigger data-i18n-aria="pdp.zoom.tip" aria-label="' + esc(t("pdp.zoom.tip") || "Нажмите для увеличения") + '">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>' +
+        '</button>';
+
+      const imgsHtml = currentGallery.map((im, i) =>
+        '<img class="' + (i === currentActiveIdx ? 'is-on' : '') + '" src="' + esc(im.full) + '" alt="" loading="' + (i === 0 ? 'eager' : 'lazy') + '" ' + (i === 0 ? 'fetchpriority="high"' : '') + ' decoding="async">'
+      ).join("");
+
+      stageWrap.innerHTML = zoomHtml + imgsHtml;
+
+      const newZoom = stageWrap.querySelector("[data-pdp-zoom-trigger]");
+      if(newZoom){
+        newZoom.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openLightbox(currentActiveIdx);
+        });
+      }
+    }
+
+    const stickyImg = $("[data-sticky-img]");
+    if(stickyImg && currentGallery[0]){
+      stickyImg.src = currentGallery[0].thumb;
+    }
+  }
+
+  function showImg(i){
+    if(!currentGallery.length) return;
+    currentActiveIdx = (i + currentGallery.length) % currentGallery.length;
+    const stageImgs = $$("[data-stage] img");
+    const thumbBtns = $$(".pdp-gal__thumbs [data-thumb]");
+    stageImgs.forEach((im, k) => im.classList.toggle("is-on", k === currentActiveIdx));
+    thumbBtns.forEach((th, k) => th.classList.toggle("is-active", k === currentActiveIdx));
+  }
+
   function setImages(){
-    const imgs = window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(prod.slug) : null;
-    if(!imgs || !imgs.length) return;
-    const thumbs = $$("[data-thumb]");
-    const stage  = $$("[data-stage] img");
-
-    thumbs.forEach((thumbBtn, i)=>{
-      if(imgs[i]){
-        thumbBtn.style.display = "";
-        const thumbImg = thumbBtn.querySelector("img");
-        if(thumbImg) thumbImg.src = imgs[i].thumb;
-        thumbBtn.setAttribute("aria-label", (t("pdp.thumb") || "Фото {n}").replace("{n}", String(i + 1)));
-      } else {
-        thumbBtn.style.display = "none";
-      }
-      thumbBtn.classList.toggle("is-active", i === 0);
-    });
-
-    stage.forEach((stImg, i)=>{
-      if(imgs[i]){
-        stImg.style.display = "";
-        stImg.src = imgs[i].full;
-        stImg.classList.toggle("is-on", i === 0);
-        stImg.setAttribute("fetchpriority", i === 0 ? "high" : "low");
-        stImg.loading = i === 0 ? "eager" : "lazy";
-        stImg.decoding = "async";
-      } else {
-        stImg.style.display = "none";
-        stImg.classList.remove("is-on");
-      }
-    });
+    if(!currentGallery.length){
+      setGallery(prod.images, 0);
+    }
   }
 
   function updateCTAs(nm){
@@ -207,49 +250,59 @@
     const confirmed = prod.confirmedColors || [];
     const curLang = lang();
 
+    // Check URL for ?color=... parameter
+    const params = new URLSearchParams(window.location.search);
+    const requestedColor = (params.get("color") || "").toLowerCase().trim();
+    let selectedIdx = 0;
+    if(requestedColor && confirmed.length > 0){
+      const foundIdx = confirmed.findIndex(c =>
+        (c.id && c.id.toLowerCase() === requestedColor) ||
+        (c.hex && c.hex.toLowerCase() === requestedColor)
+      );
+      if(foundIdx >= 0) selectedIdx = foundIdx;
+    }
+
     if(confirmed.length > 0){
       confirmed.forEach((c, idx)=>{
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = "swatch" + (idx === 0 ? " is-active" : "");
+        btn.className = "swatch" + (idx === selectedIdx ? " is-active" : "");
         btn.style.background = c.hex;
         const cName = (c.name && (c.name[curLang] || c.name.ru)) || c[curLang] || c.ru || c.id;
         btn.setAttribute("aria-label", cName);
         btn.title = cName;
         btn.dataset.colorName = cName;
+        btn.dataset.colorId = c.id;
+
         btn.addEventListener("click", ()=>{
           $$(".swatch", wrap).forEach(b=>b.classList.remove("is-active"));
           btn.classList.add("is-active");
           if(valEl) valEl.textContent = cName;
-          if(c.image){
-            const cleanImg = (c.image.startsWith("/") || c.image.startsWith("http")) ? c.image : ("/" + c.image);
-            const thumbs = $$("[data-thumb]");
-            let matchedIdx = -1;
-            thumbs.forEach((th, i)=>{
-              const tImg = th.querySelector("img");
-              if(tImg){
-                const tSrc = tImg.getAttribute("src") || tImg.src || "";
-                const cleanTSrc = (tSrc.startsWith("/") || tSrc.startsWith("http")) ? tSrc : ("/" + tSrc);
-                if(cleanTSrc === cleanImg || cleanTSrc.endsWith(cleanImg) || cleanImg.endsWith(cleanTSrc)){
-                  matchedIdx = i;
-                }
-              }
-            });
-            if(matchedIdx >= 0){
-              thumbs[matchedIdx].click();
-            } else {
-              const stageImg = document.querySelector(".pdp-stage img.is-on") || document.querySelector(".pdp-stage img");
-              if(stageImg) stageImg.src = cleanImg;
-              const stickyImg = document.querySelector("[data-sticky-img]");
-              if(stickyImg) stickyImg.src = cleanImg;
-            }
-          }
+
+          const colorImages = (c.images && c.images.length)
+            ? c.images
+            : (c.image ? [c.image] : prod.images);
+          setGallery(colorImages, 0);
+
+          try {
+            const u = new URL(window.location.href);
+            u.searchParams.set("color", c.id);
+            window.history.replaceState({}, "", u.toString());
+          } catch(e){}
         });
+
         wrap.appendChild(btn);
       });
-      const firstColor = (confirmed[0].name && (confirmed[0].name[curLang] || confirmed[0].name.ru)) || confirmed[0][curLang] || confirmed[0].ru || confirmed[0].id;
-      if(valEl) valEl.textContent = firstColor;
+
+      const initialColor = confirmed[selectedIdx];
+      const initialColorName = (initialColor.name && (initialColor.name[curLang] || initialColor.name.ru)) || initialColor[curLang] || initialColor.ru || initialColor.id;
+      if(valEl) valEl.textContent = initialColorName;
       if(note) note.style.display = "none";
+
+      const initialImgs = (initialColor.images && initialColor.images.length)
+        ? initialColor.images
+        : (initialColor.image ? [initialColor.image] : prod.images);
+      setGallery(initialImgs, 0);
     } else {
       const unspecifiedTxt = t("color.unspecified") || "Доступные цвета уточняйте у менеджера";
       if(valEl) valEl.textContent = curLang === "uz" ? "Menejerdan aniqlang" : (curLang === "en" ? "Inquire" : "Уточняйте");
@@ -257,6 +310,7 @@
         note.textContent = unspecifiedTxt;
         note.style.display = "";
       }
+      setGallery(prod.images, 0);
     }
   }
 
@@ -408,22 +462,6 @@
     updateSchema(nm, pageUrl);
   }
 
-  // Gallery interaction
-  const stage = $$("[data-stage] img");
-  const thumbs = $$("[data-thumb]");
-  let activeIdx = 0;
-
-  function showImg(i){
-    if(!stage.length) return;
-    activeIdx = (i + stage.length) % stage.length;
-    stage.forEach((im, k)=> im.classList.toggle("is-on", k === activeIdx));
-    thumbs.forEach((th, k)=> th.classList.toggle("is-active", k === activeIdx));
-  }
-
-  thumbs.forEach((th, i)=>{
-    th.addEventListener("click", ()=> showImg(i));
-    th.addEventListener("mouseenter", ()=> showImg(i));
-  });
 
   // Quantity controls
   $$("[data-qty]").forEach(q=>{
@@ -447,14 +485,16 @@
     const lbPrev = lightbox.querySelector("[data-lightbox-prev]");
     const lbNext = lightbox.querySelector("[data-lightbox-next]");
 
-    function openLightbox(i){
-      const imgs = window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(prod.slug) : [];
+    openLightbox = function(i){
+      const imgs = (currentGallery && currentGallery.length)
+        ? currentGallery
+        : ((window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(prod.slug) : []) || []);
       if(!imgs.length) return;
-      activeIdx = (i + imgs.length) % imgs.length;
-      if(lbImg) lbImg.src = imgs[activeIdx].full;
+      currentActiveIdx = (i + imgs.length) % imgs.length;
+      if(lbImg) lbImg.src = imgs[currentActiveIdx].full;
       if(lbThumbs){
         lbThumbs.innerHTML = imgs.map((im, k)=>
-          '<button type="button" class="pdp-lightbox__thumb' + (k === activeIdx ? ' is-active' : '') + '" data-lb-idx="' + k + '">' +
+          '<button type="button" class="pdp-lightbox__thumb' + (k === currentActiveIdx ? ' is-active' : '') + '" data-lb-idx="' + k + '" aria-label="' + esc((t("pdp.thumb") || "Фото {n}").replace("{n}", String(k + 1))) + '">' +
           '<img src="' + esc(im.thumb) + '" alt="">' +
           '</button>'
         ).join("");
@@ -465,7 +505,7 @@
       lightbox.classList.add("is-open");
       lightbox.setAttribute("aria-hidden", "false");
       document.documentElement.style.overflow = "hidden";
-    }
+    };
 
     function closeLightbox(){
       lightbox.classList.remove("is-open");
@@ -474,23 +514,43 @@
     }
 
     lightbox.querySelectorAll("[data-lightbox-close]").forEach(el => el.addEventListener("click", closeLightbox));
-    if(lbPrev) lbPrev.addEventListener("click", ()=> openLightbox(activeIdx - 1));
-    if(lbNext) lbNext.addEventListener("click", ()=> openLightbox(activeIdx + 1));
+    if(lbPrev) lbPrev.addEventListener("click", ()=> openLightbox(currentActiveIdx - 1));
+    if(lbNext) lbNext.addEventListener("click", ()=> openLightbox(currentActiveIdx + 1));
 
     document.addEventListener("keydown", e=>{
       if(!lightbox.classList.contains("is-open")) return;
       if(e.key === "Escape") closeLightbox();
-      else if(e.key === "ArrowLeft") openLightbox(activeIdx - 1);
-      else if(e.key === "ArrowRight") openLightbox(activeIdx + 1);
+      else if(e.key === "ArrowLeft") openLightbox(currentActiveIdx - 1);
+      else if(e.key === "ArrowRight") openLightbox(currentActiveIdx + 1);
     });
 
     const zoomTrigger = $("[data-pdp-zoom-trigger]");
-    if(zoomTrigger) zoomTrigger.addEventListener("click", ()=> openLightbox(activeIdx));
+    if(zoomTrigger) zoomTrigger.addEventListener("click", ()=> openLightbox(currentActiveIdx));
     const stageBox = $("[data-stage]");
-    if(stageBox) stageBox.addEventListener("click", (e)=>{
-      if(e.target.closest("[data-pdp-zoom-trigger]")) return;
-      openLightbox(activeIdx);
-    });
+    if(stageBox){
+      stageBox.addEventListener("click", (e)=>{
+        if(e.target.closest("[data-pdp-zoom-trigger]")) return;
+        openLightbox(currentActiveIdx);
+      });
+
+      let touchStartX = 0;
+      let touchStartY = 0;
+      stageBox.addEventListener("touchstart", (e)=>{
+        if(!e.touches || !e.touches[0]) return;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+
+      stageBox.addEventListener("touchend", (e)=>{
+        if(!e.changedTouches || !e.changedTouches[0]) return;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5){
+          if(dx < 0) showImg(currentActiveIdx + 1);
+          else showImg(currentActiveIdx - 1);
+        }
+      }, { passive: true });
+    }
   }
 
   // Initial load

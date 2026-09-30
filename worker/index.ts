@@ -224,6 +224,10 @@ app.get("/catalog/:slug", async (c) => {
   if (VALID_PRODUCT_SLUGS.has(slug)) {
     const url = new URL("/product", c.req.url);
     url.searchParams.set("id", slug);
+    const reqUrl = new URL(c.req.url);
+    for (const [k, v] of reqUrl.searchParams.entries()) {
+      if (k !== "id") url.searchParams.set(k, v);
+    }
     const res = await c.env.ASSETS.fetch(new Request(url.toString(), c.req.raw));
     if (res.status >= 300 && res.status < 400) {
       const loc = res.headers.get("Location") || "/product";

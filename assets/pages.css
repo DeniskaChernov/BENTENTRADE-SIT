@@ -1596,11 +1596,15 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 }
 .catalog-layout .product-swatches,
 #catalog-grid .product-swatches,
-[data-related-grid] .product-swatches{
+.prod-grid .product-swatches,
+[data-related-grid] .product-swatches,
+.product-swatches{
   display:inline-flex;
   align-items:center;
   gap:6px;
   margin-top:7px;
+  flex-wrap:wrap;
+  min-height:22px;
 }
 .catalog-layout .product-swatch,
 #catalog-grid .product-swatch,
@@ -1646,8 +1650,10 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 }
 .catalog-layout .price,
 #catalog-grid .price,
-[data-related-grid] .price{
-  margin-top:auto;
+.prod-grid .price,
+[data-related-grid] .price,
+.product .price{
+  margin-top:auto !important;
   padding-top:8px;
   display:flex;
   align-items:baseline;
@@ -1768,23 +1774,27 @@ html.acc-cookie-wait .acc-skeleton{display:none}
   #catalog-grid,
   .catalog-layout .catalog-grid,
   .catalog-layout #catalog-grid,
+  .prod-grid,
   [data-related-grid]{
     grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
     gap:10px !important;
   }
   .catalog-layout .product > div:not(.product__media),
   #catalog-grid .product > div:not(.product__media),
+  .prod-grid .product > div:not(.product__media),
   [data-related-grid] .product > div:not(.product__media){
     padding:8px 10px 10px !important;
   }
   .catalog-layout .product__name,
   #catalog-grid .product__name,
+  .prod-grid .product__name,
   [data-related-grid] .product__name{
     font-size:13px !important;
     min-height:32px;
   }
   .catalog-layout .price__now,
   #catalog-grid .price__now,
+  .prod-grid .price__now,
   [data-related-grid] .price__now{
     font-size:14.5px !important;
   }
@@ -1847,7 +1857,7 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 
 /* Product Finish/Color Swatches */
 .product-swatches{
-  display:inline-flex;align-items:center;gap:6px;margin-top:7px;
+  display:inline-flex;align-items:center;gap:6px;margin-top:7px;flex-wrap:wrap;min-height:22px;
 }
 .product-swatch{
   width:14px;height:14px;border-radius:50%;
