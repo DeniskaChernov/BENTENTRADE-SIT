@@ -174,6 +174,16 @@
         },
         "hex": "#FFFFFF",
         "image": "assets/prod-chair-roero-white.jpg"
+      },
+      {
+        "id": "orange",
+        "name": {
+          "ru": "Оранжевый",
+          "uz": "To‘q sariq",
+          "en": "Orange"
+        },
+        "hex": "#D9633B",
+        "image": "assets/prod-chair-roero-orange.jpg"
       }
     ],
     "isTable": false,
@@ -189,7 +199,11 @@
       "assets/prod-chair-roero-white.jpg",
       "assets/prod-chair-roero-white-front.jpg",
       "assets/prod-chair-roero-white-detail-back.jpg",
-      "assets/prod-chair-roero-white-detail-seat.jpg"
+      "assets/prod-chair-roero-white-detail-seat.jpg",
+      "assets/prod-chair-roero-orange.jpg",
+      "assets/prod-chair-roero-orange-front.jpg",
+      "assets/prod-chair-roero-orange-detail-back.jpg",
+      "assets/prod-chair-roero-orange-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {
