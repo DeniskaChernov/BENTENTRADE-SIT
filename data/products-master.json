@@ -302,6 +302,16 @@
         },
         "hex": "#E32626",
         "image": "assets/prod-chair-todo-red.jpg"
+      },
+      {
+        "id": "coffee",
+        "name": {
+          "ru": "Кофейный",
+          "uz": "Kofe",
+          "en": "Coffee"
+        },
+        "hex": "#9E7E6B",
+        "image": "assets/prod-chair-todo-coffee.jpg"
       }
     ],
     "isTable": false,
@@ -321,7 +331,11 @@
       "assets/prod-chair-todo-red.jpg",
       "assets/prod-chair-todo-red-side.jpg",
       "assets/prod-chair-todo-red-detail-back.jpg",
-      "assets/prod-chair-todo-red-detail-seat.jpg"
+      "assets/prod-chair-todo-red-detail-seat.jpg",
+      "assets/prod-chair-todo-coffee.jpg",
+      "assets/prod-chair-todo-coffee-side.jpg",
+      "assets/prod-chair-todo-coffee-detail-back.jpg",
+      "assets/prod-chair-todo-coffee-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {

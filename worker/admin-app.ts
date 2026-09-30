@@ -794,6 +794,7 @@ export const ADMIN_APP_JS = String.raw`
       { id: "beige", hex: "#C2B280", ru: "Бежевый", uz: "Bej", en: "Beige" },
       { id: "grey", hex: "#808080", ru: "Серый", uz: "Kulrang", en: "Grey" },
       { id: "cappuccino", hex: "#A88D73", ru: "Капучино", uz: "Kapuchino", en: "Cappuccino" },
+      { id: "coffee", hex: "#9E7E6B", ru: "Кофейный", uz: "Kofe", en: "Coffee" },
       { id: "black", hex: "#222222", ru: "Чёрный", uz: "Qora", en: "Black" },
       { id: "yellow", hex: "#EAA824", ru: "Жёлтый", uz: "Sariq", en: "Yellow" },
       { id: "red", hex: "#E32626", ru: "Красный", uz: "Qizil", en: "Red" },
