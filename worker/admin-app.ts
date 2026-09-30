@@ -796,6 +796,7 @@ export const ADMIN_APP_JS = String.raw`
       { id: "cappuccino", hex: "#A88D73", ru: "Капучино", uz: "Kapuchino", en: "Cappuccino" },
       { id: "black", hex: "#222222", ru: "Чёрный", uz: "Qora", en: "Black" },
       { id: "yellow", hex: "#EAA824", ru: "Жёлтый", uz: "Sariq", en: "Yellow" },
+      { id: "red", hex: "#E32626", ru: "Красный", uz: "Qizil", en: "Red" },
       { id: "white", hex: "#FFFFFF", ru: "Белый", uz: "Oq", en: "White" }
     ];
 
