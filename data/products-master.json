@@ -294,6 +294,22 @@
           "assets/prod-chair-noero-detail-seat.jpg",
           "assets/prod-chair-noero-detail-leg.jpg"
         ]
+      },
+      {
+        "id": "blue",
+        "name": {
+          "ru": "Синий",
+          "uz": "Ko‘k",
+          "en": "Blue"
+        },
+        "hex": "#4E7D9A",
+        "image": "assets/prod-chair-noero-blue.jpg",
+        "images": [
+          "assets/prod-chair-noero-blue.jpg",
+          "assets/prod-chair-noero-blue-back.jpg",
+          "assets/prod-chair-noero-blue-detail-back.jpg",
+          "assets/prod-chair-noero-blue-detail-seat.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -301,13 +317,17 @@
       "assets/prod-chair-noero.jpg",
       "assets/prod-chair-noero-detail-back.jpg",
       "assets/prod-chair-noero-detail-seat.jpg",
-      "assets/prod-chair-noero-detail-leg.jpg"
+      "assets/prod-chair-noero-detail-leg.jpg",
+      "assets/prod-chair-noero-blue.jpg",
+      "assets/prod-chair-noero-blue-back.jpg",
+      "assets/prod-chair-noero-blue-detail-back.jpg",
+      "assets/prod-chair-noero-blue-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {
         "name": "Стул «NOERO»",
         "category_label": "Пластиковые стулья",
-        "description": "Эргономичный пластиковый стул NOERO с удобной спинкой высотой 82 см. Стильный тёплый оттенок капучино прекрасно дополняет современные интерьеры.",
+        "description": "Эргономичный пластиковый стул NOERO с удобной спинкой высотой 82 см. Стильные оттенки капучино и синий прекрасно дополняют современные интерьеры.",
         "usage": "Для дома, террасы, летних веранд, кафе",
         "seo_title": "Купить Стул «NOERO» в Ташкенте - BTT",
         "seo_description": "Стул «NOERO» (Пластиковые стулья) от BTT. Размеры: 82 × 48 × 49 см. Доставка по Ташкенту и всему Узбекистану."
@@ -315,7 +335,7 @@
       "uz": {
         "name": "«NOERO» stuli",
         "category_label": "Plastik stullar",
-        "description": "82 sm balandlikdagi qulay suyanchiqqa ega ergonomik NOERO stuli. Chiroyli kapuchino rangi har qanday zamonaviy muhitga mos tushadi.",
+        "description": "82 sm balandlikdagi qulay suyanchiqqa ega ergonomik NOERO stuli. Chiroyli kapuchino va ko‘k ranglari har qanday zamonaviy muhitga mos tushadi.",
         "usage": "Uy, terrasa, yozgi ayvonlar, kafe uchun",
         "seo_title": "Toshkentda «NOERO» stuli sotib olish - BTT",
         "seo_description": "BTT dan «NOERO» stuli (Plastik stullar). O‘lchamlari: 82 × 48 × 49 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -323,7 +343,7 @@
       "en": {
         "name": "NOERO Chair",
         "category_label": "Plastic chairs",
-        "description": "Ergonomic NOERO plastic chair with an 82 cm supportive backrest. Modern cappuccino hue fits various interior and terrace settings.",
+        "description": "Ergonomic NOERO plastic chair with an 82 cm supportive backrest. Modern cappuccino and blue hues fit various interior and terrace settings.",
         "usage": "For dining areas, terraces, verandas, cafes",
         "seo_title": "Buy NOERO Chair in Tashkent - BTT",
         "seo_description": "NOERO Chair (Plastic chairs) by BTT. Dimensions: 82 × 48 × 49 см. Delivery across Tashkent and Uzbekistan."
