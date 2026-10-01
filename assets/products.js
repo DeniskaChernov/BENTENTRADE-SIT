@@ -316,6 +316,37 @@
           "assets/prod-chair-noero-blue-detail-back.jpg",
           "assets/prod-chair-noero-blue-detail-seat.jpg"
         ]
+      },
+      {
+        "id": "orange",
+        "name": {
+          "ru": "Оранжевый",
+          "uz": "To‘q sariq",
+          "en": "Orange"
+        },
+        "hex": "#D9633B",
+        "image": "assets/prod-chair-noero-orange.jpg",
+        "images": [
+          "assets/prod-chair-noero-orange.jpg",
+          "assets/prod-chair-noero-orange-back.jpg",
+          "assets/prod-chair-noero-orange-detail-back.jpg",
+          "assets/prod-chair-noero-orange-detail-seat.jpg"
+        ]
+      },
+      {
+        "id": "olive",
+        "name": {
+          "ru": "Оливковый",
+          "uz": "Zaytun",
+          "en": "Olive"
+        },
+        "hex": "#8A9364",
+        "image": "assets/prod-chair-noero-olive.jpg",
+        "images": [
+          "assets/prod-chair-noero-olive.jpg",
+          "assets/prod-chair-noero-olive-detail-back.jpg",
+          "assets/prod-chair-noero-olive-detail-seat.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -327,13 +358,20 @@
       "assets/prod-chair-noero-blue.jpg",
       "assets/prod-chair-noero-blue-back.jpg",
       "assets/prod-chair-noero-blue-detail-back.jpg",
-      "assets/prod-chair-noero-blue-detail-seat.jpg"
+      "assets/prod-chair-noero-blue-detail-seat.jpg",
+      "assets/prod-chair-noero-orange.jpg",
+      "assets/prod-chair-noero-orange-back.jpg",
+      "assets/prod-chair-noero-orange-detail-back.jpg",
+      "assets/prod-chair-noero-orange-detail-seat.jpg",
+      "assets/prod-chair-noero-olive.jpg",
+      "assets/prod-chair-noero-olive-detail-back.jpg",
+      "assets/prod-chair-noero-olive-detail-seat.jpg"
     ],
     "i18n": {
       "ru": {
         "name": "Стул «NOERO»",
         "category_label": "Пластиковые стулья",
-        "description": "Эргономичный пластиковый стул NOERO с удобной спинкой высотой 82 см. Стильные оттенки капучино и синий прекрасно дополняют современные интерьеры.",
+        "description": "Эргономичный пластиковый стул NOERO с удобной спинкой высотой 82 см. Стильные оттенки капучино, синий, оранжевый и оливковый прекрасно дополняют современные интерьеры.",
         "usage": "Для дома, террасы, летних веранд, кафе",
         "seo_title": "Купить Стул «NOERO» в Ташкенте - BTT",
         "seo_description": "Стул «NOERO» (Пластиковые стулья) от BTT. Размеры: 82 × 48 × 49 см. Доставка по Ташкенту и всему Узбекистану."
@@ -341,7 +379,7 @@
       "uz": {
         "name": "«NOERO» stuli",
         "category_label": "Plastik stullar",
-        "description": "82 sm balandlikdagi qulay suyanchiqqa ega ergonomik NOERO stuli. Chiroyli kapuchino va ko‘k ranglari har qanday zamonaviy muhitga mos tushadi.",
+        "description": "82 sm balandlikdagi qulay suyanchiqqa ega ergonomik NOERO stuli. Chiroyli kapuchino, ko‘k, to‘q sariq va zaytun ranglari har qanday zamonaviy muhitga mos tushadi.",
         "usage": "Uy, terrasa, yozgi ayvonlar, kafe uchun",
         "seo_title": "Toshkentda «NOERO» stuli sotib olish - BTT",
         "seo_description": "BTT dan «NOERO» stuli (Plastik stullar). O‘lchamlari: 82 × 48 × 49 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -349,7 +387,7 @@
       "en": {
         "name": "NOERO Chair",
         "category_label": "Plastic chairs",
-        "description": "Ergonomic NOERO plastic chair with an 82 cm supportive backrest. Modern cappuccino and blue hues fit various interior and terrace settings.",
+        "description": "Ergonomic NOERO plastic chair with an 82 cm supportive backrest. Modern cappuccino, blue, orange, and olive hues fit various interior and terrace settings.",
         "usage": "For dining areas, terraces, verandas, cafes",
         "seo_title": "Buy NOERO Chair in Tashkent - BTT",
         "seo_description": "NOERO Chair (Plastic chairs) by BTT. Dimensions: 82 × 48 × 49 см. Delivery across Tashkent and Uzbekistan."
