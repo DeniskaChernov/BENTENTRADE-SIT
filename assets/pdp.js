@@ -258,10 +258,13 @@
     const requestedColor = (params.get("color") || "").toLowerCase().trim();
     let selectedIdx = 0;
     if(requestedColor && confirmed.length > 0){
-      const foundIdx = confirmed.findIndex(c =>
-        (c.id && c.id.toLowerCase() === requestedColor) ||
-        (c.hex && c.hex.toLowerCase() === requestedColor)
-      );
+      const foundIdx = confirmed.findIndex(c => {
+        const cid = (c.id || "").toLowerCase();
+        if(cid === requestedColor) return true;
+        if(c.hex && c.hex.toLowerCase() === requestedColor) return true;
+        if((cid === "olive" || cid === "green") && (requestedColor === "olive" || requestedColor === "green")) return true;
+        return false;
+      });
       if(foundIdx >= 0) selectedIdx = foundIdx;
     }
 

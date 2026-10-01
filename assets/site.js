@@ -1364,6 +1364,7 @@
             if(activeColors.has("black-marble") && c === "black") return true;
             if(activeColors.has("white") && c === "white-marble") return true;
             if(activeColors.has("white-marble") && c === "white") return true;
+            if((activeColors.has("olive") || activeColors.has("green")) && (c === "olive" || c === "green")) return true;
             return false;
           });
         }
