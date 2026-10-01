@@ -32,9 +32,9 @@
       sideImg: "assets/hero-garden-furniture.png",
       t1:      {ru:"Пластиковые",             uz:"Plastik",                en:"Plastic"},
       t2:      {ru:"стулья",                  uz:"stullar",                en:"chairs"},
-      sub:     {ru:"Модели ROERO, NOERO, TODO и JARDIN - лёгкие, надёжные, с нагрузкой от 120 до 180 кг.",
-                uz:"ROERO, NOERO, TODO va JARDIN modellari - yengil, pishiq, 120 dan 180 kg gacha yuk ko‘taradi.",
-                en:"ROERO, NOERO, TODO and JARDIN models - lightweight, sturdy, with 120 kg to 180 kg load ratings."},
+      sub:     {ru:"Модели ROERO, NOERO, TODO и JARDIN - лёгкие, прочные, подходят для улицы и помещений.",
+                uz:"ROERO, NOERO, TODO va JARDIN modellari - yengil, pishiq, ko‘cha va ichki xonalarga mos.",
+                en:"ROERO, NOERO, TODO and JARDIN models - lightweight, sturdy, suitable for outdoor and indoor use."},
       store:   {ru:"Смотреть пластиковые стулья", uz:"Plastik stullarni ko‘rish", en:"Shop plastic chairs"},
       href:    "catalog.html?cat=plastic-chairs"
     },
