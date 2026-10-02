@@ -473,8 +473,8 @@
     const tableProd = isTable ? prod : pairedProd;
     const chairCount = (tableProd.slug && tableProd.slug.includes("135")) ? 6 : 4;
 
-    const chairName = t(chairProd.slug + ".name") || chairProd.model;
-    const tableName = t(tableProd.slug + ".name") || tableProd.model;
+    const chairModel = chairProd.model || chairProd.slug;
+    const tableModel = tableProd.model || tableProd.slug;
     const pairedName = t(pairedProd.slug + ".name") || pairedProd.model;
     const pairedCat = t(pairedProd.slug + ".cat") || t("cat." + pairedProd.category);
     const pairedImg = (pairedProd.images && pairedProd.images[0]) ? pairedProd.images[0] : "assets/placeholder.svg";
@@ -489,17 +489,21 @@
     let infoDesc = "";
     if(curLang === "uz"){
       infoDesc = isTable
-        ? (tableName + " stoli " + chairName + " stullari bilan mukammal mos keladi. Oshxona, mehmonxona, yopiq veranda yoki qahvaxona uchun tayyor yechim.")
-        : (chairName + " stuli " + tableName + " stoli bilan ajoyib uyg'unlashadi. Balandlik va kenglik bo'yicha qulay joylashuv, yagona uslub va ergonomik qulaylik yaratadi.");
+        ? ("«" + tableModel + "» stoli «" + chairModel + "» stullari bilan mukammal mos keladi. Oshxona, mehmonxona, yopiq veranda yoki qahvaxona uchun tayyor yechim.")
+        : ("«" + chairModel + "» stuli «" + tableModel + "» stoli bilan ajoyib uyg'unlashadi. Balandlik va kenglik bo'yicha qulay joylashuv, yagona uslub va ergonomik qulaylik yaratadi.");
     } else if(curLang === "en"){
       infoDesc = isTable
-        ? (tableName + " pairs seamlessly with " + chairName + " chairs. A complete, harmonious dining solution for living rooms, covered verandas, or dining spaces.")
-        : (chairName + " is designed to pair perfectly with " + tableName + ". Ideal seating height, cohesive aesthetic, and premium comfort for everyday dining.");
+        ? ("The " + tableModel + " table pairs seamlessly with " + chairModel + " chairs. A complete, harmonious dining solution for living rooms, covered verandas, or dining spaces.")
+        : ("The " + chairModel + " chair is designed to pair perfectly with the " + tableModel + " table. Ideal seating height, cohesive aesthetic, and elevated comfort for everyday dining.");
     } else {
       infoDesc = isTable
-        ? ("Стол " + tableName + " безупречно сочетается со стульями " + chairName + ". Готовая обеденная группа для кухни, просторной гостиной, веранды или кафе.")
-        : ("Стул " + chairName + " идеально подходит к столу " + tableName + ". Оптимальная высота посадки, единый стиль и максимальный комфорт для семейных обедов.");
+        ? ("Стол «" + tableModel + "» безупречно сочетается со стульями «" + chairModel + "». Готовая обеденная группа для кухни, просторной гостиной, веранды или кафе.")
+        : ("Стул «" + chairModel + "» идеально подходит к столу «" + tableModel + "». Оптимальная высота посадки, единый стиль и максимальный комфорт для семейных обедов.");
     }
+
+    let chairWord = "стульев";
+    if(chairCount === 1) chairWord = "стул";
+    else if(chairCount >= 2 && chairCount <= 4) chairWord = "стула";
 
     let comboLabel = "";
     if(curLang === "uz"){
@@ -507,12 +511,12 @@
     } else if(curLang === "en"){
       comboLabel = "Complete set: 1 table + " + chairCount + " chairs";
     } else {
-      comboLabel = "Комплект: 1 стол + " + chairCount + " стульев";
+      comboLabel = "Комплект: 1 стол + " + chairCount + " " + chairWord;
     }
 
     const tgOrderText = encodeURIComponent(
-      "Здравствуйте! Хочу заказать готовый комплект: стол " + tableName +
-      " + " + chairCount + " стульев " + chairName +
+      "Здравствуйте! Хочу заказать готовый комплект: стол " + tableModel +
+      " + " + chairCount + " " + (curLang === "uz" ? "ta stul" : (curLang === "en" ? "chairs" : chairWord)) + " " + chairModel +
       " (Итого: " + money(comboTotal) + "). Уточните, пожалуйста, наличие и условия доставки."
     );
     const tgUrl = "https://t.me/bententradeuz?text=" + tgOrderText;
