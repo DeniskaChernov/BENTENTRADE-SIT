@@ -230,7 +230,7 @@
     if(!grid) return;
     const cards = Array.from(grid.querySelectorAll("[data-product]"));
     const shown = cards.filter(c=> c.style.display !== "none").length;
-    const prev = parseInt((cnt ? cnt.textContent : "16") || "0", 10);
+    const prev = parseInt((cnt ? cnt.textContent : String(cards.length || 0)) || "0", 10);
     if(window.BTT_MOTION && window.BTT_MOTION.animateNumber && prev !== shown && !Number.isNaN(prev)){
       if(cnt) window.BTT_MOTION.animateNumber(cnt, prev, shown, 280);
       if(mobCnt) window.BTT_MOTION.animateNumber(mobCnt, prev, shown, 280);

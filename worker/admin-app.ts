@@ -637,7 +637,7 @@ export const ADMIN_APP_JS = String.raw`
               '</td>' +
               '<td style="text-align:right">' +
                 '<div style="display:flex;gap:5px;justify-content:flex-end">' +
-                  '<a href="/catalog.html#p=' + encodeURIComponent(p.id) + '" target="_blank" class="btn ghost sm icon-only" title="Открыть на витрине">' + ICONS.external + '</a>' +
+                  '<a href="/catalog/' + encodeURIComponent(p.id) + '" target="_blank" class="btn ghost sm icon-only" title="Открыть на витрине">' + ICONS.external + '</a>' +
                   '<button class="btn ghost sm icon-only" data-p-edit="' + esc(p.id) + '" title="Редактировать">' + ICONS.edit + '</button>' +
                   '<button class="btn ghost sm icon-only" data-p-clone="' + esc(p.id) + '" title="Клонировать товар">' + ICONS.copy + '</button>' +
                   '<button class="btn ghost sm danger icon-only" data-p-del="' + esc(p.id) + '" title="Удалить">' + ICONS.trash + '</button>' +
@@ -765,9 +765,8 @@ export const ADMIN_APP_JS = String.raw`
     } catch(e){}
     if (!currentSpecs.length) {
       currentSpecs = [
-        { k: "Материал", v: "Премиальный эко-ротанг, алюминиевый каркас" },
-        { k: "Покрытие", v: "Порошковое антикоррозийное" },
-        { k: "Срок службы", v: "Более 10 лет при любой погоде" },
+        { k: "Материал", v: "Искусственный ротанг, металлический каркас" },
+        { k: "Покрытие", v: "Порошковое защитное" },
         { k: "Производитель", v: "Bententrade (Узбекистан)" }
       ];
     }

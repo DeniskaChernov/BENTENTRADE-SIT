@@ -252,15 +252,26 @@
     const el = document.querySelector("[data-cat-count]");
     const mobEl = document.querySelector("[data-mob-count]");
     const grid = document.querySelector("#catalog-grid");
-    if (!el && !mobEl) return;
-    let countStr = "16";
+    if (!el && !mobEl && !grid) return;
+    const defaultCount = (window.BTT_CANONICAL_SLUGS && window.BTT_CANONICAL_SLUGS.length) || (window.BTT_PRODUCTS && Object.keys(window.BTT_PRODUCTS).length) || "";
+    let countStr = String(defaultCount);
     if (grid) {
       const cards = Array.from(grid.querySelectorAll("[data-product]"));
       const shown = cards.filter(c => c.style.display !== "none").length;
-      countStr = String(shown || (window.BTT_CANONICAL_SLUGS && window.BTT_CANONICAL_SLUGS.length) || 16);
-    } else {
-      const n = (window.BTT_CANONICAL_SLUGS && window.BTT_CANONICAL_SLUGS.length) || 16;
-      countStr = String(n);
+      countStr = String(shown || defaultCount);
+
+      // Dynamically update category chip counters
+      document.querySelectorAll("[data-chips] .chip[data-cat], .cat-chips .chip[data-cat]").forEach(chip => {
+        const cat = chip.dataset.cat;
+        const cntEl = chip.querySelector(".chip-count");
+        if (!cntEl) return;
+        if (cat === "all") {
+          cntEl.textContent = String(cards.length);
+        } else {
+          const matchCount = cards.filter(c => c.dataset.cat === cat).length;
+          cntEl.textContent = String(matchCount);
+        }
+      });
     }
     if (el) el.textContent = countStr;
     if (mobEl) mobEl.textContent = countStr;
