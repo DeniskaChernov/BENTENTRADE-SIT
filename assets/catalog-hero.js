@@ -29,15 +29,15 @@
     },
     "wicker-chairs": {
       img: CAT["wicker-chairs"],
-      ru:{k:"Плетёные стулья",t:"Плетёные стулья для сада и дома",s:"Стулья из кручёного и искусственного ротанга на прочном металлическом каркасе с подушкой."},
-      uz:{k:"To‘qilgan stullar",t:"Bog‘ va uy uchun to‘qilgan stullar",s:"Mustahkam metall karkas va yostiqli, to‘qilgan va sun’iy rotangli stullar."},
-      en:{k:"Wicker chairs",t:"Wicker chairs for patio & home",s:"Woven synthetic rattan chairs on sturdy metal frames with soft cushions."}
+      ru:{k:"Плетёные стулья",t:"Плетёные стулья для сада и дома",s:"Стулья из кручёного и искусственного ротанга на металлическом каркасе с подушкой."},
+      uz:{k:"To‘qilgan stullar",t:"Bog‘ va uy uchun to‘qilgan stullar",s:"Metall karkas va yostiqli, to‘qilgan va sun’iy rotangli stullar."},
+      en:{k:"Wicker chairs",t:"Wicker chairs for patio & home",s:"Woven synthetic rattan chairs on metal frames with soft cushions."}
     },
     "plastic-chairs": {
       img: CAT["plastic-chairs"],
-      ru:{k:"Пластиковые стулья",t:"Практичные стулья из пластика",s:"Лёгкие, прочные и износостойкие стулья - идеальны для дома, сада, летних террас и заведений."},
-      uz:{k:"Plastik stullar",t:"Qulay va chidamli plastik stullar",s:"Yengil, mustahkam va har qanday sharoitga chidamli plastik stullar - uy va kafe uchun."},
-      en:{k:"Plastic chairs",t:"Practical plastic chairs",s:"Lightweight, heavy-duty chairs engineered for home, garden and commercial terraces."}
+      ru:{k:"Пластиковые стулья",t:"Практичные стулья из пластика",s:"Лёгкие и практичные стулья - подходят для дома, сада, летних террас и заведений."},
+      uz:{k:"Plastik stullar",t:"Qulay va chidamli plastik stullar",s:"Yengil va amaliy plastik stullar - uy va kafe uchun."},
+      en:{k:"Plastic chairs",t:"Practical plastic chairs",s:"Lightweight, stackable chairs designed for home, garden and commercial terraces."}
     },
     "upholstered-chairs": {
       img: CAT["upholstered-chairs"],
@@ -47,15 +47,15 @@
     },
     tables: {
       img: CAT.tables,
-      ru:{k:"Столы",t:"Обеденные и садовые столы",s:"Столешницы из ЛДСП под мрамор и натуральные текстуры на надёжном металлическом основании."},
+      ru:{k:"Столы",t:"Обеденные и садовые столы",s:"Столешницы из ЛДСП под мрамор и натуральные текстуры на металлическом основании."},
       uz:{k:"Stollar",t:"Ovqatlanish va bog‘ stollari",s:"Marmar va yog‘och fakturali LDSP stol usti mustahkam metall oyoqlarda."},
-      en:{k:"Tables",t:"Dining & outdoor tables",s:"Dining tables with marble-effect tops and reinforced powder-coated steel bases."}
+      en:{k:"Tables",t:"Dining & outdoor tables",s:"Dining tables with marble-effect tops and powder-coated steel bases."}
     },
     furniture: {
       img: CAT.furniture,
-      ru:{k:"Садовая мебель",t:"Мебель для сада и террасы",s:"Диваны, кресла и обеденные группы - всесезонные, на лёгком алюминиевом каркасе."},
-      uz:{k:"Bog‘ mebeli",t:"Bog‘ va terassa mebeli",s:"Divan, kreslo va ovqat to‘plamlari - har faslga mos, yengil alyumin karkasda."},
-      en:{k:"Garden furniture",t:"Furniture for garden & terrace",s:"Sofas, armchairs and dining sets - all-season, on a light aluminium frame."}
+      ru:{k:"Садовая мебель",t:"Мебель для сада и террасы",s:"Диваны, кресла и обеденные группы на лёгком алюминиевом каркасе."},
+      uz:{k:"Bog‘ mebeli",t:"Bog‘ va terassa mebeli",s:"Divan, kreslo va ovqat to‘plamlari yengil alyumin karkasda."},
+      en:{k:"Garden furniture",t:"Furniture for garden & terrace",s:"Sofas, armchairs and dining sets on a light aluminium frame."}
     },
     planterMix: {
       img: CAT.planterMix,
@@ -71,9 +71,9 @@
     },
     rattan: {
       img: CAT.rattan,
-      ru:{k:"Искусственный ротанг",t:"Изделия из искусственного ротанга",s:"Мебель, кашпо и корзины из полиэтиленового волокна - не выгорает, не гниёт и служит годами."},
-      uz:{k:"Sun’iy rotang",t:"Sun’iy rotangdan buyumlar",s:"Polietilen tolidan mebel, gultuvak va savatlar - rangini yo‘qotmaydi, chirimaydi va yillar xizmat qiladi."},
-      en:{k:"Synthetic rattan",t:"Pieces in synthetic rattan",s:"Furniture, planters and baskets in polyethylene fibre - won’t fade, won’t rot and lasts for years."}
+      ru:{k:"Искусственный ротанг",t:"Изделия из искусственного ротанга",s:"Мебель, кашпо и корзины из полимерного волокна для сада и интерьера."},
+      uz:{k:"Sun’iy rotang",t:"Sun’iy rotangdan buyumlar",s:"Bog' va interyer uchun polimer tolali mebel, gultuvak va savatlar."},
+      en:{k:"Synthetic rattan",t:"Pieces in synthetic rattan",s:"Furniture, planters and baskets made of polymer fiber for garden and home."}
     },
     twisted: {
       img: CAT.twisted,
