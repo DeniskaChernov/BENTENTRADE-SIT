@@ -778,6 +778,22 @@
           "assets/prod-chair-jardin-olive-detail-seat.jpg",
           "assets/prod-chair-jardin-olive-detail-back.jpg"
         ]
+      },
+      {
+        "id": "grey",
+        "name": {
+          "ru": "Серый",
+          "uz": "Kulrang",
+          "en": "Grey"
+        },
+        "hex": "#808080",
+        "image": "assets/prod-chair-jardin-grey.jpg",
+        "images": [
+          "assets/prod-chair-jardin-grey.jpg",
+          "assets/prod-chair-jardin-grey-back.jpg",
+          "assets/prod-chair-jardin-grey-detail-seat.jpg",
+          "assets/prod-chair-jardin-grey-detail-back.jpg"
+        ]
       }
     ],
     "isTable": false,
@@ -788,13 +804,17 @@
       "assets/prod-chair-jardin-olive.jpg",
       "assets/prod-chair-jardin-olive-back.jpg",
       "assets/prod-chair-jardin-olive-detail-seat.jpg",
-      "assets/prod-chair-jardin-olive-detail-back.jpg"
+      "assets/prod-chair-jardin-olive-detail-back.jpg",
+      "assets/prod-chair-jardin-grey.jpg",
+      "assets/prod-chair-jardin-grey-back.jpg",
+      "assets/prod-chair-jardin-grey-detail-seat.jpg",
+      "assets/prod-chair-jardin-grey-detail-back.jpg"
     ],
     "i18n": {
       "ru": {
         "name": "Стул «JARDIN»",
         "category_label": "Пластиковые стулья",
-        "description": "Комфортное пластиковое кресло-стул JARDIN с широким сиденьем и подлокотниками в оттенках капучино и оливковый. Практичное решение для отдыха в саду и на веранде.",
+        "description": "Комфортное пластиковое кресло-стул JARDIN с широким сиденьем и подлокотниками в оттенках капучино, оливковый и серый. Практичное решение для отдыха в саду и на веранде.",
         "usage": "Для сада, веранды, зоны отдыха, загородного дома",
         "seo_title": "Купить Стул «JARDIN» в Ташкенте - BTT",
         "seo_description": "Стул «JARDIN» (Пластиковые стулья) от BTT. Размеры: 73.5 × 53.5 × 55.5 см. Доставка по Ташкенту и всему Узбекистану."
@@ -802,7 +822,7 @@
       "uz": {
         "name": "«JARDIN» stuli",
         "category_label": "Plastik stullar",
-        "description": "Keng o‘rindiq va tirsak suyanchig‘iga ega JARDIN plastik kreslo-stuli kapuchino va zaytun ranglarida. Bog‘ va ayvonda hordiq chiqarish uchun qulay yechim.",
+        "description": "Keng o‘rindiq va tirsak suyanchig‘iga ega JARDIN plastik kreslo-stuli kapuchino, zaytun va kulrang ranglarida. Bog‘ va ayvonda hordiq chiqarish uchun qulay yechim.",
         "usage": "Bog‘, ayvon, dam olish hududi, dala hovli uchun",
         "seo_title": "Toshkentda «JARDIN» stuli sotib olish - BTT",
         "seo_description": "BTT dan «JARDIN» stuli (Plastik stullar). O‘lchamlari: 73.5 × 53.5 × 55.5 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -810,7 +830,7 @@
       "en": {
         "name": "JARDIN Chair",
         "category_label": "Plastic chairs",
-        "description": "Comfortable JARDIN plastic armchair featuring wide seating and integrated armrests in cappuccino and olive finishes. Practical choice for garden relaxation and patio dining.",
+        "description": "Comfortable JARDIN plastic armchair featuring wide seating and integrated armrests in cappuccino, olive, and grey finishes. Practical choice for garden relaxation and patio dining.",
         "usage": "For gardens, verandas, lounge areas, patio dining",
         "seo_title": "Buy JARDIN Chair in Tashkent - BTT",
         "seo_description": "JARDIN Chair (Plastic chairs) by BTT. Dimensions: 73.5 × 53.5 × 55.5 см. Delivery across Tashkent and Uzbekistan."
