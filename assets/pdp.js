@@ -371,7 +371,7 @@
           '</div>';
       }
 
-      return '<article class="product reveal" data-product ' +
+      return '<article class="product reveal is-in" data-product ' +
         'data-slug="' + esc(item.slug) + '" ' +
         'data-id="' + esc(item.legacyId || item.slug) + '" ' +
         'data-cat="' + esc(item.category) + '" ' +
@@ -390,6 +390,9 @@
         '</div>' +
         '</article>';
     }).join("");
+
+    const parentSection = grid.closest("section");
+    if(parentSection) $$(".reveal", parentSection).forEach(el => el.classList.add("is-in"));
 
     document.dispatchEvent(new CustomEvent("btt:related-rendered", { detail: { grid } }));
   }
@@ -558,6 +561,9 @@
           '</a>' +
         '</div>' +
       '</div>';
+
+    const parentSection = container.closest(".pdp-lifestyle");
+    if(parentSection) $$(".reveal", parentSection).forEach(el => el.classList.add("is-in"));
   }
 
   function render(){
