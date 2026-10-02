@@ -64,6 +64,15 @@
         managerTrustTitle:"Подтверждение и проверка заказа",
         managerTrustDesc:"Менеджер свяжется для согласования удобного времени доставки и подтвердит комплектацию перед отгрузкой",
         promoTag:"Промокод",promoPh:"Промокод (BENTEN2026)",promoApply:"Применить",promoErr:"Неверный промокод",
+        coEmail:"Email",coEmailPh:"name@example.com",
+        coCreateAccount:"Создать личный кабинет для отслеживания заказа",
+        coPassword:"Придумайте пароль (от 8 символов)",coPasswordPh:"••••••••",
+        errEmail:"Укажите корректный email",errPassword:"Пароль должен быть не менее 8 символов",
+        accCreated:"Личный кабинет создан! Заказ привязан к вашему профилю.",
+        toAccount:"В личный кабинет",
+        guestTrackTitle:"Хотите отслеживать этот заказ онлайн?",
+        guestTrackDesc:"Зарегистрируйтесь по вашему номеру телефона - заказ автоматически появится в личном кабинете.",
+        guestTrackBtn:"Создать аккаунт / Войти",
         quickOrder:"Или быстрый заказ в 1 клик:",discount:"Скидка"},
     uz:{cart:"Savat",empty:"Savat bo‘sh",emptyHint:"Katalogdan mebel qo‘shing - u shu yerda paydo bo‘ladi.",
         toCat:"Katalogga o‘tish",total:"Jami",checkout:"Buyurtma berish",pcs:"dona",
@@ -95,6 +104,15 @@
         managerTrustTitle:"Buyurtmani tasdiqlash va tekshirish",
         managerTrustDesc:"Menejer yetkazish vaqtini kelishish uchun bog‘lanadi va jo‘natishdan oldin to‘plamni tekshiradi",
         promoTag:"Promokod",promoPh:"Promokod (BENTEN2026)",promoApply:"Qo‘llash",promoErr:"Noto‘g‘ri promokod",
+        coEmail:"Elektron pochta",coEmailPh:"name@example.com",
+        coCreateAccount:"Buyurtmani kuzatish uchun shaxsiy kabinet ochish",
+        coPassword:"Parol yarating (kamida 8 belgi)",coPasswordPh:"••••••••",
+        errEmail:"To‘g‘ri elektron pochtani kiriting",errPassword:"Parol kamida 8 ta belgidan iborat bo‘lishi kerak",
+        accCreated:"Shaxsiy kabinet yaratildi! Buyurtma profilingizga biriktirildi.",
+        toAccount:"Shaxsiy kabinetga o‘tish",
+        guestTrackTitle:"Buyurtmani onlayn kuzatmoqchimisiz?",
+        guestTrackDesc:"Telefon raqamingiz orqali ro‘yxatdan o‘ting - buyurtma avtomatik kabinetingizda aks etadi.",
+        guestTrackBtn:"Akkaunt yaratish / Kirish",
         quickOrder:"Yoki 1 bosishda tezkor buyurtma:",discount:"Chegirma"},
     en:{cart:"Cart",empty:"Your cart is empty",emptyHint:"Add furniture from the catalog - it will show up here.",
         toCat:"Go to catalog",total:"Total",checkout:"Checkout",pcs:"pcs",
@@ -126,6 +144,15 @@
         managerTrustTitle:"Order confirmation & package check",
         managerTrustDesc:"Our manager coordinates delivery timing and verifies the package before dispatch",
         promoTag:"Promo code",promoPh:"Promo code (BENTEN2026)",promoApply:"Apply",promoErr:"Invalid promo code",
+        coEmail:"Email",coEmailPh:"name@example.com",
+        coCreateAccount:"Create an account to track this order",
+        coPassword:"Create a password (min 8 chars)",coPasswordPh:"••••••••",
+        errEmail:"Please enter a valid email address",errPassword:"Password must be at least 8 characters",
+        accCreated:"Account created successfully! Order linked to your profile.",
+        toAccount:"Go to account",
+        guestTrackTitle:"Want to track this order online?",
+        guestTrackDesc:"Register with your phone number - your order will appear in your account automatically.",
+        guestTrackBtn:"Create account / Sign in",
         quickOrder:"Or quick 1-click order:",discount:"Discount"}
   };
   function t(k){
@@ -618,6 +645,17 @@
       root.querySelectorAll("[name=method]").forEach(r=>r.addEventListener("change",()=>{
         if(addr) addr.hidden = (root.querySelector("[name=method]:checked")||{}).value==="pickup";
       }));
+      const regCheckbox = root.querySelector("[name=create_account]");
+      const pwdWrap = root.querySelector("[data-co-pwd-wrap]");
+      if(regCheckbox && pwdWrap){
+        regCheckbox.addEventListener("change",()=>{
+          pwdWrap.hidden = !regCheckbox.checked;
+          if(regCheckbox.checked){
+            const pwdInp = pwdWrap.querySelector("input");
+            if(pwdInp) pwdInp.focus();
+          }
+        });
+      }
     }
     const submit=root.querySelector("[data-co-submit]");
     if(submit) submit.addEventListener("click",()=>submitOrder(root));
@@ -775,13 +813,19 @@
         currency: CONFIG.currency,
         name: contact && contact.name,
         phone: contact && contact.phone,
+        email: contact && contact.email,
+        create_account: contact && contact.create_account,
+        password: contact && contact.password,
         delivery: contact && contact.method,
         payment: contact && contact.payment,
         address: contact && (contact.method==="pickup" ? "" : contact.address),
         comment: contact && contact.comment,
         promo: getPromo() || undefined,
       });
-      return (res && res.orderId) || null;
+      if(res && res.user){
+        _currentUser = res.user;
+      }
+      return res || null;
     }catch(e){
       if(window.BTT_COOKIES && window.BTT_COOKIES.isRequiredError(e)){
         toast(t("cookie.required"));
@@ -810,9 +854,13 @@
     const q=(s)=>root.querySelector(s);
     const method=(root.querySelector("[name=method]:checked")||{}).value||"delivery";
     const payment=(root.querySelector("[name=payment_method]:checked")||{}).value||"cash_or_pos";
+    const regCheck = root.querySelector("[name=create_account]");
     return {
       name:((q("[name=name]")||{}).value||"").trim(),
       phone:((q("[name=phone]")||{}).value||"").trim(),
+      email:((q("[name=email]")||{}).value||"").trim(),
+      create_account:!!(regCheck && regCheck.checked),
+      password:((q("[name=password]")||{}).value||""),
       method:method,
       payment:payment,
       address:((q("[name=address]")||{}).value||"").trim(),
@@ -827,15 +875,21 @@
     const f=readForm(root);
     if(!f.name){ showErr(root,t("errName")); return; }
     if(f.phone.replace(/\D/g,"").length<7){ showErr(root,t("errPhone")); return; }
+    if(f.create_account){
+      if(!f.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)){ showErr(root, t("errEmail")); return; }
+      if(!f.password || f.password.length < 8){ showErr(root, t("errPassword")); return; }
+    }
     if(f.method!=="pickup" && !f.address){ showErr(root,t("errAddress")); return; }
     showErr(root,"");
     saveCheckout(f);
     const btn=root.querySelector("[data-co-submit]");
     if(btn){ btn.disabled=true; btn.textContent=t("coSending"); }
+    let orderRes=null;
     let orderId=null;
     const apiOk = window.BTT_API && (!window.BTT_COOKIES || window.BTT_COOKIES.hasConsent());
     if(apiOk){
-      orderId=await persistOrder(f);
+      orderRes=await persistOrder(f);
+      orderId=orderRes && orderRes.orderId;
       if(!orderId){ showErr(root,t("errOrder")); if(btn){ btn.disabled=false; btn.textContent=t("coSubmit"); } return; }
     }
     if(!apiOk){
@@ -845,17 +899,35 @@
     write("btt_cart",{});
     setPromo("");
     renderBadges();
-    renderDone(orderId);
+    renderDone(orderId, orderRes);
   }
 
-  function renderDone(orderId){
+  function renderDone(orderId, orderRes){
     if(!cartEl) return;
     const num = orderId ? '<div class="t" style="opacity:.7;font-size:14px;margin-top:-6px">№ '+esc(orderId)+'</div>' : '';
     const tgIco='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 2.9 11.6c-1 .4-1 1.8 0 2.1l4.7 1.5 1.8 5.6c.3.8 1.3 1 1.9.4l2.6-2.5 4.7 3.5c.7.5 1.7.1 1.9-.7L23 5.5c.2-1-.8-1.8-1.7-1.2Z"/></svg>';
     const waIco='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.6 4.7-1.2A10 10 0 1 0 12 2Zm5.3 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7s-3.9-3.3-4-3.5c-.1-.2-1-1.3-1-2.5s.6-1.8.9-2.1c.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .6.4l.8 2c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2 1.2.9 1.8.9 2.1.8.2-.1.5-.5.7-.8.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.6 0 1.2Z"/></svg>';
+
+    let accNotice = '';
+    if(orderRes && orderRes.user){
+      accNotice = '<div style="margin:14px 0 10px;padding:12px 14px;background:rgba(60,138,78,.12);border:1px solid rgba(60,138,78,.35);border-radius:var(--r-card);font-size:12.5px;text-align:center">' +
+        '<b style="color:var(--title)">✓ ' + esc(t("accCreated")) + '</b>' +
+        '<div style="margin-top:8px"><a class="btn btn--copper btn--sm" href="account.html" style="font-size:12px;padding:5px 14px;display:inline-block">' + esc(t("toAccount")) + '</a></div>' +
+        '</div>';
+    } else if(!_currentUser){
+      const saved = getCheckout();
+      const phoneHint = saved.phone ? ' (' + esc(saved.phone) + ')' : '';
+      accNotice = '<div style="margin:14px 0 10px;padding:12px 14px;background:var(--paper);border:1px solid var(--line-2);border-radius:var(--r-card);font-size:12px;text-align:left">' +
+        '<div style="font-weight:700;margin-bottom:3px;color:var(--title)">' + esc(t("guestTrackTitle")) + '</div>' +
+        '<div style="color:var(--text-soft);margin-bottom:8px">' + esc(t("guestTrackDesc")) + phoneHint + '</div>' +
+        '<a class="btn btn--ghost btn--sm" href="login.html" style="width:100%;text-align:center;display:block;font-size:12px;padding:6px 12px">' + esc(t("guestTrackBtn")) + '</a>' +
+        '</div>';
+    }
+
     cartEl.innerHTML='<div class="drawer-head"><h3>'+esc(t("cart"))+'</h3><button class="drawer-x" data-drawer-close aria-label="'+esc(t("close"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
       '<div class="drawer-empty"><svg viewBox="0 0 24 24" fill="none" stroke="#3c8a4e" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div class="t">'+esc(t("done"))+'</div>'+num+
-      '<p class="drawer-co__sub" style="margin:14px 0 10px">'+esc(t("coMsgOpt"))+'</p>'+
+      accNotice+
+      '<p class="drawer-co__sub" style="margin:12px 0 10px">'+esc(t("coMsgOpt"))+'</p>'+
       '<div class="co-msg-row">'+
         '<button class="btn co-msg co-tg" data-order-tg>'+tgIco+'<span>'+esc(t("ordTg"))+'</span></button>'+
         '<button class="btn co-msg co-wa" data-order-wa>'+waIco+'<span>'+esc(t("ordWa"))+'</span></button>'+
@@ -894,6 +966,21 @@
     const cityChipsHtml = '<div class="co-city-chips" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">'+
       Object.entries(cityLabels).map(([k, name])=>'<button type="button" class="co-city-chip" data-co-city-chip="'+esc(name)+'" style="font-size:11.5px;padding:3px 10px;border-radius:var(--r-pill);border:1px solid var(--line-2);background:var(--paper);color:var(--text);font-weight:600;cursor:pointer">'+esc(name)+'</button>').join('')+
       '</div>';
+    const emailVal = val("email") || (_currentUser && _currentUser.email) || "";
+    const regHtml = !_currentUser ? (
+      '<div class="co-field"><label>'+esc(t("coEmail"))+'</label><input name="email" type="email" autocomplete="email" value="'+emailVal+'" placeholder="'+esc(t("coEmailPh"))+'"></div>'+
+      '<div class="co-field" style="margin:6px 0 10px">'+
+        '<label class="co-checkbox" style="display:flex;align-items:center;gap:8px;font-size:12.5px;cursor:pointer;user-select:none;color:var(--text-soft)">'+
+          '<input type="checkbox" name="create_account" style="width:16px;height:16px;accent-color:var(--copper);cursor:pointer"'+(saved.create_account?' checked':'')+'>'+
+          '<span>'+esc(t("coCreateAccount"))+'</span>'+
+        '</label>'+
+        '<div class="co-pwd-wrap" data-co-pwd-wrap'+(saved.create_account?'':' hidden')+' style="margin-top:8px">'+
+          '<label style="display:block;font-size:11.5px;margin-bottom:4px;color:var(--muted)">'+esc(t("coPassword"))+'</label>'+
+          '<input name="password" type="password" autocomplete="new-password" placeholder="'+esc(t("coPasswordPh"))+'">'+
+        '</div>'+
+      '</div>'
+    ) : '';
+
     cartEl.innerHTML=
       '<div class="drawer-head"><button class="drawer-back" data-cart-back aria-label="'+esc(t("ordBack"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><h3>'+esc(t("ordTitle"))+'</h3>'+
       '<button class="drawer-x" data-drawer-close aria-label="'+esc(t("close"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
@@ -903,6 +990,7 @@
         '<form class="co-form" data-co-form novalidate>'+
           '<div class="co-field"><label>'+esc(t("coName"))+'</label><input name="name" type="text" autocomplete="name" value="'+val("name")+'" placeholder="'+esc(t("coNamePh"))+'"></div>'+
           '<div class="co-field"><label>'+esc(t("coPhone"))+'</label><input name="phone" type="tel" autocomplete="tel" value="'+val("phone")+'" placeholder="'+esc(t("coPhonePh"))+'"></div>'+
+          regHtml+
           '<div class="co-field"><label>'+esc(t("coMethod"))+'</label>'+
             '<div class="co-method" data-co-method>'+
               '<label class="co-radio"><input type="radio" name="method" value="delivery"'+(pickup?"":" checked")+'><span>'+esc(t("coDelivery"))+'</span></label>'+

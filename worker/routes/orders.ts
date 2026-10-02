@@ -1,6 +1,13 @@
 import { Hono } from "hono";
 import type { Env, Variables } from "../types";
-import { str, rateLimit, clientIp, escapeHtml } from "../util";
+import { str, isEmail, rateLimit, clientIp, escapeHtml } from "../util";
+import {
+  hashPassword,
+  verifyPassword,
+  createSession,
+  destroySession,
+  setSessionCookie,
+} from "../auth";
 import { notifyTelegram } from "../telegram";
 import { notifyOrderSms } from "../sms";
 
@@ -126,7 +133,62 @@ app.post("/", async (c) => {
   }
 
   const session = c.get("session");
-  const userId = session?.userId ?? null;
+  let userId = session?.userId ?? null;
+  let createdUser: { id: number; email: string; name: string; role: string } | null = null;
+
+  const createAccount = Boolean(body.create_account || body.register);
+  const rawPassword = str(body.password, 200);
+
+  // If user requested account registration during checkout and is not already logged in:
+  if (!userId && (createAccount || rawPassword.length >= 8) && customerEmail && isEmail(customerEmail)) {
+    const existing = await c.env.DB.prepare(
+      `SELECT id, password_hash, role, name FROM users WHERE email = ?`,
+    )
+      .bind(customerEmail.toLowerCase())
+      .first<{ id: number; password_hash: string; role: "customer" | "admin"; name: string }>();
+
+    if (existing) {
+      if (rawPassword && (await verifyPassword(rawPassword, existing.password_hash))) {
+        userId = existing.id;
+        const oldSid = c.get("sessionId");
+        if (oldSid) await destroySession(c.env, oldSid);
+        const sid = await createSession(c.env, { userId, role: existing.role, createdAt: Date.now() });
+        setSessionCookie(c, sid);
+        createdUser = { id: userId, email: customerEmail.toLowerCase(), name: existing.name, role: existing.role };
+      }
+    } else if (rawPassword.length >= 8) {
+      const hash = await hashPassword(rawPassword);
+      const insUser = await c.env.DB.prepare(
+        `INSERT INTO users (email, password_hash, name, phone, role) VALUES (?, ?, ?, ?, 'customer')`,
+      )
+        .bind(customerEmail.toLowerCase(), hash, customerName, customerPhone)
+        .run();
+      userId = insUser.meta.last_row_id as number;
+      const oldSid = c.get("sessionId");
+      if (oldSid) await destroySession(c.env, oldSid);
+      const sid = await createSession(c.env, { userId, role: "customer", createdAt: Date.now() });
+      setSessionCookie(c, sid);
+      createdUser = { id: userId, email: customerEmail.toLowerCase(), name: customerName, role: "customer" };
+    }
+  }
+
+  // Claim/link any past guest orders matching this user's email or phone
+  if (userId && (customerEmail || cleanPhone)) {
+    try {
+      await c.env.DB.prepare(
+        `UPDATE orders 
+         SET user_id = ? 
+         WHERE user_id IS NULL 
+           AND (
+             (customer_email IS NOT NULL AND lower(customer_email) = ?)
+             OR (? != '' AND customer_phone IS NOT NULL AND replace(replace(replace(replace(customer_phone, ' ', ''), '-', ''), '(', ''), ')', '') LIKE ?)
+           )`,
+      )
+        .bind(userId, customerEmail ? customerEmail.toLowerCase() : "", cleanPhone, `%${cleanPhone.slice(-9)}%`)
+        .run();
+    } catch (_) {}
+  }
+
   const token = crypto.randomUUID();
 
   const ins = await c.env.DB.prepare(
@@ -206,7 +268,16 @@ app.post("/", async (c) => {
     "created",
   ).catch((e) => console.warn("[sms:order] Failed:", (e as Error).message));
 
-  return c.json({ ok: true, orderId: publicId, total, subtotal, discount, promo: promoPct > 0 ? promo : undefined, currency });
+  return c.json({
+    ok: true,
+    orderId: publicId,
+    total,
+    subtotal,
+    discount,
+    promo: promoPct > 0 ? promo : undefined,
+    currency,
+    user: createdUser,
+  });
 });
 
 /** GET /api/orders - current user's orders (auth required via mount). */

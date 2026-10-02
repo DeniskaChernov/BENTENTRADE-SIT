@@ -41,6 +41,24 @@ app.post("/register", async (c) => {
 
   const userId = ins.meta.last_row_id as number;
 
+  // Claim/link any existing orders placed by this user as a guest
+  const cleanPhone = (phone || "").replace(/\D/g, "");
+  if (email || cleanPhone) {
+    try {
+      await c.env.DB.prepare(
+        `UPDATE orders 
+         SET user_id = ? 
+         WHERE user_id IS NULL 
+           AND (
+             (customer_email IS NOT NULL AND lower(customer_email) = ?)
+             OR (? != '' AND customer_phone IS NOT NULL AND replace(replace(replace(replace(customer_phone, ' ', ''), '-', ''), '(', ''), ')', '') LIKE ?)
+           )`,
+      )
+        .bind(userId, email, cleanPhone, `%${cleanPhone.slice(-9)}%`)
+        .run();
+    } catch (_) {}
+  }
+
   // Destroy old session if any (session fixation defense)
   const oldSid = c.get("sessionId");
   if (oldSid) await destroySession(c.env, oldSid);
@@ -67,13 +85,31 @@ app.post("/login", async (c) => {
   }
 
   const user = await c.env.DB.prepare(
-    `SELECT id, email, name, role, password_hash FROM users WHERE email = ?`,
+    `SELECT id, email, name, phone, role, password_hash FROM users WHERE email = ?`,
   )
     .bind(email)
-    .first<{ id: number; email: string; name: string; role: "customer" | "admin"; password_hash: string }>();
+    .first<{ id: number; email: string; name: string; phone: string | null; role: "customer" | "admin"; password_hash: string }>();
 
   if (!user || !(await verifyPassword(password, user.password_hash))) {
     return c.json({ error: "invalid_credentials" }, 401);
+  }
+
+  // Claim/link any existing orders placed as guest with this user's email or phone
+  const cleanPhone = (user.phone || "").replace(/\D/g, "");
+  if (user.email || cleanPhone) {
+    try {
+      await c.env.DB.prepare(
+        `UPDATE orders 
+         SET user_id = ? 
+         WHERE user_id IS NULL 
+           AND (
+             (customer_email IS NOT NULL AND lower(customer_email) = ?)
+             OR (? != '' AND customer_phone IS NOT NULL AND replace(replace(replace(replace(customer_phone, ' ', ''), '-', ''), '(', ''), ')', '') LIKE ?)
+           )`,
+      )
+        .bind(user.id, user.email, cleanPhone, `%${cleanPhone.slice(-9)}%`)
+        .run();
+    } catch (_) {}
   }
 
   // Destroy old session if any (session fixation defense)
