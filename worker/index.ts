@@ -11,6 +11,7 @@ import account from "./routes/account";
 import admin from "./routes/admin";
 import media from "./routes/media";
 import reviews from "./routes/reviews";
+import categories from "./routes/categories";
 import { ADMIN_HTML } from "./admin-ui";
 import { ADMIN_APP_JS } from "./admin-app";
 import { applySecurityHeaders, applyCacheHeaders } from "./security-headers";
@@ -143,6 +144,7 @@ app.route("/api/contact", contact);
 app.route("/api/orders", orders); // POST public; GET checks session internally
 app.route("/api/auth", authRoutes);
 app.route("/api/reviews", reviews);
+app.route("/api/categories", categories);
 
 
 // Authenticated customer API.
@@ -203,7 +205,17 @@ function escHtml(s: string): string {
   });
 }
 
-// Clean PDP URLs: /catalog/:slug -> serves product.html with status 200 & authoritative SSR SEO
+// Catalog storefront route: /catalog -> serves catalog.html preserving query params
+app.get("/catalog", async (c) => {
+  const url = new URL("/catalog.html", c.req.url);
+  const reqUrl = new URL(c.req.url);
+  for (const [k, v] of reqUrl.searchParams.entries()) {
+    url.searchParams.set(k, v);
+  }
+  return c.env.ASSETS.fetch(new Request(url.toString(), c.req.raw));
+});
+
+// Clean PDP URLs: /catalog/:slug -> serves product.html with status 200 & authoritative SSR SEO & preloaded runtime product DTO
 app.get("/catalog/:slug", async (c) => {
   const rawSlug = c.req.param("slug");
   const slug = (rawSlug || "").toLowerCase().trim();
@@ -219,8 +231,28 @@ app.get("/catalog/:slug", async (c) => {
 
   // 2. Fetch canonical product from D1
   const product = await c.env.DB.prepare(
-    `SELECT id, category, price_now, price_old, COALESCE(availability, 'unknown') AS availability, active FROM products WHERE id = ?`
-  ).bind(slug).first<{ id: string; category: string; price_now: number; price_old: number; availability: string; active: number }>();
+    `SELECT id, category, look, price_now, price_old, default_size,
+            COALESCE(availability, 'unknown') AS availability, active, sort,
+            COALESCE(product_type, 'simple') AS product_type,
+            COALESCE(unit, 'pcs') AS unit,
+            featured, created_at, updated_at
+     FROM products WHERE id = ?`
+  ).bind(slug).first<{
+    id: string;
+    category: string;
+    look?: string;
+    price_now: number;
+    price_old: number;
+    default_size?: string;
+    availability: string;
+    active: number;
+    sort?: number;
+    product_type: string;
+    unit: string;
+    featured: number;
+    created_at?: string;
+    updated_at?: string;
+  }>();
 
   if (!product || product.active === 0) {
     const notFoundUrl = new URL("/404.html", c.req.url);
@@ -264,21 +296,158 @@ app.get("/catalog/:slug", async (c) => {
     return assetRes;
   }
 
-  // 5. Fetch i18n & primary image for SSR SEO
-  const i18n = await c.env.DB.prepare(
-    `SELECT name, category_label, description, seo_title, seo_description FROM product_i18n WHERE product_id = ? AND lang = 'ru'`
-  ).bind(slug).first<{ name: string; category_label: string; description: string; seo_title: string; seo_description: string }>();
+  // 5. Fetch i18n, media, variants, bundle items, and category for runtime hydration & SEO
+  const { results: i18nRows } = await c.env.DB.prepare(
+    `SELECT lang, name, category_label, description, sizes, specs, seo_title, seo_description FROM product_i18n WHERE product_id = ?`
+  ).bind(slug).all<{
+    lang: string;
+    name: string;
+    category_label: string;
+    description: string;
+    sizes?: string;
+    specs?: string;
+    seo_title?: string;
+    seo_description?: string;
+  }>();
 
-  const mediaRow = await c.env.DB.prepare(
-    `SELECT key FROM media WHERE product_id = ? ORDER BY sort ASC, id ASC LIMIT 1`
-  ).bind(slug).first<{ key: string }>();
+  const i18nMap: Record<string, any> = {};
+  for (const row of i18nRows) {
+    let sizesArr: string[] = [];
+    try {
+      if (row.sizes) sizesArr = JSON.parse(row.sizes);
+    } catch {}
+    let specsObj: Record<string, string> = {};
+    try {
+      if (row.specs) specsObj = JSON.parse(row.specs);
+    } catch {}
+    i18nMap[row.lang] = {
+      ...row,
+      sizes: sizesArr,
+      specs: specsObj,
+    };
+  }
 
-  const productName = i18n?.name || slug;
-  const pageTitle = i18n?.seo_title || `BTT - ${productName}`;
-  const pageDesc = i18n?.seo_description || `${productName} - купить в Ташкенте. Характеристики, размеры, цена в сумах, доставка BTT.`;
+  const i18nRu = i18nMap.ru || i18nRows[0] || null;
+
+  const { results: mediaRows } = await c.env.DB.prepare(
+    `SELECT key FROM media WHERE product_id = ? ORDER BY sort ASC, id ASC`
+  ).bind(slug).all<{ key: string }>();
+
+  const images = mediaRows.map(m => m.key);
+
+  const { results: variantRows } = await c.env.DB.prepare(
+    `SELECT variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, sort
+     FROM product_variants WHERE product_id = ? AND active = 1 ORDER BY sort ASC, id ASC`
+  ).bind(slug).all<{
+    variant_code: string;
+    name_ru: string;
+    name_uz: string;
+    name_en: string;
+    hex: string;
+    image: string;
+    images?: string;
+    price_modifier: number;
+    sort: number;
+  }>();
+
+  const confirmedColors = variantRows.map(v => {
+    let vImgs: string[] = [];
+    try {
+      if (v.images) vImgs = JSON.parse(v.images);
+    } catch {}
+    if (!vImgs.length && v.image) vImgs = [v.image];
+    return {
+      id: v.variant_code,
+      hex: v.hex || "#768C65",
+      name: { ru: v.name_ru, uz: v.name_uz || v.name_ru, en: v.name_en || v.name_ru },
+      image: v.image || (vImgs[0] || ""),
+      images: vImgs,
+      price_modifier: v.price_modifier || 0,
+      sort: v.sort
+    };
+  });
+
+  const { results: bundleRows } = await c.env.DB.prepare(
+    `SELECT bi.component_product_id, bi.quantity, bi.sort,
+            COALESCE(i.name, bi.component_product_id) AS component_name
+     FROM bundle_items bi
+     LEFT JOIN product_i18n i ON i.product_id = bi.component_product_id AND i.lang = 'ru'
+     WHERE bi.bundle_product_id = ?
+     ORDER BY bi.sort ASC, bi.id ASC`
+  ).bind(slug).all<{
+    component_product_id: string;
+    quantity: number;
+    sort: number;
+    component_name: string;
+  }>();
+
+  const bundleItems = bundleRows.map(b => ({
+    product_id: b.component_product_id,
+    quantity: b.quantity,
+    sort: b.sort,
+    name: b.component_name
+  }));
+
+  const catRow = await c.env.DB.prepare(
+    `SELECT c.slug, ci.name as name_ru FROM categories c LEFT JOIN category_i18n ci ON ci.category_id = c.id AND ci.lang = 'ru' WHERE c.slug = ?`
+  ).bind(product.category).first<{ slug: string; name_ru?: string }>();
+
+  const catLabel = i18nRu?.category_label || catRow?.name_ru || product.category;
+  const productName = i18nRu?.name || slug;
+  const pageTitle = i18nRu?.seo_title || `BTT - ${productName}`;
+  const pageDesc = i18nRu?.seo_description || `${productName} - купить в Ташкенте. Характеристики, размеры, цена в сумах, доставка BTT.`;
   const canonicalUrl = `https://bententrade.uz/catalog/${slug}`;
-  const rawImg = mediaRow?.key || "assets/btt-logo.png";
+  const rawImg = images[0] || "assets/btt-logo.png";
   const imageUrl = rawImg.startsWith("http") ? rawImg : `https://bententrade.uz/${rawImg.replace(/^\//, "")}`;
+
+  let specs: Record<string, string> = {};
+  if (i18nRu?.specs && typeof i18nRu.specs === "object") {
+    specs = i18nRu.specs;
+  }
+  const materials: string[] = specs.mat ? specs.mat.split(",").map((s: string) => s.trim()) : [];
+
+  const unitLabels: Record<string, Record<string, string>> = {
+    pcs: { ru: "шт.", uz: "dona", en: "pcs" },
+    set: { ru: "комплект", uz: "to'plam", en: "set" },
+    kg: { ru: "кг", uz: "kg", en: "kg" }
+  };
+  const unitLabel = (unitLabels[product.unit] && unitLabels[product.unit].ru) || product.unit;
+
+  const runtimeProduct = {
+    id: product.id,
+    slug: product.id,
+    category: product.category,
+    category_label: catLabel,
+    product_type: product.product_type,
+    unit: product.unit,
+    unit_label: unitLabel,
+    model: productName,
+    name: productName,
+    description: i18nRu?.description || "",
+    seo_title: pageTitle,
+    seo_description: pageDesc,
+    price: product.price_now,
+    price_now: product.price_now,
+    price_old: product.price_old,
+    now: product.price_now,
+    old: product.price_old,
+    currency: "UZS",
+    dimensions: (specs.dim || specs.dimensions || product.default_size || ""),
+    materials: materials,
+    specs: specs,
+    maxLoad: specs.max_load || null,
+    availability: product.availability,
+    stock: null,
+    active: true,
+    featured: product.featured === 1,
+    images: images.length ? images : [rawImg],
+    confirmedColors: confirmedColors,
+    variants: confirmedColors,
+    bundle_items: bundleItems,
+    i18n: i18nMap,
+    created_at: product.created_at,
+    updated_at: product.updated_at
+  };
 
   // Build authoritative Schema.org Offer
   const offerObj: Record<string, unknown> = {
@@ -334,7 +503,8 @@ app.get("/catalog/:slug", async (c) => {
   const headInject = [
     `<meta property="og:url" content="${canonicalUrl}">`,
     `<script type="application/ld+json" id="pdp-schema-product">${JSON.stringify(productJsonLd)}</script>`,
-    `<script type="application/ld+json" id="pdp-schema-breadcrumb">${JSON.stringify(breadcrumbJsonLd)}</script>`
+    `<script type="application/ld+json" id="pdp-schema-breadcrumb">${JSON.stringify(breadcrumbJsonLd)}</script>`,
+    `<script id="btt-runtime-product" type="application/json">${JSON.stringify(runtimeProduct)}</script>`
   ].join("\n");
 
   html = html.replace("</head>", `${headInject}\n</head>`);
@@ -347,14 +517,18 @@ app.get("/catalog/:slug", async (c) => {
   });
 });
 
-// Dynamic sitemap.xml generated from D1 active products with static fallback
+// Dynamic sitemap.xml generated from D1 active products and categories with static fallback
 app.get("/sitemap.xml", async (c) => {
   try {
-    const { results } = await c.env.DB.prepare(
-      `SELECT id FROM products WHERE active = 1 ORDER BY sort ASC, id ASC`
-    ).all<{ id: string }>();
+    const { results: prods } = await c.env.DB.prepare(
+      `SELECT id, updated_at FROM products WHERE active = 1 ORDER BY sort ASC, id ASC`
+    ).all<{ id: string; updated_at?: string }>();
 
-    if (results && results.length > 0) {
+    const { results: cats } = await c.env.DB.prepare(
+      `SELECT slug, updated_at FROM categories WHERE active = 1 ORDER BY sort ASC, id ASC`
+    ).all<{ slug: string; updated_at?: string }>();
+
+    if (prods && prods.length > 0) {
       const staticUrls = [
         { loc: "https://bententrade.uz/", freq: "weekly", priority: "1.0" },
         { loc: "https://bententrade.uz/catalog.html", freq: "weekly", priority: "0.95" },
@@ -397,7 +571,12 @@ app.get("/sitemap.xml", async (c) => {
       for (const item of staticUrls) {
         xmlLines.push(`  <url><loc>${item.loc}</loc><changefreq>${item.freq}</changefreq><priority>${item.priority}</priority></url>`);
       }
-      for (const p of results) {
+      if (cats && cats.length) {
+        for (const catItem of cats) {
+          xmlLines.push(`  <url><loc>https://bententrade.uz/catalog.html?cat=${encodeURIComponent(catItem.slug)}</loc><changefreq>weekly</changefreq><priority>0.88</priority></url>`);
+        }
+      }
+      for (const p of prods) {
         xmlLines.push(`  <url><loc>https://bententrade.uz/catalog/${encodeURIComponent(p.id)}</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>`);
       }
       xmlLines.push('</urlset>');
@@ -405,7 +584,7 @@ app.get("/sitemap.xml", async (c) => {
       return new Response(xmlLines.join("\n"), {
         headers: {
           "content-type": "application/xml; charset=utf-8",
-          "cache-control": "public, max-age=3600, stale-while-revalidate=86400"
+          "cache-control": "public, max-age=60, s-maxage=60, stale-while-revalidate=300"
         }
       });
     }

@@ -9,8 +9,24 @@ export const ADMIN_APP_JS = String.raw`
     { id: "wicker-chairs", label: "Плетёные стулья" },
     { id: "plastic-chairs", label: "Пластиковые стулья" },
     { id: "upholstered-chairs", label: "Мягкие стулья" },
-    { id: "tables", label: "Столы" }
+    { id: "tables", label: "Столы" },
+    { id: "sets", label: "Комплекты мебели" },
+    { id: "lamps", label: "Декоративные лампы" },
+    { id: "planters", label: "Кашпо" },
+    { id: "rattan", label: "Искусственный ротанг" }
   ];
+
+  async function loadCats(){
+    try {
+      var r = await api("/api/admin/categories");
+      if (r && Array.isArray(r.categories) && r.categories.length) {
+        CATS = r.categories.map(function(c){
+          var ruName = (c.i18n && c.i18n.ru && c.i18n.ru.name) || c.slug;
+          return { id: c.slug, label: ruName, raw: c };
+        });
+      }
+    } catch(e){}
+  }
 
   var AVAILABILITIES = [
     { id: "unknown", label: "Не подтверждено (unknown)" },
@@ -190,6 +206,7 @@ export const ADMIN_APP_JS = String.raw`
   var SECTIONS = [
     { id: "dashboard", label: "Сводка", icon: ICONS.dashboard },
     { id: "products", label: "Товары", icon: ICONS.products },
+    { id: "categories", label: "Категории", icon: ICONS.sparkles },
     { id: "articles", label: "Статьи (Блог)", icon: ICONS.articles },
     { id: "media", label: "Медиатека", icon: ICONS.media },
     { id: "orders", label: "Заказы", icon: ICONS.orders },
@@ -273,13 +290,14 @@ export const ADMIN_APP_JS = String.raw`
       };
     }
 
-    route();
+    loadCats().then(function(){ route(); });
   }
 
   function route(){
     var titles = {
       dashboard: "Сводка магазина",
       products: "Управление товарами",
+      categories: "Управление категориями",
       articles: "Статьи и Блог",
       media: "Медиатека",
       orders: "Заказы клиентов",
@@ -298,6 +316,7 @@ export const ADMIN_APP_JS = String.raw`
     ({
       dashboard: secDashboard,
       products: secProducts,
+      categories: secCategories,
       articles: secArticles,
       media: secMedia,
       orders: secOrders,
@@ -394,6 +413,194 @@ export const ADMIN_APP_JS = String.raw`
       var v = e.target.closest("[data-v-order]");
       if (v) viewOrder(v.getAttribute("data-v-order"));
     });
+  }
+
+  /* ---------------------------- Categories ---------------------------- */
+  async function secCategories(){
+    var topActions = document.getElementById("top-actions");
+    if (topActions) {
+      topActions.innerHTML = '<button class="btn sm" id="cat-btn-new">' + ICONS.plus + ' Новая категория</button>';
+      document.getElementById("cat-btn-new").onclick = function(){ editCategory(null); };
+    }
+
+    var main = document.getElementById("content");
+    main.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted)">Загрузка категорий...</div>';
+
+    var data = await api("/api/admin/categories");
+    var list = data.categories || [];
+
+    if (!list.length) {
+      main.innerHTML =
+        '<div class="table-card" style="padding:40px;text-align:center;">' +
+          '<p style="color:var(--muted);margin-bottom:16px">Категорий пока нет.</p>' +
+          '<button class="btn sm" id="cat-empty-new">' + ICONS.plus + ' Создать первую категорию</button>' +
+        '</div>';
+      var emptyBtn = document.getElementById("cat-empty-new");
+      if (emptyBtn) emptyBtn.onclick = function(){ editCategory(null); };
+      return;
+    }
+
+    main.innerHTML =
+      '<div class="table-card">' +
+        '<table>' +
+          '<thead><tr><th style="width:50px">Сорт</th><th>Название (RU)</th><th>Slug</th><th>Название (UZ)</th><th>Название (EN)</th><th>Товаров</th><th>Статус</th><th style="text-align:right">Действия</th></tr></thead>' +
+          '<tbody>' +
+            list.map(function(c){
+              var i18n = c.i18n || {};
+              var ruName = (i18n.ru && i18n.ru.name) || "-";
+              var uzName = (i18n.uz && i18n.uz.name) || "-";
+              var enName = (i18n.en && i18n.en.name) || "-";
+              var isActive = c.active === 1;
+              return '<tr>' +
+                '<td><span style="font-weight:600">' + (c.sort || 0) + '</span></td>' +
+                '<td><b>' + esc(ruName) + '</b></td>' +
+                '<td><code>' + esc(c.slug) + '</code></td>' +
+                '<td>' + esc(uzName) + '</td>' +
+                '<td>' + esc(enName) + '</td>' +
+                '<td><span class="pill">' + (c.product_count || 0) + '</span></td>' +
+                '<td>' +
+                  '<label class="switch sm">' +
+                    '<input type="checkbox" data-cat-toggle="' + c.id + '" ' + (isActive ? 'checked' : '') + '>' +
+                    '<span class="slider"></span>' +
+                  '</label>' +
+                '</td>' +
+                '<td style="text-align:right">' +
+                  '<button class="btn ghost sm" data-cat-edit="' + c.id + '" style="margin-right:4px">' + ICONS.edit + '</button>' +
+                  '<button class="btn ghost sm danger" data-cat-del="' + c.id + '" ' + (c.product_count > 0 ? 'disabled title="Нельзя удалить категорию с товарами"' : '') + '>' + ICONS.trash + '</button>' +
+                '</td>' +
+              '</tr>';
+            }).join("") +
+          '</tbody>' +
+        '</table>' +
+      '</div>';
+
+    main.querySelectorAll("[data-cat-toggle]").forEach(function(inp){
+      inp.onchange = async function(){
+        var cid = inp.getAttribute("data-cat-toggle");
+        try {
+          await api("/api/admin/categories/" + cid + "/active", { method: "PUT", body: { active: inp.checked ? 1 : 0 } });
+          toast("Статус категории обновлен");
+          await loadCats();
+        } catch(e) {
+          inp.checked = !inp.checked;
+          toast("Ошибка: " + e.message, "err");
+        }
+      };
+    });
+
+    main.querySelectorAll("[data-cat-edit]").forEach(function(btn){
+      btn.onclick = function(){
+        var cid = btn.getAttribute("data-cat-edit");
+        var item = list.find(function(x){ return String(x.id) === cid; });
+        if (item) editCategory(item);
+      };
+    });
+
+    main.querySelectorAll("[data-cat-del]").forEach(function(btn){
+      btn.onclick = async function(){
+        var cid = btn.getAttribute("data-cat-del");
+        var item = list.find(function(x){ return String(x.id) === cid; });
+        if (!item) return;
+        var ok = await confirmModal("Удаление категории", "Вы уверены, что хотите удалить категорию «" + ((item.i18n && item.i18n.ru && item.i18n.ru.name) || item.slug) + "»?", "Удалить", true);
+        if (!ok) return;
+        try {
+          await api("/api/admin/categories/" + cid, { method: "DELETE" });
+          toast("Категория удалена");
+          await loadCats();
+          secCategories();
+        } catch(e) {
+          toast("Ошибка: " + (e.data && e.data.message ? e.data.message : e.message), "err");
+        }
+      };
+    });
+  }
+
+  function editCategory(c){
+    var isNew = !c;
+    var i18n = (c && c.i18n) || {};
+    var dlg = document.createElement("dialog");
+    dlg.className = "dlg-wide";
+    dlg.innerHTML =
+      '<div class="dlg-header">' +
+        '<h2>' + (isNew ? "Новая категория" : ("Редактирование категории: " + esc(c.slug))) + '</h2>' +
+        '<button class="dlg-close" id="ec-close">' + ICONS.close + '</button>' +
+      '</div>' +
+      '<div class="dlg-body">' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">' +
+          '<div class="field"><label>Slug (URL идентификатор) *</label><input id="ec-slug" value="' + esc(c ? c.slug : "") + '" placeholder="chairs, tables, sets, planters" ' + (isNew ? '' : '') + '></div>' +
+          '<div class="field"><label>Порядок сортировки</label><input type="number" id="ec-sort" value="' + (c ? (c.sort || 0) : 10) + '"></div>' +
+        '</div>' +
+        '<div class="tabs" id="ec-tabs" style="margin-bottom:14px;">' +
+          LANGS.map(function(l, i){ return '<button type="button" class="tab-btn ' + (i === 0 ? 'active' : '') + '" data-tab="' + l + '">' + l.toUpperCase() + '</button>'; }).join("") +
+        '</div>' +
+        LANGS.map(function(l, i){
+          var t = (i18n && i18n[l]) || {};
+          return '<div class="ec-lang-pane ' + (i === 0 ? '' : 'hide') + '" id="ec-pane-' + l + '">' +
+            '<div class="field"><label>Название (' + l.toUpperCase() + ') *</label><input class="ec-name" data-lang="' + l + '" value="' + esc(t.name || "") + '" placeholder="Название категории"></div>' +
+            '<div class="field"><label>Описание (' + l.toUpperCase() + ')</label><textarea class="ec-desc" data-lang="' + l + '" rows="3" placeholder="Краткое описание категории">' + esc(t.description || "") + '</textarea></div>' +
+            '<div class="field"><label>SEO Title (' + l.toUpperCase() + ')</label><input class="ec-seo-title" data-lang="' + l + '" value="' + esc(t.seo_title || "") + '" placeholder="BTT - Название категории"></div>' +
+            '<div class="field"><label>SEO Description (' + l.toUpperCase() + ')</label><textarea class="ec-seo-desc" data-lang="' + l + '" rows="2" placeholder="Мета-описание для поисковиков">' + esc(t.seo_description || "") + '</textarea></div>' +
+          '</div>';
+        }).join("") +
+      '</div>' +
+      '<div class="dlg-foot">' +
+        '<button class="btn ghost" id="ec-cancel">Отмена</button>' +
+        '<button class="btn" id="ec-save">' + (isNew ? "Создать категорию" : "Сохранить") + '</button>' +
+      '</div>';
+
+    document.body.appendChild(dlg);
+    dlg.showModal();
+
+    dlg.querySelector("#ec-close").onclick = function(){ dlg.close(); dlg.remove(); };
+    dlg.querySelector("#ec-cancel").onclick = function(){ dlg.close(); dlg.remove(); };
+
+    dlg.querySelectorAll("#ec-tabs button").forEach(function(b){
+      b.onclick = function(){
+        dlg.querySelectorAll("#ec-tabs button").forEach(function(x){ x.classList.remove("active"); });
+        b.classList.add("active");
+        var targetLang = b.getAttribute("data-tab");
+        dlg.querySelectorAll(".ec-lang-pane").forEach(function(p){ p.classList.add("hide"); });
+        var targetPane = dlg.querySelector("#ec-pane-" + targetLang);
+        if (targetPane) targetPane.classList.remove("hide");
+      };
+    });
+
+    dlg.querySelector("#ec-save").onclick = async function(){
+      var slug = dlg.querySelector("#ec-slug").value.trim().toLowerCase().replace(/[^a-z0-9-]/g, "-");
+      if (!slug) { toast("Укажите slug категории", "err"); return; }
+      var sort = parseInt(dlg.querySelector("#ec-sort").value, 10) || 0;
+
+      var i18nPayload = {};
+      LANGS.forEach(function(l){
+        var name = (dlg.querySelector('.ec-name[data-lang="' + l + '"]') || {}).value || "";
+        var desc = (dlg.querySelector('.ec-desc[data-lang="' + l + '"]') || {}).value || "";
+        var seoTitle = (dlg.querySelector('.ec-seo-title[data-lang="' + l + '"]') || {}).value || "";
+        var seoDesc = (dlg.querySelector('.ec-seo-desc[data-lang="' + l + '"]') || {}).value || "";
+        i18nPayload[l] = { name: name, description: desc, seo_title: seoTitle, seo_description: seoDesc };
+      });
+
+      var payload = {
+        slug: slug,
+        sort: sort,
+        active: c ? (c.active || 1) : 1,
+        i18n: i18nPayload
+      };
+
+      try {
+        if (isNew) {
+          await api("/api/admin/categories", { method: "POST", body: payload });
+          toast("Категория создана");
+        } else {
+          await api("/api/admin/categories/" + c.id, { method: "PUT", body: payload });
+          toast("Категория обновлена");
+        }
+        dlg.close(); dlg.remove();
+        await loadCats();
+        secCategories();
+      } catch(e) {
+        toast("Ошибка сохранения: " + (e.data && e.data.message ? e.data.message : e.message), "err");
+      }
+    };
   }
 
   /* ---------------------------- Products ---------------------------- */
@@ -621,12 +828,12 @@ export const ADMIN_APP_JS = String.raw`
             return '<tr data-row-id="' + esc(p.id) + '">' +
               '<td><img src="' + imgUrl + '" class="tbl-thumb" onerror="this.src=\'/assets/favicon.png\'"></td>' +
               '<td>' +
-                '<div class="tbl-prod-name">' + esc(p.name || "-") + '</div>' +
-                '<div class="tbl-prod-id">ID: ' + esc(p.id) + ' · сорт: ' + p.sort + (p.look ? ' · ' + esc(p.look) : '') + '</div>' +
+                '<div class="tbl-prod-name">' + (p.featured ? '<span title="Рекомендуемый на главной" style="color:var(--copper);margin-right:4px">⭐</span>' : '') + esc(p.name || "-") + '</div>' +
+                '<div class="tbl-prod-id">ID: ' + esc(p.id) + ' · сорт: ' + p.sort + (p.look ? ' · ' + esc(p.look) : '') + (p.product_type && p.product_type !== 'simple' ? ' · <span style="color:var(--copper);font-weight:600">' + esc(p.product_type) + '</span>' : '') + '</div>' +
               '</td>' +
               '<td><span class="pill">' + esc(catName(p.category)) + '</span></td>' +
               '<td>' +
-                '<span style="font-weight:700;font-size:14.5px;color:var(--ink)">' + fmtMoney(p.price_now < 10000 ? p.price_now * 12500 : p.price_now, "сум") + '</span>' +
+                '<span style="font-weight:700;font-size:14.5px;color:var(--ink)">' + fmtMoney(p.price_now < 10000 ? p.price_now * 12500 : p.price_now, "сум") + (p.unit && p.unit !== 'pcs' ? ' / ' + esc(p.unit) : '') + '</span>' +
                 (p.price_old ? ' <span style="text-decoration:line-through;color:var(--muted);font-size:12px">' + fmtMoney(p.price_old < 10000 ? p.price_old * 12500 : p.price_old, "сум") + '</span>' : '') +
                 (disc ? ' <span style="color:var(--ok);font-weight:700;font-size:11px">-' + disc + '%</span>' : '') +
               '</td>' +
@@ -741,7 +948,7 @@ export const ADMIN_APP_JS = String.raw`
       if (rawDraft) savedDraft = JSON.parse(rawDraft);
     } catch(e){}
 
-    // Parse initial sizes
+    // Parse initial sizes (no fake defaults)
     var currentSizes = [];
     try {
       var ruSizes = byLang.ru && byLang.ru.sizes;
@@ -752,39 +959,61 @@ export const ADMIN_APP_JS = String.raw`
         currentSizes = String(byLang.ru.sizes).split(",").map(function(s){ return s.trim(); }).filter(Boolean);
       }
     }
-    if (!currentSizes.length) currentSizes = ["200×90×75 см"];
 
-    // Parse initial specs
+    // Parse initial specs (no fake defaults)
     var currentSpecs = [];
     try {
       var spObj = byLang.ru && byLang.ru.specs;
       var parsed = typeof spObj === "object" ? spObj : (spObj ? JSON.parse(spObj) : null);
       if (parsed && typeof parsed === "object") {
-        Object.keys(parsed).forEach(function(k){ currentSpecs.push({ k: k, v: String(parsed[k]) }); });
+        Object.keys(parsed).forEach(function(k){
+          if (k !== "confirmed_colors") {
+            currentSpecs.push({ k: k, v: String(parsed[k]) });
+          }
+        });
       }
     } catch(e){}
-    if (!currentSpecs.length) {
-      currentSpecs = [
-        { k: "Материал", v: "Искусственный ротанг, металлический каркас" },
-        { k: "Покрытие", v: "Порошковое защитное" },
-        { k: "Производитель", v: "Bententrade (Узбекистан)" }
-      ];
+
+    // Parse initial confirmed colors/variants
+    var currentColors = [];
+    if (data.variants && Array.isArray(data.variants) && data.variants.length) {
+      currentColors = data.variants.map(function(v){
+        return {
+          id: v.variant_code || v.id,
+          hex: v.hex || "#768C65",
+          image: v.image || "",
+          ru: v.name_ru || "",
+          uz: v.name_uz || "",
+          en: v.name_en || ""
+        };
+      });
+    } else {
+      try {
+        var spObj2 = byLang.ru && byLang.ru.specs;
+        var parsed2 = typeof spObj2 === "object" ? spObj2 : (spObj2 ? JSON.parse(spObj2) : null);
+        if (parsed2 && Array.isArray(parsed2.confirmed_colors)) {
+          currentColors = parsed2.confirmed_colors.slice();
+        }
+      } catch(e){}
+      if (!currentColors.length && id && window.BTT_PRODUCTS) {
+        var mp = window.BTT_PRODUCTS[id];
+        if (mp && Array.isArray(mp.confirmedColors)) {
+          currentColors = JSON.parse(JSON.stringify(mp.confirmedColors));
+        }
+      }
     }
 
-    // Parse initial confirmed colors
-    var currentColors = [];
-    try {
-      var spObj2 = byLang.ru && byLang.ru.specs;
-      var parsed2 = typeof spObj2 === "object" ? spObj2 : (spObj2 ? JSON.parse(spObj2) : null);
-      if (parsed2 && Array.isArray(parsed2.confirmed_colors)) {
-        currentColors = parsed2.confirmed_colors.slice();
-      }
-    } catch(e){}
-    if (!currentColors.length && id && window.BTT_PRODUCTS) {
-      var mp = window.BTT_PRODUCTS[id];
-      if (mp && Array.isArray(mp.confirmedColors)) {
-        currentColors = JSON.parse(JSON.stringify(mp.confirmedColors));
-      }
+    // Parse initial bundle items
+    var currentBundleItems = [];
+    if (data.bundle_items && Array.isArray(data.bundle_items)) {
+      currentBundleItems = data.bundle_items.map(function(b){
+        return {
+          component_product_id: b.component_product_id,
+          quantity: b.quantity || 1,
+          sort: b.sort || 0,
+          name: b.component_name || b.component_product_id
+        };
+      });
     }
 
     var COLOR_PRESETS = [
@@ -1007,6 +1236,15 @@ export const ADMIN_APP_JS = String.raw`
               '</div>' +
               '<div class="spec-grid" id="p-specs-grid"></div>' +
             '</div>' +
+            '<!-- CARD 5: BUNDLE COMPOSITION (shown when product_type === "bundle") -->' +
+            '<div class="editor-card" id="p-bundle-card" style="' + (p.product_type === 'bundle' ? '' : 'display:none;') + '">' +
+              '<div class="editor-card-header">' +
+                '<div class="editor-card-title">📦 Состав мебельного комплекта (Bundle items)</div>' +
+                '<button type="button" class="btn ghost sm" id="p-add-bundle-item">' + ICONS.plus + ' Добавить товар</button>' +
+              '</div>' +
+              '<div class="hint" style="margin-bottom:8px">Укажите входящие в комплект отдельные товары (например: 1 стол + 4 стула). Клиент увидит состав и ссылки на компоненты на витрине.</div>' +
+              '<div id="p-bundle-items-list" style="display:flex;flex-direction:column;gap:8px"></div>' +
+            '</div>' +
 
           '</div>' +
 
@@ -1021,6 +1259,13 @@ export const ADMIN_APP_JS = String.raw`
                 '<select id="p-active">' +
                   '<option value="1" ' + (p.active !== 0 ? 'selected' : '') + '>Активен (виден клиентам)</option>' +
                   '<option value="0" ' + (p.active === 0 ? 'selected' : '') + '>Скрыт (черновик / архив)</option>' +
+                '</select>' +
+              '</div>' +
+              '<div class="field">' +
+                '<label>Рекомендованный на главной (Featured)</label>' +
+                '<select id="p-featured">' +
+                  '<option value="0" ' + (!p.featured ? 'selected' : '') + '>Обычный товар</option>' +
+                  '<option value="1" ' + (p.featured ? 'selected' : '') + '>⭐ Рекомендуемый (на главной)</option>' +
                 '</select>' +
               '</div>' +
               '<div class="field">' +
@@ -1054,6 +1299,14 @@ export const ADMIN_APP_JS = String.raw`
                   '<span class="disc-preset" data-disc="40">-40%</span>' +
                 '</div>' +
               '</div>' +
+              '<div class="field">' +
+                '<label>Единица измерения / продажи</label>' +
+                '<select id="p-unit">' +
+                  '<option value="pcs" ' + ((p.unit || "pcs") === "pcs" ? 'selected' : '') + '>Штука (шт / pcs)</option>' +
+                  '<option value="set" ' + (p.unit === "set" ? 'selected' : '') + '>Комплект (набор / set)</option>' +
+                  '<option value="kg" ' + (p.unit === "kg" ? 'selected' : '') + '>Килограмм (кг / kg)</option>' +
+                '</select>' +
+              '</div>' +
               '<div id="p-disc-badge" style="padding:6px 10px;border-radius:6px;font-size:12px;font-weight:600;text-align:center;background:var(--panel3);color:var(--muted)">Скидка не применяется</div>' +
             '</div>' +
 
@@ -1061,6 +1314,14 @@ export const ADMIN_APP_JS = String.raw`
             '<div class="editor-card">' +
               '<div class="editor-card-title">📁 Классификация</div>' +
               '<div class="field" style="margin-top:10px">' +
+                '<label>Тип товара (Product Type)</label>' +
+                '<select id="p-product-type">' +
+                  '<option value="simple" ' + ((p.product_type || "simple") === "simple" ? 'selected' : '') + '>Обычный товар (стул, стол, лампа, кашпо)</option>' +
+                  '<option value="bundle" ' + (p.product_type === "bundle" ? 'selected' : '') + '>Мебельный комплект (набор)</option>' +
+                  '<option value="material" ' + (p.product_type === "material" ? 'selected' : '') + '>Материал (ротанг, кг, метры)</option>' +
+                '</select>' +
+              '</div>' +
+              '<div class="field">' +
                 '<label>Уникальный ID / Артикул</label>' +
                 '<input id="p-id" ' + (isNew ? '' : 'disabled') + ' value="' + esc(p.id || "") + '" placeholder="например: stul-vertex или stol-corda">' +
               '</div>' +
@@ -1431,6 +1692,76 @@ export const ADMIN_APP_JS = String.raw`
       };
     }
     renderColors();
+
+    // 3c. Bundle composition logic
+    var prodTypeSel = dlg.querySelector("#p-product-type");
+    var bundleCard = dlg.querySelector("#p-bundle-card");
+    if (prodTypeSel && bundleCard) {
+      prodTypeSel.onchange = function(){
+        bundleCard.style.display = (prodTypeSel.value === "bundle" ? "" : "none");
+        triggerAutosave();
+      };
+    }
+
+    var bundleList = dlg.querySelector("#p-bundle-items-list");
+    function renderBundleItems(){
+      if (!bundleList) return;
+      if (!currentBundleItems.length) {
+        bundleList.innerHTML = '<div class="hint" style="padding:10px 0">Компоненты комплекта не добавлены. Нажмите «Добавить товар».</div>';
+        return;
+      }
+      bundleList.innerHTML = currentBundleItems.map(function(item, idx){
+        var optionsHtml = allProducts.map(function(prod){
+          var isSel = (prod.id === item.component_product_id) ? " selected" : "";
+          return '<option value="' + esc(prod.id) + '"' + isSel + '>' + esc(prod.name || prod.id) + ' (' + esc(prod.id) + ')</option>';
+        }).join("");
+        return '<div class="bundle-item-row" data-bundle-idx="' + idx + '" style="display:flex;gap:10px;align-items:center;background:var(--panel2);padding:8px 12px;border-radius:6px;">' +
+          '<div style="flex:3"><select class="bundle-item-prod" style="width:100%">' + optionsHtml + '</select></div>' +
+          '<div style="flex:1"><input type="number" min="1" class="bundle-item-qty" value="' + (item.quantity || 1) + '" placeholder="Кол-во" style="width:100%" title="Количество штук"></div>' +
+          '<button type="button" class="btn ghost icon-only bundle-item-del" style="color:var(--err)" title="Удалить компонент">✕</button>' +
+        '</div>';
+      }).join("");
+
+      bundleList.querySelectorAll(".bundle-item-prod").forEach(function(sel){
+        sel.onchange = function(){
+          var idx = +sel.closest(".bundle-item-row").getAttribute("data-bundle-idx");
+          currentBundleItems[idx].component_product_id = sel.value;
+          triggerAutosave();
+        };
+      });
+      bundleList.querySelectorAll(".bundle-item-qty").forEach(function(inp){
+        inp.oninput = function(){
+          var idx = +inp.closest(".bundle-item-row").getAttribute("data-bundle-idx");
+          currentBundleItems[idx].quantity = Math.max(1, parseInt(inp.value, 10) || 1);
+          triggerAutosave();
+        };
+      });
+      bundleList.querySelectorAll(".bundle-item-del").forEach(function(btn){
+        btn.onclick = function(){
+          var idx = +btn.closest(".bundle-item-row").getAttribute("data-bundle-idx");
+          currentBundleItems.splice(idx, 1);
+          renderBundleItems();
+          triggerAutosave();
+        };
+      });
+    }
+
+    var addBundleBtn = dlg.querySelector("#p-add-bundle-item");
+    if (addBundleBtn) {
+      addBundleBtn.onclick = function(){
+        var curPid = dlg.querySelector("#p-id").value.trim();
+        var cand = allProducts.find(function(x){ return x.id !== curPid; });
+        currentBundleItems.push({
+          component_product_id: cand ? cand.id : (allProducts[0] ? allProducts[0].id : ""),
+          quantity: 1,
+          sort: currentBundleItems.length
+        });
+        renderBundleItems();
+        triggerAutosave();
+      };
+    }
+    renderBundleItems();
+
     var galleryGrid = dlg.querySelector("#p-gallery-grid");
     function renderGallery(){
       if (!attachedMedia.length) {
@@ -1666,6 +1997,9 @@ export const ADMIN_APP_JS = String.raw`
             id: dlg.querySelector("#p-id").value.trim(),
             category: dlg.querySelector("#p-cat").value,
             look: dlg.querySelector("#p-look").value.trim(),
+            product_type: dlg.querySelector("#p-product-type").value,
+            unit: dlg.querySelector("#p-unit").value,
+            featured: +dlg.querySelector("#p-featured").value || 0,
             price_now: +nowInp.value || 0,
             price_old: +oldInp.value || 0,
             sort: +dlg.querySelector("#p-sort").value || 0,
@@ -1673,6 +2007,7 @@ export const ADMIN_APP_JS = String.raw`
             availability: dlg.querySelector("#p-avail").value,
             sizes: currentSizes,
             colors: currentColors,
+            bundle_items: currentBundleItems,
             specs: currentSpecs,
             names: {
               ru: dlg.querySelector('.p-name-inp[data-lang="ru"]').value,
@@ -1716,6 +2051,12 @@ export const ADMIN_APP_JS = String.raw`
         rBtn.onclick = function(){
           if (savedDraft.category) dlg.querySelector("#p-cat").value = savedDraft.category;
           if (savedDraft.look) dlg.querySelector("#p-look").value = savedDraft.look;
+          if (savedDraft.product_type) {
+            dlg.querySelector("#p-product-type").value = savedDraft.product_type;
+            if (bundleCard) bundleCard.style.display = (savedDraft.product_type === "bundle" ? "" : "none");
+          }
+          if (savedDraft.unit) dlg.querySelector("#p-unit").value = savedDraft.unit;
+          if (savedDraft.featured != null) dlg.querySelector("#p-featured").value = savedDraft.featured;
           if (savedDraft.price_now != null) nowInp.value = savedDraft.price_now;
           if (savedDraft.price_old != null) oldInp.value = savedDraft.price_old;
           if (savedDraft.sort != null) dlg.querySelector("#p-sort").value = savedDraft.sort;
@@ -1723,6 +2064,7 @@ export const ADMIN_APP_JS = String.raw`
           if (savedDraft.availability) dlg.querySelector("#p-avail").value = savedDraft.availability;
           if (savedDraft.sizes) { currentSizes = savedDraft.sizes; renderChips(); }
           if (savedDraft.colors) { currentColors = savedDraft.colors; renderColors(); }
+          if (savedDraft.bundle_items) { currentBundleItems = savedDraft.bundle_items; renderBundleItems(); }
           if (savedDraft.specs) { currentSpecs = savedDraft.specs; renderSpecs(); }
           LANGS.forEach(function(l){
             if (savedDraft.names && savedDraft.names[l]) dlg.querySelector('.p-name-inp[data-lang="' + l + '"]').value = savedDraft.names[l];
@@ -1820,15 +2162,48 @@ export const ADMIN_APP_JS = String.raw`
         };
       });
 
+      var productType = dlg.querySelector("#p-product-type").value;
+      var unit = dlg.querySelector("#p-unit").value;
+      var featured = parseInt(dlg.querySelector("#p-featured").value, 10) || 0;
+
+      var variantsPayload = (currentColors || []).map(function(c, cIdx){
+        return {
+          id: (c.id || "").trim() || ("var-" + (cIdx + 1)),
+          variant_code: (c.id || "").trim() || ("var-" + (cIdx + 1)),
+          name_ru: (c.ru || "").trim(),
+          name_uz: (c.uz || "").trim(),
+          name_en: (c.en || "").trim(),
+          hex: c.hex || "#ffffff",
+          image: c.image || "",
+          sort: cIdx
+        };
+      });
+
+      var bundleItemsPayload = [];
+      if (productType === "bundle") {
+        bundleItemsPayload = (currentBundleItems || []).map(function(b, bIdx){
+          return {
+            component_product_id: b.component_product_id,
+            quantity: parseInt(b.quantity, 10) || 1,
+            sort: bIdx
+          };
+        });
+      }
+
       var payload = {
         id: pid,
         category: dlg.querySelector("#p-cat").value,
         look: dlg.querySelector("#p-look").value.trim(),
+        product_type: productType,
+        unit: unit,
+        featured: featured,
         price_now: +nowInp.value || 0,
         price_old: +oldInp.value || 0,
         sort: +dlg.querySelector("#p-sort").value || 0,
         active: +dlg.querySelector("#p-active").value,
         availability: dlg.querySelector("#p-avail").value,
+        variants: variantsPayload,
+        bundle_items: bundleItemsPayload,
         i18n: i18n
       };
 

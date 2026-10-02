@@ -319,11 +319,61 @@
     return added;
   }
 
+  async function hydrateCategories() {
+    const chipGroups = document.querySelectorAll("[data-chips]");
+    if (!chipGroups.length) return;
+    try {
+      const lg = lang();
+      const r = await fetch("/api/categories?lang=" + encodeURIComponent(lg));
+      if (!r.ok) return;
+      const data = await r.json();
+      const cats = data.categories || [];
+      if (!cats.length) return;
+
+      chipGroups.forEach(group => {
+        const existingCats = new Set(Array.from(group.querySelectorAll(".chip")).map(c => c.dataset.cat));
+        cats.forEach(c => {
+          if (!existingCats.has(c.slug)) {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "chip";
+            btn.dataset.cat = c.slug;
+            const name = (c.i18n && c.i18n[lg] && c.i18n[lg].name) || c.name || c.slug;
+            btn.innerHTML = '<span class="chip-label">' + esc(name) + '</span><span class="chip-count">' + (c.product_count || 0) + '</span>';
+            group.appendChild(btn);
+
+            btn.addEventListener("click", () => {
+              group.querySelectorAll(".chip").forEach(ch => ch.classList.remove("is-active"));
+              btn.classList.add("is-active");
+              const grid = document.querySelector(group.dataset.target);
+              if (grid && window.BTT_UTIL && window.BTT_UTIL.applyCatalogState) {
+                window.BTT_UTIL.applyCatalogState(grid);
+              } else if (grid) {
+                grid.querySelectorAll("[data-product]").forEach(card => {
+                  card.style.display = (card.dataset.cat === c.slug) ? "" : "none";
+                });
+              }
+              document.dispatchEvent(new CustomEvent("btt:cat-change", { detail: { cat: c.slug, chip: btn } }));
+            });
+          } else {
+            const chip = group.querySelector('.chip[data-cat="' + c.slug + '"]');
+            if (chip) {
+              const labelEl = chip.querySelector(".chip-label");
+              const name = (c.i18n && c.i18n[lg] && c.i18n[lg].name) || c.name;
+              if (labelEl && name) labelEl.textContent = name;
+            }
+          }
+        });
+      });
+    } catch(e){}
+  }
+
   async function hydrateCatalog() {
     const catGrid = document.querySelector("#catalog-grid");
     const homeGrid = document.querySelector("#home-grid");
     const rattanGrid = document.querySelector("#rattan-grid");
     if (!catGrid && !homeGrid && !rattanGrid) return;
+    await hydrateCategories();
     const { list, map } = await ensureMap();
     if (!list.length) {
       if (catGrid) appendMissingStaticProducts(catGrid);
@@ -336,7 +386,7 @@
     syncCatalogCount();
   }
 
-  // Pull CRM images/prices/names into any product grid rendered after us -
+  // Pull CRM images/prices/names into any product grid rendered after us
   // most importantly the PDP "related" grid built by pdp.js.
   document.addEventListener("btt:related-rendered", async (e) => {
     const grid = e.detail && e.detail.grid;
@@ -357,6 +407,7 @@
   }
 
   function showPdp404() {
+    if (document.getElementById("btt-runtime-product") || window.BTT_PDP_PRODUCT) return;
     const main = document.querySelector("main.pdp-flow");
     if (!main) return;
     main.innerHTML =

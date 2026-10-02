@@ -34,33 +34,73 @@ export type Variables = {
 /** Product availability status unified model. */
 export type ProductAvailability = "unknown" | "in_stock" | "low_stock" | "out_of_stock" | "on_request";
 
-/** 4 canonical categories for storefront and CMS. */
-export type ProductCategory = "wicker-chairs" | "plastic-chairs" | "upholstered-chairs" | "tables";
+/** Extensible product types (simple, bundle, material). */
+export type ProductType = "simple" | "bundle" | "material" | string;
 
-/** Single Source of Truth canonical product record. */
+/** Extensible product sale units (pcs, set, kg). */
+export type ProductUnit = "pcs" | "set" | "kg" | string;
+
+/** Dynamic category definition. */
+export type ProductCategory = string;
+
+/** Unified authoritative product DTO / Master record. */
 export interface ProductMasterRecord {
   id: string; // canonical slug, e.g. "stul-vertex"
   category: ProductCategory;
+  category_label?: string;
+  product_type?: ProductType;
+  unit?: ProductUnit;
   look?: string | null;
   price_now: number;
   price_old?: number;
   default_size?: number;
   active: number;
   sort: number;
+  featured?: number;
   availability: ProductAvailability;
   created_at?: string;
+  updated_at?: string;
 }
 
-/** Architecture definition for Sets (4 chairs + 1 table), referencing canonical product IDs without data duplication. */
-export interface ProductSet {
-  id: string; // e.g. "set-taper-corda-4"
+/** Product variant (e.g. real confirmed color with photos). */
+export interface ProductVariant {
+  id?: number;
+  product_id: string;
+  variant_code: string;
+  name_ru: string;
+  name_uz?: string | null;
+  name_en?: string | null;
+  hex?: string | null;
+  price_modifier?: number;
+  image?: string | null;
+  images?: string[];
+  active?: number;
+  sort?: number;
+}
+
+/** Bundle component relationship. */
+export interface BundleItem {
+  id?: number;
+  bundle_product_id: string;
+  component_product_id: string;
+  quantity: number;
+  sort?: number;
+  component_name?: string;
+  component_price?: number;
+  component_image?: string;
+}
+
+/** Dynamic Category with localized fields. */
+export interface CategoryRecord {
+  id: number;
   slug: string;
-  chairProductId: string; // canonical slug of chair SKU
-  chairQuantity: number;  // e.g. 4
-  tableProductId: string; // canonical slug of table SKU
-  tableQuantity: number;  // e.g. 1
-  price: number;
+  parent_id?: number | null;
   active: number;
   sort: number;
-  created_at?: string;
+  image?: string | null;
+  name?: string;
+  description?: string;
+  seo_title?: string;
+  seo_description?: string;
+  product_count?: number;
 }

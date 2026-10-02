@@ -38,25 +38,20 @@
     return null;
   }
 
-  const currentSlug = resolveProductIdentifier();
-  const prod = currentSlug ? PRODUCTS[currentSlug] : null;
+  let currentSlug = resolveProductIdentifier();
+  let prod = currentSlug ? PRODUCTS[currentSlug] : null;
   window.BTT_PDP_PRODUCT = prod;
 
-  if(!prod){
+  function show404(){
     document.title = "BTT - 404";
-    const show404 = function(){
-      const main = document.querySelector("main") || document.body;
-      if(main){
-        main.innerHTML = '<div class="wrap" style="text-align:center;padding:120px 20px;">' +
-          '<h1 style="font-family:var(--font-head);font-size:3rem;margin-bottom:16px;">404</h1>' +
-          '<p style="font-size:1.1rem;color:var(--muted);margin-bottom:30px;">Товар не найден / Mahsulot topilmadi / Product not found</p>' +
-          '<a href="catalog.html" class="btn btn--copper" style="display:inline-flex;align-items:center;gap:8px;">' +
-          '<span>Каталог товаров</span></a></div>';
-      }
-    };
-    if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", show404);
-    else show404();
-    return;
+    const main = document.querySelector("main") || document.body;
+    if(main){
+      main.innerHTML = '<div class="wrap" style="text-align:center;padding:120px 20px;">' +
+        '<h1 style="font-family:var(--font-head);font-size:3rem;margin-bottom:16px;">404</h1>' +
+        '<p style="font-size:1.1rem;color:var(--muted);margin-bottom:30px;">Товар не найден / Mahsulot topilmadi / Product not found</p>' +
+        '<a href="catalog.html" class="btn btn--copper" style="display:inline-flex;align-items:center;gap:8px;">' +
+        '<span>Каталог товаров</span></a></div>';
+    }
   }
 
   const $ = (s, root) => (root || document).querySelector(s);
@@ -592,20 +587,26 @@
 
   function render(){
     const l = lang();
-    const nm = t(prod.slug + ".name") || prod.model;
-    const cat = t(prod.slug + ".cat") || t("cat." + prod.category);
+    const localizedObj = prod.i18n && (prod.i18n[l] || prod.i18n.ru);
+    const masterEntry = MASTER.find(m => m.slug === prod.slug);
+    const i18nEntry = localizedObj || (masterEntry && masterEntry.i18n && (masterEntry.i18n[l] || masterEntry.i18n.ru));
+
+    const nm = (localizedObj && localizedObj.name) || t(prod.slug + ".name") || prod.name || prod.model;
+    const cat = prod.category_label || (localizedObj && localizedObj.category_label) || t(prod.slug + ".cat") || t("cat." + prod.category);
 
     // Breadcrumb and Titles
     $$("[data-pdp-name]").forEach(el => el.textContent = nm);
     $$("[data-pdp-cat]").forEach(el => el.textContent = cat);
     $$("[data-crumb-cat]").forEach(a => a.href = "catalog.html?cat=" + prod.category);
 
-    // Price
+    // Price and unit
     const priceEl = $("[data-pdp-price]");
-    if(priceEl) priceEl.textContent = money(prod.now);
+    const unitText = (prod.unit_label || (prod.unit && prod.unit !== "pcs" ? (" / " + t("unit." + prod.unit)) : ""));
+    if(priceEl) priceEl.textContent = money(prod.now) + (unitText ? (" " + unitText) : "");
 
     // Dimensions
-    $$("[data-pdp-dim-val], [data-pdp-spec-dim]").forEach(el => el.textContent = prod.dimensions || "-");
+    const dims = prod.dimensions || (prod.specs && prod.specs.dim) || "-";
+    $$("[data-pdp-dim-val], [data-pdp-spec-dim]").forEach(el => el.textContent = dims);
 
     // Table caution warning
     const warnBoxes = $$("[data-pdp-table-warning], [data-pdp-table-warning-detail]");
@@ -614,22 +615,48 @@
     });
 
     // Description
-    const masterEntry = MASTER.find(m => m.slug === prod.slug);
-    const i18nEntry = masterEntry && masterEntry.i18n && (masterEntry.i18n[l] || masterEntry.i18n.ru);
-    const descText = i18nEntry ? i18nEntry.description : ((CATTEXT[prod.category] && (CATTEXT[prod.category][l] || CATTEXT[prod.category].ru)) || {}).desc || "";
+    const descText = (i18nEntry && i18nEntry.description) || prod.description || ((CATTEXT[prod.category] && (CATTEXT[prod.category][l] || CATTEXT[prod.category].ru)) || {}).desc || "";
     $$("[data-pdp-desc], [data-pdp-full-desc]").forEach(el => el.textContent = descText);
+
+    // Bundle composition if product_type === 'bundle'
+    let bundleBox = document.getElementById("pdp-bundle-composition");
+    if(prod.product_type === "bundle" && prod.bundle_items && prod.bundle_items.length){
+      if(!bundleBox){
+        bundleBox = document.createElement("div");
+        bundleBox.id = "pdp-bundle-composition";
+        bundleBox.className = "pdp-bundle-box";
+        bundleBox.style.cssText = "margin:16px 0;padding:14px 16px;border:1px solid var(--border);border-radius:10px;background:var(--bg-soft, rgba(0,0,0,0.02));";
+        const buySection = document.querySelector(".pdp-buy");
+        if(buySection && buySection.parentNode){
+          buySection.parentNode.insertBefore(bundleBox, buySection);
+        }
+      }
+      const bTitle = t("bundle.composition") || "Состав комплекта:";
+      const itemsHtml = prod.bundle_items.map(function(bi){
+        const compHref = "/catalog/" + encodeURIComponent(bi.product_id);
+        const compName = bi.name || bi.component_name || bi.product_id;
+        const compQty = bi.quantity || 1;
+        return '<li style="margin-bottom:6px;"><a href="' + esc(compHref) + '" style="color:var(--primary);text-decoration:underline;font-weight:600;">' + esc(compName) + '</a> - ' + compQty + ' ' + (t("pcs") || "шт.") + '</li>';
+      }).join("");
+      bundleBox.innerHTML = '<div style="font-weight:700;font-size:14px;margin-bottom:8px;">' + esc(bTitle) + '</div><ul style="margin:0;padding-left:20px;font-size:13.5px;">' + itemsHtml + '</ul>';
+      bundleBox.style.display = "";
+    } else if(bundleBox){
+      bundleBox.style.display = "none";
+    }
 
     // Specs
     const matEl = $("[data-pdp-spec-mat]");
     if(matEl){
-      matEl.textContent = (prod.materials || []).join(", ");
+      const matStr = Array.isArray(prod.materials) ? prod.materials.join(", ") : ((prod.specs && prod.specs.mat) || "-");
+      matEl.textContent = matStr;
     }
     const loadRow = $("[data-pdp-spec-load-row]");
     const loadEl = $("[data-pdp-spec-load]");
     if(loadRow && loadEl){
-      if(prod.maxLoad){
+      const loadVal = prod.maxLoad || (prod.specs && prod.specs.max_load);
+      if(loadVal){
         loadRow.style.display = "";
-        loadEl.textContent = prod.maxLoad;
+        loadEl.textContent = loadVal;
       } else {
         loadRow.style.display = "none";
       }
@@ -754,7 +781,7 @@
     }
   }
 
-  // Initial load
+  // Initial load & runtime product hydration
   function initPDP(){
     setImages();
     render();
@@ -762,15 +789,58 @@
     renderLifestylePairing(activeColorId);
   }
 
+  async function bootstrapPDP(){
+    // 1. Check for server-injected runtime product script
+    const runtimeScript = document.getElementById("btt-runtime-product");
+    if(runtimeScript && runtimeScript.textContent){
+      try {
+        const parsed = JSON.parse(runtimeScript.textContent);
+        if(parsed && (parsed.id || parsed.slug)){
+          prod = parsed;
+          currentSlug = parsed.slug || parsed.id;
+        }
+      } catch(e){}
+    }
+
+    if(!prod){
+      currentSlug = resolveProductIdentifier();
+      if(currentSlug && PRODUCTS[currentSlug]){
+        prod = PRODUCTS[currentSlug];
+      }
+    }
+
+    // 2. Fallback to API if not in static array
+    if(!prod && currentSlug && window.BTT_API && window.BTT_API.product){
+      try {
+        const res = await window.BTT_API.product(currentSlug);
+        if(res && res.product){
+          prod = res.product;
+        }
+      } catch(e){}
+    }
+
+    if(prod){
+      if(!window.BTT_PRODUCTS) window.BTT_PRODUCTS = {};
+      window.BTT_PRODUCTS[prod.id] = prod;
+      if(prod.slug) window.BTT_PRODUCTS[prod.slug] = prod;
+      window.BTT_PDP_PRODUCT = prod;
+      initPDP();
+    } else {
+      show404();
+    }
+  }
+
   if(document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initPDP);
+    document.addEventListener("DOMContentLoaded", bootstrapPDP);
   } else {
-    initPDP();
+    bootstrapPDP();
   }
 
   document.addEventListener("btt:lang", ()=>{
-    render();
-    renderRelated();
-    renderLifestylePairing(activeColorId);
+    if(prod){
+      render();
+      renderRelated();
+      renderLifestylePairing(activeColorId);
+    }
   });
 })();

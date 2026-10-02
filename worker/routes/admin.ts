@@ -12,19 +12,24 @@ app.use("*", requireAdmin);
 
 const LANGS = ["ru", "uz", "en"] as const;
 
-export const ALLOWED_CATEGORIES = new Set([
-  "wicker-chairs",
-  "plastic-chairs",
-  "upholstered-chairs",
-  "tables",
-]);
-
 export const ALLOWED_AVAILABILITIES = new Set([
   "unknown",
   "in_stock",
   "low_stock",
   "out_of_stock",
   "on_request",
+]);
+
+export const ALLOWED_PRODUCT_TYPES = new Set([
+  "simple",
+  "bundle",
+  "material",
+]);
+
+export const ALLOWED_UNITS = new Set([
+  "pcs",
+  "set",
+  "kg",
 ]);
 
 function validateProductSlug(slug: string): string | null {
@@ -38,12 +43,129 @@ function validateProductSlug(slug: string): string | null {
   return null;
 }
 
+/* =============================== categories ============================= */
+
+async function upsertCategoryI18n(c: any, categoryId: number, i18n: any, fallbackName: string) {
+  const stmt = c.env.DB.prepare(
+    `INSERT INTO category_i18n (category_id, lang, name, description, seo_title, seo_description)
+     VALUES (?, ?, ?, ?, ?, ?)
+     ON CONFLICT(category_id, lang) DO UPDATE SET
+       name = excluded.name, description = excluded.description,
+       seo_title = excluded.seo_title, seo_description = excluded.seo_description`
+  );
+  const batch = [];
+  for (const lang of LANGS) {
+    const t = i18n && i18n[lang];
+    const name = (t && str(t.name, 120)) || fallbackName;
+    const desc = (t && str(t.description, 1000)) || null;
+    const seoTitle = (t && str(t.seo_title, 255)) || null;
+    const seoDesc = (t && str(t.seo_description, 500)) || null;
+    batch.push(stmt.bind(categoryId, lang, name, desc, seoTitle, seoDesc));
+  }
+  if (batch.length) await c.env.DB.batch(batch);
+}
+
+app.get("/categories", async (c) => {
+  const sql = `
+    SELECT c.id, c.slug, c.parent_id, c.sort, c.active, c.image, c.created_at, c.updated_at,
+           (SELECT COUNT(*) FROM products p WHERE p.category = c.slug) AS product_count
+    FROM categories c
+    ORDER BY c.sort ASC, c.id ASC
+  `;
+  const { results: cats } = await c.env.DB.prepare(sql).all<Record<string, unknown>>();
+  const { results: i18nRows } = await c.env.DB.prepare(
+    `SELECT category_id, lang, name, description, seo_title, seo_description FROM category_i18n`
+  ).all<{ category_id: number; lang: string; name: string; description: string; seo_title: string; seo_description: string }>();
+
+  const i18nByCat = new Map<number, Record<string, unknown>>();
+  for (const r of i18nRows) {
+    let map = i18nByCat.get(r.category_id);
+    if (!map) {
+      map = {};
+      i18nByCat.set(r.category_id, map);
+    }
+    map[r.lang] = r;
+  }
+
+  const list = cats.map((cat) => ({
+    ...cat,
+    i18n: i18nByCat.get(Number(cat.id)) || {},
+  }));
+
+  return c.json({ categories: list });
+});
+
+app.post("/categories", async (c) => {
+  const b = await c.req.json().catch(() => ({}));
+  const slug = str(b.slug, 60).toLowerCase().trim().replace(/[^a-z0-9-]/g, "-");
+  if (!slug) return c.json({ error: "slug_required" }, 422);
+
+  const exists = await c.env.DB.prepare(`SELECT id FROM categories WHERE slug = ?`).bind(slug).first();
+  if (exists) return c.json({ error: "slug_taken" }, 409);
+
+  const parentId = b.parent_id ? Number(b.parent_id) : null;
+  const sort = Math.floor(Number(b.sort) || 0);
+  const active = b.active === 0 || b.active === false ? 0 : 1;
+  const image = str(b.image, 300) || null;
+
+  const ins = await c.env.DB.prepare(
+    `INSERT INTO categories (slug, parent_id, active, sort, image) VALUES (?, ?, ?, ?, ?)`
+  ).bind(slug, parentId, active, sort, image).run();
+
+  const catId = ins.meta.last_row_id as number;
+  await upsertCategoryI18n(c, catId, b.i18n, slug);
+  return c.json({ ok: true, id: catId, slug });
+});
+
+app.put("/categories/:id", async (c) => {
+  const id = Number(c.req.param("id"));
+  const b = await c.req.json().catch(() => ({}));
+  const slug = str(b.slug, 60).toLowerCase().trim().replace(/[^a-z0-9-]/g, "-");
+  if (!slug) return c.json({ error: "slug_required" }, 422);
+
+  const parentId = b.parent_id ? Number(b.parent_id) : null;
+  const sort = Math.floor(Number(b.sort) || 0);
+  const active = b.active === 0 || b.active === false ? 0 : 1;
+  const image = str(b.image, 300) || null;
+
+  await c.env.DB.prepare(
+    `UPDATE categories SET slug = ?, parent_id = ?, active = ?, sort = ?, image = ?, updated_at = datetime('now') WHERE id = ?`
+  ).bind(slug, parentId, active, sort, image, id).run();
+
+  await upsertCategoryI18n(c, id, b.i18n, slug);
+  return c.json({ ok: true, id, slug });
+});
+
+app.put("/categories/:id/active", async (c) => {
+  const id = Number(c.req.param("id"));
+  const b = await c.req.json().catch(() => ({}));
+  const active = b.active === 0 || b.active === false ? 0 : 1;
+  await c.env.DB.prepare(`UPDATE categories SET active = ?, updated_at = datetime('now') WHERE id = ?`).bind(active, id).run();
+  return c.json({ ok: true, id, active });
+});
+
+app.delete("/categories/:id", async (c) => {
+  const id = Number(c.req.param("id"));
+  const cat = await c.env.DB.prepare(`SELECT slug FROM categories WHERE id = ?`).bind(id).first<{ slug: string }>();
+  if (cat) {
+    const count = await c.env.DB.prepare(`SELECT COUNT(*) as n FROM products WHERE category = ?`).bind(cat.slug).first<{ n: number }>();
+    if (count && count.n > 0) {
+      return c.json({ error: "category_not_empty", message: "Cannot delete category containing products" }, 409);
+    }
+  }
+  const r = await c.env.DB.prepare(`DELETE FROM categories WHERE id = ?`).bind(id).run();
+  return c.json({ ok: true, id, deleted: r.meta.changes });
+});
+
 /* =============================== products ============================== */
 
 app.get("/products", async (c) => {
   const { results } = await c.env.DB.prepare(
     `SELECT p.id, p.category, p.look, p.price_now, p.price_old, p.active, p.sort,
             COALESCE(p.availability, 'unknown') AS availability,
+            COALESCE(p.product_type, 'simple') AS product_type,
+            COALESCE(p.unit, 'pcs') AS unit,
+            p.featured,
             i.name,
             (SELECT m.key FROM media m WHERE m.product_id = p.id ORDER BY m.sort ASC, m.id ASC LIMIT 1) AS image
      FROM products p LEFT JOIN product_i18n i ON i.product_id = p.id AND i.lang = 'ru'
@@ -56,27 +178,53 @@ app.put("/products/:id/active", async (c) => {
   const id = c.req.param("id");
   const b = await c.req.json().catch(() => ({}));
   const active = b.active === 0 || b.active === false ? 0 : 1;
-  const r = await c.env.DB.prepare(`UPDATE products SET active = ? WHERE id = ?`).bind(active, id).run();
+  const r = await c.env.DB.prepare(`UPDATE products SET active = ?, updated_at = datetime('now') WHERE id = ?`).bind(active, id).run();
   return c.json({ ok: true, active, updated: r.meta.changes });
 });
 
 app.get("/products/:id", async (c) => {
   const id = c.req.param("id");
   const product = await c.env.DB.prepare(
-    `SELECT *, COALESCE(availability, 'unknown') AS availability FROM products WHERE id = ?`,
+    `SELECT *, COALESCE(availability, 'unknown') AS availability,
+              COALESCE(product_type, 'simple') AS product_type,
+              COALESCE(unit, 'pcs') AS unit
+     FROM products WHERE id = ?`,
   ).bind(id).first();
   if (!product) return c.json({ error: "not_found" }, 404);
-  const { results } = await c.env.DB.prepare(
+
+  const { results: i18n } = await c.env.DB.prepare(
     `SELECT lang, name, category_label, description, sizes, specs, seo_title, seo_description FROM product_i18n WHERE product_id = ?`,
   )
     .bind(id)
     .all();
+
   const media = await c.env.DB.prepare(
-    `SELECT id, key, alt, sort FROM media WHERE product_id = ? ORDER BY sort`,
+    `SELECT id, key, alt, sort FROM media WHERE product_id = ? ORDER BY sort ASC, id ASC`,
   )
     .bind(id)
     .all();
-  return c.json({ product, i18n: results, media: media.results });
+
+  const variants = await c.env.DB.prepare(
+    `SELECT id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort
+     FROM product_variants WHERE product_id = ? ORDER BY sort ASC, id ASC`
+  ).bind(id).all();
+
+  const bundleItems = await c.env.DB.prepare(
+    `SELECT bi.id, bi.component_product_id, bi.quantity, bi.sort,
+            COALESCE(i.name, bi.component_product_id) AS component_name
+     FROM bundle_items bi
+     LEFT JOIN product_i18n i ON i.product_id = bi.component_product_id AND i.lang = 'ru'
+     WHERE bi.bundle_product_id = ?
+     ORDER BY bi.sort ASC, bi.id ASC`
+  ).bind(id).all();
+
+  return c.json({
+    product,
+    i18n,
+    media: media.results,
+    variants: variants.results,
+    bundle_items: bundleItems.results,
+  });
 });
 
 async function upsertProductI18n(c: any, id: string, i18n: any) {
@@ -93,8 +241,8 @@ async function upsertProductI18n(c: any, id: string, i18n: any) {
   for (const lang of LANGS) {
     const t = i18n[lang];
     if (!t) continue;
-    const sizes = Array.isArray(t.sizes) ? JSON.stringify(t.sizes) : str(t.sizes, 500) || "[]";
-    const specs = typeof t.specs === "object" && t.specs ? JSON.stringify(t.specs) : str(t.specs, 10000) || "{}";
+    const sizes = Array.isArray(t.sizes) ? JSON.stringify(t.sizes) : (t.sizes ? String(t.sizes) : "[]");
+    const specs = typeof t.specs === "object" && t.specs ? JSON.stringify(t.specs) : (t.specs ? String(t.specs) : "{}");
     batch.push(stmt.bind(
       id,
       lang,
@@ -110,21 +258,80 @@ async function upsertProductI18n(c: any, id: string, i18n: any) {
   if (batch.length) await c.env.DB.batch(batch);
 }
 
+async function upsertProductVariants(c: any, productId: string, variants: any[]) {
+  if (!Array.isArray(variants)) return;
+  // If full variants array is provided, replace or sync
+  await c.env.DB.prepare(`DELETE FROM product_variants WHERE product_id = ?`).bind(productId).run();
+  if (!variants.length) return;
+
+  const stmt = c.env.DB.prepare(`
+    INSERT INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `);
+  const batch = [];
+  for (let i = 0; i < variants.length; i++) {
+    const v = variants[i];
+    const code = str(v.variant_code || v.id, 50).toLowerCase().trim() || `v${i + 1}`;
+    const ru = str(v.name_ru || (v.name && v.name.ru) || code, 100);
+    const uz = str(v.name_uz || (v.name && v.name.uz) || ru, 100);
+    const en = str(v.name_en || (v.name && v.name.en) || ru, 100);
+    const hex = str(v.hex, 30) || null;
+    const img = str(v.image, 300) || null;
+    const imgsJson = JSON.stringify(Array.isArray(v.images) ? v.images : (img ? [img] : []));
+    const priceMod = Math.floor(Number(v.price_modifier) || 0);
+    const active = v.active === 0 || v.active === false ? 0 : 1;
+    const sort = Math.floor(Number(v.sort) || (i + 1) * 10);
+    batch.push(stmt.bind(productId, code, ru, uz, en, hex, img, imgsJson, priceMod, active, sort));
+  }
+  if (batch.length) await c.env.DB.batch(batch);
+}
+
+async function upsertBundleItems(c: any, bundleProductId: string, items: any[]) {
+  if (!Array.isArray(items)) return;
+  await c.env.DB.prepare(`DELETE FROM bundle_items WHERE bundle_product_id = ?`).bind(bundleProductId).run();
+  if (!items.length) return;
+
+  const stmt = c.env.DB.prepare(`
+    INSERT INTO bundle_items (bundle_product_id, component_product_id, quantity, sort)
+    VALUES (?, ?, ?, ?)
+  `);
+  const batch = [];
+  for (let i = 0; i < items.length; i++) {
+    const it = items[i];
+    const compId = str(it.component_product_id || it.id, 60);
+    if (!compId) continue;
+    const qty = Math.max(1, Math.floor(Number(it.quantity) || 1));
+    const sort = Math.floor(Number(it.sort) || (i + 1) * 10);
+    batch.push(stmt.bind(bundleProductId, compId, qty, sort));
+  }
+  if (batch.length) await c.env.DB.batch(batch);
+}
+
 app.post("/products", async (c) => {
   const b = await c.req.json().catch(() => ({}));
-  const rawId = str(b.id, 60).toLowerCase().trim();
+  const rawId = str(b.id || b.slug, 60).toLowerCase().trim();
   const slugErr = validateProductSlug(rawId);
   if (slugErr) return c.json({ error: slugErr }, 422);
 
-  const category = str(b.category, 40);
-  if (!ALLOWED_CATEGORIES.has(category)) {
-    return c.json({ error: "invalid_category", allowed: Array.from(ALLOWED_CATEGORIES) }, 422);
+  const category = str(b.category, 60).toLowerCase().trim();
+  if (!category) return c.json({ error: "category_required" }, 422);
+
+  // Dynamic category check: if category not registered yet, auto-register in categories table
+  const catExists = await c.env.DB.prepare(`SELECT id FROM categories WHERE slug = ?`).bind(category).first();
+  if (!catExists) {
+    const insCat = await c.env.DB.prepare(`INSERT INTO categories (slug, active, sort) VALUES (?, 1, 100)`).bind(category).run();
+    const newCatId = insCat.meta.last_row_id as number;
+    await upsertCategoryI18n(c, newCatId, null, category);
   }
 
   const availability = str(b.availability, 20) || "unknown";
   if (!ALLOWED_AVAILABILITIES.has(availability)) {
     return c.json({ error: "invalid_availability", allowed: Array.from(ALLOWED_AVAILABILITIES) }, 422);
   }
+
+  const productType = str(b.product_type, 30) || "simple";
+  const unit = str(b.unit, 20) || "pcs";
+  const featured = b.featured ? 1 : 0;
 
   const exists = await c.env.DB.prepare(`SELECT id FROM products WHERE id = ?`).bind(rawId).first();
   if (exists) return c.json({ error: "id_taken" }, 409);
@@ -133,8 +340,8 @@ app.post("/products", async (c) => {
   if (aliasExists) return c.json({ error: "alias_collision" }, 409);
 
   await c.env.DB.prepare(
-    `INSERT INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, product_type, unit, featured, updated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`,
   )
     .bind(
       rawId,
@@ -143,12 +350,24 @@ app.post("/products", async (c) => {
       Math.max(0, Math.floor(Number(b.price_now) || 0)),
       Math.max(0, Math.floor(Number(b.price_old) || 0)),
       Math.max(0, Math.floor(Number(b.default_size) || 0)),
-      b.active === 0 ? 0 : 1,
+      b.active === 0 || b.active === false ? 0 : 1,
       Math.floor(Number(b.sort) || 0),
       availability,
+      productType,
+      unit,
+      featured,
     )
     .run();
+
   await upsertProductI18n(c, rawId, b.i18n);
+
+  if (Array.isArray(b.variants)) {
+    await upsertProductVariants(c, rawId, b.variants);
+  }
+  if (Array.isArray(b.bundle_items)) {
+    await upsertBundleItems(c, rawId, b.bundle_items);
+  }
+
   return c.json({ ok: true, id: rawId });
 });
 
@@ -156,9 +375,14 @@ app.put("/products/:id", async (c) => {
   const id = c.req.param("id");
   const b = await c.req.json().catch(() => ({}));
 
-  const category = str(b.category, 40);
-  if (!ALLOWED_CATEGORIES.has(category)) {
-    return c.json({ error: "invalid_category", allowed: Array.from(ALLOWED_CATEGORIES) }, 422);
+  const category = str(b.category, 60).toLowerCase().trim();
+  if (!category) return c.json({ error: "category_required" }, 422);
+
+  const catExists = await c.env.DB.prepare(`SELECT id FROM categories WHERE slug = ?`).bind(category).first();
+  if (!catExists) {
+    const insCat = await c.env.DB.prepare(`INSERT INTO categories (slug, active, sort) VALUES (?, 1, 100)`).bind(category).run();
+    const newCatId = insCat.meta.last_row_id as number;
+    await upsertCategoryI18n(c, newCatId, null, category);
   }
 
   const availability = str(b.availability, 20) || "unknown";
@@ -166,8 +390,15 @@ app.put("/products/:id", async (c) => {
     return c.json({ error: "invalid_availability", allowed: Array.from(ALLOWED_AVAILABILITIES) }, 422);
   }
 
+  const productType = str(b.product_type, 30) || "simple";
+  const unit = str(b.unit, 20) || "pcs";
+  const featured = b.featured ? 1 : 0;
+
   const r = await c.env.DB.prepare(
-    `UPDATE products SET category = ?, look = ?, price_now = ?, price_old = ?, default_size = ?, active = ?, sort = ?, availability = ? WHERE id = ?`,
+    `UPDATE products SET category = ?, look = ?, price_now = ?, price_old = ?, default_size = ?,
+           active = ?, sort = ?, availability = ?, product_type = ?, unit = ?, featured = ?,
+           updated_at = datetime('now')
+     WHERE id = ?`,
   )
     .bind(
       category,
@@ -175,13 +406,25 @@ app.put("/products/:id", async (c) => {
       Math.max(0, Math.floor(Number(b.price_now) || 0)),
       Math.max(0, Math.floor(Number(b.price_old) || 0)),
       Math.max(0, Math.floor(Number(b.default_size) || 0)),
-      b.active === 0 ? 0 : 1,
+      b.active === 0 || b.active === false ? 0 : 1,
       Math.floor(Number(b.sort) || 0),
       availability,
+      productType,
+      unit,
+      featured,
       id,
     )
     .run();
+
   await upsertProductI18n(c, id, b.i18n);
+
+  if (Array.isArray(b.variants)) {
+    await upsertProductVariants(c, id, b.variants);
+  }
+  if (Array.isArray(b.bundle_items)) {
+    await upsertBundleItems(c, id, b.bundle_items);
+  }
+
   return c.json({ ok: true, updated: r.meta.changes });
 });
 
@@ -189,6 +432,70 @@ app.delete("/products/:id", async (c) => {
   const id = c.req.param("id");
   const r = await c.env.DB.prepare(`DELETE FROM products WHERE id = ?`).bind(id).run();
   return c.json({ ok: true, deleted: r.meta.changes });
+});
+
+/* =========================== product variants =========================== */
+
+app.get("/products/:id/variants", async (c) => {
+  const id = c.req.param("id");
+  const { results } = await c.env.DB.prepare(
+    `SELECT * FROM product_variants WHERE product_id = ? ORDER BY sort ASC, id ASC`
+  ).bind(id).all();
+  return c.json({ variants: results });
+});
+
+app.post("/products/:id/variants", async (c) => {
+  const id = c.req.param("id");
+  const b = await c.req.json().catch(() => ({}));
+  const code = str(b.variant_code || b.id, 50).toLowerCase().trim();
+  if (!code) return c.json({ error: "code_required" }, 422);
+
+  const ru = str(b.name_ru || (b.name && b.name.ru) || code, 100);
+  const uz = str(b.name_uz || (b.name && b.name.uz) || ru, 100);
+  const en = str(b.name_en || (b.name && b.name.en) || ru, 100);
+  const hex = str(b.hex, 30) || null;
+  const img = str(b.image, 300) || null;
+  const imgsJson = JSON.stringify(Array.isArray(b.images) ? b.images : (img ? [img] : []));
+  const priceMod = Math.floor(Number(b.price_modifier) || 0);
+  const active = b.active === 0 || b.active === false ? 0 : 1;
+  const sort = Math.floor(Number(b.sort) || 10);
+
+  const ins = await c.env.DB.prepare(`
+    INSERT INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `).bind(id, code, ru, uz, en, hex, img, imgsJson, priceMod, active, sort).run();
+
+  return c.json({ ok: true, id: ins.meta.last_row_id });
+});
+
+app.put("/products/:id/variants/:variantId", async (c) => {
+  const variantId = Number(c.req.param("variantId"));
+  const b = await c.req.json().catch(() => ({}));
+  const code = str(b.variant_code || b.id, 50).toLowerCase().trim();
+  const ru = str(b.name_ru, 100);
+  const uz = str(b.name_uz, 100);
+  const en = str(b.name_en, 100);
+  const hex = str(b.hex, 30) || null;
+  const img = str(b.image, 300) || null;
+  const imgsJson = JSON.stringify(Array.isArray(b.images) ? b.images : (img ? [img] : []));
+  const priceMod = Math.floor(Number(b.price_modifier) || 0);
+  const active = b.active === 0 || b.active === false ? 0 : 1;
+  const sort = Math.floor(Number(b.sort) || 0);
+
+  await c.env.DB.prepare(`
+    UPDATE product_variants SET variant_code = COALESCE(?, variant_code),
+           name_ru = COALESCE(?, name_ru), name_uz = COALESCE(?, name_uz), name_en = COALESCE(?, name_en),
+           hex = ?, image = ?, images = ?, price_modifier = ?, active = ?, sort = ?, updated_at = datetime('now')
+    WHERE id = ?
+  `).bind(code || null, ru || null, uz || null, en || null, hex, img, imgsJson, priceMod, active, sort, variantId).run();
+
+  return c.json({ ok: true, id: variantId });
+});
+
+app.delete("/products/:id/variants/:variantId", async (c) => {
+  const variantId = Number(c.req.param("variantId"));
+  await c.env.DB.prepare(`DELETE FROM product_variants WHERE id = ?`).bind(variantId).run();
+  return c.json({ ok: true });
 });
 
 /* ================================ orders =============================== */
@@ -321,7 +628,6 @@ app.put("/articles/:id", async (c) => {
   const b = await c.req.json().catch(() => ({}));
   const status = b.status === "published" ? "published" : "draft";
   const slug = str(b.slug, 120).replace(/[^a-z0-9-]/gi, "-").toLowerCase();
-  // set published_at when moving to published for the first time
   await c.env.DB.prepare(
     `UPDATE articles SET slug = ?, cover_media = ?, status = ?, updated_at = datetime('now'),
        published_at = CASE WHEN ? = 'published' AND published_at IS NULL THEN datetime('now') ELSE published_at END
@@ -355,8 +661,6 @@ app.get("/media", async (c) => {
   return c.json({ media: results });
 });
 
-// Only real raster image types are accepted; the extension is derived from the
-// MIME type (never trusted from the filename) to avoid spoofed uploads.
 const ALLOWED_MIME: Record<string, string> = {
   "image/jpeg": "jpg",
   "image/png": "png",
@@ -377,22 +681,29 @@ app.post("/media", async (c) => {
   if (typeof file.size === "number" && (file.size <= 0 || file.size > MAX_UPLOAD_BYTES)) {
     return c.json({ error: "file_too_large", maxBytes: MAX_UPLOAD_BYTES }, 413);
   }
-  const productId = str(form.get("product_id"), 40) || null;
+  const productId = str(form.get("product_id"), 60) || null;
   const articleId = form.get("article_id") ? Number(form.get("article_id")) : null;
   const alt = str(form.get("alt"), 200);
   const scope = productId ? `products/${productId}` : articleId ? `articles/${articleId}` : "misc";
   const key = `${scope}/${crypto.randomUUID()}.${ext}`;
+
   if (!c.env.MEDIA) {
-    return c.json({ error: "r2_disabled", message: "R2 storage is not enabled on Cloudflare yet." }, 503);
+    return c.json({
+      error: "r2_disabled",
+      message: "R2 storage is not enabled on Cloudflare dashboard for this account yet. Please enable R2 in Cloudflare.",
+    }, 503);
   }
+
   await c.env.MEDIA.put(key, file.stream(), {
     httpMetadata: { contentType: file.type || "application/octet-stream" },
   });
+
   const r = await c.env.DB.prepare(
     `INSERT INTO media (key, product_id, article_id, alt, sort) VALUES (?, ?, ?, ?, 0)`,
   )
     .bind(key, productId, articleId, alt)
     .run();
+
   return c.json({ ok: true, id: r.meta.last_row_id, key, url: `/media/${key}` });
 });
 
@@ -413,7 +724,7 @@ app.put("/media/:id/primary", async (c) => {
 app.put("/media/:id/link", async (c) => {
   const id = Number(c.req.param("id"));
   const b = await c.req.json().catch(() => ({}));
-  const productId = str(b.product_id, 40) || null;
+  const productId = str(b.product_id, 60) || null;
   const articleId = b.article_id ? Number(b.article_id) : null;
   await c.env.DB.prepare(`UPDATE media SET product_id = ?, article_id = ? WHERE id = ?`).bind(productId, articleId, id).run();
   return c.json({ ok: true });
@@ -458,6 +769,7 @@ app.get("/stats", async (c) => {
     requests: await q(`SELECT COUNT(*) n FROM contact_requests`),
     requestsNew: await q(`SELECT COUNT(*) n FROM contact_requests WHERE status = 'new'`),
     products: await q(`SELECT COUNT(*) n FROM products`),
+    categories: await q(`SELECT COUNT(*) n FROM categories`),
     articles: await q(`SELECT COUNT(*) n FROM articles`),
     users: await q(`SELECT COUNT(*) n FROM users`),
   });
@@ -521,4 +833,3 @@ app.delete("/reviews/:id", async (c) => {
 });
 
 export default app;
-
