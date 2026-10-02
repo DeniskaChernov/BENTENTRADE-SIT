@@ -25,6 +25,8 @@
     "sync:master": "node scripts/sync-master.mjs",
     "validate": "node scripts/validate-products.mjs",
     "test:smoke": "node scripts/smoke-test.mjs",
+    "test:live": "node scripts/test-live-deploy.mjs",
+    "audit": "node scripts/audit-full-system.mjs",
     "typecheck": "tsc --noEmit"
   },
   "engines": {
