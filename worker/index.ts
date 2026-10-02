@@ -236,12 +236,21 @@ app.get("/catalog/:slug", async (c) => {
       if (k !== "id") url.searchParams.set(k, v);
     }
     const res = await c.env.ASSETS.fetch(new Request(url.toString(), c.req.raw));
-    if (res.status >= 300 && res.status < 400) {
-      const loc = res.headers.get("Location") || "/product.html";
+    if (res.status === 304) {
+      return new Response(null, {
+        status: 304,
+        headers: res.headers,
+      });
+    }
+    if ((res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) && res.headers.get("Location")) {
+      const loc = res.headers.get("Location")!;
       const followUrl = new URL(loc, c.req.url);
       const followedRes = await c.env.ASSETS.fetch(new Request(followUrl.toString(), c.req.raw));
+      if (followedRes.status === 304) {
+        return new Response(null, { status: 304, headers: followedRes.headers });
+      }
       return new Response(followedRes.body, {
-        status: 200,
+        status: followedRes.status,
         headers: {
           ...Object.fromEntries(followedRes.headers.entries()),
           "content-type": "text/html; charset=utf-8",
@@ -249,7 +258,7 @@ app.get("/catalog/:slug", async (c) => {
       });
     }
     return new Response(res.body, {
-      status: 200,
+      status: res.status,
       headers: {
         ...Object.fromEntries(res.headers.entries()),
         "content-type": "text/html; charset=utf-8",

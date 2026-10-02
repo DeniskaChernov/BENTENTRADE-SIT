@@ -289,6 +289,7 @@
             ? c.images
             : (c.image ? [c.image] : prod.images);
           setGallery(colorImages, 0);
+          renderLifestylePairing(c.id);
 
           try {
             const u = new URL(window.location.href);
@@ -309,6 +310,7 @@
         ? initialColor.images
         : (initialColor.image ? [initialColor.image] : prod.images);
       setGallery(initialImgs, 0);
+      renderLifestylePairing(initialColor ? initialColor.id : null);
     } else {
       const unspecifiedTxt = t("color.unspecified") || "Доступные цвета уточняйте у менеджера";
       if(valEl) valEl.textContent = curLang === "uz" ? "Menejerdan aniqlang" : (curLang === "en" ? "Inquire" : "Уточняйте");
@@ -317,6 +319,7 @@
         note.style.display = "";
       }
       setGallery(prod.images, 0);
+      renderLifestylePairing(null);
     }
   }
 
@@ -389,6 +392,168 @@
     }).join("");
 
     document.dispatchEvent(new CustomEvent("btt:related-rendered", { detail: { grid } }));
+  }
+
+  const PAIRING_MAP = {
+    // Chairs -> Recommended Table
+    "stul-jardin": "stol-taper-80",
+    "stul-vertex": "stol-vertex-d90",
+    "stul-corda": "stol-corda-135",
+    "stul-roero": "stol-taper-80",
+    "stul-noero": "stol-taper-80",
+    "stul-todo": "stol-taper-135",
+    "stul-todo-soft": "stol-taper-135",
+    "stul-lira": "stol-taper-135",
+    "kreslo-como": "stol-taper-135",
+
+    // Tables -> Recommended Chair
+    "stol-taper-rotang-80": "stul-vertex",
+    "stol-vertex-d90": "stul-vertex",
+    "stol-taper-rotang-135": "stul-corda",
+    "stol-taper-80": "stul-jardin",
+    "stol-vertex-80": "stul-vertex",
+    "stol-taper-135": "stul-todo-soft",
+    "stol-corda-135": "stul-corda"
+  };
+
+  const COLOR_SCENES = {
+    "cappuccino": "assets/scene-dining-warm.png",
+    "beige": "assets/scene-dining-warm.png",
+    "coffee": "assets/scene-dining-beige.png",
+    "olive": "assets/hero-garden-furniture.png",
+    "blue": "assets/scene-dining-azure.png",
+    "orange": "assets/scene-dining-warm.png",
+    "grey": "assets/scene-dining-grey.png",
+    "gray": "assets/scene-dining-grey.png",
+    "black": "assets/scene-dining-contrast.png",
+    "white": "assets/scene-dining-light.png",
+    "yellow": "assets/scene-dining-warm.png",
+    "red": "assets/scene-dining-warm.png",
+    "white-marble": "assets/scene-dining-marble.png",
+    "black-marble": "assets/scene-dining-contrast.png"
+  };
+
+  const PRODUCT_DEFAULT_SCENES = {
+    "stul-lira": "assets/scene-dining-cream.png",
+    "kreslo-como": "assets/scene-dining-marble.png",
+    "stul-vertex": "assets/scene-dining-warm.png",
+    "stul-corda": "assets/scene-dining-warm.png"
+  };
+
+  let activeColorId = null;
+
+  function getLifestyleScene(colorId){
+    if(colorId && COLOR_SCENES[colorId]){
+      return COLOR_SCENES[colorId];
+    }
+    if(PRODUCT_DEFAULT_SCENES[prod.slug]){
+      return PRODUCT_DEFAULT_SCENES[prod.slug];
+    }
+    if(prod.isTable && prod.slug.includes("135")){
+      return (colorId === "white-marble") ? "assets/prod-table-taper-135-white-scene.jpg" : "assets/prod-table-taper-135-scene.jpg";
+    }
+    return "assets/scene-dining-warm.png";
+  }
+
+  function renderLifestylePairing(colorId){
+    if(colorId) activeColorId = colorId;
+    const container = $("[data-pdp-lifestyle-container]");
+    if(!container) return;
+
+    const pairedSlug = PAIRING_MAP[prod.slug];
+    const pairedProd = pairedSlug ? PRODUCTS[pairedSlug] : null;
+    if(!pairedProd){
+      container.innerHTML = "";
+      return;
+    }
+
+    const curLang = lang();
+    const isTable = !!prod.isTable;
+    const chairProd = isTable ? pairedProd : prod;
+    const tableProd = isTable ? prod : pairedProd;
+    const chairCount = (tableProd.slug && tableProd.slug.includes("135")) ? 6 : 4;
+
+    const chairName = t(chairProd.slug + ".name") || chairProd.model;
+    const tableName = t(tableProd.slug + ".name") || tableProd.model;
+    const pairedName = t(pairedProd.slug + ".name") || pairedProd.model;
+    const pairedCat = t(pairedProd.slug + ".cat") || t("cat." + pairedProd.category);
+    const pairedImg = (pairedProd.images && pairedProd.images[0]) ? pairedProd.images[0] : "assets/placeholder.svg";
+    const pairedUrl = "/catalog/" + encodeURIComponent(pairedProd.slug);
+
+    const sceneImg = getLifestyleScene(activeColorId);
+
+    const comboTotal = (tableProd.now || 0) + ((chairProd.now || 0) * chairCount);
+
+    const infoTitle = isTable ? (t("pdp.life.pair.table") || "Рекомендуемые стулья к столу") : (t("pdp.life.pair.chair") || "Рекомендуемый обеденный стол");
+
+    let infoDesc = "";
+    if(curLang === "uz"){
+      infoDesc = isTable
+        ? (tableName + " stoli " + chairName + " stullari bilan mukammal mos keladi. Oshxona, mehmonxona, yopiq veranda yoki qahvaxona uchun tayyor yechim.")
+        : (chairName + " stuli " + tableName + " stoli bilan ajoyib uyg'unlashadi. Balandlik va kenglik bo'yicha qulay joylashuv, yagona uslub va ergonomik qulaylik yaratadi.");
+    } else if(curLang === "en"){
+      infoDesc = isTable
+        ? (tableName + " pairs seamlessly with " + chairName + " chairs. A complete, harmonious dining solution for living rooms, covered verandas, or dining spaces.")
+        : (chairName + " is designed to pair perfectly with " + tableName + ". Ideal seating height, cohesive aesthetic, and premium comfort for everyday dining.");
+    } else {
+      infoDesc = isTable
+        ? ("Стол " + tableName + " безупречно сочетается со стульями " + chairName + ". Готовая обеденная группа для кухни, просторной гостиной, веранды или кафе.")
+        : ("Стул " + chairName + " идеально подходит к столу " + tableName + ". Оптимальная высота посадки, единый стиль и максимальный комфорт для семейных обедов.");
+    }
+
+    let comboLabel = "";
+    if(curLang === "uz"){
+      comboLabel = "To'liq to'plam: 1 ta stol + " + chairCount + " ta stul";
+    } else if(curLang === "en"){
+      comboLabel = "Complete set: 1 table + " + chairCount + " chairs";
+    } else {
+      comboLabel = "Комплект: 1 стол + " + chairCount + " стульев";
+    }
+
+    const tgOrderText = encodeURIComponent(
+      "Здравствуйте! Хочу заказать готовый комплект: стол " + tableName +
+      " + " + chairCount + " стульев " + chairName +
+      " (Итого: " + money(comboTotal) + "). Уточните, пожалуйста, наличие и условия доставки."
+    );
+    const tgUrl = "https://t.me/bententradeuz?text=" + tgOrderText;
+
+    const atmosphereBadge = t("pdp.life.badge.atmosphere") || "Интерьерное решение";
+    const orderBtnText = t("pdp.life.combo.order") || "Заказать комплект в Telegram";
+
+    container.innerHTML =
+      '<div class="pdp-lifestyle-visual">' +
+        '<img src="' + esc(sceneImg) + '" alt="' + esc(tableName + ' & ' + chairName) + '" loading="lazy" decoding="async">' +
+        '<div class="pdp-lifestyle-visual__badge">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>' +
+          '<span>' + esc(atmosphereBadge) + '</span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="pdp-lifestyle-info">' +
+        '<div>' +
+          '<h3 class="pdp-lifestyle-info__title">' + esc(infoTitle) + '</h3>' +
+          '<p class="pdp-lifestyle-info__desc">' + esc(infoDesc) + '</p>' +
+          '<a class="pdp-lifestyle-card" href="' + esc(pairedUrl) + '">' +
+            '<div class="pdp-lifestyle-card__media">' +
+              '<img src="' + esc(pairedImg) + '" alt="' + esc(pairedName) + '" loading="lazy" decoding="async">' +
+            '</div>' +
+            '<div class="pdp-lifestyle-card__meta">' +
+              '<div class="pdp-lifestyle-card__cat">' + esc(pairedCat) + '</div>' +
+              '<div class="pdp-lifestyle-card__name">' + esc(pairedName) + '</div>' +
+              '<div class="pdp-lifestyle-card__price">' + money(pairedProd.now) + '</div>' +
+            '</div>' +
+          '</a>' +
+        '</div>' +
+        '<div class="pdp-lifestyle-combo">' +
+          '<div class="pdp-lifestyle-combo__row">' +
+            '<span class="pdp-lifestyle-combo__label">' + esc(comboLabel) + '</span>' +
+            '<span class="pdp-lifestyle-combo__total">' + money(comboTotal) + '</span>' +
+          '</div>' +
+          '<a class="btn btn--copper" href="' + tgUrl + '" target="_blank" rel="noopener noreferrer">' +
+            '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16" style="margin-right:6px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>' +
+            '<span>' + esc(orderBtnText) + '</span>' +
+          '</a>' +
+        '</div>' +
+      '</div>';
   }
 
   function render(){
@@ -564,6 +729,7 @@
     setImages();
     render();
     renderRelated();
+    renderLifestylePairing(activeColorId);
   }
 
   if(document.readyState === "loading") {
@@ -575,5 +741,6 @@
   document.addEventListener("btt:lang", ()=>{
     render();
     renderRelated();
+    renderLifestylePairing(activeColorId);
   });
 })();

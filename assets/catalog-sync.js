@@ -441,12 +441,12 @@
       });
     }
 
-    // Hydrate confirmed color swatches from CRM specs
+    // Hydrate confirmed color swatches from CRM specs only if pdp.js hasn't already loaded confirmed colors
     let cColors = null;
     if (p.specs && typeof p.specs === "object" && Array.isArray(p.specs.confirmed_colors) && p.specs.confirmed_colors.length) {
       cColors = p.specs.confirmed_colors;
     }
-    if (cColors && window.BTT_PDP_PRODUCT) {
+    if (cColors && window.BTT_PDP_PRODUCT && (!window.BTT_PDP_PRODUCT.confirmedColors || !window.BTT_PDP_PRODUCT.confirmedColors.length)) {
       window.BTT_PDP_PRODUCT.confirmedColors = cColors;
       const wrap = document.querySelector("[data-pdp-swatches]");
       const note = document.querySelector("[data-pdp-color-note]");
@@ -548,24 +548,26 @@
       else stickyOld.style.display = "none";
     }
 
-    // Real gallery from the CRM: override the placeholder images when media exist.
-    const urls = (p.media || []).map((m) => mediaUrl(m.key)).filter(Boolean);
-    if (urls.length) {
-      const stage = document.querySelectorAll("[data-stage] img");
-      const thumbs = document.querySelectorAll("[data-thumb]");
-      stage.forEach((im, i) => {
-        if (urls[i]) { im.src = urls[i]; im.style.display = ""; im.classList.toggle("is-on", i === 0); }
-        else { im.style.display = "none"; im.classList.remove("is-on"); }
-      });
-      thumbs.forEach((btn, i) => {
-        const tImg = btn.querySelector("img");
-        if (urls[i]) { if (tImg) tImg.src = urls[i]; btn.style.display = ""; btn.classList.toggle("is-active", i === 0); }
-        else { btn.style.display = "none"; btn.classList.remove("is-active"); }
-      });
-      const stickyImg = document.querySelector("[data-sticky-img]");
-      if (stickyImg) stickyImg.src = urls[0];
-      const lbImg = document.querySelector("[data-lightbox-img]");
-      if (lbImg) lbImg.src = urls[0];
+    // Real gallery from the CRM: override placeholder images only if pdp.js setGallery is not active
+    if (!window.setGallery && !window.BTT_SET_GALLERY) {
+      const urls = (p.media || []).map((m) => mediaUrl(m.key)).filter(Boolean);
+      if (urls.length) {
+        const stage = document.querySelectorAll("[data-stage] img");
+        const thumbs = document.querySelectorAll("[data-thumb]");
+        stage.forEach((im, i) => {
+          if (urls[i]) { im.src = urls[i]; im.style.display = ""; im.classList.toggle("is-on", i === 0); }
+          else { im.style.display = "none"; im.classList.remove("is-on"); }
+        });
+        thumbs.forEach((btn, i) => {
+          const tImg = btn.querySelector("img");
+          if (urls[i]) { if (tImg) tImg.src = urls[i]; btn.style.display = ""; btn.classList.toggle("is-active", i === 0); }
+          else { btn.style.display = "none"; btn.classList.remove("is-active"); }
+        });
+        const stickyImg = document.querySelector("[data-sticky-img]");
+        if (stickyImg) stickyImg.src = urls[0];
+        const lbImg = document.querySelector("[data-lightbox-img]");
+        if (lbImg) lbImg.src = urls[0];
+      }
     }
   }
 

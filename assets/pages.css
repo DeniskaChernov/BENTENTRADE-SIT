@@ -4058,6 +4058,163 @@ a.dl-name:hover{color:var(--copper);}
 }
 
 /* ============================================================
+   PDP LIFESTYLE & TABLE PAIRINGS
+   High-converting interior scene & dining set combination
+   ============================================================ */
+.pdp-lifestyle {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+.pdp-lifestyle-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+  margin-top: 24px;
+}
+@media (max-width: 900px) {
+  .pdp-lifestyle-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+.pdp-lifestyle-visual {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: var(--cream);
+  min-height: 380px;
+  display: flex;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+.pdp-lifestyle-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--spring);
+}
+.pdp-lifestyle-visual:hover img {
+  transform: scale(1.03);
+}
+.pdp-lifestyle-visual__badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(22, 19, 15, 0.78);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pdp-lifestyle-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: 28px;
+}
+.pdp-lifestyle-info__title {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+.pdp-lifestyle-info__desc {
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+.pdp-lifestyle-card {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  background: var(--cream);
+  border-radius: var(--r-lg);
+  margin: 14px 0;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.25s var(--spring), border-color 0.2s ease, box-shadow 0.25s ease;
+  border: 1.5px solid transparent;
+}
+.pdp-lifestyle-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--copper);
+  box-shadow: 0 8px 24px rgba(189, 115, 53, 0.12);
+}
+.pdp-lifestyle-card__media {
+  width: 90px;
+  height: 90px;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: #fff;
+  flex-shrink: 0;
+}
+.pdp-lifestyle-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pdp-lifestyle-card__meta {
+  flex: 1;
+  min-width: 0;
+}
+.pdp-lifestyle-card__cat {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.pdp-lifestyle-card__name {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 2px 0 6px;
+  color: var(--text);
+}
+.pdp-lifestyle-card__price {
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--copper-bright);
+}
+.pdp-lifestyle-combo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line-2);
+}
+.pdp-lifestyle-combo__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.pdp-lifestyle-combo__label {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.pdp-lifestyle-combo__total {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+}
+.pdp-lifestyle-combo .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ============================================================
    PERFORMANCE & RENDERING LIGHTNESS (Offscreen DOM containment)
    Reduces initial paint time and layout recalculations
    ============================================================ */
