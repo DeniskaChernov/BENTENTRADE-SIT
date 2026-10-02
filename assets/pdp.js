@@ -529,7 +529,7 @@
 
     container.innerHTML =
       '<div class="pdp-lifestyle-visual">' +
-        '<img src="' + esc(sceneImg) + '" alt="' + esc(tableName + ' & ' + chairName) + '" loading="lazy" decoding="async">' +
+        '<img src="' + esc(sceneImg) + '" alt="' + esc(tableModel + ' & ' + chairModel) + '" loading="lazy" decoding="async">' +
         '<div class="pdp-lifestyle-visual__badge">' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>' +
           '<span>' + esc(atmosphereBadge) + '</span>' +
