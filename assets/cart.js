@@ -1457,5 +1457,5 @@
     new MutationObserver(()=>{ renderCartBody(); renderFavBody(); }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
   });
 
-  window.BTT_CART={ openCart, openFav, openQuickOrder, closeQuickOrder, addToCart, wireProductButtons, getFavs, setFavs, favCount };
+  window.BTT_CART={ openCart, openFav, openQuickOrder, closeQuickOrder, addToCart, wireProductButtons, getFavs, setFavs, favCount, getCart };
 })();

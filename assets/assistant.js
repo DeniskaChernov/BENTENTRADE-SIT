@@ -1,7 +1,8 @@
 /* ============================================================
    BENTENTRADE - site assistant "Бен"
    Self-injecting glass chat widget. Scripted, multilingual,
-   intelligent intent engine + catalog product resolution.
+   intelligent intent engine + catalog product resolution +
+   Telegram lead capture + interactive cart & product cards.
    Zero external dependencies.
    ============================================================ */
 (function(){
@@ -16,14 +17,25 @@
       ans:{
         "Цены на стулья":"Актуальные цены на популярные пластиковые стулья: ROERO - 188 000 сум, NOERO - 212 000 сум, TODO и TODO SOFT - 236 000 сум, JARDIN - 344 000 сум. Цены на плетёные, мягкие стулья и столы смотрите в <a href='catalog.html'>полном каталоге BTT</a>.",
         "Плетёные стулья":"Плетёные стулья Vertex и Corda на прочном металлокаркасе со съёмными текстильными подушками в комплекте. Идеальны для веранд, террас и обеденных зон. Смотрите модели в <a href='catalog.html?cat=wicker-chairs'>каталоге плетёных стульев</a>.",
-        "Пластиковые стулья":"Практичные пластиковые стулья: ROERO (188 000 сум), NOERO (212 000 сум), TODO (236 000 сум), мягкий TODO SOFT с подушкой из экокожи (236 000 сум) и кресло JARDIN (344 000 сум). Все модели в <a href='catalog.html?cat=plastic-chairs'>каталоге</a>. Подсказать по цветам?",
+        "Пластиковые стулья":"Практичные пластиковые стулья: ROERO (188 000 сум), NOERO (212 000 сум), TODO (236 000 сум), мягкий TODO SOFT с подушкой из экокожи (236 000 сум) и кресло JARDIN (344 000 сум). Все модели в <a href='catalog.html?cat=plastic-chairs'>каталоге</a>.",
         "Мягкие стулья":"Элегантные стулья LIRA и комфортные кресла COMO на металлокаркасе с мягкой обивкой - идеальны для дома, кухни и HoReCa. Смотрите в <a href='catalog.html?cat=upholstered-chairs'>каталоге мягких стульев</a>.",
         "Обеденные столы":"Столы на металлокаркасе со столешницей из ЛДСП (Taper, Vertex, Corda) размерами 80×80 см, 135×80 см и круглый Ø90 см. Рекомендуются для помещений и крытых пространств. Смотрите в <a href='catalog.html?cat=tables'>каталоге столов</a>.",
         "Доставка и самовывоз":"Доставка по Ташкенту осуществляется за 1-2 рабочих дня по прямому тарифу сервиса (Яндекс / Labo / Porter). Возможен самовывоз со склада в Ташкенте по предварительной договорённости. В регионы Узбекистана отправляем через транспортные службы.",
         "Связаться с менеджером":"Мы на связи в Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> и по телефону <a href='tel:+998771044422'>+998 77 104 44 22</a>. Ответим на любые вопросы и поможем с выбором!"
       },
       fallback:"Я могу подсказать по каталогу мебели, актуальным ценам, условиям доставки по Ташкенту, оплате (Click, Payme, наличные) или соединить с менеджером. Выберите тему ниже или задайте вопрос 👇",
-      reply:"Понял! Менеджер свяжется с вами при необходимости. Чем ещё могу помочь?"
+      leadTitle:"Оставьте номер телефона, и наш менеджер свяжется с вами в течение 10-15 минут:",
+      leadSend:"Отправить в Telegram",
+      leadSending:"Отправка…",
+      leadOk:"Заявка передана менеджеру в Telegram!",
+      leadOkSub:"Мы свяжемся с вами в течение 10-15 минут.",
+      cartEmpty:"Ваша корзина пока пуста 🛒<br>Хотите посмотреть популярные модели стульев?",
+      cartTotal:"Итого в корзине",
+      cartCheckout:"Оформить заказ",
+      cartMore:"Подробнее",
+      cartBuy:"В корзину",
+      cartAdded:"Добавлено!",
+      phoneInvalid:"Пожалуйста, укажите корректный номер телефона (например: +998 90 123 45 67)"
     },
     uz:{
       name:"Ben", role:"BTT onlayn yordamchisi", badge:"1",
@@ -40,7 +52,18 @@
         "Menejer bilan bog‘lanish":"Telegramda <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> va telefon <a href='tel:+998771044422'>+998 77 104 44 22</a> orqali bog‘laning."
       },
       fallback:"Mebel katalogi, amaldagi narxlar, yetkazib berish shartlari, to‘lov (Click, Payme, naqd) haqida yordam bera olaman. Mavzuni tanlang yoki savol bering 👇",
-      reply:"Tushunarli! Menejerimiz tez orada bog‘lanadi. Yana biror narsa kerakmi?"
+      leadTitle:"Telefon raqamingizni qoldiring, menejerimiz 10-15 daqiqa ichida bog‘lanadi:",
+      leadSend:"Telegramga yuborish",
+      leadSending:"Yuborilmoqda…",
+      leadOk:"Arizangiz Telegram orqali menejerga yuborildi!",
+      leadOkSub:"Menejerimiz 10-15 daqiqa ichida siz bilan bog‘lanadi.",
+      cartEmpty:"Savat hozircha bo‘sh 🛒<br>Ommabop stullarni ko‘rishni xohlaysizmi?",
+      cartTotal:"Savatdagi jami summa",
+      cartCheckout:"Buyurtma berish",
+      cartMore:"Batafsil",
+      cartBuy:"Savatga",
+      cartAdded:"Qo‘shildi!",
+      phoneInvalid:"Iltimos, to‘g‘ri telefon raqamini kiriting (masalan: +998 90 123 45 67)"
     },
     en:{
       name:"Ben", role:"BTT Assistant", badge:"1",
@@ -57,13 +80,153 @@
         "Talk to a manager":"Reach us on Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> or call <a href='tel:+998771044422'>+998 77 104 44 22</a>."
       },
       fallback:"I can help with our furniture catalog, current prices, delivery in Tashkent, payment methods (Click, Payme, cash), or connect you with a manager. Choose a topic below or type your question 👇",
-      reply:"Understood! Our manager will be happy to assist you further. Anything else I can help with?"
+      leadTitle:"Leave your phone number and our manager will contact you within 10-15 minutes:",
+      leadSend:"Send to Telegram",
+      leadSending:"Sending…",
+      leadOk:"Request sent to manager via Telegram!",
+      leadOkSub:"Our manager will contact you within 10-15 minutes.",
+      cartEmpty:"Your cart is currently empty 🛒<br>Would you like to browse our popular chairs?",
+      cartTotal:"Cart total",
+      cartCheckout:"Proceed to checkout",
+      cartMore:"Details",
+      cartBuy:"Add to cart",
+      cartAdded:"Added!",
+      phoneInvalid:"Please enter a valid phone number (e.g.: +998 90 123 45 67)"
     }
   };
 
   function lang(){
     var s = localStorage.getItem("btt_lang");
     return T[s] ? s : "ru";
+  }
+
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+    });
+  }
+
+  var chatHistory = [];
+  var lastLeadPhone = null;
+
+  async function sendBotLead(phone, messageText){
+    if(!phone) return false;
+    lastLeadPhone = phone;
+    var curLang = lang();
+    var defaultName = curLang === "uz" ? "Mijoz (onlayn-chat)" : curLang === "en" ? "Customer (online chat)" : "Посетитель сайта (онлайн-чат)";
+    var payload = {
+      source: "bot",
+      name: defaultName,
+      phone: phone,
+      message: messageText || (curLang === "uz" ? "Chat-bot orqali aloqa so'rovi" : curLang === "en" ? "Callback request from chat bot" : "Запрос на консультацию из чат-бота"),
+      page: window.location.pathname + window.location.search,
+      lang: curLang,
+      history: chatHistory.slice(-8)
+    };
+    try {
+      var res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      return res.ok;
+    } catch (err) {
+      console.error("Failed to send bot lead to Telegram:", err);
+      return false;
+    }
+  }
+
+  function extractPhone(text){
+    if(!text) return null;
+    var s = String(text);
+    var rx = /(?:\+?998[\s.-]*)?(?:\(?\d{2}\)?[\s.-]*)?\d{3}[\s.-]*\d{2}[\s.-]*\d{2}\b/g;
+    var matches = s.match(rx);
+    if(matches && matches.length){
+      for(var i=0; i<matches.length; i++){
+        var digits = matches[i].replace(/\D/g, "");
+        if(digits.length === 9) return "+998" + digits;
+        if(digits.length === 12 && digits.startsWith("998")) return "+" + digits;
+      }
+    }
+    var rawDigits = s.replace(/\D/g, "");
+    if(rawDigits.length === 9) return "+998" + rawDigits;
+    if(rawDigits.length === 12 && rawDigits.startsWith("998")) return "+" + rawDigits;
+    return null;
+  }
+
+  function renderProductCard(slug, curLang){
+    var P = window.BTT_PRODUCTS || {};
+    var prod = P[slug];
+    if(!prod) return "";
+    var I = window.BTT_I18N || {};
+    var dict = I[curLang] || I.ru || {};
+    var title = dict[slug + ".name"] || prod.name || slug;
+    var priceStr = prod.now ? (prod.now.toLocaleString("ru-RU") + " сум") : "";
+    var img = (prod.images && prod.images[0]) || (prod.colors && prod.colors[0] && prod.colors[0].image) || "";
+    var tCfg = T[curLang] || T.ru;
+
+    return '<div class="bot-prod-card" data-slug="' + esc(slug) + '">' +
+      (img ? '<img src="' + esc(img) + '" alt="' + esc(title) + '" class="bot-prod-card__img" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+      '<div class="bot-prod-card__info">' +
+        '<div class="bot-prod-card__title">' + esc(title) + '</div>' +
+        '<div class="bot-prod-card__price">' + esc(priceStr) + '</div>' +
+        '<div class="bot-prod-card__actions">' +
+          '<a href="/catalog/' + esc(slug) + '" class="bot-prod-card__link">' + esc(tCfg.cartMore) + ' →</a>' +
+          '<button type="button" class="bot-prod-card__buy" data-bot-add="' + esc(slug) + '">🛒 ' + esc(tCfg.cartBuy) + '</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderLeadForm(curLang){
+    var tCfg = T[curLang] || T.ru;
+    return '<div class="bot-lead-box" data-lead-form>' +
+      '<div class="bot-lead-box__title">' + esc(tCfg.leadTitle) + '</div>' +
+      '<div class="bot-lead-box__row">' +
+        '<input type="tel" class="bot-lead-input" placeholder="+998 __ ___ __ __" maxlength="20" autocomplete="tel">' +
+        '<button type="button" class="bot-lead-btn" data-lead-submit>' +
+          '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4Z"/></svg> ' +
+          esc(tCfg.leadSend) +
+        '</button>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderLeadSuccess(phone, curLang){
+    var tCfg = T[curLang] || T.ru;
+    var cleanPhone = esc(phone || "");
+    return '<div class="bot-lead-ok">' +
+      '✅ <b>' + esc(tCfg.leadOk) + '</b><br>' +
+      (cleanPhone ? '📞 <b>' + cleanPhone + '</b><br>' : '') +
+      esc(tCfg.leadOkSub) +
+    '</div>';
+  }
+
+  function renderCartState(curLang){
+    var tCfg = T[curLang] || T.ru;
+    var cartApi = window.BTT_CART;
+    var cart = (cartApi && cartApi.getCart) ? cartApi.getCart() : {};
+    var keys = Object.keys(cart);
+    if(!keys.length){
+      return tCfg.cartEmpty;
+    }
+    var total = 0;
+    var listHtml = '<ul class="bot-cart-card__list">';
+    keys.forEach(function(k){
+      var it = cart[k];
+      if(!it) return;
+      var price = it.price || 0;
+      var qty = it.qty || 1;
+      total += price * qty;
+      listHtml += '<li><b>' + esc(it.name || k) + '</b>: ' + qty + ' × ' + price.toLocaleString("ru-RU") + ' сум</li>';
+    });
+    listHtml += '</ul>';
+
+    return '<div class="bot-cart-card">' +
+      listHtml +
+      '<div class="bot-cart-card__total">' + esc(tCfg.cartTotal) + ': <b>' + total.toLocaleString("ru-RU") + ' сум</b></div>' +
+      '<button type="button" class="bot-cart-card__btn" data-bot-cart-open>🛍 ' + esc(tCfg.cartCheckout) + '</button>' +
+    '</div>';
   }
 
   /* ---------------- Intelligent Intent Engine ---------------- */
@@ -103,7 +266,6 @@
       }
     }
 
-    // Direct token search in catalog
     var words = norm.split(" ").filter(function(w){ return w.length >= 4; });
     for(var j = 0; j < slugs.length; j++){
       var s = slugs[j];
@@ -122,12 +284,44 @@
   function resolveBotResponse(rawText){
     var norm = normalizeText(rawText);
     var curLang = lang();
+    var d = T[curLang] || T.ru;
 
-    // 1. Direct match in canned quick answers
-    var d = T[curLang];
-    if(d.ans[rawText]) return d.ans[rawText];
+    // 1. Phone number detected in user message -> auto lead submission to Telegram
+    var phoneFound = extractPhone(rawText);
+    if(phoneFound){
+      sendBotLead(phoneFound, rawText);
+      var successMsg = renderLeadSuccess(phoneFound, curLang);
+      var followUp = curLang === "uz" ? "Yana biror savolingiz bormi?" : curLang === "en" ? "Do you have any other questions?" : "Чем ещё я могу вам помочь?";
+      return successMsg + "<br>" + followUp;
+    }
 
-    // 2. Specific product search
+    // 2. Direct match in canned quick answers
+    if(d.ans[rawText]){
+      var baseAns = d.ans[rawText];
+      if(rawText.indexOf("Пластиковые") !== -1 || rawText.indexOf("Plastik") !== -1 || rawText.indexOf("Plastic") !== -1){
+        return baseAns + renderProductCard("stul-roero", curLang) + renderProductCard("stul-todo-soft", curLang);
+      }
+      if(rawText.indexOf("Плетёные") !== -1 || rawText.indexOf("To‘qilgan") !== -1 || rawText.indexOf("Wicker") !== -1){
+        return baseAns + renderProductCard("stul-vertex", curLang) + renderProductCard("stul-corda", curLang);
+      }
+      if(rawText.indexOf("Мягкие") !== -1 || rawText.indexOf("Yumshoq") !== -1 || rawText.indexOf("Upholstered") !== -1){
+        return baseAns + renderProductCard("stul-lira", curLang) + renderProductCard("kreslo-como", curLang);
+      }
+      if(rawText.indexOf("столы") !== -1 || rawText.indexOf("stollari") !== -1 || rawText.indexOf("tables") !== -1){
+        return baseAns + renderProductCard("stol-taper-80", curLang) + renderProductCard("stol-taper-135", curLang);
+      }
+      if(rawText.indexOf("менеджер") !== -1 || rawText.indexOf("Menejer") !== -1 || rawText.indexOf("manager") !== -1){
+        return baseAns + renderLeadForm(curLang);
+      }
+      return baseAns;
+    }
+
+    // 3. Cart inspection query
+    if(/\b(корзин|в корзине|заказ в корзине|что я выбрал|savat|savatda|cart|my cart|in my cart|basket)\b/.test(norm)){
+      return renderCartState(curLang);
+    }
+
+    // 4. Specific product search
     var matchedProd = matchProduct(norm);
     if(matchedProd){
       var prod = matchedProd.product;
@@ -137,34 +331,74 @@
       var title = dict[slug + ".name"] || prod.name || slug;
       var priceStr = prod.now ? (prod.now.toLocaleString("ru-RU") + " сум") : "";
 
+      var desc = "";
       if(curLang === "uz"){
-        return "<b>" + title + "</b>" + (priceStr ? " - narxi: <b>" + priceStr + "</b>" : "") +
-          ". Model haqida batafsil ma‘lumot, o‘lchamlar va mavjud ranglarni ko‘rish uchun: <a href='/catalog/" + slug + "'>Mahsulot sahifasiga o‘tish →</a>";
+        desc = "<b>" + esc(title) + "</b>" + (priceStr ? " - narxi: <b>" + esc(priceStr) + "</b>" : "") +
+          ". Toshkent omborida mavjud, tezkor yetkazib berish xizmati bilan.";
       } else if(curLang === "en"){
-        return "<b>" + title + "</b>" + (priceStr ? " - price: <b>" + priceStr + "</b>" : "") +
-          ". View full specifications, dimensions, and available colors here: <a href='/catalog/" + slug + "'>Open product card →</a>";
+        desc = "<b>" + esc(title) + "</b>" + (priceStr ? " - price: <b>" + esc(priceStr) + "</b>" : "") +
+          ". In stock at our Tashkent warehouse, fast dispatch available.";
       } else {
-        return "<b>" + title + "</b>" + (priceStr ? " - цена: <b>" + priceStr + "</b>" : "") +
-          ". Посмотреть характеристики, размеры и доступные цвета: <a href='/catalog/" + slug + "'>Перейти к товару " + title + " →</a>";
+        desc = "<b>" + esc(title) + "</b>" + (priceStr ? " - цена: <b>" + esc(priceStr) + "</b>" : "") +
+          ". В наличии на складе в Ташкенте, быстрая доставка по городу.";
+      }
+      return desc + renderProductCard(slug, curLang);
+    }
+
+    // 5. Stock & availability
+    if(/\b(в наличии|наличии|склад|есть ли|bor mi|mavjud|in stock|stock|available)\b/.test(norm)){
+      if(curLang === "uz"){
+        return "Barcha modellar (Roero, Noero, Todo, Todo Soft, Jardin, Vertex, Corda, Como, Lira, Taper) Toshkentdagi omborda mavjud. Buyurtma berilgan kuni jo‘natishimiz mumkin!";
+      } else if(curLang === "en"){
+        return "All models in our catalog (Roero, Noero, Todo, Todo Soft, Jardin, Vertex, Corda, Como, Lira, Taper) are in stock at our Tashkent warehouse in factory packaging. Same-day dispatch available!";
+      } else {
+        return "Все модели из каталога (Roero, Noero, Todo, Todo Soft, Jardin, Vertex, Corda, Como, Lira, Taper) есть в наличии на складе в Ташкенте в фабричной упаковке. Возможна отгрузка в день заказа!";
       }
     }
 
-    // 3. Greetings & small talk
+    // 6. Weight capacity & strength (NO fake numbers)
+    if(/\b(нагрузк|максимальный вес|сколько выдерживает|прочность|веса|og irlik|vazn|yuklama|weight capacity|max load|load)\b/.test(norm)){
+      if(curLang === "uz"){
+        return "Barcha BTT mebellari uy va jamoat joylarida (kafe, restoranlar) uzoq muddat xizmat qilish uchun mo‘ljallangan. Birlamchi mustahkam polipropilen va kukunli bo‘yoq bilan qoplangan po‘lat karkasdan ishlab chiqariladi va standart kattalar yuklamasini ishonchli ko‘taradi.";
+      } else if(curLang === "en"){
+        return "All BTT furniture is engineered for heavy daily residential and commercial (HoReCa) use. Constructed from high-grade virgin polypropylene and powder-coated steel frames, designed to reliably handle standard adult loads.";
+      } else {
+        return "Вся мебель BTT рассчитана на интенсивную повседневную эксплуатацию в домах, кафе и ресторанах (HoReCa). Стулья изготовлены из первичного ударопрочного полипропилена или стального каркаса с порошковой покраской и надёжно выдерживают стандартные эксплуатационные нагрузки взрослого человека.";
+      }
+    }
+
+    // 7. Discounts & promotions
+    if(/\b(скидк|акци|промокод|дешевле|chegirma|aktsiya|aksiya|promokod|discount|promo|sale)\b/.test(norm)){
+      if(curLang === "uz"){
+        return "Saytimizda onlayn buyurtma berishda <b>BENTEN2026</b> promokodidan foydalanib 5% chegirmaga ega bo‘ling! Shuningdek, 10 tadan ortiq stul xaridi uchun maxsus ulgurji narxlar amal qiladi.";
+      } else if(curLang === "en"){
+        return "Use promo code <b>BENTEN2026</b> at checkout for a 5% discount! We also offer volume discounts for orders of 10+ chairs or commercial projects.";
+      } else {
+        return "При заказе через корзину на сайте действует промокод <b>BENTEN2026</b> на скидку 5%! Также для заказов от 10 стульев или оптовых партий действуют специальные оптовые цены.";
+      }
+    }
+
+    // 8. Live manager / contact / callback
+    if(/\b(менеджер|оператор|человек|связаться|перезвон|позвонить|телефон|номер|контакт|телеграм|menejer|operator|bog lanish|telefon|contact|manager|call|callback|phone|talk)\b/.test(norm)){
+      return (d.ans["Связаться с менеджером"] || d.ans["Menejer bilan bog‘lanish"] || d.ans["Talk to a manager"]) + renderLeadForm(curLang);
+    }
+
+    // 9. Greetings & small talk
     if(/\b(привет|здравствуй|добрый|салом|salom|assalomu|hello|hi|hey)\b/.test(norm)){
       return d.hi;
     }
 
-    // 4. Prices & cost
+    // 10. Prices & cost
     if(/\b(цена|цены|почем|сколько|прайс|стоимость|дешево|дорого|narx|narxi|qancha|summa|price|prices|cost|how much)\b/.test(norm)){
-      return d.ans["Цены на стулья"] || d.ans["Stullar narxlari"] || d.ans["Chair prices"];
+      return (d.ans["Цены на стулья"] || d.ans["Stullar narxlari"] || d.ans["Chair prices"]) + renderProductCard("stul-roero", curLang);
     }
 
-    // 5. Delivery & pickup terms
+    // 11. Delivery & pickup terms
     if(/\b(доставк|доставка|привез|курьер|сроки|самовывоз|забрать|склад|откуда|город|yetkazib|yetkazish|kuryer|olib ketish|ombor|delivery|shipping|pickup)\b/.test(norm)){
       return d.ans["Доставка и самовывоз"] || d.ans["Yetkazish va olib ketish"] || d.ans["Delivery and pickup"];
     }
 
-    // 6. Showroom, location, address
+    // 12. Showroom, location, address
     if(/\b(где вы|где находитесь|адрес|шоурум|локация|геолокация|куда подъехать|manzil|qayerda|lokatsiya|showroom|address|location|where)\b/.test(norm)){
       if(curLang === "uz"){
         return "Biz Toshkent shahrida joylashganmiz (ombor va ofis oldindan kelishuv bo‘yicha). Ish vaqti: Du-Sha, 10:00 - 20:00. Tashrif buyurishdan oldin Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> yoki <a href='tel:+998771044422'>+998 77 104 44 22</a> raqamiga yozing!";
@@ -175,7 +409,7 @@
       }
     }
 
-    // 7. Payment methods
+    // 13. Payment methods
     if(/\b(оплата|как оплатить|click|payme|терминал|наличные|перевод|счет|счёт|картой|карта|to lov|tolov|payment|pay)\b/.test(norm)){
       if(curLang === "uz"){
         return "To‘lov usullari: qabul qilishda naqd yoki terminal (Humo/Uzcard), Click va Payme orqali onlayn (QR yoki havola orqali), hamda yuridik shaxslar uchun bank hisob raqamiga o‘tkazma.";
@@ -186,8 +420,8 @@
       }
     }
 
-    // 8. How to order
-    if(/\b(как заказать|заказ|купить|оформить|1 клик|в один клик|корзина|buyurtma|xarid|order|buy|how to order)\b/.test(norm)){
+    // 14. How to order
+    if(/\b(как заказать|заказ|купить|оформить|1 клик|в один клик|buyurtma|xarid|order|buy|how to order)\b/.test(norm)){
       if(curLang === "uz"){
         return "Buyurtma berish juda oson: 1) Saytda savatga qo‘shing yoki «1-klikda xarid» tugmasini bosing; 2) Telefon raqamingizni qoldiring; 3) Menejer 10 daqiqa ichida bog‘lanib yetkazishni tasdiqlaydi. Yoki to‘g‘ridan-to‘g‘ri <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>Telegramda</a> buyurtma berishingiz mumkin.";
       } else if(curLang === "en"){
@@ -197,7 +431,7 @@
       }
     }
 
-    // 9. Order tracking & account
+    // 15. Order tracking & account
     if(/\b(где мой заказ|статус|отследить|личный кабинет|аккаунт|профиль|мои заказы|войти|buyurtma holati|profil|kabinet|order status|track|account)\b/.test(norm)){
       if(curLang === "uz"){
         return "Barcha buyurtmalaringiz va ularning holati <a href='account.html'>Shaxsiy kabinet</a>da ko‘rinadi. Shuningdek, buyurtma raqamini (masalan, BT-2049) Telegramda <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>menejerga</a> yuborib tezkor ma‘lumot olishingiz mumkin.";
@@ -208,18 +442,18 @@
       }
     }
 
-    // 10. HoReCa / Wholesale / B2B
+    // 16. HoReCa / Wholesale / B2B
     if(/\b(хорека|horeca|кафе|ресторан|опт|оптом|партия|для бизнеса|юридическ|веранда|терраса|летник|ulgurji|kafe|wholesale|b2b)\b/.test(norm)){
       if(curLang === "uz"){
-        return "Kafelar, restoranlar, mehmonxonalar va loyihalar uchun ulgurji narxlar va shartnoma asosida yetkazish mavjud. Batafsil: <a href='horeca.html'>HoReCa sahifasida</a> yoki menejer bilan bog‘laning: <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a>.";
+        return "Kafelar, restoranlar, mehmonxonalar va loyihalar uchun ulgurji narxlar va shartnoma asosida yetkazish mavjud. Batafsil: <a href='horeca.html'>HoReCa sahifasida</a> yoki menejer bilan bog‘laning: <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a>." + renderLeadForm(curLang);
       } else if(curLang === "en"){
-        return "We offer wholesale pricing, custom batch supply, and commercial invoices for cafes, restaurants, hotels, and interior projects. Learn more on our <a href='horeca.html'>HoReCa page</a> or reach out on <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>Telegram</a>.";
+        return "We offer wholesale pricing, custom batch supply, and commercial invoices for cafes, restaurants, hotels, and interior projects. Learn more on our <a href='horeca.html'>HoReCa page</a> or reach out on <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>Telegram</a>." + renderLeadForm(curLang);
       } else {
-        return "Для кафе, ресторанов, отелей и веранд мы предлагаем оптовые цены, поставку партиями и работу по договору. Подробнее на нашей <a href='horeca.html'>странице HoReCa</a> или свяжитесь с B2B-менеджером в <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>Telegram</a>.";
+        return "Для кафе, ресторанов, отелей и веранд мы предлагаем оптовые цены, поставку партиями и работу по договору. Подробнее на нашей <a href='horeca.html'>странице HoReCa</a> или свяжитесь с B2B-менеджером в <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>Telegram</a>." + renderLeadForm(curLang);
       }
     }
 
-    // 11. Materials & care
+    // 17. Materials & care
     if(/\b(материал|ротанг|пластик|лдсп|уход|подушки|на улице|дождь|солнце|погода|выгорает|мыть|чистить|material|rotang|parvarish|care|weather)\b/.test(norm)){
       if(curLang === "uz"){
         return "BTT mebellari sifatli polipropilen, ultrabinafsha nurlarga chidamli sun‘iy rotang va kukunli bo‘yoq bilan qoplangan metall karkasdan ishlab chiqariladi. Ularni tozalash juda oson. Batafsil: <a href='care.html'>Parvarishlash bo‘yicha qo‘llanma</a>.";
@@ -230,7 +464,7 @@
       }
     }
 
-    // 12. Returns & warranty
+    // 18. Returns & warranty
     if(/\b(возврат|гарантия|брак|обмен|вернуть|сломался|qaytarish|kafolat|almashtirish|return|warranty|exchange|refund)\b/.test(norm)){
       if(curLang === "uz"){
         return "Foydalanilmagan tovarlarni qonunda belgilangan muddatda qaytarish yoki almashtirish mumkin. Yuborishdan oldin har bir to‘plam tekshiriladi. Shartlar: <a href='returns.html'>Qaytarish siyosati</a>.";
@@ -241,27 +475,22 @@
       }
     }
 
-    // 13. Contacts & live manager
-    if(/\b(контакт|телефон|номер|менеджер|человек|оператор|связаться|телеграм|ватсап|позвонить|kontakt|telefon|menejer|contact|manager|phone|telegram|whatsapp)\b/.test(norm)){
-      return d.ans["Связаться с менеджером"] || d.ans["Menejer bilan bog‘lanish"] || d.ans["Talk to a manager"];
-    }
-
-    // 14. Broad Categories
+    // 19. Broad categories
     if(/\b(плетен|плетён|to qilgan|wicker)\b/.test(norm)){
-      return d.ans["Плетёные стулья"] || d.ans["To‘qilgan stullar"] || d.ans["Wicker chairs"];
+      return (d.ans["Плетёные стулья"] || d.ans["To‘qilgan stullar"] || d.ans["Wicker chairs"]) + renderProductCard("stul-vertex", curLang) + renderProductCard("stul-corda", curLang);
     }
     if(/\b(пластик|полипропилен|plastik|plastic)\b/.test(norm)){
-      return d.ans["Пластиковые стулья"] || d.ans["Plastik stullar"] || d.ans["Plastic chairs"];
+      return (d.ans["Пластиковые стулья"] || d.ans["Plastik stullar"] || d.ans["Plastic chairs"]) + renderProductCard("stul-roero", curLang) + renderProductCard("stul-todo-soft", curLang);
     }
     if(/\b(мягк|экокож|велюр|ткань|кресло|yumshoq|upholstered)\b/.test(norm)){
-      return d.ans["Мягкие стулья"] || d.ans["Yumshoq stullar"] || d.ans["Upholstered chairs"];
+      return (d.ans["Мягкие стулья"] || d.ans["Yumshoq stullar"] || d.ans["Upholstered chairs"]) + renderProductCard("stul-lira", curLang) + renderProductCard("kreslo-como", curLang);
     }
     if(/\b(стол|столы|столешниц|обеденн|stollar|stol|table|tables)\b/.test(norm)){
-      return d.ans["Обеденные столы"] || d.ans["Ovqat stollari"] || d.ans["Dining tables"];
+      return (d.ans["Обеденные столы"] || d.ans["Ovqat stollari"] || d.ans["Dining tables"]) + renderProductCard("stol-taper-80", curLang) + renderProductCard("stol-taper-135", curLang);
     }
 
-    // 15. Intelligent Fallback
-    return d.fallback;
+    // 20. Intelligent Fallback
+    return d.fallback + renderLeadForm(curLang);
   }
 
   /* ---------------- UI & DOM Wiring ---------------- */
@@ -291,6 +520,9 @@
     let started=false;
 
     function add(text, who){
+      chatHistory.push({ who: who, text: text });
+      if(chatHistory.length > 20) chatHistory.shift();
+
       const m=document.createElement("div");
       m.className="bot-msg bot-msg--"+who;
       if(who === "user") m.textContent = text;
@@ -298,17 +530,20 @@
       msgs.appendChild(m); msgs.scrollTop=msgs.scrollHeight;
       return m;
     }
+
     function typing(){
       const t=document.createElement("div");
       t.className="bot-typing"; t.innerHTML="<span></span><span></span><span></span>";
       msgs.appendChild(t); msgs.scrollTop=msgs.scrollHeight; return t;
     }
+
     function botSay(text, delay){
       const t=typing();
       setTimeout(()=>{ t.remove(); add(text,"bot"); }, delay||600);
     }
+
     function renderQuick(){
-      const d=T[lang()]; quick.innerHTML="";
+      const d=T[lang()] || T.ru; quick.innerHTML="";
       d.quick.forEach(label=>{
         const c=document.createElement("button");
         c.className="bot-chip"; c.type="button"; c.textContent=label;
@@ -316,8 +551,9 @@
         quick.appendChild(c);
       });
     }
+
     function applyLang(){
-      const d=T[lang()];
+      const d=T[lang()] || T.ru;
       const I = window.BTT_I18N || {};
       const tr = (k, fb) => (I.t ? I.t(k) : (I[lang()] && I[lang()][k]) || fb);
       panel.querySelector("[data-bot-name]").textContent=d.name;
@@ -328,16 +564,19 @@
       panel.querySelector(".bot-send")?.setAttribute("aria-label", tr("bot.aria.send", "Отправить"));
       renderQuick();
     }
+
     function handle(text){
       add(text,"user");
       const resp = resolveBotResponse(text);
       botSay(resp, 500);
     }
+
     function open(){
       panel.classList.add("open"); fab.classList.add("hidden");
       if(!started){ started=true; setTimeout(()=> botSay(T[lang()].hi, 400), 200); }
       setTimeout(()=> input.focus(), 320);
     }
+
     function close(){ panel.classList.remove("open"); fab.classList.remove("hidden"); }
 
     fab.addEventListener("click", open);
@@ -347,6 +586,81 @@
       const v=input.value.trim(); if(!v) return;
       input.value="";
       handle(v);
+    });
+
+    // Delegated actions for interactive bot messages
+    msgs.addEventListener("click", function(e){
+      // 1. Add to cart button inside bot product card
+      const addBtn = e.target.closest("[data-bot-add]");
+      if(addBtn){
+        const slug = addBtn.getAttribute("data-bot-add");
+        const P = window.BTT_PRODUCTS || {};
+        const p = P[slug];
+        const curLang = lang();
+        const I = window.BTT_I18N || {};
+        const dict = I[curLang] || I.ru || {};
+        const title = dict[slug + ".name"] || (p && p.name) || slug;
+        const img = (p && p.images && p.images[0]) || (p && p.colors && p.colors[0] && p.colors[0].image) || "";
+        const snap = { id: slug, name: title, price: (p && p.now) || 0, img: img };
+
+        if(window.BTT_CART && window.BTT_CART.addToCart){
+          window.BTT_CART.addToCart(snap, 1);
+        }
+        const tCfg = T[curLang] || T.ru;
+        const prevText = addBtn.textContent;
+        addBtn.textContent = "✓ " + tCfg.cartAdded;
+        addBtn.classList.add("is-added");
+        setTimeout(()=>{
+          addBtn.textContent = prevText;
+          addBtn.classList.remove("is-added");
+        }, 2200);
+        return;
+      }
+
+      // 2. Open cart button inside bot cart status card
+      const cartBtn = e.target.closest("[data-bot-cart-open]");
+      if(cartBtn){
+        if(window.BTT_CART && window.BTT_CART.openCart){
+          window.BTT_CART.openCart();
+        }
+        return;
+      }
+
+      // 3. Submit phone lead from inline form
+      const leadSubmit = e.target.closest("[data-lead-submit]");
+      if(leadSubmit){
+        const formBox = leadSubmit.closest("[data-lead-form]");
+        if(!formBox) return;
+        const inp = formBox.querySelector(".bot-lead-input");
+        const curLang = lang();
+        const tCfg = T[curLang] || T.ru;
+        const ph = extractPhone(inp ? inp.value : "");
+        if(!ph){
+          if(inp){
+            inp.style.borderColor = "#e74c3c";
+            inp.focus();
+            setTimeout(()=>{ inp.style.borderColor = ""; }, 2000);
+          }
+          return;
+        }
+
+        leadSubmit.disabled = true;
+        leadSubmit.textContent = tCfg.leadSending;
+        sendBotLead(ph, "Заявка из формы обратной связи в чате").then(function(ok){
+          formBox.outerHTML = renderLeadSuccess(ph, curLang);
+        });
+        return;
+      }
+    });
+
+    // Handle enter key in lead input
+    msgs.addEventListener("keydown", function(e){
+      if(e.key === "Enter" && e.target.classList.contains("bot-lead-input")){
+        e.preventDefault();
+        const formBox = e.target.closest("[data-lead-form]");
+        const btn = formBox ? formBox.querySelector("[data-lead-submit]") : null;
+        if(btn) btn.click();
+      }
     });
 
     function syncDynamicSettings(s) {
