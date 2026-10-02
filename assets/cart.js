@@ -917,139 +917,254 @@
     document.documentElement.style.overflow = "";
   }
 
+  function formatUzPhone(val){
+    let d = val.replace(/\D/g, "");
+    if(d.startsWith("8")) d = "998" + d.slice(1);
+    if(!d.startsWith("998") && d.length > 0) d = "998" + d;
+    d = d.slice(0, 12);
+    let res = "";
+    if(d.length > 0) res += "+" + d.slice(0, 3);
+    if(d.length > 3) res += " (" + d.slice(3, 5);
+    if(d.length > 5) res += ") " + d.slice(5, 8);
+    if(d.length > 8) res += "-" + d.slice(8, 10);
+    if(d.length > 10) res += "-" + d.slice(10, 12);
+    return res;
+  }
+
   function openQuickOrder(snap){
     if(!snap) snap = snapFromPDP();
     if(!snap || !snap.name) return;
     ensureQuickOrderModal();
 
     const saved = getCheckout();
-    const qty = snap.qty || 1;
-    const itemTotal = (snap.price || 0) * qty;
+    let currentQty = Math.max(1, snap.qty || 1);
+    const unitPrice = snap.price || 0;
     const optLine = snap.options ? [snap.options.finish, snap.options.size].filter(Boolean).join(" · ") : "";
 
-    qkModal.innerHTML =
-      '<div class="qk-card">' +
-        '<div class="qk-head">' +
-          '<h3>' + esc(t("quickOrderTitle")) + '</h3>' +
-          '<button type="button" class="drawer-x" data-qk-close aria-label="' + esc(t("close")) + '">' +
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>' +
-          '</button>' +
-        '</div>' +
-        '<div class="qk-body">' +
-          '<div class="qk-product-row">' +
-            (snap.img ? '<img src="' + esc(snap.img) + '" class="qk-thumb" alt="" loading="lazy">' : '') +
-            '<div class="qk-product-info">' +
-              '<div class="qk-name">' + esc(snap.name) + '</div>' +
-              (optLine ? '<div class="qk-opt">' + esc(optLine) + '</div>' : '') +
-              '<div class="qk-price">' + (qty > 1 ? qty + ' × ' : '') + esc(fmt(snap.price || 0)) + (qty > 1 ? ' = <b>' + esc(fmt(itemTotal)) + '</b>' : '') + '</div>' +
+    function calcTotal(){
+      return unitPrice * currentQty;
+    }
+
+    function renderModalContent(){
+      const itemTotal = calcTotal();
+      qkModal.innerHTML =
+        '<div class="qk-card">' +
+          '<div class="qk-head">' +
+            '<div style="display:flex;align-items:center;gap:8px">' +
+              '<span style="display:inline-flex;color:var(--copper);font-size:18px">⚡</span>' +
+              '<h3>' + esc(t("quickOrderTitle") || "Быстрый заказ в 1 клик") + '</h3>' +
             '</div>' +
+            '<button type="button" class="drawer-x" data-qk-close aria-label="' + esc(t("close")) + '">' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>' +
+            '</button>' +
           '</div>' +
-          '<form class="qk-form" data-qk-form novalidate>' +
-            '<p class="qk-sub">' + esc(t("quickOrderSub")) + '</p>' +
-            '<div class="co-field">' +
-              '<label>' + esc(t("coPhone")) + ' *</label>' +
-              '<input name="phone" type="tel" autocomplete="tel" value="' + esc(saved.phone || "") + '" placeholder="+998 __ ___ __ __" required autofocus>' +
-            '</div>' +
-            '<div class="co-field">' +
-              '<label>' + esc(t("coName")) + '</label>' +
-              '<input name="name" type="text" autocomplete="name" value="' + esc(saved.name || "") + '" placeholder="' + esc(t("coNamePh")) + '">' +
-            '</div>' +
-            '<div class="co-field">' +
-              '<label>' + esc(t("coPayment")) + '</label>' +
-              '<div class="co-method" style="display:grid;grid-template-columns:1fr 1fr;gap:6px">' +
-                '<label class="co-radio" style="font-size:12.5px;padding:8px"><input type="radio" name="payment_method" value="cash_or_pos" checked><span>' + esc(t("coPickup") ? "При получении" : "Cash/terminal") + '</span></label>' +
-                '<label class="co-radio" style="font-size:12.5px;padding:8px"><input type="radio" name="payment_method" value="click_payme"><span>Click / Payme</span></label>' +
+          '<div class="qk-body">' +
+            '<div class="qk-product-row">' +
+              (snap.img ? '<img src="' + esc(snap.img) + '" class="qk-thumb" alt="" loading="lazy">' : '') +
+              '<div class="qk-product-info">' +
+                '<div class="qk-name">' + esc(snap.name) + '</div>' +
+                (optLine ? '<div class="qk-opt">' + esc(optLine) + '</div>' : '') +
+                '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:8px;flex-wrap:wrap">' +
+                  '<div class="qk-qty-box" style="display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:var(--r-md);background:var(--paper)">' +
+                    '<button type="button" class="qk-qty-btn" data-qk-minus style="width:28px;height:28px;border:none;background:none;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center">-</button>' +
+                    '<span class="qk-qty-val" style="min-width:24px;text-align:center;font-weight:700;font-size:13px">' + currentQty + '</span>' +
+                    '<button type="button" class="qk-qty-btn" data-qk-plus style="width:28px;height:28px;border:none;background:none;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center">+</button>' +
+                  '</div>' +
+                  '<div class="qk-price" style="font-size:15px;color:var(--copper);font-weight:800">' + esc(fmt(itemTotal)) + '</div>' +
+                '</div>' +
               '</div>' +
             '</div>' +
-            '<p class="co-err" data-qk-err hidden></p>' +
-            '<button type="submit" class="btn btn--copper qk-submit" data-qk-submit>' + esc(t("quickOrderBtn")) + '</button>' +
-          '</form>' +
-        '</div>' +
-      '</div>';
-
-    qkModal.querySelector("[data-qk-close]").onclick = closeQuickOrder;
-    const form = qkModal.querySelector("[data-qk-form]");
-    form.onsubmit = async (e) => {
-      e.preventDefault();
-      const phoneInput = form.querySelector('[name="phone"]');
-      const nameInput = form.querySelector('[name="name"]');
-      const payInput = form.querySelector('[name="payment_method"]:checked');
-      const errEl = form.querySelector("[data-qk-err]");
-      const submitBtn = form.querySelector("[data-qk-submit]");
-
-      const phone = (phoneInput ? phoneInput.value : "").trim();
-      const name = (nameInput ? nameInput.value : "").trim();
-      const payment = payInput ? payInput.value : "cash_or_pos";
-
-      if(phone.replace(/\D/g, "").length < 7){
-        if(errEl){ errEl.textContent = t("errPhone"); errEl.hidden = false; }
-        return;
-      }
-      if(errEl) errEl.hidden = true;
-      if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = t("coSending"); }
-
-      saveCheckout({ name: name || saved.name, phone, payment });
-
-      const prodId = snap.id || (window.BTT_PDP_PRODUCT && window.BTT_PDP_PRODUCT.slug) || "unknown";
-      let orderId = null;
-      if(window.BTT_API && window.BTT_API.createOrder){
-        try{
-          const res = await window.BTT_API.createOrder({
-            items: [{
-              id: prodId,
-              name: snap.name,
-              qty: qty,
-              price: snap.price || 0,
-              options: snap.options || undefined
-            }],
-            quick_order: true,
-            name: name || "Покупатель (быстрый заказ)",
-            phone: phone,
-            delivery: "quick_order",
-            payment: payment,
-            lang: document.documentElement.lang || "ru",
-            currency: CONFIG.currency
-          });
-          orderId = (res && res.orderId) || null;
-        }catch(err){
-          if(errEl){ errEl.textContent = t("errOrder"); errEl.hidden = false; }
-          if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = t("quickOrderBtn"); }
-          return;
-        }
-      }
-
-      const numHtml = orderId ? '<div style="font-size:17px;font-weight:800;color:var(--copper);margin:8px 0">№ ' + esc(orderId) + '</div>' : '';
-      qkModal.querySelector(".qk-body").innerHTML =
-        '<div class="qk-done">' +
-          '<div class="qk-done__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" style="width:56px;height:56px;display:inline-block"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div>' +
-          '<h4 style="font-size:18px;margin:8px 0 4px">' + esc(t("quickOrderDone")) + '</h4>' +
-          numHtml +
-          '<p style="font-size:13.5px;color:var(--muted);margin-bottom:18px">' + esc(t("quickOrderSub")) + '</p>' +
-          '<div class="co-msg-row" style="margin-bottom:12px">' +
-            '<button type="button" class="btn co-msg co-tg" data-order-tg>' + tgIco + '<span>' + esc(t("ordTg")) + '</span></button>' +
-            '<button type="button" class="btn co-msg co-wa" data-order-wa>' + waIco + '<span>' + esc(t("ordWa")) + '</span></button>' +
+            '<form class="qk-form" data-qk-form novalidate>' +
+              '<div class="co-field">' +
+                '<label>' + esc(t("coPhone")) + ' *</label>' +
+                '<input name="phone" type="tel" autocomplete="tel" value="' + esc(saved.phone || "") + '" placeholder="+998 (__) ___-__-__" required autofocus>' +
+              '</div>' +
+              '<div class="co-field">' +
+                '<label>' + esc(t("coName")) + '</label>' +
+                '<input name="name" type="text" autocomplete="name" value="' + esc(saved.name || "") + '" placeholder="' + esc(t("coNamePh")) + '">' +
+              '</div>' +
+              '<div class="co-field">' +
+                '<label>' + esc(t("quick.address.label") || "Район / Адрес доставки (по желанию)") + '</label>' +
+                '<input name="address" type="text" autocomplete="street-address" value="' + esc(saved.address || "") + '" placeholder="' + esc(t("quick.address.ph") || "Ташкент, например: Чиланзарский р-н") + '">' +
+              '</div>' +
+              '<div class="co-field">' +
+                '<label>' + esc(t("coPayment")) + '</label>' +
+                '<div class="co-method" style="display:grid;grid-template-columns:1fr 1fr;gap:6px">' +
+                  '<label class="co-radio" style="font-size:12px;padding:8px"><input type="radio" name="payment_method" value="cash_or_pos" checked><span>' + esc(t("coPickup") ? "При получении" : "Cash/terminal") + '</span></label>' +
+                  '<label class="co-radio" style="font-size:12px;padding:8px"><input type="radio" name="payment_method" value="click_payme"><span>Click / Payme</span></label>' +
+                '</div>' +
+              '</div>' +
+              '<div style="background:rgba(189,115,53,0.08);border:1px solid rgba(189,115,53,0.22);border-radius:10px;padding:10px 12px;margin:12px 0;font-size:12px;line-height:1.45;color:var(--ink)">' +
+                '<div style="display:flex;align-items:center;gap:6px;font-weight:700;margin-bottom:2px">' +
+                  '<span>🛡️</span>' +
+                  '<span>' + esc(t("quick.trust.no_prepay") || "Оплата строго при получении после осмотра мебели.") + '</span>' +
+                '</div>' +
+                '<div style="font-size:11.5px;color:var(--muted)">' + esc(t("quick.trust.callback") || "Менеджер перезвонит в течение 10-15 минут для подтверждения времени доставки.") + '</div>' +
+              '</div>' +
+              '<p class="co-err" data-qk-err hidden></p>' +
+              '<button type="submit" class="btn btn--copper qk-submit" data-qk-submit style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>' +
+                '<span>' + esc(t("quickOrderBtn") || "Подтвердить заказ в 1 клик") + '</span>' +
+              '</button>' +
+              '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:8px">' +
+                '<button type="button" class="btn btn--ghost sm qk-tg-direct" data-qk-tg-direct style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12.5px">' +
+                  tgIco +
+                  '<span>' + esc(t("pdp.cta.telegram") || "Заказать в Telegram") + '</span>' +
+                '</button>' +
+                '<button type="button" class="btn btn--ghost sm qk-cart-add" data-qk-cart-add style="flex:1;font-size:12.5px;display:flex;align-items:center;justify-content:center;gap:6px">' +
+                  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>' +
+                  '<span>' + esc(t("pdp.cta.cart") || "В корзину") + '</span>' +
+                '</button>' +
+              '</div>' +
+            '</form>' +
           '</div>' +
-          '<button type="button" class="btn btn--dark" data-qk-close style="width:100%">' + esc(t("close")) + '</button>' +
         '</div>';
 
-      qkModal.querySelectorAll("[data-qk-close]").forEach(b => b.onclick = closeQuickOrder);
-      const tgBtn = qkModal.querySelector("[data-order-tg]");
-      if(tgBtn){
-        tgBtn.onclick = () => {
-          const quickText = "Здравствуйте! Я оформил быстрый заказ" + (orderId ? " № " + orderId : "") + ": " + snap.name + " (" + fmt(itemTotal) + "). Телефон: " + phone;
-          copyText(quickText);
-          window.open("https://t.me/" + CONFIG.telegram, "_blank", "noopener");
-          toast(t("ordCopied"));
+      qkModal.querySelector("[data-qk-close]").onclick = closeQuickOrder;
+
+      // Qty steppers
+      const minusBtn = qkModal.querySelector("[data-qk-minus]");
+      const plusBtn = qkModal.querySelector("[data-qk-plus]");
+      const valEl = qkModal.querySelector(".qk-qty-val");
+      const priceEl = qkModal.querySelector(".qk-price");
+
+      if(minusBtn && plusBtn){
+        minusBtn.onclick = () => {
+          if(currentQty > 1){
+            currentQty--;
+            valEl.textContent = currentQty;
+            priceEl.textContent = fmt(calcTotal());
+          }
+        };
+        plusBtn.onclick = () => {
+          currentQty++;
+          valEl.textContent = currentQty;
+          priceEl.textContent = fmt(calcTotal());
         };
       }
-      const waBtn = qkModal.querySelector("[data-order-wa]");
-      if(waBtn){
-        waBtn.onclick = () => {
-          const quickText = "Здравствуйте! Я оформил быстрый заказ" + (orderId ? " № " + orderId : "") + ": " + snap.name + " (" + fmt(itemTotal) + "). Телефон: " + phone;
-          window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(quickText), "_blank", "noopener");
+
+      // Phone mask
+      const phoneInput = qkModal.querySelector('[name="phone"]');
+      if(phoneInput){
+        phoneInput.oninput = (e) => {
+          e.target.value = formatUzPhone(e.target.value);
         };
       }
-    };
+
+      // Add to cart secondary button
+      const toCartBtn = qkModal.querySelector("[data-qk-cart-add]");
+      if(toCartBtn){
+        toCartBtn.onclick = () => {
+          addToCart(snap, currentQty);
+          closeQuickOrder();
+          openCart();
+          toast(t("toast.repeat") || "Товары добавлены в корзину");
+        };
+      }
+
+      // Direct Telegram button
+      const tgDirectBtn = qkModal.querySelector("[data-qk-tg-direct]");
+      if(tgDirectBtn){
+        tgDirectBtn.onclick = () => {
+          const ph = phoneInput ? phoneInput.value.trim() : "";
+          const msg = "Здравствуйте! Хочу оформить быстрый заказ: " + snap.name +
+            (optLine ? " (" + optLine + ")" : "") +
+            " - " + currentQty + " " + (t("pcs") || "шт.") +
+            " на сумму " + fmt(calcTotal()) +
+            (ph ? ". Телефон: " + ph : "") +
+            ". Пожалуйста, свяжитесь со мной для подтверждения.";
+          copyText(msg);
+          window.open("https://t.me/" + CONFIG.telegram + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+        };
+      }
+
+      // Submit form
+      const form = qkModal.querySelector("[data-qk-form]");
+      form.onsubmit = async (e) => {
+        e.preventDefault();
+        const nameInput = form.querySelector('[name="name"]');
+        const addrInput = form.querySelector('[name="address"]');
+        const payInput = form.querySelector('[name="payment_method"]:checked');
+        const errEl = form.querySelector("[data-qk-err]");
+        const submitBtn = form.querySelector("[data-qk-submit]");
+
+        const phone = (phoneInput ? phoneInput.value : "").trim();
+        const name = (nameInput ? nameInput.value : "").trim();
+        const address = (addrInput ? addrInput.value : "").trim();
+        const payment = payInput ? payInput.value : "cash_or_pos";
+
+        if(phone.replace(/\D/g, "").length < 7){
+          if(errEl){ errEl.textContent = t("errPhone"); errEl.hidden = false; }
+          return;
+        }
+        if(errEl) errEl.hidden = true;
+        if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = t("coSending"); }
+
+        saveCheckout({ name: name || saved.name, phone, address, payment });
+
+        const prodId = snap.id || (window.BTT_PDP_PRODUCT && window.BTT_PDP_PRODUCT.slug) || "unknown";
+        let orderId = null;
+        if(window.BTT_API && window.BTT_API.createOrder){
+          try{
+            const res = await window.BTT_API.createOrder({
+              items: [{
+                id: prodId,
+                name: snap.name,
+                qty: currentQty,
+                price: unitPrice,
+                options: snap.options || undefined
+              }],
+              quick_order: true,
+              name: name || "Покупатель (быстрый заказ)",
+              phone: phone,
+              delivery: address ? ("Адрес: " + address) : "quick_order",
+              payment: payment,
+              lang: document.documentElement.lang || "ru",
+              currency: CONFIG.currency
+            });
+            orderId = (res && res.orderId) || null;
+          }catch(err){
+            if(errEl){ errEl.textContent = t("errOrder"); errEl.hidden = false; }
+            if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = t("quickOrderBtn"); }
+            return;
+          }
+        }
+
+        const numHtml = orderId ? '<div style="font-size:17px;font-weight:800;color:var(--copper);margin:8px 0">№ ' + esc(orderId) + '</div>' : '';
+        qkModal.querySelector(".qk-body").innerHTML =
+          '<div class="qk-done">' +
+            '<div class="qk-done__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" style="width:56px;height:56px;display:inline-block"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div>' +
+            '<h4 style="font-size:18px;margin:8px 0 4px">' + esc(t("quickOrderDone")) + '</h4>' +
+            numHtml +
+            '<p style="font-size:13.5px;color:var(--muted);margin-bottom:18px">' + esc(t("quickOrderSub")) + '</p>' +
+            '<div class="co-msg-row" style="margin-bottom:12px">' +
+              '<button type="button" class="btn co-msg co-tg" data-order-tg>' + tgIco + '<span>' + esc(t("ordTg")) + '</span></button>' +
+              '<button type="button" class="btn co-msg co-wa" data-order-wa>' + waIco + '<span>' + esc(t("ordWa")) + '</span></button>' +
+            '</div>' +
+            '<button type="button" class="btn btn--dark" data-qk-close style="width:100%">' + esc(t("close")) + '</button>' +
+          '</div>';
+
+        qkModal.querySelectorAll("[data-qk-close]").forEach(b => b.onclick = closeQuickOrder);
+        const tgBtn = qkModal.querySelector("[data-order-tg]");
+        if(tgBtn){
+          tgBtn.onclick = () => {
+            const quickText = "Здравствуйте! Я оформил быстрый заказ" + (orderId ? " № " + orderId : "") + ": " + snap.name + " (" + fmt(calcTotal()) + "). Телефон: " + phone;
+            copyText(quickText);
+            window.open("https://t.me/" + CONFIG.telegram, "_blank", "noopener");
+            toast(t("ordCopied"));
+          };
+        }
+        const waBtn = qkModal.querySelector("[data-order-wa]");
+        if(waBtn){
+          waBtn.onclick = () => {
+            const quickText = "Здравствуйте! Я оформил быстрый заказ" + (orderId ? " № " + orderId : "") + ": " + snap.name + " (" + fmt(calcTotal()) + "). Телефон: " + phone;
+            window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(quickText), "_blank", "noopener");
+          };
+        }
+      };
+    }
+
+    renderModalContent();
 
     qkScrim.classList.add("on");
     qkModal.classList.add("on");
@@ -1076,36 +1191,38 @@
 
   function wireProductButtons(root){
     const scope = root || document;
-    scope.querySelectorAll("[data-add]").forEach(btn=>{
-      if(btn.dataset.cartWired) return;
-      btn.dataset.cartWired = "1";
-      btn.addEventListener("click",e=>{
+    scope.querySelectorAll("[data-add], [data-pdp-quick-buy], [data-quick-buy]").forEach(btn=>{
+      if(btn.dataset.quickBuyWired) return;
+      btn.dataset.quickBuyWired = "1";
+      btn.addEventListener("click", e=>{
         e.preventDefault();
         e.stopPropagation();
-        let qty=1;
-        const qtyInput=document.querySelector("[data-qty] input");
-        if(document.querySelector(".pdp-info") && qtyInput) qty=Math.max(1,parseInt(qtyInput.value,10)||1);
-        addToCart(resolveSnap(btn),qty);
-        if(navigator.vibrate) try{ navigator.vibrate(20); }catch(_){}
-        btn.classList.add("added");
-        const isIconOnly = btn.classList.contains("add") && !btn.classList.contains("btn");
-        const origContent = btn.innerHTML;
-        if(isIconOnly){
-          btn.innerHTML = '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" class="ico-check" style="width:19px;height:19px"><path d="M20 6 9 17l-5-5"/></svg>';
-        } else {
-          const checkIco = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" class="ico-check" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M20 6 9 17l-5-5"/></svg>';
-          const addedTxt = (window.BTT_I18N && window.BTT_I18N.t ? window.BTT_I18N.t("pdp.added") : "") || "Добавлено ✓";
-          btn.innerHTML = checkIco + '<span>' + esc(addedTxt) + '</span>';
+        const snap = resolveSnap(btn);
+        let qty = 1;
+        const qtyInput = document.querySelector(".pdp-buy [data-qty] input");
+        if(document.querySelector(".pdp-info") && qtyInput && snap){
+          qty = Math.max(1, parseInt(qtyInput.value, 10) || 1);
         }
-        setTimeout(()=>{
-          btn.classList.remove("added");
-          btn.innerHTML = origContent;
-        }, 1100);
-        if(window.BTT_FX && window.BTT_FX.burstParticles && e.clientX && e.clientY){
-          window.BTT_FX.burstParticles(e.clientX, e.clientY, 8);
-        }
+        if(snap) snap.qty = qty;
+        openQuickOrder(snap);
       });
     });
+
+    scope.querySelectorAll("[data-cart-add]").forEach(btn=>{
+      if(btn.dataset.cartAddWired) return;
+      btn.dataset.cartAddWired = "1";
+      btn.addEventListener("click", e=>{
+        e.preventDefault();
+        e.stopPropagation();
+        let qty = 1;
+        const qtyInput = document.querySelector(".pdp-buy [data-qty] input");
+        if(document.querySelector(".pdp-info") && qtyInput) qty = Math.max(1, parseInt(qtyInput.value, 10) || 1);
+        addToCart(resolveSnap(btn), qty);
+        if(navigator.vibrate) try{ navigator.vibrate(20); }catch(_){}
+        toast(t("toast.repeat") || "Товары добавлены в корзину");
+      });
+    });
+
     scope.querySelectorAll("[data-fav]").forEach(btn=>{
       if(btn.hasAttribute("data-fav-open") || btn.dataset.cartWired) return;
       btn.dataset.cartWired = "1";
@@ -1130,20 +1247,6 @@
         } else {
           toast((t("fav.removed") || t("favRemoved")) + prodName);
         }
-      });
-    });
-    scope.querySelectorAll("[data-pdp-quick-buy], [data-quick-buy]").forEach(btn=>{
-      if(btn.dataset.quickBuyWired) return;
-      btn.dataset.quickBuyWired = "1";
-      btn.addEventListener("click", e=>{
-        e.preventDefault();
-        e.stopPropagation();
-        const snap = resolveSnap(btn);
-        const qtyInput = document.querySelector(".pdp-buy [data-qty] input");
-        if(qtyInput && snap){
-          snap.qty = Math.max(1, parseInt(qtyInput.value, 10) || 1);
-        }
-        openQuickOrder(snap);
       });
     });
     scope.querySelectorAll(".product[data-product]").forEach(card=>{
