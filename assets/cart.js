@@ -140,8 +140,82 @@
   /* ---------- storage ---------- */
   function read(key){ try{ const v=JSON.parse(localStorage.getItem(key)); return (v&&typeof v==="object"&&!Array.isArray(v))?v:{}; }catch(e){ return {}; } }
   function write(key,obj){ localStorage.setItem(key, JSON.stringify(obj)); }
-  const getCart = ()=>read("btt_cart");
-  const getFavs = ()=>read("btt_favs");
+
+  const LEGACY_ID_MAP = {
+    p1: "stul-vertex",
+    p2: "stul-corda",
+    p3: "stul-roero",
+    p4: "stul-noero",
+    p5: "stul-todo",
+    p6: "stul-jardin",
+    p7: "stul-lira",
+    p8: "kreslo-como",
+    p9: "stol-taper-80",
+    p10: "stol-taper-135",
+    p11: "stol-taper-rotang-80",
+    p12: "stol-taper-rotang-135",
+    p13: "stol-vertex-d90",
+    p14: "stol-vertex-80",
+    p15: "stol-corda-135",
+    p16: "stul-todo-soft"
+  };
+
+  function resolveCanonicalId(idOrSlug){
+    if(!idOrSlug) return "";
+    const s = String(idOrSlug).trim().toLowerCase();
+    if(window.BTT_RESOLVE_PRODUCT){
+      const res = window.BTT_RESOLVE_PRODUCT(s);
+      if(res) return res;
+    }
+    return LEGACY_ID_MAP[s] || s;
+  }
+
+  function getCart(){
+    const raw = read("btt_cart");
+    let migrated = false;
+    const migratedCart = {};
+    for(const key of Object.keys(raw)){
+      const it = raw[key];
+      if(!it || typeof it !== "object") continue;
+      const keyParts = key.split("__");
+      const oldId = keyParts[0];
+      const canonicalId = resolveCanonicalId(it.id || oldId);
+      const newKey = [canonicalId, ...keyParts.slice(1)].join("__");
+      if(canonicalId !== oldId || (it.id && it.id !== canonicalId) || newKey !== key){
+        migrated = true;
+      }
+      it.id = canonicalId;
+      if(migratedCart[newKey]){
+        migratedCart[newKey].qty = (migratedCart[newKey].qty || 1) + (it.qty || 1);
+        migrated = true;
+      } else {
+        migratedCart[newKey] = it;
+      }
+    }
+    if(migrated){
+      write("btt_cart", migratedCart);
+    }
+    return migratedCart;
+  }
+
+  function getFavs(){
+    const raw = read("btt_favs");
+    let migrated = false;
+    const migratedFavs = {};
+    for(const key of Object.keys(raw)){
+      const it = raw[key];
+      if(!it || typeof it !== "object") continue;
+      const canonicalId = resolveCanonicalId(key);
+      if(canonicalId !== key){
+        migrated = true;
+      }
+      migratedFavs[canonicalId] = it;
+    }
+    if(migrated){
+      write("btt_favs", migratedFavs);
+    }
+    return migratedFavs;
+  }
   const cartCount = ()=>{ const c=getCart(); return Object.values(c).reduce((n,it)=>n+(it.qty||1),0); };
   const favCount  = ()=>Object.keys(getFavs()).length;
   let _favSyncT=null;

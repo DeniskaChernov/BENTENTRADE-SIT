@@ -65,7 +65,9 @@ app.use("/api/*", async (c, next) => {
     }
 
     const origin = c.req.header("origin");
-    if (origin) {
+    const referer = c.req.header("referer");
+    const sourceUrl = origin || referer;
+    if (sourceUrl) {
       const allowedHosts = new Set([
         "bententrade.uz",
         "www.bententrade.uz",
@@ -76,12 +78,12 @@ app.use("/api/*", async (c, next) => {
         try { allowedHosts.add(new URL(c.env.SITE_ORIGIN).host); } catch {}
       }
       try {
-        const originHost = new URL(origin).host;
+        const sourceHost = new URL(sourceUrl).host;
         const isAllowed =
-          allowedHosts.has(originHost) ||
-          originHost.endsWith(".workers.dev") ||
-          originHost.startsWith("localhost:") ||
-          originHost.startsWith("127.0.0.1:");
+          allowedHosts.has(sourceHost) ||
+          sourceHost.endsWith(".workers.dev") ||
+          sourceHost.startsWith("localhost:") ||
+          sourceHost.startsWith("127.0.0.1:");
         if (!isAllowed) {
           return c.json({ error: "forbidden_origin", message: "Cross-site request blocked" }, 403);
         }
@@ -188,102 +190,247 @@ app.get("/admin/app.js", (c) => {
   });
 });
 
-const VALID_PRODUCT_SLUGS = new Set([
-  "stul-vertex", "stul-corda", "stul-roero", "stul-noero", "stul-todo", "stul-todo-soft", "stul-jardin",
-  "stul-lira", "kreslo-como", "stol-taper-rotang-80", "stol-vertex-d90",
-  "stol-taper-rotang-135", "stol-taper-80", "stol-vertex-80", "stol-taper-135", "stol-corda-135"
-]);
+function escHtml(s: string): string {
+  return String(s || "").replace(/[&<>"']/g, (c) => {
+    switch (c) {
+      case "&": return "&amp;";
+      case "<": return "&lt;";
+      case ">": return "&gt;";
+      case '"': return "&quot;";
+      case "'": return "&#39;";
+      default: return c;
+    }
+  });
+}
 
-const PRODUCT_ALIASES: Record<string, string> = {
-  p1: "stul-vertex",
-  p2: "stul-corda",
-  p3: "stul-roero",
-  p4: "stul-noero",
-  p5: "stul-todo",
-  p6: "stul-jardin",
-  p7: "stul-lira",
-  p8: "kreslo-como",
-  p9: "stol-taper-rotang-80",
-  p10: "stol-vertex-d90",
-  p11: "stol-taper-rotang-135",
-  p12: "stol-taper-80",
-  p13: "stol-vertex-80",
-  p14: "stol-taper-135",
-  p15: "stol-corda-135",
-  p16: "stul-todo-soft",
-};
-
-// Clean PDP URLs: /catalog/:slug -> serves product.html with status 200
+// Clean PDP URLs: /catalog/:slug -> serves product.html with status 200 & authoritative SSR SEO
 app.get("/catalog/:slug", async (c) => {
   const rawSlug = c.req.param("slug");
   const slug = (rawSlug || "").toLowerCase().trim();
 
-  // If a legacy alias was requested, 301 redirect to canonical slug
-  if (PRODUCT_ALIASES[slug]) {
-    return c.redirect(`/catalog/${PRODUCT_ALIASES[slug]}`, 301);
+  // 1. Alias lookup in D1
+  const aliasRow = await c.env.DB.prepare(
+    `SELECT product_id FROM product_aliases WHERE alias = ?`
+  ).bind(slug).first<{ product_id: string }>();
+
+  if (aliasRow?.product_id) {
+    return c.redirect(`/catalog/${aliasRow.product_id}`, 301);
   }
 
-  // If uppercase was used for canonical slug, redirect to lowercase
-  if (rawSlug !== slug && VALID_PRODUCT_SLUGS.has(slug)) {
-    return c.redirect(`/catalog/${slug}`, 301);
-  }
+  // 2. Fetch canonical product from D1
+  const product = await c.env.DB.prepare(
+    `SELECT id, category, price_now, price_old, COALESCE(availability, 'unknown') AS availability, active FROM products WHERE id = ?`
+  ).bind(slug).first<{ id: string; category: string; price_now: number; price_old: number; availability: string; active: number }>();
 
-  if (VALID_PRODUCT_SLUGS.has(slug)) {
-    const url = new URL("/product.html", c.req.url);
-    url.searchParams.set("id", slug);
-    const reqUrl = new URL(c.req.url);
-    for (const [k, v] of reqUrl.searchParams.entries()) {
-      if (k !== "id") url.searchParams.set(k, v);
-    }
-    const res = await c.env.ASSETS.fetch(new Request(url.toString(), c.req.raw));
-    if (res.status === 304) {
-      return new Response(null, {
-        status: 304,
-        headers: res.headers,
-      });
-    }
-    if ((res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) && res.headers.get("Location")) {
-      const loc = res.headers.get("Location")!;
-      const followUrl = new URL(loc, c.req.url);
-      const followedRes = await c.env.ASSETS.fetch(new Request(followUrl.toString(), c.req.raw));
-      if (followedRes.status === 304) {
-        return new Response(null, { status: 304, headers: followedRes.headers });
-      }
-      return new Response(followedRes.body, {
-        status: followedRes.status,
-        headers: {
-          ...Object.fromEntries(followedRes.headers.entries()),
-          "content-type": "text/html; charset=utf-8",
-        },
-      });
-    }
-    return new Response(res.body, {
-      status: res.status,
+  if (!product || product.active === 0) {
+    const notFoundUrl = new URL("/404.html", c.req.url);
+    const notFoundRes = await c.env.ASSETS.fetch(new Request(notFoundUrl.toString(), c.req.raw));
+    return new Response(notFoundRes.body, {
+      status: 404,
       headers: {
-        ...Object.fromEntries(res.headers.entries()),
+        ...Object.fromEntries(notFoundRes.headers.entries()),
         "content-type": "text/html; charset=utf-8",
       },
     });
   }
-  const notFoundUrl = new URL("/404.html", c.req.url);
-  const notFoundRes = await c.env.ASSETS.fetch(new Request(notFoundUrl.toString(), c.req.raw));
-  return new Response(notFoundRes.body, {
-    status: 404,
-    headers: {
-      ...Object.fromEntries(notFoundRes.headers.entries()),
-      "content-type": "text/html; charset=utf-8",
-    },
+
+  // 3. Uppercase slug redirect to canonical lowercase
+  if (rawSlug !== slug) {
+    return c.redirect(`/catalog/${slug}`, 301);
+  }
+
+  // 4. Fetch product.html template from assets
+  const url = new URL("/product.html", c.req.url);
+  url.searchParams.set("id", slug);
+  const reqUrl = new URL(c.req.url);
+  for (const [k, v] of reqUrl.searchParams.entries()) {
+    if (k !== "id") url.searchParams.set(k, v);
+  }
+  const assetRes = await c.env.ASSETS.fetch(new Request(url.toString(), c.req.raw));
+  if (assetRes.status === 304) {
+    return new Response(null, { status: 304, headers: assetRes.headers });
+  }
+
+  let baseHtml = "";
+  if ((assetRes.status === 301 || assetRes.status === 302 || assetRes.status === 307 || assetRes.status === 308) && assetRes.headers.get("Location")) {
+    const loc = assetRes.headers.get("Location")!;
+    const followUrl = new URL(loc, c.req.url);
+    const followedRes = await c.env.ASSETS.fetch(new Request(followUrl.toString(), c.req.raw));
+    if (followedRes.status === 304) return new Response(null, { status: 304, headers: followedRes.headers });
+    baseHtml = await followedRes.text();
+  } else if (assetRes.status === 200) {
+    baseHtml = await assetRes.text();
+  } else {
+    return assetRes;
+  }
+
+  // 5. Fetch i18n & primary image for SSR SEO
+  const i18n = await c.env.DB.prepare(
+    `SELECT name, category_label, description, seo_title, seo_description FROM product_i18n WHERE product_id = ? AND lang = 'ru'`
+  ).bind(slug).first<{ name: string; category_label: string; description: string; seo_title: string; seo_description: string }>();
+
+  const mediaRow = await c.env.DB.prepare(
+    `SELECT key FROM media WHERE product_id = ? ORDER BY sort ASC, id ASC LIMIT 1`
+  ).bind(slug).first<{ key: string }>();
+
+  const productName = i18n?.name || slug;
+  const pageTitle = i18n?.seo_title || `BTT - ${productName}`;
+  const pageDesc = i18n?.seo_description || `${productName} - купить в Ташкенте. Характеристики, размеры, цена в сумах, доставка BTT.`;
+  const canonicalUrl = `https://bententrade.uz/catalog/${slug}`;
+  const rawImg = mediaRow?.key || "assets/btt-logo.png";
+  const imageUrl = rawImg.startsWith("http") ? rawImg : `https://bententrade.uz/${rawImg.replace(/^\//, "")}`;
+
+  // Build authoritative Schema.org Offer
+  const offerObj: Record<string, unknown> = {
+    "@type": "Offer",
+    "url": canonicalUrl,
+    "priceCurrency": "UZS",
+    "price": product.price_now,
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": { "@type": "Organization", "name": "BTT - мебель для дома и сада" }
+  };
+  if (product.availability === "in_stock") {
+    offerObj.availability = "https://schema.org/InStock";
+  } else if (product.availability === "low_stock") {
+    offerObj.availability = "https://schema.org/LimitedAvailability";
+  } else if (product.availability === "out_of_stock") {
+    offerObj.availability = "https://schema.org/OutOfStock";
+  } else if (product.availability === "on_request") {
+    offerObj.availability = "https://schema.org/PreOrder";
+  }
+
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": productName,
+    "image": imageUrl,
+    "description": pageDesc,
+    "sku": slug.toUpperCase(),
+    "brand": { "@type": "Brand", "name": "BTT" },
+    "offers": offerObj
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://bententrade.uz/" },
+      { "@type": "ListItem", "position": 2, "name": "Каталог", "item": "https://bententrade.uz/catalog.html" },
+      { "@type": "ListItem", "position": 3, "name": productName, "item": canonicalUrl }
+    ]
+  };
+
+  let html = baseHtml;
+  html = html.replace(/<title>.*?<\/title>/i, `<title>${escHtml(pageTitle)}</title>`);
+  html = html.replace(/<meta\s+name=["']description["']\s+content=["'].*?["']\s*\/?>/i, `<meta name="description" content="${escHtml(pageDesc)}">`);
+  html = html.replace(/<link\s+rel=["']canonical["']\s+href=["'].*?["']\s*\/?>/i, `<link rel="canonical" href="${canonicalUrl}">`);
+  html = html.replace(/<meta\s+property=["']og:title["']\s+content=["'].*?["']\s*\/?>/i, `<meta property="og:title" content="${escHtml(pageTitle)}">`);
+  html = html.replace(/<meta\s+property=["']og:description["']\s+content=["'].*?["']\s*\/?>/i, `<meta property="og:description" content="${escHtml(pageDesc)}">`);
+  html = html.replace(/<meta\s+property=["']og:image["']\s+content=["'].*?["']\s*\/?>/i, `<meta property="og:image" content="${escHtml(imageUrl)}">`);
+  html = html.replace(/<meta\s+name=["']twitter:title["']\s+content=["'].*?["']\s*\/?>/i, `<meta name="twitter:title" content="${escHtml(pageTitle)}">`);
+  html = html.replace(/<meta\s+name=["']twitter:description["']\s+content=["'].*?["']\s*\/?>/i, `<meta name="twitter:description" content="${escHtml(pageDesc)}">`);
+  html = html.replace(/<meta\s+name=["']twitter:image["']\s+content=["'].*?["']\s*\/?>/i, `<meta name="twitter:image" content="${escHtml(imageUrl)}">`);
+
+  const headInject = [
+    `<meta property="og:url" content="${canonicalUrl}">`,
+    `<script type="application/ld+json" id="pdp-schema-product">${JSON.stringify(productJsonLd)}</script>`,
+    `<script type="application/ld+json" id="pdp-schema-breadcrumb">${JSON.stringify(breadcrumbJsonLd)}</script>`
+  ].join("\n");
+
+  html = html.replace("</head>", `${headInject}\n</head>`);
+
+  const headers = new Headers(assetRes.headers);
+  headers.set("content-type", "text/html; charset=utf-8");
+  return new Response(html, {
+    status: 200,
+    headers
   });
 });
 
-// Legacy redirect: /product?id=:slug -> /catalog/:slug
-app.get("/product", (c) => {
-  const id = c.req.query("id");
-  if (id) {
-    if (PRODUCT_ALIASES[id]) {
-      return c.redirect(`/catalog/${PRODUCT_ALIASES[id]}`, 301);
+// Dynamic sitemap.xml generated from D1 active products with static fallback
+app.get("/sitemap.xml", async (c) => {
+  try {
+    const { results } = await c.env.DB.prepare(
+      `SELECT id FROM products WHERE active = 1 ORDER BY sort ASC, id ASC`
+    ).all<{ id: string }>();
+
+    if (results && results.length > 0) {
+      const staticUrls = [
+        { loc: "https://bententrade.uz/", freq: "weekly", priority: "1.0" },
+        { loc: "https://bententrade.uz/catalog.html", freq: "weekly", priority: "0.95" },
+        { loc: "https://bententrade.uz/horeca.html", freq: "weekly", priority: "0.88" },
+        { loc: "https://bententrade.uz/rotang-tashkent.html", freq: "monthly", priority: "0.88" },
+        { loc: "https://bententrade.uz/sadovaya-mebel-rotang.html", freq: "monthly", priority: "0.88" },
+        { loc: "https://bententrade.uz/about.html", freq: "monthly", priority: "0.7" },
+        { loc: "https://bententrade.uz/contacts.html", freq: "monthly", priority: "0.75" },
+        { loc: "https://bententrade.uz/blog.html", freq: "weekly", priority: "0.8" },
+        { loc: "https://bententrade.uz/article.html?slug=zachem-iskusstvennyy-rotang", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/article.html?slug=kak-vybrat-luchshiy-rotang", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/article.html?slug=pochemu-rabotayut-s-bententrade", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/uhod-za-mebelyu-iz-rotanga", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/profil-polumesyats-dlya-mebeli", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/rotang-dlya-terrasy", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/mebel-iz-rotanga-na-zakaz", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/iskusstvennyy-i-naturalnyy-rotang", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/sadovaya-mebel-rotang-tashkent", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/kashpo-iz-iskusstvennogo-rotanga", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/korziny-sunduki-rotang", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/kupit-rotang-buhtami", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/mebel-rotang-dlya-kafe", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/pletennaya-mebel-dlya-doma", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/dostavka-rotanga-po-uzbekistanu", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/rotang-dlya-balkona", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/palitra-tsvetov-rotanga-bententrade", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/oformlenie-terassi-rotangom", freq: "monthly", priority: "0.65" },
+        { loc: "https://bententrade.uz/faq.html", freq: "monthly", priority: "0.55" },
+        { loc: "https://bententrade.uz/delivery.html", freq: "monthly", priority: "0.5" },
+        { loc: "https://bententrade.uz/returns.html", freq: "monthly", priority: "0.5" },
+        { loc: "https://bententrade.uz/care.html", freq: "monthly", priority: "0.55" },
+        { loc: "https://bententrade.uz/privacy.html", freq: "monthly", priority: "0.3" },
+        { loc: "https://bententrade.uz/cookies.html", freq: "monthly", priority: "0.3" }
+      ];
+
+      const xmlLines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+      ];
+      for (const item of staticUrls) {
+        xmlLines.push(`  <url><loc>${item.loc}</loc><changefreq>${item.freq}</changefreq><priority>${item.priority}</priority></url>`);
+      }
+      for (const p of results) {
+        xmlLines.push(`  <url><loc>https://bententrade.uz/catalog/${encodeURIComponent(p.id)}</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>`);
+      }
+      xmlLines.push('</urlset>');
+
+      return new Response(xmlLines.join("\n"), {
+        headers: {
+          "content-type": "application/xml; charset=utf-8",
+          "cache-control": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      });
     }
-    if (VALID_PRODUCT_SLUGS.has(id)) {
+  } catch (err) {
+    console.error("Dynamic sitemap generation error:", err);
+  }
+
+  // Fallback to static sitemap.xml in assets
+  return c.env.ASSETS.fetch(c.req.raw);
+});
+
+// Legacy redirect: /product?id=:slug -> /catalog/:slug
+app.get("/product", async (c) => {
+  const id = (c.req.query("id") || "").toLowerCase().trim();
+  if (id) {
+    const alias = await c.env.DB.prepare(
+      `SELECT product_id FROM product_aliases WHERE alias = ?`
+    ).bind(id).first<{ product_id: string }>();
+    if (alias?.product_id) {
+      return c.redirect(`/catalog/${alias.product_id}`, 301);
+    }
+    const prod = await c.env.DB.prepare(
+      `SELECT id FROM products WHERE id = ?`
+    ).bind(id).first();
+    if (prod) {
       return c.redirect(`/catalog/${id}`, 301);
     }
   }

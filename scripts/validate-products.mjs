@@ -29,33 +29,75 @@ if (!fs.existsSync(MASTER_PATH)) {
 
 const products = JSON.parse(fs.readFileSync(MASTER_PATH, 'utf8'));
 assert(Array.isArray(products), 'products-master.json is a valid JSON array');
-assert(products.length === 16, `Exactly 16 canonical products defined (found ${products.length})`);
+assert(products.length > 0, `Products list is populated (found ${products.length} products)`);
+
+const ALLOWED_CATEGORIES = new Set([
+  'wicker-chairs',
+  'plastic-chairs',
+  'upholstered-chairs',
+  'tables'
+]);
+
+const ALLOWED_AVAILABILITIES = new Set([
+  'unknown',
+  'in_stock',
+  'low_stock',
+  'out_of_stock',
+  'on_request'
+]);
 
 const slugs = new Set();
 const legacyIds = new Set();
+const activeSlugs = new Set();
+
 const forbiddenBuzzwords = [
   /выдерживает\s+\d+/i,
   /120\s*кг/i,
   /150\s*кг/i,
   /180\s*кг/i,
+  /нагрузка\s+до/i,
+  /максимальная\s+нагрузка/i,
+  /прочн/i,
+  /над[её]жн/i,
+  /долговечн/i,
+  /износостойк/i,
+  /водоотталкива/i,
+  /не\s+выцветает/i,
+  /высокопрочн/i,
   /премиальн/i,
+  /durable/i,
+  /reinforced/i,
+  /all-weather/i,
+  /weather-resistant/i,
+  /uv-resistant/i,
+  /high-strength/i,
   /premium/i,
-  /ударопрочн/i,
-  /быстрая доставка/i
+  /быстрая\s+доставка/i,
+  /fast\s+(?:local\s+)?delivery/i
 ];
 
 for (const p of products) {
-  // Check slug uniqueness
+  // Check slug format and uniqueness
+  assert(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.slug), `${p.slug}: valid lowercase slug format`);
   assert(!slugs.has(p.slug), `Unique slug: ${p.slug}`);
   slugs.add(p.slug);
 
-  // Check legacyId uniqueness
-  assert(!legacyIds.has(p.legacyId), `Unique legacyId: ${p.legacyId} (${p.slug})`);
-  legacyIds.add(p.legacyId);
+  if (p.active !== 0 && p.active !== false) {
+    activeSlugs.add(p.slug);
+  }
+
+  // Check legacyId uniqueness if present
+  if (p.legacyId) {
+    assert(!legacyIds.has(p.legacyId), `Unique legacyId: ${p.legacyId} (${p.slug})`);
+    legacyIds.add(p.legacyId);
+    assert(!slugs.has(p.legacyId), `Legacy alias ${p.legacyId} does not collide with canonical slug`);
+  }
 
   // Check required fields
-  assert(p.category && typeof p.category === 'string', `${p.slug}: valid category`);
+  assert(ALLOWED_CATEGORIES.has(p.category), `${p.slug}: valid category (${p.category})`);
   assert(typeof p.price === 'number' && p.price > 0, `${p.slug}: valid price (${p.price})`);
+  const avail = p.availability || 'unknown';
+  assert(ALLOWED_AVAILABILITIES.has(avail), `${p.slug}: valid availability (${avail})`);
   assert(p.dimensions && typeof p.dimensions === 'string', `${p.slug}: dimensions defined`);
   assert(p.maxLoad === null, `${p.slug}: maxLoad is null (unverified weight claims stripped)`);
 
@@ -68,11 +110,13 @@ for (const p of products) {
     }
   }
 
-  // Check descriptions for forbidden buzzwords
+  // Check descriptions and names for forbidden buzzwords
   for (const lang of ['ru', 'uz', 'en']) {
     const desc = p.i18n?.[lang]?.description || '';
+    const name = p.i18n?.[lang]?.name || '';
     for (const pat of forbiddenBuzzwords) {
-      assert(!pat.test(desc), `${p.slug} [${lang}]: no unverified claim matching ${pat}`);
+      assert(!pat.test(desc), `${p.slug} [${lang}] desc: no unverified claim matching ${pat}`);
+      assert(!pat.test(name), `${p.slug} [${lang}] name: no unverified claim matching ${pat}`);
     }
   }
 }
@@ -81,10 +125,12 @@ console.log('\n--- 2. Validating migrations/seed.sql ---');
 if (fs.existsSync(SEED_SQL_PATH)) {
   const seedSql = fs.readFileSync(SEED_SQL_PATH, 'utf8');
   const productInserts = (seedSql.match(/INSERT OR REPLACE INTO products/g) || []).length;
-  assert(productInserts === 16, `seed.sql has exactly 16 product records (found ${productInserts})`);
+  assert(productInserts > 0, `seed.sql has product records (found ${productInserts})`);
+  assert(productInserts === products.length, `seed.sql matches master product count (${productInserts}/${products.length})`);
 
   const aliasInserts = (seedSql.match(/INSERT OR REPLACE INTO product_aliases/g) || []).length;
-  assert(aliasInserts === 16, `seed.sql has exactly 16 alias records (found ${aliasInserts})`);
+  assert(aliasInserts > 0, `seed.sql has alias records (found ${aliasInserts})`);
+  assert(aliasInserts <= productInserts, `seed.sql alias records count does not exceed products (${aliasInserts}/${productInserts})`);
 } else {
   errors.push('migrations/seed.sql not found');
 }
@@ -103,8 +149,8 @@ if (fs.existsSync(SITEMAP_PATH)) {
   const sitemap = fs.readFileSync(SITEMAP_PATH, 'utf8');
   assert(!sitemap.includes('?id='), 'sitemap.xml has 0 legacy query string URLs');
   assert(sitemap.includes('/horeca.html'), 'sitemap.xml includes /horeca.html');
-  for (const s of slugs) {
-    assert(sitemap.includes(`/catalog/${s}`), `sitemap.xml includes canonical /catalog/${s}`);
+  for (const s of activeSlugs) {
+    assert(sitemap.includes(`/catalog/${s}`), `sitemap.xml includes active /catalog/${s}`);
   }
 } else {
   errors.push('sitemap.xml not found');
@@ -112,10 +158,10 @@ if (fs.existsSync(SITEMAP_PATH)) {
 
 console.log('\n=======================================');
 if (errors.length === 0) {
-  console.log('✅ ALL PRODUCT VALIDATIONS PASSED SUCCESSFULLY!');
+  console.log('ALL PRODUCT VALIDATIONS PASSED SUCCESSFULLY!');
   process.exit(0);
 } else {
-  console.error(`❌ VALIDATION FAILED WITH ${errors.length} ERROR(S):`);
+  console.error(`VALIDATION FAILED WITH ${errors.length} ERROR(S):`);
   errors.forEach(e => console.error(`  - ${e}`));
   process.exit(1);
 }

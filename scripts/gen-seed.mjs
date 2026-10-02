@@ -24,7 +24,7 @@ function main() {
   lines.push("DELETE FROM products;");
   lines.push("");
 
-  // 1. Insert 15 canonical products & aliases
+  // 1. Insert canonical products & aliases
   MASTER.forEach((p, i) => {
     lines.push(
       `INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ` +

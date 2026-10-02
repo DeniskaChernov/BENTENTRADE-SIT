@@ -2,7 +2,7 @@
    BENTENTRADE - Service Worker (PWA Offline Cache)
    Version: 20260928-v1
    ============================================================ */
-const CACHE_NAME = "btt-shell-20260928-v1";
+const CACHE_NAME = "btt-shell-20261002-v1";
 const STATIC_ASSETS = [
   "/",
   "/index.html",
@@ -50,7 +50,7 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// Fetch: network-first for documents, stale-while-revalidate for static assets
+// Fetch: network-first for documents and scripts/styles, cache-first for immutable media/fonts
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   const url = new URL(req.url);
@@ -80,7 +80,28 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Static assets (CSS, JS, images, fonts): Cache-first with background revalidation
+  const isScriptOrStyle =
+    url.pathname.endsWith(".js") ||
+    url.pathname.endsWith(".css") ||
+    url.pathname.endsWith(".json");
+
+  // Scripts, styles and data: Network-first so prices and updates are never stale
+  if (isScriptOrStyle && url.pathname.startsWith("/assets/")) {
+    event.respondWith(
+      fetch(req)
+        .then((networkRes) => {
+          if (networkRes.status === 200) {
+            const clone = networkRes.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
+          }
+          return networkRes;
+        })
+        .catch(() => caches.match(req))
+    );
+    return;
+  }
+
+  // Media, images, fonts: Cache-first with network fallback
   if (
     url.pathname.startsWith("/assets/") ||
     url.hostname.includes("fonts.googleapis.com") ||
@@ -88,17 +109,16 @@ self.addEventListener("fetch", (event) => {
   ) {
     event.respondWith(
       caches.match(req).then((cached) => {
-        const fetchPromise = fetch(req)
-          .then((networkRes) => {
+        return (
+          cached ||
+          fetch(req).then((networkRes) => {
             if (networkRes.status === 200) {
               const clone = networkRes.clone();
               caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
             }
             return networkRes;
           })
-          .catch(() => null);
-
-        return cached || fetchPromise;
+        );
       })
     );
   }

@@ -34,7 +34,11 @@
     }
   ],
 
-  // R2 bucket for media assets (uncomment once R2 is enabled in Cloudflare Dashboard):
+  // R2 bucket for media assets:
+  // Requires R2 enabled in Cloudflare Dashboard and bucket created:
+  // 1. Enable R2 in Cloudflare Dashboard
+  // 2. Run: npx wrangler r2 bucket create bententrade-media
+  // 3. Uncomment the block below:
   // "r2_buckets": [
   //   {
   //     "binding": "MEDIA",

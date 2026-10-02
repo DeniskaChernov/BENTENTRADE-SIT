@@ -1,6 +1,7 @@
 /* BTT - мебель для дома и сада
-   Product master data (exact 16 SKUs, Single Source of Truth).
-   All prices are in UZS. Generated from data/products-master.json. */
+   Product master data (Single Source of Truth fallback).
+   DO NOT EDIT MANUALLY - Generated from data/products-master.json via scripts/sync-master.mjs.
+   All prices are in UZS. */
 (function(){
   "use strict";
 
@@ -49,7 +50,7 @@
       "ru": {
         "name": "Стул «Vertex»",
         "category_label": "Плетёные стулья",
-        "description": "Плетёный стул Vertex с надёжным металлическим каркасом и выразительным плетением из кручёного искусственного ротанга. Комплектуется мягкой текстильной подушкой для повышенного удобства. Идеально подходит для гостиной, веранды, террасы, загородного дома, а также для ресторанов и кофеен. Гармонично сочетается с круглым столом Vertex D90 и столом Taper Rotang 80.",
+        "description": "Плетёный стул Vertex на металлическом каркасе и выразительным плетением из кручёного искусственного ротанга. Комплектуется мягкой текстильной подушкой для повышенного удобства. Идеально подходит для гостиной, веранды, террасы, загородного дома, а также для ресторанов и кофеен. Гармонично сочетается с круглым столом Vertex D90 и столом Taper Rotang 80.",
         "usage": "Для гостиной, террасы, балкона, кафе и ресторанов",
         "seo_title": "Купить Стул «Vertex» в Ташкенте - BTT",
         "seo_description": "Стул «Vertex» (Плетёные стулья) от BTT. Размеры: 57 × 63 × 75 см. Доставка по Ташкенту и всему Узбекистану."
@@ -57,7 +58,7 @@
       "uz": {
         "name": "«Vertex» stuli",
         "category_label": "To‘qilgan stullar",
-        "description": "Mustahkam metall karkas va o'rilgan sun'iy rotangdan ishlangan Vertex stuli. Qo'shimcha qulaylik uchun yumshoq to'qimachilik yostiqchasi bilan jihozlangan. Yashash xonasi, veranda, terassa, shahar tashqarisidagi hovli va restoranlar uchun juda mos. Vertex D90 va Taper Rotang 80 stollari bilan ajoyib uyg'unlashadi.",
+        "description": "Metall karkas va o'rilgan sun'iy rotangdan ishlangan Vertex stuli. Qo'shimcha qulaylik uchun yumshoq to'qimachilik yostiqchasi bilan jihozlangan. Yashash xonasi, veranda, terassa, shahar tashqarisidagi hovli va restoranlar uchun juda mos. Vertex D90 va Taper Rotang 80 stollari bilan ajoyib uyg'unlashadi.",
         "usage": "Mehmonxona, terassa, balkon, qahvaxona va restoranlar uchun",
         "seo_title": "Toshkentda «Vertex» stuli sotib olish - BTT",
         "seo_description": "BTT dan «Vertex» stuli (To‘qilgan stullar). O‘lchamlari: 57 × 63 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -65,7 +66,7 @@
       "en": {
         "name": "Vertex Chair",
         "category_label": "Wicker chairs",
-        "description": "Wicker chair Vertex with a reinforced metal frame and rich twisted artificial rattan weave. Includes a soft textile seat cushion for elevated comfort. Ideal for living rooms, verandas, covered terraces, and dining venues. Perfectly pairs with the round Vertex D90 and Taper Rotang 80 dining tables.",
+        "description": "Wicker chair Vertex on a metal frame and rich twisted artificial rattan weave. Includes a soft textile seat cushion for elevated comfort. Ideal for living rooms, verandas, covered terraces, and dining venues. Perfectly pairs with the round Vertex D90 and Taper Rotang 80 dining tables.",
         "usage": "For living room, terrace, balcony, cafes and restaurants",
         "seo_title": "Buy Vertex Chair in Tashkent - BTT",
         "seo_description": "Vertex Chair (Wicker chairs) by BTT. Dimensions: 57 × 63 × 75 см. Delivery across Tashkent and Uzbekistan."
@@ -121,7 +122,7 @@
       "ru": {
         "name": "Стул «Corda»",
         "category_label": "Плетёные стулья",
-        "description": "Обеденный стул Corda на прочном металлическом каркасе с фактурным плетением из искусственного ротанга и мягкой водоотталкивающей текстильной подушкой. Создан для длительного комфорта за семейным столом. Прекрасно подходит для столовой, закрытой террасы, летней площадки или кафе. Гармонично сочетается с большим обеденным столом Corda 135 и Taper Rotang 135.",
+        "description": "Обеденный стул Corda на металлическом каркасе с фактурным плетением из искусственного ротанга и мягкой текстильной подушкой. Создан для длительного комфорта за семейным столом. Прекрасно подходит для столовой, закрытой террасы, летней площадки или кафе. Гармонично сочетается с большим обеденным столом Corda 135 и Taper Rotang 135.",
         "usage": "Для террасы, загородного дома, летних площадок и кухни",
         "seo_title": "Купить Стул «Corda» в Ташкенте - BTT",
         "seo_description": "Стул «Corda» (Плетёные стулья) от BTT. Размеры: 57 × 63 × 77 см. Доставка по Ташкенту и всему Узбекистану."
@@ -129,7 +130,7 @@
       "uz": {
         "name": "«Corda» stuli",
         "category_label": "To‘qilgan stullar",
-        "description": "Mustahkam metall karkas, sun'iy rotangning quyuq to'qilishi va yumshoq matoli yostiqchaga ega Corda stuli. Oilaviy tushliklar uchun uzoq muddatli qulaylik yaratadi. Oshxona, yopiq terassa, yozgi ayvon yoki qahvaxonalar uchun mukammal mos keladi. Katta Corda 135 va Taper Rotang 135 stollari bilan uyg'unlashadi.",
+        "description": "Metall karkas, sun'iy rotangning quyuq to'qilishi va yumshoq matoli yostiqchaga ega Corda stuli. Oilaviy tushliklar uchun uzoq muddatli qulaylik yaratadi. Oshxona, yopiq terassa, yozgi ayvon yoki qahvaxonalar uchun mukammal mos keladi. Katta Corda 135 va Taper Rotang 135 stollari bilan uyg'unlashadi.",
         "usage": "Terassa, dala hovli, yozgi ayvonlar va oshxona uchun",
         "seo_title": "Toshkentda «Corda» stuli sotib olish - BTT",
         "seo_description": "BTT dan «Corda» stuli (To‘qilgan stullar). O‘lchamlari: 57 × 63 × 77 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -137,7 +138,7 @@
       "en": {
         "name": "Corda Chair",
         "category_label": "Wicker chairs",
-        "description": "Dining chair Corda on a sturdy metal frame with textured all-weather artificial rattan weave and a soft textile seat cushion. Built for comfort during long family dinners. Great for dining rooms, covered patios, terraces, and cafes. Pairs harmoniously with Corda 135 and Taper Rotang 135 dining tables.",
+        "description": "Dining chair Corda on a metal frame with textured artificial rattan weave and a soft textile seat cushion. Built for comfort during long family dinners. Great for dining rooms, covered patios, terraces, and cafes. Pairs harmoniously with Corda 135 and Taper Rotang 135 dining tables.",
         "usage": "For terrace, country house, summer patios and kitchen",
         "seo_title": "Buy Corda Chair in Tashkent - BTT",
         "seo_description": "Corda Chair (Wicker chairs) by BTT. Dimensions: 57 × 63 × 77 см. Delivery across Tashkent and Uzbekistan."
@@ -154,7 +155,7 @@
     "legacyId": "p3",
     "model": "ROERO",
     "category": "plastic-chairs",
-    "price": 168000,
+    "price": 188000,
     "dimensions": "74 × 46 × 48 см",
     "materials": [
       "пластик"
@@ -254,7 +255,7 @@
       "ru": {
         "name": "Стул «ROERO»",
         "category_label": "Пластиковые стулья",
-        "description": "Современный эргономичный стул Roero из высокопрочного литого полипропилена. Анатомическая форма спинки обеспечивает комфортную посадку, а матовая поверхность легко очищается и не выцветает. Идеальный выбор для кухни, балкона, дачи, фудкортов и летних террас. Отлично комплектуется со столами Taper 80 и Taper 135 в серых, белых, чёрных и ярких оранжевых тонах.",
+        "description": "Современный эргономичный стул Roero из литого полипропилена. Анатомическая форма спинки обеспечивает комфортную посадку, а матовая поверхность легко очищается . Идеальный выбор для кухни, балкона, дачи, фудкортов и летних террас. Отлично комплектуется со столами Taper 80 и Taper 135 в серых, белых, чёрных и ярких оранжевых тонах.",
         "usage": "Для кухни, дачи, террасы, фудкортов и уличных кафе",
         "seo_title": "Купить Стул «ROERO» в Ташкенте - BTT",
         "seo_description": "Стул «ROERO» (Пластиковые стулья) от BTT. Размеры: 74 × 46 × 48 см. Доставка по Ташкенту и всему Узбекистану."
@@ -262,7 +263,7 @@
       "uz": {
         "name": "«ROERO» stuli",
         "category_label": "Plastik stullar",
-        "description": "Yuqori mustahkamlikka ega quyma polipropilendan tayyorlangan zamonaviy Roero stuli. Anatomik shakldagi suyanchig'i qulay o'tirishni ta'minlaydi, mat yuzasi esa oson tozalanadi. Oshxona, balkon, dala hovli, fudkortlar va ochiq qahvaxonalar uchun ideal tanlov. Kulrang, oq, qora va to'q sariq ranglarda Taper 80 hamda Taper 135 stollari bilan mos tushadi.",
+        "description": "Quyma polipropilendan tayyorlangan zamonaviy Roero stuli. Anatomik shakldagi suyanchig'i qulay o'tirishni ta'minlaydi, mat yuzasi esa oson tozalanadi. Oshxona, balkon, dala hovli, fudkortlar va ochiq qahvaxonalar uchun ideal tanlov. Kulrang, oq, qora va to'q sariq ranglarda Taper 80 hamda Taper 135 stollari bilan mos tushadi.",
         "usage": "Oshxona, dala hovli, terassa, fudkort va ko'cha kafelari uchun",
         "seo_title": "Toshkentda «ROERO» stuli sotib olish - BTT",
         "seo_description": "BTT dan «ROERO» stuli (Plastik stullar). O‘lchamlari: 74 × 46 × 48 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -270,7 +271,7 @@
       "en": {
         "name": "ROERO Chair",
         "category_label": "Plastic chairs",
-        "description": "Modern ergonomic chair Roero crafted from high-grade molded polypropylene. The contoured backrest provides natural posture support, while the durable matte finish is wipe-clean and UV-resistant. Ideal for kitchens, balconies, patios, food courts, and cafes. Coordinates effortlessly with Taper 80 and Taper 135 tables across grey, black, white, and orange accents.",
+        "description": "Modern ergonomic chair Roero crafted from high-grade molded polypropylene. The contoured backrest provides natural posture support, while the matte finish is wipe-clean. Ideal for kitchens, balconies, patios, food courts, and cafes. Coordinates effortlessly with Taper 80 and Taper 135 tables across grey, black, white, and orange accents.",
         "usage": "For kitchen, cottage, terrace, food courts and outdoor cafes",
         "seo_title": "Buy ROERO Chair in Tashkent - BTT",
         "seo_description": "ROERO Chair (Plastic chairs) by BTT. Dimensions: 74 × 46 × 48 см. Delivery across Tashkent and Uzbekistan."
@@ -287,7 +288,7 @@
     "legacyId": "p4",
     "model": "NOERO",
     "category": "plastic-chairs",
-    "price": 192000,
+    "price": 212000,
     "dimensions": "82 × 48 × 49 см",
     "materials": [
       "пластик"
@@ -385,7 +386,7 @@
       "ru": {
         "name": "Стул «NOERO»",
         "category_label": "Пластиковые стулья",
-        "description": "Стильный стул Noero с выразительной решётчатой спинкой высотой 82 см и комфортной глубокой посадкой. Прочный полимер выдерживает активную ежедневную эксплуатацию дома и в заведениях общепита. Трендовая палитра капучино, синий, оранжевый и оливковый позволяет расставить интерьерные акценты. Безупречно подходит к столам серии Taper 80 и Taper 135.",
+        "description": "Стильный стул Noero с выразительной решётчатой спинкой высотой 82 см и комфортной глубокой посадкой. Полимерный корпус подходит для ежедневного использования дома и в заведениях общепита. Трендовая палитра капучино, синий, оранжевый и оливковый позволяет расставить интерьерные акценты. Безупречно подходит к столам серии Taper 80 и Taper 135.",
         "usage": "Для дома, террасы, летних веранд, кафе",
         "seo_title": "Купить Стул «NOERO» в Ташкенте - BTT",
         "seo_description": "Стул «NOERO» (Пластиковые стулья) от BTT. Размеры: 82 × 48 × 49 см. Доставка по Ташкенту и всему Узбекистану."
@@ -393,7 +394,7 @@
       "uz": {
         "name": "«NOERO» stuli",
         "category_label": "Plastik stullar",
-        "description": "82 sm balandlikdagi zamonaviy panjarali suyanchiqli va qulay chuqur o'rindiqli Noero stuli. Mustahkam polimer uyda va umumiy ovqatlanish joylarida faol kundalik foydalanishga chidamli. Kapuchino, ko'k, to'q sariq va zaytun ranglaridagi jozibali palitrasi interyerga nafislik bag'ishlaydi. Taper 80 va Taper 135 stollari bilan ajoyib mos tushadi.",
+        "description": "82 sm balandlikdagi zamonaviy panjarali suyanchiqli va qulay chuqur o'rindiqli Noero stuli. Polimer korpus uyda va umumiy ovqatlanish joylarida kundalik foydalanishga mo'ljallangan. Kapuchino, ko'k, to'q sariq va zaytun ranglaridagi jozibali palitrasi interyerga nafislik bag'ishlaydi. Taper 80 va Taper 135 stollari bilan ajoyib mos tushadi.",
         "usage": "Uy, terassa, yozgi ayvonlar, kafelar uchun",
         "seo_title": "Toshkentda «NOERO» stuli sotib olish - BTT",
         "seo_description": "BTT dan «NOERO» stuli (Plastik stullar). O‘lchamlari: 82 × 48 × 49 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -401,7 +402,7 @@
       "en": {
         "name": "NOERO Chair",
         "category_label": "Plastic chairs",
-        "description": "Stylish chair Noero featuring a signature 82 cm slatted backrest and generous ergonomic seating. High-strength polymer withstands heavy everyday use in residential and commercial settings. The curated palette of cappuccino, blue, orange, and olive adds vibrant designer appeal. Pairs seamlessly with Taper 80 and Taper 135 tables.",
+        "description": "Stylish chair Noero featuring a signature 82 cm slatted backrest and generous ergonomic seating. Molded polymer suited for everyday use in residential and commercial settings. The curated palette of cappuccino, blue, orange, and olive adds vibrant designer appeal. Pairs seamlessly with Taper 80 and Taper 135 tables.",
         "usage": "For home, terrace, summer verandas, cafes",
         "seo_title": "Buy NOERO Chair in Tashkent - BTT",
         "seo_description": "NOERO Chair (Plastic chairs) by BTT. Dimensions: 82 × 48 × 49 см. Delivery across Tashkent and Uzbekistan."
@@ -418,7 +419,7 @@
     "legacyId": "p5",
     "model": "TODO",
     "category": "plastic-chairs",
-    "price": 216000,
+    "price": 236000,
     "dimensions": "80 × 51 × 51 см",
     "materials": [
       "пластик"
@@ -560,7 +561,7 @@
       "ru": {
         "name": "Стул «TODO»",
         "category_label": "Пластиковые стулья",
-        "description": "Практичный и лаконичный дизайнерский стул Todo с монолитным сиденьем и прочной геометрией ножек. Износостойкий полимерный корпус устойчив к загрязнениям и легко моется. Универсален для обеденной зоны дома, кухонного острова, террасы, а также для зон ожидания, офисов и заведений HoReCa. Отлично смотрится в обеденных группах со столами Taper 80 и Taper 135.",
+        "description": "Практичный и лаконичный дизайнерский стул Todo с монолитным сиденьем и геометрией ножек. Полимерный корпус легко моется. Универсален для обеденной зоны дома, кухонного острова, террасы, а также для зон ожидания, офисов и заведений HoReCa. Отлично смотрится в обеденных группах со столами Taper 80 и Taper 135.",
         "usage": "Для общественных зон, заведений HoReCa, террас, дома",
         "seo_title": "Купить Стул «TODO» в Ташкенте - BTT",
         "seo_description": "Стул «TODO» (Пластиковые стулья) от BTT. Размеры: 80 × 51 × 51 см. Доставка по Ташкенту и всему Узбекистану."
@@ -568,7 +569,7 @@
       "uz": {
         "name": "«TODO» stuli",
         "category_label": "Plastik stullar",
-        "description": "Yaxlit o'rindiq va mustahkam oyoq geometriyasiga ega amaliy hamda ixcham Todo dizaynerlik stuli. Yeyilishga chidamli polimer korpus kirlanishga bardoshli va oson yuviladi. Uy oshxonasi, terassa, kutish zonalari, ofislar va HoReCa maskanlari uchun universal yechim. Taper 80 va Taper 135 stollari bilan to'plamda ajoyib ko'rinadi.",
+        "description": "Yaxlit o'rindiq va oyoq geometriyasiga ega amaliy hamda ixcham Todo dizaynerlik stuli. Polimer korpus oson yuviladi. Uy oshxonasi, terassa, kutish zonalari, ofislar va HoReCa maskanlari uchun universal yechim. Taper 80 va Taper 135 stollari bilan to'plamda ajoyib ko'rinadi.",
         "usage": "Jamoat zonalari, HoReCa maskanlari, terassa va uy uchun",
         "seo_title": "Toshkentda «TODO» stuli sotib olish - BTT",
         "seo_description": "BTT dan «TODO» stuli (Plastik stullar). O‘lchamlari: 80 × 51 × 51 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -576,7 +577,7 @@
       "en": {
         "name": "TODO Chair",
         "category_label": "Plastic chairs",
-        "description": "Practical minimalist designer chair Todo with a seamless contoured shell and balanced base geometry. Durable polymer resists stains and cleans effortlessly. Versatile for residential dining rooms, kitchens, terraces, as well as office breakrooms and HoReCa venues. Looks outstanding in dining sets with Taper 80 and Taper 135 tables.",
+        "description": "Practical minimalist designer chair Todo with a seamless contoured shell and balanced base geometry. Polymer shell cleans easily. Versatile for residential dining rooms, kitchens, terraces, as well as office breakrooms and HoReCa venues. Looks outstanding in dining sets with Taper 80 and Taper 135 tables.",
         "usage": "For public areas, HoReCa venues, terraces, home",
         "seo_title": "Buy TODO Chair in Tashkent - BTT",
         "seo_description": "TODO Chair (Plastic chairs) by BTT. Dimensions: 80 × 51 × 51 см. Delivery across Tashkent and Uzbekistan."
@@ -769,7 +770,7 @@
     "legacyId": "p6",
     "model": "JARDIN",
     "category": "plastic-chairs",
-    "price": 324000,
+    "price": 344000,
     "dimensions": "73.5 × 53.5 × 55.5 см",
     "materials": [
       "пластик"
@@ -848,7 +849,7 @@
       "ru": {
         "name": "Стул «JARDIN»",
         "category_label": "Пластиковые стулья",
-        "description": "Элегантное кресло-стул JARDIN с анатомической спинкой, широким сиденьем и подлокотниками. Идеально подходит для обеденной зоны на кухне, террасе, в саду или в кафе. Практичный полимер устойчив к влаге и солнцу. Гармонично сочетается с круглыми и прямоугольными столами BTT (Taper 80, Corda 135) в оттенках капучино, оливковый и серый.",
+        "description": "Элегантное кресло-стул JARDIN с анатомической спинкой, широким сиденьем и подлокотниками. Идеально подходит для обеденной зоны на кухне, террасе, в саду или в кафе. Практичный полимерный корпус легко очищается. Гармонично сочетается с круглыми и прямоугольными столами BTT (Taper 80, Corda 135) в оттенках капучино, оливковый и серый.",
         "usage": "Для сада, веранды, террасы, кухни-гостиной, летних кафе и загородных домов",
         "seo_title": "Купить Стул «JARDIN» в Ташкенте - BTT",
         "seo_description": "Пластиковое кресло-стул «JARDIN» от BTT. Размеры: 73.5 × 53.5 × 55.5 см. Оттенки: капучино, оливковый, серый. Доставка по Ташкенту и всему Узбекистану."
@@ -856,7 +857,7 @@
       "uz": {
         "name": "«JARDIN» stuli",
         "category_label": "Plastik stullar",
-        "description": "Anatomik suyanchiq, keng o'rindiq va tirsak suyagichlarga ega nafis JARDIN kreslo-stuli. Oshxona, terassa, bog' yoki qahvaxonalardagi ovqatlanish hududi uchun ideal tanlov. Namlik va quyoshga chidamli amaliy polimer. Kapuchino, zaytun va kulrang tuslarda BTT davra va to'g'ri burchakli stollari (Taper 80, Corda 135) bilan uyg'unlashadi.",
+        "description": "Anatomik suyanchiq, keng o'rindiq va tirsak suyagichlarga ega nafis JARDIN kreslo-stuli. Oshxona, terassa, bog' yoki qahvaxonalardagi ovqatlanish hududi uchun ideal tanlov. Oson tozalanadigan amaliy polimer. Kapuchino, zaytun va kulrang tuslarda BTT davra va to'g'ri burchakli stollari (Taper 80, Corda 135) bilan uyg'unlashadi.",
         "usage": "Bog', veranda, terassa, oshxona-mehmonxona, yozgi kafelar va dala hovlilar uchun",
         "seo_title": "Toshkentda «JARDIN» stuli sotib olish - BTT",
         "seo_description": "BTT dan «JARDIN» plastik kreslo-stuli. O‘lchamlari: 73.5 × 53.5 × 55.5 см. Ranglar: kapuchino, zaytun, kulrang. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -864,10 +865,10 @@
       "en": {
         "name": "JARDIN Chair",
         "category_label": "Plastic chairs",
-        "description": "Elegant JARDIN armchair-chair featuring an ergonomic contoured backrest, generous seating, and supportive armrests. Ideal for dining areas in kitchens, terraces, gardens, or modern cafes. Weather-resilient polymer is moisture and UV resistant. Pairs seamlessly with round and rectangular BTT tables (Taper 80, Corda 135) across cappuccino, olive, and grey finishes.",
+        "description": "Elegant JARDIN armchair-chair featuring an ergonomic contoured backrest, generous seating, and supportive armrests. Ideal for dining areas in kitchens, terraces, gardens, or modern cafes. Practical polymer cleans easily. Pairs seamlessly with round and rectangular BTT tables (Taper 80, Corda 135) across cappuccino, olive, and grey finishes.",
         "usage": "For garden, veranda, terrace, open-plan kitchen, outdoor cafes, and residences",
         "seo_title": "Buy JARDIN Chair in Tashkent - BTT",
-        "seo_description": "JARDIN plastic armchair by BTT. Dimensions: 73.5 × 53.5 × 55.5 см. Finishes: cappuccino, olive, grey. Fast delivery across Tashkent and Uzbekistan."
+        "seo_description": "JARDIN plastic armchair by BTT. Dimensions: 73.5 × 53.5 × 55.5 см. Finishes: cappuccino, olive, grey. Delivery across Tashkent and Uzbekistan."
       }
     },
     "status": "unknown",
@@ -899,7 +900,7 @@
       "ru": {
         "name": "Стул «LIRA»",
         "category_label": "Мягкие стулья",
-        "description": "Изысканный обеденный стул Lira с высокой спинкой 95 см, мягкой фактурной обивкой и прочным металлическим каркасом. Создаёт атмосферу роскоши и уюта в интерьере гостиной, столовой или банкетного зала. Обеспечивает деликатную поддержку спины. Рекомендуется комплектовать с большим столом Taper 135 или Corda 135.",
+        "description": "Изысканный обеденный стул Lira с высокой спинкой 95 см, мягкой фактурной обивкой и металлическим каркасом. Создаёт атмосферу роскоши и уюта в интерьере гостиной, столовой или банкетного зала. Обеспечивает деликатную поддержку спины. Рекомендуется комплектовать с большим столом Taper 135 или Corda 135.",
         "usage": "Для столовой, гостиной, кухни, банкетных залов",
         "seo_title": "Купить Стул «LIRA» в Ташкенте - BTT",
         "seo_description": "Стул «LIRA» (Мягкие стулья) от BTT. Размеры: 95 × 55 × 48 см. Доставка по Ташкенту и всему Узбекистану."
@@ -907,7 +908,7 @@
       "uz": {
         "name": "«LIRA» stuli",
         "category_label": "Yumshoq stullar",
-        "description": "95 sm balandlikdagi suyanchiq, yumshoq sifatli qoplama va mustahkam metall karkasga ega nafis Lira stuli. Mehmonxona, oshxona yoki banket zallarida hashamat va shinamlik muhitini yaratadi. Orqa qismni qulay quvvatlaydi. Katta Taper 135 yoki Corda 135 stollari bilan birgalikda tanlash tavsiya etiladi.",
+        "description": "95 sm balandlikdagi suyanchiq, yumshoq sifatli qoplama va metall karkasga ega nafis Lira stuli. Mehmonxona, oshxona yoki banket zallarida hashamat va shinamlik muhitini yaratadi. Orqa qismni qulay quvvatlaydi. Katta Taper 135 yoki Corda 135 stollari bilan birgalikda tanlash tavsiya etiladi.",
         "usage": "Oshxona, mehmonxona, banket zallari uchun",
         "seo_title": "Toshkentda «LIRA» stuli sotib olish - BTT",
         "seo_description": "BTT dan «LIRA» stuli (Yumshoq stullar). O‘lchamlari: 95 × 55 × 48 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -915,7 +916,7 @@
       "en": {
         "name": "LIRA Chair",
         "category_label": "Upholstered chairs",
-        "description": "Refined dining chair Lira featuring an elegant 95 cm high backrest, soft upholstery, and a reinforced steel frame. Adds sophisticated warmth to dining rooms, living spaces, and banquet halls. Provides gentle, supportive posture. Highly recommended paired with large Taper 135 or Corda 135 dining tables.",
+        "description": "Refined dining chair Lira featuring an elegant 95 cm high backrest, soft upholstery, and a steel frame. Adds sophisticated warmth to dining rooms, living spaces, and banquet halls. Provides gentle, supportive posture. Highly recommended paired with large Taper 135 or Corda 135 dining tables.",
         "usage": "For dining room, living room, kitchen, banquet halls",
         "seo_title": "Buy LIRA Chair in Tashkent - BTT",
         "seo_description": "LIRA Chair (Upholstered chairs) by BTT. Dimensions: 95 × 55 × 48 см. Delivery across Tashkent and Uzbekistan."
@@ -950,7 +951,7 @@
       "ru": {
         "name": "Кресло «COMO»",
         "category_label": "Мягкие стулья",
-        "description": "Статусное мягкое полукресло Como с глубокой посадкой, широкими боковыми поддержками и надёжным металлическим основанием. Обивка приятна на ощупь и устойчива к истиранию. Превосходно подходит для лаунж-зоны, кабинета, каминной или просторной столовой. Идеально сочетается со столами Taper 135 и Corda 135.",
+        "description": "Статусное мягкое полукресло Como с глубокой посадкой, широкими боковыми поддержками и металлическим основанием. Текстильная обивка приятна на ощупь. Превосходно подходит для лаунж-зоны, кабинета, каминной или просторной столовой. Идеально сочетается со столами Taper 135 и Corda 135.",
         "usage": "Для гостиной, лаунж-зон, кабинета, спальни",
         "seo_title": "Купить Кресло «COMO» в Ташкенте - BTT",
         "seo_description": "Кресло «COMO» (Мягкие стулья) от BTT. Размеры: 82 × 63 × 60 см. Доставка по Ташкенту и всему Узбекистану."
@@ -958,7 +959,7 @@
       "uz": {
         "name": "«COMO» kreslosi",
         "category_label": "Yumshoq stullar",
-        "description": "Chuqur o'rindiq, qulay yon suyangichlar va ishonchli metall asosga ega viqorli Como yarim kreslosi. Qoplamasi teginish uchun yoqimli va yeyilishga chidamli. Dam olish hududi, ish xonasi, kamin oldi yoki keng oshxona uchun ajoyib mos tushadi. Taper 135 va Corda 135 stollari bilan to'liq uyg'unlik hosil qiladi.",
+        "description": "Chuqur o'rindiq, qulay yon suyangichlar va metall asosga ega viqorli Como yarim kreslosi. Qoplamasi teginish uchun yoqimli . Dam olish hududi, ish xonasi, kamin oldi yoki keng oshxona uchun ajoyib mos tushadi. Taper 135 va Corda 135 stollari bilan to'liq uyg'unlik hosil qiladi.",
         "usage": "Mehmonxona, dam olish zonalari, ish xonasi, yotoqxona uchun",
         "seo_title": "Toshkentda «COMO» kreslosi sotib olish - BTT",
         "seo_description": "BTT dan «COMO» kreslosi (Yumshoq stullar). O‘lchamlari: 82 × 63 × 60 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -966,7 +967,7 @@
       "en": {
         "name": "COMO Armchair",
         "category_label": "Upholstered chairs",
-        "description": "Distinguished Como armchair featuring deep generous seating, wraparound contours, and a reinforced metal frame. The tactile upholstery is wear-resistant and pleasant to the touch. Perfect for lounge areas, home offices, and spacious dining rooms. Pairs exceptionally with Taper 135 and Corda 135 tables.",
+        "description": "Distinguished Como armchair featuring deep generous seating, wraparound contours, and a metal frame. The tactile textile upholstery is pleasant to the touch. Perfect for lounge areas, home offices, and spacious dining rooms. Pairs exceptionally with Taper 135 and Corda 135 tables.",
         "usage": "For living room, lounge areas, home office, bedroom",
         "seo_title": "Buy COMO Armchair in Tashkent - BTT",
         "seo_description": "COMO Armchair (Upholstered chairs) by BTT. Dimensions: 82 × 63 × 60 см. Delivery across Tashkent and Uzbekistan."
@@ -1042,7 +1043,7 @@
       "ru": {
         "name": "Стол «Taper Rotang 80x80»",
         "category_label": "Столы",
-        "description": "Компактный квадратный стол Taper Rotang 80×80 см. Устойчивый металлический каркас декорирован искусственным ротангом ручного плетения, а столешница из прочного ЛДСП имитирует фактуру мрамора. Прекрасный выбор для 2-4 персон на кухне, балконе или в кофейне. Идеально комплектуется стульями Vertex и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        "description": "Компактный квадратный стол Taper Rotang 80×80 см. Устойчивый металлический каркас декорирован искусственным ротангом ручного плетения, а столешница из ЛДСП имитирует фактуру мрамора. Прекрасный выбор для 2-4 персон на кухне, балконе или в кофейне. Идеально комплектуется стульями Vertex и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
         "usage": "Для крытых террас, кухни, кофеен и балконов",
         "seo_title": "Купить Стол «Taper Rotang 80x80» в Ташкенте - BTT",
         "seo_description": "Стол «Taper Rotang 80x80» (Столы) от BTT. Размеры: 80 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану."
@@ -1050,7 +1051,7 @@
       "uz": {
         "name": "«Taper Rotang 80x80» stoli",
         "category_label": "Stollar",
-        "description": "Ixcham kvadrat Taper Rotang 80×80 sm stoli. Mustahkam metall karkas qo'lda to'qilgan sun'iy rotang bilan bezatilgan, bardoshli LDSP stol usti esa marmar to'qimasini aks ettiradi. Oshxona, balkon yoki qahvaxonada 2-4 kishi uchun ajoyib yechim. Vertex va Jardin stullari bilan mukammal mos keladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
+        "description": "Ixcham kvadrat Taper Rotang 80×80 sm stoli. Metall karkas qo'lda to'qilgan sun'iy rotang bilan bezatilgan, LDSP stol usti esa marmar to'qimasini aks ettiradi. Oshxona, balkon yoki qahvaxonada 2-4 kishi uchun ajoyib yechim. Vertex va Jardin stullari bilan mukammal mos keladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
         "usage": "Yopiq terassalar, oshxona, qahvaxona va balkonlar uchun",
         "seo_title": "Toshkentda «Taper Rotang 80x80» stoli sotib olish - BTT",
         "seo_description": "BTT dan «Taper Rotang 80x80» stoli (Stollar). O‘lchamlari: 80 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -1058,7 +1059,7 @@
       "en": {
         "name": "Taper Rotang 80x80 Table",
         "category_label": "Tables",
-        "description": "Compact square table Taper Rotang 80×80 cm. The stable metal frame is trimmed with hand-woven artificial rattan, paired with a durable marble-effect laminated top. A comfortable choice for 2-4 seats in kitchens, balconies, or boutique cafes. Pairs perfectly with Vertex and Jardin chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
+        "description": "Compact square table Taper Rotang 80×80 cm. The stable metal frame is trimmed with hand-woven artificial rattan, paired with a marble-effect laminated top. A comfortable choice for 2-4 seats in kitchens, balconies, or boutique cafes. Pairs perfectly with Vertex and Jardin chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
         "usage": "For covered terraces, kitchen, cafes and balconies",
         "seo_title": "Buy Taper Rotang 80x80 Table in Tashkent - BTT",
         "seo_description": "Taper Rotang 80x80 Table (Tables) by BTT. Dimensions: 80 × 80 × 75 см. Delivery across Tashkent and Uzbekistan."
@@ -1128,7 +1129,7 @@
       "ru": {
         "name": "Стол «Vertex D90»",
         "category_label": "Столы",
-        "description": "Круглый обеденный стол Vertex диаметром 90 см. Прочный металлический каркас и столешница из ЛДСП под мрамор создают визуальную лёгкость и объединяют пространство. Круглая форма безопасна и удобна для 3-4 персон. Идеально гармонирует со стульями серии Vertex и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        "description": "Круглый обеденный стол Vertex диаметром 90 см. Металлический каркас и столешница из ЛДСП под мрамор создают визуальную лёгкость и объединяют пространство. Круглая форма безопасна и удобна для 3-4 персон. Идеально гармонирует со стульями серии Vertex и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
         "usage": "Для обеденных зон, кухонь, кафе и крытых террас",
         "seo_title": "Купить Стол «Vertex D90» в Ташкенте - BTT",
         "seo_description": "Стол «Vertex D90» (Столы) от BTT. Размеры: Ø90 × 75 см. Доставка по Ташкенту и всему Узбекистану."
@@ -1136,7 +1137,7 @@
       "uz": {
         "name": "«Vertex D90» stoli",
         "category_label": "Stollar",
-        "description": "Diametri 90 sm bo'lgan yumaloq Vertex ovqat stoli. Mustahkam metall karkas va marmar uslubidagi LDSP stol usti xonada yengillik va shinamlik yaratadi. Dumaloq shakl 3-4 kishi uchun xavfsiz va juda qulay. Vertex va Jardin stullari bilan uyg'unlashadi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
+        "description": "Diametri 90 sm bo'lgan yumaloq Vertex ovqat stoli. Metall karkas va marmar uslubidagi LDSP stol usti xonada yengillik va shinamlik yaratadi. Dumaloq shakl 3-4 kishi uchun xavfsiz va juda qulay. Vertex va Jardin stullari bilan uyg'unlashadi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
         "usage": "Ovqatlanish hududi, oshxonalar, kafe va yopiq terassalar uchun",
         "seo_title": "Toshkentda «Vertex D90» stoli sotib olish - BTT",
         "seo_description": "BTT dan «Vertex D90» stoli (Stollar). O‘lchamlari: Ø90 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -1144,7 +1145,7 @@
       "en": {
         "name": "Vertex D90 Table",
         "category_label": "Tables",
-        "description": "Round dining table Vertex with a 90 cm diameter. The solid metal base and marble-look laminated top introduce visual lightness and bring people together. The circular footprint comfortably accommodates 3-4 seats. Pairs effortlessly with Vertex and Jardin chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
+        "description": "Round dining table Vertex with a 90 cm diameter. The metal base and marble-look laminated top introduce visual lightness and bring people together. The circular footprint comfortably accommodates 3-4 seats. Pairs effortlessly with Vertex and Jardin chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
         "usage": "For dining areas, kitchens, cafes and covered terraces",
         "seo_title": "Buy Vertex D90 Table in Tashkent - BTT",
         "seo_description": "Vertex D90 Table (Tables) by BTT. Dimensions: Ø90 × 75 см. Delivery across Tashkent and Uzbekistan."
@@ -1306,7 +1307,7 @@
       "ru": {
         "name": "Стол «Taper 80x80»",
         "category_label": "Столы",
-        "description": "Практичный квадратный стол Taper 80×80 см в современном минималистичном стиле. Прочный металлический каркас и износостойкая столешница из ЛДСП с фактурой белого или чёрного мрамора. Оптимален для небольших кухонь, балконов, квартир-студий и кафе. Образует гармоничный комплект со стульями Jardin, Roero и Noero. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        "description": "Практичный квадратный стол Taper 80×80 см в современном минималистичном стиле. Металлический каркас и столешница из ЛДСП с фактурой белого или чёрного мрамора. Оптимален для небольших кухонь, балконов, квартир-студий и кафе. Образует гармоничный комплект со стульями Jardin, Roero и Noero. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
         "usage": "Для кухонь, балконов, крытых веранд и кафе",
         "seo_title": "Купить Стол «Taper 80x80» в Ташкенте - BTT",
         "seo_description": "Стол «Taper 80x80» (Столы) от BTT. Размеры: 80 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану."
@@ -1314,7 +1315,7 @@
       "uz": {
         "name": "«Taper 80x80» stoli",
         "category_label": "Stollar",
-        "description": "Zamonaviy minimalizm uslubidagi ixcham Taper 80×80 sm stoli. Mustahkam metall karkas va oq yoki qora marmar fakturali chidamli LDSP stol usti. Kichik oshxonalar, balkonlar, studiyalar va kafelar uchun eng qulay tanlov. Jardin, Roero va Noero stullari bilan to'liq to'plam hosil qiladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
+        "description": "Zamonaviy minimalizm uslubidagi ixcham Taper 80×80 sm stoli. Metall karkas va oq yoki qora marmar fakturali chidamli LDSP stol usti. Kichik oshxonalar, balkonlar, studiyalar va kafelar uchun eng qulay tanlov. Jardin, Roero va Noero stullari bilan to'liq to'plam hosil qiladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
         "usage": "Oshxona, balkon, yopiq ayvonlar va kafelar uchun",
         "seo_title": "Toshkentda «Taper 80x80» stoli sotib olish - BTT",
         "seo_description": "BTT dan «Taper 80x80» stoli (Stollar). O‘lchamlari: 80 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -1322,7 +1323,7 @@
       "en": {
         "name": "Taper 80x80 Table",
         "category_label": "Tables",
-        "description": "Practical square table Taper 80×80 cm in a modern minimalist aesthetic. Sturdy steel base and a resilient laminated tabletop in white or black marble finishes. Optimal for compact kitchens, balconies, studios, and cafes. Forms a balanced set with Jardin, Roero, and Noero chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
+        "description": "Practical square table Taper 80×80 cm in a modern minimalist aesthetic. Steel base and a laminated tabletop in white or black marble finishes. Optimal for compact kitchens, balconies, studios, and cafes. Forms a balanced set with Jardin, Roero, and Noero chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
         "usage": "For kitchens, balconies, covered verandas and cafes",
         "seo_title": "Buy Taper 80x80 Table in Tashkent - BTT",
         "seo_description": "Taper 80x80 Table (Tables) by BTT. Dimensions: 80 × 80 × 75 см. Delivery across Tashkent and Uzbekistan."
@@ -1355,11 +1356,9 @@
           "en": "White Marble"
         },
         "hex": "#E8E6E1",
-        "image": "assets/prod-table-vertex-d90.jpg",
+        "image": "assets/placeholder.svg",
         "images": [
-          "assets/prod-table-vertex-d90.jpg",
-          "assets/prod-table-taper-80-detail-top.jpg",
-          "assets/scene-dining-marble.png"
+          "assets/placeholder.svg"
         ]
       },
       {
@@ -1370,20 +1369,15 @@
           "en": "Black Marble"
         },
         "hex": "#2B2A29",
-        "image": "assets/prod-table-vertex-black.jpg",
+        "image": "assets/placeholder.svg",
         "images": [
-          "assets/prod-table-vertex-black.jpg",
-          "assets/prod-table-taper-80-detail-top.jpg",
-          "assets/scene-dining-contrast.png"
+          "assets/placeholder.svg"
         ]
       }
     ],
     "isTable": true,
     "images": [
-      "assets/prod-table-vertex-d90.jpg",
-      "assets/prod-table-vertex-black.jpg",
-      "assets/prod-table-taper-80-detail-top.jpg",
-      "assets/scene-dining-marble.png"
+      "assets/placeholder.svg"
     ],
     "i18n": {
       "ru": {
@@ -1478,7 +1472,7 @@
       "ru": {
         "name": "Стол «Taper 135x80»",
         "category_label": "Столы",
-        "description": "Вместительный обеденный стол Taper 135×80 см для уютных встреч большой семьи и компании друзей. Усиленный металлический каркас и ламинированная столешница из ЛДСП с фактурой белого или чёрного мрамора рассчитаны на 4-6 персон. Замечательно сочетается со стульями Todo Soft, Todo и Roero. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        "description": "Вместительный обеденный стол Taper 135×80 см для уютных встреч большой семьи и компании друзей. Металлический каркас и ламинированная столешница из ЛДСП с фактурой белого или чёрного мрамора рассчитаны на 4-6 персон. Замечательно сочетается со стульями Todo Soft, Todo и Roero. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
         "usage": "Для просторной кухни, крытой веранды, банкетной зоны",
         "seo_title": "Купить Стол «Taper 135x80» в Ташкенте - BTT",
         "seo_description": "Стол «Taper 135x80» (Столы) от BTT. Размеры: 135 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану."
@@ -1486,7 +1480,7 @@
       "uz": {
         "name": "«Taper 135x80» stoli",
         "category_label": "Stollar",
-        "description": "Katta oila va do'stlar davrasi uchun keng Taper 135×80 sm ovqat stoli. Kuchaytirilgan metall karkas hamda oq yoki qora marmar fakturali laminatsiyalangan LDSP stol usti 4-6 kishiga mo'ljallangan. Todo Soft, Todo va Roero stullari bilan ajoyib to'plam hosil qiladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
+        "description": "Katta oila va do'stlar davrasi uchun keng Taper 135×80 sm ovqat stoli. Metall karkas hamda oq yoki qora marmar fakturali laminatsiyalangan LDSP stol usti 4-6 kishiga mo'ljallangan. Todo Soft, Todo va Roero stullari bilan ajoyib to'plam hosil qiladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
         "usage": "Keng oshxona, yopiq veranda, banket hududi uchun",
         "seo_title": "Toshkentda «Taper 135x80» stoli sotib olish - BTT",
         "seo_description": "BTT dan «Taper 135x80» stoli (Stollar). O‘lchamlari: 135 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -1494,7 +1488,7 @@
       "en": {
         "name": "Taper 135x80 Table",
         "category_label": "Tables",
-        "description": "Spacious dining table Taper 135×80 cm designed for family dinners and hosting friends. Reinforced metal base with a white or black marble-finish laminated top comfortably seats 4-6 guests. Coordinates splendidly with Todo Soft, Todo, and Roero chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
+        "description": "Spacious dining table Taper 135×80 cm designed for family dinners and hosting friends. Metal base with a white or black marble-finish laminated top comfortably seats 4-6 guests. Coordinates splendidly with Todo Soft, Todo, and Roero chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
         "usage": "For spacious kitchen, covered veranda, banquet area",
         "seo_title": "Buy Taper 135x80 Table in Tashkent - BTT",
         "seo_description": "Taper 135x80 Table (Tables) by BTT. Dimensions: 135 × 80 × 75 см. Delivery across Tashkent and Uzbekistan."
@@ -1531,8 +1525,7 @@
         "images": [
           "assets/prod-table-corda-135-white.jpg",
           "assets/prod-table-corda-135-top-white.jpg",
-          "assets/prod-table-corda-135-detail-black.jpg",
-          "assets/prod-table-taper-135-white-scene.jpg"
+          "assets/prod-table-corda-135-detail-black.jpg"
         ]
       },
       {
@@ -1547,8 +1540,7 @@
         "images": [
           "assets/prod-table-corda-135-black.jpg",
           "assets/prod-table-corda-135-top-black.jpg",
-          "assets/prod-table-corda-135-detail-black.jpg",
-          "assets/prod-table-taper-135-scene.jpg"
+          "assets/prod-table-corda-135-detail-black.jpg"
         ]
       }
     ],
@@ -1558,14 +1550,13 @@
       "assets/prod-table-corda-135-black.jpg",
       "assets/prod-table-corda-135-top-white.jpg",
       "assets/prod-table-corda-135-top-black.jpg",
-      "assets/prod-table-corda-135-detail-black.jpg",
-      "assets/prod-table-taper-135-white-scene.jpg"
+      "assets/prod-table-corda-135-detail-black.jpg"
     ],
     "i18n": {
       "ru": {
         "name": "Стол «Corda 135x80»",
         "category_label": "Столы",
-        "description": "Большой обеденный стол Corda 135×80 см. Прочный металлический каркас в сочетании со столешницей из ЛДСП под благородный мрамор формирует презентабельную обеденную группу для 4-6 человек. Превосходно гармонирует со стульями Corda и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        "description": "Большой обеденный стол Corda 135×80 см. Металлический каркас в сочетании со столешницей из ЛДСП под благородный мрамор формирует презентабельную обеденную группу для 4-6 человек. Превосходно гармонирует со стульями Corda и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
         "usage": "Для гостиной, столовой, закрытой террасы, HoReCa",
         "seo_title": "Купить Стол «Corda 135x80» в Ташкенте - BTT",
         "seo_description": "Стол «Corda 135x80» (Столы) от BTT. Размеры: 135 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану."
@@ -1573,7 +1564,7 @@
       "uz": {
         "name": "«Corda 135x80» stoli",
         "category_label": "Stollar",
-        "description": "Katta Corda 135×80 sm ovqat stoli. Mustahkam metall karkas va nafis marmar ko'rinishidagi LDSP stol usti 4-6 kishi uchun qulay ovqatlanish guruhini tashkil etadi. Corda va Jardin stullari bilan juda chiroyli uyg'unlashadi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
+        "description": "Katta Corda 135×80 sm ovqat stoli. Metall karkas va nafis marmar ko'rinishidagi LDSP stol usti 4-6 kishi uchun qulay ovqatlanish guruhini tashkil etadi. Corda va Jardin stullari bilan juda chiroyli uyg'unlashadi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
         "usage": "Mehmonxona, oshxona, yopiq terassa, HoReCa uchun",
         "seo_title": "Toshkentda «Corda 135x80» stoli sotib olish - BTT",
         "seo_description": "BTT dan «Corda 135x80» stoli (Stollar). O‘lchamlari: 135 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -1581,7 +1572,7 @@
       "en": {
         "name": "Corda 135x80 Table",
         "category_label": "Tables",
-        "description": "Large dining table Corda 135×80 cm. Robust metal framing paired with an elegant marble-look laminated tabletop shapes a distinguished dining centerpiece for 4-6 people. Perfectly harmonizes with Corda and Jardin chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
+        "description": "Large dining table Corda 135×80 cm. Metal framing paired with an elegant marble-look laminated tabletop shapes a distinguished dining centerpiece for 4-6 people. Perfectly harmonizes with Corda and Jardin chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
         "usage": "For living room, dining room, enclosed terrace, HoReCa",
         "seo_title": "Buy Corda 135x80 Table in Tashkent - BTT",
         "seo_description": "Corda 135x80 Table (Tables) by BTT. Dimensions: 135 × 80 × 75 см. Delivery across Tashkent and Uzbekistan."
@@ -1597,7 +1588,7 @@
 
   window.BTT_PRODUCT_MASTER = MASTER;
 
-  // Build dictionary for fast lookup by canonical slug and legacyId (p1..p16)
+  // Build dictionary for fast lookup by canonical slug and legacyId
   var PRODUCTS = {};
   MASTER.forEach(function(item){
     var obj = {
@@ -1651,7 +1642,7 @@
 
   window.BTT_IS_MTO = function(id) {
     var p = window.BTT_PRODUCTS[id];
-    return !!(p && (p.availability === "on_request" || p.stock === 0));
+    return !!(p && p.availability === "on_request");
   };
 
   window.BTT_PRODUCT_IMG = function(id) {

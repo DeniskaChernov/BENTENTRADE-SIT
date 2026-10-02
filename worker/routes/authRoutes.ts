@@ -29,9 +29,8 @@ app.post("/register", async (c) => {
   const exists = await c.env.DB.prepare(`SELECT id FROM users WHERE email = ?`).bind(email).first();
   if (exists) return c.json({ error: "email_taken" }, 409);
 
-  const countRow = await c.env.DB.prepare(`SELECT COUNT(*) as n FROM users`).first<{ n: number }>();
-  const isFirstUser = !countRow || Number(countRow.n) === 0;
-  const role = isFirstUser ? "admin" : "customer";
+  // Registration always assigns 'customer' role. Admin escalation is strictly through ADMIN_BOOTSTRAP_TOKEN.
+  const role = "customer";
 
   const hash = await hashPassword(password);
   const ins = await c.env.DB.prepare(

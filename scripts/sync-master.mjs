@@ -13,8 +13,9 @@ function syncProductsJs() {
   const masterCode = JSON.stringify(master, null, 2);
 
   const jsContent = `/* BTT - мебель для дома и сада
-   Product master data (exact 16 SKUs, Single Source of Truth).
-   All prices are in UZS. Generated from data/products-master.json. */
+   Product master data (Single Source of Truth fallback).
+   DO NOT EDIT MANUALLY - Generated from data/products-master.json via scripts/sync-master.mjs.
+   All prices are in UZS. */
 (function(){
   "use strict";
 
@@ -22,7 +23,7 @@ function syncProductsJs() {
 
   window.BTT_PRODUCT_MASTER = MASTER;
 
-  // Build dictionary for fast lookup by canonical slug and legacyId (p1..p16)
+  // Build dictionary for fast lookup by canonical slug and legacyId
   var PRODUCTS = {};
   MASTER.forEach(function(item){
     var obj = {
@@ -76,7 +77,7 @@ function syncProductsJs() {
 
   window.BTT_IS_MTO = function(id) {
     var p = window.BTT_PRODUCTS[id];
-    return !!(p && (p.availability === "on_request" || p.stock === 0));
+    return !!(p && p.availability === "on_request");
   };
 
   window.BTT_PRODUCT_IMG = function(id) {

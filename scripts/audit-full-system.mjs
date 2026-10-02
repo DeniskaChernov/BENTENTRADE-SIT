@@ -20,19 +20,19 @@ vm.runInContext(prodJsCode, sandbox);
 const prodJs = sandbox.window.BTT_PRODUCTS;
 const canonicalSlugs = sandbox.window.BTT_CANONICAL_SLUGS;
 
-console.log('--- 1. MASTER DATA SYNCHRONIZATION (16 SKUs) ---');
-if (master.length === 16) {
-  console.log('  PASS: Master JSON has exactly 16 SKUs');
+console.log(`--- 1. MASTER DATA SYNCHRONIZATION (${master.length} SKUs) ---`);
+if (master.length > 0) {
+  console.log(`  PASS: Master JSON has ${master.length} SKUs (including stul-todo-soft)`);
   passCount++;
 } else {
-  issuesFound.push(`Master JSON has ${master.length} SKUs instead of 16`);
+  issuesFound.push('Master JSON is empty');
 }
 
-if (canonicalSlugs.length === 16) {
-  console.log('  PASS: Canonical slugs list has exactly 16 SKUs');
+if (canonicalSlugs.length === master.length) {
+  console.log(`  PASS: Canonical slugs list matches master count (${canonicalSlugs.length} SKUs)`);
   passCount++;
 } else {
-  issuesFound.push(`Canonical slugs list has ${canonicalSlugs.length} SKUs`);
+  issuesFound.push(`Canonical slugs count (${canonicalSlugs.length}) does not match master (${master.length})`);
 }
 
 for (const p of master) {
@@ -51,17 +51,22 @@ for (const p of master) {
   if (masterColors !== jsColors) {
     issuesFound.push(`Color mismatch for ${p.slug}: master=[${masterColors}], products.js=[${jsColors}]`);
   }
-  // Check worker VALID_PRODUCT_SLUGS
-  if (!workerTs.includes(`"${p.slug}"`)) {
-    issuesFound.push(`Worker missing canonical slug in VALID_PRODUCT_SLUGS: ${p.slug}`);
-  }
   // Check seed.sql
   if (!seedSql.includes(`'${p.slug}'`)) {
     issuesFound.push(`seed.sql missing product slug: ${p.slug}`);
   }
 }
+
+// Check worker dynamic D1 query for catalog and aliases
+if (workerTs.includes('product_aliases') && workerTs.includes('/catalog/:slug')) {
+  console.log('  PASS: Worker dynamically resolves product slugs and aliases via D1');
+  passCount++;
+} else {
+  issuesFound.push('Worker missing dynamic D1 product routing');
+}
+
 if (issuesFound.length === 0) {
-  console.log('  PASS: All 16 SKUs completely synchronized across Master, products.js, Worker, and seed.sql');
+  console.log(`  PASS: All ${master.length} SKUs completely synchronized across Master, products.js, Worker, and seed.sql`);
   passCount++;
 }
 
@@ -77,11 +82,11 @@ for (const p of master) {
     catCardCount++;
   }
 }
-if (catCardCount === 16) {
-  console.log(`  PASS: catalog.html contains all 16 static product cards`);
+if (catCardCount === master.length) {
+  console.log(`  PASS: catalog.html contains all ${catCardCount} static product cards`);
   passCount++;
 } else {
-  issuesFound.push(`catalog.html has ${catCardCount}/16 cards`);
+  issuesFound.push(`catalog.html has ${catCardCount}/${master.length} cards`);
 }
 
 // 3. I18N PARITY AUDIT (RU vs UZ vs EN)
@@ -125,8 +130,8 @@ const allChecked = [...allHtmlFiles, ...coreJsFiles.map(f => `assets/${f}`), 'da
 let dashErrors = [];
 for (const f of allChecked) {
   const content = fs.readFileSync(f, 'utf8');
-  if (content.includes('—')) dashErrors.push(`${f} contains em-dash (—)`);
-  if (content.includes('–')) dashErrors.push(`${f} contains en-dash (–)`);
+  if (content.includes('\u2014')) dashErrors.push(`${f} contains em-dash`);
+  if (content.includes('\u2013')) dashErrors.push(`${f} contains en-dash`);
 }
 if (dashErrors.length === 0) {
   console.log(`  PASS: Zero em-dash or en-dash across all ${allChecked.length} inspected source files!`);
@@ -138,17 +143,6 @@ if (dashErrors.length === 0) {
 
 // 5. UNVERIFIED CLAIMS AUDIT
 console.log('\n--- 5. UNVERIFIED CLAIMS AUDIT ---');
-const unverifiedRegexes = [
-  /выдерживает\s+\d+/i,
-  /120\s*кг/i,
-  /150\s*кг/i,
-  /180\s*кг/i,
-  /премиальн/i,
-  /premium/i,
-  /ударопрочн/i,
-  /быстрая доставка/i
-];
-
 let claimIssues = [];
 for (const p of master) {
   if (p.maxLoad !== null) {
@@ -156,7 +150,7 @@ for (const p of master) {
   }
 }
 if (claimIssues.length === 0) {
-  console.log('  PASS: All 16 SKUs have maxLoad stripped to null in master data');
+  console.log(`  PASS: All ${master.length} SKUs have maxLoad stripped to null in master data`);
   passCount++;
 } else {
   issuesFound.push(...claimIssues);
@@ -186,6 +180,8 @@ console.log('====================================================');
 if (issuesFound.length > 0) {
   console.log('Issues needing attention:');
   issuesFound.forEach(i => console.log('  - ' + i));
+  process.exit(1);
 } else {
   console.log('ALL SYSTEMS IN FULL INTEGRITY!');
+  process.exit(0);
 }

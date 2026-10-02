@@ -41,17 +41,19 @@ function expect(val) {
 
 console.log('=== RUNNING BTT COMPREHENSIVE SMOKE TEST SUITE ===\n');
 
-// SCENARIO A: SSOT and Exact 16 SKUs
-console.log('--- SCENARIO A: Single Source of Truth (16 SKUs) ---');
-test('Master file has exactly 16 SKUs', () => {
+// SCENARIO A: SSOT and Dynamic SKU Catalog
+console.log('--- SCENARIO A: Single Source of Truth (Dynamic SKUs) ---');
+test('Master file has active SKUs including stul-todo-soft', () => {
   const master = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/products-master.json'), 'utf8'));
-  expect(master.length).toBe(16);
+  expect(master.length > 0).toBe(true);
+  expect(master.some(p => p.slug === 'stul-todo-soft')).toBe(true);
 });
 
-test('seed.sql inserts exactly 16 products', () => {
+test('seed.sql inserts products matching master count', () => {
+  const master = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/products-master.json'), 'utf8'));
   const seed = fs.readFileSync(path.join(ROOT, 'migrations/seed.sql'), 'utf8');
   const count = (seed.match(/INSERT OR REPLACE INTO products\s*\(/g) || []).length;
-  expect(count).toBe(16);
+  expect(count).toBe(master.length);
 });
 
 // SCENARIO B: Brand Identity
@@ -101,7 +103,7 @@ console.log('\n--- SCENARIO F: Worker Routing & Canonical PDP ---');
 test('worker/index.ts has 301 alias redirect and canonical /catalog/:slug route', () => {
   const worker = fs.readFileSync(path.join(ROOT, 'worker/index.ts'), 'utf8');
   expect(worker).toContain('/catalog/:slug');
-  expect(worker).toContain('PRODUCT_ALIASES');
+  expect(worker).toContain('product_aliases');
   expect(worker).toContain('301');
   expect(worker).toContain('/horeca');
 });

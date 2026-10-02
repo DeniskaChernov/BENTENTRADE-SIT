@@ -123,7 +123,7 @@
       "seller": { "@type": "Organization", "name": "BTT - мебель для дома и сада" }
     };
     const avail = prod.availability || "unknown";
-    if (avail === "in_stock" || (prod.status === "in_stock" || prod.stock === 1)) {
+    if (avail === "in_stock") {
       offerObj.availability = "https://schema.org/InStock";
     } else if (avail === "low_stock") {
       offerObj.availability = "https://schema.org/LimitedAvailability";
@@ -343,12 +343,14 @@
       const sale = disc ? '<span class="badge-sale">-' + disc + "%</span>" : "";
       const avail = item.availability || "unknown";
       let availBadge = "";
-      if (avail === "on_request" || (avail === "unknown" && item.stock === 0)) {
-        availBadge = '<span class="badge-mto" data-i18n="mto.badge">' + esc(t("mto.badge") || "Под заказ") + "</span>";
+      if (avail === "on_request") {
+        availBadge = '<span class="badge-mto" data-i18n="availability.on_request">' + esc(t("availability.on_request") || "Под заказ") + "</span>";
       } else if (avail === "out_of_stock") {
-        availBadge = '<span class="badge-mto badge-oos">' + esc(t("availability.out_of_stock") || "Нет в наличии") + "</span>";
+        availBadge = '<span class="badge-mto badge-oos" data-i18n="availability.out_of_stock">' + esc(t("availability.out_of_stock") || "Нет в наличии") + "</span>";
       } else if (avail === "low_stock") {
-        availBadge = '<span class="badge-sale badge-low">' + esc(t("availability.low_stock") || "Осталось мало") + "</span>";
+        availBadge = '<span class="badge-sale badge-low" data-i18n="availability.low_stock">' + esc(t("availability.low_stock") || "Осталось мало") + "</span>";
+      } else if (avail === "unknown") {
+        availBadge = '<span class="badge-avail badge-avail--unknown" data-i18n="availability.unknown">' + esc(t("availability.unknown") || "Уточняйте наличие") + "</span>";
       }
       const old = item.price_old ? '<span class="price__old">' + money(item.price_old) + "</span>" : "";
 
@@ -641,13 +643,9 @@
     const availEl = $("[data-pdp-avail]");
     const avail = prod.availability || "unknown";
     if(availEl){
-      if(avail === "unknown"){
-        availEl.style.display = "none";
-      } else {
-        availEl.style.display = "";
-        availEl.className = "badge-avail badge-avail--" + avail;
-        availEl.textContent = t("availability." + avail) || avail;
-      }
+      availEl.style.display = "";
+      availEl.className = "badge-avail badge-avail--" + avail;
+      availEl.textContent = t("availability." + avail) || "Уточняйте наличие";
     }
 
     renderSwatches();

@@ -60,13 +60,22 @@ export function applyCacheHeaders(headers: Headers, path: string): void {
     headers.set("Pragma", "no-cache");
     return;
   }
+  if (path === "/sw.js") {
+    headers.set("Cache-Control", "no-cache, no-store, must-revalidate");
+    headers.set("Pragma", "no-cache");
+    return;
+  }
   if (path.startsWith("/assets/")) {
-    headers.set("Cache-Control", "public, max-age=31536000, immutable");
+    if (path.endsWith(".js") || path.endsWith(".css")) {
+      headers.set("Cache-Control", "public, max-age=0, must-revalidate");
+    } else {
+      headers.set("Cache-Control", "public, max-age=31536000, immutable");
+    }
   } else if (path.startsWith("/data/")) {
-    headers.set("Cache-Control", "public, max-age=3600, stale-while-revalidate=86400");
-  } else if (path === "/" || path.endsWith(".html")) {
+    headers.set("Cache-Control", "public, max-age=0, must-revalidate");
+  } else if (path === "/" || path.endsWith(".html") || path.startsWith("/catalog/")) {
     headers.set("Cache-Control", "public, max-age=300, stale-while-revalidate=3600");
   } else if (path === "/robots.txt" || path === "/sitemap.xml") {
-    headers.set("Cache-Control", "public, max-age=86400");
+    headers.set("Cache-Control", "public, max-age=3600, stale-while-revalidate=86400");
   }
 }

@@ -81,12 +81,14 @@
     const sale = disc ? '<span class="badge-sale">-' + disc + "%</span>" : "";
     const avail = p.availability || "unknown";
     let availBadge = "";
-    if (avail === "on_request" || (avail === "unknown" && p.stock === 0)) {
-      availBadge = '<span class="badge-mto" data-i18n="mto.badge">' + esc(t("mto.badge") || "Под заказ") + "</span>";
+    if (avail === "on_request") {
+      availBadge = '<span class="badge-mto" data-i18n="availability.on_request">' + esc(t("availability.on_request") || "Под заказ") + "</span>";
     } else if (avail === "out_of_stock") {
-      availBadge = '<span class="badge-mto badge-oos">' + esc(t("availability.out_of_stock") || "Нет в наличии") + "</span>";
+      availBadge = '<span class="badge-mto badge-oos" data-i18n="availability.out_of_stock">' + esc(t("availability.out_of_stock") || "Нет в наличии") + "</span>";
     } else if (avail === "low_stock") {
-      availBadge = '<span class="badge-sale badge-low">' + esc(t("availability.low_stock") || "Осталось мало") + "</span>";
+      availBadge = '<span class="badge-sale badge-low" data-i18n="availability.low_stock">' + esc(t("availability.low_stock") || "Осталось мало") + "</span>";
+    } else if (avail === "unknown") {
+      availBadge = '<span class="badge-avail badge-avail--unknown" data-i18n="availability.unknown">' + esc(t("availability.unknown") || "Уточняйте наличие") + "</span>";
     }
     const old = p.price_old ? '<span class="price__old">' + money(p.price_old) + "</span>" : "";
     const href = p.slug ? ("/catalog/" + encodeURIComponent(p.slug)) : ("product.html?id=" + esc(p.id));
@@ -403,13 +405,9 @@
     const availEl = document.querySelector("[data-pdp-avail]");
     const avail = p.availability || "unknown";
     if (availEl) {
-      if (avail === "unknown") {
-        availEl.style.display = "none";
-      } else {
-        availEl.style.display = "";
-        availEl.className = "badge-avail badge-avail--" + avail;
-        availEl.textContent = t("availability." + avail) || avail;
-      }
+      availEl.style.display = "";
+      availEl.className = "badge-avail badge-avail--" + avail;
+      availEl.textContent = t("availability." + avail) || "Уточняйте наличие";
     }
 
     // Name / breadcrumb / category / description straight from the CRM.

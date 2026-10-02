@@ -55,10 +55,12 @@ function main() {
     lines.push(url(SITE + "/" + p, pr, "monthly"));
   });
 
-  // 15 canonical product URLs
-  products.forEach((p) => {
-    lines.push(url(SITE + "/catalog/" + encodeURIComponent(p.slug), "0.85", "weekly"));
-  });
+  // Active canonical product URLs
+  products
+    .filter((p) => p.active !== 0 && p.active !== false)
+    .forEach((p) => {
+      lines.push(url(SITE + "/catalog/" + encodeURIComponent(p.slug), "0.85", "weekly"));
+    });
 
   lines.push("</urlset>", "");
   writeFileSync(join(root, "sitemap.xml"), lines.join("\n"), "utf8");
