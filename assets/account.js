@@ -280,7 +280,7 @@
   const HOME_SVG='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9 12 2l9 7v11a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg>';
   function addrCard(a){
     const tag = a.is_default
-      ? '<div class="addr__tag">'+CHECK_SVG+'<span>'+esc(t("acc.addr.default"))+'</span></div>'
+      ? '<div class="addr__tag">'+CHECK_SVG+'<span>'+esc(t("acc.addr.default") || "Сделать адресом по умолчанию")+'</span></div>'
       : '<div class="addr__tag">'+HOME_SVG+'<span>'+esc(a.label||t("acc.addr.office"))+'</span></div>';
     const line2=[a.city,a.line].filter(Boolean).map(esc).join(", ");
     return '<div class="addr'+(a.is_default?" is-default":"")+'" data-addr-id="'+a.id+'">'+
@@ -314,14 +314,14 @@
     addrModal.className="addr-modal";
     addrModal.innerHTML=
       '<div class="addr-modal__box"><form class="form" data-addr-form>'+
-      '<div class="field"><label>'+esc(t("acc.addr.label"))+'</label><input name="label"></div>'+
+      '<div class="field"><label>'+esc(t("acc.addr.label") || "Название адреса")+'</label><input name="label" placeholder="Например: Дом или Офис"></div>'+
       '<div class="field"><label>'+esc(t("acc.set.name"))+'</label><input name="recipient" required></div>'+
       '<div class="field"><label>'+esc(t("acc.set.phone"))+'</label><input name="phone" type="tel"></div>'+
-      '<div class="field"><label>'+esc(t("acc.addr.city"))+'</label><input name="city"></div>'+
-      '<div class="field"><label>'+esc(t("acc.addr.line"))+'</label><input name="line"></div>'+
+      '<div class="field"><label>'+esc(t("acc.addr.city") || "Город")+'</label><input name="city" placeholder="Ташкент"></div>'+
+      '<div class="field"><label>'+esc(t("acc.addr.line") || "Улица, дом, квартира")+'</label><input name="line" placeholder="Улица, дом, квартира / офис"></div>'+
       '<label class="addr-modal__def"><input type="checkbox" name="is_default"> <span>'+esc(t("acc.addr.default"))+'</span></label>'+
-      '<div class="addr-modal__row"><button type="button" class="btn btn--ghost btn--sm" data-addr-cancel>'+esc(t("acc.addr.cancel"))+'</button>'+
-      '<button type="button" class="btn btn--ghost btn--sm addr-modal__del" data-addr-del hidden>'+esc(t("acc.addr.del"))+'</button>'+
+      '<div class="addr-modal__row"><button type="button" class="btn btn--ghost btn--sm" data-addr-cancel>'+esc(t("acc.addr.cancel") || "Отмена")+'</button>'+
+      '<button type="button" class="btn btn--ghost btn--sm addr-modal__del" data-addr-del hidden>'+esc(t("acc.addr.del") || "Удалить адрес")+'</button>'+
       '<button type="submit" class="btn btn--copper btn--sm">'+esc(t("acc.set.save"))+'</button></div>'+
       '</form></div>';
     document.body.appendChild(addrModal);
