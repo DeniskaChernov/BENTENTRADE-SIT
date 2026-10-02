@@ -1,4 +1,4 @@
-# Railway deploy config — healthcheck + graceful swap (see RAILWAY.md).
+# Railway deploy config - healthcheck + graceful swap (see RAILWAY.md).
 [deploy]
 startCommand = "node --import tsx server/index.ts"
 healthcheckPath = "/health"

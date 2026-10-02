@@ -16,7 +16,7 @@
 
   "observability": { "enabled": true },
 
-  // D1 — relational database (products, orders, requests, users, articles).
+  // D1 - relational database (products, orders, requests, users, articles).
   "d1_databases": [
     {
       "binding": "DB",
@@ -26,7 +26,7 @@
     }
   ],
 
-  // KV — auth sessions.
+  // KV - auth sessions.
   "kv_namespaces": [
     {
       "binding": "SESSIONS",
