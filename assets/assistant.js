@@ -29,10 +29,12 @@
       ]
     },
     tables: [
-      { id: "vertex-d90", name: "VERTEX D90", retail: 680000, combo: 680000, slug: "stol-vertex-d90", size: "Ø90 см" },
+      { id: "vertex-d90", name: "VERTEX D90", retail: 730000, combo: 680000, slug: "stol-vertex-d90", size: "Ø90 см" },
       { id: "taper-80", name: "TAPER 80x80", retail: 783000, combo: 733000, slug: "stol-taper-80", size: "80×80 см" },
-      { id: "taper-135", name: "TAPER 135x80", retail: null, combo: 860000, slug: "stol-taper-135", size: "135×80 см" },
-      { id: "corda-135", name: "CORDA 135x80", retail: 999000, combo: 949000, slug: "stol-corda-135", size: "135×80 см" }
+      { id: "taper-rotang-80", name: "TAPER ROTANG 80x80", retail: 904000, combo: 854000, slug: "stol-taper-rotang-80", size: "80×80×75 см" },
+      { id: "taper-135", name: "TAPER 135x80", retail: 910000, combo: 860000, slug: "stol-taper-135", size: "135×80 см" },
+      { id: "corda-135", name: "CORDA 135x80", retail: 999000, combo: 949000, slug: "stol-corda-135", size: "135×80 см" },
+      { id: "taper-rotang-135", name: "TAPER ROTANG 135x80", retail: null, combo: 954000, slug: "stol-taper-rotang-135", size: "135×80 см" }
     ],
     approvedCombos: [
       {
@@ -70,7 +72,41 @@
         price: 2850000,
         tableSlug: "stol-taper-80",
         chairSlug: "stul-corda"
+      },
+      {
+        id: "taper-rotang-80-vertex",
+        nameRu: "1 стол TAPER ROTANG 80x80 + 4 плетёных стула VERTEX",
+        nameUz: "1 ta TAPER ROTANG 80x80 stoli + 4 ta to‘qilgan VERTEX stuli",
+        nameEn: "1 TAPER ROTANG 80x80 table + 4 VERTEX wicker chairs",
+        price: 2850000,
+        tableSlug: "stol-taper-rotang-80",
+        chairSlug: "stul-vertex"
+      },
+      {
+        id: "taper-rotang-80-corda",
+        nameRu: "1 стол TAPER ROTANG 80x80 + 4 плетёных стула CORDA",
+        nameUz: "1 ta TAPER ROTANG 80x80 stoli + 4 ta to‘qilgan CORDA stuli",
+        nameEn: "1 TAPER ROTANG 80x80 table + 4 CORDA wicker chairs",
+        price: 2850000,
+        tableSlug: "stol-taper-rotang-80",
+        chairSlug: "stul-corda"
       }
+    ],
+    lamps: [
+      { id: "nova", name: "NOVA", price: 401000, size: "235×309 мм", desc: "Мягкое тёплое освещение", slug: "lampa-nova" },
+      { id: "sora", name: "SORA", price: 740000, size: "250×430 мм", desc: "Мягкое тёплое освещение", slug: "lampa-sora" },
+      { id: "vela", name: "VELA", price: 332000, size: "250×430 мм", desc: "Мягкое тёплое освещение", slug: "lampa-vela" },
+      { id: "runa", name: "RUNA", price: 491000, size: "190×223 мм", desc: "Мягкое тёплое освещение", slug: "lampa-runa" },
+      { id: "liva", name: "LIVA", price: 442000, size: "120×248 мм", desc: "Мягкое тёплое освещение", slug: "lampa-liva" },
+      { id: "aria", name: "ARIA", price: 317000, size: "118×243,5 мм", desc: "Мягкое тёплое освещение", slug: "lampa-aria" }
+    ],
+    rattan: [
+      { id: "polutrubka", name: "Полутрубка", slug: "rotang-polutrubka" },
+      { id: "polumesyats", name: "Полумесяц", slug: "rotang-polumesyats" },
+      { id: "ploskaya-lenta", name: "Плоская лента", slug: "rotang-ploskaya-lenta" },
+      { id: "trubka", name: "Трубка", slug: "rotang-trubka" },
+      { id: "polusfera", name: "Полусфера", slug: "rotang-polusfera" },
+      { id: "twist", name: "TWIST", slug: "rotang-twist" }
     ]
   };
 
@@ -86,6 +122,8 @@
         "Цены на стулья",
         "Цены на столы",
         "Готовые комплекты",
+        "Настольные лампы",
+        "Искусственный ротанг",
         "Пластиковые стулья",
         "Плетёные стулья",
         "Мягкие стулья",
@@ -110,18 +148,49 @@
           "• LIRA: 354 000 сум<br>" +
           "• COMO: 486 000 сум",
         "Цены на столы": "<b>Актуальные цены на обеденные столы BTT:</b><br>" +
-          "• <b>VERTEX D90</b> (круглый Ø90 см): 680 000 сум<br>" +
-          "• <b>TAPER 80x80</b> (квадратный): 783 000 сум отдельно (для комплекта 733 000 сум)<br>" +
-          "• <b>CORDA 135x80</b> (прямоугольный): 999 000 сум отдельно (для комплекта 949 000 сум)<br>" +
-          "• <b>TAPER 135x80</b>: для расчёта комплектов 860 000 сум (отдельная розничная цена уточняется у менеджера).<br>" +
+          "<b>Круглые:</b><br>" +
+          "• <b>VERTEX D90</b> (Ø90 см): 730 000 сум отдельно (для комплекта 680 000 сум)<br><br>" +
+          "<b>Квадратные:</b><br>" +
+          "• <b>TAPER 80x80</b>: 783 000 сум отдельно (для комплекта 733 000 сум)<br>" +
+          "• <b>TAPER ROTANG 80x80</b> (ЛДСП): 904 000 сум отдельно (для комплекта 854 000 сум)<br><br>" +
+          "<b>Прямоугольные:</b><br>" +
+          "• <b>TAPER 135x80</b> (ЛДСП): 910 000 сум отдельно (для комплекта 860 000 сум)<br>" +
+          "• <b>CORDA 135x80</b>: 999 000 сум отдельно (для комплекта 949 000 сум)<br>" +
+          "• <b>TAPER ROTANG 135x80</b>: для расчёта комплектов 954 000 сум (отдельная розничная цена пока не подтверждена).<br>" +
           "<i>Обратите внимание: стол CORDA 135x80 - это обеденный стол, не путайте его со стульями CORDA.</i>",
-        "Готовые комплекты": "<b>Утверждённые готовые комплекты BTT:</b><br>" +
-          "1. Стол VERTEX D90 + 4 плетёных стула VERTEX: <b>2 676 000 сум</b><br>" +
-          "2. Стол VERTEX D90 + 4 плетёных стула CORDA: <b>2 676 000 сум</b><br>" +
-          "3. Стол TAPER 80x80 + 4 плетёных стула VERTEX: <b>2 850 000 сум</b><br>" +
-          "4. Стол TAPER 80x80 + 4 плетёных стула CORDA: <b>2 850 000 сум</b><br><br>" +
-          "<b>Комплекты с пластиковыми стульями</b> рассчитываются по формуле: [цена стола для комплекта] + [кол-во стульев] × [комплектная цена стула].<br>" +
-          "Например: Стол Taper 80x80 (733 000) + 4 стула Roero (4 * 168 000 = 672 000) = <b>1 405 000 сум</b>.",
+        "Готовые комплекты": "<b>Утверждённые специальные цены готовых комплектов BTT:</b><br>" +
+          "• 1 стол VERTEX D90 + 4 плетёных стула VERTEX: <b>2 676 000 сум</b><br>" +
+          "• 1 стол VERTEX D90 + 4 плетёных стула CORDA: <b>2 676 000 сум</b><br>" +
+          "• 1 стол TAPER 80x80 + 4 плетёных стула VERTEX: <b>2 850 000 сум</b><br>" +
+          "• 1 стол TAPER 80x80 + 4 плетёных стула CORDA: <b>2 850 000 сум</b><br>" +
+          "• 1 стол TAPER ROTANG 80x80 + 4 плетёных стула VERTEX: <b>2 850 000 сум</b><br>" +
+          "• 1 стол TAPER ROTANG 80x80 + 4 плетёных стула CORDA: <b>2 850 000 сум</b><br><br>" +
+          "<b>Комплекты с пластиковыми стульями:</b> [цена стола в комплекте] + 4 × [комплектная цена стула].<br>" +
+          "• Taper 80x80 + 4 Roero: <b>1 405 000 сум</b> | + 4 Noero: <b>1 501 000 сум</b> | + 4 Todo: <b>1 597 000 сум</b><br>" +
+          "• Vertex D90 + 4 Roero: <b>1 352 000 сум</b> | + 4 Noero: <b>1 448 000 сум</b> | + 4 Todo: <b>1 544 000 сум</b><br>" +
+          "• Taper Rotang 80 + 4 Roero: <b>1 526 000 сум</b> | + 4 Noero: <b>1 622 000 сум</b><br>" +
+          "• Taper 135 + 4 Roero: <b>1 532 000 сум</b> | + 4 Noero: <b>1 628 000 сум</b> | + 4 Todo: <b>1 724 000 сум</b><br>" +
+          "• Corda 135 + 4 Roero: <b>1 621 000 сум</b> | + 4 Noero: <b>1 717 000 сум</b><br>" +
+          "• Taper Rotang 135 + 4 Roero: <b>1 626 000 сум</b> | + 4 Noero: <b>1 722 000 сум</b><br><br>" +
+          "<b>Другие комплекты с плетёными стульями:</b> [цена стола в комплекте] + 4 × 499 000 сум.<br>" +
+          "Например: Taper 135 + 4 Vertex = <b>2 856 000 сум</b>, Corda 135 + 4 Corda = <b>2 945 000 сум</b>, Taper Rotang 135 + 4 Vertex = <b>2 950 000 сум</b>.",
+        "Настольные лампы": "<b>Настольные лампы для дома BTT (мягкое тёплое освещение):</b><br>" +
+          "• <b>NOVA</b> (235×309 мм): 401 000 сум / шт.<br>" +
+          "• <b>SORA</b> (250×430 мм): 740 000 сум / шт.<br>" +
+          "• <b>VELA</b> (250×430 мм): 332 000 сум / шт.<br>" +
+          "• <b>RUNA</b> (190×223 мм): 491 000 сум / шт.<br>" +
+          "• <b>LIVA</b> (120×248 мм): 442 000 сум / шт.<br>" +
+          "• <b>ARIA</b> (118×243,5 мм): 317 000 сум / шт.<br>" +
+          "Идеальны для спальни, гостиной и создания уютного тёплого интерьера.",
+        "Искусственный ротанг": "<b>Искусственный ротанг BTT (производство и сырьё):</b><br>" +
+          "Доступные профили:<br>" +
+          "• Полутрубка<br>" +
+          "• Полумесяц<br>" +
+          "• Плоская лента<br>" +
+          "• Трубка<br>" +
+          "• Полусфера<br>" +
+          "• TWIST<br><br>" +
+          "Цена рассчитывается индивидуально в зависимости от профиля, цвета, объёма заказа и MOQ. Оставьте заявку в чате для расчёта стоимости партии.",
         "Пластиковые стулья": "Практичные стулья из ударопрочного полипропилена: ROERO (188 000 сум / 168 000 в комплекте), NOERO (212 000 сум / 192 000 в комплекте), TODO (236 000 сум / 216 000 в комплекте), TODO SOFT (236 000 сум) и кресло JARDIN (344 000 сум / 324 000 в комплекте). Легко моются, не выгорают на солнце.",
         "Плетёные стулья": "Плетёные стулья VERTEX и CORDA (499 000 сум за шт.) на прочном металлокаркасе со съёмными текстильными подушками в комплекте. Идеальны для веранд, террас, столовых зон и кафе.",
         "Мягкие стулья": "Комфортные стулья с мягкой обивкой на надёжном металлокаркасе: LIRA (354 000 сум) и кресла COMO (486 000 сум). Отлично подходят для дома, гостиной, кухни и ресторанов.",
@@ -180,6 +249,8 @@
         "Stullar narxlari",
         "Stollar narxlari",
         "Tayyor to‘plamlar",
+        "Stol lampalari",
+        "Sun'iy rotang",
         "Plastik stullar",
         "To‘qilgan stullar",
         "Yumshoq stullar",
@@ -204,18 +275,42 @@
           "• LIRA: 354 000 so‘m<br>" +
           "• COMO: 486 000 so‘m",
         "Stollar narxlari": "<b>BTT stollarining amaldagi narxlari:</b><br>" +
-          "• <b>VERTEX D90</b> (dumaloq Ø90 sm): 680 000 so‘m<br>" +
-          "• <b>TAPER 80x80</b> (to‘rtburchak): alohida 783 000 so‘m (to‘plam uchun 733 000 so‘m)<br>" +
-          "• <b>CORDA 135x80</b> (to‘rtburchak): alohida 999 000 so‘m (to‘plam uchun 949 000 so‘m)<br>" +
-          "• <b>TAPER 135x80</b>: to‘plam hisobi uchun 860 000 so‘m (alohida chakana narxi menejer bilan aniqlanadi).<br>" +
+          "<b>Dumaloq stollar:</b><br>" +
+          "• <b>VERTEX D90</b> (Ø90 sm): 730 000 so‘m alohida (to‘plam uchun 680 000 so‘m)<br><br>" +
+          "<b>To‘rtburchak stollar:</b><br>" +
+          "• <b>TAPER 80x80</b>: 783 000 so‘m alohida (to‘plam uchun 733 000 so‘m)<br>" +
+          "• <b>TAPER ROTANG 80x80</b> (LDSP): 904 000 so‘m alohida (to‘plam uchun 854 000 so‘m)<br><br>" +
+          "<b>To‘g‘ri to‘rtburchak stollar:</b><br>" +
+          "• <b>TAPER 135x80</b> (LDSP): 910 000 so‘m alohida (to‘plam uchun 860 000 so‘m)<br>" +
+          "• <b>CORDA 135x80</b>: 999 000 so‘m alohida (to‘plam uchun 949 000 so‘m)<br>" +
+          "• <b>TAPER ROTANG 135x80</b>: to‘plam hisobi uchun 954 000 so‘m.<br>" +
           "<i>Muhim eslatma: CORDA 135x80 - bu stol, uni to‘qilgan CORDA stullari bilan adashtirmang.</i>",
         "Tayyor to‘plamlar": "<b>BTT tasdiqlangan tayyor to‘plamlari:</b><br>" +
-          "1. 1 ta VERTEX D90 stoli + 4 ta to‘qilgan VERTEX stuli: <b>2 676 000 so‘m</b><br>" +
-          "2. 1 ta VERTEX D90 stoli + 4 ta to‘qilgan CORDA stuli: <b>2 676 000 so‘m</b><br>" +
-          "3. 1 ta TAPER 80x80 stoli + 4 ta to‘qilgan VERTEX stuli: <b>2 850 000 so‘m</b><br>" +
-          "4. 1 ta TAPER 80x80 stoli + 4 ta to‘qilgan CORDA stuli: <b>2 850 000 so‘m</b><br><br>" +
-          "<b>Plastik stulli to‘plamlar</b> quyidagi formula bo‘yicha hisoblanadi: [stolning to‘plamdagi narxi] + [stullar soni] × [stulning to‘plamdagi narxi].<br>" +
-          "Masalan: Taper 80x80 stoli (733 000) + 4 ta Roero stuli (4 * 168 000 = 672 000) = <b>1 405 000 so‘m</b>.",
+          "• 1 ta VERTEX D90 stoli + 4 ta to‘qilgan VERTEX stuli: <b>2 676 000 so‘m</b><br>" +
+          "• 1 ta VERTEX D90 stoli + 4 ta to‘qilgan CORDA stuli: <b>2 676 000 so‘m</b><br>" +
+          "• 1 ta TAPER 80x80 stoli + 4 ta to‘qilgan VERTEX stuli: <b>2 850 000 so‘m</b><br>" +
+          "• 1 ta TAPER 80x80 stoli + 4 ta to‘qilgan CORDA stuli: <b>2 850 000 so‘m</b><br>" +
+          "• 1 ta TAPER ROTANG 80x80 stoli + 4 ta to‘qilgan VERTEX stuli: <b>2 850 000 so‘m</b><br>" +
+          "• 1 ta TAPER ROTANG 80x80 stoli + 4 ta to‘qilgan CORDA stuli: <b>2 850 000 so‘m</b><br><br>" +
+          "<b>Plastik stulli to‘plamlar:</b> [stol narxi] + 4 × [stulning to‘plamdagi narxi].<br>" +
+          "Masalan: Taper 80x80 + 4 ta Roero = <b>1 405 000 so‘m</b>, Vertex D90 + 4 ta Roero = <b>1 352 000 so‘m</b>.<br><br>" +
+          "<b>To‘qilgan stulli boshqa to‘plamlar:</b> [stol narxi] + 4 × 499 000 so‘m (masalan: Taper 135 + 4 ta Vertex = <b>2 856 000 so‘m</b>, Corda 135 + 4 ta Corda = <b>2 945 000 so‘m</b>).",
+        "Stol lampalari": "<b>Uy uchun BTT stol lampalari (iliq va mayin yorug‘lik):</b><br>" +
+          "• <b>NOVA</b> (235×309 mm): 401 000 so‘m<br>" +
+          "• <b>SORA</b> (250×430 mm): 740 000 so‘m<br>" +
+          "• <b>VELA</b> (250×430 mm): 332 000 so‘m<br>" +
+          "• <b>RUNA</b> (190×223 mm): 491 000 so‘m<br>" +
+          "• <b>LIVA</b> (120×248 mm): 442 000 so‘m<br>" +
+          "• <b>ARIA</b> (118×243,5 mm): 317 000 so‘m<br>" +
+          "Yotoqxona va mehmonxona uchun ajoyib qulaylik yaratadi.",
+        "Sun'iy rotang": "<b>BTT sun'iy rotang xomashyosi va profillari:</b><br>" +
+          "• Yarim naycha (Полутрубка)<br>" +
+          "• Yarim oy (Полумесяц)<br>" +
+          "• Yassi lenta (Плоская лента)<br>" +
+          "• Naycha (Трубка)<br>" +
+          "• Yarim sfera (Полусфера)<br>" +
+          "• TWIST buralgan profil<br><br>" +
+          "Narx buyurtma hajmi, rang va profil turiga qarab alohida hisoblanadi. Buyurtma berish uchun chatda murojaat qiling.",
         "Plastik stullar": "Yuqori sifatli birlamchi polipropilendan tayyorlangan amaliy stullar: ROERO (188 000 / 168 000 so‘m), NOERO (212 000 / 192 000 so‘m), TODO (236 000 / 216 000 so‘m), TODO SOFT (236 000 so‘m) va JARDIN kreslosi (344 000 / 324 000 so‘m). Quyoshda so‘nmaydi, yuvish oson.",
         "To‘qilgan stullar": "Mustahkam po‘lat metall karkasli va yumshoq matoli yostiqchali VERTEX va CORDA to‘qilgan stullari (har biri 499 000 so‘m). Terasalar, ayvonlar, kafelar va oshxonalar uchun juda qulay.",
         "Yumshoq stullar": "Yumshoq qoplamali va chidamli metall karkasli zamonaviy stullar: LIRA (354 000 so‘m) va qulay COMO kreslosi (486 000 so‘m). Uy, oshxona va kafelar uchun ideal.",
@@ -274,6 +369,8 @@
         "Chair prices",
         "Table prices",
         "Furniture sets",
+        "Table lamps",
+        "Artificial rattan",
         "Plastic chairs",
         "Wicker chairs",
         "Upholstered chairs",
@@ -298,18 +395,43 @@
           "• LIRA: 354,000 UZS<br>" +
           "• COMO: 486,000 UZS",
         "Table prices": "<b>Current BTT dining table prices:</b><br>" +
-          "• <b>VERTEX D90</b> (round Ø90 cm): 680,000 UZS<br>" +
-          "• <b>TAPER 80x80</b> (square): 783,000 UZS individually (733,000 UZS in sets)<br>" +
-          "• <b>CORDA 135x80</b> (rectangular): 999,000 UZS individually (949,000 UZS in sets)<br>" +
-          "• <b>TAPER 135x80</b>: 860,000 UZS for set calculations (standalone retail price unconfirmed).<br>" +
+          "<b>Round tables:</b><br>" +
+          "• <b>VERTEX D90</b> (round Ø90 cm): 730,000 UZS individually (680,000 UZS in sets)<br><br>" +
+          "<b>Square tables:</b><br>" +
+          "• <b>TAPER 80x80</b>: 783,000 UZS individually (733,000 UZS in sets)<br>" +
+          "• <b>TAPER ROTANG 80x80</b> (chipboard): 904,000 UZS individually (854,000 UZS in sets)<br><br>" +
+          "<b>Rectangular tables:</b><br>" +
+          "• <b>TAPER 135x80</b> (chipboard): 910,000 UZS individually (860,000 UZS in sets)<br>" +
+          "• <b>CORDA 135x80</b>: 999,000 UZS individually (949,000 UZS in sets)<br>" +
+          "• <b>TAPER ROTANG 135x80</b>: 954,000 UZS for set calculations.<br>" +
           "<i>Please note: CORDA 135x80 is a dining table; do not confuse it with CORDA chairs.</i>",
         "Furniture sets": "<b>Approved ready-made furniture sets:</b><br>" +
-          "1. 1 VERTEX D90 table + 4 VERTEX wicker chairs: <b>2,676,000 UZS</b><br>" +
-          "2. 1 VERTEX D90 table + 4 CORDA wicker chairs: <b>2,676,000 UZS</b><br>" +
-          "3. 1 TAPER 80x80 table + 4 VERTEX wicker chairs: <b>2,850,000 UZS</b><br>" +
-          "4. 1 TAPER 80x80 table + 4 CORDA wicker chairs: <b>2,850,000 UZS</b><br><br>" +
-          "<b>Plastic chair sets</b> are calculated by formula: [table combo price] + [number of chairs] × [chair combo price].<br>" +
-          "Example: Taper 80x80 (733,000) + 4 Roero chairs (4 * 168,000 = 672,000) = <b>1,405,000 UZS</b>.",
+          "• 1 VERTEX D90 table + 4 VERTEX wicker chairs: <b>2,676,000 UZS</b><br>" +
+          "• 1 VERTEX D90 table + 4 CORDA wicker chairs: <b>2,676,000 UZS</b><br>" +
+          "• 1 TAPER 80x80 table + 4 VERTEX wicker chairs: <b>2,850,000 UZS</b><br>" +
+          "• 1 TAPER 80x80 table + 4 CORDA wicker chairs: <b>2,850,000 UZS</b><br>" +
+          "• 1 TAPER ROTANG 80x80 table + 4 VERTEX wicker chairs: <b>2,850,000 UZS</b><br>" +
+          "• 1 TAPER ROTANG 80x80 table + 4 CORDA wicker chairs: <b>2,850,000 UZS</b><br><br>" +
+          "<b>Plastic chair sets:</b> [table combo price] + 4 × [chair combo price].<br>" +
+          "Example: Taper 80x80 + 4 Roero = <b>1,405,000 UZS</b>, Vertex D90 + 4 Roero = <b>1,352,000 UZS</b>.<br><br>" +
+          "<b>Other wicker chair sets:</b> [table combo price] + 4 × 499,000 UZS (e.g. Taper 135 + 4 Vertex = <b>2,856,000 UZS</b>, Corda 135 + 4 Corda = <b>2,945,000 UZS</b>).",
+        "Table lamps": "<b>BTT Table Lamps for Home (soft warm ambient lighting):</b><br>" +
+          "• <b>NOVA</b> (235×309 mm): 401,000 UZS<br>" +
+          "• <b>SORA</b> (250×430 mm): 740,000 UZS<br>" +
+          "• <b>VELA</b> (250×430 mm): 332,000 UZS<br>" +
+          "• <b>RUNA</b> (190×223 mm): 491,000 UZS<br>" +
+          "• <b>LIVA</b> (120×248 mm): 442,000 UZS<br>" +
+          "• <b>ARIA</b> (118×243.5 mm): 317,000 UZS<br>" +
+          "Crafted for cozy bedrooms, living areas, and nightstands.",
+        "Artificial rattan": "<b>BTT Synthetic Rattan Profiles (raw material manufacturing):</b><br>" +
+          "Available profiles:<br>" +
+          "• Half-tube<br>" +
+          "• Crescent (Half-moon)<br>" +
+          "• Flat ribbon<br>" +
+          "• Tube<br>" +
+          "• Hemisphere<br>" +
+          "• TWIST rope weave<br><br>" +
+          "Price depends on profile type, color, order volume, and MOQ. Submit an inquiry in chat for a custom B2B quote.",
         "Plastic chairs": "Durable chairs crafted from impact-resistant polypropylene: ROERO (188,000 / 168,000 UZS), NOERO (212,000 / 192,000 UZS), TODO (236,000 / 216,000 UZS), TODO SOFT (236,000 UZS), and JARDIN armchair (344,000 / 324,000 UZS). Weather-resistant and easy to clean.",
         "Wicker chairs": "VERTEX and CORDA wicker chairs (499,000 UZS each) on reinforced steel frames with soft removable cushions included. Ideal for patios, verandas, dining spaces, and cafes.",
         "Upholstered chairs": "Elegant soft-cushioned chairs on sturdy steel frames: LIRA (354,000 UZS) and comfortable COMO armchair (486,000 UZS). Perfect for living rooms, kitchens, and HoReCa.",
@@ -551,13 +673,19 @@
       if(PRICING.chairs[t]) allP = allP.concat(PRICING.chairs[t]);
     });
     if(PRICING.tables) allP = allP.concat(PRICING.tables);
+    if(PRICING.lamps) allP = allP.concat(PRICING.lamps);
+    if(PRICING.rattan) allP = allP.concat(PRICING.rattan);
     for(var i = 0; i < allP.length; i++){
       if(allP[i].slug === slug){
+        var defaultImg = "/media/" + allP[i].slug + "-main.jpg";
+        if(allP[i].slug.startsWith("lampa-") || allP[i].slug.startsWith("rotang-")){
+          defaultImg = "assets/prod-" + allP[i].slug + ".svg";
+        }
         return {
           slug: allP[i].slug,
           name: allP[i].name,
-          now: allP[i].retail,
-          images: ["/media/" + allP[i].slug + "-main.jpg"],
+          now: allP[i].retail || allP[i].price,
+          images: [defaultImg],
           colors: []
         };
       }
@@ -614,7 +742,12 @@
       { val: "Стол Vertex D90 + 4 плетёных стула Corda (2 676 000 сум)", label: curLang === "uz" ? "To‘plam: Vertex D90 stoli + 4 ta to‘qilgan Corda stuli (2 676 000 so‘m)" : curLang === "en" ? "Set: Vertex D90 table + 4 Corda wicker chairs (2,676,000 UZS)" : "Комплект: Стол Vertex D90 + 4 плетёных стула Corda (2 676 000 сум)" },
       { val: "Стол Taper 80x80 + 4 плетёных стула Vertex (2 850 000 сум)", label: curLang === "uz" ? "To‘plam: Taper 80x80 stoli + 4 ta to‘qilgan Vertex stuli (2 850 000 so‘m)" : curLang === "en" ? "Set: Taper 80x80 table + 4 Vertex wicker chairs (2,850,000 UZS)" : "Комплект: Стол Taper 80x80 + 4 плетёных стула Vertex (2 850 000 сум)" },
       { val: "Стол Taper 80x80 + 4 плетёных стула Corda (2 850 000 сум)", label: curLang === "uz" ? "To‘plam: Taper 80x80 stoli + 4 ta to‘qilgan Corda stuli (2 850 000 so‘m)" : curLang === "en" ? "Set: Taper 80x80 table + 4 Corda wicker chairs (2,850,000 UZS)" : "Комплект: Стол Taper 80x80 + 4 плетёных стула Corda (2 850 000 сум)" },
+      { val: "Стол Taper Rotang 80x80 + 4 плетёных стула Vertex (2 850 000 сум)", label: curLang === "uz" ? "To‘plam: Taper Rotang 80x80 stoli + 4 ta to‘qilgan Vertex stuli (2 850 000 so‘m)" : curLang === "en" ? "Set: Taper Rotang 80x80 table + 4 Vertex wicker chairs (2,850,000 UZS)" : "Комплект: Стол Taper Rotang 80x80 + 4 плетёных стула Vertex (2 850 000 сум)" },
+      { val: "Стол Corda 135x80 + 4 стула Roero (1 621 000 сум)", label: curLang === "uz" ? "To‘plam: Corda 135x80 stoli + 4 ta Roero stuli (1 621 000 so‘m)" : curLang === "en" ? "Set: Corda 135x80 table + 4 Roero chairs (1,621,000 UZS)" : "Комплект: Стол Corda 135x80 + 4 стула Roero (1 621 000 сум)" },
       { val: "Стол Corda 135x80 + 6 стульев Roero (1 957 000 сум)", label: curLang === "uz" ? "To‘plam: Corda 135x80 stoli + 6 ta Roero stuli (1 957 000 so‘m)" : curLang === "en" ? "Set: Corda 135x80 table + 6 Roero chairs (1,957,000 UZS)" : "Комплект: Стол Corda 135x80 + 6 стульев Roero (1 957 000 сум)" },
+      { val: "Настольная лампа NOVA (401 000 сум)", label: curLang === "uz" ? "NOVA stol lampasi (401 000 so‘m)" : curLang === "en" ? "NOVA Table Lamp (401,000 UZS)" : "Настольная лампа NOVA (401 000 сум)" },
+      { val: "Настольная лампа SORA (740 000 сум)", label: curLang === "uz" ? "SORA stol lampasi (740 000 so‘m)" : curLang === "en" ? "SORA Table Lamp (740,000 UZS)" : "Настольная лампа SORA (740 000 сум)" },
+      { val: "Искусственный ротанг BTT (расчёт под объём)", label: curLang === "uz" ? "BTT sun'iy rotang xomashyosi (hajmiga ko‘ra hisob)" : curLang === "en" ? "BTT Synthetic Rattan (B2B volume quote)" : "Искусственный ротанг BTT (расчёт под объём)" },
       { val: "Стулья Roero (от 188 000 сум)", label: curLang === "uz" ? "Roero stullari (188 000 so‘mdan)" : curLang === "en" ? "Roero chairs (from 188,000 UZS)" : "Стулья Roero (от 188 000 сум)" },
       { val: "Стулья Noero (от 212 000 сум)", label: curLang === "uz" ? "Noero stullari (212 000 so‘mdan)" : curLang === "en" ? "Noero chairs (from 212,000 UZS)" : "Стулья Noero (от 212 000 сум)" },
       { val: "Стулья Todo (от 236 000 сум)", label: curLang === "uz" ? "Todo stullari (236 000 so‘mdan)" : curLang === "en" ? "Todo chairs (from 236,000 UZS)" : "Стулья Todo (от 236 000 сум)" },
@@ -719,17 +852,26 @@
   function matchComboCalculation(norm){
     var padded = " " + norm + " ";
     var tableMatch = null;
-    if(/(?:^|[^\p{L}\p{N}])(taper|тейпер|тапер|тепер).*?80|80.*?(taper|тейпер|тапер|тепер)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
+    if(/(?:^|[^\p{L}\p{N}])(rotang|ротанг).*?80|80.*?(rotang|ротанг)|(тейпер|тапер|taper).*?(rotang|ротанг).*?80/iu.test(padded)){
+      tableMatch = { name: "TAPER ROTANG 80x80", comboPrice: 854000, slug: "stol-taper-rotang-80" };
+    } else if(/(?:^|[^\p{L}\p{N}])(rotang|ротанг).*?135|135.*?(rotang|ротанг)|(тейпер|тапер|taper).*?(rotang|ротанг).*?135/iu.test(padded)){
+      tableMatch = { name: "TAPER ROTANG 135x80", comboPrice: 954000, slug: "stol-taper-rotang-135" };
+    } else if(/(?:^|[^\p{L}\p{N}])(taper|тейпер|тапер|тепер).*?80|80.*?(taper|тейпер|тапер|тепер)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
       tableMatch = { name: "TAPER 80x80", comboPrice: 733000, slug: "stol-taper-80" };
-    } else if(/(?:^|[^\p{L}\p{N}])(corda|корда).*?(стол|stol|table|135)|(стол|stol|table).*?(corda|корда)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
+    } else if(/(?:^|[^\p{L}\p{N}])(corda|корда).*?(стол|stol|table|135)|(стол|stol|table).*?(corda|корда)/iu.test(padded)){
       tableMatch = { name: "CORDA 135x80", comboPrice: 949000, slug: "stol-corda-135" };
     } else if(/(?:^|[^\p{L}\p{N}])(taper|тейпер|тапер|тепер).*?135|135.*?(taper|тейпер|тапер|тепер)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
       tableMatch = { name: "TAPER 135x80", comboPrice: 860000, slug: "stol-taper-135" };
-    } else if(/(?:^|[^\p{L}\p{N}])(vertex|вертекс).*?(стол|stol|table|d90|д90|круглый|dumaloq)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
+    } else if(/(?:^|[^\p{L}\p{N}])(vertex|вертекс).*?(стол|stol|table|d90|д90|круглый|dumaloq)|d90|д90/iu.test(padded)){
       tableMatch = { name: "VERTEX D90", comboPrice: 680000, slug: "stol-vertex-d90" };
     }
 
     var chairMatch = null;
+    var isWicker = false;
+    var countVertex = (norm.match(/vertex|вертекс/gi) || []).length;
+    var countCorda = (norm.match(/corda|корда/gi) || []).length;
+    var hasChairWord = /(?:стул|стула|стульев|stul|chair)/iu.test(padded);
+
     if(/(?:^|[^\p{L}\p{N}])(roero|роеро|роэро|роэра|раеро)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
       chairMatch = { name: "ROERO", comboPrice: 168000, retailPrice: 188000, slug: "stul-roero" };
     } else if(/(?:^|[^\p{L}\p{N}])(noero|ноэро|ноеро|ноэра)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
@@ -740,12 +882,31 @@
       chairMatch = { name: "TODO", comboPrice: 216000, retailPrice: 236000, slug: "stul-todo" };
     } else if(/(?:^|[^\p{L}\p{N}])(jardin|жардин|жарден|джардин)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
       chairMatch = { name: "JARDIN", comboPrice: 324000, retailPrice: 344000, slug: "stul-jardin" };
+    } else if(tableMatch && (countVertex >= 2 || (countVertex >= 1 && (tableMatch.slug !== "stol-vertex-d90" || hasChairWord)))){
+      chairMatch = { name: "VERTEX", comboPrice: 499000, retailPrice: 499000, slug: "stul-vertex" };
+      isWicker = true;
+    } else if(tableMatch && (countCorda >= 2 || (countCorda >= 1 && (tableMatch.slug !== "stol-corda-135" || hasChairWord)))){
+      chairMatch = { name: "CORDA", comboPrice: 499000, retailPrice: 499000, slug: "stul-corda" };
+      isWicker = true;
     }
 
     if(tableMatch && chairMatch){
       var qtyMatch = norm.match(/\b([1-9]|1[0-2])\s*(шт|stul|стул|ta|pcs)?\b/);
       var qty = qtyMatch ? parseInt(qtyMatch[1], 10) : 4;
       if(qty < 1) qty = 4;
+
+      // Special approved ready combo pricing for 4 wicker chairs
+      if(isWicker && qty === 4){
+        if(tableMatch.slug === "stol-vertex-d90") {
+          return { table: tableMatch, chair: chairMatch, qty: 4, total: 2676000, chairsTotal: 1996000, isSpecialApproved: true };
+        }
+        if(tableMatch.slug === "stol-taper-80") {
+          return { table: tableMatch, chair: chairMatch, qty: 4, total: 2850000, chairsTotal: 2117000, isSpecialApproved: true };
+        }
+        if(tableMatch.slug === "stol-taper-rotang-80") {
+          return { table: tableMatch, chair: chairMatch, qty: 4, total: 2850000, chairsTotal: 1996000, isSpecialApproved: true };
+        }
+      }
 
       var chairsTotal = qty * chairMatch.comboPrice;
       var total = tableMatch.comboPrice + chairsTotal;
@@ -755,23 +916,23 @@
         chair: chairMatch,
         qty: qty,
         total: total,
-        chairsTotal: chairsTotal
+        chairsTotal: chairsTotal,
+        isWicker: isWicker
       };
     }
     return null;
   }
 
   function renderComboCalculation(calc, curLang){
-    var title = curLang === "uz" ? "To‘plam narxi hisobi (maxsus narxlar)" :
-      curLang === "en" ? "Set Price Breakdown (Bundle Savings)" :
-      "Расчёт стоимости комплекта (по комплектным ценам)";
+    var title = calc.isSpecialApproved
+      ? (curLang === "uz" ? "Tayyor to‘plamning maxsus tasdiqlangan narxi" : curLang === "en" ? "Approved Ready-Made Set Price" : "Специальная утверждённая цена готового комплекта")
+      : (curLang === "uz" ? "To‘plam narxi hisobi (maxsus narxlar)" : curLang === "en" ? "Set Price Breakdown (Bundle Savings)" : "Расчёт стоимости комплекта (по комплектным ценам)");
 
     var tableLabel = curLang === "uz" ? "Stol (to‘plam uchun):" : curLang === "en" ? "Table (in bundle):" : "Стол (для комплекта):";
     var chairsLabel = curLang === "uz" ? ("Stullar: " + calc.qty + " ta × " + fmt(calc.chair.comboPrice)) :
       curLang === "en" ? ("Chairs: " + calc.qty + " × " + fmt(calc.chair.comboPrice)) :
       ("Стулья: " + calc.qty + " шт × " + fmt(calc.chair.comboPrice));
     var totalLabel = curLang === "uz" ? "To‘plamning jami narxi:" : curLang === "en" ? "Total bundle price:" : "Итого за весь комплект:";
-    var orderBtnLabel = curLang === "uz" ? "Ushbu to‘plamga buyurtma berish" : curLang === "en" ? "Order this set" : "Оформить этот комплект";
 
     var comboName = "Стол " + calc.table.name + " + " + calc.qty + " стульев " + calc.chair.name + " (" + fmt(calc.total) + ")";
 
@@ -779,6 +940,7 @@
       '<div class="bot-calc-box__title">🪑 <b>' + esc(title) + '</b></div>' +
       '<div class="bot-calc-box__formula">' +
         esc(calc.table.name) + ' (' + fmt(calc.table.comboPrice) + ') + ' + calc.qty + ' × ' + esc(calc.chair.name) + ' (' + fmt(calc.chair.comboPrice) + ')' +
+        (calc.isSpecialApproved ? ' = <b>' + fmt(calc.total) + '</b> (спеццена)' : '') +
       '</div>' +
       '<div class="bot-calc-box__item"><span>' + esc(tableLabel) + '</span> <b>' + fmt(calc.table.comboPrice) + '</b></div>' +
       '<div class="bot-calc-box__item"><span>' + esc(chairsLabel) + '</span> <b>' + fmt(calc.chairsTotal) + '</b></div>' +
@@ -885,6 +1047,12 @@
       if(rawText.indexOf("комплект") !== -1 || rawText.indexOf("to‘plam") !== -1 || rawText.indexOf("sets") !== -1){
         return baseAns + renderProductCard("stol-taper-80", curLang) + renderProductCard("stul-vertex", curLang);
       }
+      if(rawText.indexOf("ламп") !== -1 || rawText.indexOf("chiroq") !== -1 || rawText.indexOf("lamp") !== -1){
+        return baseAns + renderProductCard("lampa-nova", curLang) + renderProductCard("lampa-sora", curLang);
+      }
+      if(rawText.indexOf("ротанг") !== -1 || rawText.indexOf("rotang") !== -1 || rawText.indexOf("rattan") !== -1){
+        return baseAns + renderLeadForm(curLang);
+      }
       if(rawText.indexOf("менеджер") !== -1 || rawText.indexOf("Menejer") !== -1 || rawText.indexOf("manager") !== -1){
         return baseAns + renderLeadForm(curLang);
       }
@@ -918,22 +1086,45 @@
     // 6. Approved ready combo matching
     if(/(vertex|вертекс).*?(d90|д90).*?(stul|стул|комплект|to['`]?plam)|(taper|тейпер|тапер).*?80.*?(vertex|вертекс|corda|корда)/iu.test(padded)){
       var comboDesc = curLang === "uz" ? "<b>Tasdiqlangan tayyor to‘plamlar BTT:</b><br>" +
-        "• 1 стол VERTEX D90 + 4 to‘qilgan VERTEX stuli: <b>2 676 000 so‘m</b><br>" +
-        "• 1 стол VERTEX D90 + 4 to‘qilgan CORDA stuli: <b>2 676 000 so‘m</b><br>" +
-        "• 1 стол TAPER 80x80 + 4 to‘qilgan VERTEX stuli: <b>2 850 000 so‘m</b><br>" +
-        "• 1 стол TAPER 80x80 + 4 to‘qilgan CORDA stuli: <b>2 850 000 so‘m</b>" :
+        "• 1 ta VERTEX D90 stoli + 4 ta to‘qilgan VERTEX stuli: <b>2 676 000 so‘m</b><br>" +
+        "• 1 ta VERTEX D90 stoli + 4 ta to‘qilgan CORDA stuli: <b>2 676 000 so‘m</b><br>" +
+        "• 1 ta TAPER 80x80 stoli + 4 ta to‘qilgan VERTEX stuli: <b>2 850 000 so‘m</b><br>" +
+        "• 1 ta TAPER 80x80 stoli + 4 ta to‘qilgan CORDA stuli: <b>2 850 000 so‘m</b><br>" +
+        "• 1 ta TAPER ROTANG 80x80 stoli + 4 ta to‘qilgan VERTEX stuli: <b>2 850 000 so‘m</b><br>" +
+        "• 1 ta TAPER ROTANG 80x80 stoli + 4 ta to‘qilgan CORDA stuli: <b>2 850 000 so‘m</b>" :
         curLang === "en" ? "<b>Official approved ready sets:</b><br>" +
         "• 1 VERTEX D90 table + 4 VERTEX wicker chairs: <b>2,676,000 UZS</b><br>" +
         "• 1 VERTEX D90 table + 4 CORDA wicker chairs: <b>2,676,000 UZS</b><br>" +
         "• 1 TAPER 80x80 table + 4 VERTEX wicker chairs: <b>2,850,000 UZS</b><br>" +
-        "• 1 TAPER 80x80 table + 4 CORDA wicker chairs: <b>2,850,000 UZS</b>" :
+        "• 1 TAPER 80x80 table + 4 CORDA wicker chairs: <b>2,850,000 UZS</b><br>" +
+        "• 1 TAPER ROTANG 80x80 table + 4 VERTEX wicker chairs: <b>2,850,000 UZS</b><br>" +
+        "• 1 TAPER ROTANG 80x80 table + 4 CORDA wicker chairs: <b>2,850,000 UZS</b>" :
         "<b>Утверждённые специальные цены готовых комплектов BTT:</b><br>" +
         "• 1 стол VERTEX D90 + 4 плетёных стула VERTEX: <b>2 676 000 сум</b><br>" +
         "• 1 стол VERTEX D90 + 4 плетёных стула CORDA: <b>2 676 000 сум</b><br>" +
         "• 1 стол TAPER 80x80 + 4 плетёных стула VERTEX: <b>2 850 000 сум</b><br>" +
-        "• 1 стол TAPER 80x80 + 4 плетёных стула CORDA: <b>2 850 000 сум</b>";
+        "• 1 стол TAPER 80x80 + 4 плетёных стула CORDA: <b>2 850 000 сум</b><br>" +
+        "• 1 стол TAPER ROTANG 80x80 + 4 плетёных стула VERTEX: <b>2 850 000 сум</b><br>" +
+        "• 1 стол TAPER ROTANG 80x80 + 4 плетёных стула CORDA: <b>2 850 000 сум</b>";
 
       return comboDesc + renderOrderForm(curLang, "Комплект: Стол Taper 80x80 + 4 плетёных стула Vertex");
+    }
+
+    // 6b. Lamps intent
+    if(/(?:^|[^p{L}p{N}])(лампа|лампы|светильник|освещение|ночник|бра|chiroq|chiroqlar|yoritgich|lamp|lamps|lighting)(?:$|[^p{L}p{N}])/iu.test(padded)){
+      var lampMsg = curLang === "uz" ? (d.ans["Stol lampalari"] || d.ans["Настольные лампы"]) :
+        curLang === "en" ? (d.ans["Table lamps"] || d.ans["Настольные лампы"]) :
+        (d.ans["Настольные лампы"]);
+      return lampMsg + renderProductCard("lampa-nova", curLang) + renderProductCard("lampa-sora", curLang);
+    }
+
+    // 6c. Artificial rattan raw material intent
+    if(/(?:^|[^p{L}p{N}])(сырь[её]|профил|полутрубк|полумесяц|лента|полусфер|twist|ротанг оптом|rotang xomashyo|rattan raw|rattan profile)(?:$|[^p{L}p{N}])/iu.test(padded) ||
+       (/(?:^|[^p{L}p{N}])(ротанг|rotang|rattan)(?:$|[^p{L}p{N}])/iu.test(padded) && !/(стул|стол|мебель|kreslo|chair|table)/iu.test(padded))){
+      var rotMsg = curLang === "uz" ? (d.ans["Sun'iy rotang"] || d.ans["Искусственный ротанг"]) :
+        curLang === "en" ? (d.ans["Artificial rattan"] || d.ans["Искусственный ротанг"]) :
+        (d.ans["Искусственный ротанг"]);
+      return rotMsg + renderLeadForm(curLang);
     }
 
     // 7. Specific product search / inquiry

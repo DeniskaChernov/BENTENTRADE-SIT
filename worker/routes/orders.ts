@@ -70,7 +70,11 @@ app.post("/", async (c) => {
     p5: "stul-todo", p6: "stul-jardin", p7: "stul-lira", p8: "kreslo-como",
     p9: "stol-taper-rotang-80", p10: "stol-vertex-d90", p11: "stol-taper-rotang-135",
     p12: "stol-taper-80", p13: "stol-vertex-80", p14: "stol-taper-135", p15: "stol-corda-135",
-    p16: "stul-todo-soft"
+    p16: "stul-todo-soft",
+    l1: "lampa-nova", l2: "lampa-sora", l3: "lampa-vela",
+    l4: "lampa-runa", l5: "lampa-liva", l6: "lampa-aria",
+    r1: "rotang-polutrubka", r2: "rotang-polumesyats", r3: "rotang-ploskaya-lenta",
+    r4: "rotang-trubka", r5: "rotang-polusfera", r6: "rotang-twist"
   };
 
   // Resolve authoritative prices from DB where product id is known.

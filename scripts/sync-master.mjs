@@ -68,6 +68,8 @@ function syncProductsJs() {
     "plastic-chairs":    "assets/placeholder.svg",
     "upholstered-chairs":"assets/placeholder.svg",
     tables:              "assets/prod-table-corda-135-black.jpg",
+    lighting:            "assets/prod-lamp-nova.svg",
+    "rattan-raw":        "assets/prod-rattan-polutrubka.svg",
     // legacy category aliases
     furniture:           "assets/prod-chair-corda.jpg",
     indoor:              "assets/placeholder.svg",
@@ -166,6 +168,46 @@ function syncProductsJs() {
         desc: "Dining tables on a solid metal frame with chipboard tabletop. For indoor and covered spaces. It is recommended to protect the chipboard tabletop from direct precipitation.",
         dim: "For kitchens, dining areas, covered terraces and HoReCa",
         mat: "Chipboard, metal"
+      }
+    },
+    lighting: {
+      ru: {
+        name: "Настольные лампы",
+        desc: "Дизайнерские настольные лампы с мягким тёплым светом для дома и спальни.",
+        dim: "Для спальни, гостиной и кабинета",
+        mat: "Металл, акрил, LED"
+      },
+      uz: {
+        name: "Stol lampalari",
+        desc: "Uy va yotoqxona uchun yumshoq iliq nurli dizaynerlik stol chiroqlari.",
+        dim: "Yotoqxona, mehmonxona va kabinet uchun",
+        mat: "Metall, akril, LED"
+      },
+      en: {
+        name: "Table lamps",
+        desc: "Designer table lamps with soft warm lighting for cozy bedrooms and living rooms.",
+        dim: "For bedroom, living room and study",
+        mat: "Metal, acrylic, LED"
+      }
+    },
+    "rattan-raw": {
+      ru: {
+        name: "Искусственный ротанг",
+        desc: "Первичный искусственный ротанг BTT различных профилей для производства плетёной мебели и декора.",
+        dim: "Бухты и бобины под заказ",
+        mat: "Полимерный ротанг"
+      },
+      uz: {
+        name: "Sun'iy rotang",
+        desc: "Mebel ishlab chiqarish uchun turli profildagi sifatli BTT sun'iy rotang xomashyosi.",
+        dim: "Buyurtma asosida bobina va buxtalarda",
+        mat: "Polimer rotang"
+      },
+      en: {
+        name: "Synthetic rattan",
+        desc: "Synthetic rattan raw material in diverse profiles for furniture manufacturing and craft.",
+        dim: "Coils and spools on request",
+        mat: "Polymer rattan"
       }
     }
   };

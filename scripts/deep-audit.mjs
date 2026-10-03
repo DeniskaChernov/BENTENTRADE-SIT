@@ -16,14 +16,19 @@ const productsJs = fs.readFileSync(path.join(root, 'assets', 'products.js'), 'ut
 const missingInProductsJs = masterSlugs.filter(s => !productsJs.includes(`"slug": "${s}"`));
 console.log('Missing in products.js:', missingInProductsJs);
 
-// Check worker/index.ts
-const workerTs = fs.readFileSync(path.join(root, 'worker', 'index.ts'), 'utf8');
-const missingInWorkerSlugs = masterSlugs.filter(s => !workerTs.includes(`"${s}"`));
-console.log('Missing in worker VALID_PRODUCT_SLUGS:', missingInWorkerSlugs);
+// Check worker/routes/orders.ts
+const ordersTs = fs.readFileSync(path.join(root, 'worker', 'routes', 'orders.ts'), 'utf8');
+const missingInWorkerSlugs = masterSlugs.filter(s => !ordersTs.includes(`"${s}"`));
+console.log('Missing in worker ALIAS_MAP slugs:', missingInWorkerSlugs);
 
 // Check worker aliases
-const missingInWorkerAliases = masterIds.filter(id => !workerTs.includes(`${id}:`));
-console.log('Missing in worker PRODUCT_ALIASES:', missingInWorkerAliases);
+const missingInWorkerAliases = masterIds.filter(id => !ordersTs.includes(`${id}:`));
+console.log('Missing in worker ALIAS_MAP aliases:', missingInWorkerAliases);
+
+// Check seed.sql
+const seedSql = fs.readFileSync(path.join(root, 'migrations', 'seed.sql'), 'utf8');
+const missingInSeed = masterSlugs.filter(s => !seedSql.includes(`'${s}'`));
+console.log('Missing in seed.sql:', missingInSeed);
 
 console.log('\n=== 2. CHECKING CATALOG.HTML CARDS ===');
 const catalogHtml = fs.readFileSync(path.join(root, 'catalog.html'), 'utf8');

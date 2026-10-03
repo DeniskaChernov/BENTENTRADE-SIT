@@ -59,21 +59,25 @@ console.log('=== TESTING BTT ASSISTANT INTENT & PRICING ENGINE ===\n');
 console.log('--- 1. Verification of File Invariants ---');
 assert(!assistantCode.includes('\u2014'), 'Zero em-dash in assistant.js');
 assert(!assistantCode.includes('\u2013'), 'Zero en-dash in assistant.js');
-assert(!assistantCode.includes('Декоративные лампы'), 'No lamps in quick options');
-assert(!assistantCode.includes('Кашпо из ротанга'), 'No planters in quick options');
-assert(!assistantCode.includes('Искусственный ротанг'), 'No synthetic rattan in quick options');
+assert(assistantCode.includes('Настольные лампы'), 'Includes table lamps in quick options');
+assert(assistantCode.includes('Искусственный ротанг'), 'Includes artificial rattan in quick options');
 assert(assistantCode.includes('ROERO: 188 000 сум / 168 000 сум'), 'Exact SSOT ROERO pricing in RU');
 assert(assistantCode.includes('NOERO: 212 000 сум / 192 000 сум'), 'Exact SSOT NOERO pricing in RU');
 assert(assistantCode.includes('TODO: 236 000 сум / 216 000 сум'), 'Exact SSOT TODO pricing in RU');
 assert(assistantCode.includes('JARDIN: 344 000 сум / 324 000 сум'), 'Exact SSOT JARDIN pricing in RU');
 assert(assistantCode.includes('VERTEX: 499 000 сум'), 'Exact SSOT VERTEX wicker chair pricing');
 assert(assistantCode.includes('CORDA: 499 000 сум'), 'Exact SSOT CORDA wicker chair pricing');
-assert(assistantCode.includes('VERTEX D90: 680 000 сум') || assistantCode.includes('VERTEX D90</b> (круглый Ø90 см): 680 000 сум'), 'Exact SSOT VERTEX D90 table pricing');
+assert(assistantCode.includes('730 000 сум отдельно (для комплекта 680 000 сум)'), 'Exact SSOT VERTEX D90 table pricing');
 assert(assistantCode.includes('783 000 сум отдельно (для комплекта 733 000 сум)'), 'Exact SSOT TAPER 80x80 table pricing');
+assert(assistantCode.includes('904 000 сум отдельно (для комплекта 854 000 сум)'), 'Exact SSOT TAPER ROTANG 80x80 table pricing');
+assert(assistantCode.includes('910 000 сум отдельно (для комплекта 860 000 сум)'), 'Exact SSOT TAPER 135x80 table pricing');
 assert(assistantCode.includes('999 000 сум отдельно (для комплекта 949 000 сум)'), 'Exact SSOT CORDA 135x80 table pricing');
-assert(assistantCode.includes('860 000 сум'), 'Exact SSOT TAPER 135x80 combo pricing');
+assert(assistantCode.includes('954 000 сум'), 'Exact SSOT TAPER ROTANG 135x80 combo pricing');
 assert(assistantCode.includes('2 676 000 сум'), 'Exact approved combo VERTEX D90 + 4 chairs = 2 676 000 UZS');
 assert(assistantCode.includes('2 850 000 сум'), 'Exact approved combo TAPER 80x80 + 4 chairs = 2 850 000 UZS');
+assert(assistantCode.includes('NOVA') && assistantCode.includes('401 000 сум'), 'Exact NOVA lamp pricing');
+assert(assistantCode.includes('SORA') && assistantCode.includes('740 000 сум'), 'Exact SORA lamp pricing');
+assert(assistantCode.includes('Полутрубка') && assistantCode.includes('TWIST'), 'Exact rattan profiles present');
 
 // 2. Test extraction & regex logic
 console.log('\n--- 2. Phone and Customer Name Extraction ---');
@@ -179,6 +183,36 @@ assert(rUz.includes('so‘m') || rUz.includes('narxlar') || rUz.includes('Toshke
 // Test 7: Direct lead submission when phone is typed in chat
 const rLead = bot.resolve('Меня зовут Рустам +998 90 333 44 55 хочу купить комплект');
 assert(rLead.includes('bot-order-ok') && rLead.includes('+998903334455'), 'Direct order parse from message with phone & name');
+
+// Test 8: Table lamp resolution
+const rLamp = bot.resolve('почем лампа нова');
+assert(rLamp.includes('401 000 сум'), 'Dialog: Lamp NOVA yields 401 000 сум');
+
+const clean = (s) => String(s).replace(/\u00A0/g, ' ');
+
+// Test 9: Artificial rattan inquiry
+const rRattan = bot.resolve('нужен искусственный ротанг твист');
+assert(rRattan.includes('ротанг') || rRattan.includes('TWIST'), 'Dialog: Artificial rattan resolution');
+
+// Test 10: Taper Rotang 80 + 4 Roero
+const rTR80 = bot.resolve('стол тейпер ротанг 80 и 4 стула роеро');
+assert(clean(rTR80).includes('1 526 000 сум'), 'Dialog: Taper Rotang 80 + 4 Roero yields 1 526 000 сум');
+
+// Test 11: Taper Rotang 80 + 4 Corda (approved combo)
+const rTR80W = bot.resolve('стол тейпер ротанг 80 и 4 стула корда');
+assert(clean(rTR80W).includes('2 850 000 сум'), 'Dialog: Taper Rotang 80 + 4 Corda yields 2 850 000 сум');
+
+// Test 12: Taper 135 + 4 Vertex
+const rT135W = bot.resolve('стол тейпер 135 и 4 стула вертекс');
+assert(clean(rT135W).includes('2 856 000 сум'), 'Dialog: Taper 135 + 4 Vertex yields 2 856 000 сум');
+
+// Test 13: Corda 135 + 4 Corda
+const rC135W = bot.resolve('стол корда 135 и 4 стула корда');
+assert(clean(rC135W).includes('2 945 000 сум'), 'Dialog: Corda 135 + 4 Corda yields 2 945 000 сум');
+
+// Test 14: Taper Rotang 135 + 4 Vertex
+const rTR135W = bot.resolve('стол тейпер ротанг 135 и 4 стула вертекс');
+assert(clean(rTR135W).includes('2 950 000 сум'), 'Dialog: Taper Rotang 135 + 4 Vertex yields 2 950 000 сум');
 
 console.log('\n=======================================');
 console.log(`TOTAL: ${passed + failed} | PASSED: ${passed} | FAILED: ${failed}`);

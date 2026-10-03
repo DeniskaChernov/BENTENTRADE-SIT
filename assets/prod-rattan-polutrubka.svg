@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 1024" width="768" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF8F5" />
+      <stop offset="100%" stop-color="#ECE5DB" />
+    </linearGradient>
+    <linearGradient id="copper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97736" />
+      <stop offset="100%" stop-color="#B35F20" />
+    </linearGradient>
+  </defs>
+
+  <rect width="768" height="1024" fill="url(#bg)" />
+
+  <rect x="28" y="28" width="712" height="968" rx="24" fill="none" stroke="#E4DCD2" stroke-width="2" />
+
+  <text x="384" y="110" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="14" font-weight="700" letter-spacing="5" fill="#B35F20">ИСКУССТВЕННЫЙ РОТАНГ BTT</text>
+
+  <!-- Cross section weave illustration -->
+  <g transform="translate(384, 430)" stroke="url(#copper)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="0" cy="0" r="140" stroke="#BA7A40" stroke-opacity="0.2" stroke-width="2" />
+    <path d="M-90,-50 C-40,-120 40,-120 90,-50 C120,0 120,60 90,100 C40,140 -40,140 -90,100 Z" fill="#BA7A40" fill-opacity="0.12" />
+    <path d="M-80,0 Q0,-60 80,0 Q0,60 -80,0 Z" stroke-width="4" fill="#BA7A40" fill-opacity="0.2" />
+    <circle cx="0" cy="0" r="28" fill="#B35F20" stroke="none" />
+  </g>
+
+  <text x="384" y="680" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="32" font-weight="800" letter-spacing="1" fill="#221E1A">ПРОФИЛЬ ПОЛУТРУБКА</text>
+  <text x="384" y="724" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="16" font-weight="500" fill="#70665C">Профиль Полутрубка для плетения мебели</text>
+  <text x="384" y="760" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="15" font-weight="600" fill="#403730">Первичный полимер / Стойкость к UV / Разные цвета</text>
+
+  <!-- Pricing Tag -->
+  <g transform="translate(384, 840)">
+    <rect x="-140" y="-26" width="280" height="52" rx="26" fill="#B35F20" />
+    <text x="0" y="8" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">Расчёт под объём (MOQ)</text>
+  </g>
+
+  <text x="384" y="940" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="13" font-weight="600" letter-spacing="4" fill="#9C8E80">BTT - ПРОИЗВОДСТВО И СЫРЬЁ</text>
+</svg>

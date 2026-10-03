@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 1024" width="768" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF8F5" />
+      <stop offset="100%" stop-color="#ECE5DB" />
+    </linearGradient>
+    <radialGradient id="warmGlow" cx="50%" cy="42%" r="40%">
+      <stop offset="0%" stop-color="#FFD8A8" stop-opacity="0.65" />
+      <stop offset="50%" stop-color="#F8BA74" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#F8BA74" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="copper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97736" />
+      <stop offset="100%" stop-color="#B35F20" />
+    </linearGradient>
+  </defs>
+
+  <rect width="768" height="1024" fill="url(#bg)" />
+  <circle cx="384" cy="420" r="260" fill="url(#warmGlow)" />
+
+  <rect x="28" y="28" width="712" height="968" rx="24" fill="none" stroke="#E4DCD2" stroke-width="2" />
+
+  <text x="384" y="110" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="14" font-weight="700" letter-spacing="5" fill="#B35F20">НАСТОЛЬНЫЕ ЛАМПЫ BTT</text>
+
+  <g transform="translate(384, 430)" stroke="url(#copper)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M-70,140 L70,140" stroke-width="6" />
+    <path d="M-45,140 C-45,110 -25,95 -10,90 L-10,40 L10,40 L10,90 C25,95 45,110 45,140 Z" fill="#BA7A40" fill-opacity="0.1" />
+    <line x1="0" y1="40" x2="0" y2="-30" stroke-width="5" />
+    <path d="M-110,-20 L-60,-130 C-40,-150 40,-150 60,-130 L110,-20 Z" fill="#BA7A40" fill-opacity="0.16" stroke-width="4" />
+    <circle cx="0" cy="-50" r="14" fill="#F8BA74" stroke="none" />
+  </g>
+
+  <text x="384" y="690" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="34" font-weight="800" letter-spacing="2" fill="#221E1A">ЛАМПА VELA</text>
+  <text x="384" y="732" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="16" font-weight="500" fill="#70665C">Мягкое тёплое освещение</text>
+  <text x="384" y="768" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="17" font-weight="600" letter-spacing="1" fill="#403730">Размер: 250 × 430 мм</text>
+
+  <g transform="translate(384, 840)">
+    <rect x="-130" y="-26" width="260" height="52" rx="26" fill="#B35F20" />
+    <text x="0" y="8" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF">332 000 сум</text>
+  </g>
+
+  <text x="384" y="940" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="13" font-weight="600" letter-spacing="4" fill="#9C8E80">BTT - МЕБЕЛЬ ДЛЯ ДОМА И САДА</text>
+</svg>
