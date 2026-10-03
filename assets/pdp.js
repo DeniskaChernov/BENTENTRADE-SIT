@@ -89,9 +89,9 @@
   }
 
   function absUrl(path){
-    if(!path) return "https://bententrade.uz/assets/btt-logo.png";
+    if(!path) return "https://btt.uz/assets/btt-logo.png";
     if(path.indexOf("http") === 0) return path;
-    return "https://bententrade.uz/" + path.replace(/^\//, "");
+    return "https://btt.uz/" + path.replace(/^\//, "");
   }
 
   function injectJsonLd(elId, data){
@@ -143,8 +143,8 @@
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": t("nav.home") || "Главная", "item": "https://bententrade.uz/" },
-        { "@type": "ListItem", "position": 2, "name": t("nav.catalog") || "Каталог", "item": "https://bententrade.uz/catalog.html" },
+        { "@type": "ListItem", "position": 1, "name": t("nav.home") || "Главная", "item": "https://btt.uz/" },
+        { "@type": "ListItem", "position": 2, "name": t("nav.catalog") || "Каталог", "item": "https://btt.uz/catalog.html" },
         { "@type": "ListItem", "position": 3, "name": nm, "item": pageUrl }
       ]
     });
@@ -231,7 +231,7 @@
 
   function updateCTAs(nm){
     const tgMsg = encodeURIComponent("Здравствуйте! Интересует: " + (nm || prod.model) + " (" + money(prod.now) + "). Уточните, пожалуйста, наличие и доставку.");
-    const tgUrl = "https://t.me/bententradeuz?text=" + tgMsg;
+    const tgUrl = "https://t.me/btt_uz?text=" + tgMsg;
 
     $$("[data-pdp-tg], [data-pdp-tg-btn], [data-pdp-tg-order]").forEach(el=>{
       el.href = tgUrl;
@@ -519,7 +519,7 @@
       " + " + chairCount + " " + (curLang === "uz" ? "ta stul" : (curLang === "en" ? "chairs" : chairWord)) + " " + chairModel +
       " (Итого: " + money(comboTotal) + "). Уточните, пожалуйста, наличие и условия доставки."
     );
-    const tgUrl = "https://t.me/bententradeuz?text=" + tgOrderText;
+    const tgUrl = "https://t.me/btt_uz?text=" + tgOrderText;
 
     const atmosphereBadge = t("pdp.life.badge.atmosphere") || "Интерьерное решение";
     const orderBtnText = t("pdp.life.combo.order") || "Заказать комплект в Telegram";
@@ -679,7 +679,7 @@
     updateCTAs(nm);
 
     // Page meta
-    const pageUrl = "https://bententrade.uz/catalog/" + encodeURIComponent(prod.slug);
+    const pageUrl = "https://btt.uz/catalog/" + encodeURIComponent(prod.slug);
     const seoTitle = (i18nEntry && i18nEntry.seo_title) || ("BTT - " + nm);
     const seoDesc = (i18nEntry && i18nEntry.seo_description) || (nm + " - " + cat + ". BTT - мебель для дома и сада.");
     document.title = seoTitle;

@@ -27,7 +27,7 @@ if (isSqlite) {
   const { DatabaseSync } = req("node:sqlite");
   const dataDir = join(ROOT, "data");
   if (!existsSync(dataDir)) mkdirSync(dataDir, { recursive: true });
-  sqliteDb = new DatabaseSync(join(dataDir, "bententrade.db"));
+  sqliteDb = new DatabaseSync(join(dataDir, "btt.db"));
   sqliteDb.exec("PRAGMA foreign_keys = ON;");
 }
 
@@ -45,7 +45,7 @@ const ssl =
 // Isolate all app tables in a dedicated schema so we never collide with other
 // apps sharing the same PostgreSQL database (Railway plugin DBs are often shared).
 // search_path is set at connection startup (no race with the first query).
-export const PG_SCHEMA = (process.env.PG_SCHEMA || "bententrade").replace(/[^a-z0-9_]/gi, "");
+export const PG_SCHEMA = (process.env.PG_SCHEMA || "btt").replace(/[^a-z0-9_]/gi, "");
 
 export const pool = !isSqlite
   ? new pg.Pool({

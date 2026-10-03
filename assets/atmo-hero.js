@@ -39,7 +39,7 @@
     {
       img: "assets/hero-rattan.png",
       loc: { ru:"Материал", uz:"Material", en:"Material" },
-      title: { ru:"Искусственный ротанг Bententrade", uz:"Bententrade sun’iy rotangi", en:"Bententrade synthetic rattan" },
+      title: { ru:"Искусственный ротанг BTT", uz:"BTT sun’iy rotangi", en:"BTT synthetic rattan" },
       sub: { ru:"Плетение как у натурального ротанга, но прочнее: устойчив к UV, влаге и морозу.", uz:"Tabiiy rotangdek to‘qilgan, lekin mustahkamroq: UV, namlik va sovuqqa chidamli.", en:"Weave like natural rattan, but tougher: resistant to UV, moisture and frost." },
       href: "catalog.html?cat=rattan"
     }

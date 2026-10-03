@@ -93,7 +93,7 @@
     try {
       s = window._btt_settings || JSON.parse(sessionStorage.getItem("btt_settings") || "{}");
     } catch(e){}
-    var tg = (s && s.telegram) ? String(s.telegram).replace(/^@/, "") : "bententradeuz";
+    var tg = (s && s.telegram) ? String(s.telegram).replace(/^@/, "") : "btt_uz";
     var wa = (s && s.whatsapp) ? String(s.whatsapp).replace(/[^\d]/g, "") : "998771044422";
     return {
       telegram: "https://t.me/" + tg + (msg ? "?text=" + msg : ""),

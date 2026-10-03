@@ -26,7 +26,7 @@
       "blog.readTime": "мин чтения",
       "blog.noResults": "Статьи по вашему запросу не найдены.",
       "blog.cta.title": "Нужен совет по выбору мебели или кашпо?",
-      "blog.cta.sub": "Мастер Bententrade поможет подобрать гарнитур под размер террасы, подскажет оттенок ротанга и рассчитает стоимость.",
+      "blog.cta.sub": "Мастер BTT поможет подобрать гарнитур под размер террасы, подскажет оттенок ротанга и рассчитает стоимость.",
       "blog.cta.btn": "Консультация в Telegram",
       "blog.read": "Читать",
       "blog.back": "Все статьи",
@@ -624,7 +624,7 @@
       return;
     }
 
-    const title = a.title || a.slug || "Bententrade";
+    const title = a.title || a.slug || "BTT";
     const desc = (a.excerpt || "").slice(0, 160) || t("blog.sub");
     const pageUrl = SITE + "/article.html?slug=" + encodeURIComponent(a.slug);
     const topic = getTopic(a);
@@ -632,13 +632,13 @@
     const readTime = getReadTime(a);
     const dateStr = fmtDate(a.published_at);
 
-    document.title = title + " - Bententrade";
+    document.title = title + " - BTT";
     setMeta("description", desc);
     setMeta("og:title", title, "property");
     setMeta("og:description", desc, "property");
     setMeta("og:url", pageUrl, "property");
     setCanonical(pageUrl);
-    const kwTpl = t("meta.article.keywords") || "{title}, rotang, bententrade";
+    const kwTpl = t("meta.article.keywords") || "{title}, mebel, btt";
     const kw = (a.keywords || kwTpl.replace(/\{title\}/g, title)).slice(0, 200);
     setMeta("keywords", kw);
 
@@ -675,10 +675,10 @@
       "headline": title,
       "description": desc,
       "datePublished": a.published_at || "",
-      "author": { "@type": "Organization", "name": "Bententrade" },
+      "author": { "@type": "Organization", "name": "BTT" },
       "publisher": {
         "@type": "Organization",
-        "name": "Bententrade",
+        "name": "BTT",
         "logo": { "@type": "ImageObject", "url": SITE + "/assets/btt-logo.png" },
       },
       "mainEntityOfPage": pageUrl,

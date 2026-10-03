@@ -150,7 +150,7 @@
           name: listName,
           description: listDesc,
           url: SITE + "/catalog.html?cat=" + encodeURIComponent(cat),
-          isPartOf: { "@type": "WebSite", name: "Bententrade", url: SITE + "/" },
+          isPartOf: { "@type": "WebSite", name: "BTT", url: SITE + "/" },
         });
       } else {
         const old = document.getElementById("catalog-collection");

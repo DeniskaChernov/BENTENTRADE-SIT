@@ -30,7 +30,7 @@
             name: color + " - " + spec,
             sku: p.sku.replace("g", ""),
             image: base + p.img,
-            brand: { "@type": "Brand", name: "Bententrade" },
+            brand: { "@type": "Brand", name: "BTT" },
             category: "Synthetic rattan profile",
             material: "PE rattan",
             description: spec + " - " + color + " (" + t("pal.art") + " " + p.sku.replace("g", "") + ")",

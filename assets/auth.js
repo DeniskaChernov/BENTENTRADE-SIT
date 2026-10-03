@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE - login / register page controller.
+   BTT - login / register page controller.
    ============================================================ */
 (function () {
   "use strict";

@@ -163,7 +163,7 @@ async function boot() {
     // Bind all interfaces. Do NOT use process.env.HOSTNAME - Railway sets it to the container id.
     hostname: "0.0.0.0",
   }, (info) => {
-    console.log(`Bententrade server on http://${info.address}:${info.port}`);
+    console.log(`BTT server on http://${info.address}:${info.port}`);
   });
 
   try {
