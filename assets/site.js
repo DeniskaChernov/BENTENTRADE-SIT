@@ -1710,7 +1710,7 @@
       const chips = group.querySelectorAll(".chip");
       function activate(chip, opts){
         opts = opts || {};
-        chips.forEach(c=>c.classList.remove("is-active"));
+        group.querySelectorAll(".chip").forEach(c=>c.classList.remove("is-active"));
         chip.classList.add("is-active");
         const cat = chip.dataset.cat;
         activeCat = cat;
@@ -1734,7 +1734,8 @@
       const qcat = urlParams.get("cat");
       if(qcat){
         const resolved = resolveChipCat(qcat);
-        const match = Array.from(chips).find(c=>c.dataset.cat===resolved);
+        activeCat = resolved;
+        const match = Array.from(group.querySelectorAll(".chip")).find(c=>c.dataset.cat===resolved);
         if(match) activate(match, { instant:true });
         else document.dispatchEvent(new CustomEvent("btt:cat-change", { detail:{ cat: resolved } }));
       } else {
@@ -1753,9 +1754,18 @@
     document.addEventListener("btt:cat-change", e=>{
       const cat = e.detail && e.detail.cat;
       if(cat){
+        activeCat = cat;
         syncVisualCards(cat);
+        const grid = document.querySelector("#catalog-grid");
+        if(grid) applyCatalogState(grid);
       }
     });
+
+    if(window.BTT_UTIL){
+      window.BTT_UTIL.applyCatalogState = applyCatalogState;
+      window.BTT_UTIL.getActiveCat = () => activeCat;
+      window.BTT_UTIL.setActiveCat = (c) => { activeCat = c; };
+    }
 
     window.addEventListener("popstate", ()=>{
       const params = new URLSearchParams(location.search);

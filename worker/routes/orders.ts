@@ -13,7 +13,7 @@ import { notifyOrderSms } from "../sms";
 
 const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
-type InItem = { id?: string; name?: string; qty?: number; price?: number; options?: unknown };
+type InItem = { id?: string; name?: string; qty?: number; price?: number; unit?: string; options?: unknown };
 
 /** POST /api/orders - persist an order and its items, return a real order id. */
 app.post("/", async (c) => {
@@ -80,14 +80,18 @@ app.post("/", async (c) => {
   }).filter(Boolean);
 
   const priceMap = new Map<string, number>();
+  const unitMap = new Map<string, string>();
   if (resolvedIds.length) {
     const placeholders = resolvedIds.map(() => "?").join(",");
     const { results } = await c.env.DB.prepare(
-      `SELECT id, price_now FROM products WHERE id IN (${placeholders})`,
+      `SELECT id, price_now, COALESCE(unit, 'pcs') AS unit FROM products WHERE id IN (${placeholders})`,
     )
       .bind(...resolvedIds)
-      .all<{ id: string; price_now: number }>();
-    for (const r of results) priceMap.set(r.id, r.price_now);
+      .all<{ id: string; price_now: number; unit: string }>();
+    for (const r of results) {
+      priceMap.set(r.id, r.price_now);
+      if (r.unit) unitMap.set(r.id, r.unit);
+    }
   }
 
   const UZS_RATE = 12500;
@@ -107,12 +111,22 @@ app.post("/", async (c) => {
         unitPrice = dbPrice;
       }
     }
+    const itemUnit = str(i.unit, 20) || (resolvedId && unitMap.get(resolvedId)) || "pcs";
+    let optionsObj: Record<string, unknown> | null = null;
+    if (i.options && typeof i.options === "object") {
+      optionsObj = { ...(i.options as Record<string, unknown>) };
+    }
+    if (itemUnit && itemUnit !== "pcs") {
+      if (!optionsObj) optionsObj = {};
+      optionsObj.unit = itemUnit;
+    }
     return {
       id: resolvedId || rawId,
       name: str(i.name, 200) || resolvedId || "-",
       qty,
+      unit: itemUnit,
       unit_price: unitPrice,
-      options: i.options ? JSON.stringify(i.options).slice(0, 500) : null,
+      options: optionsObj ? JSON.stringify(optionsObj).slice(0, 500) : (i.options ? JSON.stringify(i.options).slice(0, 500) : null),
     };
   });
 
@@ -243,14 +257,18 @@ app.post("/", async (c) => {
       (comment ? `Комментарий: ${escapeHtml(comment)}\n` : "") +
       items.map((it) => {
         let optStr = "";
+        let itUnit = it.unit || "pcs";
         if (it.options) {
           try {
             const parsed = JSON.parse(it.options);
+            if (parsed.unit) { itUnit = String(parsed.unit); delete parsed.unit; }
             const vals = Object.values(parsed).filter(Boolean);
             if (vals.length) optStr = ` (${vals.join(", ")})`;
           } catch {}
         }
-        return `• ${escapeHtml(it.name)}${escapeHtml(optStr)} ×${it.qty} - ${fmtMoney(it.unit_price * it.qty)}`;
+        const unitLabels: Record<string, string> = { pcs: "шт.", set: "компл.", kg: "кг", m: "м" };
+        const uStr = unitLabels[itUnit] || itUnit || "шт.";
+        return `• ${escapeHtml(it.name)}${escapeHtml(optStr)} ×${it.qty} ${uStr} - ${fmtMoney(it.unit_price * it.qty)}`;
       }).join("\n"),
   );
 

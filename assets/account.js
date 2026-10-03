@@ -141,14 +141,27 @@
     const itemsRows = items.map(function(it){
       const imgs = it.product_id ? (window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(it.product_id) : null) : null;
       const thumb = (imgs && imgs[0]) ? imgs[0].thumb : "";
-      const opt = formatOptions(it.options);
+      let optUnit = it.unit || "";
+      let optObj = null;
+      if (it.options) {
+        try {
+          optObj = typeof it.options === "string" ? JSON.parse(it.options) : it.options;
+          if (optObj && optObj.unit) {
+            optUnit = optObj.unit;
+            delete optObj.unit;
+          }
+        } catch(e) {}
+      }
+      const opt = formatOptions(optObj || it.options);
       const totalItemPrice = (it.unit_price || 0) * (it.qty || 1);
+      const unitLabels = { pcs: "шт.", set: "компл.", kg: "кг", m: "м" };
+      const uStr = (optUnit && optUnit !== "pcs") ? (" " + (t("unit." + optUnit) || unitLabels[optUnit] || optUnit)) : "";
       return '<div class="order-item-row">' +
         (thumb ? '<img src="' + esc(thumb) + '" class="order-item-row__img" alt="" loading="lazy">' : '<div class="order-item-row__noimg"></div>') +
         '<div class="order-item-row__info">' +
           '<div class="order-item-row__name">' + esc(it.name || "-") + '</div>' +
           (opt ? '<div class="order-item-row__opt">' + esc(opt) + '</div>' : '') +
-          '<div class="order-item-row__qty">' + (it.qty || 1) + ' × ' + esc(fmt(it.unit_price || 0, { raw: true })) + '</div>' +
+          '<div class="order-item-row__qty">' + (it.qty || 1) + esc(uStr) + ' × ' + esc(fmt(it.unit_price || 0, { raw: true })) + '</div>' +
         '</div>' +
         '<div class="order-item-row__price">' + esc(fmt(totalItemPrice, { raw: true })) + '</div>' +
       '</div>';

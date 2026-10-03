@@ -223,7 +223,12 @@
     if (frag.childNodes.length) grid.appendChild(frag);
     if (changed) {
       document.dispatchEvent(new CustomEvent("btt:related-rendered", { detail: { grid } }));
-      const active = document.querySelector('[data-chips] .chip.is-active') || document.querySelector('.cat-chips .chip.is-active') || document.querySelector('[data-chips] .chip[data-cat="all"]') || document.querySelector('.cat-chips .chip[data-cat="all"]');
+      const qCat = new URLSearchParams(location.search).get("cat");
+      const active = (qCat && (document.querySelector('[data-chips] .chip[data-cat="' + qCat + '"]') || document.querySelector('.cat-chips .chip[data-cat="' + qCat + '"]')))
+        || document.querySelector('[data-chips] .chip.is-active')
+        || document.querySelector('.cat-chips .chip.is-active')
+        || document.querySelector('[data-chips] .chip[data-cat="all"]')
+        || document.querySelector('.cat-chips .chip[data-cat="all"]');
       if (active) active.click();
     }
     if (window.BTT_INIT_SWATCHES) window.BTT_INIT_SWATCHES(grid);
@@ -365,6 +370,16 @@
           }
         });
       });
+
+      const reqCat = new URLSearchParams(location.search).get("cat");
+      if (reqCat) {
+        chipGroups.forEach(group => {
+          const match = group.querySelector('.chip[data-cat="' + reqCat + '"]');
+          if (match && !match.classList.contains("is-active")) {
+            match.click();
+          }
+        });
+      }
     } catch(e){}
   }
 

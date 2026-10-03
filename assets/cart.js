@@ -163,6 +163,13 @@
     const s=(STR[lang()]||STR.ru)[k];
     return s!=null?s:k;
   }
+  function unitLabel(unit){
+    if(!unit || unit === "pcs") return t("pcs") || "шт.";
+    if(unit === "set") return (t("unit.set") || (lang()==="uz"?"to‘plam":lang()==="en"?"set":"компл."));
+    if(unit === "kg") return (t("unit.kg") || (lang()==="en"?"kg":lang()==="uz"?"kg":"кг"));
+    if(unit === "m") return (t("unit.m") || (lang()==="en"?"m":lang()==="uz"?"m":"м"));
+    return unit;
+  }
 
   /* ---------- storage ---------- */
   function read(key){ try{ const v=JSON.parse(localStorage.getItem(key)); return (v&&typeof v==="object"&&!Array.isArray(v))?v:{}; }catch(e){ return {}; } }
@@ -286,7 +293,9 @@
     const activeSwatch = card.querySelector(".product-swatch.is-active");
     const options = {};
     if(activeSwatch && activeSwatch.title) options.finish = activeSwatch.title.trim();
-    return { id, name:name.trim(), price, img, options: Object.keys(options).length ? options : undefined };
+    const prodMaster = window.BTT_PRODUCTS && (window.BTT_PRODUCTS[id] || window.BTT_PRODUCTS[card.dataset.id] || (card.dataset.slug && window.BTT_PRODUCTS[card.dataset.slug]));
+    const unit = card.dataset.unit || (prodMaster && prodMaster.unit) || undefined;
+    return { id, name:name.trim(), price, img, unit, options: Object.keys(options).length ? options : undefined };
   }
   function snapFromPDP(){
     let id = null;
@@ -313,7 +322,8 @@
     const options = {};
     if(finishVal) options.finish = finishVal;
     if(sizeVal) options.size = sizeVal;
-    return { id, name:name.trim(), price, img, options: Object.keys(options).length ? options : undefined };
+    const unit = (window.BTT_PDP_PRODUCT && window.BTT_PDP_PRODUCT.unit) || undefined;
+    return { id, name:name.trim(), price, img, unit, options: Object.keys(options).length ? options : undefined };
   }
   // resolve the snapshot for a clicked [data-add]/[data-fav]
   function resolveSnap(btn){
@@ -345,6 +355,7 @@
       name: snap.name,
       price: snap.price,
       img: snap.img,
+      unit: snap.unit || (ex && ex.unit) || undefined,
       options: snap.options || (ex && ex.options) || undefined,
       qty: (ex ? ex.qty : 0) + (qty || 1)
     };
@@ -520,14 +531,17 @@
         const it=c[id]; const sum=(it.price||0)*(it.qty||1); rawTotal+=sum;
         const optLine = it.options ? [it.options.finish, it.options.size].filter(Boolean).join(" · ") : "";
         const optHtml = optLine ? '<div class="dl-opt" style="font-size:12px;opacity:0.75;margin:2px 0 4px">'+esc(optLine)+'</div>' : '';
+        const uLbl = it.unit && it.unit !== "pcs" ? unitLabel(it.unit) : "";
+        const priceUnit = uLbl ? ' <span style="font-size:12px;opacity:0.75">/ ' + esc(uLbl) + '</span>' : '';
+        const qtyUnit = uLbl ? ' <span style="font-size:11px;opacity:0.8">' + esc(uLbl) + '</span>' : '';
         return '<div class="dl-item" style="--dl-idx:'+i+'">'+
           '<div class="dl-thumb">'+(it.img?'<img src="'+esc(it.img)+'" alt="" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">':'')+'</div>'+
           '<div class="dl-main"><div class="dl-name">'+esc(it.name)+'</div>'+
             optHtml+
-            '<div class="dl-price">'+esc(fmt(it.price||0))+'</div>'+
+            '<div class="dl-price">'+esc(fmt(it.price||0))+priceUnit+'</div>'+
             '<div class="dl-qty" data-dl-qty="'+esc(id)+'">'+
               '<button data-dl-dec aria-label="'+esc(t("less"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg></button>'+
-              '<span>'+(it.qty||1)+'</span>'+
+              '<span>'+(it.qty||1)+qtyUnit+'</span>'+
               '<button data-dl-inc aria-label="'+esc(t("more"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>'+
             '</div></div>'+
           '<button class="dl-del" data-dl-del="'+esc(id)+'" aria-label="'+esc(t("remove"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg></button>'+
@@ -751,7 +765,8 @@
     const c=getCart(); const ids=Object.keys(c); let rawTotal=0;
     const lines=ids.map((id,i)=>{ const it=c[id]; const sum=(it.price||0)*(it.qty||1); rawTotal+=sum;
       const optStr = it.options ? " (" + [it.options.finish, it.options.size].filter(Boolean).join(", ") + ")" : "";
-      return (i+1)+". "+it.name+optStr+" × "+(it.qty||1)+" - "+fmt(sum); });
+      const uStr = it.unit && it.unit !== "pcs" ? (" " + unitLabel(it.unit)) : "";
+      return (i+1)+". "+it.name+optStr+" × "+(it.qty||1)+uStr+" - "+fmt(sum); });
     const promo = getPromo();
     const promoPct = PROMOS[promo] || 0;
     const discount = promoPct ? Math.round(rawTotal * promoPct / 100) : 0;
@@ -800,6 +815,7 @@
         name: it.name,
         qty: it.qty||1,
         price: it.price||0,
+        unit: it.unit || "pcs",
         options: it.options || undefined,
       };
     });
@@ -946,7 +962,8 @@
       const it=c[id];
       const sum=(it.price||0)*(it.qty||1);
       total+=sum;
-      return '<div class="ord-line"><span>'+esc(it.name)+' <i>×'+(it.qty||1)+'</i></span><b>'+esc(fmt(sum))+'</b></div>';
+      const uStr = it.unit && it.unit !== "pcs" ? (' ' + esc(unitLabel(it.unit))) : '';
+      return '<div class="ord-line"><span>'+esc(it.name)+' <i>×'+(it.qty||1)+uStr+'</i></span><b>'+esc(fmt(sum))+'</b></div>';
     }).join("");
 
     const promo = getPromo();
@@ -1129,7 +1146,7 @@
                 '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:8px;flex-wrap:wrap">' +
                   '<div class="qk-qty-box" style="display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:var(--r-md);background:var(--paper)">' +
                     '<button type="button" class="qk-qty-btn" data-qk-minus style="width:28px;height:28px;border:none;background:none;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center">-</button>' +
-                    '<span class="qk-qty-val" style="min-width:24px;text-align:center;font-weight:700;font-size:13px">' + currentQty + '</span>' +
+                    '<span class="qk-qty-val" style="min-width:24px;text-align:center;font-weight:700;font-size:13px">' + currentQty + (snap.unit && snap.unit !== 'pcs' ? ' ' + esc(unitLabel(snap.unit)) : '') + '</span>' +
                     '<button type="button" class="qk-qty-btn" data-qk-plus style="width:28px;height:28px;border:none;background:none;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center">+</button>' +
                   '</div>' +
                   '<div class="qk-price" style="font-size:15px;color:var(--copper);font-weight:800">' + esc(fmt(itemTotal)) + '</div>' +
@@ -1194,13 +1211,13 @@
         minusBtn.onclick = () => {
           if(currentQty > 1){
             currentQty--;
-            valEl.textContent = currentQty;
+            valEl.textContent = currentQty + (snap.unit && snap.unit !== 'pcs' ? ' ' + unitLabel(snap.unit) : '');
             priceEl.textContent = fmt(calcTotal());
           }
         };
         plusBtn.onclick = () => {
           currentQty++;
-          valEl.textContent = currentQty;
+          valEl.textContent = currentQty + (snap.unit && snap.unit !== 'pcs' ? ' ' + unitLabel(snap.unit) : '');
           priceEl.textContent = fmt(calcTotal());
         };
       }
@@ -1229,9 +1246,10 @@
       if(tgDirectBtn){
         tgDirectBtn.onclick = () => {
           const ph = phoneInput ? phoneInput.value.trim() : "";
+          const uText = unitLabel(snap.unit);
           const msg = "Здравствуйте! Хочу оформить быстрый заказ: " + snap.name +
             (optLine ? " (" + optLine + ")" : "") +
-            " - " + currentQty + " " + (t("pcs") || "шт.") +
+            " - " + currentQty + " " + uText +
             " на сумму " + fmt(calcTotal()) +
             (ph ? ". Телефон: " + ph : "") +
             ". Пожалуйста, свяжитесь со мной для подтверждения.";
@@ -1274,6 +1292,7 @@
                 name: snap.name,
                 qty: currentQty,
                 price: unitPrice,
+                unit: snap.unit || "pcs",
                 options: snap.options || undefined
               }],
               quick_order: true,

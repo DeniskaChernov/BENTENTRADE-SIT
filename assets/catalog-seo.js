@@ -7,9 +7,12 @@
   const CAT_META = {
     furniture: "meta.cat.furniture",
     planterMix: "meta.cat.planterMix",
+    planters: "meta.cat.planterMix",
     indoor: "meta.cat.indoor",
     rattan: "meta.cat.rattan",
     twisted: "meta.cat.twisted",
+    lamps: "meta.cat.lamps",
+    sets: "meta.cat.furniture",
   };
 
   function lang() {
@@ -25,7 +28,7 @@
   }
 
   function activeCategory() {
-    const chip = document.querySelector(".cat-chips .chip.is-active");
+    const chip = document.querySelector("[data-chips] .chip.is-active, .cat-chips .chip.is-active");
     if (chip && chip.dataset.cat && chip.dataset.cat !== "all") return chip.dataset.cat;
     const q = new URLSearchParams(location.search).get("cat");
     return q && q !== "all" ? q : "";
@@ -46,9 +49,19 @@
   function updateCatalogMeta() {
     const cat = activeCategory();
     const prefix = cat && CAT_META[cat];
-    const title = prefix ? t(prefix + ".title") : t("meta.catalog.title");
-    const desc = prefix ? t(prefix + ".desc") : t("meta.catalog.desc");
-    const kw = prefix ? t(prefix + ".keywords") : t("meta.catalog.keywords");
+    let title = prefix ? t(prefix + ".title") : null;
+    let desc = prefix ? t(prefix + ".desc") : null;
+    let kw = prefix ? t(prefix + ".keywords") : null;
+    if(!title && cat){
+      const chip = document.querySelector('[data-chips] .chip[data-cat="' + cat + '"], .cat-chips .chip[data-cat="' + cat + '"]');
+      const catName = chip ? (chip.querySelector(".chip-label") || chip).textContent.trim() : cat;
+      title = "BTT - " + catName + " в Ташкенте";
+      desc = catName + " от BTT: качественная мебель и товары для дома и сада. Доставка по Ташкенту.";
+      kw = catName + ", BTT мебель, каталог мебель ташкент";
+    }
+    if(!title) title = t("meta.catalog.title");
+    if(!desc) desc = t("meta.catalog.desc");
+    if(!kw) kw = t("meta.catalog.keywords");
     const url = cat ? SITE + "/catalog.html?cat=" + encodeURIComponent(cat) : SITE + "/catalog.html";
 
     document.title = title;

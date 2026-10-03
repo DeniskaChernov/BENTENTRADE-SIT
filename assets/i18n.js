@@ -850,7 +850,12 @@ window.BTT_I18N = {
     "home.steps.s3.t": "3. Согласование доставки",
     "home.steps.s3.d": "Менеджер перезвонит за 10-15 минут и согласует удобное время получения.",
     "home.steps.s4.t": "4. Оплата при получении",
-    "home.steps.s4.d": "Осматриваете мебель на месте и только затем оплачиваете (наличными или Click/Payme)."
+    "home.steps.s4.d": "Осматриваете мебель на месте и только затем оплачиваете (наличными или Click/Payme).",
+    "unit.pcs": "шт.",
+    "unit.set": "комплект",
+    "unit.kg": "кг",
+    "unit.m": "м",
+    "bundle.composition": "Состав комплекта:"
   },
 
   uz: {
@@ -1698,7 +1703,12 @@ window.BTT_I18N = {
     "home.steps.s3.t": "3. Yetkazishni kelishish",
     "home.steps.s3.d": "Menejer 10-15 daqiqa ichida qo'ng'iroq qilib, qulay vaqtni kelishib oladi.",
     "home.steps.s4.t": "4. Qabul qilishda to'lov",
-    "home.steps.s4.d": "Mebelni joyida ko'zdan kechirasiz va shundan so'ng to'laysiz (naqd yoki Click/Payme)."
+    "home.steps.s4.d": "Mebelni joyida ko'zdan kechirasiz va shundan so'ng to'laysiz (naqd yoki Click/Payme).",
+    "unit.pcs": "dona",
+    "unit.set": "to‘plam",
+    "unit.kg": "kg",
+    "unit.m": "m",
+    "bundle.composition": "To‘plam tarkibi:"
   },
 
   en: {
@@ -2546,6 +2556,11 @@ window.BTT_I18N = {
     "home.steps.s3.t": "3. Delivery arrangement",
     "home.steps.s3.d": "Manager will call back in 10-15 minutes to arrange convenient delivery time.",
     "home.steps.s4.t": "4. Pay upon delivery",
-    "home.steps.s4.d": "Inspect the furniture in person and only then pay (cash or Click/Payme)."
+    "home.steps.s4.d": "Inspect the furniture in person and only then pay (cash or Click/Payme).",
+    "unit.pcs": "pcs",
+    "unit.set": "set",
+    "unit.kg": "kg",
+    "unit.m": "m",
+    "bundle.composition": "Set bundle contents:"
   }
 };

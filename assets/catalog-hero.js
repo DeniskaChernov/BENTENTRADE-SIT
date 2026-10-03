@@ -80,6 +80,24 @@
       ru:{k:"Крученый ротанг",t:"Крученый ротанг",s:"Плетём катушки из полиэтиленового волокна - от тонкого декора до толстого каркаса. Разные диаметры и цвета."},
       uz:{k:"Burma rotang",t:"Burma rotang",s:"Polietilen tolidan g‘iloflar to‘qiyamiz - nozik dekor yoki qalin karkas uchun. Turli diametr va ranglar."},
       en:{k:"Twisted rattan",t:"Twisted rattan",s:"We weave coils from polyethylene fibre - from fine decor to heavy frame gauges. Multiple diameters and colours."}
+    },
+    lamps: {
+      img: "assets/bento-planter.png",
+      ru:{k:"3D-светильники",t:"Интерьерные 3D-светильники и ночники",s:"Стильные акцентные светильники для дома, спальни и подарков."},
+      uz:{k:"3D chiroqlar",t:"Interyer uchun 3D chiroqlar va tungi chiroqlar",s:"Uy, yotoqxona va sovg‘alar uchun zamonaviy yorug‘lik."},
+      en:{k:"3D Lamps",t:"Ambient 3D lamps & nightlights",s:"Modern accent lights and nightlamps for interior spaces and gifts."}
+    },
+    planters: {
+      img: CAT.planterMix || "assets/bento-planter.png",
+      ru:{k:"Кашпо и корзины",t:"Плетёные кашпо и корзины",s:"Кашпо и корзины из полиротанга для цветов, растений, дома и сада."},
+      uz:{k:"Gultuvaklar",t:"To‘qilgan gultuvak va savatlar",s:"Gullar, o‘simliklar, uy va bog‘ uchun polirotangdan to‘qilgan gultuvaklar."},
+      en:{k:"Planters",t:"Wicker planters & baskets",s:"Woven synthetic rattan planters and baskets for plants, home and garden."}
+    },
+    sets: {
+      img: CAT.furniture || "assets/hero-garden-furniture.png",
+      ru:{k:"Комплекты мебели",t:"Готовые мебельные комплекты",s:"Обеденные и лаунж-наборы столов и стульев для дома, сада, веранды и HoReCa."},
+      uz:{k:"Mebel to‘plamlari",t:"Tayyor mebel to‘plamlari",s:"Uy, bog‘, ayvon va HoReCa uchun stol va stullardan iborat qulay to‘plamlar."},
+      en:{k:"Furniture Sets",t:"Coordinated furniture sets",s:"Dining and lounge table and chair sets for home, patio, garden and HoReCa."}
     }
   };
 
@@ -95,24 +113,39 @@
     const h = (location.hash || "").replace("#","");
     const raw = q || h || "all";
     const alias = {
-      planter: "wicker-chairs",
-      basket: "wicker-chairs",
-      rattan: "wicker-chairs",
+      planter: "planters",
+      planters: "planters",
+      basket: "planters",
+      rattan: "rattan",
       wicker: "wicker-chairs",
-      furniture: "wicker-chairs",
-      indoor: "upholstered-chairs",
+      furniture: "furniture",
+      indoor: "indoor",
       upholstered: "upholstered-chairs",
       plastic: "plastic-chairs",
-      table: "tables"
+      table: "tables",
+      lamp: "lamps",
+      lamps: "lamps",
+      set: "sets",
+      sets: "sets"
     };
     const c = alias[raw] || raw;
-    return CFG[c] ? c : "all";
+    return CFG[c] ? c : (c || "all");
   }
 
   function renderHero(cat){
     current = CFG[cat] ? cat : "all";
     const cfg = CFG[current];
-    const L = cfg[curLang()] || cfg.ru;
+    let L = cfg[curLang()] || cfg.ru;
+    if(!CFG[cat] && cat && cat !== "all"){
+      const l = curLang();
+      const chip = document.querySelector('.chip[data-cat="' + cat + '"]');
+      const chipText = chip ? (chip.querySelector(".chip-label") || chip).textContent.trim() : cat;
+      L = {
+        k: chipText,
+        t: chipText,
+        s: l === "uz" ? "BTT sifatli mahsulotlari to'plami." : (l === "en" ? "Collection from BTT home & garden furniture." : "Коллекция мебели и товаров для дома и сада BTT.")
+      };
+    }
     const hero = document.querySelector(".page-hero--cat");
     if(hero){
       const img = hero.querySelector(".page-hero__collage img");
