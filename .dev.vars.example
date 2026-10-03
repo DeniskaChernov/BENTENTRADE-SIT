@@ -1,0 +1,10 @@
+# Local development secrets for `wrangler dev`. Copy to `.dev.vars` and fill in.
+# In production set these with: wrangler secret put <NAME>
+
+# One-time token used by POST /api/auth/bootstrap-admin to promote the first
+# admin account. Choose a long random value and remove after first use.
+ADMIN_BOOTSTRAP_TOKEN=""
+
+# Telegram bot notifications for new orders/requests (optional).
+TELEGRAM_BOT_TOKEN=""
+TELEGRAM_CHAT_ID=""

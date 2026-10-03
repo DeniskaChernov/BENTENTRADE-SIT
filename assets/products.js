@@ -1,0 +1,2433 @@
+/* BTT - мебель для дома и сада
+   Product master data (Single Source of Truth fallback).
+   DO NOT EDIT MANUALLY - Generated from data/products-master.json via scripts/sync-master.mjs.
+   All prices are in UZS. */
+(function(){
+  "use strict";
+
+  var MASTER = [
+  {
+    "slug": "stul-vertex",
+    "legacyId": "p1",
+    "model": "Vertex",
+    "category": "wicker-chairs",
+    "price": 499000,
+    "dimensions": "57 × 63 × 75 см",
+    "materials": [
+      "металл",
+      "кручёный искусственный ротанг",
+      "текстиль"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "beige",
+        "name": {
+          "ru": "Бежевый",
+          "uz": "Bej",
+          "en": "Beige"
+        },
+        "hex": "#C2B280",
+        "image": "assets/prod-chair-vertex.jpg",
+        "images": [
+          "assets/prod-chair-vertex.jpg",
+          "assets/prod-chair-vertex-side.jpg",
+          "assets/prod-chair-vertex-detail-back.jpg",
+          "assets/prod-chair-vertex-detail-seat.jpg",
+          "assets/scene-dining-warm.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/prod-chair-vertex.jpg",
+      "assets/prod-chair-vertex-side.jpg",
+      "assets/prod-chair-vertex-detail-back.jpg",
+      "assets/prod-chair-vertex-detail-seat.jpg",
+      "assets/scene-dining-warm.png"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стул «Vertex»",
+        "category_label": "Плетёные стулья",
+        "description": "Плетёный стул Vertex на металлическом каркасе и выразительным плетением из кручёного искусственного ротанга. Комплектуется мягкой текстильной подушкой для повышенного удобства. Идеально подходит для гостиной, веранды, террасы, загородного дома, а также для ресторанов и кофеен. Гармонично сочетается с круглым столом Vertex D90 и столом Taper Rotang 80.",
+        "usage": "Для гостиной, террасы, балкона, кафе и ресторанов",
+        "seo_title": "Купить Стул «Vertex» в Ташкенте - BTT",
+        "seo_description": "Стул «Vertex» (Плетёные стулья) от BTT. Размеры: 57 × 63 × 75 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«Vertex» stuli",
+        "category_label": "To‘qilgan stullar",
+        "description": "Metall karkas va o'rilgan sun'iy rotangdan ishlangan Vertex stuli. Qo'shimcha qulaylik uchun yumshoq to'qimachilik yostiqchasi bilan jihozlangan. Yashash xonasi, veranda, terassa, shahar tashqarisidagi hovli va restoranlar uchun juda mos. Vertex D90 va Taper Rotang 80 stollari bilan ajoyib uyg'unlashadi.",
+        "usage": "Mehmonxona, terassa, balkon, qahvaxona va restoranlar uchun",
+        "seo_title": "Toshkentda «Vertex» stuli sotib olish - BTT",
+        "seo_description": "BTT dan «Vertex» stuli (To‘qilgan stullar). O‘lchamlari: 57 × 63 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "Vertex Chair",
+        "category_label": "Wicker chairs",
+        "description": "Wicker chair Vertex on a metal frame and rich twisted artificial rattan weave. Includes a soft textile seat cushion for elevated comfort. Ideal for living rooms, verandas, covered terraces, and dining venues. Perfectly pairs with the round Vertex D90 and Taper Rotang 80 dining tables.",
+        "usage": "For living room, terrace, balcony, cafes and restaurants",
+        "seo_title": "Buy Vertex Chair in Tashkent - BTT",
+        "seo_description": "Vertex Chair (Wicker chairs) by BTT. Dimensions: 57 × 63 × 75 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 0,
+    "currency": "сум"
+  },
+  {
+    "slug": "stul-corda",
+    "legacyId": "p2",
+    "model": "Corda",
+    "category": "wicker-chairs",
+    "price": 499000,
+    "dimensions": "57 × 63 × 77 см",
+    "materials": [
+      "металл",
+      "искусственный ротанг",
+      "текстиль"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "beige",
+        "name": {
+          "ru": "Бежевый",
+          "uz": "Bej",
+          "en": "Beige"
+        },
+        "hex": "#C4A482",
+        "image": "assets/prod-chair-corda.jpg",
+        "images": [
+          "assets/prod-chair-corda.jpg",
+          "assets/prod-chair-corda-side.jpg",
+          "assets/prod-chair-corda-detail-back.jpg",
+          "assets/prod-chair-corda-detail-seat.jpg",
+          "assets/scene-dining-warm.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/prod-chair-corda.jpg",
+      "assets/prod-chair-corda-side.jpg",
+      "assets/prod-chair-corda-detail-back.jpg",
+      "assets/prod-chair-corda-detail-seat.jpg",
+      "assets/scene-dining-warm.png"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стул «Corda»",
+        "category_label": "Плетёные стулья",
+        "description": "Обеденный стул Corda на металлическом каркасе с фактурным плетением из искусственного ротанга и мягкой текстильной подушкой. Создан для длительного комфорта за семейным столом. Прекрасно подходит для столовой, закрытой террасы, летней площадки или кафе. Гармонично сочетается с большим обеденным столом Corda 135 и Taper Rotang 135.",
+        "usage": "Для террасы, загородного дома, летних площадок и кухни",
+        "seo_title": "Купить Стул «Corda» в Ташкенте - BTT",
+        "seo_description": "Стул «Corda» (Плетёные стулья) от BTT. Размеры: 57 × 63 × 77 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«Corda» stuli",
+        "category_label": "To‘qilgan stullar",
+        "description": "Metall karkas, sun'iy rotangning quyuq to'qilishi va yumshoq matoli yostiqchaga ega Corda stuli. Oilaviy tushliklar uchun uzoq muddatli qulaylik yaratadi. Oshxona, yopiq terassa, yozgi ayvon yoki qahvaxonalar uchun mukammal mos keladi. Katta Corda 135 va Taper Rotang 135 stollari bilan uyg'unlashadi.",
+        "usage": "Terassa, dala hovli, yozgi ayvonlar va oshxona uchun",
+        "seo_title": "Toshkentda «Corda» stuli sotib olish - BTT",
+        "seo_description": "BTT dan «Corda» stuli (To‘qilgan stullar). O‘lchamlari: 57 × 63 × 77 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "Corda Chair",
+        "category_label": "Wicker chairs",
+        "description": "Dining chair Corda on a metal frame with textured artificial rattan weave and a soft textile seat cushion. Built for comfort during long family dinners. Great for dining rooms, covered patios, terraces, and cafes. Pairs harmoniously with Corda 135 and Taper Rotang 135 dining tables.",
+        "usage": "For terrace, country house, summer patios and kitchen",
+        "seo_title": "Buy Corda Chair in Tashkent - BTT",
+        "seo_description": "Corda Chair (Wicker chairs) by BTT. Dimensions: 57 × 63 × 77 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 1,
+    "currency": "сум"
+  },
+  {
+    "slug": "stul-roero",
+    "legacyId": "p3",
+    "model": "ROERO",
+    "category": "plastic-chairs",
+    "price": 188000,
+    "dimensions": "74 × 46 × 48 см",
+    "materials": [
+      "пластик"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "grey",
+        "name": {
+          "ru": "Серый",
+          "uz": "Kulrang",
+          "en": "Grey"
+        },
+        "hex": "#808080",
+        "image": "assets/prod-chair-roero.jpg",
+        "images": [
+          "assets/prod-chair-roero.jpg",
+          "assets/prod-chair-roero-front.jpg",
+          "assets/prod-chair-roero-detail-back.jpg",
+          "assets/prod-chair-roero-detail-seat.jpg",
+          "assets/scene-dining-grey.png"
+        ]
+      },
+      {
+        "id": "black",
+        "name": {
+          "ru": "Чёрный",
+          "uz": "Qora",
+          "en": "Black"
+        },
+        "hex": "#222222",
+        "image": "assets/prod-chair-roero-black.jpg",
+        "images": [
+          "assets/prod-chair-roero-black.jpg",
+          "assets/prod-chair-roero-black-front.jpg",
+          "assets/prod-chair-roero-black-detail-back.jpg",
+          "assets/prod-chair-roero-black-detail-seat.jpg",
+          "assets/scene-dining-contrast.png"
+        ]
+      },
+      {
+        "id": "white",
+        "name": {
+          "ru": "Белый",
+          "uz": "Oq",
+          "en": "White"
+        },
+        "hex": "#FFFFFF",
+        "image": "assets/prod-chair-roero-white.jpg",
+        "images": [
+          "assets/prod-chair-roero-white.jpg",
+          "assets/prod-chair-roero-white-front.jpg",
+          "assets/prod-chair-roero-white-detail-back.jpg",
+          "assets/prod-chair-roero-white-detail-seat.jpg",
+          "assets/scene-dining-light.png"
+        ]
+      },
+      {
+        "id": "orange",
+        "name": {
+          "ru": "Оранжевый",
+          "uz": "To‘q sariq",
+          "en": "Orange"
+        },
+        "hex": "#D9633B",
+        "image": "assets/prod-chair-roero-orange.jpg",
+        "images": [
+          "assets/prod-chair-roero-orange.jpg",
+          "assets/prod-chair-roero-orange-front.jpg",
+          "assets/prod-chair-roero-orange-detail-back.jpg",
+          "assets/prod-chair-roero-orange-detail-seat.jpg",
+          "assets/scene-dining-warm.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/prod-chair-roero.jpg",
+      "assets/prod-chair-roero-front.jpg",
+      "assets/prod-chair-roero-detail-back.jpg",
+      "assets/prod-chair-roero-detail-seat.jpg",
+      "assets/prod-chair-roero-black.jpg",
+      "assets/prod-chair-roero-black-front.jpg",
+      "assets/prod-chair-roero-black-detail-back.jpg",
+      "assets/prod-chair-roero-black-detail-seat.jpg",
+      "assets/prod-chair-roero-white.jpg",
+      "assets/prod-chair-roero-white-front.jpg",
+      "assets/prod-chair-roero-white-detail-back.jpg",
+      "assets/prod-chair-roero-white-detail-seat.jpg",
+      "assets/prod-chair-roero-orange.jpg",
+      "assets/prod-chair-roero-orange-front.jpg",
+      "assets/prod-chair-roero-orange-detail-back.jpg",
+      "assets/prod-chair-roero-orange-detail-seat.jpg",
+      "assets/scene-dining-grey.png"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стул «ROERO»",
+        "category_label": "Пластиковые стулья",
+        "description": "Современный эргономичный стул Roero из литого полипропилена. Анатомическая форма спинки обеспечивает комфортную посадку, а матовая поверхность легко очищается . Идеальный выбор для кухни, балкона, дачи, фудкортов и летних террас. Отлично комплектуется со столами Taper 80 и Taper 135 в серых, белых, чёрных и ярких оранжевых тонах.",
+        "usage": "Для кухни, дачи, террасы, фудкортов и уличных кафе",
+        "seo_title": "Купить Стул «ROERO» в Ташкенте - BTT",
+        "seo_description": "Стул «ROERO» (Пластиковые стулья) от BTT. Размеры: 74 × 46 × 48 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«ROERO» stuli",
+        "category_label": "Plastik stullar",
+        "description": "Quyma polipropilendan tayyorlangan zamonaviy Roero stuli. Anatomik shakldagi suyanchig'i qulay o'tirishni ta'minlaydi, mat yuzasi esa oson tozalanadi. Oshxona, balkon, dala hovli, fudkortlar va ochiq qahvaxonalar uchun ideal tanlov. Kulrang, oq, qora va to'q sariq ranglarda Taper 80 hamda Taper 135 stollari bilan mos tushadi.",
+        "usage": "Oshxona, dala hovli, terassa, fudkort va ko'cha kafelari uchun",
+        "seo_title": "Toshkentda «ROERO» stuli sotib olish - BTT",
+        "seo_description": "BTT dan «ROERO» stuli (Plastik stullar). O‘lchamlari: 74 × 46 × 48 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "ROERO Chair",
+        "category_label": "Plastic chairs",
+        "description": "Modern ergonomic chair Roero crafted from high-grade molded polypropylene. The contoured backrest provides natural posture support, while the matte finish is wipe-clean. Ideal for kitchens, balconies, patios, food courts, and cafes. Coordinates effortlessly with Taper 80 and Taper 135 tables across grey, black, white, and orange accents.",
+        "usage": "For kitchen, cottage, terrace, food courts and outdoor cafes",
+        "seo_title": "Buy ROERO Chair in Tashkent - BTT",
+        "seo_description": "ROERO Chair (Plastic chairs) by BTT. Dimensions: 74 × 46 × 48 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 2,
+    "currency": "сум"
+  },
+  {
+    "slug": "stul-noero",
+    "legacyId": "p4",
+    "model": "NOERO",
+    "category": "plastic-chairs",
+    "price": 212000,
+    "dimensions": "82 × 48 × 49 см",
+    "materials": [
+      "пластик"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "cappuccino",
+        "name": {
+          "ru": "Капучино",
+          "uz": "Kapuchino",
+          "en": "Cappuccino"
+        },
+        "hex": "#A88D73",
+        "image": "assets/prod-chair-noero.jpg",
+        "images": [
+          "assets/prod-chair-noero.jpg",
+          "assets/prod-chair-noero-detail-back.jpg",
+          "assets/prod-chair-noero-detail-seat.jpg",
+          "assets/prod-chair-noero-detail-leg.jpg",
+          "assets/scene-dining-beige.png"
+        ]
+      },
+      {
+        "id": "blue",
+        "name": {
+          "ru": "Синий",
+          "uz": "Ko‘k",
+          "en": "Blue"
+        },
+        "hex": "#4E7D9A",
+        "image": "assets/prod-chair-noero-blue.jpg",
+        "images": [
+          "assets/prod-chair-noero-blue.jpg",
+          "assets/prod-chair-noero-blue-back.jpg",
+          "assets/prod-chair-noero-blue-detail-back.jpg",
+          "assets/prod-chair-noero-blue-detail-seat.jpg",
+          "assets/scene-dining-azure.png"
+        ]
+      },
+      {
+        "id": "orange",
+        "name": {
+          "ru": "Оранжевый",
+          "uz": "To‘q sariq",
+          "en": "Orange"
+        },
+        "hex": "#D9633B",
+        "image": "assets/prod-chair-noero-orange.jpg",
+        "images": [
+          "assets/prod-chair-noero-orange.jpg",
+          "assets/prod-chair-noero-orange-back.jpg",
+          "assets/prod-chair-noero-orange-detail-back.jpg",
+          "assets/prod-chair-noero-orange-detail-seat.jpg",
+          "assets/scene-dining-warm.png"
+        ]
+      },
+      {
+        "id": "olive",
+        "name": {
+          "ru": "Оливковый",
+          "uz": "Zaytun",
+          "en": "Olive"
+        },
+        "hex": "#8A9364",
+        "image": "assets/prod-chair-noero-olive.jpg",
+        "images": [
+          "assets/prod-chair-noero-olive.jpg",
+          "assets/prod-chair-noero-olive-detail-back.jpg",
+          "assets/prod-chair-noero-olive-detail-seat.jpg",
+          "assets/scene-dining-teal.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/prod-chair-noero.jpg",
+      "assets/prod-chair-noero-detail-back.jpg",
+      "assets/prod-chair-noero-detail-seat.jpg",
+      "assets/prod-chair-noero-detail-leg.jpg",
+      "assets/prod-chair-noero-blue.jpg",
+      "assets/prod-chair-noero-blue-back.jpg",
+      "assets/prod-chair-noero-blue-detail-back.jpg",
+      "assets/prod-chair-noero-blue-detail-seat.jpg",
+      "assets/prod-chair-noero-orange.jpg",
+      "assets/prod-chair-noero-orange-back.jpg",
+      "assets/prod-chair-noero-orange-detail-back.jpg",
+      "assets/prod-chair-noero-orange-detail-seat.jpg",
+      "assets/prod-chair-noero-olive.jpg",
+      "assets/prod-chair-noero-olive-detail-back.jpg",
+      "assets/prod-chair-noero-olive-detail-seat.jpg",
+      "assets/scene-dining-beige.png"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стул «NOERO»",
+        "category_label": "Пластиковые стулья",
+        "description": "Стильный стул Noero с выразительной решётчатой спинкой высотой 82 см и комфортной глубокой посадкой. Полимерный корпус подходит для ежедневного использования дома и в заведениях общепита. Трендовая палитра капучино, синий, оранжевый и оливковый позволяет расставить интерьерные акценты. Безупречно подходит к столам серии Taper 80 и Taper 135.",
+        "usage": "Для дома, террасы, летних веранд, кафе",
+        "seo_title": "Купить Стул «NOERO» в Ташкенте - BTT",
+        "seo_description": "Стул «NOERO» (Пластиковые стулья) от BTT. Размеры: 82 × 48 × 49 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«NOERO» stuli",
+        "category_label": "Plastik stullar",
+        "description": "82 sm balandlikdagi zamonaviy panjarali suyanchiqli va qulay chuqur o'rindiqli Noero stuli. Polimer korpus uyda va umumiy ovqatlanish joylarida kundalik foydalanishga mo'ljallangan. Kapuchino, ko'k, to'q sariq va zaytun ranglaridagi jozibali palitrasi interyerga nafislik bag'ishlaydi. Taper 80 va Taper 135 stollari bilan ajoyib mos tushadi.",
+        "usage": "Uy, terassa, yozgi ayvonlar, kafelar uchun",
+        "seo_title": "Toshkentda «NOERO» stuli sotib olish - BTT",
+        "seo_description": "BTT dan «NOERO» stuli (Plastik stullar). O‘lchamlari: 82 × 48 × 49 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "NOERO Chair",
+        "category_label": "Plastic chairs",
+        "description": "Stylish chair Noero featuring a signature 82 cm slatted backrest and generous ergonomic seating. Molded polymer suited for everyday use in residential and commercial settings. The curated palette of cappuccino, blue, orange, and olive adds vibrant designer appeal. Pairs seamlessly with Taper 80 and Taper 135 tables.",
+        "usage": "For home, terrace, summer verandas, cafes",
+        "seo_title": "Buy NOERO Chair in Tashkent - BTT",
+        "seo_description": "NOERO Chair (Plastic chairs) by BTT. Dimensions: 82 × 48 × 49 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 3,
+    "currency": "сум"
+  },
+  {
+    "slug": "stul-todo",
+    "legacyId": "p5",
+    "model": "TODO",
+    "category": "plastic-chairs",
+    "price": 236000,
+    "dimensions": "80 × 51 × 51 см",
+    "materials": [
+      "пластик"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "black",
+        "name": {
+          "ru": "Чёрный",
+          "uz": "Qora",
+          "en": "Black"
+        },
+        "hex": "#222222",
+        "image": "assets/prod-chair-todo.jpg",
+        "images": [
+          "assets/prod-chair-todo.jpg",
+          "assets/prod-chair-todo-side.jpg",
+          "assets/prod-chair-todo-detail-back.jpg",
+          "assets/prod-chair-todo-detail-seat.jpg",
+          "assets/scene-dining-contrast.png"
+        ]
+      },
+      {
+        "id": "yellow",
+        "name": {
+          "ru": "Жёлтый",
+          "uz": "Sariq",
+          "en": "Yellow"
+        },
+        "hex": "#EAA824",
+        "image": "assets/prod-chair-todo-yellow.jpg",
+        "images": [
+          "assets/prod-chair-todo-yellow.jpg",
+          "assets/prod-chair-todo-yellow-side.jpg",
+          "assets/prod-chair-todo-yellow-detail-back.jpg",
+          "assets/prod-chair-todo-yellow-detail-seat.jpg",
+          "assets/scene-dining-warm.png"
+        ]
+      },
+      {
+        "id": "grey",
+        "name": {
+          "ru": "Серый",
+          "uz": "Kulrang",
+          "en": "Grey"
+        },
+        "hex": "#808080",
+        "image": "assets/prod-chair-todo-gray.jpg",
+        "images": [
+          "assets/prod-chair-todo-gray.jpg",
+          "assets/prod-chair-todo-gray-side.jpg",
+          "assets/prod-chair-todo-gray-detail-back.jpg",
+          "assets/prod-chair-todo-gray-detail-seat.jpg",
+          "assets/scene-dining-grey.png"
+        ]
+      },
+      {
+        "id": "red",
+        "name": {
+          "ru": "Красный",
+          "uz": "Qizil",
+          "en": "Red"
+        },
+        "hex": "#E32626",
+        "image": "assets/prod-chair-todo-red.jpg",
+        "images": [
+          "assets/prod-chair-todo-red.jpg",
+          "assets/prod-chair-todo-red-side.jpg",
+          "assets/prod-chair-todo-red-detail-back.jpg",
+          "assets/prod-chair-todo-red-detail-seat.jpg",
+          "assets/scene-dining-warm.png"
+        ]
+      },
+      {
+        "id": "coffee",
+        "name": {
+          "ru": "Кофейный",
+          "uz": "Kofe",
+          "en": "Coffee"
+        },
+        "hex": "#9E7E6B",
+        "image": "assets/prod-chair-todo-coffee.jpg",
+        "images": [
+          "assets/prod-chair-todo-coffee.jpg",
+          "assets/prod-chair-todo-coffee-side.jpg",
+          "assets/prod-chair-todo-coffee-detail-back.jpg",
+          "assets/prod-chair-todo-coffee-detail-seat.jpg",
+          "assets/scene-dining-beige.png"
+        ]
+      },
+      {
+        "id": "white",
+        "name": {
+          "ru": "Белый",
+          "uz": "Oq",
+          "en": "White"
+        },
+        "hex": "#FFFFFF",
+        "image": "assets/prod-chair-todo-white.jpg",
+        "images": [
+          "assets/prod-chair-todo-white.jpg",
+          "assets/prod-chair-todo-white-side.jpg",
+          "assets/prod-chair-todo-white-detail-back.jpg",
+          "assets/prod-chair-todo-white-detail-seat.jpg",
+          "assets/scene-dining-light.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/prod-chair-todo.jpg",
+      "assets/prod-chair-todo-side.jpg",
+      "assets/prod-chair-todo-detail-back.jpg",
+      "assets/prod-chair-todo-detail-seat.jpg",
+      "assets/prod-chair-todo-yellow.jpg",
+      "assets/prod-chair-todo-yellow-side.jpg",
+      "assets/prod-chair-todo-yellow-detail-back.jpg",
+      "assets/prod-chair-todo-yellow-detail-seat.jpg",
+      "assets/prod-chair-todo-gray.jpg",
+      "assets/prod-chair-todo-gray-side.jpg",
+      "assets/prod-chair-todo-gray-detail-back.jpg",
+      "assets/prod-chair-todo-gray-detail-seat.jpg",
+      "assets/prod-chair-todo-red.jpg",
+      "assets/prod-chair-todo-red-side.jpg",
+      "assets/prod-chair-todo-red-detail-back.jpg",
+      "assets/prod-chair-todo-red-detail-seat.jpg",
+      "assets/prod-chair-todo-coffee.jpg",
+      "assets/prod-chair-todo-coffee-side.jpg",
+      "assets/prod-chair-todo-coffee-detail-back.jpg",
+      "assets/prod-chair-todo-coffee-detail-seat.jpg",
+      "assets/prod-chair-todo-white.jpg",
+      "assets/prod-chair-todo-white-side.jpg",
+      "assets/prod-chair-todo-white-detail-back.jpg",
+      "assets/prod-chair-todo-white-detail-seat.jpg",
+      "assets/scene-dining-contrast.png"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стул «TODO»",
+        "category_label": "Пластиковые стулья",
+        "description": "Практичный и лаконичный дизайнерский стул Todo с монолитным сиденьем и геометрией ножек. Полимерный корпус легко моется. Универсален для обеденной зоны дома, кухонного острова, террасы, а также для зон ожидания, офисов и заведений HoReCa. Отлично смотрится в обеденных группах со столами Taper 80 и Taper 135.",
+        "usage": "Для общественных зон, заведений HoReCa, террас, дома",
+        "seo_title": "Купить Стул «TODO» в Ташкенте - BTT",
+        "seo_description": "Стул «TODO» (Пластиковые стулья) от BTT. Размеры: 80 × 51 × 51 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«TODO» stuli",
+        "category_label": "Plastik stullar",
+        "description": "Yaxlit o'rindiq va oyoq geometriyasiga ega amaliy hamda ixcham Todo dizaynerlik stuli. Polimer korpus oson yuviladi. Uy oshxonasi, terassa, kutish zonalari, ofislar va HoReCa maskanlari uchun universal yechim. Taper 80 va Taper 135 stollari bilan to'plamda ajoyib ko'rinadi.",
+        "usage": "Jamoat zonalari, HoReCa maskanlari, terassa va uy uchun",
+        "seo_title": "Toshkentda «TODO» stuli sotib olish - BTT",
+        "seo_description": "BTT dan «TODO» stuli (Plastik stullar). O‘lchamlari: 80 × 51 × 51 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "TODO Chair",
+        "category_label": "Plastic chairs",
+        "description": "Practical minimalist designer chair Todo with a seamless contoured shell and balanced base geometry. Polymer shell cleans easily. Versatile for residential dining rooms, kitchens, terraces, as well as office breakrooms and HoReCa venues. Looks outstanding in dining sets with Taper 80 and Taper 135 tables.",
+        "usage": "For public areas, HoReCa venues, terraces, home",
+        "seo_title": "Buy TODO Chair in Tashkent - BTT",
+        "seo_description": "TODO Chair (Plastic chairs) by BTT. Dimensions: 80 × 51 × 51 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 4,
+    "currency": "сум"
+  },
+  {
+    "slug": "stul-todo-soft",
+    "legacyId": "p16",
+    "model": "TODO SOFT",
+    "category": "plastic-chairs",
+    "price": 264000,
+    "dimensions": "80 × 51 × 51 см",
+    "materials": [
+      "пластик",
+      "текстиль"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "black",
+        "name": {
+          "ru": "Чёрный",
+          "uz": "Qora",
+          "en": "Black"
+        },
+        "hex": "#222222",
+        "image": "assets/prod-chair-todo-soft.jpg",
+        "images": [
+          "assets/prod-chair-todo-soft.jpg",
+          "assets/prod-chair-todo-soft-side.jpg",
+          "assets/prod-chair-todo-soft-detail-seat.jpg",
+          "assets/prod-chair-todo-soft-detail-back.jpg",
+          "assets/scene-dining-contrast.png"
+        ]
+      },
+      {
+        "id": "yellow",
+        "name": {
+          "ru": "Жёлтый",
+          "uz": "Sariq",
+          "en": "Yellow"
+        },
+        "hex": "#EAA824",
+        "image": "assets/prod-chair-todo-soft-yellow.jpg",
+        "images": [
+          "assets/prod-chair-todo-soft-yellow.jpg",
+          "assets/prod-chair-todo-soft-yellow-side.jpg",
+          "assets/prod-chair-todo-soft-yellow-detail-seat.jpg",
+          "assets/prod-chair-todo-soft-yellow-detail-back.jpg",
+          "assets/scene-dining-warm.png"
+        ]
+      },
+      {
+        "id": "grey",
+        "name": {
+          "ru": "Серый",
+          "uz": "Kulrang",
+          "en": "Grey"
+        },
+        "hex": "#808080",
+        "image": "assets/prod-chair-todo-soft-gray.jpg",
+        "images": [
+          "assets/prod-chair-todo-soft-gray.jpg",
+          "assets/prod-chair-todo-soft-gray-side.jpg",
+          "assets/prod-chair-todo-soft-gray-detail-seat.jpg",
+          "assets/prod-chair-todo-soft-gray-detail-back.jpg",
+          "assets/scene-dining-grey.png"
+        ]
+      },
+      {
+        "id": "red",
+        "name": {
+          "ru": "Красный",
+          "uz": "Qizil",
+          "en": "Red"
+        },
+        "hex": "#E32626",
+        "image": "assets/prod-chair-todo-soft-red.jpg",
+        "images": [
+          "assets/prod-chair-todo-soft-red.jpg",
+          "assets/prod-chair-todo-soft-red-side.jpg",
+          "assets/prod-chair-todo-soft-red-detail-seat.jpg",
+          "assets/prod-chair-todo-soft-red-detail-back.jpg",
+          "assets/scene-dining-warm.png"
+        ]
+      },
+      {
+        "id": "coffee",
+        "name": {
+          "ru": "Кофейный",
+          "uz": "Kofe",
+          "en": "Coffee"
+        },
+        "hex": "#9E7E6B",
+        "image": "assets/prod-chair-todo-soft-coffee.jpg",
+        "images": [
+          "assets/prod-chair-todo-soft-coffee.jpg",
+          "assets/prod-chair-todo-soft-coffee-side.jpg",
+          "assets/prod-chair-todo-soft-coffee-detail-seat.jpg",
+          "assets/prod-chair-todo-soft-coffee-detail-back.jpg",
+          "assets/scene-dining-beige.png"
+        ]
+      },
+      {
+        "id": "white",
+        "name": {
+          "ru": "Белый",
+          "uz": "Oq",
+          "en": "White"
+        },
+        "hex": "#FFFFFF",
+        "image": "assets/prod-chair-todo-soft-white.jpg",
+        "images": [
+          "assets/prod-chair-todo-soft-white.jpg",
+          "assets/prod-chair-todo-soft-white-side.jpg",
+          "assets/prod-chair-todo-soft-white-detail-seat.jpg",
+          "assets/prod-chair-todo-soft-white-detail-back.jpg",
+          "assets/scene-dining-light.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/prod-chair-todo-soft.jpg",
+      "assets/prod-chair-todo-soft-side.jpg",
+      "assets/prod-chair-todo-soft-detail-seat.jpg",
+      "assets/prod-chair-todo-soft-detail-back.jpg",
+      "assets/prod-chair-todo-soft-yellow.jpg",
+      "assets/prod-chair-todo-soft-yellow-side.jpg",
+      "assets/prod-chair-todo-soft-yellow-detail-seat.jpg",
+      "assets/prod-chair-todo-soft-yellow-detail-back.jpg",
+      "assets/prod-chair-todo-soft-gray.jpg",
+      "assets/prod-chair-todo-soft-gray-side.jpg",
+      "assets/prod-chair-todo-soft-gray-detail-seat.jpg",
+      "assets/prod-chair-todo-soft-gray-detail-back.jpg",
+      "assets/prod-chair-todo-soft-red.jpg",
+      "assets/prod-chair-todo-soft-red-side.jpg",
+      "assets/prod-chair-todo-soft-red-detail-seat.jpg",
+      "assets/prod-chair-todo-soft-red-detail-back.jpg",
+      "assets/prod-chair-todo-soft-coffee.jpg",
+      "assets/prod-chair-todo-soft-coffee-side.jpg",
+      "assets/prod-chair-todo-soft-coffee-detail-seat.jpg",
+      "assets/prod-chair-todo-soft-coffee-detail-back.jpg",
+      "assets/prod-chair-todo-soft-white.jpg",
+      "assets/prod-chair-todo-soft-white-side.jpg",
+      "assets/prod-chair-todo-soft-white-detail-seat.jpg",
+      "assets/prod-chair-todo-soft-white-detail-back.jpg",
+      "assets/scene-dining-contrast.png"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стул «TODO SOFT»",
+        "category_label": "Пластиковые стулья",
+        "description": "Улучшенная версия Todo Soft, объединяющая эргономичный корпус из формованного полипропилена с мягким текстильным сиденьем. Обеспечивает повышенный комфорт при длительных обедах и рабочих встречах. Доступен в 6 популярных оттенках. Великолепно комбинируется со столами Taper 135 и Taper 80, образуя гармоничную обеденную группу для 4-6 человек.",
+        "usage": "Для дома, кухни, террасы, кафе и ресторанов",
+        "seo_title": "Купить Стул «TODO SOFT» в Ташкенте - BTT",
+        "seo_description": "Стул «TODO SOFT» (Пластиковые стулья) от BTT. Размеры: 80 × 51 × 51 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«TODO SOFT» stuli",
+        "category_label": "Plastik stullar",
+        "description": "Qolipli polipropilendan ishlangan ergonomik korpusni yumshoq to'qimachilik o'rindig'i bilan birlashtirgan Todo Soft stuli. Uzoq tushliklar va uchrashuvlar chog'ida yuqori darajadagi qulaylikni ta'minlaydi. 6 ta mashhur rangda taqdim etiladi. Taper 135 va Taper 80 stollari bilan birga 4-6 kishilik to'liq ovqatlanish guruhini hosil qiladi.",
+        "usage": "Uy, oshxona, terassa, kafe va restoranlar uchun",
+        "seo_title": "Toshkentda «TODO SOFT» stuli sotib olish - BTT",
+        "seo_description": "BTT dan «TODO SOFT» stuli (Plastik stullar). O‘lchamlari: 80 × 51 × 51 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "TODO SOFT Chair",
+        "category_label": "Plastic chairs",
+        "description": "Enhanced Todo Soft chair combining a contoured polypropylene shell with a soft padded textile seat. Delivers elevated comfort for long meals, meetings, and gatherings. Available in 6 versatile shades. Combines effortlessly with Taper 135 and Taper 80 tables to create an elegant dining ensemble for 4-6 people.",
+        "usage": "For home, kitchen, terrace, cafes and restaurants",
+        "seo_title": "Buy TODO SOFT Chair in Tashkent - BTT",
+        "seo_description": "TODO SOFT Chair (Plastic chairs) by BTT. Dimensions: 80 × 51 × 51 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 5,
+    "currency": "сум"
+  },
+  {
+    "slug": "stul-jardin",
+    "legacyId": "p6",
+    "model": "JARDIN",
+    "category": "plastic-chairs",
+    "price": 344000,
+    "dimensions": "73.5 × 53.5 × 55.5 см",
+    "materials": [
+      "пластик"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "cappuccino",
+        "name": {
+          "ru": "Капучино",
+          "uz": "Kapuchino",
+          "en": "Cappuccino"
+        },
+        "hex": "#A88D73",
+        "image": "assets/prod-chair-jardin.jpg",
+        "images": [
+          "assets/prod-chair-jardin.jpg",
+          "assets/prod-chair-jardin-back.jpg",
+          "assets/prod-chair-jardin-detail-seat.jpg",
+          "assets/scene-dining-warm.png"
+        ]
+      },
+      {
+        "id": "olive",
+        "name": {
+          "ru": "Оливковый",
+          "uz": "Zaytun",
+          "en": "Olive"
+        },
+        "hex": "#768C65",
+        "image": "assets/prod-chair-jardin-olive.jpg",
+        "images": [
+          "assets/prod-chair-jardin-olive.jpg",
+          "assets/prod-chair-jardin-olive-back.jpg",
+          "assets/prod-chair-jardin-olive-detail-seat.jpg",
+          "assets/prod-chair-jardin-olive-detail-back.jpg",
+          "assets/hero-garden-furniture.png"
+        ]
+      },
+      {
+        "id": "grey",
+        "name": {
+          "ru": "Серый",
+          "uz": "Kulrang",
+          "en": "Grey"
+        },
+        "hex": "#808080",
+        "image": "assets/prod-chair-jardin-grey.jpg",
+        "images": [
+          "assets/prod-chair-jardin-grey.jpg",
+          "assets/prod-chair-jardin-grey-back.jpg",
+          "assets/prod-chair-jardin-grey-detail-seat.jpg",
+          "assets/prod-chair-jardin-grey-detail-back.jpg",
+          "assets/scene-dining-grey.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/prod-chair-jardin.jpg",
+      "assets/prod-chair-jardin-back.jpg",
+      "assets/prod-chair-jardin-detail-seat.jpg",
+      "assets/scene-dining-warm.png",
+      "assets/prod-chair-jardin-olive.jpg",
+      "assets/prod-chair-jardin-olive-back.jpg",
+      "assets/prod-chair-jardin-olive-detail-seat.jpg",
+      "assets/prod-chair-jardin-olive-detail-back.jpg",
+      "assets/hero-garden-furniture.png",
+      "assets/prod-chair-jardin-grey.jpg",
+      "assets/prod-chair-jardin-grey-back.jpg",
+      "assets/prod-chair-jardin-grey-detail-seat.jpg",
+      "assets/prod-chair-jardin-grey-detail-back.jpg",
+      "assets/scene-dining-grey.png"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стул «JARDIN»",
+        "category_label": "Пластиковые стулья",
+        "description": "Элегантное кресло-стул JARDIN с анатомической спинкой, широким сиденьем и подлокотниками. Идеально подходит для обеденной зоны на кухне, террасе, в саду или в кафе. Практичный полимерный корпус легко очищается. Гармонично сочетается с круглыми и прямоугольными столами BTT (Taper 80, Corda 135) в оттенках капучино, оливковый и серый.",
+        "usage": "Для сада, веранды, террасы, кухни-гостиной, летних кафе и загородных домов",
+        "seo_title": "Купить Стул «JARDIN» в Ташкенте - BTT",
+        "seo_description": "Пластиковое кресло-стул «JARDIN» от BTT. Размеры: 73.5 × 53.5 × 55.5 см. Оттенки: капучино, оливковый, серый. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«JARDIN» stuli",
+        "category_label": "Plastik stullar",
+        "description": "Anatomik suyanchiq, keng o'rindiq va tirsak suyagichlarga ega nafis JARDIN kreslo-stuli. Oshxona, terassa, bog' yoki qahvaxonalardagi ovqatlanish hududi uchun ideal tanlov. Oson tozalanadigan amaliy polimer. Kapuchino, zaytun va kulrang tuslarda BTT davra va to'g'ri burchakli stollari (Taper 80, Corda 135) bilan uyg'unlashadi.",
+        "usage": "Bog', veranda, terassa, oshxona-mehmonxona, yozgi kafelar va dala hovlilar uchun",
+        "seo_title": "Toshkentda «JARDIN» stuli sotib olish - BTT",
+        "seo_description": "BTT dan «JARDIN» plastik kreslo-stuli. O‘lchamlari: 73.5 × 53.5 × 55.5 см. Ranglar: kapuchino, zaytun, kulrang. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "JARDIN Chair",
+        "category_label": "Plastic chairs",
+        "description": "Elegant JARDIN armchair-chair featuring an ergonomic contoured backrest, generous seating, and supportive armrests. Ideal for dining areas in kitchens, terraces, gardens, or modern cafes. Practical polymer cleans easily. Pairs seamlessly with round and rectangular BTT tables (Taper 80, Corda 135) across cappuccino, olive, and grey finishes.",
+        "usage": "For garden, veranda, terrace, open-plan kitchen, outdoor cafes, and residences",
+        "seo_title": "Buy JARDIN Chair in Tashkent - BTT",
+        "seo_description": "JARDIN plastic armchair by BTT. Dimensions: 73.5 × 53.5 × 55.5 см. Finishes: cappuccino, olive, grey. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 6,
+    "currency": "сум"
+  },
+  {
+    "slug": "stul-lira",
+    "legacyId": "p7",
+    "model": "LIRA",
+    "category": "upholstered-chairs",
+    "price": 354000,
+    "dimensions": "95 × 55 × 48 см",
+    "materials": [
+      "металл",
+      "текстиль"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [],
+    "isTable": false,
+    "images": [
+      "assets/placeholder.svg",
+      "assets/scene-dining-azure.png",
+      "assets/scene-dining-cream.png"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стул «LIRA»",
+        "category_label": "Мягкие стулья",
+        "description": "Изысканный обеденный стул Lira с высокой спинкой 95 см, мягкой фактурной обивкой и металлическим каркасом. Создаёт атмосферу роскоши и уюта в интерьере гостиной, столовой или банкетного зала. Обеспечивает деликатную поддержку спины. Рекомендуется комплектовать с большим столом Taper 135 или Corda 135.",
+        "usage": "Для столовой, гостиной, кухни, банкетных залов",
+        "seo_title": "Купить Стул «LIRA» в Ташкенте - BTT",
+        "seo_description": "Стул «LIRA» (Мягкие стулья) от BTT. Размеры: 95 × 55 × 48 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«LIRA» stuli",
+        "category_label": "Yumshoq stullar",
+        "description": "95 sm balandlikdagi suyanchiq, yumshoq sifatli qoplama va metall karkasga ega nafis Lira stuli. Mehmonxona, oshxona yoki banket zallarida hashamat va shinamlik muhitini yaratadi. Orqa qismni qulay quvvatlaydi. Katta Taper 135 yoki Corda 135 stollari bilan birgalikda tanlash tavsiya etiladi.",
+        "usage": "Oshxona, mehmonxona, banket zallari uchun",
+        "seo_title": "Toshkentda «LIRA» stuli sotib olish - BTT",
+        "seo_description": "BTT dan «LIRA» stuli (Yumshoq stullar). O‘lchamlari: 95 × 55 × 48 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "LIRA Chair",
+        "category_label": "Upholstered chairs",
+        "description": "Refined dining chair Lira featuring an elegant 95 cm high backrest, soft upholstery, and a steel frame. Adds sophisticated warmth to dining rooms, living spaces, and banquet halls. Provides gentle, supportive posture. Highly recommended paired with large Taper 135 or Corda 135 dining tables.",
+        "usage": "For dining room, living room, kitchen, banquet halls",
+        "seo_title": "Buy LIRA Chair in Tashkent - BTT",
+        "seo_description": "LIRA Chair (Upholstered chairs) by BTT. Dimensions: 95 × 55 × 48 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 7,
+    "currency": "сум"
+  },
+  {
+    "slug": "kreslo-como",
+    "legacyId": "p8",
+    "model": "COMO",
+    "category": "upholstered-chairs",
+    "price": 486000,
+    "dimensions": "82 × 63 × 60 см",
+    "materials": [
+      "металл",
+      "текстиль"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [],
+    "isTable": false,
+    "images": [
+      "assets/placeholder.svg",
+      "assets/scene-dining-warm.png",
+      "assets/scene-dining-marble.png"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Кресло «COMO»",
+        "category_label": "Мягкие стулья",
+        "description": "Статусное мягкое полукресло Como с глубокой посадкой, широкими боковыми поддержками и металлическим основанием. Текстильная обивка приятна на ощупь. Превосходно подходит для лаунж-зоны, кабинета, каминной или просторной столовой. Идеально сочетается со столами Taper 135 и Corda 135.",
+        "usage": "Для гостиной, лаунж-зон, кабинета, спальни",
+        "seo_title": "Купить Кресло «COMO» в Ташкенте - BTT",
+        "seo_description": "Кресло «COMO» (Мягкие стулья) от BTT. Размеры: 82 × 63 × 60 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«COMO» kreslosi",
+        "category_label": "Yumshoq stullar",
+        "description": "Chuqur o'rindiq, qulay yon suyangichlar va metall asosga ega viqorli Como yarim kreslosi. Qoplamasi teginish uchun yoqimli . Dam olish hududi, ish xonasi, kamin oldi yoki keng oshxona uchun ajoyib mos tushadi. Taper 135 va Corda 135 stollari bilan to'liq uyg'unlik hosil qiladi.",
+        "usage": "Mehmonxona, dam olish zonalari, ish xonasi, yotoqxona uchun",
+        "seo_title": "Toshkentda «COMO» kreslosi sotib olish - BTT",
+        "seo_description": "BTT dan «COMO» kreslosi (Yumshoq stullar). O‘lchamlari: 82 × 63 × 60 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "COMO Armchair",
+        "category_label": "Upholstered chairs",
+        "description": "Distinguished Como armchair featuring deep generous seating, wraparound contours, and a metal frame. The tactile textile upholstery is pleasant to the touch. Perfect for lounge areas, home offices, and spacious dining rooms. Pairs exceptionally with Taper 135 and Corda 135 tables.",
+        "usage": "For living room, lounge areas, home office, bedroom",
+        "seo_title": "Buy COMO Armchair in Tashkent - BTT",
+        "seo_description": "COMO Armchair (Upholstered chairs) by BTT. Dimensions: 82 × 63 × 60 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 8,
+    "currency": "сум"
+  },
+  {
+    "slug": "stol-taper-rotang-80",
+    "legacyId": "p9",
+    "model": "Taper Rotang 80x80",
+    "category": "tables",
+    "price": 615000,
+    "dimensions": "80 × 80 × 75 см",
+    "materials": [
+      "ЛДСП",
+      "металл",
+      "искусственный ротанг"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-marble",
+        "name": {
+          "ru": "Белый мрамор",
+          "uz": "Oq marmar",
+          "en": "White Marble"
+        },
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-taper-rotang-80-white.jpg",
+        "images": [
+          "assets/prod-table-taper-rotang-80-white.jpg",
+          "assets/prod-table-taper-rotang-80-white-front.jpg",
+          "assets/prod-table-taper-rotang-80-detail-white.jpg",
+          "assets/prod-table-taper-rotang-80-detail-leg.jpg",
+          "assets/scene-dining-marble.png"
+        ]
+      },
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-taper-rotang-80-black.jpg",
+        "images": [
+          "assets/prod-table-taper-rotang-80-black.jpg",
+          "assets/prod-table-taper-rotang-80-black-front.jpg",
+          "assets/prod-table-taper-rotang-80-detail-black.jpg",
+          "assets/prod-table-taper-rotang-80-detail-leg.jpg",
+          "assets/scene-dining-contrast.png"
+        ]
+      }
+    ],
+    "isTable": true,
+    "images": [
+      "assets/prod-table-taper-rotang-80-white.jpg",
+      "assets/prod-table-taper-rotang-80-black.jpg",
+      "assets/prod-table-taper-rotang-80-white-front.jpg",
+      "assets/prod-table-taper-rotang-80-black-front.jpg",
+      "assets/prod-table-taper-rotang-80-detail-white.jpg",
+      "assets/prod-table-taper-rotang-80-detail-black.jpg",
+      "assets/prod-table-taper-rotang-80-detail-leg.jpg",
+      "assets/scene-dining-marble.png"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стол «Taper Rotang 80x80»",
+        "category_label": "Столы",
+        "description": "Компактный квадратный стол Taper Rotang 80×80 см. Устойчивый металлический каркас декорирован искусственным ротангом ручного плетения, а столешница из ЛДСП имитирует фактуру мрамора. Прекрасный выбор для 2-4 персон на кухне, балконе или в кофейне. Идеально комплектуется стульями Vertex и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        "usage": "Для крытых террас, кухни, кофеен и балконов",
+        "seo_title": "Купить Стол «Taper Rotang 80x80» в Ташкенте - BTT",
+        "seo_description": "Стол «Taper Rotang 80x80» (Столы) от BTT. Размеры: 80 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«Taper Rotang 80x80» stoli",
+        "category_label": "Stollar",
+        "description": "Ixcham kvadrat Taper Rotang 80×80 sm stoli. Metall karkas qo'lda to'qilgan sun'iy rotang bilan bezatilgan, LDSP stol usti esa marmar to'qimasini aks ettiradi. Oshxona, balkon yoki qahvaxonada 2-4 kishi uchun ajoyib yechim. Vertex va Jardin stullari bilan mukammal mos keladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
+        "usage": "Yopiq terassalar, oshxona, qahvaxona va balkonlar uchun",
+        "seo_title": "Toshkentda «Taper Rotang 80x80» stoli sotib olish - BTT",
+        "seo_description": "BTT dan «Taper Rotang 80x80» stoli (Stollar). O‘lchamlari: 80 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "Taper Rotang 80x80 Table",
+        "category_label": "Tables",
+        "description": "Compact square table Taper Rotang 80×80 cm. The stable metal frame is trimmed with hand-woven artificial rattan, paired with a marble-effect laminated top. A comfortable choice for 2-4 seats in kitchens, balconies, or boutique cafes. Pairs perfectly with Vertex and Jardin chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
+        "usage": "For covered terraces, kitchen, cafes and balconies",
+        "seo_title": "Buy Taper Rotang 80x80 Table in Tashkent - BTT",
+        "seo_description": "Taper Rotang 80x80 Table (Tables) by BTT. Dimensions: 80 × 80 × 75 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 9,
+    "currency": "сум"
+  },
+  {
+    "slug": "stol-vertex-d90",
+    "legacyId": "p10",
+    "model": "Vertex D90",
+    "category": "tables",
+    "price": 680000,
+    "dimensions": "Ø90 × 75 см",
+    "materials": [
+      "ЛДСП",
+      "металл"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-marble",
+        "name": {
+          "ru": "Белый мрамор",
+          "uz": "Oq marmar",
+          "en": "White Marble"
+        },
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-vertex-d90.jpg",
+        "images": [
+          "assets/prod-table-vertex-d90.jpg",
+          "assets/prod-table-vertex-d90-detail-top.jpg",
+          "assets/prod-table-vertex-d90-detail-leg.jpg",
+          "assets/scene-dining-marble.png"
+        ]
+      },
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-vertex-black.jpg",
+        "images": [
+          "assets/prod-table-vertex-black.jpg",
+          "assets/prod-table-vertex-d90-detail-top.jpg",
+          "assets/prod-table-vertex-d90-detail-leg.jpg",
+          "assets/scene-dining-contrast.png"
+        ]
+      }
+    ],
+    "isTable": true,
+    "images": [
+      "assets/prod-table-vertex-d90.jpg",
+      "assets/prod-table-vertex-black.jpg",
+      "assets/prod-table-vertex-d90-detail-top.jpg",
+      "assets/prod-table-vertex-d90-detail-leg.jpg",
+      "assets/scene-dining-marble.png"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стол «Vertex D90»",
+        "category_label": "Столы",
+        "description": "Круглый обеденный стол Vertex диаметром 90 см. Металлический каркас и столешница из ЛДСП под мрамор создают визуальную лёгкость и объединяют пространство. Круглая форма безопасна и удобна для 3-4 персон. Идеально гармонирует со стульями серии Vertex и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        "usage": "Для обеденных зон, кухонь, кафе и крытых террас",
+        "seo_title": "Купить Стол «Vertex D90» в Ташкенте - BTT",
+        "seo_description": "Стол «Vertex D90» (Столы) от BTT. Размеры: Ø90 × 75 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«Vertex D90» stoli",
+        "category_label": "Stollar",
+        "description": "Diametri 90 sm bo'lgan yumaloq Vertex ovqat stoli. Metall karkas va marmar uslubidagi LDSP stol usti xonada yengillik va shinamlik yaratadi. Dumaloq shakl 3-4 kishi uchun xavfsiz va juda qulay. Vertex va Jardin stullari bilan uyg'unlashadi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
+        "usage": "Ovqatlanish hududi, oshxonalar, kafe va yopiq terassalar uchun",
+        "seo_title": "Toshkentda «Vertex D90» stoli sotib olish - BTT",
+        "seo_description": "BTT dan «Vertex D90» stoli (Stollar). O‘lchamlari: Ø90 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "Vertex D90 Table",
+        "category_label": "Tables",
+        "description": "Round dining table Vertex with a 90 cm diameter. The metal base and marble-look laminated top introduce visual lightness and bring people together. The circular footprint comfortably accommodates 3-4 seats. Pairs effortlessly with Vertex and Jardin chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
+        "usage": "For dining areas, kitchens, cafes and covered terraces",
+        "seo_title": "Buy Vertex D90 Table in Tashkent - BTT",
+        "seo_description": "Vertex D90 Table (Tables) by BTT. Dimensions: Ø90 × 75 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 10,
+    "currency": "сум"
+  },
+  {
+    "slug": "stol-taper-rotang-135",
+    "legacyId": "p11",
+    "model": "Taper Rotang 135x80",
+    "category": "tables",
+    "price": 715000,
+    "dimensions": "135 × 80 × 75 см",
+    "materials": [
+      "ЛДСП",
+      "металл",
+      "искусственный ротанг"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-marble",
+        "name": {
+          "ru": "Белый мрамор",
+          "uz": "Oq marmar",
+          "en": "White Marble"
+        },
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-taper-rotang-135-white.jpg",
+        "images": [
+          "assets/prod-table-taper-rotang-135-white.jpg",
+          "assets/prod-table-taper-rotang-135-detail-side.jpg",
+          "assets/prod-table-taper-rotang-135-detail-top.jpg",
+          "assets/prod-table-taper-135-white-scene.jpg"
+        ]
+      },
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-taper-rotang-135-black.jpg",
+        "images": [
+          "assets/prod-table-taper-rotang-135-black.jpg",
+          "assets/prod-table-taper-rotang-135-detail-black.jpg",
+          "assets/prod-table-taper-rotang-135-detail-black-edge.jpg",
+          "assets/prod-table-taper-135-scene.jpg"
+        ]
+      }
+    ],
+    "isTable": true,
+    "images": [
+      "assets/prod-table-taper-rotang-135-white.jpg",
+      "assets/prod-table-taper-rotang-135-black.jpg",
+      "assets/prod-table-taper-rotang-135-detail-side.jpg",
+      "assets/prod-table-taper-rotang-135-detail-top.jpg",
+      "assets/prod-table-taper-rotang-135-detail-black.jpg",
+      "assets/prod-table-taper-rotang-135-detail-black-edge.jpg",
+      "assets/prod-table-taper-135-white-scene.jpg"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стол «Taper Rotang 135x80»",
+        "category_label": "Столы",
+        "description": "Просторный обеденный стол Taper Rotang 135×80 см. Металлический каркас с декоративной отделкой из искусственного ротанга и большая столешница из ЛДСП с фактурой мрамора комфортно размещают 4-6 персон. Замечательное решение для семейных обедов на кухне, в столовой или на крытой веранде. Рекомендуется сочетать со стульями Corda и Vertex. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        "usage": "Для обедов всей семьёй на крытой террасе или в столовой",
+        "seo_title": "Купить Стол «Taper Rotang 135x80» в Ташкенте - BTT",
+        "seo_description": "Стол «Taper Rotang 135x80» (Столы) от BTT. Размеры: 135 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«Taper Rotang 135x80» stoli",
+        "category_label": "Stollar",
+        "description": "Keng Taper Rotang 135×80 sm ovqat stoli. Sun'iy rotang bilan bezatilgan metall karkas va marmar fakturali katta LDSP stol usti 4-6 kishini bemalol qabul qiladi. Oshxona, mehmonxona yoki yopiq ayvonda oilaviy tushliklar uchun ajoyib yechim. Corda va Vertex stullari bilan to'ldirish tavsiya etiladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
+        "usage": "Oilaviy tushliklar uchun yopiq terassa yoki oshxonada",
+        "seo_title": "Toshkentda «Taper Rotang 135x80» stoli sotib olish - BTT",
+        "seo_description": "BTT dan «Taper Rotang 135x80» stoli (Stollar). O‘lchamlari: 135 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "Taper Rotang 135x80 Table",
+        "category_label": "Tables",
+        "description": "Generous dining table Taper Rotang 135×80 cm. The metal frame with woven artificial rattan detailing and large marble-texture laminated tabletop comfortably seats 4-6 guests. Ideal for family dining in kitchens, dining rooms, or covered verandas. Best matched with Corda and Vertex chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
+        "usage": "For family dining on covered terraces or in dining rooms",
+        "seo_title": "Buy Taper Rotang 135x80 Table in Tashkent - BTT",
+        "seo_description": "Taper Rotang 135x80 Table (Tables) by BTT. Dimensions: 135 × 80 × 75 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 11,
+    "currency": "сум"
+  },
+  {
+    "slug": "stol-taper-80",
+    "legacyId": "p12",
+    "model": "Taper 80x80",
+    "category": "tables",
+    "price": 734000,
+    "dimensions": "80 × 80 × 75 см",
+    "materials": [
+      "ЛДСП",
+      "металл"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-marble",
+        "name": {
+          "ru": "Белый мрамор",
+          "uz": "Oq marmar",
+          "en": "White Marble"
+        },
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-taper-80-white.jpg",
+        "images": [
+          "assets/prod-table-taper-80-white.jpg",
+          "assets/prod-table-taper-80-detail-white-side.jpg",
+          "assets/prod-table-taper-80-detail-white-leg.jpg",
+          "assets/prod-table-taper-80-detail-top.jpg",
+          "assets/scene-dining-light.png"
+        ]
+      },
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-taper-80-black.jpg",
+        "images": [
+          "assets/prod-table-taper-80-black.jpg",
+          "assets/prod-table-taper-80-detail-top.jpg",
+          "assets/prod-table-taper-80-detail-leg.jpg",
+          "assets/scene-dining-grey.png"
+        ]
+      }
+    ],
+    "isTable": true,
+    "images": [
+      "assets/prod-table-taper-80-white.jpg",
+      "assets/prod-table-taper-80-black.jpg",
+      "assets/prod-table-taper-80-detail-white-side.jpg",
+      "assets/prod-table-taper-80-detail-white-leg.jpg",
+      "assets/prod-table-taper-80-detail-top.jpg",
+      "assets/prod-table-taper-80-detail-leg.jpg",
+      "assets/scene-dining-light.png"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стол «Taper 80x80»",
+        "category_label": "Столы",
+        "description": "Практичный квадратный стол Taper 80×80 см в современном минималистичном стиле. Металлический каркас и столешница из ЛДСП с фактурой белого или чёрного мрамора. Оптимален для небольших кухонь, балконов, квартир-студий и кафе. Образует гармоничный комплект со стульями Jardin, Roero и Noero. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        "usage": "Для кухонь, балконов, крытых веранд и кафе",
+        "seo_title": "Купить Стол «Taper 80x80» в Ташкенте - BTT",
+        "seo_description": "Стол «Taper 80x80» (Столы) от BTT. Размеры: 80 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«Taper 80x80» stoli",
+        "category_label": "Stollar",
+        "description": "Zamonaviy minimalizm uslubidagi ixcham Taper 80×80 sm stoli. Metall karkas va oq yoki qora marmar fakturali chidamli LDSP stol usti. Kichik oshxonalar, balkonlar, studiyalar va kafelar uchun eng qulay tanlov. Jardin, Roero va Noero stullari bilan to'liq to'plam hosil qiladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
+        "usage": "Oshxona, balkon, yopiq ayvonlar va kafelar uchun",
+        "seo_title": "Toshkentda «Taper 80x80» stoli sotib olish - BTT",
+        "seo_description": "BTT dan «Taper 80x80» stoli (Stollar). O‘lchamlari: 80 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "Taper 80x80 Table",
+        "category_label": "Tables",
+        "description": "Practical square table Taper 80×80 cm in a modern minimalist aesthetic. Steel base and a laminated tabletop in white or black marble finishes. Optimal for compact kitchens, balconies, studios, and cafes. Forms a balanced set with Jardin, Roero, and Noero chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
+        "usage": "For kitchens, balconies, covered verandas and cafes",
+        "seo_title": "Buy Taper 80x80 Table in Tashkent - BTT",
+        "seo_description": "Taper 80x80 Table (Tables) by BTT. Dimensions: 80 × 80 × 75 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 12,
+    "currency": "сум"
+  },
+  {
+    "slug": "stol-vertex-80",
+    "legacyId": "p13",
+    "model": "Vertex 80x80",
+    "category": "tables",
+    "price": 738000,
+    "dimensions": "80 × 80 × 75 см",
+    "materials": [
+      "ЛДСП",
+      "металл"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-marble",
+        "name": {
+          "ru": "Белый мрамор",
+          "uz": "Oq marmar",
+          "en": "White Marble"
+        },
+        "hex": "#E8E6E1",
+        "image": "assets/placeholder.svg",
+        "images": [
+          "assets/placeholder.svg"
+        ]
+      },
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29",
+        "image": "assets/placeholder.svg",
+        "images": [
+          "assets/placeholder.svg"
+        ]
+      }
+    ],
+    "isTable": true,
+    "images": [
+      "assets/placeholder.svg"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стол «Vertex 80x80»",
+        "category_label": "Столы",
+        "description": "Квадратный обеденный стол Vertex 80×80 см с выразительной геометрией металлических опор и столешницей из ЛДСП под мрамор. Компактные габариты обеспечивают удобную посадку для 2-4 персон без загромождения пространства. Идеально комбинируется со стульями Vertex и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        "usage": "Для обеденных зон, крытых веранд, баров и ресторанов",
+        "seo_title": "Купить Стол «Vertex 80x80» в Ташкенте - BTT",
+        "seo_description": "Стол «Vertex 80x80» (Столы) от BTT. Размеры: 80 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«Vertex 80x80» stoli",
+        "category_label": "Stollar",
+        "description": "Kvadrat Vertex 80×80 sm stoli aniq metall tayanchlar geometriyasi va marmar ostidagi LDSP ustiga ega. Ixcham o'lchamlar bo'sh joyni ortiqcha band qilmasdan 2-4 kishi uchun qulay o'tirishni ta'minlaydi. Vertex va Jardin stullari bilan mukammal mos tushadi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
+        "usage": "Ovqatlanish hududi, yopiq ayvonlar, bar va restoranlar uchun",
+        "seo_title": "Toshkentda «Vertex 80x80» stoli sotib olish - BTT",
+        "seo_description": "BTT dan «Vertex 80x80» stoli (Stollar). O‘lchamlari: 80 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "Vertex 80x80 Table",
+        "category_label": "Tables",
+        "description": "Square dining table Vertex 80×80 cm with geometric metal support legs and a marble-finish laminated top. Compact proportions offer comfortable seating for 2-4 people without crowding the room. Pairs naturally with Vertex and Jardin chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
+        "usage": "For dining areas, covered verandas, bars and restaurants",
+        "seo_title": "Buy Vertex 80x80 Table in Tashkent - BTT",
+        "seo_description": "Vertex 80x80 Table (Tables) by BTT. Dimensions: 80 × 80 × 75 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 13,
+    "currency": "сум"
+  },
+  {
+    "slug": "stol-taper-135",
+    "legacyId": "p14",
+    "model": "Taper 135x80",
+    "category": "tables",
+    "price": 885000,
+    "dimensions": "135 × 80 × 75 см",
+    "materials": [
+      "ЛДСП",
+      "металл"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-marble",
+        "name": {
+          "ru": "Белый мрамор",
+          "uz": "Oq marmar",
+          "en": "White Marble"
+        },
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-taper-135-white.jpg",
+        "images": [
+          "assets/prod-table-taper-135-white.jpg",
+          "assets/prod-table-taper-135-detail-white-texture.jpg",
+          "assets/prod-table-taper-135-detail-white-edge.jpg",
+          "assets/prod-table-taper-135-white-scene.jpg"
+        ]
+      },
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-taper-135-black.jpg",
+        "images": [
+          "assets/prod-table-taper-135-black.jpg",
+          "assets/prod-table-taper-135-detail-black.jpg",
+          "assets/prod-table-taper-135-detail-texture.png",
+          "assets/prod-table-taper-135-scene.jpg"
+        ]
+      }
+    ],
+    "isTable": true,
+    "images": [
+      "assets/prod-table-taper-135-white.jpg",
+      "assets/prod-table-taper-135-black.jpg",
+      "assets/prod-table-taper-135-detail-white-texture.jpg",
+      "assets/prod-table-taper-135-detail-white-edge.jpg",
+      "assets/prod-table-taper-135-white-scene.jpg",
+      "assets/prod-table-taper-135-detail-black.jpg",
+      "assets/prod-table-taper-135-detail-texture.png",
+      "assets/prod-table-taper-135-scene.jpg"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стол «Taper 135x80»",
+        "category_label": "Столы",
+        "description": "Вместительный обеденный стол Taper 135×80 см для уютных встреч большой семьи и компании друзей. Металлический каркас и ламинированная столешница из ЛДСП с фактурой белого или чёрного мрамора рассчитаны на 4-6 персон. Замечательно сочетается со стульями Todo Soft, Todo и Roero. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        "usage": "Для просторной кухни, крытой веранды, банкетной зоны",
+        "seo_title": "Купить Стол «Taper 135x80» в Ташкенте - BTT",
+        "seo_description": "Стол «Taper 135x80» (Столы) от BTT. Размеры: 135 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«Taper 135x80» stoli",
+        "category_label": "Stollar",
+        "description": "Katta oila va do'stlar davrasi uchun keng Taper 135×80 sm ovqat stoli. Metall karkas hamda oq yoki qora marmar fakturali laminatsiyalangan LDSP stol usti 4-6 kishiga mo'ljallangan. Todo Soft, Todo va Roero stullari bilan ajoyib to'plam hosil qiladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
+        "usage": "Keng oshxona, yopiq veranda, banket hududi uchun",
+        "seo_title": "Toshkentda «Taper 135x80» stoli sotib olish - BTT",
+        "seo_description": "BTT dan «Taper 135x80» stoli (Stollar). O‘lchamlari: 135 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "Taper 135x80 Table",
+        "category_label": "Tables",
+        "description": "Spacious dining table Taper 135×80 cm designed for family dinners and hosting friends. Metal base with a white or black marble-finish laminated top comfortably seats 4-6 guests. Coordinates splendidly with Todo Soft, Todo, and Roero chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
+        "usage": "For spacious kitchen, covered veranda, banquet area",
+        "seo_title": "Buy Taper 135x80 Table in Tashkent - BTT",
+        "seo_description": "Taper 135x80 Table (Tables) by BTT. Dimensions: 135 × 80 × 75 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 14,
+    "currency": "сум"
+  },
+  {
+    "slug": "stol-corda-135",
+    "legacyId": "p15",
+    "model": "Corda 135x80",
+    "category": "tables",
+    "price": 949000,
+    "dimensions": "135 × 80 × 75 см",
+    "materials": [
+      "ЛДСП",
+      "металл"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-marble",
+        "name": {
+          "ru": "Белый мрамор",
+          "uz": "Oq marmar",
+          "en": "White Marble"
+        },
+        "hex": "#E8E6E1",
+        "image": "assets/prod-table-corda-135-white.jpg",
+        "images": [
+          "assets/prod-table-corda-135-white.jpg",
+          "assets/prod-table-corda-135-top-white.jpg",
+          "assets/prod-table-corda-135-detail-black.jpg"
+        ]
+      },
+      {
+        "id": "black-marble",
+        "name": {
+          "ru": "Чёрный мрамор",
+          "uz": "Qora marmar",
+          "en": "Black Marble"
+        },
+        "hex": "#2B2A29",
+        "image": "assets/prod-table-corda-135-black.jpg",
+        "images": [
+          "assets/prod-table-corda-135-black.jpg",
+          "assets/prod-table-corda-135-top-black.jpg",
+          "assets/prod-table-corda-135-detail-black.jpg"
+        ]
+      }
+    ],
+    "isTable": true,
+    "images": [
+      "assets/prod-table-corda-135-white.jpg",
+      "assets/prod-table-corda-135-black.jpg",
+      "assets/prod-table-corda-135-top-white.jpg",
+      "assets/prod-table-corda-135-top-black.jpg",
+      "assets/prod-table-corda-135-detail-black.jpg"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Стол «Corda 135x80»",
+        "category_label": "Столы",
+        "description": "Большой обеденный стол Corda 135×80 см. Металлический каркас в сочетании со столешницей из ЛДСП под благородный мрамор формирует презентабельную обеденную группу для 4-6 человек. Превосходно гармонирует со стульями Corda и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        "usage": "Для гостиной, столовой, закрытой террасы, HoReCa",
+        "seo_title": "Купить Стол «Corda 135x80» в Ташкенте - BTT",
+        "seo_description": "Стол «Corda 135x80» (Столы) от BTT. Размеры: 135 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "«Corda 135x80» stoli",
+        "category_label": "Stollar",
+        "description": "Katta Corda 135×80 sm ovqat stoli. Metall karkas va nafis marmar ko'rinishidagi LDSP stol usti 4-6 kishi uchun qulay ovqatlanish guruhini tashkil etadi. Corda va Jardin stullari bilan juda chiroyli uyg'unlashadi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to'g'ridan-to'g'ri yog'ingarchilikdan himoya qilish tavsiya etiladi.",
+        "usage": "Mehmonxona, oshxona, yopiq terassa, HoReCa uchun",
+        "seo_title": "Toshkentda «Corda 135x80» stoli sotib olish - BTT",
+        "seo_description": "BTT dan «Corda 135x80» stoli (Stollar). O‘lchamlari: 135 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+      },
+      "en": {
+        "name": "Corda 135x80 Table",
+        "category_label": "Tables",
+        "description": "Large dining table Corda 135×80 cm. Metal framing paired with an elegant marble-look laminated tabletop shapes a distinguished dining centerpiece for 4-6 people. Perfectly harmonizes with Corda and Jardin chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.",
+        "usage": "For living room, dining room, enclosed terrace, HoReCa",
+        "seo_title": "Buy Corda 135x80 Table in Tashkent - BTT",
+        "seo_description": "Corda 135x80 Table (Tables) by BTT. Dimensions: 135 × 80 × 75 см. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "unknown",
+    "availability": "unknown",
+    "active": 1,
+    "sort": 15,
+    "currency": "сум"
+  },
+  {
+    "slug": "kashpo-5l-ruchka",
+    "legacyId": "p17",
+    "model": "Кашпо 5л с ручкой",
+    "category": "planters",
+    "product_type": "simple",
+    "unit": "pcs",
+    "price": 120000,
+    "dimensions": "23 × 23 × 16.5 см",
+    "materials": [
+      "искусственный ротанг",
+      "пластиковая основа"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "beige",
+        "name": {
+          "ru": "Бежевый",
+          "uz": "Bej",
+          "en": "Beige"
+        },
+        "hex": "#D2B48C",
+        "image": "assets/products/kashpo-5l-ruchka/kashpo-5l-beige.webp",
+        "images": [
+          "assets/products/kashpo-5l-ruchka/kashpo-5l-beige.webp"
+        ]
+      },
+      {
+        "id": "grey",
+        "name": {
+          "ru": "Серый",
+          "uz": "Kulrang",
+          "en": "Gray"
+        },
+        "hex": "#A9A9A9",
+        "image": "assets/products/kashpo-5l-ruchka/kashpo-5l-gray.webp",
+        "images": [
+          "assets/products/kashpo-5l-ruchka/kashpo-5l-gray.webp"
+        ]
+      },
+      {
+        "id": "white",
+        "name": {
+          "ru": "Белая берёзка",
+          "uz": "Oq qayin",
+          "en": "White birch"
+        },
+        "hex": "#F5F5F0",
+        "image": "assets/products/kashpo-5l-ruchka/kashpo-5l-white.webp",
+        "images": [
+          "assets/products/kashpo-5l-ruchka/kashpo-5l-white.webp"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/products/kashpo-5l-ruchka/kashpo-5l-beige.webp",
+      "assets/products/kashpo-5l-ruchka/kashpo-5l-gray.webp",
+      "assets/products/kashpo-5l-ruchka/kashpo-5l-white.webp"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Кашпо 5л с ручкой",
+        "category_label": "Кашпо",
+        "description": "Плетёное кашпо ручной работы объёмом 5 литров с удобной ручкой. Изготовлено из полимерной ротанговой нити на пластиковой основе. Подходит для комнатных растений, веранды и террасы.",
+        "usage": "Для комнатных растений, террасы, веранды и сада",
+        "seo_title": "Купить Кашпо 5л с ручкой в Ташкенте - BTT",
+        "seo_description": "Кашпо 5л с ручкой от BTT. Размеры: 23 × 23 × 16.5 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "5L dastalik kashpo",
+        "category_label": "Kashpo",
+        "description": "Qulay dastaga ega 5 litrli qo'lda to'qilgan kashpo. Plastik asosga o'ralgan sun'iy rotang tolasidan tayyorlangan. Xona o'simliklari, veranda va terassa uchun mos.",
+        "usage": "Xona o'simliklari, terassa, veranda va bog' uchun",
+        "seo_title": "Toshkentda 5L dastalik kashpo sotib olish - BTT",
+        "seo_description": "BTT dan 5L dastalik kashpo. O'lchamlari: 23 × 23 × 16.5 sm. Toshkent va butun O'zbekiston bo'ylab yetkazib berish."
+      },
+      "en": {
+        "name": "5L Planter with Handle",
+        "category_label": "Planters",
+        "description": "Hand-woven 5-litre planter with a practical carrying handle. Crafted from synthetic rattan weave over a plastic base. Suitable for houseplants, verandas, and patios.",
+        "usage": "For houseplants, terrace, patio and garden",
+        "seo_title": "Buy 5L Planter with Handle in Tashkent - BTT",
+        "seo_description": "5L Planter with Handle by BTT. Dimensions: 23 × 23 × 16.5 cm. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "sort": 16,
+    "currency": "сум"
+  },
+  {
+    "slug": "kashpo-10l-klassika",
+    "legacyId": "p18",
+    "model": "Кашпо 10л Классика",
+    "category": "planters",
+    "product_type": "simple",
+    "unit": "pcs",
+    "price": 145000,
+    "dimensions": "29.5 × 29.5 × 22.5 см",
+    "materials": [
+      "искусственный ротанг",
+      "пластиковая основа"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white",
+        "name": {
+          "ru": "Белая берёзка",
+          "uz": "Oq qayin",
+          "en": "White birch"
+        },
+        "hex": "#F5F5F0",
+        "image": "assets/products/kashpo-10l-klassika/kashpo-10l-classic-white.webp",
+        "images": [
+          "assets/products/kashpo-10l-klassika/kashpo-10l-classic-white.webp"
+        ]
+      },
+      {
+        "id": "cream",
+        "name": {
+          "ru": "Кремовый",
+          "uz": "Krem",
+          "en": "Cream"
+        },
+        "hex": "#FFFDD0",
+        "image": "assets/products/kashpo-10l-klassika/kashpo-10l-classic-buttery.webp",
+        "images": [
+          "assets/products/kashpo-10l-klassika/kashpo-10l-classic-buttery.webp"
+        ]
+      },
+      {
+        "id": "yellow",
+        "name": {
+          "ru": "Жёлтый",
+          "uz": "Sariq",
+          "en": "Yellow"
+        },
+        "hex": "#FFD700",
+        "image": "assets/products/kashpo-10l-klassika/kashpo-10l-classic-yellow.webp",
+        "images": [
+          "assets/products/kashpo-10l-klassika/kashpo-10l-classic-yellow.webp"
+        ]
+      },
+      {
+        "id": "grey",
+        "name": {
+          "ru": "Серый",
+          "uz": "Kulrang",
+          "en": "Gray"
+        },
+        "hex": "#A9A9A9",
+        "image": "assets/products/kashpo-10l-klassika/kashpo-10l-classic-gray.webp",
+        "images": [
+          "assets/products/kashpo-10l-klassika/kashpo-10l-classic-gray.webp"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/products/kashpo-10l-klassika/kashpo-10l-classic-white.webp",
+      "assets/products/kashpo-10l-klassika/kashpo-10l-classic-buttery.webp",
+      "assets/products/kashpo-10l-klassika/kashpo-10l-classic-yellow.webp",
+      "assets/products/kashpo-10l-klassika/kashpo-10l-classic-gray.webp"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Кашпо 10л «Классика»",
+        "category_label": "Кашпо",
+        "description": "Классическое плетёное кашпо объёмом 10 литров с традиционным прямым плетением. Прекрасно подходит для средних цветов и декоративных кустарников.",
+        "usage": "Для террасы, балкона, гостиной и сада",
+        "seo_title": "Купить Кашпо 10л «Классика» в Ташкенте - BTT",
+        "seo_description": "Кашпо 10л «Классика» от BTT. Размеры: 29.5 × 29.5 × 22.5 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "10L «Klassika» kashpo",
+        "category_label": "Kashpo",
+        "description": "An'anaviy tekis to'quvli 10 litrli klassik kashpo. O'rta kattalikdagi gullar va manzarali butalar uchun ajoyib tanlov.",
+        "usage": "Terassa, balkon, mehmonxona va bog' uchun",
+        "seo_title": "Toshkentda 10L «Klassika» kashpo sotib olish - BTT",
+        "seo_description": "BTT dan 10L «Klassika» kashpo. O'lchamlari: 29.5 × 29.5 × 22.5 sm. Toshkent va butun O'zbekiston bo'ylab yetkazib berish."
+      },
+      "en": {
+        "name": "10L Classic Planter",
+        "category_label": "Planters",
+        "description": "Classic 10-litre woven planter with traditional straight weave. Excellent choice for mid-sized flowering plants and ornamental shrubs.",
+        "usage": "For terrace, balcony, living room and garden",
+        "seo_title": "Buy 10L Classic Planter in Tashkent - BTT",
+        "seo_description": "10L Classic Planter by BTT. Dimensions: 29.5 × 29.5 × 22.5 cm. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "sort": 17,
+    "currency": "сум"
+  },
+  {
+    "slug": "kashpo-10l-puhlyash",
+    "legacyId": "p19",
+    "model": "Кашпо 10л Пухляш",
+    "category": "planters",
+    "product_type": "simple",
+    "unit": "pcs",
+    "price": 155000,
+    "dimensions": "29.5 × 29.5 × 22 см",
+    "materials": [
+      "искусственный ротанг",
+      "пластиковая основа"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "beige",
+        "name": {
+          "ru": "Бежевый",
+          "uz": "Bej",
+          "en": "Beige"
+        },
+        "hex": "#D2B48C",
+        "image": "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-beige.webp",
+        "images": [
+          "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-beige.webp"
+        ]
+      },
+      {
+        "id": "yellow",
+        "name": {
+          "ru": "Жёлтый",
+          "uz": "Sariq",
+          "en": "Yellow"
+        },
+        "hex": "#FFD700",
+        "image": "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-yellow.webp",
+        "images": [
+          "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-yellow.webp"
+        ]
+      },
+      {
+        "id": "white",
+        "name": {
+          "ru": "Белая берёзка",
+          "uz": "Oq qayin",
+          "en": "White birch"
+        },
+        "hex": "#F5F5F0",
+        "image": "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-white.webp",
+        "images": [
+          "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-white.webp"
+        ]
+      },
+      {
+        "id": "brown",
+        "name": {
+          "ru": "Коричневый",
+          "uz": "Jigarrang",
+          "en": "Brown"
+        },
+        "hex": "#8B4513",
+        "image": "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-brown.webp",
+        "images": [
+          "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-brown.webp"
+        ]
+      },
+      {
+        "id": "brown-white",
+        "name": {
+          "ru": "Коричнево-белый",
+          "uz": "Jigarrang-oq",
+          "en": "Brown-white"
+        },
+        "hex": "#A0826D",
+        "image": "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-brown-white.webp",
+        "images": [
+          "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-brown-white.webp"
+        ]
+      },
+      {
+        "id": "tricolor",
+        "name": {
+          "ru": "Трёхцветный",
+          "uz": "Uch rangli",
+          "en": "Tricolor"
+        },
+        "hex": "#C4A57B",
+        "image": "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-tricolor.webp",
+        "images": [
+          "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-tricolor.webp"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-beige.webp",
+      "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-yellow.webp",
+      "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-white.webp",
+      "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-brown.webp",
+      "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-brown-white.webp",
+      "assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-tricolor.webp"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Кашпо 10л «Пухляш»",
+        "category_label": "Кашпо",
+        "description": "Объёмное кашпо формы «Пухляш» на 10 литров с выразительными округлыми боками. Фактурное плетение создаёт уютный акцент в интерьере дома и сада.",
+        "usage": "Для террасы, балкона, комнатного озеленения и веранды",
+        "seo_title": "Купить Кашпо 10л «Пухляш» в Ташкенте - BTT",
+        "seo_description": "Кашпо 10л «Пухляш» от BTT. Размеры: 29.5 × 29.5 × 22 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "10L «Puxlyash» kashpo",
+        "category_label": "Kashpo",
+        "description": "Dumaloq shaklli va jozibador 10 litrli «Puxlyash» kashposi. Qavariq to'quv uslubi uy va bog' dizayniga o'zgacha qulaylik bag'ishlaydi.",
+        "usage": "Terassa, balkon, xona gullari va veranda uchun",
+        "seo_title": "Toshkentda 10L «Puxlyash» kashpo sotib olish - BTT",
+        "seo_description": "BTT dan 10L «Puxlyash» kashpo. O'lchamlari: 29.5 × 29.5 × 22 sm. Toshkent va butun O'zbekiston bo'ylab yetkazib berish."
+      },
+      "en": {
+        "name": "10L Puffy Planter",
+        "category_label": "Planters",
+        "description": "Bulbous 10-litre planter with smooth rounded contour. The textured weave adds warmth and character to living spaces and outdoor patios.",
+        "usage": "For terrace, balcony, indoor greens and veranda",
+        "seo_title": "Buy 10L Puffy Planter in Tashkent - BTT",
+        "seo_description": "10L Puffy Planter by BTT. Dimensions: 29.5 × 29.5 × 22 cm. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "sort": 18,
+    "currency": "сум"
+  },
+  {
+    "slug": "kashpo-16l-klassika",
+    "legacyId": "p20",
+    "model": "Кашпо 16л Классика",
+    "category": "planters",
+    "product_type": "simple",
+    "unit": "pcs",
+    "price": 210000,
+    "dimensions": "35 × 35 × 28.5 см",
+    "materials": [
+      "искусственный ротанг",
+      "пластиковая основа"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white",
+        "name": {
+          "ru": "Белая берёзка",
+          "uz": "Oq qayin",
+          "en": "White birch"
+        },
+        "hex": "#F5F5F0",
+        "image": "assets/products/kashpo-16l-klassika/kashpo-16l-classic-white.webp",
+        "images": [
+          "assets/products/kashpo-16l-klassika/kashpo-16l-classic-white.webp"
+        ]
+      },
+      {
+        "id": "grey",
+        "name": {
+          "ru": "Серый",
+          "uz": "Kulrang",
+          "en": "Gray"
+        },
+        "hex": "#A9A9A9",
+        "image": "assets/products/kashpo-16l-klassika/kashpo-16l-classic-gray.webp",
+        "images": [
+          "assets/products/kashpo-16l-klassika/kashpo-16l-classic-gray.webp"
+        ]
+      },
+      {
+        "id": "cream",
+        "name": {
+          "ru": "Кремовый",
+          "uz": "Krem",
+          "en": "Cream"
+        },
+        "hex": "#FFFDD0",
+        "image": "assets/products/kashpo-16l-klassika/kashpo-16l-classic-buttery.webp",
+        "images": [
+          "assets/products/kashpo-16l-klassika/kashpo-16l-classic-buttery.webp"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/products/kashpo-16l-klassika/kashpo-16l-classic-white.webp",
+      "assets/products/kashpo-16l-klassika/kashpo-16l-classic-gray.webp",
+      "assets/products/kashpo-16l-klassika/kashpo-16l-classic-buttery.webp"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Кашпо 16л «Классика»",
+        "category_label": "Кашпо",
+        "description": "Вместительное классическое кашпо объёмом 16 литров для пальм, фикусов и крупных цветущих растений. Подходит для оформления входных зон, террас и просторных комнат.",
+        "usage": "Для крупных растений, террасы, входной группы и сада",
+        "seo_title": "Купить Кашпо 16л «Классика» в Ташкенте - BTT",
+        "seo_description": "Кашпо 16л «Классика» от BTT. Размеры: 35 × 35 × 28.5 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "16L «Klassika» kashpo",
+        "category_label": "Kashpo",
+        "description": "Katta o'simliklar, palma va fikuslar uchun mo'ljallangan 16 litrli klassik kashpo. Kirish zonalari, terassa va keng xonalar uchun juda mos.",
+        "usage": "Katta o'simliklar, terassa, kirish qismi va bog' uchun",
+        "seo_title": "Toshkentda 16L «Klassika» kashpo sotib olish - BTT",
+        "seo_description": "BTT dan 16L «Klassika» kashpo. O'lchamlari: 35 × 35 × 28.5 sm. Toshkent va butun O'zbekiston bo'ylab yetkazib berish."
+      },
+      "en": {
+        "name": "16L Classic Planter",
+        "category_label": "Planters",
+        "description": "Spacious 16-litre classic woven planter for palms, ficus, and large potted plants. Ideal for entryways, terraces, and open living spaces.",
+        "usage": "For large plants, terrace, entryway and garden",
+        "seo_title": "Buy 16L Classic Planter in Tashkent - BTT",
+        "seo_description": "16L Classic Planter by BTT. Dimensions: 35 × 35 × 28.5 cm. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "sort": 19,
+    "currency": "сум"
+  },
+  {
+    "slug": "kashpo-16l-puhlyash",
+    "legacyId": "p21",
+    "model": "Кашпо 16л Пухляш",
+    "category": "planters",
+    "product_type": "simple",
+    "unit": "pcs",
+    "price": 245000,
+    "dimensions": "36 × 36 × 28 см",
+    "materials": [
+      "искусственный ротанг",
+      "пластиковая основа"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "beige",
+        "name": {
+          "ru": "Бежевый",
+          "uz": "Bej",
+          "en": "Beige"
+        },
+        "hex": "#D2B48C",
+        "image": "assets/products/kashpo-16l-puhlyash/kashpo-16l-puhlyash-beige.webp",
+        "images": [
+          "assets/products/kashpo-16l-puhlyash/kashpo-16l-puhlyash-beige.webp"
+        ]
+      },
+      {
+        "id": "brown",
+        "name": {
+          "ru": "Коричневый",
+          "uz": "Jigarrang",
+          "en": "Brown"
+        },
+        "hex": "#8B4513",
+        "image": "assets/products/kashpo-16l-puhlyash/kashpo-16l-puhlyash-brown.webp",
+        "images": [
+          "assets/products/kashpo-16l-puhlyash/kashpo-16l-puhlyash-brown.webp"
+        ]
+      },
+      {
+        "id": "white",
+        "name": {
+          "ru": "Белая берёзка",
+          "uz": "Oq qayin",
+          "en": "White birch"
+        },
+        "hex": "#F5F5F0",
+        "image": "assets/products/kashpo-16l-puhlyash/kashpo-16l-puhlyash-white.webp",
+        "images": [
+          "assets/products/kashpo-16l-puhlyash/kashpo-16l-puhlyash-white.webp"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/products/kashpo-16l-puhlyash/kashpo-16l-puhlyash-beige.webp",
+      "assets/products/kashpo-16l-puhlyash/kashpo-16l-puhlyash-brown.webp",
+      "assets/products/kashpo-16l-puhlyash/kashpo-16l-puhlyash-white.webp"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Кашпо 16л «Пухляш»",
+        "category_label": "Кашпо",
+        "description": "Большое фактурное кашпо «Пухляш» объёмом 16 литров с мягкими округлыми формами. Стильное решение для крупномеров на террасе, в холле или саду.",
+        "usage": "Для больших растений, террасы, холла и сада",
+        "seo_title": "Купить Кашпо 16л «Пухляш» в Ташкенте - BTT",
+        "seo_description": "Кашпо 16л «Пухляш» от BTT. Размеры: 36 × 36 × 28 см. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "16L «Puxlyash» kashpo",
+        "category_label": "Kashpo",
+        "description": "Yumshoq dumaloq shakllarga ega 16 litrli katta «Puxlyash» kashposi. Katta o'simliklar uchun terassa, xoll va bog'da ajoyib dizayn yechimi.",
+        "usage": "Katta o'simliklar, terassa, zal va bog' uchun",
+        "seo_title": "Toshkentda 16L «Puxlyash» kashpo sotib olish - BTT",
+        "seo_description": "BTT dan 16L «Puxlyash» kashpo. O'lchamlari: 36 × 36 × 28 sm. Toshkent va butun O'zbekiston bo'ylab yetkazib berish."
+      },
+      "en": {
+        "name": "16L Puffy Planter",
+        "category_label": "Planters",
+        "description": "Large 16-litre puffy rounded planter with soft spherical contouring. A design accent for statement plants on patios, lounges, and garden walkways.",
+        "usage": "For large plants, patio, lounge and garden",
+        "seo_title": "Buy 16L Puffy Planter in Tashkent - BTT",
+        "seo_description": "16L Puffy Planter by BTT. Dimensions: 36 × 36 × 28 cm. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "sort": 20,
+    "currency": "сум"
+  },
+  {
+    "slug": "rotang-nit-buhta",
+    "legacyId": "p22",
+    "model": "Ротанговая нить в бухтах",
+    "category": "rattan",
+    "product_type": "material",
+    "unit": "kg",
+    "price": 36000,
+    "dimensions": "Бухта 5 кг",
+    "materials": [
+      "первичный полиэтилен высокой плотности (HDPE)"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white",
+        "name": {
+          "ru": "Белая берёзка",
+          "uz": "Oq qayin",
+          "en": "White birch"
+        },
+        "hex": "#F5F5F0",
+        "image": "assets/products/rotang-nit-buhta/rotang-thread-white.webp",
+        "images": [
+          "assets/products/rotang-nit-buhta/rotang-thread-white.webp"
+        ]
+      },
+      {
+        "id": "pearl",
+        "name": {
+          "ru": "Жемчужный",
+          "uz": "Marvarid",
+          "en": "Pearl"
+        },
+        "hex": "#E8E6E1",
+        "image": "assets/products/rotang-nit-buhta/rotang-thread-pearl.webp",
+        "images": [
+          "assets/products/rotang-nit-buhta/rotang-thread-pearl.webp"
+        ]
+      },
+      {
+        "id": "sand",
+        "name": {
+          "ru": "Песочный",
+          "uz": "Qum",
+          "en": "Sand"
+        },
+        "hex": "#D8B887",
+        "image": "assets/products/rotang-nit-buhta/rotang-thread-sand.webp",
+        "images": [
+          "assets/products/rotang-nit-buhta/rotang-thread-sand.webp"
+        ]
+      },
+      {
+        "id": "gold",
+        "name": {
+          "ru": "Золото",
+          "uz": "Oltin",
+          "en": "Gold"
+        },
+        "hex": "#D4AF37",
+        "image": "assets/products/rotang-nit-buhta/rotang-thread-gold.webp",
+        "images": [
+          "assets/products/rotang-nit-buhta/rotang-thread-gold.webp"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/products/rotang-nit-buhta/rotang-thread-white.webp",
+      "assets/products/rotang-nit-buhta/rotang-thread-pearl.webp",
+      "assets/products/rotang-nit-buhta/rotang-thread-sand.webp",
+      "assets/products/rotang-nit-buhta/rotang-thread-gold.webp"
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Ротанговая нить в бухтах",
+        "category_label": "Искусственный ротанг",
+        "description": "Полимерная ротанговая нить в бухтах по 5 кг для ручного плетения мебели, кашпо, корзин и декоративных перегородок. Профиль полумесяц и пруток. Продажа на вес от 5 кг.",
+        "usage": "Для плетения мебели, кашпо, корзин и декоративных изделий",
+        "seo_title": "Купить Ротанговую нить в бухтах в Ташкенте - BTT",
+        "seo_description": "Ротанговая нить в бухтах от BTT. Цена за кг: 36 000 сум. Минимальный заказ 5 кг. Доставка по Ташкенту и всему Узбекистану."
+      },
+      "uz": {
+        "name": "G'iloflarda rotang ipi",
+        "category_label": "Sun‘iy rotang",
+        "description": "Mebel, kashpo, savat va dekorativ to'siqlarni to'qish uchun 5 kg lik g'iloflarda polimer rotang ipi. Yarim oy va yumaloq profil. 5 kg dan boshlab vazn bo'yicha sotuv.",
+        "usage": "Mebel, kashpo, savatlar va bezak buyumlarini to'qish uchun",
+        "seo_title": "Toshkentda g'iloflarda rotang ipi sotib olish - BTT",
+        "seo_description": "BTT dan g'iloflarda rotang ipi. 1 kg narxi: 36 000 so'm. Minimal buyurtma 5 kg. O'zbekiston bo'ylab yetkazib berish."
+      },
+      "en": {
+        "name": "Synthetic Rattan Coils",
+        "category_label": "Artificial rattan",
+        "description": "Polymer synthetic rattan coils (5 kg each) for handcrafted weaving of furniture, planters, baskets, and decorative partitions. Sold per kg, minimum order 5 kg.",
+        "usage": "For weaving furniture, planters, baskets and custom decor",
+        "seo_title": "Buy Synthetic Rattan Coils in Tashkent - BTT",
+        "seo_description": "Synthetic Rattan Coils by BTT. Price per kg: 36,000 UZS. Minimum order 5 kg. Delivery across Tashkent and Uzbekistan."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "sort": 21,
+    "currency": "сум"
+  }
+];
+
+  window.BTT_PRODUCT_MASTER = MASTER;
+
+  // Build dictionary for fast lookup by canonical slug and legacyId
+  var PRODUCTS = {};
+  MASTER.forEach(function(item){
+    var obj = {
+      id: item.slug,
+      slug: item.slug,
+      legacyId: item.legacyId,
+      model: item.model,
+      cat: item.category,
+      category: item.category,
+      unit: item.unit || "pcs",
+      now: item.price,
+      price: item.price,
+      old: 0,
+      status: item.availability || item.status || "unknown",
+      availability: item.availability || item.status || "unknown",
+      stock: item.availability === "in_stock" ? 1 : (item.availability === "out_of_stock" ? 0 : null),
+      dimensions: item.dimensions,
+      materials: item.materials,
+      maxLoad: item.maxLoad || null,
+      confirmedColors: item.confirmedColors || [],
+      isTable: !!item.isTable,
+      images: item.images || []
+    };
+    PRODUCTS[item.slug] = obj;
+    if(item.legacyId) PRODUCTS[item.legacyId] = obj;
+  });
+
+  window.BTT_PRODUCTS = PRODUCTS;
+  window.BTT_CANONICAL_SLUGS = MASTER.map(function(m){ return m.slug; });
+
+  // Canonical product identifier resolver
+  window.BTT_RESOLVE_PRODUCT = function(idOrSlug){
+    if(!idOrSlug) return null;
+    var s = String(idOrSlug).trim().toLowerCase();
+    var p = PRODUCTS[s];
+    if(p) return p.slug;
+    return null;
+  };
+
+  window.BTT_CAT_IMG = {
+    all:                 "assets/placeholder.svg",
+    "wicker-chairs":     "assets/prod-chair-corda.jpg",
+    "plastic-chairs":    "assets/placeholder.svg",
+    "upholstered-chairs":"assets/placeholder.svg",
+    tables:              "assets/prod-table-corda-135-black.jpg",
+    planters:            "assets/products/kashpo-10l-klassika/white.webp",
+    rattan:              "assets/products/rotang-nit-buhta/white.webp",
+    // legacy category aliases
+    furniture:           "assets/prod-chair-corda.jpg",
+    indoor:              "assets/placeholder.svg",
+    planter:             "assets/products/kashpo-10l-klassika/white.webp",
+    basket:              "assets/products/kashpo-10l-klassika/white.webp"
+  };
+
+  window.BTT_IS_MTO = function(id) {
+    var p = window.BTT_PRODUCTS[id];
+    return !!(p && p.availability === "on_request");
+  };
+
+  window.BTT_PRODUCT_IMG = function(id) {
+    var p = window.BTT_PRODUCTS[id];
+    if(!p) return null;
+    var imgs = p.images && p.images.length ? p.images : ["assets/placeholder.svg"];
+    return imgs.map(function(s){ return { thumb: s, full: s }; });
+  };
+
+  window.BTT_PRODUCT_CAT = {
+    "wicker-chairs": {
+      ru: {
+        name: "Плетёные стулья",
+        desc: "Стулья на металлическом каркасе с плетением из искусственного ротанга и мягкими подушками.",
+        dim: "Для дома, террас и кафе",
+        mat: "Металл, искусственный ротанг, текстиль"
+      },
+      uz: {
+        name: "To‘qilgan stullar",
+        desc: "Metall karkasli, sun’iy rotang to‘quvli va yumshoq yostiqli qulay stullar.",
+        dim: "Uy, terrasa va kafelar uchun",
+        mat: "Metall, sun’iy rotang, to‘qimachilik"
+      },
+      en: {
+        name: "Wicker chairs",
+        desc: "Comfortable chairs on a metal frame with synthetic rattan weave and soft cushions.",
+        dim: "For homes, terraces and cafes",
+        mat: "Metal, synthetic rattan, textile"
+      }
+    },
+    "plastic-chairs": {
+      ru: {
+        name: "Пластиковые стулья",
+        desc: "Практичные и лёгкие пластиковые стулья для дома, веранды и кафе.",
+        dim: "Для дома, террасы, фудкортов и кафе",
+        mat: "Пластик"
+      },
+      uz: {
+        name: "Plastik stullar",
+        desc: "Uy, ayvon va kafelar uchun qulay va yengil plastik stullar.",
+        dim: "Uy, terrasa, fudkort va kafelar uchun",
+        mat: "Plastik"
+      },
+      en: {
+        name: "Plastic chairs",
+        desc: "Practical and lightweight plastic chairs for home, patios and cafes.",
+        dim: "For home, terrace, food courts and cafes",
+        mat: "Plastic"
+      }
+    },
+    "upholstered-chairs": {
+      ru: {
+        name: "Мягкие стулья",
+        desc: "Стулья и кресла на металлическом каркасе с текстильной обивкой для комфортной обеденной зоны.",
+        dim: "Для гостиной, кухни и банкетных залов",
+        mat: "Металл, мягкий текстиль"
+      },
+      uz: {
+        name: "Yumshoq stullar",
+        desc: "Qulay ovqatlanish hududi uchun metall karkasdagi yumshoq matoli stul va kreslolar.",
+        dim: "Mehmonxona, oshxona va banket zallari uchun",
+        mat: "Metall, yumshoq to‘qimachilik"
+      },
+      en: {
+        name: "Upholstered chairs",
+        desc: "Chairs and armchairs on a sturdy metal frame with soft textile upholstery for dining comfort.",
+        dim: "For living rooms, kitchens and banquet venues",
+        mat: "Metal, soft textile"
+      }
+    },
+    tables: {
+      ru: {
+        name: "Столы",
+        desc: "Обеденные столы на прочном металлическом каркасе со столешницей из ЛДСП. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.",
+        dim: "Для кухни, столовой, закрытых веранд и HoReCa",
+        mat: "ЛДСП, металл"
+      },
+      uz: {
+        name: "Stollar",
+        desc: "Mustahkam metall karkas va LDSP ustki qismga ega ovqat stollari. Xonalar va yopiq maydonlar uchun. LDSP ustki qismini to‘g‘ridan-to‘g‘ri yog‘ingarchilikdan himoya qilish tavsiya etiladi.",
+        dim: "Oshxona, yopiq ayvonlar va HoReCa uchun",
+        mat: "LDSP, metall"
+      },
+      en: {
+        name: "Tables",
+        desc: "Dining tables on a solid metal frame with chipboard tabletop. For indoor and covered spaces. It is recommended to protect the chipboard tabletop from direct precipitation.",
+        dim: "For kitchens, dining areas, covered terraces and HoReCa",
+        mat: "Chipboard, metal"
+      }
+    },
+    planters: {
+      ru: {
+        name: "Плетёные кашпо",
+        desc: "Кашпо ручного плетения из прочного искусственного ротанга для дома, террасы и сада.",
+        dim: "Для цветов, растений, интерьера и сада",
+        mat: "Искусственный ротанг, пластиковая основа"
+      },
+      uz: {
+        name: "To‘qilgan kashpo",
+        desc: "Uy, terrasa va bog‘ uchun pishiq sun’iy rotangdan qo‘lda to‘qilgan kashpolar.",
+        dim: "Gullar, o‘simliklar, interyer va bog‘ uchun",
+        mat: "Sun’iy rotang, plastik asos"
+      },
+      en: {
+        name: "Woven planters",
+        desc: "Handcrafted planters woven from synthetic rattan for home, terrace, and garden.",
+        dim: "For flowers, plants, interior, and outdoor garden",
+        mat: "Synthetic rattan, plastic base"
+      }
+    },
+    rattan: {
+      ru: {
+        name: "Искусственный ротанг",
+        desc: "Высококачественная нить искусственного ротанга в бухтах для плетения мебели, кашпо и ограждений.",
+        dim: "В бухтах по весу для плетения и производства",
+        mat: "Первичный полимер (экоротанг)"
+      },
+      uz: {
+        name: "Sun‘iy rotang",
+        desc: "Mebel, kashpo va to‘siqlar to‘qish uchun buxtalarda yuqori sifatli sun’iy rotang tolasi.",
+        dim: "To‘qish va ishlab chiqarish uchun buxtalarda",
+        mat: "Birlamchi polimer (ekorotang)"
+      },
+      en: {
+        name: "Synthetic rattan",
+        desc: "High-grade synthetic rattan fiber in coils for weaving furniture, planters, and fencing.",
+        dim: "In coils by weight for weaving and manufacturing",
+        mat: "Virgin polymer (eco-rattan)"
+      }
+    }
+  };
+
+  // Helper to format prices on static elements
+  function formatStaticPrices(){
+    var fmt = window.BTT_UTIL && window.BTT_UTIL.formatMoney;
+    var P = window.BTT_PRODUCTS;
+    if(!fmt || !P) return;
+
+    document.querySelectorAll("[data-product]").forEach(function(card){
+      var see = card.querySelector("a[href*='catalog/'], a[href*='product.html?id=']");
+      if(!see) return;
+      var href = see.getAttribute("href") || "";
+      var slugMatch = href.match(/\/catalog\/([a-z0-9-]+)/i) || href.match(/id=([a-z0-9-]+)/i);
+      if(!slugMatch) return;
+      var prod = P[slugMatch[1]];
+      if(!prod) return;
+      var now = card.querySelector(".price__now");
+      var old = card.querySelector(".price__old");
+      if(now) now.textContent = fmt(prod.now);
+      if(old) old.style.display = "none";
+    });
+  }
+
+  if(typeof document !== "undefined"){
+    if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", formatStaticPrices);
+    else formatStaticPrices();
+  }
+})();

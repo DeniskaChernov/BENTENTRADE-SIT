@@ -1,26 +1,57 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "bententrade",
+  "name": "btt",
   "main": "worker/index.ts",
   "compatibility_date": "2024-09-23",
   "compatibility_flags": ["nodejs_compat"],
 
+  // Static site (existing HTML/CSS/JS) is served directly from the repo root.
+  // Non-asset paths (/api/*, /admin/*) fall through to the Worker below.
+  // See .assetsignore for files that must NOT be published as public assets.
   "assets": {
-    "directory": "./build",
+    "directory": "./",
     "binding": "ASSETS",
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "404-page"
   },
 
   "observability": { "enabled": true },
 
+  // D1 - relational database (products, orders, requests, users, articles).
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "btt_db",
+      "database_id": "28146444-5830-4507-885e-6dfecbb67dfa",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // KV - auth sessions.
+  "kv_namespaces": [
+    {
+      "binding": "SESSIONS",
+      "id": "2dc065b8ed7d42809affaecdea099449"
+    }
+  ],
+
+  // R2 bucket for media assets:
+  // Requires R2 enabled in Cloudflare Dashboard and bucket created:
+  // 1. Enable R2 in Cloudflare Dashboard
+  // 2. Run: npx wrangler r2 bucket create btt-media
+  // 3. Uncomment the block below:
+  // "r2_buckets": [
+  //   {
+  //     "binding": "MEDIA",
+  //     "bucket_name": "btt-media"
+  //   }
+  // ],
+
   "vars": {
-    "SITE_ORIGIN": "https://bententrade.uz",
-    "TELEGRAM_BOT_TOKEN": "8344041596:AAEAJtbcpn8wVE_NcVpXAAbwrkvjE5GHZrA",
-    "TELEGRAM_CHAT_ID": "7019985933,-1003068403630"
+    "SITE_ORIGIN": "https://btt.uz"
   },
 
   "routes": [
-    { "pattern": "bententrade.uz/*", "zone_name": "bententrade.uz" },
-    { "pattern": "www.bententrade.uz/*", "zone_name": "bententrade.uz" }
+    { "pattern": "btt.uz/*", "zone_name": "btt.uz" },
+    { "pattern": "www.btt.uz/*", "zone_name": "btt.uz" }
   ]
 }

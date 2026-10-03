@@ -1,47 +1,52 @@
 {
-  "name": "Bententrade Website",
-  "version": "0.1.0",
+  "name": "btt-furniture",
+  "version": "1.0.0",
   "private": true,
+  "description": "BTT - статический сайт + API/CRM на Workers (Hono) + D1 + R2 + KV",
   "type": "module",
-  "dependencies": {
-    "@vitejs/plugin-react": "*",
-    "cmdk": "^1.1.1",
-    "embla-carousel-react": "^8.6.0",
-    "framer-motion": "*",
-    "hono": "*",
-    "input-otp": "^1.4.2",
-    "path": "*",
-    "react": "^18.3.1",
-    "react-day-picker": "^8.10.1",
-    "react-dom": "^18.3.1",
-    "react-hook-form": "^7.55.0",
-    "react-intersection-observer": "^9.13.1",
-    "react-resizable-panels": "^2.1.7",
-    "recharts": "^2.15.2",
-    "pg": "^8.16.3",
-    "serve": "^14.2.6",
-    "serve-handler": "^6.1.7",
-    "tailwindcss": "*",
-    "tw-animate-css": "^1.3.8",
-    "vaul": "^1.1.2",
-    "vite": "*"
-  },
-  "devDependencies": {
-    "@tailwindcss/vite": "4.1.12",
-    "@types/node": "^20.10.0",
-    "@vitejs/plugin-react": "^4.7.0",
-    "sharp": "^0.34.5",
-    "tailwindcss": "4.1.12",
-    "vite": "6.3.5"
-  },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && node scripts/prerender.mjs",
-    "start": "node server.js",
-    "env:secrets": "node scripts/generate-env-secrets.mjs"
+    "start": "node --import tsx server/index.ts",
+    "start:dev": "tsx watch server/index.ts",
+    "pg:migrate": "tsx scripts/pg-cli.ts migrate",
+    "pg:seed": "tsx scripts/pg-cli.ts seed",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "release": "npm run typecheck && npm run db:migrate && wrangler deploy",
+    "cf:provision:d1": "wrangler d1 create btt_db",
+    "cf:provision:kv": "wrangler kv namespace create SESSIONS",
+    "cf:provision:r2": "wrangler r2 bucket create btt-media",
+    "db:migrate:local": "wrangler d1 migrations apply btt_db --local",
+    "db:migrate": "wrangler d1 migrations apply btt_db --remote",
+    "db:seed:local": "wrangler d1 execute btt_db --local --file=./migrations/seed.sql",
+    "db:seed": "wrangler d1 execute btt_db --remote --file=./migrations/seed.sql",
+    "db:backup": "node scripts/backup-d1.mjs",
+    "seed:gen": "node scripts/gen-seed.mjs",
+    "sitemap:gen": "node scripts/gen-sitemap.mjs",
+    "sync:master": "node scripts/sync-master.mjs",
+    "validate": "node scripts/validate-products.mjs",
+    "test:smoke": "node scripts/smoke-test.mjs",
+    "test:live": "node scripts/test-live-deploy.mjs",
+    "test:guest": "node scripts/test-live-guest-flow.mjs",
+    "audit": "node scripts/audit-full-system.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "engines": {
-    "node": ">=20 <21",
-    "npm": ">=10"
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240909.0",
+    "@types/node": "^20.14.0",
+    "@types/pg": "^8.11.6",
+    "jpeg-js": "^0.4.4",
+    "pngjs": "^7.0.0",
+    "typescript": "^5.6.2",
+    "wrangler": "^3.78.0"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.1",
+    "dotenv": "^16.4.5",
+    "hono": "^4.6.3",
+    "pg": "^8.12.0",
+    "tsx": "^4.19.1"
   }
 }

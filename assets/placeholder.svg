@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8F6F2" />
+      <stop offset="100%" stop-color="#ECE6DC" />
+    </linearGradient>
+    <linearGradient id="copper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E08A45" />
+      <stop offset="100%" stop-color="#BD7335" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="800" fill="url(#bg)" />
+
+  <!-- Subtle frame border -->
+  <rect x="24" y="24" width="752" height="752" rx="20" fill="none" stroke="#E2DAD0" stroke-width="2" />
+
+  <!-- Center Monogram Icon Badge -->
+  <g transform="translate(400, 340)">
+    <!-- Soft circular glow -->
+    <circle r="72" fill="#BA7A40" fill-opacity="0.08" />
+    <circle r="52" fill="#BA7A40" fill-opacity="0.12" />
+
+    <!-- Minimalist Furniture Silhouette Symbol -->
+    <path d="M-28,14 L-28,-18 C-28,-24 -22,-30 -16,-30 L16,-30 C22,-30 28,-24 28,-18 L28,14 M-28,-4 L28,-4 M-22,14 L-22,34 M22,14 L22,34 M-34,8 L34,8"
+          fill="none" stroke="url(#copper)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Brand Title -->
+  <text x="400" y="470" text-anchor="middle"
+        font-family="'Hanken Grotesque', 'Montserrat', -apple-system, sans-serif"
+        font-size="26" font-weight="700" letter-spacing="4" fill="#201C18">BTT</text>
+
+  <!-- Divider line -->
+  <line x1="360" y1="495" x2="440" y2="495" stroke="#BA7A40" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Subtitle -->
+  <text x="400" y="530" text-anchor="middle"
+        font-family="'Hanken Grotesque', 'Montserrat', -apple-system, sans-serif"
+        font-size="13" font-weight="600" letter-spacing="2.5" fill="#8C8072">ФОТОГРАФИЯ УТОЧНЯЕТСЯ</text>
+  <text x="400" y="555" text-anchor="middle"
+        font-family="'Hanken Grotesque', 'Montserrat', -apple-system, sans-serif"
+        font-size="11" font-weight="500" letter-spacing="1.5" fill="#A89E92">BTT - МЕБЕЛЬ ДЛЯ ДОМА И САДА</text>
+</svg>

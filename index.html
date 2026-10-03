@@ -1,15 +1,734 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" data-i18n-meta="meta.index.desc" content="BTT - мебель для дома и сада в Ташкенте. Столы, стулья и готовые решения для дома, сада и HoReCa. Доставка по Ташкенту и Узбекистану.">
+<meta name="keywords" data-i18n-meta="meta.index.keywords" content="BTT мебель, стулья ташкент, столы ташкент, мебель для сада, пластиковые стулья, плетеные стулья, horeca ташкент">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#bd7335">
+<link rel="canonical" href="https://btt.uz/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BTT - мебель для дома и сада">
+<meta property="og:title" data-i18n-meta="meta.index.title" content="BTT - мебель для дома и сада в Ташкенте">
+<meta property="og:description" data-i18n-meta="meta.index.desc" content="Столы, стулья и готовые решения для дома, сада и HoReCa.">
+<meta property="og:url" content="https://btt.uz/">
+<meta property="og:image" content="https://btt.uz/assets/btt-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" data-i18n-meta="meta.index.title" content="BTT - мебель для дома и сада в Ташкенте">
+<meta name="twitter:description" data-i18n-meta="meta.index.desc" content="Столы, стулья и готовые решения для дома, сада и HoReCa.">
+<meta name="twitter:image" content="https://btt.uz/assets/btt-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="assets/styles.css?v=20261001-1" as="style">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Unbounded:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Unbounded:wght@400;500;600;700;800;900&display=swap"></noscript>
+<title data-i18n-doc="meta.index.title">BTT - мебель для дома и сада</title>
+<link rel="stylesheet" href="assets/styles.css?v=20261001-1">
+<link rel="stylesheet" href="assets/pages.css?v=20261001-1">
+<script>(function(){try{if(localStorage.getItem('btt_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+</head>
+<body>
 
-  <!DOCTYPE html>
-  <html lang="ru">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Bententrade — кашпо и ротанг</title>
-    </head>
+<!-- ===== HEADER ===== -->
+<header class="site-head">
+  <div class="site-head__in">
+    <nav class="nav">
+      <a href="index.html" class="is-current" data-i18n="nav.home">Главная</a>
+      <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+      <a href="horeca.html" data-i18n="nav.horeca">HoReCa</a>
+      <a href="blog.html" data-i18n="nav.blog">Статьи</a>
+      <a href="about.html" data-i18n="nav.about">О нас</a>
+      <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
+    </nav>
+    <a class="brand" href="index.html" aria-label="BTT - мебель для дома и сада"><img src="assets/btt-logo.png" alt="BTT - мебель для дома и сада"></a>
+    <div class="head-tools">
+      <button class="icon-btn opt" data-i18n-aria="tool.search" aria-label="Поиск"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></button>
+      <button class="icon-btn opt" data-i18n-aria="tool.fav" aria-label="Избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg><span class="count" data-fav-count style="display:none">0</span></button>
+      <button type="button" class="icon-btn" data-cart-open data-i18n-aria="tool.cart" aria-label="Корзина"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="count" data-cart-count style="display:none">0</span></button>
+      <a class="icon-btn" href="account.html" data-i18n-aria="tool.acc" aria-label="Аккаунт"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5"/></svg></a>
+      <button class="icon-btn" data-theme-toggle data-i18n-aria="tool.theme" aria-label="Тема">
+        <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5Z"/></svg>
+        <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.3"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg>
+      </button>
+      <div class="lang">
+        <button data-lang="ru">RU</button>
+        <button data-lang="uz">UZ</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <button class="burger icon-btn" data-i18n-aria="tool.menu" aria-label="Меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
 
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+<!-- ===== MOBILE DRAWER ===== -->
+<nav class="mobile-drawer">
+  <a href="index.html" data-i18n="nav.home">Главная</a>
+  <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+  <a href="horeca.html" data-i18n="nav.horeca">HoReCa</a>
+  <a href="blog.html" data-i18n="nav.blog">Статьи</a>
+  <a href="about.html" data-i18n="nav.about">О нас</a>
+  <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
+  <div class="mobile-drawer__tools">
+    <button type="button" class="mobile-drawer__tool" data-search-open data-i18n-aria="tool.search" aria-label="Поиск">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+      <span data-i18n="tool.search">Поиск</span>
+    </button>
+    <button type="button" class="mobile-drawer__tool" data-cart-open data-i18n-aria="tool.cart" aria-label="Корзина">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+      <span data-i18n="tool.cart">Корзина</span>
+      <span class="count" data-cart-count style="display:none">0</span>
+    </button>
+    <button type="button" class="mobile-drawer__tool" data-fav-open data-i18n-aria="tool.fav" aria-label="Избранное">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>
+      <span data-i18n="tool.fav">Избранное</span>
+      <span class="count" data-fav-count style="display:none">0</span>
+    </button>
+  </div>
+</nav>
+
+<main id="main" class="home-flow">
+<!-- ===== HERO ===== -->
+<section class="hero wrap" data-hero role="region" aria-roledescription="carousel" data-i18n-aria="hero.carousel" aria-label="Витрина">
+  <div class="hero__card is-entered" data-hero-card>
+    <div class="hero__bg" aria-hidden="true">
+      <img class="hero__img is-on" data-h="heroImg" src="assets/hero-garden-furniture.png" alt="BTT - мебель для дома и сада" loading="eager" fetchpriority="high" decoding="async">
+      <img class="hero__img" data-h="heroImgB" alt="" loading="lazy" decoding="async">
+    </div>
+    <div class="hero__shade" aria-hidden="true"></div>
+    <div class="hero__main" data-h-inner aria-live="polite">
+      <h1 class="hero__title"><span data-h="t1">BTT - мебель</span><br><span data-h="t2">для дома и сада</span></h1>
+      <p class="hero__lead" data-h-lead data-h="sub">Столы, стулья и готовые решения для дома, сада и HoReCa. Качественные материалы, честные цены и доставка по Ташкенту.</p>
+      <a class="btn btn--light hero__cta btn--icon-end" data-h="storeLink" href="catalog.html">
+        <span data-h="store">Смотреть каталог</span>
+        <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+    <div class="hero__switch liquid liquid--dark spatial" data-hero-switch>
+      <button class="hero__sw-arrow" data-hero-prev data-i18n-aria="hero.prev" aria-label="Предыдущий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="hero__sw-dots" data-hero-dots></div>
+      <button class="hero__sw-arrow" data-hero-next data-i18n-aria="hero.next" aria-label="Следующий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROMO ===== -->
+<section class="wrap section section--after-hero">
+  <div class="promo reveal">
+    <img src="assets/hero-garden-furniture.png" alt="BTT мебель" loading="lazy" decoding="async">
+    <span class="pill pill--ghost tl" data-i18n="promo.consult">Консультация и подбор мебели</span>
+    <span class="pill br" data-i18n="promo.price">Доставка по Ташкенту</span>
+  </div>
+</section>
+
+<!-- ===== PRODUCT LINES ===== -->
+<section class="wrap section section--compact" id="product-lines">
+  <div class="lines">
+    <div class="lines__head reveal">
+      <div>
+        <div class="eyebrow" data-i18n="lines.eyebrow">Категории</div>
+        <h2 data-i18n="lines.title">Наш ассортимент</h2>
+      </div>
+    </div>
+    <div class="lines__bento" data-stagger="70">
+      <a class="bento-tile reveal" href="catalog.html?cat=wicker-chairs">
+        <img src="assets/prod-chair-corda.jpg" alt="Плетёные стулья" loading="lazy" decoding="async">
+        <div class="bento-tile__meta">
+          <span class="bento-tile__title" data-i18n="cat.wickerChairs">Плетёные стулья</span>
+          <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+      </a>
+      <a class="bento-tile reveal" href="catalog.html?cat=plastic-chairs">
+        <img src="assets/hero-garden-furniture.png" alt="Пластиковые стулья" loading="lazy" decoding="async">
+        <div class="bento-tile__meta">
+          <span class="bento-tile__title" data-i18n="cat.plasticChairs">Пластиковые стулья</span>
+          <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+      </a>
+      <a class="bento-tile reveal" href="catalog.html?cat=upholstered-chairs">
+        <img src="assets/hero-home-furniture.png" alt="Мягкие стулья" loading="lazy">
+        <div class="bento-tile__meta">
+          <div><span class="bento-tile__title" data-i18n="cat.upholsteredChairs">Мягкие стулья</span><span class="bento-tile__tag" data-i18n="line.new">Новое</span></div>
+          <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+      </a>
+      <a class="bento-tile reveal" href="catalog.html?cat=tables">
+        <img src="assets/prod-table-corda-135-black.jpg" alt="Столы" loading="lazy">
+        <div class="bento-tile__meta">
+          <span class="bento-tile__title" data-i18n="cat.tables">Столы</span>
+          <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+      </a>
+      <a class="bento-tile reveal" href="catalog.html?cat=planters">
+        <img src="assets/products/kashpo-10l-klassika/white.webp" alt="Плетёные кашпо" loading="lazy" decoding="async">
+        <div class="bento-tile__meta">
+          <span class="bento-tile__title" data-i18n="cat.planters">Плетёные кашпо</span>
+          <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+      </a>
+      <a class="bento-tile reveal" href="catalog.html?cat=rattan">
+        <img src="assets/products/rotang-nit-buhta/white.webp" alt="Искусственный ротанг" loading="lazy" decoding="async">
+        <div class="bento-tile__meta">
+          <span class="bento-tile__title" data-i18n="cat.rattan">Искусственный ротанг</span>
+          <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COLLECTION ===== -->
+<section class="wrap section section--compact" id="home-collection">
+  <div class="home-filters home-filters--solo">
+    <div>
+      <div class="eyebrow reveal" data-i18n="cat.eyebrow">Коллекция</div>
+      <h2 class="display-2 reveal" style="margin-top:8px"><span data-i18n="cat.title.1">Столы и стулья</span><br><span data-i18n="cat.title.2">для дома, сада и HoReCa</span></h2>
+    </div>
+  </div>
+
+  <div class="prod-grid" id="home-grid" data-stagger data-stagger="90">
+    <!-- 1. Vertex -->
+    <article class="product reveal" data-product data-slug="stul-vertex" data-id="p1" data-cat="wicker-chairs">
+      <div class="product__media media">
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <img src="assets/prod-chair-vertex.jpg" alt="Стул Vertex" loading="lazy" decoding="async">
+        <a class="see" href="/catalog/stul-vertex" data-i18n="see">Подробнее</a>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="Купить в 1 клик" title="Купить в 1 клик"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+      </div>
+      <div>
+        <div class="product__cat" data-i18n="cat.wickerChairs">Плетёные стулья</div>
+        <div class="product__name" data-i18n="p1.name" style="margin-top:4px">Стул Vertex</div>
+        <div class="product-swatches" aria-label="Подтверждённые цвета">
+          <button type="button" class="product-swatch is-active" style="--swatch-color:#C2B280" data-color="beige" data-img="assets/prod-chair-vertex.jpg" title="Бежевый" aria-label="Бежевый"></button>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">499&nbsp;000&nbsp;сум</span></div>
+      </div>
+    </article>
+
+    <!-- 2. Corda -->
+    <article class="product reveal" data-product data-slug="stul-corda" data-id="p2" data-cat="wicker-chairs">
+      <div class="product__media media">
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <img src="assets/prod-chair-corda.jpg" alt="Стул Corda" loading="lazy" decoding="async">
+        <a class="see" href="/catalog/stul-corda" data-i18n="see">Подробнее</a>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="Купить в 1 клик" title="Купить в 1 клик"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+      </div>
+      <div>
+        <div class="product__cat" data-i18n="cat.wickerChairs">Плетёные стулья</div>
+        <div class="product__name" data-i18n="p2.name" style="margin-top:4px">Стул Corda</div>
+        <div class="product-swatches" aria-label="Подтверждённые цвета">
+          <button type="button" class="product-swatch is-active" style="--swatch-color:#C4A482" data-color="beige" data-img="assets/prod-chair-corda.jpg" title="Бежевый" aria-label="Бежевый"></button>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">499&nbsp;000&nbsp;сум</span></div>
+      </div>
+    </article>
+
+    <!-- 3. Jardin -->
+    <article class="product reveal" data-product data-slug="stul-jardin" data-id="p6" data-cat="plastic-chairs" data-colors="cappuccino grey olive">
+      <div class="product__media media">
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <img src="assets/prod-chair-jardin.jpg" alt="Стул JARDIN" loading="lazy" decoding="async">
+        <a class="see" href="/catalog/stul-jardin" data-i18n="see">Подробнее</a>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="Купить в 1 клик" title="Купить в 1 клик"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+      </div>
+      <div>
+        <div class="product__cat" data-i18n="cat.plasticChairs">Пластиковые стулья</div>
+        <div class="product__name" data-i18n="p6.name" style="margin-top:4px">Стул JARDIN</div>
+        <div class="product-swatches" aria-label="Подтверждённые цвета">
+          <button type="button" class="product-swatch is-active" style="--swatch-color:#A88D73" data-color="cappuccino" data-img="assets/prod-chair-jardin.jpg" title="Капучино" aria-label="Капучино"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#808080" data-color="grey" data-img="assets/prod-chair-jardin-grey.jpg" title="Серый" aria-label="Серый"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#768C65" data-color="olive" data-img="assets/prod-chair-jardin-olive.jpg" title="Оливковый" aria-label="Оливковый"></button>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">344&nbsp;000&nbsp;сум</span></div>
+      </div>
+    </article>
+
+    <!-- 4. Roero -->
+    <article class="product reveal" data-product data-slug="stul-roero" data-id="p3" data-cat="plastic-chairs" data-colors="grey black white orange">
+      <div class="product__media media">
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <img src="assets/prod-chair-roero.jpg" alt="Стул ROERO" loading="lazy" decoding="async">
+        <a class="see" href="/catalog/stul-roero" data-i18n="see">Подробнее</a>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="Купить в 1 клик" title="Купить в 1 клик"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+      </div>
+      <div>
+        <div class="product__cat" data-i18n="cat.plasticChairs">Пластиковые стулья</div>
+        <div class="product__name" data-i18n="p3.name" style="margin-top:4px">Стул ROERO</div>
+        <div class="product-swatches" aria-label="Подтверждённые цвета">
+          <button type="button" class="product-swatch is-active" style="--swatch-color:#808080" data-color="grey" data-img="assets/prod-chair-roero.jpg" title="Серый" aria-label="Серый"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#222222" data-color="black" data-img="assets/prod-chair-roero-black.jpg" title="Чёрный" aria-label="Чёрный"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#FFFFFF" data-color="white" data-img="assets/prod-chair-roero-white.jpg" title="Белый" aria-label="Белый"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#D9633B" data-color="orange" data-img="assets/prod-chair-roero-orange.jpg" title="Оранжевый" aria-label="Оранжевый"></button>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">188&nbsp;000&nbsp;сум</span></div>
+      </div>
+    </article>
+
+    <!-- 5. Noero -->
+    <article class="product reveal" data-product data-slug="stul-noero" data-id="p4" data-cat="plastic-chairs" data-colors="grey orange blue olive">
+      <div class="product__media media">
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <img src="assets/prod-chair-noero.jpg" alt="Стул NOERO" loading="lazy" decoding="async">
+        <a class="see" href="/catalog/stul-noero" data-i18n="see">Подробнее</a>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="Купить в 1 клик" title="Купить в 1 клик"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+      </div>
+      <div>
+        <div class="product__cat" data-i18n="cat.plasticChairs">Пластиковые стулья</div>
+        <div class="product__name" data-i18n="p4.name" style="margin-top:4px">Стул NOERO</div>
+        <div class="product-swatches" aria-label="Подтверждённые цвета">
+          <button type="button" class="product-swatch is-active" style="--swatch-color:#808080" data-color="grey" data-img="assets/prod-chair-noero.jpg" title="Серый" aria-label="Серый"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#D9633B" data-color="orange" data-img="assets/prod-chair-noero-orange.jpg" title="Оранжевый" aria-label="Оранжевый"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#4E7D9A" data-color="blue" data-img="assets/prod-chair-noero-blue.jpg" title="Синий" aria-label="Синий"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#768C65" data-color="olive" data-img="assets/prod-chair-noero-olive.jpg" title="Оливковый" aria-label="Оливковый"></button>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">212&nbsp;000&nbsp;сум</span></div>
+      </div>
+    </article>
+
+    <!-- 6. Todo Soft -->
+    <article class="product reveal" data-product data-slug="stul-todo-soft" data-id="p16" data-cat="upholstered-chairs" data-colors="black yellow grey red coffee white">
+      <div class="product__media media">
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <img src="assets/prod-chair-todo-soft.jpg" alt="Стул TODO SOFT" loading="lazy" decoding="async">
+        <a class="see" href="/catalog/stul-todo-soft" data-i18n="see">Подробнее</a>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="Купить в 1 клик" title="Купить в 1 клик"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+      </div>
+      <div>
+        <div class="product__cat" data-i18n="cat.upholsteredChairs">Мягкие стулья</div>
+        <div class="product__name" data-i18n="p16.name" style="margin-top:4px">Стул TODO SOFT</div>
+        <div class="product-swatches" aria-label="Подтверждённые цвета">
+          <button type="button" class="product-swatch is-active" style="--swatch-color:#222222" data-color="black" data-img="assets/prod-chair-todo-soft.jpg" title="Чёрный" aria-label="Чёрный"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#EAA824" data-color="yellow" data-img="assets/prod-chair-todo-soft-yellow.jpg" title="Жёлтый" aria-label="Жёлтый"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#808080" data-color="grey" data-img="assets/prod-chair-todo-soft-gray.jpg" title="Серый" aria-label="Серый"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#E32626" data-color="red" data-img="assets/prod-chair-todo-soft-red.jpg" title="Красный" aria-label="Красный"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#9E7E6B" data-color="coffee" data-img="assets/prod-chair-todo-soft-coffee.jpg" title="Кофейный" aria-label="Кофейный"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#FFFFFF" data-color="white" data-img="assets/prod-chair-todo-soft-white.jpg" title="Белый" aria-label="Белый"></button>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">264&nbsp;000&nbsp;сум</span></div>
+      </div>
+    </article>
+
+    <!-- 7. Como -->
+    <article class="product reveal" data-product data-slug="kreslo-como" data-id="p8" data-cat="wicker-chairs">
+      <div class="product__media media">
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <img src="assets/prod-chair-como.jpg" alt="Кресло COMO" loading="lazy" decoding="async">
+        <a class="see" href="/catalog/kreslo-como" data-i18n="see">Подробнее</a>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="Купить в 1 клик" title="Купить в 1 клик"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+      </div>
+      <div>
+        <div class="product__cat" data-i18n="cat.wickerChairs">Плетёные стулья</div>
+        <div class="product__name" data-i18n="p8.name" style="margin-top:4px">Кресло COMO</div>
+        <div class="product-swatches" aria-label="Подтверждённые цвета">
+          <button type="button" class="product-swatch is-active" style="--swatch-color:#C2B280" data-color="beige" data-img="assets/prod-chair-como.jpg" title="Бежевый" aria-label="Бежевый"></button>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">599&nbsp;000&nbsp;сум</span></div>
+      </div>
+    </article>
+
+    <!-- 8. Corda 135 Table -->
+    <article class="product reveal" data-product data-slug="stol-corda-135" data-id="p15" data-cat="tables">
+      <div class="product__media media">
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <img src="assets/prod-table-corda-135-white.jpg" alt="Стол Corda 135×80" loading="lazy" decoding="async">
+        <a class="see" href="/catalog/stol-corda-135" data-i18n="see">Подробнее</a>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="Купить в 1 клик" title="Купить в 1 клик"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+      </div>
+      <div>
+        <div class="product__cat" data-i18n="cat.tables">Столы</div>
+        <div class="product__name" data-i18n="p15.name" style="margin-top:4px">Стол Corda 135×80</div>
+        <div class="product-swatches" aria-label="Подтверждённые цвета">
+          <button type="button" class="product-swatch is-active" style="--swatch-color:#E8E6E1" data-color="white-marble" data-img="assets/prod-table-corda-135-white.jpg" title="Белый мрамор" aria-label="Белый мрамор"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#2B2A29" data-color="black-marble" data-img="assets/prod-table-corda-135-black.jpg" title="Чёрный мрамор" aria-label="Чёрный мрамор"></button>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">949&nbsp;000&nbsp;сум</span></div>
+      </div>
+    </article>
+
+    <!-- 9. Kashpo 10L Klassika -->
+    <article class="product reveal" data-product data-slug="kashpo-10l-klassika" data-id="p18" data-cat="planters" data-colors="white cream yellow grey">
+      <div class="product__media media">
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <img src="assets/products/kashpo-10l-klassika/white.webp" alt="Кашпо 10 л «Классика»" loading="lazy" decoding="async">
+        <a class="see" href="/catalog/kashpo-10l-klassika" data-i18n="see">Подробнее</a>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="Купить в 1 клик" title="Купить в 1 клик"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+      </div>
+      <div>
+        <div class="product__cat" data-i18n="cat.planters">Плетёные кашпо</div>
+        <div class="product__name" data-i18n="p18.name" style="margin-top:4px">Кашпо 10 л «Классика»</div>
+        <div class="product-swatches" aria-label="Подтверждённые цвета">
+          <button type="button" class="product-swatch is-active" style="--swatch-color:#FFFFFF" data-color="white" data-img="assets/products/kashpo-10l-klassika/white.webp" title="Белый" aria-label="Белый"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#FDF6E2" data-color="cream" data-img="assets/products/kashpo-10l-klassika/cream.webp" title="Сливочный" aria-label="Сливочный"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#EAA824" data-color="yellow" data-img="assets/products/kashpo-10l-klassika/yellow.webp" title="Жёлтый" aria-label="Жёлтый"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#808080" data-color="grey" data-img="assets/products/kashpo-10l-klassika/grey.webp" title="Серый" aria-label="Серый"></button>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">145&nbsp;000&nbsp;сум</span></div>
+      </div>
+    </article>
+
+    <!-- 10. Rotang Nit Buhta -->
+    <article class="product reveal" data-product data-slug="rotang-nit-buhta" data-id="p22" data-cat="rattan" data-colors="white pearl sand gold">
+      <div class="product__media media">
+        <button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
+        <img src="assets/products/rotang-nit-buhta/white.webp" alt="Искусственный ротанг (бухта)" loading="lazy" decoding="async">
+        <a class="see" href="/catalog/rotang-nit-buhta" data-i18n="see">Подробнее</a>
+        <button class="add" data-add data-i18n-aria="a11y.add" aria-label="Купить в 1 клик" title="Купить в 1 клик"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button>
+      </div>
+      <div>
+        <div class="product__cat" data-i18n="cat.rattan">Искусственный ротанг</div>
+        <div class="product__name" data-i18n="p22.name" style="margin-top:4px">Искусственный ротанг (бухта)</div>
+        <div class="product-swatches" aria-label="Подтверждённые цвета">
+          <button type="button" class="product-swatch is-active" style="--swatch-color:#FFFFFF" data-color="white" data-img="assets/products/rotang-nit-buhta/white.webp" title="Белый" aria-label="Белый"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#EAE6DF" data-color="pearl" data-img="assets/products/rotang-nit-buhta/pearl.webp" title="Жемчужный" aria-label="Жемчужный"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#D2B48C" data-color="sand" data-img="assets/products/rotang-nit-buhta/sand.webp" title="Песочный" aria-label="Песочный"></button>
+          <button type="button" class="product-swatch" style="--swatch-color:#D4AF37" data-color="gold" data-img="assets/products/rotang-nit-buhta/gold.webp" title="Золотистый" aria-label="Золотистый"></button>
+        </div>
+        <div class="price" style="margin-top:8px"><span class="price__now">36&nbsp;000&nbsp;сум&nbsp;/&nbsp;кг</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== INTERIOR SCENARIOS & SOLUTIONS ===== -->
+<section class="wrap section section--compact" id="home-solutions">
+  <div class="home-solutions-head reveal">
+    <div class="eyebrow" data-i18n="home.solutions.eyebrow">Интерьерные сценарии</div>
+    <h2 class="display-2" style="margin-top:8px" data-i18n="home.solutions.title">Готовые решения для вашего пространства</h2>
+    <p class="muted" style="max-width:58ch;margin-top:8px;font-size:15px;line-height:1.5" data-i18n="home.solutions.sub">Гармоничные комплекты столов и стульев для террасы, кухни, сада и кафе.</p>
+  </div>
+
+  <div class="home-solutions-grid" data-stagger="80" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px;margin-top:24px">
+    
+    <!-- Solution 1: Terrace & Garden -->
+    <div class="sol-card reveal" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
+      <div style="position:relative;height:220px;overflow:hidden">
+        <img src="assets/hero-garden-furniture.png" alt="Терраса и сад" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
+        <span class="pill pill--ghost tl" style="position:absolute;top:14px;left:14px;font-size:12px" data-i18n="home.solutions.c1.title">Терраса и сад</span>
+      </div>
+      <div style="padding:20px;display:flex;flex-direction:column;flex:1">
+        <h3 style="font-size:17px;font-weight:700;margin-bottom:6px" data-i18n="home.solutions.c1.title">Терраса и сад</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px" data-i18n="home.solutions.c1.desc">Стулья Jardin + стол Taper 80×80. Атмосферная обеденная группа для открытого воздуха.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Устойчивость к УФ</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Лёгкий уход</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line-2);padding-top:14px;gap:8px">
+          <div>
+            <span style="font-size:11px;color:var(--muted);display:block">Комплект от</span>
+            <strong style="font-size:15px;color:var(--copper)">2 030 000 сум</strong>
+          </div>
+          <a href="/catalog/stul-jardin" class="btn btn--copper btn--sm" style="display:inline-flex;align-items:center;gap:4px">
+            <span>Смотреть</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solution 2: Modern Dining Room -->
+    <div class="sol-card reveal" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
+      <div style="position:relative;height:220px;overflow:hidden">
+        <img src="assets/scene-dining-azure.png" alt="Кухня и столовая" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
+        <span class="pill pill--ghost tl" style="position:absolute;top:14px;left:14px;font-size:12px" data-i18n="home.solutions.c2.title">Кухня и столовая</span>
+      </div>
+      <div style="padding:20px;display:flex;flex-direction:column;flex:1">
+        <h3 style="font-size:17px;font-weight:700;margin-bottom:6px" data-i18n="home.solutions.c2.title">Кухня и столовая</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px" data-i18n="home.solutions.c2.desc">Стулья Noero + стол Corda 135 Чёрный мрамор. Стильное решение в современном стиле.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Текстура мрамора</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">С подлокотниками</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line-2);padding-top:14px;gap:8px">
+          <div>
+            <span style="font-size:11px;color:var(--muted);display:block">Комплект от</span>
+            <strong style="font-size:15px;color:var(--copper)">2 245 000 сум</strong>
+          </div>
+          <a href="/catalog/stul-noero" class="btn btn--copper btn--sm" style="display:inline-flex;align-items:center;gap:4px">
+            <span>Смотреть</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solution 3: Cafe & Veranda HoReCa -->
+    <div class="sol-card reveal" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
+      <div style="position:relative;height:220px;overflow:hidden">
+        <img src="assets/scene-dining-warm.png" alt="Кафе и летняя веранда" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
+        <span class="pill pill--ghost tl" style="position:absolute;top:14px;left:14px;font-size:12px" data-i18n="home.solutions.c3.title">Кафе и летняя веранда</span>
+      </div>
+      <div style="padding:20px;display:flex;flex-direction:column;flex:1">
+        <h3 style="font-size:17px;font-weight:700;margin-bottom:6px" data-i18n="home.solutions.c3.title">Кафе и летняя веранда</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px" data-i18n="home.solutions.c3.desc">Стулья Roero + стол Vertex 80×80. Штабелируемые стулья для HoReCa.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Штабелируемые</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Металлические ножки</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line-2);padding-top:14px;gap:8px">
+          <div>
+            <span style="font-size:11px;color:var(--muted);display:block">Комплект от</span>
+            <strong style="font-size:15px;color:var(--copper)">1 552 000 сум</strong>
+          </div>
+          <a href="/catalog/stul-roero" class="btn btn--copper btn--sm" style="display:inline-flex;align-items:center;gap:4px">
+            <span>Смотреть</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solution 4: Cozy Lounge Patio -->
+    <div class="sol-card reveal" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
+      <div style="position:relative;height:220px;overflow:hidden">
+        <img src="assets/scene-dining-teal.png" alt="Уютная зона отдыха" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
+        <span class="pill pill--ghost tl" style="position:absolute;top:14px;left:14px;font-size:12px" data-i18n="home.solutions.c4.title">Уютная зона отдыха</span>
+      </div>
+      <div style="padding:20px;display:flex;flex-direction:column;flex:1">
+        <h3 style="font-size:17px;font-weight:700;margin-bottom:6px" data-i18n="home.solutions.c4.title">Уютная зона отдыха</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px" data-i18n="home.solutions.c4.desc">Плетёные кресла Como + стол Taper Rotang. Удобная посадка с мягкими подушками.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Искусственный ротанг</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Подушка в комплекте</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line-2);padding-top:14px;gap:8px">
+          <div>
+            <span style="font-size:11px;color:var(--muted);display:block">Комплект от</span>
+            <strong style="font-size:15px;color:var(--copper)">2 215 000 сум</strong>
+          </div>
+          <a href="/catalog/kreslo-como" class="btn btn--copper btn--sm" style="display:inline-flex;align-items:center;gap:4px">
+            <span>Смотреть</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== 4 SIMPLE STEPS ORDERING ===== -->
+<section class="wrap section section--compact" style="margin-top:20px">
+  <div class="steps-card reveal" style="background:var(--cream, #f7f5f0);border:1px solid var(--line);border-radius:24px;padding:clamp(24px, 4vw, 44px)">
+    <div style="text-align:center;max-width:60ch;margin:0 auto 32px">
+      <div class="eyebrow" data-i18n="home.steps.title">Как устроен простой заказ в BTT</div>
+      <h2 style="font-size:clamp(20px, 2.2vw, 28px);font-weight:800;margin-top:6px" data-i18n="home.steps.title">Как устроен простой заказ в BTT</h2>
+      <p class="muted" style="margin-top:6px;font-size:14.5px" data-i18n="home.steps.sub">Понятные сценарии покупки без лишних сложностей</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:20px">
+      <div style="background:var(--paper);border:1px solid var(--line-2);border-radius:16px;padding:20px">
+        <div style="font-size:24px;margin-bottom:8px">🎨</div>
+        <h4 style="font-size:15px;font-weight:700;margin-bottom:6px" data-i18n="home.steps.s1.t">1. Выбор модели и цвета</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.45" data-i18n="home.steps.s1.d">16 моделей в каталоге с фотографиями в интерьере и реальными оттенками.</p>
+      </div>
+      <div style="background:var(--paper);border:1px solid var(--line-2);border-radius:16px;padding:20px">
+        <div style="font-size:24px;margin-bottom:8px">⚡</div>
+        <h4 style="font-size:15px;font-weight:700;margin-bottom:6px" data-i18n="home.steps.s2.t">2. Заказ в 1 клик</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.45" data-i18n="home.steps.s2.d">Только ваш номер телефона. Без обязательных регистраций и анкет.</p>
+      </div>
+      <div style="background:var(--paper);border:1px solid var(--line-2);border-radius:16px;padding:20px">
+        <div style="font-size:24px;margin-bottom:8px">📞</div>
+        <h4 style="font-size:15px;font-weight:700;margin-bottom:6px" data-i18n="home.steps.s3.t">3. Согласование доставки</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.45" data-i18n="home.steps.s3.d">Менеджер перезвонит за 10-15 минут и согласует удобное время получения.</p>
+      </div>
+      <div style="background:var(--paper);border:1px solid var(--line-2);border-radius:16px;padding:20px">
+        <div style="font-size:24px;margin-bottom:8px">🛡️</div>
+        <h4 style="font-size:15px;font-weight:700;margin-bottom:6px" data-i18n="home.steps.s4.t">4. Оплата при получении</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.45" data-i18n="home.steps.s4.d">Осматриваете мебель на месте и только затем оплачиваете (наличными или Click/Payme).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ATMOSPHERE HERO ===== -->
+<section class="atmo-hero wrap section" data-atmo-hero role="region" aria-roledescription="carousel" data-i18n-aria="atmo.carousel" aria-label="Атмосфера">
+  <div class="atmo-hero__card is-entered">
+    <div class="atmo-hero__bg" aria-hidden="true">
+      <img class="atmo-hero__img is-on" data-a="img" src="assets/hero-garden-furniture.png" alt="Терраса и сад" loading="lazy" decoding="async">
+      <img class="atmo-hero__img" data-a="imgB" alt="" loading="lazy" decoding="async">
+    </div>
+    <div class="atmo-hero__shade" aria-hidden="true"></div>
+    <div class="atmo-hero__main" aria-live="polite">
+      <span class="pill pill--glass pill--dot atmo-hero__loc" data-a="loc">Терраса и сад</span>
+      <h2 class="atmo-hero__title" data-a="title">Мебель для дома, сада и бизнеса</h2>
+      <p class="atmo-hero__lead" data-a="sub">Эргономичные стулья и надёжные столы. Подходят для жилых пространств, летних площадок и ресторанов.</p>
+      <a class="btn btn--light btn--icon-end atmo-hero__cta" data-a="link" href="catalog.html">
+        <span data-a="cta" data-i18n="atmo.cta">Смотреть каталог</span>
+        <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+    <div class="atmo-hero__switch hero__switch liquid liquid--dark spatial">
+      <button class="hero__sw-arrow" data-atmo-prev data-i18n-aria="hero.prev" aria-label="Предыдущий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="hero__sw-dots" data-atmo-dots></div>
+      <button class="hero__sw-arrow" data-atmo-next data-i18n-aria="hero.next" aria-label="Следующий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MOOD BENTO ===== -->
+<section class="wrap section section--split-y">
+  <div class="mood">
+    <h2 class="display-3 reveal" data-i18n="split.title">Практичная мебель для интерьера и открытых площадок</h2>
+    <div class="mood__bento" data-stagger="70">
+      <a class="mood-tile reveal" href="catalog.html?cat=tables">
+        <img src="assets/scene-dining-warm.png" alt="Терраса" loading="lazy" decoding="async">
+        <div class="mood-tile__meta">
+          <span class="mood-tile__loc" data-i18n="mood.tile1.loc">Терраса</span>
+          <span class="mood-tile__title" data-i18n="mood.tile1.title">Обеденные столы</span>
+        </div>
+      </a>
+      <a class="mood-tile mood-tile--crop-r reveal" href="catalog.html?cat=wicker-chairs">
+        <img src="assets/scene-dining-teal.png" alt="Плетёные стулья" loading="lazy" decoding="async">
+        <div class="mood-tile__meta">
+          <span class="mood-tile__loc" data-i18n="mood.tile2.loc">Сад</span>
+          <span class="mood-tile__title" data-i18n="mood.tile2.title">Плетёные стулья</span>
+        </div>
+      </a>
+      <div class="mood-tile mood-tile--quote reveal">
+        <span class="mood-tile__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20c8 0 16-6 16-16C10 4 4 12 4 20Z"/><path d="M4 20c3-6 7-9 12-11"/></svg></span>
+        <p data-i18n="mood.quote">Подбираем модели для частных домов, дач, квартир и кафе. Мебель устойчива к повседневным нагрузкам, легко очищается и долго сохраняет опрятный вид.</p>
+      </div>
+      <a class="mood-tile mood-tile--crop-l reveal" href="catalog.html?cat=plastic-chairs">
+        <img src="assets/scene-dining-cream.png" alt="Пластиковые стулья" loading="lazy" decoding="async">
+        <div class="mood-tile__meta">
+          <span class="mood-tile__loc" data-i18n="mood.tile3.loc">Веранда</span>
+          <span class="mood-tile__title" data-i18n="mood.tile3.title">Пластиковые стулья</span>
+        </div>
+      </a>
+      <a class="mood-tile mood-tile--crop-t reveal" href="horeca.html">
+        <img src="assets/scene-dining-grey.png" alt="Столы" loading="lazy" decoding="async">
+        <div class="mood-tile__meta">
+          <span class="mood-tile__loc" data-i18n="mood.tile4.loc">Кафе / HoReCa</span>
+          <span class="mood-tile__title" data-i18n="mood.tile4.title">Столы и стулья</span>
+        </div>
+      </a>
+      <a class="mood-tile reveal" href="catalog.html?cat=upholstered-chairs">
+        <img src="assets/hero-home-furniture.png" alt="Мягкие стулья" loading="lazy" decoding="async">
+        <div class="mood-tile__meta">
+          <span class="mood-tile__loc" data-i18n="mood.tile5.loc">Гостиная</span>
+          <span class="mood-tile__title" data-i18n="mood.tile5.title">Мягкие стулья</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL SHOWCASE BANNER ===== -->
+<section class="wrap section section--compact">
+  <div class="final reveal">
+    <div class="final__bg" aria-hidden="true">
+      <img src="assets/scene-dining-azure.png" alt="Мебель BTT" loading="lazy" decoding="async">
+    </div>
+    <div class="final__scrim" aria-hidden="true"></div>
+    <div class="final__content">
+      <div class="final__badge">
+        <span class="pill pill--copper pill--dot" data-i18n="final.pill">BTT • Мебель для дома и сада</span>
+      </div>
+      <h2 class="final__title">
+        <span data-i18n="final.title.main">Столы и стулья</span>
+        <br><em data-i18n="final.title.em">для вашего комфорта</em>
+      </h2>
+      <p class="final__desc" data-i18n="final.desc2">
+        Готовые мебельные решения для дома, дачи и коммерческих пространств. Поможем с комплектацией и доставим по Ташкенту.
+      </p>
+      <div class="final__perks">
+        <div class="final__perk">
+          <span class="final__perk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <span data-i18n="final.perk1">Прочные материалы</span>
+        </div>
+        <div class="final__perk">
+          <span class="final__perk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg></span>
+          <span data-i18n="final.perk2">Честные цены в UZS</span>
+        </div>
+        <div class="final__perk">
+          <span class="final__perk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+          <span data-i18n="final.perk3">Доставка по Ташкенту</span>
+        </div>
+      </div>
+      <div class="final__actions">
+        <a class="btn btn--copper btn--icon-end" href="catalog.html">
+          <span data-i18n="final.cta1">Смотреть каталог</span>
+          <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="btn btn--ghost btn--final-ghost" href="https://t.me/btt_uz" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="final.tg">Написать в Telegram</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-foot">
+  <div class="site-foot__top">
+    <div class="foot-col">
+      <img src="assets/btt-logo.png" alt="BTT - мебель для дома и сада">
+      <p class="muted" data-i18n="foot.tag" style="color:var(--on-dark-muted);max-width:30ch">BTT - мебель для дома и сада. Столы, стулья и мебельные комплекты.</p>
+    </div>
+    <div class="foot-col">
+      <h5 data-i18n="foot.menu">Меню</h5>
+      <a href="index.html" data-i18n="nav.home">Главная</a>
+      <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+      <a href="horeca.html" data-i18n="nav.horeca">HoReCa</a>
+      <a href="blog.html" data-i18n="nav.blog">Статьи</a>
+      <a href="about.html" data-i18n="nav.about">О нас</a>
+      <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
+    </div>
+    <div class="foot-col">
+      <h5 data-i18n="foot.help">Помощь</h5>
+      <a href="faq.html" data-i18n="foot.faq">Вопросы и ответы</a>
+      <a href="delivery.html" data-i18n="foot.delivery">Доставка</a>
+      <a href="returns.html" data-i18n="foot.returns">Возврат</a>
+      <a href="care.html" data-i18n="foot.care">Уход за мебелью</a>
+    </div>
+    <div class="foot-col">
+      <h5 data-i18n="foot.contacts">Контакты</h5>
+      <p data-i18n="co.i.addr.v">Ташкент, Узбекистан</p>
+      <a href="tel:+998771044422" data-i18n="co.i.phone.v">+998 77 104 44 22</a>
+      <a href="mailto:hello@btt.uz">hello@btt.uz</a>
+      <div class="foot-social">
+        <a class="foot-social__link" href="https://www.instagram.com/btt_uz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </a>
+        <a class="foot-social__link" href="https://t.me/btt_uz" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2-.06-.06-.16-.04-.23-.02-.1.02-1.74 1.1-4.91 3.25-.46.32-.88.47-1.26.46-.42-.01-1.22-.24-1.82-.43-.73-.24-1.31-.37-1.26-.78.03-.21.32-.43.88-.66 3.44-1.5 5.74-2.49 6.89-2.97 3.28-1.37 3.97-1.61 4.41-1.62.1 0 .32.02.46.14.12.1.15.24.17.34-.01.07.01.22 0 .34z"/></svg>
+        </a>
+        <a class="foot-social__link" href="https://wa.me/998771044422" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.41a8.197 8.197 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m-3.53 4.27c-.19 0-.5.07-.76.35-.26.28-1 1-1 2.43s1.02 2.82 1.16 3.02c.14.19 2.01 3.07 4.87 4.31.68.29 1.21.47 1.63.6.68.22 1.3.19 1.79.12.55-.08 1.69-.69 1.93-1.36.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33-.28-.14-1.69-.83-1.95-.93-.26-.09-.45-.14-.64.14-.19.28-.74.93-.9 1.12-.17.19-.33.21-.62.07-.28-.14-1.2-.44-2.28-1.41-.85-.75-1.42-1.68-1.59-1.96-.17-.28-.02-.44.12-.58.13-.13.28-.33.43-.5.14-.17.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.56-.01z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="site-foot__bottom">
+    <span data-i18n="foot.copy">© 2026 BTT. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span>
+    <span class="foot-legal"><a href="cookies.html" data-i18n="foot.cookies">ФАЙЛЫ COOKIE</a><a href="privacy.html" data-i18n="foot.privacy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+  {"@type":["Organization","LocalBusiness","FurnitureStore"],"@id":"https://btt.uz/#org","name":"BTT - мебель для дома и сада","url":"https://btt.uz/","logo":"https://btt.uz/assets/btt-logo.png","image":"https://btt.uz/assets/hero-garden-furniture.png","telephone":"+998771044422","email":"hello@btt.uz","priceRange":"$$","currenciesAccepted":"UZS","areaServed":{"@type":"Country","name":"Uzbekistan"},"address":{"@type":"PostalAddress","addressLocality":"Ташкент","addressCountry":"UZ"},"sameAs":["https://t.me/btt_uz","https://www.instagram.com/btt_uz/"]},
+  {"@type":"WebSite","@id":"https://btt.uz/#website","name":"BTT - мебель для дома и сада","url":"https://btt.uz/","publisher":{"@id":"https://btt.uz/#org"},"inLanguage":["ru","uz","en"],"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://btt.uz/catalog.html?q={search_term_string}"},"query-input":"required name=search_term_string"}}
+]}
+</script>
+
+<script src="assets/util.js?v=20261001-1"></script>
+<script src="assets/cookies.js?v=20261001-1"></script>
+<script src="assets/api.js?v=20261001-1"></script>
+<script src="assets/i18n.js?v=20261001-1"></script>
+<script src="assets/hero.js?v=20261001-1"></script>
+<script src="assets/atmo-hero.js?v=20261001-1"></script>
+<script src="assets/assistant.js?v=20261001-1"></script>
+<script src="assets/search.js?v=20261001-1"></script>
+<script src="assets/products.js?v=20261001-1"></script>
+<script src="assets/site.js?v=20261001-1"></script>
+<script src="assets/cart.js?v=20261001-1"></script>
+<script src="assets/catalog-sync.js?v=20261001-1"></script>
+<script src="assets/motion.js?v=20261001-1"></script>
+<script src="assets/fx.js?v=20261001-1"></script>
+<script src="assets/home-seo.js?v=20261001-1"></script>
+
+</body>
+</html>

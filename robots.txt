@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login.html
+Disallow: /account.html
+Disallow: /404.html
+
+Sitemap: https://btt.uz/sitemap.xml
