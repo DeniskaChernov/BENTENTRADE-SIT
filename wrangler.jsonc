@@ -48,5 +48,10 @@
 
   "vars": {
     "SITE_ORIGIN": "https://bententrade.uz"
-  }
+  },
+
+  "routes": [
+    { "pattern": "bententrade.uz/*", "zone_name": "bententrade.uz" },
+    { "pattern": "www.bententrade.uz/*", "zone_name": "bententrade.uz" }
+  ]
 }
