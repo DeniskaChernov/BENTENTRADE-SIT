@@ -158,7 +158,7 @@ test('horeca.html exists and is properly structured', () => {
   expect(hrc).toContain('BTT - Мебель для HoReCa');
   expect(hrc).toContain('assets/horeca.css');
   expect(hrc).toContain('data-contact-form');
-  expect(hrc).toContain('@bententradeuz');
+  expect(hrc).toContain('@btt_uz');
   expect(hrc).toContain('catalog/stul-vertex');
   expect(hrc).toContain('catalog/stol-corda-135');
 });

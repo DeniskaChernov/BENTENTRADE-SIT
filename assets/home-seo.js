@@ -13,7 +13,7 @@
 
   function paletteSchema() {
     var spec = t("pal.spec");
-    var base = "https://bententrade.uz/assets/";
+    var base = "https://btt.uz/assets/";
     return {
       "@context": "https://schema.org",
       "@type": "ItemList",

@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE - tiny shared client helpers.
+   BTT - tiny shared client helpers.
    Loaded before the feature scripts so they can reuse one copy of
    the language/i18n/escape helpers and the product-card SVG icons
    instead of each redefining them. Feature scripts still keep a
@@ -144,7 +144,7 @@
   };
 
   var OG_LOCALES = { ru: "ru_RU", uz: "uz_UZ", en: "en_US" };
-  var SITE_URL = "https://bententrade.uz";
+  var SITE_URL = "https://btt.uz";
 
   function seoPageUrl() {
     var path = location.pathname.split("/").pop() || "index.html";

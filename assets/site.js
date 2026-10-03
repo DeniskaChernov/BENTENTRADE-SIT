@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE - site interactions
+   BTT - site interactions
    ============================================================ */
 (function(){
   const LANGS = ["ru","uz","en"];
@@ -461,7 +461,7 @@
 
   function openManagerChat(msg){
     const mgr = window.BTT_UTIL && window.BTT_UTIL.managerUrl;
-    const url = mgr ? mgr(msg).telegram : "https://t.me/bententradeuz";
+    const url = mgr ? mgr(msg).telegram : "https://t.me/btt_uz";
     window.open(url, "_blank", "noopener");
   }
 

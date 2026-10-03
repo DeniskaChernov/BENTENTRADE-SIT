@@ -70,8 +70,8 @@ app.use("/api/*", async (c, next) => {
     const sourceUrl = origin || referer;
     if (sourceUrl) {
       const allowedHosts = new Set([
-        "bententrade.uz",
-        "www.bententrade.uz",
+        "btt.uz",
+        "www.btt.uz",
         "localhost",
         "127.0.0.1",
       ]);
@@ -126,8 +126,8 @@ app.get("/api/settings", async (c) => {
     brand: "BTT - мебель для дома и сада",
     phone: "+998 77 104 44 22",
     whatsapp: "998771044422",
-    telegram: "bententradeuz",
-    email: "hello@bententrade.uz",
+    telegram: "btt_uz",
+    email: "hello@btt.uz",
   };
   for (const r of results) {
     if (r.key && r.value && PUBLIC_SETTINGS_KEYS.has(r.key)) {
@@ -396,9 +396,9 @@ app.get("/catalog/:slug", async (c) => {
   const productName = i18nRu?.name || slug;
   const pageTitle = i18nRu?.seo_title || `BTT - ${productName}`;
   const pageDesc = i18nRu?.seo_description || `${productName} - купить в Ташкенте. Характеристики, размеры, цена в сумах, доставка BTT.`;
-  const canonicalUrl = `https://bententrade.uz/catalog/${slug}`;
+  const canonicalUrl = `https://btt.uz/catalog/${slug}`;
   const rawImg = images[0] || "assets/btt-logo.png";
-  const imageUrl = rawImg.startsWith("http") ? rawImg : `https://bententrade.uz/${rawImg.replace(/^\//, "")}`;
+  const imageUrl = rawImg.startsWith("http") ? rawImg : `https://btt.uz/${rawImg.replace(/^\//, "")}`;
 
   let specs: Record<string, string> = {};
   if (i18nRu?.specs && typeof i18nRu.specs === "object") {
@@ -483,8 +483,8 @@ app.get("/catalog/:slug", async (c) => {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://bententrade.uz/" },
-      { "@type": "ListItem", "position": 2, "name": "Каталог", "item": "https://bententrade.uz/catalog.html" },
+      { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://btt.uz/" },
+      { "@type": "ListItem", "position": 2, "name": "Каталог", "item": "https://btt.uz/catalog.html" },
       { "@type": "ListItem", "position": 3, "name": productName, "item": canonicalUrl }
     ]
   };
@@ -530,38 +530,38 @@ app.get("/sitemap.xml", async (c) => {
 
     if (prods && prods.length > 0) {
       const staticUrls = [
-        { loc: "https://bententrade.uz/", freq: "weekly", priority: "1.0" },
-        { loc: "https://bententrade.uz/catalog.html", freq: "weekly", priority: "0.95" },
-        { loc: "https://bententrade.uz/horeca.html", freq: "weekly", priority: "0.88" },
-        { loc: "https://bententrade.uz/rotang-tashkent.html", freq: "monthly", priority: "0.88" },
-        { loc: "https://bententrade.uz/sadovaya-mebel-rotang.html", freq: "monthly", priority: "0.88" },
-        { loc: "https://bententrade.uz/about.html", freq: "monthly", priority: "0.7" },
-        { loc: "https://bententrade.uz/contacts.html", freq: "monthly", priority: "0.75" },
-        { loc: "https://bententrade.uz/blog.html", freq: "weekly", priority: "0.8" },
-        { loc: "https://bententrade.uz/article.html?slug=zachem-iskusstvennyy-rotang", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/article.html?slug=kak-vybrat-luchshiy-rotang", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/article.html?slug=pochemu-rabotayut-s-bententrade", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/uhod-za-mebelyu-iz-rotanga", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/profil-polumesyats-dlya-mebeli", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/rotang-dlya-terrasy", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/mebel-iz-rotanga-na-zakaz", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/iskusstvennyy-i-naturalnyy-rotang", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/sadovaya-mebel-rotang-tashkent", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/kashpo-iz-iskusstvennogo-rotanga", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/korziny-sunduki-rotang", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/kupit-rotang-buhtami", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/mebel-rotang-dlya-kafe", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/pletennaya-mebel-dlya-doma", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/dostavka-rotanga-po-uzbekistanu", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/rotang-dlya-balkona", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/palitra-tsvetov-rotanga-bententrade", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/oformlenie-terassi-rotangom", freq: "monthly", priority: "0.65" },
-        { loc: "https://bententrade.uz/faq.html", freq: "monthly", priority: "0.55" },
-        { loc: "https://bententrade.uz/delivery.html", freq: "monthly", priority: "0.5" },
-        { loc: "https://bententrade.uz/returns.html", freq: "monthly", priority: "0.5" },
-        { loc: "https://bententrade.uz/care.html", freq: "monthly", priority: "0.55" },
-        { loc: "https://bententrade.uz/privacy.html", freq: "monthly", priority: "0.3" },
-        { loc: "https://bententrade.uz/cookies.html", freq: "monthly", priority: "0.3" }
+        { loc: "https://btt.uz/", freq: "weekly", priority: "1.0" },
+        { loc: "https://btt.uz/catalog.html", freq: "weekly", priority: "0.95" },
+        { loc: "https://btt.uz/horeca.html", freq: "weekly", priority: "0.88" },
+        { loc: "https://btt.uz/rotang-tashkent.html", freq: "monthly", priority: "0.88" },
+        { loc: "https://btt.uz/sadovaya-mebel-rotang.html", freq: "monthly", priority: "0.88" },
+        { loc: "https://btt.uz/about.html", freq: "monthly", priority: "0.7" },
+        { loc: "https://btt.uz/contacts.html", freq: "monthly", priority: "0.75" },
+        { loc: "https://btt.uz/blog.html", freq: "weekly", priority: "0.8" },
+        { loc: "https://btt.uz/article.html?slug=zachem-iskusstvennyy-rotang", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=kak-vybrat-luchshiy-rotang", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=pochemu-rabotayut-s-btt", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/uhod-za-mebelyu-iz-rotanga", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/profil-polumesyats-dlya-mebeli", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/rotang-dlya-terrasy", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/mebel-iz-rotanga-na-zakaz", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/iskusstvennyy-i-naturalnyy-rotang", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/sadovaya-mebel-rotang-tashkent", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/kashpo-iz-iskusstvennogo-rotanga", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/korziny-sunduki-rotang", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/kupit-rotang-buhtami", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/mebel-rotang-dlya-kafe", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/pletennaya-mebel-dlya-doma", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/dostavka-rotanga-po-uzbekistanu", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/rotang-dlya-balkona", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/palitra-tsvetov-rotanga-btt", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/oformlenie-terassi-rotangom", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/faq.html", freq: "monthly", priority: "0.55" },
+        { loc: "https://btt.uz/delivery.html", freq: "monthly", priority: "0.5" },
+        { loc: "https://btt.uz/returns.html", freq: "monthly", priority: "0.5" },
+        { loc: "https://btt.uz/care.html", freq: "monthly", priority: "0.55" },
+        { loc: "https://btt.uz/privacy.html", freq: "monthly", priority: "0.3" },
+        { loc: "https://btt.uz/cookies.html", freq: "monthly", priority: "0.3" }
       ];
 
       const xmlLines = [
@@ -573,11 +573,11 @@ app.get("/sitemap.xml", async (c) => {
       }
       if (cats && cats.length) {
         for (const catItem of cats) {
-          xmlLines.push(`  <url><loc>https://bententrade.uz/catalog.html?cat=${encodeURIComponent(catItem.slug)}</loc><changefreq>weekly</changefreq><priority>0.88</priority></url>`);
+          xmlLines.push(`  <url><loc>https://btt.uz/catalog.html?cat=${encodeURIComponent(catItem.slug)}</loc><changefreq>weekly</changefreq><priority>0.88</priority></url>`);
         }
       }
       for (const p of prods) {
-        xmlLines.push(`  <url><loc>https://bententrade.uz/catalog/${encodeURIComponent(p.id)}</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>`);
+        xmlLines.push(`  <url><loc>https://btt.uz/catalog/${encodeURIComponent(p.id)}</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>`);
       }
       xmlLines.push('</urlset>');
 
@@ -620,7 +620,7 @@ app.get("/product", async (c) => {
 const ARTICLE_REDIRECTS: Record<string, string> = {
   "/kashpo-iz-iskusstvennogo-rotanga": "/article.html?slug=kashpo-iz-iskusstvennogo-rotanga",
   "/korziny-sunduki-rotang": "/article.html?slug=korziny-sunduki-rotang",
-  "/palitra-tsvetov-rotanga-bententrade": "/article.html?slug=palitra-tsvetov-rotanga-bententrade",
+  "/palitra-tsvetov-rotanga-btt": "/article.html?slug=palitra-tsvetov-rotanga-btt",
 };
 
 for (const [fromPath, toPath] of Object.entries(ARTICLE_REDIRECTS)) {

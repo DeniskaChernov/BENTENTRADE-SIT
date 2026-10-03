@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE - Service Worker (PWA Offline Cache)
+   BTT - Service Worker (PWA Offline Cache)
    Version: 20260928-v1
    ============================================================ */
 const CACHE_NAME = "btt-shell-20261002-v1";

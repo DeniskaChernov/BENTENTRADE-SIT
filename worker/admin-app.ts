@@ -171,9 +171,9 @@ export const ADMIN_APP_JS = String.raw`
         '<div class="login-card">' +
           '<div class="brand">' +
             '<div class="brand-logo">B</div>' +
-            '<div class="brand-text"><h1>Bententrade</h1><span>Панель управления</span></div>' +
+            '<div class="brand-text"><h1>BTT</h1><span>Панель управления</span></div>' +
           '</div>' +
-          '<div class="field"><label>Email</label><input id="l-email" type="email" placeholder="admin@bententrade.uz" autocomplete="username"></div>' +
+          '<div class="field"><label>Email</label><input id="l-email" type="email" placeholder="admin@btt.uz" autocomplete="username"></div>' +
           '<div class="field"><label>Пароль</label><input id="l-pass" type="password" placeholder="••••••••" autocomplete="current-password"></div>' +
           (err ? '<div style="color:var(--err);font-size:12.5px;margin-bottom:12px;font-weight:600">' + esc(err) + '</div>' : '') +
           '<button class="btn" id="l-go" style="width:100%">Войти в систему</button>' +
@@ -223,7 +223,7 @@ export const ADMIN_APP_JS = String.raw`
         '<aside id="sidebar">' +
           '<div class="brand">' +
             '<div class="brand-logo">B</div>' +
-            '<div class="brand-text"><h1>Bententrade</h1><span>Панель управления</span></div>' +
+            '<div class="brand-text"><h1>BTT</h1><span>Панель управления</span></div>' +
           '</div>' +
           '<div class="nav-group">' +
             '<div class="nav-title">Управление сайтом</div>' +
@@ -2555,9 +2555,9 @@ export const ADMIN_APP_JS = String.raw`
               '</div>' +
               '<div class="serp-box">' +
                 '<div class="serp-url">' +
-                  '<span>https://bententrade.uz</span> › blog › <span id="serp-slug-preview">' + esc(a.slug || "statya") + '</span>' +
+                  '<span>https://btt.uz</span> › blog › <span id="serp-slug-preview">' + esc(a.slug || "statya") + '</span>' +
                 '</div>' +
-                '<div class="serp-title" id="serp-title-preview">' + esc((byLang.ru && byLang.ru.title) || "Заголовок статьи") + ' - Блог Bententrade</div>' +
+                '<div class="serp-title" id="serp-title-preview">' + esc((byLang.ru && byLang.ru.title) || "Заголовок статьи") + ' - Блог BTT</div>' +
                 '<div class="serp-desc" id="serp-desc-preview">' + esc((byLang.ru && byLang.ru.excerpt) || "Краткое описание публикации в поисковой выдаче Google…") + '</div>' +
               '</div>' +
               '<div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--muted)">' +
@@ -2763,7 +2763,7 @@ export const ADMIN_APP_JS = String.raw`
         var curTa = dlg.querySelector('.art-body[data-lang="' + currentActiveLang + '"]');
         var start = curTa.selectionStart;
         var end = curTa.selectionEnd;
-        var sel = curTa.value.substring(start, end) || "Фотография Bententrade";
+        var sel = curTa.value.substring(start, end) || "Фотография BTT";
         var snippet = "\n\n![" + sel + "](" + url + ")\n\n";
         curTa.setRangeText(snippet, start, end, "end");
         curTa.focus();
@@ -2780,7 +2780,7 @@ export const ADMIN_APP_JS = String.raw`
       var start = curTa.selectionStart;
       var end = curTa.selectionEnd;
       var sel = curTa.value.substring(start, end) || "ссылка";
-      var url = prompt("Введите адрес ссылки (URL):", "https://bententrade.uz");
+      var url = prompt("Введите адрес ссылки (URL):", "https://btt.uz");
       if (url) {
         var snippet = "[" + sel + "](" + url + ")";
         curTa.setRangeText(snippet, start, end, "end");
@@ -2861,7 +2861,7 @@ export const ADMIN_APP_JS = String.raw`
       var exc = dlg.querySelector('.art-exc[data-lang="ru"]').value.trim() || "Краткое описание статьи…";
 
       dlg.querySelector("#serp-slug-preview").textContent = slug;
-      dlg.querySelector("#serp-title-preview").textContent = title + " - Блог Bententrade";
+      dlg.querySelector("#serp-title-preview").textContent = title + " - Блог BTT";
       dlg.querySelector("#serp-desc-preview").textContent = exc;
 
       var tLen = title.length;
@@ -3202,7 +3202,7 @@ export const ADMIN_APP_JS = String.raw`
           '<div style="font-weight:600;truncate:ellipsis;white-space:nowrap;overflow:hidden">' + (m.product_id ? 'Товар: ' + esc(m.product_id) : 'Файл') + '</div>' +
           '<div style="display:flex;gap:4px;margin-top:6px">' +
             '<button class="btn ghost sm" style="flex:1;padding:4px" data-copy-url="' + url + '" title="Скопировать прямую ссылку">Ссылка</button>' +
-            '<button class="btn ghost sm" style="padding:4px 8px;font-size:11px;font-weight:700" data-copy-md="![' + esc(m.product_id || (m.article_id ? 'Статья #' + m.article_id : 'bententrade')) + '](' + url + ')" title="Скопировать Markdown тег">MD</button>' +
+            '<button class="btn ghost sm" style="padding:4px 8px;font-size:11px;font-weight:700" data-copy-md="![' + esc(m.product_id || (m.article_id ? 'Статья #' + m.article_id : 'btt')) + '](' + url + ')" title="Скопировать Markdown тег">MD</button>' +
             '<button class="btn ghost sm danger icon-only" data-del-m="' + m.id + '" title="Удалить">✕</button>' +
           '</div>' +
         '</div>' +
@@ -3720,11 +3720,11 @@ export const ADMIN_APP_JS = String.raw`
         '</div>' +
         '<div class="field">' +
           '<label>Telegram аккаунт или бот</label>' +
-          '<input id="st-tg" value="' + esc(s.telegram || "bententradeuz") + '" placeholder="username без @">' +
+          '<input id="st-tg" value="' + esc(s.telegram || "btt_uz") + '" placeholder="username без @">' +
         '</div>' +
         '<div class="field">' +
           '<label>Контактный Email</label>' +
-          '<input id="st-email" value="' + esc(s.email || "hello@bententrade.uz") + '">' +
+          '<input id="st-email" value="' + esc(s.email || "hello@btt.uz") + '">' +
         '</div>' +
 
         '<div style="margin-top:auto;padding-top:14px">' +
@@ -3940,7 +3940,7 @@ export const ADMIN_APP_JS = String.raw`
           method: "POST",
           body: {
             phone: phoneVal,
-            message: "Bententrade: Тестовое SMS-сообщение. Сервис уведомлений работает корректно!"
+            message: "BTT: Тестовое SMS-сообщение. Сервис уведомлений работает корректно!"
           }
         });
         if (resp.ok) {
@@ -3997,7 +3997,7 @@ export const ADMIN_APP_JS = String.raw`
           body: {
             token: tokenVal || undefined,
             chat: chatVal || undefined,
-            message: "Bententrade CMS: Тестовое уведомление. Подключение к Telegram работает отлично! 🚀"
+            message: "BTT CMS: Тестовое уведомление. Подключение к Telegram работает отлично! 🚀"
           }
         });
         if (resp.ok) {

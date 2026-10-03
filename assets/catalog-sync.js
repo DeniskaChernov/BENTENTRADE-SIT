@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE - hydrate catalog & PDP prices/names from the API.
+   BTT - hydrate catalog & PDP prices/names from the API.
    The static HTML remains the fallback; when the backend is
    reachable it becomes the source of truth (so prices edited in
    the CRM show up on the site without touching the markup).

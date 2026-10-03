@@ -1,4 +1,4 @@
-/** Cloudflare bindings + environment for the Bententrade Worker. */
+/** Cloudflare bindings + environment for the BTT Worker. */
 export interface Env {
   /** Static assets (the existing HTML/CSS/JS site at repo root). */
   ASSETS: Fetcher;
@@ -9,7 +9,7 @@ export interface Env {
   /** R2 bucket for media (product photos, article images). */
   MEDIA?: R2Bucket;
 
-  /** Public site origin, e.g. https://bententrade.uz */
+  /** Public site origin, e.g. https://btt.uz */
   SITE_ORIGIN: string;
 
   /** Secrets (set via `wrangler secret put ...`). All optional at runtime. */

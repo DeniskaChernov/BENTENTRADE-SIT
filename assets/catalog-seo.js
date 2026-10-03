@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const SITE = "https://bententrade.uz";
+  const SITE = "https://btt.uz";
   const DICT = window.BTT_I18N || {};
   const CAT_META = {
     furniture: "meta.cat.furniture",

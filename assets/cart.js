@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE - cart + favorites (site-wide, persistent)
+   BTT - cart + favorites (site-wide, persistent)
    Self-injecting slide-in drawers. State lives in localStorage:
      btt_cart  → { id: {name, price, img, qty} }
      btt_favs  → { id: {name, price, img} }
@@ -12,7 +12,7 @@
   /* ---------- manager contact (edit these) ----------
      telegram : username after t.me/  (no @)
      whatsapp : full number, digits only (country code first)        */
-  const CONFIG = { telegram: "bententradeuz", whatsapp: "998771044422", currency: "сум" };
+  const CONFIG = { telegram: "btt_uz", whatsapp: "998771044422", currency: "сум" };
   function syncSettings(){
     try{
       const s = JSON.parse(sessionStorage.getItem("btt_settings")||"{}");

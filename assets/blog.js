@@ -1,12 +1,12 @@
 /* ============================================================
-   BENTENTRADE - public articles/blog (list + single), API-driven.
+   BTT - public articles/blog (list + single), API-driven.
    Robust fail-safe dictionary, automatic fallback covers,
    3-column luxury grid, editorial hero story, instant search.
    ============================================================ */
 (function () {
   "use strict";
 
-  const SITE = "https://bententrade.uz";
+  const SITE = "https://btt.uz";
 
   /* Embedded fail-safe dictionary so raw keys never leak */
   const BLOG_DICT = {
@@ -106,7 +106,7 @@
     "iskusstvennyy-rotang": "assets/hero-rattan.png",
     "zachem-iskusstvennyy-rotang": "assets/hero-rattan.png",
     "kak-vybrat-luchshiy-rotang": "assets/rattan-palette-hero.png",
-    "pochemu-rabotayut-s-bententrade": "assets/hero-garden-furniture.png",
+    "pochemu-rabotayut-s-btt": "assets/hero-garden-furniture.png",
     "kashpo-iz-iskusstvennogo-rotanga": "assets/bento-planter.png",
     "korziny-sunduki-rotang": "assets/hero-home-furniture.png",
     "kupit-rotang-buhtami": "assets/hero-rattan.png",
@@ -114,7 +114,7 @@
     "pletennaya-mebel-dlya-doma": "assets/scene-dining-cream.png",
     "dostavka-rotanga-po-uzbekistanu": "assets/hero-garden-furniture.png",
     "rotang-dlya-balkona": "assets/bento-rattan.png",
-    "palitra-tsvetov-rotanga-bententrade": "assets/rattan-palette-hero.png",
+    "palitra-tsvetov-rotanga-btt": "assets/rattan-palette-hero.png",
     "oformlenie-terassi-rotangom": "assets/scene-dining-warm.png"
   };
 
@@ -433,7 +433,7 @@
           '<h3 class="blog-cta-banner__title">' + esc(t("blog.cta.title")) + "</h3>" +
           '<p class="blog-cta-banner__sub">' + esc(t("blog.cta.sub")) + "</p>" +
         "</div>" +
-        '<a class="blog-cta-banner__btn" href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer">' +
+        '<a class="blog-cta-banner__btn" href="https://t.me/btt_uz" target="_blank" rel="noopener noreferrer">' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>' +
           "<span>" + esc(t("blog.cta.btn")) + "</span>" +
         "</a>" +
@@ -704,7 +704,7 @@
       '<div class="article__body">' + bodyHtml + "</div>" +
       '<div class="article__cta">' +
       '<a class="btn btn--copper" href="catalog.html">' + esc(t("nav.catalog2")) + "</a>" +
-      '<a class="btn btn--ghost" href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer">Telegram</a>' +
+      '<a class="btn btn--ghost" href="https://t.me/btt_uz" target="_blank" rel="noopener noreferrer">Telegram</a>' +
       '<a class="btn btn--ghost" href="blog.html">' + esc(t("blog.back")) + "</a>" +
       "</div></article>";
     root.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));

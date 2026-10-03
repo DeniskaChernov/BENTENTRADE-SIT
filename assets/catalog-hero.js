@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE - category-driven catalog hero
+   BTT - category-driven catalog hero
    Swaps hero photo + copy from ?cat= / #hash; filtering is
    owned by site.js (chips + btt:cat-change).
    ============================================================ */

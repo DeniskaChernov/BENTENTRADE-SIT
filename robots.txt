@@ -7,4 +7,4 @@ Disallow: /login.html
 Disallow: /account.html
 Disallow: /404.html
 
-Sitemap: https://bententrade.uz/sitemap.xml
+Sitemap: https://btt.uz/sitemap.xml

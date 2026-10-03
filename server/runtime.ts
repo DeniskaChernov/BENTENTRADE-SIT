@@ -1,5 +1,5 @@
 /* ============================================================
-   BENTENTRADE - Node/Railway runtime.
+   BTT - Node/Railway runtime.
    Provides drop-in replacements for the Cloudflare bindings the
    Hono routes expect (c.env.DB / c.env.SESSIONS / c.env.MEDIA),
    backed by PostgreSQL and the local filesystem, so the existing
@@ -335,19 +335,19 @@ export async function migrate() {
 
       INSERT OR IGNORE INTO reviews (id, product_id, author_name, city, rating, text, is_verified, status, created_at) VALUES
         (1, 'p1', 'Тимур Ш.', 'Ташкент', 5, 'Заказывали угловой комплект «Лагуна» для террасы. Доставили точно в срок, распаковали, помогли установить. Плетение безупречное, швы ровные, каркас монолитный.', 1, 'approved', 1751712000000),
-        (2, 'p1', 'Наргиза М.', 'Ташкент', 5, 'Потрясающий диван! Цвет «Вуди» идеально подошёл к нашей плитке. На солнце не нагревается, сидеть очень комфортно. Спасибо мастерской Bententrade!', 1, 'approved', 1751020800000),
+        (2, 'p1', 'Наргиза М.', 'Ташкент', 5, 'Потрясающий диван! Цвет «Вуди» идеально подошёл к нашей плитке. На солнце не нагревается, сидеть очень комфортно. Спасибо мастерской BTT!', 1, 'approved', 1751020800000),
         (3, 'p2', 'Сардор А.', 'Ташкент', 5, 'Покупали для летней террасы ресторана. Алюминиевый каркас невероятно удобен при ежедневной уборке - лёгкий, но монолитно устойчивый. Гости часто спрашивают, где брали.', 1, 'approved', 1750416000000),
-        (4, 'p3', 'Елена В.', 'Бухара', 5, 'Превосходная работа! Плетение монолитное, ни одного торчащего хвостика. Доставили в Бухару без единой царапины. Всем рекомендую Bententrade как надёжного производителя в Узбекистане.', 1, 'approved', 1749811200000);
+        (4, 'p3', 'Елена В.', 'Бухара', 5, 'Превосходная работа! Плетение монолитное, ни одного торчащего хвостика. Доставили в Бухару без единой царапины. Всем рекомендую BTT как надёжного производителя в Узбекистане.', 1, 'approved', 1749811200000);
 
       INSERT OR IGNORE INTO settings (key, value) VALUES
         ('sms_provider', 'disabled'),
         ('sms_from', '4546'),
         ('sms_notify_created', '1'),
         ('sms_notify_status', '1'),
-        ('sms_tpl_created', 'Bententrade: Ваш заказ #{order_id} на сумму {total} принят! Скоро свяжемся.'),
-        ('sms_tpl_shipped', 'Bententrade: Заказ #{order_id} передан в доставку курьеру. Ожидайте звонка.'),
-        ('sms_tpl_delivered', 'Bententrade: Заказ #{order_id} доставлен. Спасибо за выбор Bententrade!'),
-        ('sms_tpl_cancelled', 'Bententrade: Заказ #{order_id} отменен. Свяжитесь с нами: +998 77 104 44 22');
+        ('sms_tpl_created', 'BTT: Ваш заказ #{order_id} на сумму {total} принят! Скоро свяжемся.'),
+        ('sms_tpl_shipped', 'BTT: Заказ #{order_id} передан в доставку курьеру. Ожидайте звонка.'),
+        ('sms_tpl_delivered', 'BTT: Заказ #{order_id} доставлен. Спасибо за выбор BTT!'),
+        ('sms_tpl_cancelled', 'BTT: Заказ #{order_id} отменен. Свяжитесь с нами: +998 77 104 44 22');
 
     `);
     return;
@@ -450,8 +450,8 @@ export async function seedIfEmpty() {
     for (const [k, v] of [
       ["phone", "+998 77 104 44 22"],
       ["whatsapp", "998771044422"],
-      ["telegram", "bententradeuz"],
-      ["email", "hello@bententrade.uz"],
+      ["telegram", "btt_uz"],
+      ["email", "hello@btt.uz"],
     ]) {
       await client.query(
         `INSERT INTO settings (key, value) VALUES ($1,$2) ON CONFLICT (key) DO NOTHING`,
