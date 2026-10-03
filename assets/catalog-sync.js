@@ -35,6 +35,14 @@
   const lang = U.lang || function () { const s = localStorage.getItem("btt_lang"); return ["ru", "uz", "en"].includes(s) ? s : "ru"; };
   const t = U.t || function (k) { const I = window.BTT_I18N || {}; const d = I[lang()] || {}; if (d[k] != null) return d[k]; const ru = I.ru || {}; return ru[k] != null ? ru[k] : k; };
 
+  function unitLabel(unit) {
+    if (!unit || unit === "pcs") return t("unit.pcs") || "шт.";
+    if (unit === "set") return t("unit.set") || (lang() === "uz" ? "to‘plam" : lang() === "en" ? "set" : "компл.");
+    if (unit === "kg") return t("unit.kg") || (lang() === "en" ? "kg" : lang() === "uz" ? "kg" : "кг");
+    if (unit === "m") return t("unit.m") || (lang() === "en" ? "m" : lang() === "uz" ? "m" : "м");
+    return unit;
+  }
+
   // Best image for a product: CRM upload → deterministic placeholder → generic.
   function productImg(p) {
     if (p.image) return mediaUrl(p.image);
@@ -116,6 +124,11 @@
 
     art.setAttribute("data-colors", confirmed.map(function(c){ return c.id; }).join(" "));
 
+    if (p.unit) art.setAttribute("data-unit", p.unit);
+    const unitSuffix = (p.unit && p.unit !== "pcs")
+      ? ' <span class="price__unit" style="font-size:0.85em;font-weight:400;color:var(--muted)">/ ' + esc(unitLabel(p.unit)) + '</span>'
+      : "";
+
     art.innerHTML =
       '<div class="product__media media">' + sale + availBadge +
       '<button class="fav" data-fav data-i18n-aria="a11y.fav" aria-label="' + esc(t("a11y.fav")) + '">' + FAV_SVG + "</button>" +
@@ -126,7 +139,7 @@
       '<div class="product__cat">' + esc(p.category_label || "") + "</div>" +
       '<div class="product__name">' + esc(p.name || "") + "</div>" +
       swatchesHtml +
-      '<div class="price" style="margin-top:8px"><span class="price__now">' + money(p.price_now) + "</span>" + old + "</div>" +
+      '<div class="price" style="margin-top:8px"><span class="price__now">' + money(p.price_now) + unitSuffix + "</span>" + old + "</div>" +
       "</div>";
     return art;
   }
@@ -141,8 +154,15 @@
     if (!id) return null;
     const p = map[id] || (window.BTT_PRODUCTS && window.BTT_PRODUCTS[id] ? map[window.BTT_PRODUCTS[id].slug] : null);
     if (!p) return { id: id, product: null };
+    if (p.unit) card.setAttribute("data-unit", p.unit);
     const now = card.querySelector(".price__now");
-    if (now) now.textContent = money(p.price_now);
+    if (now) {
+      if (p.unit && p.unit !== "pcs") {
+        now.innerHTML = money(p.price_now) + ' <span class="price__unit" style="font-size:0.85em;font-weight:400;color:var(--muted)">/ ' + esc(unitLabel(p.unit)) + '</span>';
+      } else {
+        now.textContent = money(p.price_now);
+      }
+    }
     const old = card.querySelector(".price__old");
     if (old) {
       if (p.price_old) { old.textContent = money(p.price_old); old.style.display = ""; }
@@ -597,7 +617,13 @@
     }
 
     const now = document.querySelector(".pdp-price .now");
-    if (now) now.textContent = money(p.price_now);
+    if (now) {
+      if (p.unit && p.unit !== "pcs") {
+        now.innerHTML = money(p.price_now) + ' <span class="price__unit" style="font-size:0.7em;font-weight:400;color:var(--muted)">/ ' + esc(unitLabel(p.unit)) + '</span>';
+      } else {
+        now.textContent = money(p.price_now);
+      }
+    }
     const old = document.querySelector(".pdp-price .old");
     if (old) {
       if (p.price_old) { old.textContent = money(p.price_old); old.style.display = ""; }
@@ -616,7 +642,13 @@
     const stickyTitle = document.querySelector("[data-sticky-title]");
     if (stickyTitle && p.name) stickyTitle.textContent = p.name;
     const stickyPrice = document.querySelector("[data-sticky-price]");
-    if (stickyPrice) stickyPrice.textContent = money(p.price_now);
+    if (stickyPrice) {
+      if (p.unit && p.unit !== "pcs") {
+        stickyPrice.innerHTML = money(p.price_now) + ' <span class="price__unit" style="font-size:0.75em;font-weight:400;color:var(--muted)">/ ' + esc(unitLabel(p.unit)) + '</span>';
+      } else {
+        stickyPrice.textContent = money(p.price_now);
+      }
+    }
     const stickyOld = document.querySelector("[data-sticky-old]");
     if (stickyOld) {
       if (p.price_old) { stickyOld.textContent = money(p.price_old); stickyOld.style.display = ""; }

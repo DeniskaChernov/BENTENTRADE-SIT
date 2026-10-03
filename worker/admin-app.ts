@@ -608,6 +608,7 @@ export const ADMIN_APP_JS = String.raw`
   var prodSearch = "";
   var prodCat = "all";
   var prodStatus = "all";
+  var prodType = "all";
 
   
   function openMediaPicker(cb){
@@ -746,13 +747,19 @@ export const ADMIN_APP_JS = String.raw`
           }).join("") +
         '</div>' +
       '</div>' +
-      '<div class="toolbar" style="margin-top:-8px;margin-bottom:16px">' +
+      '<div class="toolbar" style="margin-top:-8px;margin-bottom:16px;flex-wrap:wrap;gap:8px">' +
         '<div class="filters-group">' +
           '<span class="filter-chip ' + (prodStatus === "all" ? 'active' : '') + '" data-pst="all">Все статусы</span>' +
           '<span class="filter-chip ' + (prodStatus === "active" ? 'active' : '') + '" data-pst="active">✓ Только активные</span>' +
           '<span class="filter-chip ' + (prodStatus === "hidden" ? 'active' : '') + '" data-pst="hidden">Скрытые</span>' +
         '</div>' +
-        '<div style="font-size:12.5px;color:var(--muted)" id="p-count"></div>' +
+        '<div class="filters-group">' +
+          '<span class="filter-chip ' + (prodType === "all" ? 'active' : '') + '" data-ptype="all">Все типы</span>' +
+          '<span class="filter-chip ' + (prodType === "simple" ? 'active' : '') + '" data-ptype="simple">Обычные</span>' +
+          '<span class="filter-chip ' + (prodType === "bundle" ? 'active' : '') + '" data-ptype="bundle">📦 Комплекты</span>' +
+          '<span class="filter-chip ' + (prodType === "material" ? 'active' : '') + '" data-ptype="material">🧵 Материалы</span>' +
+        '</div>' +
+        '<div style="font-size:12.5px;color:var(--muted);margin-left:auto" id="p-count"></div>' +
       '</div>' +
       '<div class="table-card" id="p-table-wrap"><div style="padding:40px;text-align:center;color:var(--muted)">Загрузка товаров…</div></div>';
 
@@ -777,6 +784,14 @@ export const ADMIN_APP_JS = String.raw`
       });
     });
 
+    document.querySelectorAll("[data-ptype]").forEach(function(el){
+      el.addEventListener("click", function(){
+        prodType = el.getAttribute("data-ptype");
+        document.querySelectorAll("[data-ptype]").forEach(function(x){ x.classList.toggle("active", x === el); });
+        renderProductTable();
+      });
+    });
+
     var res = await api("/api/admin/products");
     allProducts = res.products || [];
     renderProductTable();
@@ -790,8 +805,10 @@ export const ADMIN_APP_JS = String.raw`
     var filtered = allProducts.filter(function(p){
       var matchCat = (prodCat === "all" || p.category === prodCat);
       var matchSt = (prodStatus === "all" || (prodStatus === "active" ? p.active === 1 : p.active === 0));
+      var pType = p.product_type || "simple";
+      var matchType = (prodType === "all" || pType === prodType);
       var matchQ = (!prodSearch || p.id.toLowerCase().includes(prodSearch) || (p.name && p.name.toLowerCase().includes(prodSearch)));
-      return matchCat && matchSt && matchQ;
+      return matchCat && matchSt && matchType && matchQ;
     });
 
     if (countEl) countEl.textContent = "Показано: " + filtered.length + " из " + allProducts.length;
@@ -825,15 +842,20 @@ export const ADMIN_APP_JS = String.raw`
           filtered.map(function(p){
             var imgUrl = p.image ? '/media/' + esc(p.image) : catFallback(p.category);
             var disc = (p.price_old && p.price_old > p.price_now) ? Math.round((1 - p.price_now / p.price_old) * 100) : 0;
+            var typeBadge = "";
+            if (p.product_type === 'bundle') typeBadge = ' · <span style="color:var(--copper);font-weight:600">📦 Комплект</span>';
+            else if (p.product_type === 'material') typeBadge = ' · <span style="color:var(--copper);font-weight:600">🧵 Материал</span>';
+            else if (p.product_type && p.product_type !== 'simple') typeBadge = ' · <span style="color:var(--copper);font-weight:600">' + esc(p.product_type) + '</span>';
+            var uLbl = p.unit === 'kg' ? 'кг' : (p.unit === 'set' ? 'компл.' : (p.unit === 'm' ? 'м' : (p.unit || '')));
             return '<tr data-row-id="' + esc(p.id) + '">' +
               '<td><img src="' + imgUrl + '" class="tbl-thumb" onerror="this.src=\'/assets/favicon.png\'"></td>' +
               '<td>' +
                 '<div class="tbl-prod-name">' + (p.featured ? '<span title="Рекомендуемый на главной" style="color:var(--copper);margin-right:4px">⭐</span>' : '') + esc(p.name || "-") + '</div>' +
-                '<div class="tbl-prod-id">ID: ' + esc(p.id) + ' · сорт: ' + p.sort + (p.look ? ' · ' + esc(p.look) : '') + (p.product_type && p.product_type !== 'simple' ? ' · <span style="color:var(--copper);font-weight:600">' + esc(p.product_type) + '</span>' : '') + '</div>' +
+                '<div class="tbl-prod-id">ID: ' + esc(p.id) + ' · сорт: ' + p.sort + (p.look ? ' · ' + esc(p.look) : '') + typeBadge + '</div>' +
               '</td>' +
               '<td><span class="pill">' + esc(catName(p.category)) + '</span></td>' +
               '<td>' +
-                '<span style="font-weight:700;font-size:14.5px;color:var(--ink)">' + fmtMoney(p.price_now < 10000 ? p.price_now * 12500 : p.price_now, "сум") + (p.unit && p.unit !== 'pcs' ? ' / ' + esc(p.unit) : '') + '</span>' +
+                '<span style="font-weight:700;font-size:14.5px;color:var(--ink)">' + fmtMoney(p.price_now < 10000 ? p.price_now * 12500 : p.price_now, "сум") + (p.unit && p.unit !== 'pcs' ? ' / ' + esc(uLbl) : '') + '</span>' +
                 (p.price_old ? ' <span style="text-decoration:line-through;color:var(--muted);font-size:12px">' + fmtMoney(p.price_old < 10000 ? p.price_old * 12500 : p.price_old, "сум") + '</span>' : '') +
                 (disc ? ' <span style="color:var(--ok);font-weight:700;font-size:11px">-' + disc + '%</span>' : '') +
               '</td>' +
@@ -3363,17 +3385,33 @@ export const ADMIN_APP_JS = String.raw`
     var cleanPhone = String(o.customer_phone || "").replace(/[^0-9+]/g, "");
     var waUrl = cleanPhone ? "https://wa.me/" + cleanPhone.replace("+", "") : "";
 
+    function getItemUnit(it){
+      var u = it.product_unit;
+      if (!u && it.options) {
+        try {
+          var opt = typeof it.options === "string" ? JSON.parse(it.options) : it.options;
+          if (opt && opt.unit) u = opt.unit;
+        } catch(e) {}
+      }
+      if (u === "kg") return "кг";
+      if (u === "set") return "компл.";
+      if (u === "m") return "м";
+      return "шт.";
+    }
+
     function formatOpts(optStr){
       if (!optStr) return "";
       try {
         var obj = typeof optStr === "string" ? JSON.parse(optStr) : optStr;
         if (obj && typeof obj === "object") {
-          var pairs = Object.entries(obj).map(function(pair){
+          var pairs = Object.entries(obj).filter(function(pair){
+            return pair[0] !== "unit";
+          }).map(function(pair){
             var k = pair[0], v = pair[1];
             var label = k === "finish" ? "Цвет" : (k === "size" ? "Размер" : k);
             return label + ": " + v;
           });
-          if (pairs.length) return pairs.join(", ");
+          return pairs.length ? pairs.join(", ") : "";
         }
       } catch(e){}
       return String(optStr);
@@ -3412,9 +3450,10 @@ export const ADMIN_APP_JS = String.raw`
             '<thead><tr><th>Товар</th><th>Кол-во</th><th>Цена</th><th>Сумма</th></tr></thead>' +
             '<tbody>' +
               items.map(function(it){
+                var optText = formatOpts(it.options);
                 return '<tr>' +
-                  '<td><b>' + esc(it.name) + '</b>' + (it.options ? '<br><small class="hint" style="color:var(--copper);font-weight:600">' + esc(formatOpts(it.options)) + '</small>' : '') + '</td>' +
-                  '<td>' + it.qty + ' шт.</td>' +
+                  '<td><b>' + esc(it.name) + '</b>' + (optText ? '<br><small class="hint" style="color:var(--copper);font-weight:600">' + esc(optText) + '</small>' : '') + '</td>' +
+                  '<td>' + it.qty + ' ' + getItemUnit(it) + '</td>' +
                   '<td>' + fmtMoney(it.unit_price, o.currency) + '</td>' +
                   '<td><b>' + fmtMoney(it.unit_price * it.qty, o.currency) + '</b></td>' +
                 '</tr>';

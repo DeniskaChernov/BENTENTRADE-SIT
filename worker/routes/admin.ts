@@ -514,7 +514,12 @@ app.get("/orders/:id", async (c) => {
   const id = Number(c.req.param("id"));
   const order = await c.env.DB.prepare(`SELECT * FROM orders WHERE id = ?`).bind(id).first();
   if (!order) return c.json({ error: "not_found" }, 404);
-  const items = await c.env.DB.prepare(`SELECT * FROM order_items WHERE order_id = ?`).bind(id).all();
+  const items = await c.env.DB.prepare(
+    `SELECT oi.*, COALESCE(p.unit, 'pcs') AS product_unit
+     FROM order_items oi
+     LEFT JOIN products p ON p.id = oi.product_id
+     WHERE oi.order_id = ?`,
+  ).bind(id).all();
   return c.json({ order, items: items.results });
 });
 
