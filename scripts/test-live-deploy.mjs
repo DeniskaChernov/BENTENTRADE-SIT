@@ -21,7 +21,7 @@ async function runLiveVerification() {
   assert(pdpRes.status === 200, "PDP /catalog/stul-roero returns HTTP 200");
   const pdpHtml = await pdpRes.text();
   assert(
-    pdpHtml.includes('<link rel="canonical" href="https://bententrade.uz/catalog/stul-roero">'),
+    pdpHtml.includes('<link rel="canonical" href="https://btt.uz/catalog/stul-roero">'),
     "PDP contains authoritative canonical URL"
   );
   assert(
@@ -46,11 +46,11 @@ async function runLiveVerification() {
   assert(sitemapRes.status === 200, "Sitemap /sitemap.xml returns HTTP 200");
   const sitemapXml = await sitemapRes.text();
   assert(
-    sitemapXml.includes("https://bententrade.uz/catalog/stul-todo-soft"),
+    sitemapXml.includes("https://btt.uz/catalog/stul-todo-soft"),
     "Sitemap contains dynamically added stul-todo-soft"
   );
   assert(
-    sitemapXml.includes("https://bententrade.uz/catalog/stul-roero"),
+    sitemapXml.includes("https://btt.uz/catalog/stul-roero"),
     "Sitemap contains stul-roero"
   );
 
