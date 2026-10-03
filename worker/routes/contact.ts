@@ -59,9 +59,20 @@ app.post("/", async (c) => {
       (page ? `📄 Страница: ${escapeHtml(page)}\n` : "") +
       `❓ Запрос: ${escapeHtml(message)}`;
     if (chatHistory.length) {
-      const recent = chatHistory.slice(-5).map((h) => {
+      const recent = chatHistory.slice(-6).map((h) => {
         const whoLabel = h.who === "user" ? "Клиент" : "Бот";
-        return `• <i>${whoLabel}:</i> ${escapeHtml(str(h.text, 200))}`;
+        const cleanText = (h.text || "")
+          .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
+          .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
+          .replace(/<[^>]+>/g, " ")
+          .replace(/&nbsp;/g, " ")
+          .replace(/&quot;/g, '"')
+          .replace(/&amp;/g, "&")
+          .replace(/&lt;/g, "<")
+          .replace(/&gt;/g, ">")
+          .replace(/\s+/g, " ")
+          .trim();
+        return `• <i>${whoLabel}:</i> ${escapeHtml(str(cleanText, 250))}`;
       }).join("\n");
       tgMsg += `\n\n<b>Контекст диалога:</b>\n${recent}`;
     }

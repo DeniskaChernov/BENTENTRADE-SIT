@@ -85,6 +85,34 @@
     return (apiCache[l] && apiCache[l].length) ? apiCache[l] : staticProducts();
   }
 
+  // Dynamic category index from /api/categories with static CATS fallback
+  const catCache = {};
+  function loadApiCategories(){
+    const l = lang();
+    if(catCache[l]) return;
+    const fetcher = (window.BTT_API && window.BTT_API.categories)
+      ? window.BTT_API.categories()
+      : fetch("/api/categories?lang=" + encodeURIComponent(l)).then(r => r.json());
+    fetcher.then(res => {
+      const list = res && res.categories;
+      if(Array.isArray(list) && list.length){
+        catCache[l] = list.map(c => ({
+          slug: c.slug,
+          label: c.name || c.slug,
+          img: c.image ? (c.image.startsWith("/") ? c.image : "/media/" + c.image) : null
+        }));
+        if(ov && ov.classList.contains("is-open")) render();
+      }
+    }).catch(()=>{});
+  }
+  function categories(){
+    const l = lang();
+    if(catCache[l] && catCache[l].length){
+      return catCache[l];
+    }
+    return CATS.map(c=>({ slug: c.slug, label: t(c.k), img: c.img }));
+  }
+
   let ov, input, body, items = [], active = -1;
 
   function build(){
@@ -123,7 +151,7 @@
     items = [];
     let html = "";
 
-    const cats = CATS.map(c=>({ ...c, label:t(c.k) })).filter(c=> !q || norm(c.label).includes(q));
+    const cats = categories().filter(c=> !q || norm(c.label).includes(q));
     const prods = products().filter(p=> !q || norm(p.name).includes(q) || norm(p.cat).includes(q));
     const pages = PAGES.map(p=>({ ...p, label:t(p.k), sub:p.sub?t(p.sub):p.href })).filter(p=> !q || norm(p.label).includes(q) || norm(p.sub||"").includes(q));
 
@@ -198,6 +226,7 @@
     if(!ov) build();
     lastFocus = document.activeElement;
     loadApiProducts();
+    loadApiCategories();
     input.value = "";
     render();
     ov.classList.add("is-open");
@@ -233,6 +262,8 @@
 
   document.addEventListener("btt:cookies-accepted", function () {
     Object.keys(apiCache).forEach(function (k) { delete apiCache[k]; });
+    Object.keys(catCache).forEach(function (k) { delete catCache[k]; });
     loadApiProducts();
+    loadApiCategories();
   });
 })();

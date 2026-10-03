@@ -12,14 +12,32 @@
     ru:{
       name:"Бен", role:"Онлайн-помощник BTT", badge:"1",
       ph:"Напишите вопрос (например: цены, доставка, стул Roero)…",
-      hi:"Здравствуйте! Я помощник BTT 🌿 Помогу подобрать обеденные столы, плетёные, пластиковые и мягкие стулья, расскажу о ценах и доставке. С чего начнём?",
-      quick:["Цены на стулья","Пластиковые стулья","Плетёные стулья","Обеденные столы","Доставка и самовывоз","Связаться с менеджером"],
+      hi:"Здравствуйте! Я помощник BTT 🌿 Помогу подобрать обеденные столы, стулья, готовые комплекты, кашпо, лампы и ротанг, расскажу о ценах и доставке. С чего начнём?",
+      quick:[
+        "Цены на стулья",
+        "Мебельные комплекты",
+        "Обеденные столы",
+        "Пластиковые стулья",
+        "Плетёные стулья",
+        "Мягкие стулья",
+        "Декоративные лампы",
+        "Кашпо из ротанга",
+        "Искусственный ротанг",
+        "Цвета и отделка",
+        "Доставка и самовывоз",
+        "Связаться с менеджером"
+      ],
       ans:{
         "Цены на стулья":"Актуальные цены на популярные пластиковые стулья: ROERO - 188 000 сум, NOERO - 212 000 сум, TODO и TODO SOFT - 236 000 сум, JARDIN - 344 000 сум. Цены на плетёные, мягкие стулья и столы смотрите в <a href='catalog.html'>полном каталоге BTT</a>.",
+        "Мебельные комплекты":"Готовые комплекты столов и стульев для обеденных зон, террас и веранд BTT. Все элементы идеально подобраны по стилю, геометрии и цвету. Смотрите все варианты в <a href='catalog.html?cat=sets'>каталоге комплектов</a>.",
         "Плетёные стулья":"Плетёные стулья Vertex и Corda на прочном металлокаркасе со съёмными текстильными подушками в комплекте. Идеальны для веранд, террас и обеденных зон. Смотрите модели в <a href='catalog.html?cat=wicker-chairs'>каталоге плетёных стульев</a>.",
         "Пластиковые стулья":"Практичные пластиковые стулья: ROERO (188 000 сум), NOERO (212 000 сум), TODO (236 000 сум), мягкий TODO SOFT с подушкой из экокожи (236 000 сум) и кресло JARDIN (344 000 сум). Все модели в <a href='catalog.html?cat=plastic-chairs'>каталоге</a>.",
         "Мягкие стулья":"Элегантные стулья LIRA и комфортные кресла COMO на металлокаркасе с мягкой обивкой - идеальны для дома, кухни и HoReCa. Смотрите в <a href='catalog.html?cat=upholstered-chairs'>каталоге мягких стульев</a>.",
         "Обеденные столы":"Столы на металлокаркасе со столешницей из ЛДСП (Taper, Vertex, Corda) размерами 80×80 см, 135×80 см и круглый Ø90 см. Рекомендуются для помещений и крытых пространств. Смотрите в <a href='catalog.html?cat=tables'>каталоге столов</a>.",
+        "Декоративные лампы":"Дизайнерские декоративные настольные и интерьерные лампы, изготовленные методом высокоточной 3D-печати из экологичных полимеров. Создают мягкое рассеянное освещение для дома, веранды или кафе. Смотрите в <a href='catalog.html?cat=lamps'>каталоге ламп</a>.",
+        "Кашпо из ротанга":"Стильные плетёные кашпо из искусственного ротанга для комнатных растений, сада, террасы и входных групп. Устойчивы к влаге, поливу и ультрафиолету. Смотрите в <a href='catalog.html?cat=planters'>каталоге кашпо</a>.",
+        "Искусственный ротанг":"Первичный полимерный искусственный ротанг в бухтах на вес (кг). Высокая эластичность, прочность, УФ-стабилизация и различные профили (полумесяц, пруток, лента). Идеален для плетения мебели и кашпо. Смотрите в <a href='catalog.html?cat=rattan'>каталоге ротанга</a>.",
+        "Цвета и отделка":"Мебель BTT представлена в трендовых архитектурных цветах: антрацит (чёрный), белый, бежевый/мокко, коричневый, серый и терракот. Металлические каркасы защищены долговечным полимерно-порошковым покрытием (чёрный муар). Выбрать цвет можно на странице каждого товара.",
         "Доставка и самовывоз":"Доставка по Ташкенту осуществляется за 1-2 рабочих дня по прямому тарифу сервиса (Яндекс / Labo / Porter). Возможен самовывоз со склада в Ташкенте по предварительной договорённости. В регионы Узбекистана отправляем через транспортные службы.",
         "Связаться с менеджером":"Мы на связи в Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> и по телефону <a href='tel:+998771044422'>+998 77 104 44 22</a>. Ответим на любые вопросы и поможем с выбором!"
       },
@@ -40,14 +58,32 @@
     uz:{
       name:"Ben", role:"BTT onlayn yordamchisi", badge:"1",
       ph:"Savolingizni yozing (masalan: narxlar, yetkazish, Roero stuli)…",
-      hi:"Salom! Men BTT yordamchisiman 🌿 Ovqat stollari, to‘qilgan, plastik va yumshoq stullarni tanlashda yordam beraman, narxlar va yetkazib berish haqida aytib beraman. Nimadan boshlaymiz?",
-      quick:["Stullar narxlari","Plastik stullar","To‘qilgan stullar","Ovqat stollari","Yetkazish va olib ketish","Menejer bilan bog‘lanish"],
+      hi:"Salom! Men BTT yordamchisiman 🌿 Ovqat stollari, stullar, to‘plamlar, gultuvaklar, chiroqlar va rotangni tanlashda yordam beraman, narxlar va yetkazib berish haqida aytib beraman. Nimadan boshlaymiz?",
+      quick:[
+        "Stullar narxlari",
+        "Mebel to‘plamlari",
+        "Ovqat stollari",
+        "Plastik stullar",
+        "To‘qilgan stullar",
+        "Yumshoq stullar",
+        "Dekorativ chiroqlar",
+        "Rotang gultuvaklar",
+        "Sun‘iy rotang",
+        "Ranglar palitrasi",
+        "Yetkazish va olib ketish",
+        "Menejer bilan bog‘lanish"
+      ],
       ans:{
         "Stullar narxlari":"Ommabop plastik stullar narxlari: ROERO - 188 000 so‘m, NOERO - 212 000 so‘m, TODO va TODO SOFT - 236 000 so‘m, JARDIN - 344 000 so‘m. Barcha narxlar <a href='catalog.html'>BTT to‘liq katalogida</a>.",
+        "Mebel to‘plamlari":"Oshxona, ayvon va terasalar uchun moslashtirilgan stol va stullar to‘plamlari. Barcha elementlar uslub va rang jihatidan to‘liq uyg‘unlashgan. <a href='catalog.html?cat=sets'>To‘plamlar katalogida</a> ko‘ring.",
         "To‘qilgan stullar":"Metall karkasli va yumshoq yostiqchali Vertex va Corda to‘qilgan stullari. Ayvonlar, terasalar va oshxona zonalari uchun qulay. <a href='catalog.html?cat=wicker-chairs'>Katalog</a>da ko‘ring.",
         "Plastik stullar":"Amaliy plastik stullar: ROERO (188 000 so‘m), NOERO (212 000 so‘m), TODO (236 000 so‘m), yumshoq o‘rindiqli TODO SOFT (236 000 so‘m) va JARDIN kreslosi (344 000 so‘m). <a href='catalog.html?cat=plastic-chairs'>Katalog</a>da tanlang.",
         "Yumshoq stullar":"Uylar va kafelar uchun qulay metall karkasli LIRA stullari va COMO kreslolari. <a href='catalog.html?cat=upholstered-chairs'>Katalog</a>da ko‘ring.",
         "Ovqat stollari":"LDSP ustki qismli va metall karkasli Taper, Vertex, Corda stollari (80×80 sm, 135×80 sm va dumaloq Ø90 sm). <a href='catalog.html?cat=tables'>Katalog</a>da ko‘ring.",
+        "Dekorativ chiroqlar":"Ekologik polimerlardan 3D-bosma texnologiyasi asosida tayyorlangan zamonaviy dekorativ lampalar va chiroqlar. Uy, ayvon va kafelar uchun shinam yumshoq yorug‘lik baxsh etadi. <a href='catalog.html?cat=lamps'>Chiroqlar katalogida</a> ko‘ring.",
+        "Rotang gultuvaklar":"Uy o‘simliklari, bog‘, ayvon va yozgi terasalar uchun sun‘iy rotangdan to‘qilgan chiroyli gultuvaklar. Namlikka, sug‘orishga va quyosh nurlariga to‘liq chidamli. <a href='catalog.html?cat=planters'>Gultuvaklar katalogida</a> tanlang.",
+        "Sun‘iy rotang":"Mebel, gultuvak va to‘siqlar to‘qish uchun rulon va buxtalarda kilogramm hisobida sotiladigan birlamchi sun‘iy polimer rotang. Yuqori elastiklik, mustahkamlik va quyoshga chidamlilik. <a href='catalog.html?cat=rattan'>Rotang katalogida</a> ko‘ring.",
+        "Ranglar palitrasi":"BTT mebellari zamonaviy ranglarda taqdim etiladi: antrasit (qora), oq, bej/mokko, jigarrang, kulrang va terrakota. Metall karkaslar bardoshli kukunli bo‘yoq bilan qoplangan. Mahsulot sahifasida rangni tanlashingiz mumkin.",
         "Yetkazish va olib ketish":"Toshkent bo‘ylab yetkazish 1-2 ish kunida to‘g‘ridan-to‘g‘ri kuryer tarifi bo‘yicha amalga oshiriladi (Yandex / Labo / Porter). Ombordan olib ketish ham kelishuv asosida mavjud. Viloyatlarga yetkazib berish xizmatlari orqali yuboramiz.",
         "Menejer bilan bog‘lanish":"Telegramda <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> va telefon <a href='tel:+998771044422'>+998 77 104 44 22</a> orqali bog‘laning."
       },
@@ -68,14 +104,32 @@
     en:{
       name:"Ben", role:"BTT Assistant", badge:"1",
       ph:"Type a question (e.g.: prices, delivery, Roero chair)…",
-      hi:"Hello! I'm your BTT assistant 🌿 I can help you choose dining tables, wicker, plastic, and upholstered chairs, explain prices and delivery. Where shall we start?",
-      quick:["Chair prices","Plastic chairs","Wicker chairs","Dining tables","Delivery and pickup","Talk to a manager"],
+      hi:"Hello! I'm your BTT assistant 🌿 I can help you choose dining tables, chairs, sets, planters, lamps, and rattan, explain prices and delivery. Where shall we start?",
+      quick:[
+        "Chair prices",
+        "Furniture sets",
+        "Dining tables",
+        "Plastic chairs",
+        "Wicker chairs",
+        "Upholstered chairs",
+        "Decorative lamps",
+        "Rattan planters",
+        "Synthetic rattan",
+        "Color options",
+        "Delivery and pickup",
+        "Talk to a manager"
+      ],
       ans:{
         "Chair prices":"Current prices for popular plastic chairs: ROERO - 188,000 UZS, NOERO - 212,000 UZS, TODO & TODO SOFT - 236,000 UZS, JARDIN - 344,000 UZS. View all models in the <a href='catalog.html'>full catalog</a>.",
+        "Furniture sets":"Curated dining and patio furniture sets combining matching tables and chairs in coordinated designs. View available combinations in our <a href='catalog.html?cat=sets'>sets catalog</a>.",
         "Wicker chairs":"Vertex and Corda wicker chairs on sturdy metal frames with soft cushions included. Perfect for verandas, patios, and dining rooms. View them in the <a href='catalog.html?cat=wicker-chairs'>wicker chairs catalog</a>.",
         "Plastic chairs":"Practical plastic chairs: ROERO (188,000 UZS), NOERO (212,000 UZS), TODO (236,000 UZS), padded TODO SOFT (236,000 UZS), and JARDIN armchair (344,000 UZS). View in the <a href='catalog.html?cat=plastic-chairs'>catalog</a>.",
         "Upholstered chairs":"Elegant LIRA chairs and comfortable COMO armchairs on sturdy metal frames - perfect for homes, living rooms, and HoReCa. See the <a href='catalog.html?cat=upholstered-chairs'>catalog</a>.",
         "Dining tables":"Chipboard dining tables on metal frames (Taper, Vertex, Corda) in 80×80 cm, 135×80 cm, and Ø90 cm round. Best for indoor and covered spaces. View in the <a href='catalog.html?cat=tables'>catalog</a>.",
+        "Decorative lamps":"Designer decorative table and ambient lamps crafted with precision 3D printing from eco-friendly polymers. Soft diffused lighting for home, patios, and cafes. View in our <a href='catalog.html?cat=lamps'>lamps catalog</a>.",
+        "Rattan planters":"Hand-woven synthetic rattan planters and pots for indoor plants, gardens, patios, and terraces. Weather-resistant and UV-stable. See our <a href='catalog.html?cat=planters'>planters catalog</a>.",
+        "Synthetic rattan":"Premium virgin synthetic polymer rattan sold by weight (per kg in coils). High elasticity, UV-stabilized, in various profiles (half-round, flat, rod). Perfect for weaving furniture and planters. See our <a href='catalog.html?cat=rattan'>rattan catalog</a>.",
+        "Color options":"BTT furniture is available in sought-after colors: anthracite black, white, beige/mocha, warm brown, grey, and terracotta. Metal frames feature heavy-duty matte powder coating. Select your preferred color on each product page.",
         "Delivery and pickup":"Delivery across Tashkent takes 1-2 business days at direct courier rates (Yandex / Labo / Porter). Warehouse pickup in Tashkent is available by appointment.",
         "Talk to a manager":"Reach us on Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> or call <a href='tel:+998771044422'>+998 77 104 44 22</a>."
       },
@@ -154,13 +208,60 @@
     return null;
   }
 
-  function renderProductCard(slug, curLang){
+  var dynamicProductsMap = {};
+  var dynamicCategories = [];
+
+  function fetchLiveCatalog(){
+    var curLang = lang();
+    fetch("/api/products?lang=" + encodeURIComponent(curLang))
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if(data && Array.isArray(data.products)){
+          data.products.forEach(function(p){
+            if(p && (p.slug || p.id)){
+              var s = p.slug || p.id;
+              dynamicProductsMap[s] = p;
+            }
+          });
+        }
+      })
+      .catch(function(){});
+
+    fetch("/api/categories?lang=" + encodeURIComponent(curLang))
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if(data && Array.isArray(data.categories)){
+          dynamicCategories = data.categories;
+        }
+      })
+      .catch(function(){});
+  }
+  fetchLiveCatalog();
+
+  function getEffectiveProduct(slug){
+    if(dynamicProductsMap[slug]){
+      var dp = dynamicProductsMap[slug];
+      var img = dp.image ? (dp.image.startsWith("/") || dp.image.startsWith("http") || dp.image.startsWith("assets/") ? dp.image : "/media/" + dp.image) : "";
+      return {
+        slug: dp.slug || dp.id,
+        name: dp.name,
+        now: dp.price_now,
+        category: dp.category,
+        category_label: dp.category_label,
+        images: img ? [img] : [],
+        colors: dp.variants || dp.confirmedColors || []
+      };
+    }
     var P = window.BTT_PRODUCTS || {};
-    var prod = P[slug];
+    return P[slug] || null;
+  }
+
+  function renderProductCard(slug, curLang){
+    var prod = getEffectiveProduct(slug);
     if(!prod) return "";
     var I = window.BTT_I18N || {};
     var dict = I[curLang] || I.ru || {};
-    var title = dict[slug + ".name"] || prod.name || slug;
+    var title = prod.name || dict[slug + ".name"] || slug;
     var priceStr = prod.now ? (prod.now.toLocaleString("ru-RU") + " сум") : "";
     var img = (prod.images && prod.images[0]) || (prod.colors && prod.colors[0] && prod.colors[0].image) || "";
     var tCfg = T[curLang] || T.ru;
@@ -235,9 +336,6 @@
   }
 
   function matchProduct(norm){
-    var P = window.BTT_PRODUCTS || {};
-    var slugs = window.BTT_CANONICAL_SLUGS || Object.keys(P);
-
     var aliasPatterns = [
       { key: "roero", slug: "stul-roero", rx: /\b(roero|роэро|роэра)\b/ },
       { key: "noero", slug: "stul-noero", rx: /\b(noero|ноэро|ноэра)\b/ },
@@ -261,15 +359,33 @@
     for(var i = 0; i < aliasPatterns.length; i++){
       if(aliasPatterns[i].rx.test(norm)){
         var targetSlug = aliasPatterns[i].slug;
-        var p = P[targetSlug];
+        var p = getEffectiveProduct(targetSlug);
         if(p) return { slug: targetSlug, product: p };
       }
     }
 
+    // Match dynamic products first (for newly created SKU like lamps, planters, sets)
+    var dynKeys = Object.keys(dynamicProductsMap);
+    for(var d = 0; d < dynKeys.length; d++){
+      var ds = dynKeys[d];
+      var dp = dynamicProductsMap[ds];
+      if(!dp) continue;
+      var dName = normalizeText(dp.name || "");
+      if(dName && (norm.indexOf(dName) !== -1 || dName.indexOf(norm) !== -1)){
+        return { slug: ds, product: getEffectiveProduct(ds) };
+      }
+      var dsClean = ds.replace(/-/g, " ");
+      if(norm.indexOf(dsClean) !== -1){
+        return { slug: ds, product: getEffectiveProduct(ds) };
+      }
+    }
+
+    var P = window.BTT_PRODUCTS || {};
+    var slugs = window.BTT_CANONICAL_SLUGS || Object.keys(P);
     var words = norm.split(" ").filter(function(w){ return w.length >= 4; });
     for(var j = 0; j < slugs.length; j++){
       var s = slugs[j];
-      var pr = P[s];
+      var pr = getEffectiveProduct(s);
       if(!pr) continue;
       var cleanSlug = s.replace(/-/g, " ");
       for(var k = 0; k < words.length; k++){
@@ -475,7 +591,28 @@
       }
     }
 
-    // 19. Broad categories
+    // 19. Broad categories & expanded catalog
+    if(/\b(комплект|гарнитур|набор|наборы|стол и стулья|столы и стулья|to plam|to plamlari|garnitur|sets|bundle|bundles)\b/.test(norm)){
+      return (d.ans["Мебельные комплекты"] || d.ans["Mebel to‘plamlari"] || d.ans["Furniture sets"]);
+    }
+    if(/\b(ламп|светильник|светильники|3d печать|освещение|ночник|ночники|chiroq|chiroqlar|lamp|lamps|lighting)\b/.test(norm)){
+      return (d.ans["Декоративные лампы"] || d.ans["Dekorativ chiroqlar"] || d.ans["Decorative lamps"]);
+    }
+    if(/\b(кашпо|горшок|горшки|вазон|вазоны|gultuvak|gultuvaklar|planter|planters|flowerpot|pot)\b/.test(norm)){
+      return (d.ans["Кашпо из ротанга"] || d.ans["Rotang gultuvaklar"] || d.ans["Rattan planters"]);
+    }
+    if(/\b(бухт|бухта|бухты|нить ротанга|ротанг в бухтах|килограмм|за кг|сырье|волокно|rotang buxta|synthetic rattan|rattan coil)\b/.test(norm)){
+      return (d.ans["Искусственный ротанг"] || d.ans["Sun‘iy rotang"] || d.ans["Synthetic rattan"]);
+    }
+    if(/\b(какие цвета|расцветк|палитр|оттенк|в каком цвете|какой цвет|цвета мебели|ranglar|rangi|colors|palette|finishes)\b/.test(norm)){
+      return (d.ans["Цвета и отделка"] || d.ans["Ranglar palitrasi"] || d.ans["Color options"]);
+    }
+    if(/\b(индивидуальн|на заказ|свой размер|свой цвет|под заказ|нестандарт|buyurtma asosida|custom|made to order)\b/.test(norm)){
+      var customTitle = curLang === "uz" ? "Biz uy, terasalar va kafelar (HoReCa) uchun maxsus buyurtmalarni qabul qilamiz: rang, to‘plam va miqdorni loyihangizga moslashtiramiz. Telefoningizni qoldiring, menejer bog‘lanadi:" :
+        curLang === "en" ? "We fulfill bespoke and commercial projects for residences, patios, and HoReCa: custom colors, configurations, and quantities. Leave your phone number, and our specialist will contact you:" :
+        "Мы принимаем индивидуальные и проектные заказы для дома, террас и ресторанного бизнеса (HoReCa): подбор цвета, комплектации и количества. Оставьте телефон, и менеджер обсудит детали вашего проекта:";
+      return customTitle + renderLeadForm(curLang);
+    }
     if(/\b(плетен|плетён|to qilgan|wicker)\b/.test(norm)){
       return (d.ans["Плетёные стулья"] || d.ans["To‘qilgan stullar"] || d.ans["Wicker chairs"]) + renderProductCard("stul-vertex", curLang) + renderProductCard("stul-corda", curLang);
     }
@@ -563,6 +700,7 @@
       panel.querySelector("[data-bot-close]")?.setAttribute("aria-label", tr("bot.aria.close", "Закрыть"));
       panel.querySelector(".bot-send")?.setAttribute("aria-label", tr("bot.aria.send", "Отправить"));
       renderQuick();
+      fetchLiveCatalog();
     }
 
     function handle(text){
@@ -594,12 +732,11 @@
       const addBtn = e.target.closest("[data-bot-add]");
       if(addBtn){
         const slug = addBtn.getAttribute("data-bot-add");
-        const P = window.BTT_PRODUCTS || {};
-        const p = P[slug];
+        const p = getEffectiveProduct(slug);
         const curLang = lang();
         const I = window.BTT_I18N || {};
         const dict = I[curLang] || I.ru || {};
-        const title = dict[slug + ".name"] || (p && p.name) || slug;
+        const title = (p && p.name) || dict[slug + ".name"] || slug;
         const img = (p && p.images && p.images[0]) || (p && p.colors && p.colors[0] && p.colors[0].image) || "";
         const snap = { id: slug, name: title, price: (p && p.now) || 0, img: img };
 

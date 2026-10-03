@@ -74,6 +74,8 @@
     products: (category) =>
       request("/api/products?lang=" + lang() + (category && category !== "all" ? "&category=" + encodeURIComponent(category) : "")),
     product: (id) => request("/api/products/" + encodeURIComponent(id) + "?lang=" + lang()),
+    categories: () => request("/api/categories?lang=" + lang()),
+    category: (slug) => request("/api/categories/" + encodeURIComponent(slug) + "?lang=" + lang()),
     articles: () => request("/api/articles?lang=" + lang()),
     article: (slug) => request("/api/articles/" + encodeURIComponent(slug) + "?lang=" + lang()),
     settings: () => request("/api/settings"),

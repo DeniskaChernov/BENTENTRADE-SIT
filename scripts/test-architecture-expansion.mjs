@@ -18,6 +18,22 @@ function check(cond, msg) {
   }
 }
 
+function runWrangler(sql) {
+  const clean = sql.replace(/\r?\n/g, " ");
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      execSync(`npx wrangler d1 execute bententrade_db --remote --command="${clean}"`, {
+        stdio: "pipe",
+        timeout: 45000
+      });
+      return;
+    } catch (err) {
+      if (attempt === 3) throw err;
+      execSync("node -e \"setTimeout(()=>{}, 3000)\"");
+    }
+  }
+}
+
 async function runTests() {
   // 1. Authoritative D1 prices verification
   console.log("\n--- 1. Authoritative D1 Prices & API Contract ---");
@@ -122,9 +138,7 @@ async function runTests() {
       ON CONFLICT(product_id, variant_code) DO NOTHING;
     `;
 
-    execSync(`npx wrangler d1 execute bententrade_db --remote --command="${seedSql.replace(/\r?\n/g, " ")}"`, {
-      stdio: "pipe"
-    });
+    runWrangler(seedSql);
 
     console.log("  Verifying new SKU via API...");
     const newSkuApiRes = await fetch(`${BASE_URL}/api/products/${testSku}`);
@@ -160,7 +174,7 @@ async function runTests() {
 
     console.log("  Verifying deactivation (active = 0)...");
     const deactSql = `UPDATE products SET active = 0 WHERE id = '${testSku}';`;
-    execSync(`npx wrangler d1 execute bententrade_db --remote --command="${deactSql}"`, { stdio: "pipe" });
+    runWrangler(deactSql);
 
     const deactPdpRes = await fetch(`${BASE_URL}/catalog/${testSku}`);
     check(deactPdpRes.status === 404, "Deactivated SKU returns HTTP 404 on PDP");
@@ -176,9 +190,7 @@ async function runTests() {
       DELETE FROM products WHERE id = '${testSku}';
     `;
     try {
-      execSync(`npx wrangler d1 execute bententrade_db --remote --command="${cleanupSql.replace(/\r?\n/g, " ")}"`, {
-        stdio: "pipe"
-      });
+      runWrangler(cleanupSql);
       console.log("  Test SKU cleaned up successfully.");
     } catch (e) {
       console.warn("  Cleanup warning:", e.message);
@@ -200,9 +212,7 @@ async function runTests() {
       FROM categories WHERE slug = '${testCatSlug}'
       ON CONFLICT(category_id, lang) DO UPDATE SET name = excluded.name;
     `;
-    execSync(`npx wrangler d1 execute bententrade_db --remote --command="${seedCatSql.replace(/\r?\n/g, " ")}"`, {
-      stdio: "pipe"
-    });
+    runWrangler(seedCatSql);
 
     console.log("  Verifying new category via API...");
     const catCheckRes = await fetch(`${BASE_URL}/api/categories?lang=ru`);
@@ -224,9 +234,7 @@ async function runTests() {
       DELETE FROM categories WHERE slug = '${testCatSlug}';
     `;
     try {
-      execSync(`npx wrangler d1 execute bententrade_db --remote --command="${cleanupCatSql.replace(/\r?\n/g, " ")}"`, {
-        stdio: "pipe"
-      });
+      runWrangler(cleanupCatSql);
       console.log("  Test category cleaned up successfully.");
     } catch (e) {
       console.warn("  Category cleanup warning:", e.message);

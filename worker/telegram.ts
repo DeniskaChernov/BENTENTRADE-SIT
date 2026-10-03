@@ -25,7 +25,7 @@ export async function notifyTelegram(env: Env, text: string): Promise<void> {
   if (!token || !chat) return;
 
   try {
-    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
@@ -35,8 +35,23 @@ export async function notifyTelegram(env: Env, text: string): Promise<void> {
         disable_web_page_preview: true,
       }),
     });
-  } catch {
-    // swallow - logged by observability at the fetch layer if enabled
+    if (!res.ok) {
+      const errText = await res.text().catch(() => "");
+      console.warn("Telegram HTML notify returned status", res.status, errText);
+      // Fallback: If HTML formatting failed, send as clean plain text
+      const plainText = text.replace(/<[^>]+>/g, "").replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chat,
+          text: plainText,
+          disable_web_page_preview: true,
+        }),
+      });
+    }
+  } catch (err) {
+    console.error("Telegram notification error:", err);
   }
 }
 
