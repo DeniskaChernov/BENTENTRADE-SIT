@@ -1,0 +1,7 @@
+# Bententrade robots
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://bententrade.uz/sitemap.xml

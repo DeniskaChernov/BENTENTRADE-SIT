@@ -1,0 +1,13 @@
+/* TEAM */
+Website: bententrade.uz
+Location: Tashkent, Uzbekistan
+
+/* THANKS */
+Technology: React, TypeScript, Tailwind CSS
+Hosting: Figma Make
+
+/* SITE */
+Last update: 2025-01-15
+Language: Russian / Uzbek
+Doctype: HTML5
+IDE: Visual Studio Code

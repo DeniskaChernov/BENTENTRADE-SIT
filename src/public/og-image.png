@@ -1,0 +1,2 @@
+import ogImage from 'figma:asset/c44e5bc0e83d4218c9455ae288e27f62b9db49c1.png';
+export default ogImage;

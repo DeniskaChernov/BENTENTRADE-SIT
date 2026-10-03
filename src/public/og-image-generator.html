@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200, height=630">
+  <title>Bententrade OG Image</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #0A0908 0%, #1a1614 100%);
+      position: relative;
+    }
+    
+    /* Фоновые эффекты */
+    .bg-effect-1 {
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .bg-effect-2 {
+      position: absolute;
+      bottom: -150px;
+      left: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 243, 240, 0.08) 0%, transparent 60%);
+      border-radius: 50%;
+    }
+    
+    /* Сетка */
+    .grid-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(212, 165, 116, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 165, 116, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0.5;
+    }
+    
+    /* Контент */
+    .container {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px;
+    }
+    
+    /* Логотип/Название */
+    .logo {
+      font-size: 72px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #D4A574 0%, #F5F3F0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+    
+    /* Заголовок */
+    .title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #F5F3F0;
+      margin-bottom: 24px;
+      line-height: 1.2;
+      max-width: 800px;
+    }
+    
+    /* Описание */
+    .description {
+      font-size: 28px;
+      font-weight: 500;
+      color: rgba(245, 243, 240, 0.7);
+      margin-bottom: 40px;
+      max-width: 700px;
+      line-height: 1.4;
+    }
+    
+    /* Теги/Фичи */
+    .features {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    
+    .feature-tag {
+      padding: 12px 24px;
+      background: rgba(212, 165, 116, 0.15);
+      border: 2px solid rgba(212, 165, 116, 0.3);
+      border-radius: 100px;
+      color: #D4A574;
+      font-size: 20px;
+      font-weight: 700;
+      backdrop-filter: blur(10px);
+    }
+    
+    /* Контакты */
+    .contact {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 24px;
+      color: rgba(245, 243, 240, 0.8);
+      font-weight: 600;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .icon {
+      width: 32px;
+      height: 32px;
+      fill: #D4A574;
+    }
+    
+    /* Декоративный элемент - ротанг */
+    .rope-decoration {
+      position: absolute;
+      right: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 300px;
+      height: 300px;
+      opacity: 0.15;
+    }
+    
+    .rope-circle {
+      position: absolute;
+      border: 8px solid #D4A574;
+      border-radius: 50%;
+      animation: pulse 3s ease-in-out infinite;
+    }
+    
+    .rope-circle:nth-child(1) {
+      width: 100%;
+      height: 100%;
+      animation-delay: 0s;
+    }
+    
+    .rope-circle:nth-child(2) {
+      width: 75%;
+      height: 75%;
+      top: 12.5%;
+      left: 12.5%;
+      animation-delay: 0.5s;
+    }
+    
+    .rope-circle:nth-child(3) {
+      width: 50%;
+      height: 50%;
+      top: 25%;
+      left: 25%;
+      animation-delay: 1s;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.15;
+      }
+      50% {
+        transform: scale(1.05);
+        opacity: 0.25;
+      }
+    }
+    
+    /* Бейдж 2025 */
+    .trend-badge {
+      position: absolute;
+      top: 60px;
+      right: 80px;
+      background: rgba(212, 165, 116, 0.2);
+      border: 3px solid #D4A574;
+      padding: 16px 32px;
+      border-radius: 100px;
+      color: #D4A574;
+      font-size: 24px;
+      font-weight: 800;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(212, 165, 116, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <!-- Фоновые эффекты -->
+  <div class="bg-effect-1"></div>
+  <div class="bg-effect-2"></div>
+  <div class="grid-pattern"></div>
+  
+  <!-- Декоративные круги ротанга -->
+  <div class="rope-decoration">
+    <div class="rope-circle"></div>
+    <div class="rope-circle"></div>
+    <div class="rope-circle"></div>
+  </div>
+  
+  <!-- Бейдж тренда -->
+  <div class="trend-badge">✨ ТРЕНД 2025</div>
+  
+  <!-- Основной контент -->
+  <div class="container">
+    <div class="logo">BENTENTRADE</div>
+    
+    <h1 class="title">
+      Ротанговая нить и<br>плетёные кашпо
+    </h1>
+    
+    <p class="description">
+      Производство в Ташкенте • Широкий выбор цветов<br>
+      Доставка по Узбекистану
+    </p>
+    
+    <div class="features">
+      <div class="feature-tag">🎨 8 цветов</div>
+      <div class="feature-tag">💎 Премиум качество</div>
+      <div class="feature-tag">🚚 Доставка</div>
+    </div>
+    
+    <div class="contact">
+      <div class="contact-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z"/>
+          <path d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z"/>
+        </svg>
+        +998 77 104 44 22
+      </div>
+      <div class="contact-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.001 2C6.486 2 2.001 6.485 2.001 12c0 5.514 4.485 10 9.999 10 5.515 0 10.001-4.486 10.001-10s-4.486-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+          <path d="M11 11h2v6h-2zm0-4h2v2h-2z"/>
+        </svg>
+        bententrade.uz
+      </div>
+    </div>
+  </div>
+</body>
+</html>

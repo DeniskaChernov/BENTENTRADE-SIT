@@ -1,0 +1,5 @@
+# Отключаем автоматический Caddy для SPA (Vite): у нас свой Node-сервер (server.js) с API и статикой.
+# Иначе Nixpacks ставит Caddy «поверх» и healthcheck получает 503 / service unavailable.
+# https://nixpacks.com/docs/providers/node#spa-application-support
+[variables]
+NIXPACKS_SPA_CADDY = "false"

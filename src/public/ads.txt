@@ -1,0 +1,5 @@
+# Bententrade.uz - Ads.txt
+# Google AdSense Publisher ID (если будете использовать)
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+
+# Этот файл готов к использованию, когда подключите рекламу

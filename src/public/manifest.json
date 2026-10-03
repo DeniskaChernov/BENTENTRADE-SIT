@@ -1,0 +1,23 @@
+{
+  "name": "Bententrade - Ротанговая нить и плетёные кашпо",
+  "short_name": "Bententrade",
+  "description": "Производство и продажа качественной искусственной ротанговой нити и плетёных кашпо в Ташкенте",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0908",
+  "theme_color": "#D4A574",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "shopping"],
+  "lang": "ru",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}
