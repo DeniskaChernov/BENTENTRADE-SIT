@@ -40,7 +40,7 @@
         done:"Заказ оформлен! Менеджер свяжется с вами.",remove:"Убрать",
         fav:"Избранное",favEmpty:"В избранном пусто",favHint:"Нажмите на сердечко у товара, чтобы сохранить его.",
         favAdded:"Добавлено в избранное",favRemoved:"Удалено из избранного",
-        addCart:"В корзину",
+        addCart:"Купить в 1 клик",
         ordTitle:"Подтверждение заказа",ordSub:"Отправьте заказ менеджеру - он подтвердит наличие, доставку и оплату.",
         ordTg:"Оформить в Telegram",ordWa:"Оформить в WhatsApp",ordBack:"Вернуться в корзину",
         ordCopied:"Заказ скопирован - вставьте его в чат с менеджером.",
@@ -79,7 +79,7 @@
         done:"Buyurtma qabul qilindi! Menejer bog‘lanadi.",remove:"Olib tashlash",
         fav:"Sevimlilar",favEmpty:"Sevimlilar bo‘sh",favHint:"Saqlash uchun mahsulotdagi yurakchani bosing.",
         favAdded:"Tanlanganlarga qo‘shildi",favRemoved:"Tanlanganlardan o‘chirildi",
-        addCart:"Savatga",
+        addCart:"1-klikda xarid",
         ordTitle:"Buyurtma tasdiqlash",ordSub:"Buyurtmani menejerga yuboring - mavjudligi, yetkazish va to‘lovni tasdiqlaydi.",
         ordTg:"Telegramda rasmiylashtirish",ordWa:"WhatsAppda rasmiylashtirish",ordBack:"Savatga qaytish",
         ordCopied:"Buyurtma nusxalandi - menejer chatiga joylang.",
@@ -119,7 +119,7 @@
         done:"Order placed! Our manager will be in touch.",remove:"Remove",
         fav:"Wishlist",favEmpty:"No saved items yet",favHint:"Tap the heart on a product to save it.",
         favAdded:"Added to wishlist",favRemoved:"Removed from wishlist",
-        addCart:"Add to cart",
+        addCart:"Buy in 1 click",
         ordTitle:"Confirm your order",ordSub:"Send the order to our manager - they'll confirm stock, delivery and payment.",
         ordTg:"Order via Telegram",ordWa:"Order via WhatsApp",ordBack:"Back to cart",
         ordCopied:"Order copied - paste it into the chat with our manager.",
@@ -624,7 +624,7 @@
           '<a class="dl-thumb" href="'+href+'">'+(it.img?'<img src="'+esc(it.img)+'" alt="" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">':'')+'</a>'+
           '<div class="dl-main"><a class="dl-name" href="'+href+'">'+esc(it.name)+'</a>'+
             '<div class="dl-price">'+esc(fmt(it.price||0))+'</div>'+
-            '<button class="btn btn--ghost btn--sm" data-fav-add="'+esc(id)+'">'+esc(t("addCart"))+'</button>'+
+            '<button class="btn btn--copper btn--sm" data-fav-quick="'+esc(id)+'" style="font-weight:700">⚡ '+esc(t("quickBuy")||"Купить в 1 клик")+'</button>'+
           '</div>'+
           '<button class="dl-del" data-fav-del="'+esc(id)+'" aria-label="'+esc(t("remove"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg></button>'+
         '</div>';
@@ -696,9 +696,13 @@
     root.querySelectorAll("[data-fav-del]").forEach(b=>b.addEventListener("click",()=>{
       const f=getFavs(); delete f[b.getAttribute("data-fav-del")]; write("btt_favs",f); renderBadges(); renderFavBody(); syncFavButtons(); onFavsChange();
     }));
-    root.querySelectorAll("[data-fav-add]").forEach(b=>b.addEventListener("click",()=>{
-      const id=b.getAttribute("data-fav-add"); const it=getFavs()[id];
-      if(it) addToCart({id,name:it.name,price:it.price,img:it.img},1);
+    root.querySelectorAll("[data-fav-add], [data-fav-quick]").forEach(b=>b.addEventListener("click",()=>{
+      const id=b.getAttribute("data-fav-quick") || b.getAttribute("data-fav-add");
+      const it=getFavs()[id];
+      if(it){
+        closeAll();
+        openQuickOrder({ id, name: it.name, price: it.price, img: it.img, qty: 1 });
+      }
     }));
     const promoApply = root.querySelector("[data-promo-apply]");
     if(promoApply){
@@ -1185,14 +1189,10 @@
                 '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>' +
                 '<span>' + esc(t("quickOrderBtn") || "Подтвердить заказ в 1 клик") + '</span>' +
               '</button>' +
-              '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:8px">' +
-                '<button type="button" class="btn btn--ghost sm qk-tg-direct" data-qk-tg-direct style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12.5px">' +
+              '<div style="margin-top:10px">' +
+                '<button type="button" class="btn btn--ghost sm qk-tg-direct" data-qk-tg-direct style="width:100%;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12.5px">' +
                   tgIco +
                   '<span>' + esc(t("pdp.cta.telegram") || "Заказать в Telegram") + '</span>' +
-                '</button>' +
-                '<button type="button" class="btn btn--ghost sm qk-cart-add" data-qk-cart-add style="flex:1;font-size:12.5px;display:flex;align-items:center;justify-content:center;gap:6px">' +
-                  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>' +
-                  '<span>' + esc(t("pdp.cta.cart") || "В корзину") + '</span>' +
                 '</button>' +
               '</div>' +
             '</form>' +
@@ -1230,16 +1230,6 @@
         };
       }
 
-      // Add to cart secondary button
-      const toCartBtn = qkModal.querySelector("[data-qk-cart-add]");
-      if(toCartBtn){
-        toCartBtn.onclick = () => {
-          addToCart(snap, currentQty);
-          closeQuickOrder();
-          openCart();
-          toast(t("toast.repeat") || "Товары добавлены в корзину");
-        };
-      }
 
       // Direct Telegram button
       const tgDirectBtn = qkModal.querySelector("[data-qk-tg-direct]");
@@ -1395,12 +1385,12 @@
       btn.addEventListener("click", e=>{
         e.preventDefault();
         e.stopPropagation();
+        const snap = resolveSnap(btn);
         let qty = 1;
         const qtyInput = document.querySelector(".pdp-buy [data-qty] input");
-        if(document.querySelector(".pdp-info") && qtyInput) qty = Math.max(1, parseInt(qtyInput.value, 10) || 1);
-        addToCart(resolveSnap(btn), qty);
-        if(navigator.vibrate) try{ navigator.vibrate(20); }catch(_){}
-        toast(t("toast.repeat") || "Товары добавлены в корзину");
+        if(document.querySelector(".pdp-info") && qtyInput && snap) qty = Math.max(1, parseInt(qtyInput.value, 10) || 1);
+        if(snap) snap.qty = qty;
+        openQuickOrder(snap);
       });
     });
 

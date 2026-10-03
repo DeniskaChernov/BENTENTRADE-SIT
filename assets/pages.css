@@ -1705,29 +1705,32 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 }
 .catalog-layout .product__media .add,
 #catalog-grid .product__media .add,
+.prod-grid .product__media .add,
 [data-related-grid] .product__media .add{
-  width:34px !important;
-  height:34px !important;
+  width:36px !important;
+  height:36px !important;
   bottom:8px !important;
   right:8px !important;
   border-radius:50% !important;
-  background:var(--ink) !important;
+  background:var(--copper) !important;
   color:#fff !important;
   border:none !important;
-  box-shadow:0 3px 10px rgba(0,0,0,.2) !important;
+  box-shadow:0 3px 12px rgba(189,115,53,.35) !important;
   transition:transform .22s var(--spring),background .2s ease,box-shadow .2s ease !important;
 }
 .catalog-layout .product__media .add:hover,
 #catalog-grid .product__media .add:hover,
+.prod-grid .product__media .add:hover,
 [data-related-grid] .product__media .add:hover{
-  transform:scale(1.08) !important;
-  background:var(--copper) !important;
-  box-shadow:0 6px 16px rgba(189,115,53,.35) !important;
+  transform:scale(1.12) !important;
+  background:var(--copper-bright) !important;
+  box-shadow:0 6px 18px rgba(189,115,53,.5) !important;
 }
 .catalog-layout .product__media .add svg,
 #catalog-grid .product__media .add svg,
+.prod-grid .product__media .add svg,
 [data-related-grid] .product__media .add svg{
-  width:16px;height:16px;
+  width:17px;height:17px;
 }
 .catalog-layout .product__media .badge-sale,
 #catalog-grid .product__media .badge-sale,
@@ -4284,3 +4287,13 @@ a.dl-name:hover{color:var(--copper);}
   content-visibility: auto;
   contain-intrinsic-size: auto 500px;
 }
+
+/* 1-Click purchase site mode: completely hide residual cart buttons */
+[data-cart-open],
+[data-cart-add],
+.pdp-cart-btn,
+.qk-cart-add,
+[data-qv-add] {
+  display: none !important;
+}
+

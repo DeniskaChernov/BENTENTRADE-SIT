@@ -620,15 +620,15 @@ p{margin:0;text-wrap:pretty;}
 
 .product__media .add{
   position:absolute;bottom:12px;right:12px;width:44px;height:44px;border-radius:50%;
-  background:var(--ink);color:#fff;display:grid;place-items:center;z-index:2;
-  box-shadow:0 6px 18px -4px rgba(22,19,15,.28);
+  background:var(--copper);color:#fff;display:grid;place-items:center;z-index:2;
+  box-shadow:0 6px 18px -4px rgba(184,115,51,.35);
   transition:transform .25s ease,background .25s ease,box-shadow .25s ease,border-color .25s ease;
   cursor:pointer;
 }
 .product__media .add::before{content:"";position:absolute;inset:-6px;}
 .product__media .add:hover{
-  background:var(--copper);transform:translateY(-2px) scale(1.05);
-  box-shadow:0 8px 22px -4px rgba(184,115,51,.4);
+  background:var(--copper-bright);transform:translateY(-2px) scale(1.08);
+  box-shadow:0 8px 24px -4px rgba(184,115,51,.55);
 }
 .product__media .add:active{transform:scale(.86);}
 .product__media .add.added{
@@ -1435,5 +1435,15 @@ body.has-cookie-banner .bot-panel{bottom:calc(12px + var(--cookie-banner-h,0px))
   -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
 }
+
+/* 1-Click purchase site mode: completely hide residual cart buttons */
+[data-cart-open],
+[data-cart-add],
+.pdp-cart-btn,
+.qk-cart-add,
+[data-qv-add] {
+  display: none !important;
+}
+
 
 

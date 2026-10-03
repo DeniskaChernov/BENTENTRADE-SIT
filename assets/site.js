@@ -808,8 +808,7 @@
           '<div class="qv-actions">' +
             (isMto
               ? '<a class="btn btn--copper" href="' + canonicalHref + '">' + esc(t("pdp.sticky.order") || "Сделать на заказ") + '</a>'
-              : '<button type="button" class="btn btn--dark" data-qv-add>' + esc(t("pdp.add") || "Добавить в корзину") + '</button>' +
-                '<button type="button" class="btn btn--copper" data-qv-quick-buy>' + esc(t("pdp.quickBuy") || "Купить в 1 клик") + '</button>'
+              : '<button type="button" class="btn btn--copper" data-qv-quick-buy style="width:100%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16" style="margin-right:6px;vertical-align:-2px"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>' + esc(t("pdp.quickBuy") || "Купить в 1 клик") + '</button>'
             ) +
           '</div>' +
           '<a class="qv-full-link" href="' + canonicalHref + '">' +
@@ -843,30 +842,6 @@
     const closeBtn = qvModal.querySelector("[data-qv-close]");
     if(closeBtn) closeBtn.addEventListener("click", closeQuickView);
 
-    // wire add to cart
-    const addBtn = qvModal.querySelector("[data-qv-add]");
-    if(addBtn){
-      addBtn.addEventListener("click", (e)=>{
-        if(window.BTT_CART && window.BTT_CART.addToCart){
-          const snap = {
-            id: pid,
-            name: name,
-            price: (window.BTT_UTIL && window.BTT_UTIL.toUzs) ? window.BTT_UTIL.toUzs(prod.now) : Math.round(prod.now * 12500),
-            img: photos[0].thumb
-          };
-          window.BTT_CART.addToCart(snap, 1);
-          addBtn.textContent = t("pdp.added") || "Добавлено ✓";
-          addBtn.classList.add("added");
-          if(navigator.vibrate) try{ navigator.vibrate(20); }catch(_){}
-          if(window.BTT_FX && window.BTT_FX.burstParticles && e.clientX && e.clientY){
-            window.BTT_FX.burstParticles(e.clientX, e.clientY, 8);
-          }
-          setTimeout(()=>{
-            closeQuickView();
-          }, 600);
-        }
-      });
-    }
 
     // wire 1-click buy
     const qkBtn = qvModal.querySelector("[data-qv-quick-buy]");

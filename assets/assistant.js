@@ -165,7 +165,7 @@
       cartTotal: "Итого в корзине",
       cartCheckout: "Оформить заказ",
       cartMore: "Подробнее",
-      cartBuy: "В корзину",
+      cartBuy: "Купить в 1 клик",
       cartAdded: "Добавлено!",
       phoneInvalid: "Укажите номер телефона (например: +998 90 123 45 67)",
       nameInvalid: "Пожалуйста, укажите ваше имя"
@@ -259,7 +259,7 @@
       cartTotal: "Savatdagi jami summa",
       cartCheckout: "Buyurtma berish",
       cartMore: "Batafsil",
-      cartBuy: "Savatga",
+      cartBuy: "1-klikda xarid",
       cartAdded: "Qo‘shildi!",
       phoneInvalid: "Telefon raqamingizni kiriting (masalan: +998 90 123 45 67)",
       nameInvalid: "Iltimos, ismingizni kiriting"
@@ -353,7 +353,7 @@
       cartTotal: "Cart total",
       cartCheckout: "Checkout",
       cartMore: "Details",
-      cartBuy: "Add to cart",
+      cartBuy: "Buy in 1 click",
       cartAdded: "Added!",
       phoneInvalid: "Please enter a valid phone number (e.g.: +998 90 123 45 67)",
       nameInvalid: "Please enter your name"
@@ -583,7 +583,7 @@
         '<div class="bot-prod-card__price">' + esc(priceStr) + '</div>' +
         '<div class="bot-prod-card__actions">' +
           '<a href="/catalog/' + esc(slug) + '" class="bot-prod-card__link">' + esc(tCfg.cartMore) + ' →</a>' +
-          '<button type="button" class="bot-prod-card__buy" data-bot-add="' + esc(slug) + '">🛒 ' + esc(tCfg.cartBuy) + '</button>' +
+          '<button type="button" class="bot-prod-card__buy" data-bot-add="' + esc(slug) + '">⚡ ' + esc(tCfg.cartBuy) + '</button>' +
         '</div>' +
       '</div>' +
     '</div>';
@@ -893,9 +893,12 @@
 
     var padded = " " + norm + " ";
 
-    // 3. Cart inspection query
+    // 3. Cart / Quick purchase inquiry
     if(/(?:^|[^\p{L}\p{N}])(корзин|в корзине|заказ в корзине|что я выбрал|savat|savatda|cart|my cart|in my cart|basket)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
-      return renderCartState(curLang);
+      var cartMsg = curLang === "uz" ? "BTT da murakkab savatchalarsiz 1 bosishda tezkor xarid tizimi ishlaydi. Har qanday modelni 1 bosishda rasmiylashtirishingiz mumkin. Quyida buyurtma berishingiz mumkin:" :
+        curLang === "en" ? "At BTT, we use a 1-click express checkout without cumbersome carts. You can order any item instantly. Place an order directly below:" :
+        "На сайте BTT действует покупка в 1 клик без лишних корзин. Вы можете быстро оформить любую мебель за пару кликов прямо здесь:";
+      return cartMsg + renderOrderForm(curLang, "");
     }
 
     // 4. Order intent -> Open interactive order form
@@ -982,11 +985,11 @@
     // 10. Discounts & promo
     if(/(?:^|[^\p{L}\p{N}])(скидк|скидочк|акци|промокод|дешевле|chegirma|aktsiya|aksiya|promokod|discount|promo|sale)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
       if(curLang === "uz"){
-        return "Onlayn buyurtma berishda <b>BENTEN2026</b> promokodidan foydalanib 5% chegirmaga ega bo‘ling! Shuningdek, stullarni stol bilan birga to‘plamda xarid qilganda stul narxi avtomatik arzonlashadi (masalan, Roero 188 000 o‘rniga 168 000 so‘m).";
+        return "Tezkor buyurtma berishda <b>BENTEN2026</b> promokodidan foydalanib 5% chegirmaga ega bo‘ling! Shuningdek, stullarni stol bilan birga to‘plamda xarid qilganda stul narxi avtomatik arzonlashadi (masalan, Roero 188 000 o‘rniga 168 000 so‘m).";
       } else if(curLang === "en"){
-        return "Use promo code <b>BENTEN2026</b> at checkout for a 5% discount! In addition, buying chairs as part of a set with a table unlocks our bundled chair discount (e.g. Roero at 168,000 UZS instead of 188,000 UZS).";
+        return "Use promo code <b>BENTEN2026</b> when placing an order for a 5% discount! In addition, buying chairs as part of a set with a table unlocks our bundled chair discount (e.g. Roero at 168,000 UZS instead of 188,000 UZS).";
       } else {
-        return "При заказе через корзину на сайте действует промокод <b>BENTEN2026</b> на скидку 5%! Кроме того, при покупке комплекта со столом на пластиковые стулья действует комплектная цена (например, Roero 168 000 сум вместо 188 000 сум).";
+        return "При оформлении быстрого заказа на сайте или в чате действует промокод <b>BENTEN2026</b> на скидку 5%! Кроме того, при покупке комплекта со столом на пластиковые стулья действует комплектная цена (например, Roero 168 000 сум вместо 188 000 сум).";
       }
     }
 
@@ -1216,28 +1219,10 @@
         var I = window.BTT_I18N || {};
         var dict = I[curLang] || I.ru || {};
         var title = (p && p.name) || dict[slug + ".name"] || slug;
-        var img = (p && p.images && p.images[0]) || (p && p.colors && p.colors[0] && p.colors[0].image) || "";
-        var snap = { id: slug, name: title, price: (p && p.now) || 0, img: img };
+        var snap = { id: slug, name: title, price: (p && p.now) || 0, img: img, qty: 1 };
 
-        if(window.BTT_CART && window.BTT_CART.addToCart){
-          window.BTT_CART.addToCart(snap, 1);
-        }
-        var tCfg = T[curLang] || T.ru;
-        var prevText = addBtn.textContent;
-        addBtn.textContent = "✓ " + tCfg.cartAdded;
-        addBtn.classList.add("is-added");
-        setTimeout(function(){
-          addBtn.textContent = prevText;
-          addBtn.classList.remove("is-added");
-        }, 2200);
-        return;
-      }
-
-      // 2. Open cart button
-      var cartBtn = e.target.closest("[data-bot-cart-open]");
-      if(cartBtn){
-        if(window.BTT_CART && window.BTT_CART.openCart){
-          window.BTT_CART.openCart();
+        if(window.BTT_CART && window.BTT_CART.openQuickOrder){
+          window.BTT_CART.openQuickOrder(snap);
         }
         return;
       }
