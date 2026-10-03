@@ -1,7 +1,7 @@
 import assert from "node:assert";
 import { execSync } from "node:child_process";
 
-const BASE_URL = process.env.TEST_URL || "https://btt.denisblackman2.workers.dev";
+const BASE_URL = process.env.TEST_URL || "https://bententrade.denisblackman2.workers.dev";
 console.log("=== BTT ARCHITECTURE EXPANSION VERIFICATION SUITE ===");
 console.log("Target:", BASE_URL);
 
@@ -22,7 +22,7 @@ function runWrangler(sql) {
   const clean = sql.replace(/\r?\n/g, " ");
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
-      execSync(`npx wrangler d1 execute btt_db --remote --command="${clean}"`, {
+      execSync(`npx wrangler d1 execute bententrade_db --remote --command="${clean}"`, {
         stdio: "pipe",
         timeout: 45000
       });
@@ -76,7 +76,7 @@ async function runTests() {
   check(pdpRes.status === 200, "PDP /catalog/stul-roero returns HTTP 200");
   const pdpHtml = await pdpRes.text();
   check(
-    pdpHtml.includes('<link rel="canonical" href="https://btt.uz/catalog/stul-roero">'),
+    pdpHtml.includes('<link rel="canonical" href="https://bententrade.uz/catalog/stul-roero">'),
     "PDP contains canonical URL link"
   );
   check(
@@ -153,7 +153,7 @@ async function runTests() {
     check(newSkuPdpRes.status === 200, "New SKU PDP returns HTTP 200 (No 404 flash!)");
     const newSkuPdpHtml = await newSkuPdpRes.text();
     check(
-      newSkuPdpHtml.includes('<link rel="canonical" href="https://btt.uz/catalog/stul-aurora-test">'),
+      newSkuPdpHtml.includes('<link rel="canonical" href="https://bententrade.uz/catalog/stul-aurora-test">'),
       "New SKU PDP has authoritative canonical link"
     );
     check(

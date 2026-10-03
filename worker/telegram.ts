@@ -83,7 +83,7 @@ export async function testTelegram(
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         chat_id: chat,
-        text: opts?.message || "BTT: Тестовое уведомление из панели управления CMS успешно доставлено!",
+        text: opts?.message || "Bententrade: Тестовое уведомление из панели управления CMS успешно доставлено!",
         parse_mode: "HTML",
       }),
     });

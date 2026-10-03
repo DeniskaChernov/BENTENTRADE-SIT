@@ -1,5 +1,5 @@
 /* ============================================================
-   BTT - Node server entry (Railway).
+   BENTENTRADE - Node server entry (Railway).
    Same Hono routes as the Cloudflare Worker, but running on Node
    with PostgreSQL + filesystem media, and serving the static site.
    ============================================================ */
@@ -93,8 +93,8 @@ app.get("/api/settings", async (c: Context) => {
   const map: Record<string, string> = {
     phone: "+998 77 104 44 22",
     whatsapp: "998771044422",
-    telegram: "btt_uz",
-    email: "hello@btt.uz",
+    telegram: "bententradeuz",
+    email: "hello@bententrade.uz",
   };
   for (const r of results || []) {
     if (r.key && r.value) map[r.key] = r.value;
@@ -163,7 +163,7 @@ async function boot() {
     // Bind all interfaces. Do NOT use process.env.HOSTNAME - Railway sets it to the container id.
     hostname: "0.0.0.0",
   }, (info) => {
-    console.log(`BTT server on http://${info.address}:${info.port}`);
+    console.log(`Bententrade server on http://${info.address}:${info.port}`);
   });
 
   try {

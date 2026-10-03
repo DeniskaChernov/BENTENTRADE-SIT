@@ -1,7 +1,7 @@
 // Live test for guest order linking and checkout registration
 import assert from "node:assert";
 
-const BASE_URL = "https://btt.denisblackman2.workers.dev";
+const BASE_URL = "https://bententrade.denisblackman2.workers.dev";
 
 async function run(){
   console.log("=== TESTING LIVE GUEST ORDER LINKING & REGISTRATION ===");

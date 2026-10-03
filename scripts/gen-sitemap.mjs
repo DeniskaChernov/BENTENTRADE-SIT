@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
-const SITE = process.env.SITE_ORIGIN || "https://btt.uz";
+const SITE = "https://bententrade.uz";
 
 function loadProducts() {
   try {

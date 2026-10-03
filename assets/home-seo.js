@@ -13,7 +13,7 @@
 
   function paletteSchema() {
     var spec = t("pal.spec");
-    var base = "https://btt.uz/assets/";
+    var base = "https://bententrade.uz/assets/";
     return {
       "@context": "https://schema.org",
       "@type": "ItemList",
@@ -30,7 +30,7 @@
             name: color + " - " + spec,
             sku: p.sku.replace("g", ""),
             image: base + p.img,
-            brand: { "@type": "Brand", name: "BTT" },
+            brand: { "@type": "Brand", name: "Bententrade" },
             category: "Synthetic rattan profile",
             material: "PE rattan",
             description: spec + " - " + color + " (" + t("pal.art") + " " + p.sku.replace("g", "") + ")",

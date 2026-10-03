@@ -1,6 +1,6 @@
-# BTT - Design Code / Дизайн-система
+# Bententrade - Design Code / Дизайн-система
 
-Полное описание дизайна и кода сайта BTT для дальнейшей работы.
+Полное описание дизайна и кода сайта Bententrade для дальнейшей работы.
 Сайт: мебель, кашпо и корзины из **искусственного ротанга**. Гео - Узбекистан + экспорт.
 Стиль по референсу **CAIRIS / Apple**: светлая тёплая база, медный (copper) акцент, крупная типографика, органичные формы, **liquid-поверхности без blur**. Поддержаны **тёмная тема** и **3 языка (RU / UZ / EN)**.
 
@@ -219,7 +219,7 @@ API: `window.BTT_CART = { openCart, openFav, addToCart, wireProductButtons, getF
 
 ## 11. Figma и финальный QA
 
-Макет: [BTT - Главная](https://www.figma.com/design/4Y0JGexl7JctEsm9a9PVoB).
+Макет: [Bententrade - Главная](https://www.figma.com/design/4Y0JGexl7JctEsm9a9PVoB).
 
 ### Сверено с макетом / логикой
 

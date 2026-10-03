@@ -23,7 +23,7 @@ for (const file of files) {
   let content = fs.readFileSync(filePath, "utf-8");
 
   // Common replacements
-  content = content.replace(/alt="BTT"/g, 'alt="BTT"');
+  content = content.replace(/alt="Bententrade"/g, 'alt="BTT"');
   content = content.replace(
     /<p data-i18n="foot\.tag" style="color:var\(--on-dark-muted\);max-width:30ch">Мебель, кашпо и корзины из искусственного ротанга\.<\/p>/g,
     '<p data-i18n="foot.tag" style="color:var(--on-dark-muted);max-width:30ch">Столы, стулья и мебель для дома, сада и бизнеса.</p>'
@@ -33,15 +33,15 @@ for (const file of files) {
     '<p data-i18n="co.i.addr.v">Ташкент, Узбекистан (склад / офис)</p>'
   );
   content = content.replace(
-    /<span data-i18n="foot\.since">С 2024 ГОДА<\/span><span data-i18n="foot\.copy">© 2026 BTT\. ВСЕ ПРАВА ЗАЩИЩЕНЫ\.<\/span>/g,
+    /<span data-i18n="foot\.since">С 2024 ГОДА<\/span><span data-i18n="foot\.copy">© 2026 BENTENTRADE\. ВСЕ ПРАВА ЗАЩИЩЕНЫ\.<\/span>/g,
     '<span>BTT - мебель для дома и сада</span><span data-i18n="foot.copy">© 2026 BTT. Все права защищены.</span>'
   );
   content = content.replace(
-    /<meta property="og:site_name" content="BTT">/g,
+    /<meta property="og:site_name" content="Bententrade">/g,
     '<meta property="og:site_name" content="BTT">'
   );
   content = content.replace(
-    /(<title[^>]*>)BTT - /g,
+    /(<title[^>]*>)Bententrade - /g,
     '$1BTT - '
   );
 
@@ -54,7 +54,7 @@ for (const file of files) {
 
   if (file === "sadovaya-mebel-rotang.html") {
     content = content.replace(
-      "Смотрите готовые модели в каталоге или свяжитесь с дизайнером BTT для изготовления под заказ с выездом замерщика в Ташкенте.",
+      "Смотрите готовые модели в каталоге или свяжитесь с дизайнером Bententrade для изготовления под заказ с выездом замерщика в Ташкенте.",
       "Смотрите актуальные модели в каталоге или свяжитесь с нами в Telegram для консультации и подбора мебели в Ташкенте."
     );
     content = content.replace(

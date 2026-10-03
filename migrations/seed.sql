@@ -7,7 +7,7 @@ DELETE FROM media WHERE product_id IS NOT NULL;
 DELETE FROM product_aliases;
 DELETE FROM products;
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stul-vertex', 'wicker-chairs', 'stul-vertex', 499000, 0, 0, 1, 0, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stul-vertex', 'wicker-chairs', 'stul-vertex', 499000, 0, 0, 1, 0, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p1', 'stul-vertex');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-vertex', 'ru', 'Стул «Vertex»', 'Плетёные стулья', 'Плетёный стул Vertex на металлическом каркасе и выразительным плетением из кручёного искусственного ротанга. Комплектуется мягкой текстильной подушкой для повышенного удобства. Идеально подходит для гостиной, веранды, террасы, загородного дома, а также для ресторанов и кофеен. Гармонично сочетается с круглым столом Vertex D90 и столом Taper Rotang 80.', '["57 × 63 × 75 см"]', '{"mat":"металл, кручёный искусственный ротанг, текстиль","dim":"57 × 63 × 75 см","maxLoad":"","colors":"Бежевый"}', 'Купить Стул «Vertex» в Ташкенте - BTT', 'Стул «Vertex» (Плетёные стулья) от BTT. Размеры: 57 × 63 × 75 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-vertex', 'uz', '«Vertex» stuli', 'To‘qilgan stullar', 'Metall karkas va o''rilgan sun''iy rotangdan ishlangan Vertex stuli. Qo''shimcha qulaylik uchun yumshoq to''qimachilik yostiqchasi bilan jihozlangan. Yashash xonasi, veranda, terassa, shahar tashqarisidagi hovli va restoranlar uchun juda mos. Vertex D90 va Taper Rotang 80 stollari bilan ajoyib uyg''unlashadi.', '["57 × 63 × 75 см"]', '{"mat":"металл, кручёный искусственный ротанг, текстиль","dim":"57 × 63 × 75 см","maxLoad":"","colors":"Bej"}', 'Toshkentda «Vertex» stuli sotib olish - BTT', 'BTT dan «Vertex» stuli (To‘qilgan stullar). O‘lchamlari: 57 × 63 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -18,7 +18,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-vertex
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-vertex-detail-seat.jpg', 'stul-vertex', 'Vertex', 3);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-warm.png', 'stul-vertex', 'Vertex', 4);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stul-corda', 'wicker-chairs', 'stul-corda', 499000, 0, 0, 1, 1, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stul-corda', 'wicker-chairs', 'stul-corda', 499000, 0, 0, 1, 1, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p2', 'stul-corda');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-corda', 'ru', 'Стул «Corda»', 'Плетёные стулья', 'Обеденный стул Corda на металлическом каркасе с фактурным плетением из искусственного ротанга и мягкой текстильной подушкой. Создан для длительного комфорта за семейным столом. Прекрасно подходит для столовой, закрытой террасы, летней площадки или кафе. Гармонично сочетается с большим обеденным столом Corda 135 и Taper Rotang 135.', '["57 × 63 × 77 см"]', '{"mat":"металл, искусственный ротанг, текстиль","dim":"57 × 63 × 77 см","maxLoad":"","colors":"Бежевый"}', 'Купить Стул «Corda» в Ташкенте - BTT', 'Стул «Corda» (Плетёные стулья) от BTT. Размеры: 57 × 63 × 77 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-corda', 'uz', '«Corda» stuli', 'To‘qilgan stullar', 'Metall karkas, sun''iy rotangning quyuq to''qilishi va yumshoq matoli yostiqchaga ega Corda stuli. Oilaviy tushliklar uchun uzoq muddatli qulaylik yaratadi. Oshxona, yopiq terassa, yozgi ayvon yoki qahvaxonalar uchun mukammal mos keladi. Katta Corda 135 va Taper Rotang 135 stollari bilan uyg''unlashadi.', '["57 × 63 × 77 см"]', '{"mat":"металл, искусственный ротанг, текстиль","dim":"57 × 63 × 77 см","maxLoad":"","colors":"Bej"}', 'Toshkentda «Corda» stuli sotib olish - BTT', 'BTT dan «Corda» stuli (To‘qilgan stullar). O‘lchamlari: 57 × 63 × 77 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -29,7 +29,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-corda-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-corda-detail-seat.jpg', 'stul-corda', 'Corda', 3);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-warm.png', 'stul-corda', 'Corda', 4);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stul-roero', 'plastic-chairs', 'stul-roero', 188000, 0, 0, 1, 2, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stul-roero', 'plastic-chairs', 'stul-roero', 188000, 0, 0, 1, 2, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p3', 'stul-roero');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-roero', 'ru', 'Стул «ROERO»', 'Пластиковые стулья', 'Современный эргономичный стул Roero из литого полипропилена. Анатомическая форма спинки обеспечивает комфортную посадку, а матовая поверхность легко очищается . Идеальный выбор для кухни, балкона, дачи, фудкортов и летних террас. Отлично комплектуется со столами Taper 80 и Taper 135 в серых, белых, чёрных и ярких оранжевых тонах.', '["74 × 46 × 48 см"]', '{"mat":"пластик","dim":"74 × 46 × 48 см","maxLoad":"","colors":"Серый, Чёрный, Белый, Оранжевый"}', 'Купить Стул «ROERO» в Ташкенте - BTT', 'Стул «ROERO» (Пластиковые стулья) от BTT. Размеры: 74 × 46 × 48 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-roero', 'uz', '«ROERO» stuli', 'Plastik stullar', 'Quyma polipropilendan tayyorlangan zamonaviy Roero stuli. Anatomik shakldagi suyanchig''i qulay o''tirishni ta''minlaydi, mat yuzasi esa oson tozalanadi. Oshxona, balkon, dala hovli, fudkortlar va ochiq qahvaxonalar uchun ideal tanlov. Kulrang, oq, qora va to''q sariq ranglarda Taper 80 hamda Taper 135 stollari bilan mos tushadi.', '["74 × 46 × 48 см"]', '{"mat":"пластик","dim":"74 × 46 × 48 см","maxLoad":"","colors":"Kulrang, Qora, Oq, To‘q sariq"}', 'Toshkentda «ROERO» stuli sotib olish - BTT', 'BTT dan «ROERO» stuli (Plastik stullar). O‘lchamlari: 74 × 46 × 48 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -52,7 +52,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-roero-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-roero-orange-detail-seat.jpg', 'stul-roero', 'ROERO', 15);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-grey.png', 'stul-roero', 'ROERO', 16);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stul-noero', 'plastic-chairs', 'stul-noero', 212000, 0, 0, 1, 3, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stul-noero', 'plastic-chairs', 'stul-noero', 212000, 0, 0, 1, 3, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p4', 'stul-noero');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-noero', 'ru', 'Стул «NOERO»', 'Пластиковые стулья', 'Стильный стул Noero с выразительной решётчатой спинкой высотой 82 см и комфортной глубокой посадкой. Полимерный корпус подходит для ежедневного использования дома и в заведениях общепита. Трендовая палитра капучино, синий, оранжевый и оливковый позволяет расставить интерьерные акценты. Безупречно подходит к столам серии Taper 80 и Taper 135.', '["82 × 48 × 49 см"]', '{"mat":"пластик","dim":"82 × 48 × 49 см","maxLoad":"","colors":"Капучино, Синий, Оранжевый, Оливковый"}', 'Купить Стул «NOERO» в Ташкенте - BTT', 'Стул «NOERO» (Пластиковые стулья) от BTT. Размеры: 82 × 48 × 49 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-noero', 'uz', '«NOERO» stuli', 'Plastik stullar', '82 sm balandlikdagi zamonaviy panjarali suyanchiqli va qulay chuqur o''rindiqli Noero stuli. Polimer korpus uyda va umumiy ovqatlanish joylarida kundalik foydalanishga mo''ljallangan. Kapuchino, ko''k, to''q sariq va zaytun ranglaridagi jozibali palitrasi interyerga nafislik bag''ishlaydi. Taper 80 va Taper 135 stollari bilan ajoyib mos tushadi.', '["82 × 48 × 49 см"]', '{"mat":"пластик","dim":"82 × 48 × 49 см","maxLoad":"","colors":"Kapuchino, Ko‘k, To‘q sariq, Zaytun"}', 'Toshkentda «NOERO» stuli sotib olish - BTT', 'BTT dan «NOERO» stuli (Plastik stullar). O‘lchamlari: 82 × 48 × 49 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -74,7 +74,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-noero-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-noero-olive-detail-seat.jpg', 'stul-noero', 'NOERO', 14);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-beige.png', 'stul-noero', 'NOERO', 15);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stul-todo', 'plastic-chairs', 'stul-todo', 236000, 0, 0, 1, 4, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stul-todo', 'plastic-chairs', 'stul-todo', 236000, 0, 0, 1, 4, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p5', 'stul-todo');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-todo', 'ru', 'Стул «TODO»', 'Пластиковые стулья', 'Практичный и лаконичный дизайнерский стул Todo с монолитным сиденьем и геометрией ножек. Полимерный корпус легко моется. Универсален для обеденной зоны дома, кухонного острова, террасы, а также для зон ожидания, офисов и заведений HoReCa. Отлично смотрится в обеденных группах со столами Taper 80 и Taper 135.', '["80 × 51 × 51 см"]', '{"mat":"пластик","dim":"80 × 51 × 51 см","maxLoad":"","colors":"Чёрный, Жёлтый, Серый, Красный, Кофейный, Белый"}', 'Купить Стул «TODO» в Ташкенте - BTT', 'Стул «TODO» (Пластиковые стулья) от BTT. Размеры: 80 × 51 × 51 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-todo', 'uz', '«TODO» stuli', 'Plastik stullar', 'Yaxlit o''rindiq va oyoq geometriyasiga ega amaliy hamda ixcham Todo dizaynerlik stuli. Polimer korpus oson yuviladi. Uy oshxonasi, terassa, kutish zonalari, ofislar va HoReCa maskanlari uchun universal yechim. Taper 80 va Taper 135 stollari bilan to''plamda ajoyib ko''rinadi.', '["80 × 51 × 51 см"]', '{"mat":"пластик","dim":"80 × 51 × 51 см","maxLoad":"","colors":"Qora, Sariq, Kulrang, Qizil, Kofe, Oq"}', 'Toshkentda «TODO» stuli sotib olish - BTT', 'BTT dan «TODO» stuli (Plastik stullar). O‘lchamlari: 80 × 51 × 51 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -105,7 +105,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-w
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-white-detail-seat.jpg', 'stul-todo', 'TODO', 23);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-contrast.png', 'stul-todo', 'TODO', 24);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stul-todo-soft', 'plastic-chairs', 'stul-todo-soft', 264000, 0, 0, 1, 5, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stul-todo-soft', 'plastic-chairs', 'stul-todo-soft', 264000, 0, 0, 1, 5, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p16', 'stul-todo-soft');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-todo-soft', 'ru', 'Стул «TODO SOFT»', 'Пластиковые стулья', 'Улучшенная версия Todo Soft, объединяющая эргономичный корпус из формованного полипропилена с мягким текстильным сиденьем. Обеспечивает повышенный комфорт при длительных обедах и рабочих встречах. Доступен в 6 популярных оттенках. Великолепно комбинируется со столами Taper 135 и Taper 80, образуя гармоничную обеденную группу для 4-6 человек.', '["80 × 51 × 51 см"]', '{"mat":"пластик, текстиль","dim":"80 × 51 × 51 см","maxLoad":"","colors":"Чёрный, Жёлтый, Серый, Красный, Кофейный, Белый"}', 'Купить Стул «TODO SOFT» в Ташкенте - BTT', 'Стул «TODO SOFT» (Пластиковые стулья) от BTT. Размеры: 80 × 51 × 51 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-todo-soft', 'uz', '«TODO SOFT» stuli', 'Plastik stullar', 'Qolipli polipropilendan ishlangan ergonomik korpusni yumshoq to''qimachilik o''rindig''i bilan birlashtirgan Todo Soft stuli. Uzoq tushliklar va uchrashuvlar chog''ida yuqori darajadagi qulaylikni ta''minlaydi. 6 ta mashhur rangda taqdim etiladi. Taper 135 va Taper 80 stollari bilan birga 4-6 kishilik to''liq ovqatlanish guruhini hosil qiladi.', '["80 × 51 × 51 см"]', '{"mat":"пластик, текстиль","dim":"80 × 51 × 51 см","maxLoad":"","colors":"Qora, Sariq, Kulrang, Qizil, Kofe, Oq"}', 'Toshkentda «TODO SOFT» stuli sotib olish - BTT', 'BTT dan «TODO SOFT» stuli (Plastik stullar). O‘lchamlari: 80 × 51 × 51 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -136,7 +136,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-s
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-soft-white-detail-back.jpg', 'stul-todo-soft', 'TODO SOFT', 23);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-contrast.png', 'stul-todo-soft', 'TODO SOFT', 24);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stul-jardin', 'plastic-chairs', 'stul-jardin', 344000, 0, 0, 1, 6, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stul-jardin', 'plastic-chairs', 'stul-jardin', 344000, 0, 0, 1, 6, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p6', 'stul-jardin');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-jardin', 'ru', 'Стул «JARDIN»', 'Пластиковые стулья', 'Элегантное кресло-стул JARDIN с анатомической спинкой, широким сиденьем и подлокотниками. Идеально подходит для обеденной зоны на кухне, террасе, в саду или в кафе. Практичный полимерный корпус легко очищается. Гармонично сочетается с круглыми и прямоугольными столами BTT (Taper 80, Corda 135) в оттенках капучино, оливковый и серый.', '["73.5 × 53.5 × 55.5 см"]', '{"mat":"пластик","dim":"73.5 × 53.5 × 55.5 см","maxLoad":"","colors":"Капучино, Оливковый, Серый"}', 'Купить Стул «JARDIN» в Ташкенте - BTT', 'Пластиковое кресло-стул «JARDIN» от BTT. Размеры: 73.5 × 53.5 × 55.5 см. Оттенки: капучино, оливковый, серый. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-jardin', 'uz', '«JARDIN» stuli', 'Plastik stullar', 'Anatomik suyanchiq, keng o''rindiq va tirsak suyagichlarga ega nafis JARDIN kreslo-stuli. Oshxona, terassa, bog'' yoki qahvaxonalardagi ovqatlanish hududi uchun ideal tanlov. Oson tozalanadigan amaliy polimer. Kapuchino, zaytun va kulrang tuslarda BTT davra va to''g''ri burchakli stollari (Taper 80, Corda 135) bilan uyg''unlashadi.', '["73.5 × 53.5 × 55.5 см"]', '{"mat":"пластик","dim":"73.5 × 53.5 × 55.5 см","maxLoad":"","colors":"Kapuchino, Zaytun, Kulrang"}', 'Toshkentda «JARDIN» stuli sotib olish - BTT', 'BTT dan «JARDIN» plastik kreslo-stuli. O‘lchamlari: 73.5 × 53.5 × 55.5 см. Ranglar: kapuchino, zaytun, kulrang. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -156,7 +156,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin-grey-detail-back.jpg', 'stul-jardin', 'JARDIN', 12);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-grey.png', 'stul-jardin', 'JARDIN', 13);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stul-lira', 'upholstered-chairs', 'stul-lira', 354000, 0, 0, 1, 7, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stul-lira', 'upholstered-chairs', 'stul-lira', 354000, 0, 0, 1, 7, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p7', 'stul-lira');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-lira', 'ru', 'Стул «LIRA»', 'Мягкие стулья', 'Изысканный обеденный стул Lira с высокой спинкой 95 см, мягкой фактурной обивкой и металлическим каркасом. Создаёт атмосферу роскоши и уюта в интерьере гостиной, столовой или банкетного зала. Обеспечивает деликатную поддержку спины. Рекомендуется комплектовать с большим столом Taper 135 или Corda 135.', '["95 × 55 × 48 см"]', '{"mat":"металл, текстиль","dim":"95 × 55 × 48 см","maxLoad":"","colors":""}', 'Купить Стул «LIRA» в Ташкенте - BTT', 'Стул «LIRA» (Мягкие стулья) от BTT. Размеры: 95 × 55 × 48 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stul-lira', 'uz', '«LIRA» stuli', 'Yumshoq stullar', '95 sm balandlikdagi suyanchiq, yumshoq sifatli qoplama va metall karkasga ega nafis Lira stuli. Mehmonxona, oshxona yoki banket zallarida hashamat va shinamlik muhitini yaratadi. Orqa qismni qulay quvvatlaydi. Katta Taper 135 yoki Corda 135 stollari bilan birgalikda tanlash tavsiya etiladi.', '["95 × 55 × 48 см"]', '{"mat":"металл, текстиль","dim":"95 × 55 × 48 см","maxLoad":"","colors":""}', 'Toshkentda «LIRA» stuli sotib olish - BTT', 'BTT dan «LIRA» stuli (Yumshoq stullar). O‘lchamlari: 95 × 55 × 48 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -165,7 +165,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/placeholder.svg',
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-azure.png', 'stul-lira', 'LIRA', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-cream.png', 'stul-lira', 'LIRA', 2);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('kreslo-como', 'upholstered-chairs', 'kreslo-como', 486000, 0, 0, 1, 8, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('kreslo-como', 'upholstered-chairs', 'kreslo-como', 486000, 0, 0, 1, 8, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p8', 'kreslo-como');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kreslo-como', 'ru', 'Кресло «COMO»', 'Мягкие стулья', 'Статусное мягкое полукресло Como с глубокой посадкой, широкими боковыми поддержками и металлическим основанием. Текстильная обивка приятна на ощупь. Превосходно подходит для лаунж-зоны, кабинета, каминной или просторной столовой. Идеально сочетается со столами Taper 135 и Corda 135.', '["82 × 63 × 60 см"]', '{"mat":"металл, текстиль","dim":"82 × 63 × 60 см","maxLoad":"","colors":""}', 'Купить Кресло «COMO» в Ташкенте - BTT', 'Кресло «COMO» (Мягкие стулья) от BTT. Размеры: 82 × 63 × 60 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kreslo-como', 'uz', '«COMO» kreslosi', 'Yumshoq stullar', 'Chuqur o''rindiq, qulay yon suyangichlar va metall asosga ega viqorli Como yarim kreslosi. Qoplamasi teginish uchun yoqimli . Dam olish hududi, ish xonasi, kamin oldi yoki keng oshxona uchun ajoyib mos tushadi. Taper 135 va Corda 135 stollari bilan to''liq uyg''unlik hosil qiladi.', '["82 × 63 × 60 см"]', '{"mat":"металл, текстиль","dim":"82 × 63 × 60 см","maxLoad":"","colors":""}', 'Toshkentda «COMO» kreslosi sotib olish - BTT', 'BTT dan «COMO» kreslosi (Yumshoq stullar). O‘lchamlari: 82 × 63 × 60 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -174,7 +174,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/placeholder.svg',
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-warm.png', 'kreslo-como', 'COMO', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-marble.png', 'kreslo-como', 'COMO', 2);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stol-taper-rotang-80', 'tables', 'stol-taper-rotang-80', 615000, 0, 0, 1, 9, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stol-taper-rotang-80', 'tables', 'stol-taper-rotang-80', 615000, 0, 0, 1, 9, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p9', 'stol-taper-rotang-80');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-taper-rotang-80', 'ru', 'Стол «Taper Rotang 80x80»', 'Столы', 'Компактный квадратный стол Taper Rotang 80×80 см. Устойчивый металлический каркас декорирован искусственным ротангом ручного плетения, а столешница из ЛДСП имитирует фактуру мрамора. Прекрасный выбор для 2-4 персон на кухне, балконе или в кофейне. Идеально комплектуется стульями Vertex и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.', '["80 × 80 × 75 см"]', '{"mat":"ЛДСП, металл, искусственный ротанг","dim":"80 × 80 × 75 см","maxLoad":"","colors":"Белый мрамор, Чёрный мрамор"}', 'Купить Стол «Taper Rotang 80x80» в Ташкенте - BTT', 'Стол «Taper Rotang 80x80» (Столы) от BTT. Размеры: 80 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-taper-rotang-80', 'uz', '«Taper Rotang 80x80» stoli', 'Stollar', 'Ixcham kvadrat Taper Rotang 80×80 sm stoli. Metall karkas qo''lda to''qilgan sun''iy rotang bilan bezatilgan, LDSP stol usti esa marmar to''qimasini aks ettiradi. Oshxona, balkon yoki qahvaxonada 2-4 kishi uchun ajoyib yechim. Vertex va Jardin stullari bilan mukammal mos keladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to''g''ridan-to''g''ri yog''ingarchilikdan himoya qilish tavsiya etiladi.', '["80 × 80 × 75 см"]', '{"mat":"ЛДСП, металл, искусственный ротанг","dim":"80 × 80 × 75 см","maxLoad":"","colors":"Oq marmar, Qora marmar"}', 'Toshkentda «Taper Rotang 80x80» stoli sotib olish - BTT', 'BTT dan «Taper Rotang 80x80» stoli (Stollar). O‘lchamlari: 80 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -188,7 +188,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-rotang-80-detail-leg.jpg', 'stol-taper-rotang-80', 'Taper Rotang 80x80', 6);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-marble.png', 'stol-taper-rotang-80', 'Taper Rotang 80x80', 7);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stol-vertex-d90', 'tables', 'stol-vertex-d90', 680000, 0, 0, 1, 10, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stol-vertex-d90', 'tables', 'stol-vertex-d90', 680000, 0, 0, 1, 10, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p10', 'stol-vertex-d90');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-vertex-d90', 'ru', 'Стол «Vertex D90»', 'Столы', 'Круглый обеденный стол Vertex диаметром 90 см. Металлический каркас и столешница из ЛДСП под мрамор создают визуальную лёгкость и объединяют пространство. Круглая форма безопасна и удобна для 3-4 персон. Идеально гармонирует со стульями серии Vertex и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.', '["Ø90 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"Ø90 × 75 см","maxLoad":"","colors":"Белый мрамор, Чёрный мрамор"}', 'Купить Стол «Vertex D90» в Ташкенте - BTT', 'Стол «Vertex D90» (Столы) от BTT. Размеры: Ø90 × 75 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-vertex-d90', 'uz', '«Vertex D90» stoli', 'Stollar', 'Diametri 90 sm bo''lgan yumaloq Vertex ovqat stoli. Metall karkas va marmar uslubidagi LDSP stol usti xonada yengillik va shinamlik yaratadi. Dumaloq shakl 3-4 kishi uchun xavfsiz va juda qulay. Vertex va Jardin stullari bilan uyg''unlashadi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to''g''ridan-to''g''ri yog''ingarchilikdan himoya qilish tavsiya etiladi.', '["Ø90 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"Ø90 × 75 см","maxLoad":"","colors":"Oq marmar, Qora marmar"}', 'Toshkentda «Vertex D90» stoli sotib olish - BTT', 'BTT dan «Vertex D90» stoli (Stollar). O‘lchamlari: Ø90 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -199,7 +199,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-vertex
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-vertex-d90-detail-leg.jpg', 'stol-vertex-d90', 'Vertex D90', 3);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-marble.png', 'stol-vertex-d90', 'Vertex D90', 4);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stol-taper-rotang-135', 'tables', 'stol-taper-rotang-135', 715000, 0, 0, 1, 11, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stol-taper-rotang-135', 'tables', 'stol-taper-rotang-135', 715000, 0, 0, 1, 11, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p11', 'stol-taper-rotang-135');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-taper-rotang-135', 'ru', 'Стол «Taper Rotang 135x80»', 'Столы', 'Просторный обеденный стол Taper Rotang 135×80 см. Металлический каркас с декоративной отделкой из искусственного ротанга и большая столешница из ЛДСП с фактурой мрамора комфортно размещают 4-6 персон. Замечательное решение для семейных обедов на кухне, в столовой или на крытой веранде. Рекомендуется сочетать со стульями Corda и Vertex. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.', '["135 × 80 × 75 см"]', '{"mat":"ЛДСП, металл, искусственный ротанг","dim":"135 × 80 × 75 см","maxLoad":"","colors":"Белый мрамор, Чёрный мрамор"}', 'Купить Стол «Taper Rotang 135x80» в Ташкенте - BTT', 'Стол «Taper Rotang 135x80» (Столы) от BTT. Размеры: 135 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-taper-rotang-135', 'uz', '«Taper Rotang 135x80» stoli', 'Stollar', 'Keng Taper Rotang 135×80 sm ovqat stoli. Sun''iy rotang bilan bezatilgan metall karkas va marmar fakturali katta LDSP stol usti 4-6 kishini bemalol qabul qiladi. Oshxona, mehmonxona yoki yopiq ayvonda oilaviy tushliklar uchun ajoyib yechim. Corda va Vertex stullari bilan to''ldirish tavsiya etiladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to''g''ridan-to''g''ri yog''ingarchilikdan himoya qilish tavsiya etiladi.', '["135 × 80 × 75 см"]', '{"mat":"ЛДСП, металл, искусственный ротанг","dim":"135 × 80 × 75 см","maxLoad":"","colors":"Oq marmar, Qora marmar"}', 'Toshkentda «Taper Rotang 135x80» stoli sotib olish - BTT', 'BTT dan «Taper Rotang 135x80» stoli (Stollar). O‘lchamlari: 135 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -212,7 +212,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-rotang-135-detail-black-edge.jpg', 'stol-taper-rotang-135', 'Taper Rotang 135x80', 5);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-135-white-scene.jpg', 'stol-taper-rotang-135', 'Taper Rotang 135x80', 6);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stol-taper-80', 'tables', 'stol-taper-80', 734000, 0, 0, 1, 12, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stol-taper-80', 'tables', 'stol-taper-80', 734000, 0, 0, 1, 12, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p12', 'stol-taper-80');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-taper-80', 'ru', 'Стол «Taper 80x80»', 'Столы', 'Практичный квадратный стол Taper 80×80 см в современном минималистичном стиле. Металлический каркас и столешница из ЛДСП с фактурой белого или чёрного мрамора. Оптимален для небольших кухонь, балконов, квартир-студий и кафе. Образует гармоничный комплект со стульями Jardin, Roero и Noero. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.', '["80 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"80 × 80 × 75 см","maxLoad":"","colors":"Белый мрамор, Чёрный мрамор"}', 'Купить Стол «Taper 80x80» в Ташкенте - BTT', 'Стол «Taper 80x80» (Столы) от BTT. Размеры: 80 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-taper-80', 'uz', '«Taper 80x80» stoli', 'Stollar', 'Zamonaviy minimalizm uslubidagi ixcham Taper 80×80 sm stoli. Metall karkas va oq yoki qora marmar fakturali chidamli LDSP stol usti. Kichik oshxonalar, balkonlar, studiyalar va kafelar uchun eng qulay tanlov. Jardin, Roero va Noero stullari bilan to''liq to''plam hosil qiladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to''g''ridan-to''g''ri yog''ingarchilikdan himoya qilish tavsiya etiladi.', '["80 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"80 × 80 × 75 см","maxLoad":"","colors":"Oq marmar, Qora marmar"}', 'Toshkentda «Taper 80x80» stoli sotib olish - BTT', 'BTT dan «Taper 80x80» stoli (Stollar). O‘lchamlari: 80 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -225,14 +225,14 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-80-detail-leg.jpg', 'stol-taper-80', 'Taper 80x80', 5);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-light.png', 'stol-taper-80', 'Taper 80x80', 6);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stol-vertex-80', 'tables', 'stol-vertex-80', 738000, 0, 0, 1, 13, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stol-vertex-80', 'tables', 'stol-vertex-80', 738000, 0, 0, 1, 13, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p13', 'stol-vertex-80');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-vertex-80', 'ru', 'Стол «Vertex 80x80»', 'Столы', 'Квадратный обеденный стол Vertex 80×80 см с выразительной геометрией металлических опор и столешницей из ЛДСП под мрамор. Компактные габариты обеспечивают удобную посадку для 2-4 персон без загромождения пространства. Идеально комбинируется со стульями Vertex и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.', '["80 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"80 × 80 × 75 см","maxLoad":"","colors":"Белый мрамор, Чёрный мрамор"}', 'Купить Стол «Vertex 80x80» в Ташкенте - BTT', 'Стол «Vertex 80x80» (Столы) от BTT. Размеры: 80 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-vertex-80', 'uz', '«Vertex 80x80» stoli', 'Stollar', 'Kvadrat Vertex 80×80 sm stoli aniq metall tayanchlar geometriyasi va marmar ostidagi LDSP ustiga ega. Ixcham o''lchamlar bo''sh joyni ortiqcha band qilmasdan 2-4 kishi uchun qulay o''tirishni ta''minlaydi. Vertex va Jardin stullari bilan mukammal mos tushadi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to''g''ridan-to''g''ri yog''ingarchilikdan himoya qilish tavsiya etiladi.', '["80 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"80 × 80 × 75 см","maxLoad":"","colors":"Oq marmar, Qora marmar"}', 'Toshkentda «Vertex 80x80» stoli sotib olish - BTT', 'BTT dan «Vertex 80x80» stoli (Stollar). O‘lchamlari: 80 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-vertex-80', 'en', 'Vertex 80x80 Table', 'Tables', 'Square dining table Vertex 80×80 cm with geometric metal support legs and a marble-finish laminated top. Compact proportions offer comfortable seating for 2-4 people without crowding the room. Pairs naturally with Vertex and Jardin chairs. For indoor and sheltered spaces. The laminated tabletop should be protected from direct rain.', '["80 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"80 × 80 × 75 см","maxLoad":"","colors":"White Marble, Black Marble"}', 'Buy Vertex 80x80 Table in Tashkent - BTT', 'Vertex 80x80 Table (Tables) by BTT. Dimensions: 80 × 80 × 75 см. Delivery across Tashkent and Uzbekistan.');
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/placeholder.svg', 'stol-vertex-80', 'Vertex 80x80', 0);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stol-taper-135', 'tables', 'stol-taper-135', 885000, 0, 0, 1, 14, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stol-taper-135', 'tables', 'stol-taper-135', 885000, 0, 0, 1, 14, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p14', 'stol-taper-135');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-taper-135', 'ru', 'Стол «Taper 135x80»', 'Столы', 'Вместительный обеденный стол Taper 135×80 см для уютных встреч большой семьи и компании друзей. Металлический каркас и ламинированная столешница из ЛДСП с фактурой белого или чёрного мрамора рассчитаны на 4-6 персон. Замечательно сочетается со стульями Todo Soft, Todo и Roero. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.', '["135 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"135 × 80 × 75 см","maxLoad":"","colors":"Белый мрамор, Чёрный мрамор"}', 'Купить Стол «Taper 135x80» в Ташкенте - BTT', 'Стол «Taper 135x80» (Столы) от BTT. Размеры: 135 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-taper-135', 'uz', '«Taper 135x80» stoli', 'Stollar', 'Katta oila va do''stlar davrasi uchun keng Taper 135×80 sm ovqat stoli. Metall karkas hamda oq yoki qora marmar fakturali laminatsiyalangan LDSP stol usti 4-6 kishiga mo''ljallangan. Todo Soft, Todo va Roero stullari bilan ajoyib to''plam hosil qiladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to''g''ridan-to''g''ri yog''ingarchilikdan himoya qilish tavsiya etiladi.', '["135 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"135 × 80 × 75 см","maxLoad":"","colors":"Oq marmar, Qora marmar"}', 'Toshkentda «Taper 135x80» stoli sotib olish - BTT', 'BTT dan «Taper 135x80» stoli (Stollar). O‘lchamlari: 135 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -246,7 +246,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-135-detail-texture.png', 'stol-taper-135', 'Taper 135x80', 6);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-135-scene.jpg', 'stol-taper-135', 'Taper 135x80', 7);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('stol-corda-135', 'tables', 'stol-corda-135', 949000, 0, 0, 1, 15, 'unknown', 'pcs');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stol-corda-135', 'tables', 'stol-corda-135', 949000, 0, 0, 1, 15, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p15', 'stol-corda-135');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-corda-135', 'ru', 'Стол «Corda 135x80»', 'Столы', 'Большой обеденный стол Corda 135×80 см. Металлический каркас в сочетании со столешницей из ЛДСП под благородный мрамор формирует презентабельную обеденную группу для 4-6 человек. Превосходно гармонирует со стульями Corda и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.', '["135 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"135 × 80 × 75 см","maxLoad":"","colors":"Белый мрамор, Чёрный мрамор"}', 'Купить Стол «Corda 135x80» в Ташкенте - BTT', 'Стол «Corda 135x80» (Столы) от BTT. Размеры: 135 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-corda-135', 'uz', '«Corda 135x80» stoli', 'Stollar', 'Katta Corda 135×80 sm ovqat stoli. Metall karkas va nafis marmar ko''rinishidagi LDSP stol usti 4-6 kishi uchun qulay ovqatlanish guruhini tashkil etadi. Corda va Jardin stullari bilan juda chiroyli uyg''unlashadi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to''g''ridan-to''g''ri yog''ingarchilikdan himoya qilish tavsiya etiladi.', '["135 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"135 × 80 × 75 см","maxLoad":"","colors":"Oq marmar, Qora marmar"}', 'Toshkentda «Corda 135x80» stoli sotib olish - BTT', 'BTT dan «Corda 135x80» stoli (Stollar). O‘lchamlari: 135 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -256,65 +256,6 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-corda-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-corda-135-top-white.jpg', 'stol-corda-135', 'Corda 135x80', 2);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-corda-135-top-black.jpg', 'stol-corda-135', 'Corda 135x80', 3);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-corda-135-detail-black.jpg', 'stol-corda-135', 'Corda 135x80', 4);
-
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('kashpo-5l-ruchka', 'planters', 'kashpo-5l-ruchka', 120000, 0, 0, 1, 16, 'in_stock', 'pcs');
-INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p17', 'kashpo-5l-ruchka');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-5l-ruchka', 'ru', 'Кашпо 5л с ручкой', 'Кашпо', 'Плетёное кашпо ручной работы объёмом 5 литров с удобной ручкой. Изготовлено из полимерной ротанговой нити на пластиковой основе. Подходит для комнатных растений, веранды и террасы.', '["23 × 23 × 16.5 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"23 × 23 × 16.5 см","maxLoad":"","colors":"Бежевый, Серый, Белая берёзка"}', 'Купить Кашпо 5л с ручкой в Ташкенте - BTT', 'Кашпо 5л с ручкой от BTT. Размеры: 23 × 23 × 16.5 см. Доставка по Ташкенту и всему Узбекистану.');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-5l-ruchka', 'uz', '5L dastalik kashpo', 'Kashpo', 'Qulay dastaga ega 5 litrli qo''lda to''qilgan kashpo. Plastik asosga o''ralgan sun''iy rotang tolasidan tayyorlangan. Xona o''simliklari, veranda va terassa uchun mos.', '["23 × 23 × 16.5 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"23 × 23 × 16.5 см","maxLoad":"","colors":"Bej, Kulrang, Oq qayin"}', 'Toshkentda 5L dastalik kashpo sotib olish - BTT', 'BTT dan 5L dastalik kashpo. O''lchamlari: 23 × 23 × 16.5 sm. Toshkent va butun O''zbekiston bo''ylab yetkazib berish.');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-5l-ruchka', 'en', '5L Planter with Handle', 'Planters', 'Hand-woven 5-litre planter with a practical carrying handle. Crafted from synthetic rattan weave over a plastic base. Suitable for houseplants, verandas, and patios.', '["23 × 23 × 16.5 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"23 × 23 × 16.5 см","maxLoad":"","colors":"Beige, Gray, White birch"}', 'Buy 5L Planter with Handle in Tashkent - BTT', '5L Planter with Handle by BTT. Dimensions: 23 × 23 × 16.5 cm. Delivery across Tashkent and Uzbekistan.');
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-5l-ruchka/kashpo-5l-beige.webp', 'kashpo-5l-ruchka', 'Кашпо 5л с ручкой', 0);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-5l-ruchka/kashpo-5l-gray.webp', 'kashpo-5l-ruchka', 'Кашпо 5л с ручкой', 1);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-5l-ruchka/kashpo-5l-white.webp', 'kashpo-5l-ruchka', 'Кашпо 5л с ручкой', 2);
-
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('kashpo-10l-klassika', 'planters', 'kashpo-10l-klassika', 145000, 0, 0, 1, 17, 'in_stock', 'pcs');
-INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p18', 'kashpo-10l-klassika');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-10l-klassika', 'ru', 'Кашпо 10л «Классика»', 'Кашпо', 'Классическое плетёное кашпо объёмом 10 литров с традиционным прямым плетением. Прекрасно подходит для средних цветов и декоративных кустарников.', '["29.5 × 29.5 × 22.5 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"29.5 × 29.5 × 22.5 см","maxLoad":"","colors":"Белая берёзка, Кремовый, Жёлтый, Серый"}', 'Купить Кашпо 10л «Классика» в Ташкенте - BTT', 'Кашпо 10л «Классика» от BTT. Размеры: 29.5 × 29.5 × 22.5 см. Доставка по Ташкенту и всему Узбекистану.');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-10l-klassika', 'uz', '10L «Klassika» kashpo', 'Kashpo', 'An''anaviy tekis to''quvli 10 litrli klassik kashpo. O''rta kattalikdagi gullar va manzarali butalar uchun ajoyib tanlov.', '["29.5 × 29.5 × 22.5 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"29.5 × 29.5 × 22.5 см","maxLoad":"","colors":"Oq qayin, Krem, Sariq, Kulrang"}', 'Toshkentda 10L «Klassika» kashpo sotib olish - BTT', 'BTT dan 10L «Klassika» kashpo. O''lchamlari: 29.5 × 29.5 × 22.5 sm. Toshkent va butun O''zbekiston bo''ylab yetkazib berish.');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-10l-klassika', 'en', '10L Classic Planter', 'Planters', 'Classic 10-litre woven planter with traditional straight weave. Excellent choice for mid-sized flowering plants and ornamental shrubs.', '["29.5 × 29.5 × 22.5 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"29.5 × 29.5 × 22.5 см","maxLoad":"","colors":"White birch, Cream, Yellow, Gray"}', 'Buy 10L Classic Planter in Tashkent - BTT', '10L Classic Planter by BTT. Dimensions: 29.5 × 29.5 × 22.5 cm. Delivery across Tashkent and Uzbekistan.');
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-10l-klassika/kashpo-10l-classic-white.webp', 'kashpo-10l-klassika', 'Кашпо 10л Классика', 0);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-10l-klassika/kashpo-10l-classic-buttery.webp', 'kashpo-10l-klassika', 'Кашпо 10л Классика', 1);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-10l-klassika/kashpo-10l-classic-yellow.webp', 'kashpo-10l-klassika', 'Кашпо 10л Классика', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-10l-klassika/kashpo-10l-classic-gray.webp', 'kashpo-10l-klassika', 'Кашпо 10л Классика', 3);
-
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('kashpo-10l-puhlyash', 'planters', 'kashpo-10l-puhlyash', 155000, 0, 0, 1, 18, 'in_stock', 'pcs');
-INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p19', 'kashpo-10l-puhlyash');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-10l-puhlyash', 'ru', 'Кашпо 10л «Пухляш»', 'Кашпо', 'Объёмное кашпо формы «Пухляш» на 10 литров с выразительными округлыми боками. Фактурное плетение создаёт уютный акцент в интерьере дома и сада.', '["29.5 × 29.5 × 22 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"29.5 × 29.5 × 22 см","maxLoad":"","colors":"Бежевый, Жёлтый, Белая берёзка, Коричневый, Коричнево-белый, Трёхцветный"}', 'Купить Кашпо 10л «Пухляш» в Ташкенте - BTT', 'Кашпо 10л «Пухляш» от BTT. Размеры: 29.5 × 29.5 × 22 см. Доставка по Ташкенту и всему Узбекистану.');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-10l-puhlyash', 'uz', '10L «Puxlyash» kashpo', 'Kashpo', 'Dumaloq shaklli va jozibador 10 litrli «Puxlyash» kashposi. Qavariq to''quv uslubi uy va bog'' dizayniga o''zgacha qulaylik bag''ishlaydi.', '["29.5 × 29.5 × 22 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"29.5 × 29.5 × 22 см","maxLoad":"","colors":"Bej, Sariq, Oq qayin, Jigarrang, Jigarrang-oq, Uch rangli"}', 'Toshkentda 10L «Puxlyash» kashpo sotib olish - BTT', 'BTT dan 10L «Puxlyash» kashpo. O''lchamlari: 29.5 × 29.5 × 22 sm. Toshkent va butun O''zbekiston bo''ylab yetkazib berish.');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-10l-puhlyash', 'en', '10L Puffy Planter', 'Planters', 'Bulbous 10-litre planter with smooth rounded contour. The textured weave adds warmth and character to living spaces and outdoor patios.', '["29.5 × 29.5 × 22 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"29.5 × 29.5 × 22 см","maxLoad":"","colors":"Beige, Yellow, White birch, Brown, Brown-white, Tricolor"}', 'Buy 10L Puffy Planter in Tashkent - BTT', '10L Puffy Planter by BTT. Dimensions: 29.5 × 29.5 × 22 cm. Delivery across Tashkent and Uzbekistan.');
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-beige.webp', 'kashpo-10l-puhlyash', 'Кашпо 10л Пухляш', 0);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-yellow.webp', 'kashpo-10l-puhlyash', 'Кашпо 10л Пухляш', 1);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-white.webp', 'kashpo-10l-puhlyash', 'Кашпо 10л Пухляш', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-brown.webp', 'kashpo-10l-puhlyash', 'Кашпо 10л Пухляш', 3);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-brown-white.webp', 'kashpo-10l-puhlyash', 'Кашпо 10л Пухляш', 4);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-10l-puhlyash/kashpo-10l-puhlyash-tricolor.webp', 'kashpo-10l-puhlyash', 'Кашпо 10л Пухляш', 5);
-
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('kashpo-16l-klassika', 'planters', 'kashpo-16l-klassika', 210000, 0, 0, 1, 19, 'in_stock', 'pcs');
-INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p20', 'kashpo-16l-klassika');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-16l-klassika', 'ru', 'Кашпо 16л «Классика»', 'Кашпо', 'Вместительное классическое кашпо объёмом 16 литров для пальм, фикусов и крупных цветущих растений. Подходит для оформления входных зон, террас и просторных комнат.', '["35 × 35 × 28.5 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"35 × 35 × 28.5 см","maxLoad":"","colors":"Белая берёзка, Серый, Кремовый"}', 'Купить Кашпо 16л «Классика» в Ташкенте - BTT', 'Кашпо 16л «Классика» от BTT. Размеры: 35 × 35 × 28.5 см. Доставка по Ташкенту и всему Узбекистану.');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-16l-klassika', 'uz', '16L «Klassika» kashpo', 'Kashpo', 'Katta o''simliklar, palma va fikuslar uchun mo''ljallangan 16 litrli klassik kashpo. Kirish zonalari, terassa va keng xonalar uchun juda mos.', '["35 × 35 × 28.5 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"35 × 35 × 28.5 см","maxLoad":"","colors":"Oq qayin, Kulrang, Krem"}', 'Toshkentda 16L «Klassika» kashpo sotib olish - BTT', 'BTT dan 16L «Klassika» kashpo. O''lchamlari: 35 × 35 × 28.5 sm. Toshkent va butun O''zbekiston bo''ylab yetkazib berish.');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-16l-klassika', 'en', '16L Classic Planter', 'Planters', 'Spacious 16-litre classic woven planter for palms, ficus, and large potted plants. Ideal for entryways, terraces, and open living spaces.', '["35 × 35 × 28.5 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"35 × 35 × 28.5 см","maxLoad":"","colors":"White birch, Gray, Cream"}', 'Buy 16L Classic Planter in Tashkent - BTT', '16L Classic Planter by BTT. Dimensions: 35 × 35 × 28.5 cm. Delivery across Tashkent and Uzbekistan.');
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-16l-klassika/kashpo-16l-classic-white.webp', 'kashpo-16l-klassika', 'Кашпо 16л Классика', 0);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-16l-klassika/kashpo-16l-classic-gray.webp', 'kashpo-16l-klassika', 'Кашпо 16л Классика', 1);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-16l-klassika/kashpo-16l-classic-buttery.webp', 'kashpo-16l-klassika', 'Кашпо 16л Классика', 2);
-
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('kashpo-16l-puhlyash', 'planters', 'kashpo-16l-puhlyash', 245000, 0, 0, 1, 20, 'in_stock', 'pcs');
-INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p21', 'kashpo-16l-puhlyash');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-16l-puhlyash', 'ru', 'Кашпо 16л «Пухляш»', 'Кашпо', 'Большое фактурное кашпо «Пухляш» объёмом 16 литров с мягкими округлыми формами. Стильное решение для крупномеров на террасе, в холле или саду.', '["36 × 36 × 28 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"36 × 36 × 28 см","maxLoad":"","colors":"Бежевый, Коричневый, Белая берёзка"}', 'Купить Кашпо 16л «Пухляш» в Ташкенте - BTT', 'Кашпо 16л «Пухляш» от BTT. Размеры: 36 × 36 × 28 см. Доставка по Ташкенту и всему Узбекистану.');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-16l-puhlyash', 'uz', '16L «Puxlyash» kashpo', 'Kashpo', 'Yumshoq dumaloq shakllarga ega 16 litrli katta «Puxlyash» kashposi. Katta o''simliklar uchun terassa, xoll va bog''da ajoyib dizayn yechimi.', '["36 × 36 × 28 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"36 × 36 × 28 см","maxLoad":"","colors":"Bej, Jigarrang, Oq qayin"}', 'Toshkentda 16L «Puxlyash» kashpo sotib olish - BTT', 'BTT dan 16L «Puxlyash» kashpo. O''lchamlari: 36 × 36 × 28 sm. Toshkent va butun O''zbekiston bo''ylab yetkazib berish.');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('kashpo-16l-puhlyash', 'en', '16L Puffy Planter', 'Planters', 'Large 16-litre puffy rounded planter with soft spherical contouring. A design accent for statement plants on patios, lounges, and garden walkways.', '["36 × 36 × 28 см"]', '{"mat":"искусственный ротанг, пластиковая основа","dim":"36 × 36 × 28 см","maxLoad":"","colors":"Beige, Brown, White birch"}', 'Buy 16L Puffy Planter in Tashkent - BTT', '16L Puffy Planter by BTT. Dimensions: 36 × 36 × 28 cm. Delivery across Tashkent and Uzbekistan.');
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-16l-puhlyash/kashpo-16l-puhlyash-beige.webp', 'kashpo-16l-puhlyash', 'Кашпо 16л Пухляш', 0);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-16l-puhlyash/kashpo-16l-puhlyash-brown.webp', 'kashpo-16l-puhlyash', 'Кашпо 16л Пухляш', 1);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/kashpo-16l-puhlyash/kashpo-16l-puhlyash-white.webp', 'kashpo-16l-puhlyash', 'Кашпо 16л Пухляш', 2);
-
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ('rotang-nit-buhta', 'rattan', 'rotang-nit-buhta', 36000, 0, 0, 1, 21, 'in_stock', 'kg');
-INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p22', 'rotang-nit-buhta');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('rotang-nit-buhta', 'ru', 'Ротанговая нить в бухтах', 'Искусственный ротанг', 'Полимерная ротанговая нить в бухтах по 5 кг для ручного плетения мебели, кашпо, корзин и декоративных перегородок. Профиль полумесяц и пруток. Продажа на вес от 5 кг.', '["Бухта 5 кг"]', '{"mat":"первичный полиэтилен высокой плотности (HDPE)","dim":"Бухта 5 кг","maxLoad":"","colors":"Белая берёзка, Жемчужный, Песочный, Золото"}', 'Купить Ротанговую нить в бухтах в Ташкенте - BTT', 'Ротанговая нить в бухтах от BTT. Цена за кг: 36 000 сум. Минимальный заказ 5 кг. Доставка по Ташкенту и всему Узбекистану.');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('rotang-nit-buhta', 'uz', 'G''iloflarda rotang ipi', 'Sun‘iy rotang', 'Mebel, kashpo, savat va dekorativ to''siqlarni to''qish uchun 5 kg lik g''iloflarda polimer rotang ipi. Yarim oy va yumaloq profil. 5 kg dan boshlab vazn bo''yicha sotuv.', '["Бухта 5 кг"]', '{"mat":"первичный полиэтилен высокой плотности (HDPE)","dim":"Бухта 5 кг","maxLoad":"","colors":"Oq qayin, Marvarid, Qum, Oltin"}', 'Toshkentda g''iloflarda rotang ipi sotib olish - BTT', 'BTT dan g''iloflarda rotang ipi. 1 kg narxi: 36 000 so''m. Minimal buyurtma 5 kg. O''zbekiston bo''ylab yetkazib berish.');
-INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('rotang-nit-buhta', 'en', 'Synthetic Rattan Coils', 'Artificial rattan', 'Polymer synthetic rattan coils (5 kg each) for handcrafted weaving of furniture, planters, baskets, and decorative partitions. Sold per kg, minimum order 5 kg.', '["Бухта 5 кг"]', '{"mat":"первичный полиэтилен высокой плотности (HDPE)","dim":"Бухта 5 кг","maxLoad":"","colors":"White birch, Pearl, Sand, Gold"}', 'Buy Synthetic Rattan Coils in Tashkent - BTT', 'Synthetic Rattan Coils by BTT. Price per kg: 36,000 UZS. Minimum order 5 kg. Delivery across Tashkent and Uzbekistan.');
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/rotang-nit-buhta/rotang-thread-white.webp', 'rotang-nit-buhta', 'Ротанговая нить в бухтах', 0);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/rotang-nit-buhta/rotang-thread-pearl.webp', 'rotang-nit-buhta', 'Ротанговая нить в бухтах', 1);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/rotang-nit-buhta/rotang-thread-sand.webp', 'rotang-nit-buhta', 'Ротанговая нить в бухтах', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/products/rotang-nit-buhta/rotang-thread-gold.webp', 'rotang-nit-buhta', 'Ротанговая нить в бухтах', 3);
 
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (1, 'zachem-iskusstvennyy-rotang', 'assets/hero-rattan.png', 'published', '2026-02-10');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'ru', 'Зачем выбирать искусственный ротанг', 'Натуральный вид без гниения, выгорания и сложного ухода - разбираем главные преимущества материала для мебели и декора.', 'Искусственный ротанг - это полиэтиленовое волокно, окрашенное в массе. Оно выглядит как природное плетение, но не боится солнца, дождя и мороза.
@@ -333,19 +274,19 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Материал не впитывает влагу и легко моется - идеален для кашпо на открытом воздухе и корзин в ванной.
 
-## Производство BTT
+## Производство Bententrade
 
-В BTT мы плетём вручную из собственного ротанга - так контролируем плотность, цвет и качество каждой партии. Закажите образец или комплект через @btt_uz.');
+В Bententrade мы плетём вручную из собственного ротанга - так контролируем плотность, цвет и качество каждой партии. Закажите образец или комплект через @bententradeuz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'uz', 'Nima uchun sun’iy rotangni tanlash kerak', 'Tabiiy ko‘rinish - chirish, rang o‘zgarishi va murakkab parvarishsiz. Mebel va dekor uchun asosiy afzalliklar.', 'Sun’iy rotang - massada bo‘yalgan polietilen tolasi. U tabiiy to‘quvga o‘xshaydi, lekin quyosh, yomg‘ir va sovuqqa chidamli.
 
 Bog‘ mebeli uchun bu terassada yil bo‘yi turishi mumkinligini anglatadi: qishga uyga olib kirish yoki moy surtish shart emas. Gultuvak va savatlar uchun - material namlikni singdirmaydi va oson yuviladi.
 
-BTT’da o‘z rotangimizdan qo‘lda to‘qiymiz - har bir partiyaning zichligi, rangi va sifatini nazorat qilamiz.');
+Bententrade’da o‘z rotangimizdan qo‘lda to‘qiymiz - har bir partiyaning zichligi, rangi va sifatini nazorat qilamiz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'en', 'Why choose synthetic rattan', 'A natural look without rot, fading or fussy care - the main benefits for furniture and décor.', 'Synthetic rattan is polyethylene fibre coloured through the material. It looks like natural weaving but shrugs off sun, rain and frost.
 
 For garden furniture that means the set can stay on the terrace all year - no need to store indoors or oil the weave. For planters and baskets the material won''t absorb moisture and wipes clean easily.
 
-At BTT we weave by hand from our own rattan stock, so we control density, colour and batch quality.');
+At Bententrade we weave by hand from our own rattan stock, so we control density, colour and batch quality.');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (2, 'kak-vybrat-luchshiy-rotang', 'assets/rattan-palette-hero.png', 'published', '2026-02-18');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (2, 'ru', 'Как выбрать лучший искусственный ротанг', 'Диаметр, профиль, плотность плетения и цвет - на что смотреть перед заказом мебели или материала.', 'Первое - профиль. Для мебели чаще берут полумесяц 8-10 мм: он гнётся ровно и держит форму сиденья. Для декора и каркаса подойдут круглые и плоские профили.
 
@@ -365,7 +306,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ### Нестандарт
 
-Если нужен нестандартный цвет или диаметр - изготовим на заказ. Напишите менеджеру в Telegram @btt_uz.');
+Если нужен нестандартный цвет или диаметр - изготовим на заказ. Напишите менеджеру в Telegram @bententradeuz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (2, 'uz', 'Eng yaxshi sun’iy rotangni qanday tanlash', 'Diametr, profil, to‘quv zichligi va rang - mebel yoki material buyurtma qilishdan oldin nimalarga e’tibor berish kerak.', 'Birinchidan - profil. Mebel uchun ko‘pincha yarim oy 8-10 mm olinadi: o‘tirg‘ich shaklini tekis egiladi va ushlab turadi. Dekor va karkas uchun dumaloq va tekis profillar mos.
 
 Ikkinchidan - zichlik. To‘quv qanchalik zich bo‘lsa, buyum shunchalik mustahkam va qimmat ko‘rinadi. Bo‘shliqlar va egilishlar yo‘qligini tekshiring.
@@ -380,7 +321,7 @@ Second, density. The tighter the weave, the stronger and more premium the piece 
 Third, colour. Good rattan is coloured through the fibre, not just on the surface. Our Tobacco, Woody, Brown, Graphite and Choco palette echoes natural wood tones.
 
 Need a custom colour or diameter? We''ll make it to order - message our manager on Telegram.');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (3, 'pochemu-rabotayut-s-btt', 'assets/hero-garden-furniture.png', 'published', '2026-03-05');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (3, 'pochemu-rabotayut-s-bententrade', 'assets/hero-garden-furniture.png', 'published', '2026-03-05');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (3, 'ru', 'Почему с нами работают дизайнеры и мебельщики', 'Своё производство в Ташкенте, стабильные партии ротанга и честная консультация - без навязанных решений.', 'Мы не перекупаем готовую мебель - сами плетём и производим ротанг. Это даёт контроль над сроками, цветом и качеством.
 
 Для B2B-клиентов держим склад профилей и помогаем с образцами. Для частных заказов - бесплатно подбираем комплект под террасу, балкон или интерьер.
@@ -423,21 +364,21 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Диаметр 10 мм - баланс между гибкостью и прочностью. Тоньше - для декора, толще - для каркасных элементов.
 
-В палитре BTT пять базовых оттенков с артикулами 0609, 1505, 0704 и 2404. Нужен другой цвет - изготовим под заказ от одной бухты.
+В палитре Bententrade пять базовых оттенков с артикулами 0609, 1505, 0704 и 2404. Нужен другой цвет - изготовим под заказ от одной бухты.
 
 Запросите образец или прайс через сайт - привезём в шоурум или отправим курьером по Ташкенту.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (5, 'uz', 'Mebel uchun «yarim oy» profili: qachon kerak', 'Nima uchun yarim oy 10 mm bog‘ divanlari va kreslolar uchun eng mashhur profil.', 'Yarim oy profilining ichki tomoni tekis, tashqi tomoni yumaloq. O‘tirg‘ichlarni zich to‘qish uchun qulay: lenta tekis yotadi, bo‘shliqsiz.
 
 10 mm diametr - egilish va mustahkamlik muvozanati. Ingroq - dekor uchun, qalinroq - karkas uchun.
 
-BTT palitrasida 0609, 1505, 0704 va 2404 artikulli beshta asosiy rang. Boshqa rang kerak bo‘lsa - bir g‘ilofdan buyurtmaga tayyorlaymiz.
+Bententrade palitrasida 0609, 1505, 0704 va 2404 artikulli beshta asosiy rang. Boshqa rang kerak bo‘lsa - bir g‘ilofdan buyurtmaga tayyorlaymiz.
 
 Sayt orqali namuna yoki prays so‘rang - shourumga olib kelamiz yoki Toshkent bo‘ylab kuryer yuboramiz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (5, 'en', 'Half-moon profile for furniture: when you need it', 'Why half-moon 10 mm is the most popular profile for garden sofas and armchairs.', 'The half-moon profile has a flat inner face and rounded outer face. That suits tight seat weaving - the strip lies flat without gaps.
 
 10 mm diameter balances flexibility and strength. Thinner for décor, thicker for frame elements.
 
-BTT''s palette has five base shades: articles 0609, 1505, 0704 and 2404. Need another colour? We''ll make it to order from a single coil.
+Bententrade''s palette has five base shades: articles 0609, 1505, 0704 and 2404. Need another colour? We''ll make it to order from a single coil.
 
 Request a sample or price list on the site - we''ll bring it to the showroom or courier across Tashkent.');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (6, 'rotang-dlya-terrasy', 'assets/scene-dining-warm.png', 'published', '2026-04-02');
@@ -463,27 +404,27 @@ Colours from the Tobacco, Woody or Graphite palette stay cleaner outdoors. Store
 
 Can''t find the right size? We''ll make it to order - message our manager on Telegram.');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (7, 'mebel-iz-rotanga-na-zakaz', 'assets/hero-home-furniture.png', 'published', '2026-04-10');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (7, 'ru', 'Мебель из ротанга на заказ: цвет, размер, форма', 'Когда стандартный каталог не подходит - как мы делаем индивидуальные изделия в мастерской BTT.', 'Иногда нужен нестандартный диван по размеру ниши, кашпо под конкретное растение или оттенок, которого нет в палитре. Мы плетём на заказ в Ташкенте.
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (7, 'ru', 'Мебель из ротанга на заказ: цвет, размер, форма', 'Когда стандартный каталог не подходит - как мы делаем индивидуальные изделия в мастерской Bententrade.', 'Иногда нужен нестандартный диван по размеру ниши, кашпо под конкретное растение или оттенок, которого нет в палитре. Мы плетём на заказ в Ташкенте.
 
 Процесс простой: вы присылаете размеры, фото или эскиз - менеджер уточняет детали, подбирает профиль и называет срок. Обычно от 2 до 4 недель в зависимости от сложности.
 
 Можно заказать только материал (ротанг бухтами) или готовое изделие целиком. Цены в сумах, доставка по Узбекистану.
 
-Напишите в Telegram @btt_uz или WhatsApp - ответим в рабочее время и пришлём примеры похожих работ.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (7, 'uz', 'Buyurtmaga rotang mebel: rang, o‘lcham, shakl', 'Standart katalog mos kelmasa - BTT ustaxonasida individual buyumlarni qanday yasaymiz.', 'Ba’zan nisha o‘lchamidagi divan, ma’lum o‘simlik uchun gultuvak yoki palitrada yo‘q rang kerak bo‘ladi. Biz Toshkentda buyurtmaga to‘qimiz.
+Напишите в Telegram @bententradeuz или WhatsApp - ответим в рабочее время и пришлём примеры похожих работ.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (7, 'uz', 'Buyurtmaga rotang mebel: rang, o‘lcham, shakl', 'Standart katalog mos kelmasa - Bententrade ustaxonasida individual buyumlarni qanday yasaymiz.', 'Ba’zan nisha o‘lchamidagi divan, ma’lum o‘simlik uchun gultuvak yoki palitrada yo‘q rang kerak bo‘ladi. Biz Toshkentda buyurtmaga to‘qimiz.
 
 Jarayon oddiy: o‘lcham, foto yoki eskiz yuborasiz - menejer profil tanlaydi va muddat aytadi. Odatda 2-4 hafta.
 
 Faqat material (g‘iloflab rotang) yoki tayyor buyum buyurtma qilish mumkin. Narxlar so‘mda, O‘zbekiston bo‘ylab yetkazish.
 
-Telegram @btt_uz yoki WhatsApp orqali yozing.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (7, 'en', 'Custom rattan furniture: colour, size, shape', 'When the standard catalogue isn''t enough - how we make bespoke pieces at BTT.', 'Sometimes you need a sofa sized for a niche, a planter for a specific plant or a shade not in the palette. We weave to order in Tashkent.
+Telegram @bententradeuz yoki WhatsApp orqali yozing.');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (7, 'en', 'Custom rattan furniture: colour, size, shape', 'When the standard catalogue isn''t enough - how we make bespoke pieces at Bententrade.', 'Sometimes you need a sofa sized for a niche, a planter for a specific plant or a shade not in the palette. We weave to order in Tashkent.
 
 Send dimensions, a photo or sketch - our manager confirms details, picks the profile and quotes lead time. Usually 2-4 weeks depending on complexity.
 
 You can order material by the coil or a finished piece. Prices in UZS, delivery across Uzbekistan.
 
-Message us on Telegram @btt_uz or WhatsApp.');
+Message us on Telegram @bententradeuz or WhatsApp.');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (8, 'iskusstvennyy-i-naturalnyy-rotang', 'assets/bento-rattan.png', 'published', '2026-04-18');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (8, 'ru', 'Искусственный и натуральный ротанг: в чём разница', 'Сравниваем срок службы, уход, внешний вид и цену - чтобы вы не переплачивали за неподходящий материал.', 'Натуральный ротанг красив, но боится влаги и ультрафиолета: на улице быстро выцветает и трескается без регулярного ухода.
 
@@ -491,21 +432,21 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Для сада, террасы и уличного кафе мы рекомендуем только искусственный ротанг. Натуральный уместен в закрытых интерьерах с контролируемой влажностью.
 
-В BTT работаем с PE-профилями собственного производства - палитра Tobacco, Woody, Brown, Graphite, Choco. Закажите образец и сравните на месте.');
+В Bententrade работаем с PE-профилями собственного производства - палитра Tobacco, Woody, Brown, Graphite, Choco. Закажите образец и сравните на месте.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (8, 'uz', 'Sun’iy va tabiiy rotang: farqi nima', 'Xizmat muddati, parvarish, ko‘rinish va narxni solishtiramiz.', 'Tabiiy rotang chiroyli, lekin namlik va ultrabinafsha nurdan qo‘rqadi: ochiq havoda tez rangini yo‘qotadi.
 
 Sun’iy rotang (PE) massada bo‘yalgan, chirmaydi va sovuqqa chidamli. Sifatli to‘quvni farqlash qiyin.
 
 Bog‘, terassa va ko‘cha kafesi uchun faqat sun’iy rotangni tavsiya qilamiz.
 
-BTT o‘z PE profillarida ishlaydi - Tobacco, Woody, Brown, Graphite, Choco. Namuna buyurtma qiling.');
+Bententrade o‘z PE profillarida ishlaydi - Tobacco, Woody, Brown, Graphite, Choco. Namuna buyurtma qiling.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (8, 'en', 'Synthetic vs natural rattan: what''s the difference', 'We compare lifespan, care, look and price so you don''t overpay for the wrong material.', 'Natural rattan is beautiful but fears moisture and UV: outdoors it fades and cracks without regular care.
 
 Synthetic rattan (PE) is coloured through the fibre, won''t rot and handles frost. Quality weave is hard to tell from natural - especially in wood tones.
 
 For gardens, terraces and outdoor cafés we recommend synthetic rattan only.
 
-At BTT we work with our own PE profiles - Tobacco, Woody, Brown, Graphite, Choco. Order a sample and compare in person.');
+At Bententrade we work with our own PE profiles - Tobacco, Woody, Brown, Graphite, Choco. Order a sample and compare in person.');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (9, 'sadovaya-mebel-rotang-tashkent', 'assets/hero-garden-furniture.png', 'published', '2026-04-22');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (9, 'ru', 'Садовая мебель из ротанга в Ташкенте: как выбрать комплект', 'Диваны, кресла и обеденные группы для террасы и дачи - на что смотреть перед покупкой в Узбекистане.', 'Садовая мебель из искусственного ротанга - один из самых частых запросов в Ташкенте: жаркий климат, яркое солнце и перепады температур требуют материала, который не выцветает и не требует ежегодного ухода маслом.
 
@@ -529,13 +470,13 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ## Цвет и плетение
 
-Для улицы лучше Tobacco, Woody или Graphite - меньше видны пыль и следы от рук. Плотное плетение полумесяц 10 мм выглядит аккуратно и плотно.
+Для улицы лучше Tobacco, Woody или Graphite - меньше видны пыль и следы от рук. Плотное плетение полумесяц 10 мм выглядит премиально и служит дольше рыхлого.
 
 ![Палитра профилей](assets/rattan-palette-hero.png)
 
 ## Где купить в Ташкенте
 
-В BTT мебель плетётся в мастерской в Ташкенте - можно посмотреть образцы, подобрать комплект и заказать доставку по городу и области. Напишите в Telegram @btt_uz - менеджер рассчитает комплект и сроки.');
+В Bententrade мебель плетётся в мастерской в Ташкенте - можно посмотреть образцы, подобрать комплект и заказать доставку по городу и области. Напишите в Telegram @bententradeuz - менеджер рассчитает комплект и сроки.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (9, 'uz', 'Toshkentda bog‘ mebeli: rotang to‘plamini qanday tanlash', 'Terassa va dacha uchun divan, kreslo va ovqat guruhlari - O‘zbekistonda xarid qilishdan oldin.', 'Sun’iy rotangdan bog‘ mebeli Toshkentda eng ko‘p qidiriladigan mahsulotlardan biri.
 
 ## Nima uchun rotang mos
@@ -554,7 +495,7 @@ Kichik terassa - 2 kreslo va stol. Katta oila - burchakli divan yoki 6-8 o‘rin
 
 ## Qayerdan sotib olish
 
-BTT Toshkentda ishlab chiqaradi. Telegram @btt_uz.');
+Bententrade Toshkentda ishlab chiqaradi. Telegram @bententradeuz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (9, 'en', 'Garden rattan furniture in Tashkent: how to choose a set', 'Sofas, chairs and dining groups for terrace and dacha - what to check before buying in Uzbekistan.', 'Synthetic rattan garden furniture is a top search in Tashkent because heat and UV demand a low-maintenance material.
 
 ## Why rattan works outdoors
@@ -569,7 +510,7 @@ Small terrace: two chairs and a coffee table. Family of six: corner sofa or dini
 
 ## Buy in Tashkent
 
-BTT weaves in our Tashkent workshop. Message @btt_uz on Telegram.');
+Bententrade weaves in our Tashkent workshop. Message @bententradeuz on Telegram.');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (10, 'kashpo-iz-iskusstvennogo-rotanga', 'assets/bento-planter.png', 'published', '2026-04-28');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (10, 'ru', 'Кашпо из искусственного ротанга: для сада, террасы и интерьера', 'Плетёные кашпо не боятся дождя, легко моются и подчёркивают зелень - гид по размерам и формам.', 'Кашпо из искусственного ротанга совмещают декоративное плетение и практичность: влага не разрушает материал, а вес меньше, чем у керамики того же объёма.
 
@@ -578,7 +519,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 - Устойчивы к УФ и морозу
 - Не трескаются от перепадов температуры
 - Можно мыть из шланга (без агрессивной химии)
-- Выглядят как аккуратное плетение
+- Выглядят как премиальное плетение
 
 ![Кашпо для террасы](assets/hero-planter.png)
 
@@ -588,7 +529,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ### Комплекты
 
-Набор из 3-5 кашпо одного стиля визуально собирает зону отдыха. В каталоге BTT есть готовые комплекты и индивидуальные размеры.
+Набор из 3-5 кашпо одного стиля визуально собирает зону отдыха. В каталоге Bententrade есть готовые комплекты и индивидуальные размеры.
 
 ## Уход
 
@@ -596,17 +537,17 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ## Заказ в Ташкенте
 
-Подберём форму и цвет под ваш проект - @btt_uz в Telegram.');
+Подберём форму и цвет под ваш проект - @bententradeuz в Telegram.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (10, 'uz', 'Sun’iy rotang gultuvaklari', 'Bog‘, terassa va interyer uchun.', 'Rotang gultuvaklari namlikka chidamli.
 
 ![Gultuvak](assets/hero-planter.png)
 
-BTT - @btt_uz.');
+Bententrade - @bententradeuz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (10, 'en', 'Synthetic rattan planters', 'For garden, terrace and interior.', 'Won''t crack in frost, easy to wash.
 
 ![Planter](assets/hero-planter.png)
 
-Order via @btt_uz.');
+Order via @bententradeuz.');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (11, 'korziny-sunduki-rotang', 'assets/hero-home-furniture.png', 'published', '2026-05-05');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (11, 'ru', 'Корзины и сундуки из ротанга для хранения', 'Плетёные корзины для белья, игрушек и пикника - аккуратный дом и терраса без визуального шума.', 'Корзины и сундуки из искусственного ротанга решают задачу хранения без «пластикового» вида. Их ставят в спальню, ванную, на террасу и в детскую.
 
@@ -630,17 +571,17 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Протирка влажной тканью раз в 2-3 недели. Не ставьте острые предметы вплотную к плетению без прокладки.
 
-Закажите в каталоге или напишите @btt_uz.');
+Закажите в каталоге или напишите @bententradeuz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (11, 'uz', 'Rotang savatlar va sandiqlar', 'Uy va terassa uchun saqlash.', 'Savatlar namlikka chidamli.
 
 ![Saqlash](assets/hero-home-furniture.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (11, 'en', 'Rattan baskets and chests', 'Storage for home and terrace.', 'Woven storage without plastic look.
 
 ![Storage](assets/hero-home-furniture.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (12, 'kupit-rotang-buhtami', 'assets/hero-rattan.png', 'published', '2026-05-12');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (12, 'ru', 'Купить искусственный ротанг бухтами в Ташкенте', 'Профили полумесяц, круг и плоский - для мастерских, мебельщиков и B2B. Палитра и образцы.', 'Если вы мебельщик, дизайнер или открываете мастерскую, ротанг бухтами выгоднее готовой мебели: вы контролируете форму и маржу.
 
@@ -662,21 +603,21 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Стабильные партии, артикулы 0609, 1505, 0704, 2404. Склад в Ташкенте - самовывоз или доставка по Узбекистану.
 
-## Качество BTT
+## Качество Bententrade
 
-Собственное производство - окраска в массе, контроль диаметра, без «пустого» ядра. Напишите @btt_uz для прайса.');
+Собственное производство - окраска в массе, контроль диаметра, без «пустого» ядра. Напишите @bententradeuz для прайса.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (12, 'uz', 'Toshkentda rotang g‘iloflab sotib olish', 'Ustalar va B2B uchun.', 'Profil va rang tanlang.
 
 ![Rotang](assets/hero-rattan.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (12, 'en', 'Buy synthetic rattan by the coil in Tashkent', 'Profiles for workshops and B2B.', 'Half-moon, round and flat profiles.
 
 ![Coils](assets/hero-rattan.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (13, 'mebel-rotang-dlya-kafe', 'assets/scene-dining-teal.png', 'published', '2026-05-20');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (13, 'ru', 'Мебель из ротанга для кафе и ресторанов', 'Уличные зоны, веранды и летние площадки - практичное плетение и удобная замена подушек.', 'Для HoReCa в Ташкенте и по Узбекистану мебель из искусственного ротанга - баланс между эстетикой и практичностью. Гости видят аккуратное плетение, а персонал тратит минимум времени на уход.
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (13, 'ru', 'Мебель из ротанга для кафе и ресторанов', 'Уличные зоны, веранды и летние площадки - износостойкое плетение и быстрая замена подушек.', 'Для HoReCa в Ташкенте и по Узбекистану мебель из искусственного ротанга - баланс между эстетикой и износостойкостью. Гости видят «премиальное плетение», а персонал тратит минимум времени на уход.
 
 ## Что ставят чаще всего
 
@@ -696,19 +637,19 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Поставляем партиями, собираем на объекте. Возможен нестандарт под планировку зала.
 
-## Связь с BTT
+## Связь с Bententrade
 
-Коммерческое предложение и 3D-подбор по фото зала - @btt_uz.');
+Коммерческое предложение и 3D-подбор по фото зала - @bententradeuz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (13, 'uz', 'Kafe va restoranlar uchun rotang mebel', 'Ko‘cha zonalar va verandalar.', 'Izosh qoplamasi va tez parvarish.
 
 ![Kafe](assets/scene-dining-teal.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (13, 'en', 'Rattan furniture for cafés and restaurants', 'Outdoor seating that lasts.', 'Dense weave, aluminium frame.
 
 ![Café](assets/scene-dining-teal.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (14, 'pletennaya-mebel-dlya-doma', 'assets/scene-dining-cream.png', 'published', '2026-05-28');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (14, 'ru', 'Плетёная мебель из ротанга для дома и гостиной', 'Кресла, комоды и стеллажи - тёплая фактура без тяжёлого ухода, подходит для квартиры.', 'Плетёная мебель в интерьере возвращает ощущение натуральности, но искусственный ротанг не требует климат-контроля как лоза.
 
@@ -730,19 +671,19 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ## Доставка
 
-По Ташкенту - 1-3 дня после готовности. @btt_uz');
+По Ташкенту - 1-3 дня после готовности. @bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (14, 'uz', 'Uy va mehmonxona uchun to‘qima mebel', 'Kreslo, komod, javon.', 'Interyerda tabiiy ko‘rinish.
 
 ![Uy](assets/scene-dining-cream.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (14, 'en', 'Woven rattan furniture for home', 'Living room chairs and storage.', 'Warm texture, easy care.
 
 ![Home](assets/scene-dining-cream.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (15, 'dostavka-rotanga-po-uzbekistanu', 'assets/hero-garden-furniture.png', 'published', '2026-06-05');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (15, 'ru', 'Доставка мебели и ротанга по Узбекистану', 'Ташкент, область и регионы - сборка, упаковка и сроки. Как мы организуем логистику.', 'BTT доставляет плетёную мебель, кашпо и ротанг бухтами по Узбекистану. Ниже - как устроен процесс, чтобы вы заранее планировали сроки.
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (15, 'ru', 'Доставка мебели и ротанга по Узбекистану', 'Ташкент, область и регионы - сборка, упаковка и сроки. Как мы организуем логистику.', 'Bententrade доставляет плетёную мебель, кашпо и ротанг бухтами по Узбекистану. Ниже - как устроен процесс, чтобы вы заранее планировали сроки.
 
 ## Ташкент и Ташкентская область
 
@@ -766,17 +707,17 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ## Оформить доставку
 
-Telegram @btt_uz или форма на сайте после принятия cookie.');
+Telegram @bententradeuz или форма на сайте после принятия cookie.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (15, 'uz', 'O‘zbekiston bo‘ylab yetkazib berish', 'Toshkent va viloyatlar.', '1-3 kun ichida Toshkent.
 
 ![Yetkazish](assets/hero-garden-furniture.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (15, 'en', 'Delivery across Uzbekistan', 'Tashkent and regions.', 'Assembly on site in capital.
 
 ![Delivery](assets/hero-garden-furniture.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (16, 'rotang-dlya-balkona', 'assets/bento-rattan.png', 'published', '2026-06-12');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (16, 'ru', 'Мебель из ротанга для балкона и лоджии', 'Компактные кресла, столики и кашпо - легко переставить и не боится перепадов температуры.', 'Балкон и лоджия в многоэтажках Ташкента - мини-терраса. Мебель должна быть лёгкой, узкой и устойчивой к солнцу через стекло.
 
@@ -798,19 +739,19 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ## Заказ
 
-Подберём габариты по вашим замерам - @btt_uz.');
+Подберём габариты по вашим замерам - @bententradeuz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (16, 'uz', 'Balkon va lodjiya uchun rotang', 'Ixcham kreslo va stol.', 'Quyoshga chidamli.
 
 ![Balkon](assets/bento-rattan.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (16, 'en', 'Rattan for balcony and loggia', 'Compact chairs and tables.', 'UV-stable PE weave.
 
 ![Balcony](assets/bento-rattan.png)
 
-@btt_uz');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (17, 'palitra-tsvetov-rotanga-btt', 'assets/rattan-palette-hero.png', 'published', '2026-06-20');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'ru', 'Палитра цветов искусственного ротанга BTT', 'Tobacco, Woody, Brown, Graphite, Choco - как выбрать оттенок под интерьер и фасад.', 'Цвет ротанга задаёт характер всей зоны отдыха. В BTT палитра построена на натуральных древесных тонах - без кислотных оттенков, которые выгорают неравномерно.
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (17, 'palitra-tsvetov-rotanga-bententrade', 'assets/rattan-palette-hero.png', 'published', '2026-06-20');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'ru', 'Палитра цветов искусственного ротанга Bententrade', 'Tobacco, Woody, Brown, Graphite, Choco - как выбрать оттенок под интерьер и фасад.', 'Цвет ротанга задаёт характер всей зоны отдыха. В Bententrade палитра построена на натуральных древесных тонах - без кислотных оттенков, которые выгорают неравномерно.
 
 ## Базовые цвета
 
@@ -828,21 +769,21 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ### Образцы
 
-Закажите набор образцов 15-20 см - привезём в Ташкент или отправим с заказом. @btt_uz
+Закажите набор образцов 15-20 см - привезём в Ташкент или отправим с заказом. @bententradeuz
 
 ## Нестандарт
 
 Любой цвет под заказ от одной бухты - согласуем эталон до производства.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'uz', 'BTT rotang rang palitrasi', 'Tobacco, Woody, Graphite.', '5 asosiy rang.
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'uz', 'Bententrade rotang rang palitrasi', 'Tobacco, Woody, Graphite.', '5 asosiy rang.
 
 ![Palitra](assets/rattan-palette-hero.png)
 
-@btt_uz');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'en', 'BTT rattan colour palette', 'Wood tones for outdoor and indoor.', 'Five base shades plus custom.
+@bententradeuz');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'en', 'Bententrade rattan colour palette', 'Wood tones for outdoor and indoor.', 'Five base shades plus custom.
 
 ![Palette](assets/rattan-palette-hero.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (18, 'oformlenie-terassi-rotangom', 'assets/scene-dining-warm.png', 'published', '2026-06-28');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (18, 'ru', 'Как оформить террасу ротанговой мебелью', 'Зонирование, свет, текстиль и растения - пошаговый гид для уютной террасы в Ташкенте.', 'Терраса - продолжение гостиной на воздухе. Ротанговая мебель задаёт стиль, но важны пропорции, свет и аксессуары.
 
@@ -868,22 +809,22 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Высокие кашпо из ротанга с фикусом или оливой визуально «потолок» зоны.
 
-## Реализация с BTT
+## Реализация с Bententrade
 
-Комплект под ключ + доставка - @btt_uz. Можем изготовить нестандартные размеры под вашу планировку.');
+Комплект под ключ + доставка - @bententradeuz. Можем изготовить нестандартные размеры под вашу планировку.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (18, 'uz', 'Terassani rotang bilan bezash', 'Zonalar va yoritish.', '4 qadamli qo‘llanma.
 
 ![Terassa](assets/scene-dining-warm.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (18, 'en', 'Terrace styling with rattan furniture', 'Zones, light and plants.', 'Step-by-step guide.
 
 ![Terrace](assets/scene-dining-warm.png)
 
-@btt_uz');
+@bententradeuz');
 
 INSERT OR REPLACE INTO settings (key, value) VALUES ('brand', 'BTT - мебель для дома и сада');
 INSERT OR REPLACE INTO settings (key, value) VALUES ('phone', '+998 77 104 44 22');
 INSERT OR REPLACE INTO settings (key, value) VALUES ('whatsapp', '998771044422');
-INSERT OR REPLACE INTO settings (key, value) VALUES ('telegram', 'btt_uz');
-INSERT OR REPLACE INTO settings (key, value) VALUES ('email', 'hello@btt.uz');
+INSERT OR REPLACE INTO settings (key, value) VALUES ('telegram', 'bententradeuz');
+INSERT OR REPLACE INTO settings (key, value) VALUES ('email', 'hello@bententrade.uz');

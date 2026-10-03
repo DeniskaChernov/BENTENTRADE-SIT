@@ -35,9 +35,7 @@ const ALLOWED_CATEGORIES = new Set([
   'wicker-chairs',
   'plastic-chairs',
   'upholstered-chairs',
-  'tables',
-  'planters',
-  'rattan'
+  'tables'
 ]);
 
 const ALLOWED_AVAILABILITIES = new Set([

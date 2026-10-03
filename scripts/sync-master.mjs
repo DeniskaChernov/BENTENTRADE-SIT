@@ -33,7 +33,6 @@ function syncProductsJs() {
       model: item.model,
       cat: item.category,
       category: item.category,
-      unit: item.unit || "pcs",
       now: item.price,
       price: item.price,
       old: 0,
@@ -69,13 +68,11 @@ function syncProductsJs() {
     "plastic-chairs":    "assets/placeholder.svg",
     "upholstered-chairs":"assets/placeholder.svg",
     tables:              "assets/prod-table-corda-135-black.jpg",
-    planters:            "assets/products/kashpo-10l-klassika/white.webp",
-    rattan:              "assets/products/rotang-nit-buhta/white.webp",
     // legacy category aliases
     furniture:           "assets/prod-chair-corda.jpg",
     indoor:              "assets/placeholder.svg",
-    planter:             "assets/products/kashpo-10l-klassika/white.webp",
-    basket:              "assets/products/kashpo-10l-klassika/white.webp"
+    planter:             "assets/placeholder.svg",
+    basket:              "assets/placeholder.svg"
   };
 
   window.BTT_IS_MTO = function(id) {
@@ -169,46 +166,6 @@ function syncProductsJs() {
         desc: "Dining tables on a solid metal frame with chipboard tabletop. For indoor and covered spaces. It is recommended to protect the chipboard tabletop from direct precipitation.",
         dim: "For kitchens, dining areas, covered terraces and HoReCa",
         mat: "Chipboard, metal"
-      }
-    },
-    planters: {
-      ru: {
-        name: "Плетёные кашпо",
-        desc: "Кашпо ручного плетения из прочного искусственного ротанга для дома, террасы и сада.",
-        dim: "Для цветов, растений, интерьера и сада",
-        mat: "Искусственный ротанг, пластиковая основа"
-      },
-      uz: {
-        name: "To‘qilgan kashpo",
-        desc: "Uy, terrasa va bog‘ uchun pishiq sun’iy rotangdan qo‘lda to‘qilgan kashpolar.",
-        dim: "Gullar, o‘simliklar, interyer va bog‘ uchun",
-        mat: "Sun’iy rotang, plastik asos"
-      },
-      en: {
-        name: "Woven planters",
-        desc: "Handcrafted planters woven from synthetic rattan for home, terrace, and garden.",
-        dim: "For flowers, plants, interior, and outdoor garden",
-        mat: "Synthetic rattan, plastic base"
-      }
-    },
-    rattan: {
-      ru: {
-        name: "Искусственный ротанг",
-        desc: "Высококачественная нить искусственного ротанга в бухтах для плетения мебели, кашпо и ограждений.",
-        dim: "В бухтах по весу для плетения и производства",
-        mat: "Первичный полимер (экоротанг)"
-      },
-      uz: {
-        name: "Sun‘iy rotang",
-        desc: "Mebel, kashpo va to‘siqlar to‘qish uchun buxtalarda yuqori sifatli sun’iy rotang tolasi.",
-        dim: "To‘qish va ishlab chiqarish uchun buxtalarda",
-        mat: "Birlamchi polimer (ekorotang)"
-      },
-      en: {
-        name: "Synthetic rattan",
-        desc: "High-grade synthetic rattan fiber in coils for weaving furniture, planters, and fencing.",
-        dim: "In coils by weight for weaving and manufacturing",
-        mat: "Virgin polymer (eco-rattan)"
       }
     }
   };

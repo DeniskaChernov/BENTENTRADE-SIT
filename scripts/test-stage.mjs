@@ -9,7 +9,7 @@ async function testStage() {
     '--remote-debugging-port=9226',
     '--disable-gpu',
     '--no-first-run',
-    '--user-data-dir=C:\\BTT-Sit\\.tmp-chrome-profile-stage'
+    '--user-data-dir=C:\\Bententrade-Sit\\.tmp-chrome-profile-stage'
   ]);
 
   await new Promise(r => setTimeout(r, 1200));
@@ -36,7 +36,7 @@ async function testStage() {
   await new Promise(r => ws.onopen = r);
   await send('Page.enable');
   await send('Runtime.enable');
-  await send('Page.navigate', { url: 'https://btt.denisblackman2.workers.dev/catalog/stul-roero?color=black' });
+  await send('Page.navigate', { url: 'https://bententrade.denisblackman2.workers.dev/catalog/stul-roero?color=black' });
   await new Promise(r => setTimeout(r, 2500));
 
   const res = await send('Runtime.evaluate', {

@@ -176,7 +176,7 @@ const newKeysEN = {
 
 // Check for forbidden em-dash / en-dash
 for (const [k, v] of Object.entries({...newKeysRU, ...newKeysUZ, ...newKeysEN})) {
-  if (k.includes('-') || k.includes('-') || v.includes('-') || v.includes('-')) {
+  if (k.includes('—') || k.includes('–') || v.includes('—') || v.includes('–')) {
     console.error(`ERROR: Dash found in ${k}: ${v}`);
     process.exit(1);
   }

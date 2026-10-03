@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = 'c:\\BTT-Sit';
+const root = 'c:\\Bententrade-Sit';
 
 console.log('=== 1. CHECKING PRODUCTS MASTER VS PRODUCTS.JS VS SEED.SQL VS WORKER ===');
 const masterPath = path.join(root, 'data', 'products-master.json');

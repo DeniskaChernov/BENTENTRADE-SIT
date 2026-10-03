@@ -1,4 +1,4 @@
-# BTT CRM - полное руководство для агента / разработчика
+# Bententrade CRM - полное руководство для агента / разработчика
 
 **Для кого:** AI-агент или разработчик, который **строит только CRM** (не сайт, не Telegram-бот).  
 **Версия:** 1.0 · **Дата:** 2026-07-11
@@ -41,8 +41,8 @@
 
 | Не трогать | Почему |
 |------------|--------|
-| **Вёрстку сайта** (`*.html`, `assets/*.css`, `assets/*.js` в BTT-Sit) | Это репозиторий сайта, другой агент |
-| **Cloudflare Worker сайта** (`worker/` в BTT-Sit) | Кроме согласованных endpoint'ов приёма sync - их делает агент сайта |
+| **Вёрстку сайта** (`*.html`, `assets/*.css`, `assets/*.js` в Bententrade-Sit) | Это репозиторий сайта, другой агент |
+| **Cloudflare Worker сайта** (`worker/` в Bententrade-Sit) | Кроме согласованных endpoint'ов приёма sync - их делает агент сайта |
 | **Лендинг `/r/{token}`** | Страница на сайте; CRM только отдаёт JSON по API |
 | **Cookie consent, i18n сайта** | Уже на сайте |
 | **Telegram-бот (диалоги)** | Отдельный сервис; бот ходит в **CRM API**, не в site_db |
@@ -57,8 +57,8 @@
 
 | Тема | Кто ведёт |
 |------|-----------|
-| Endpoint `POST btt.uz/api/sync/catalog` | Сайт реализует приём; CRM шлёт payload |
-| Endpoint `POST btt.uz/api/sync/order-status` | Сайт реализует; CRM шлёт при смене статуса |
+| Endpoint `POST bententrade.uz/api/sync/catalog` | Сайт реализует приём; CRM шлёт payload |
+| Endpoint `POST bententrade.uz/api/sync/order-status` | Сайт реализует; CRM шлёт при смене статуса |
 | `SITE_SYNC_SECRET`, `CRM_API_KEY` | DevOps / оба агента в env |
 | Регистрация по телефону на сайте | Сайт - форма и сессия; CRM - webhook `user.registered` |
 
@@ -69,7 +69,7 @@
 ```
 ┌──────────────┐     webhooks (события, заказы, отзывы)      ┌─────────────┐
 │    САЙТ      │ ───────────────────────────────────────────► │     CRM     │
-│ btt  │                                              │  (ВЫ ЗДЕСЬ) │
+│ bententrade  │                                              │  (ВЫ ЗДЕСЬ) │
 │   .uz        │ ◄── read API (QR) + sync catalog/status ──── │             │
 └──────────────┘                                              └──────┬──────┘
        ▲                                                             │
@@ -86,7 +86,7 @@
 | Действие пользователя | Кто фиксирует первым | Кто источник правды | Что видит пользователь |
 |----------------------|----------------------|---------------------|------------------------|
 | Скан QR | Сайт → webhook `qr_scanned` | CRM (`qr_scans`, `crm_events`) | Лендинг или каталог (сайт) |
-| Регистрация | Сайт → сессия + webhook | CRM (`users`, `dealer_id` скрыто) | Кабинет BTT |
+| Регистрация | Сайт → сессия + webhook | CRM (`users`, `dealer_id` скрыто) | Кабинет Bententrade |
 | Заказ из корзины | Сайт `POST /api/orders` + webhook | CRM (`orders`) | Заказ в кабинете (этапы по клику) |
 | Менеджер меняет статус | **CRM админка** | CRM | Сайт обновляет после webhook |
 | «Мои заказы» в боте | Бот → CRM API | CRM | Те же этапы, что на сайте |
@@ -105,7 +105,7 @@
 
 | # | Задача | Результат |
 |---|--------|-----------|
-| 0.1 | Создать Railway-проект `btt-crm` | Сервис поднят |
+| 0.1 | Создать Railway-проект `bententrade-crm` | Сервис поднят |
 | 0.2 | PostgreSQL `crm_db` | `DATABASE_URL` в env |
 | 0.3 | Скелет API (Hono/FastAPI/Express - на выбор) | `GET /health` → 200 |
 | 0.4 | Миграции: пустые `dealers`, `products` | БД версионируется |
@@ -122,7 +122,7 @@
 | # | Задача | Таблицы / API |
 |---|--------|---------------|
 | 1.1 | CRUD дилеров | `dealers` |
-| 1.2 | Приём заказов с сайта | `POST /webhooks/btt/orders` |
+| 1.2 | Приём заказов с сайта | `POST /webhooks/bententrade/orders` |
 | 1.3 | Модель розничного заказа | `orders`, `order_items` |
 | 1.4 | Статусы розницы | `new`, `processing`, `shipped`, `delivered`, `cancelled` |
 | 1.5 | Админка: список заказов, смена статуса | UI |
@@ -163,7 +163,7 @@ new ──► processing ──► shipped ──► delivered
 | 2.1 | `products`, `product_i18n` (ru/uz/en), `media` |
 | 2.2 | Админка: CRUD товаров, цены, фото, категории |
 | 2.3 | Кнопка «Опубликовать на сайт» |
-| 2.4 | `POST https://btt.uz/api/sync/catalog` с `SITE_SYNC_SECRET` |
+| 2.4 | `POST https://bententrade.uz/api/sync/catalog` с `SITE_SYNC_SECRET` |
 | 2.5 | Лог sync: успех/ошибка, retry |
 
 **Логика:** CRM save → CRM БД → webhook на сайт → сайт upsert в site_db → пользователь видит в каталоге.
@@ -187,7 +187,7 @@ new ──► processing ──► shipped ──► delivered
 | 3.2 | `GET /api/qr/{token}` - read API для бэкенда сайта |
 | 3.3 | Печать бирки PDF/PNG в CRM |
 | 3.4 | `qr_scans`, `crm_events` |
-| 3.5 | Webhook `POST /webhooks/btt/events` (13 типов, см. ниже) |
+| 3.5 | Webhook `POST /webhooks/bententrade/events` (13 типов, см. ниже) |
 | 3.6 | UI: воронка по QR, лента событий |
 | 3.7 | Правило: token не удалять, только `inactive`/`revoked` |
 
@@ -206,7 +206,7 @@ qr_scanned → site_opened → [review_submitted | catalog_opened]
 ```
 
 **Критерий готовности:**
-- [ ] CRM печатает QR с URL `btt.uz/r/{token}`
+- [ ] CRM печатает QR с URL `bententrade.uz/r/{token}`
 - [ ] Read API отвечает за < 200ms
 - [ ] События с сайта пишутся в `crm_events`
 - [ ] Дашборд по QR показывает конверсию
@@ -351,7 +351,7 @@ inquiry → quote_sent → confirmed → production → ready → shipped → de
 
 ## 5. Webhooks: что CRM принимает (сайт → CRM)
 
-Базовый URL: `POST https://{CRM_HOST}/webhooks/btt/{endpoint}`
+Базовый URL: `POST https://{CRM_HOST}/webhooks/bententrade/{endpoint}`
 
 Подпись: `X-BTT-Signature: HMAC-SHA256(body, CRM_WEBHOOK_SECRET)`  
 Идемпотентность: `X-BTT-Idempotency-Key: {uuid}`
@@ -425,13 +425,13 @@ Auth: `Authorization: Bearer {CRM_API_KEY}`
 ## 7. Маршрутизация заявок (бизнес-логика CRM)
 
 ```
-                    ┌─ QR дилера ──────────► дилер + BTT
+                    ┌─ QR дилера ──────────► дилер + Bententrade
 Пользователь ───────┤
-                    ├─ Сайт без QR, страна с дилером ──► только BTT (или по правилу)
-                    └─ Страна без дилера ──────────────► только BTT
+                    ├─ Сайт без QR, страна с дилером ──► только Bententrade (или по правилу)
+                    └─ Страна без дилера ──────────────► только Bententrade
 ```
 
-Поле `orders.assigned_to`: `dealer` | `btt` | `both`
+Поле `orders.assigned_to`: `dealer` | `bententrade` | `both`
 
 Уведомление дилеру (email/Telegram) - **внутри CRM**, не на сайте.
 
@@ -457,7 +457,7 @@ Auth: `Authorization: Bearer {CRM_API_KEY}`
 ## 9. Деплой CRM на Railway
 
 ```
-Сервис: btt-crm
+Сервис: bententrade-crm
 Платформа: Railway
 БД: PostgreSQL (plugin)
 Порт: 3000 (или $PORT)
@@ -470,7 +470,7 @@ DATABASE_URL=postgresql://...
 CRM_API_KEY=...                    # для сайта и бота
 CRM_WEBHOOK_SECRET=...             # проверка подписи от сайта
 SITE_SYNC_SECRET=...               # исходящий sync на сайт
-SITE_BASE_URL=https://btt.uz
+SITE_BASE_URL=https://bententrade.uz
 PARTNER_REVIEW_WEBHOOKS={"partner1":"https://..."}  # JSON
 TELEGRAM_MANAGER_CHAT_ID=...       # опционально: алерты менеджеру
 ```
@@ -551,7 +551,7 @@ TELEGRAM_MANAGER_CHAT_ID=...       # опционально: алерты мен
 | Требовать SMS при регистрации | Только phone + сессия |
 | Смешивать опт и розницу в одной таблице | `orders` и `bulk_orders` |
 | Подключаться к D1 сайта | Только HTTPS API |
-| Писать вёрстку btt.uz | Только JSON API и админка CRM |
+| Писать вёрстку bententrade.uz | Только JSON API и админка CRM |
 | Премодерация отзывов по умолчанию | `published` сразу, hide вручную |
 | Делать бота внутри CRM | Отдельный сервис, CRM = API |
 

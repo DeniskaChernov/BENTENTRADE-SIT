@@ -27,8 +27,8 @@ function main() {
   // 1. Insert canonical products & aliases
   MASTER.forEach((p, i) => {
     lines.push(
-      `INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, unit) VALUES ` +
-        `(${q(p.slug)}, ${q(p.category)}, ${q(p.slug)}, ${n(p.price)}, 0, 0, 1, ${i}, ${q(p.availability || "unknown")}, ${q(p.unit || "pcs")});`,
+      `INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ` +
+        `(${q(p.slug)}, ${q(p.category)}, ${q(p.slug)}, ${n(p.price)}, 0, 0, 1, ${i}, ${q(p.availability || "unknown")});`,
     );
 
     if (p.legacyId) {
@@ -99,8 +99,8 @@ function main() {
   lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('brand', 'BTT - мебель для дома и сада');`);
   lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('phone', '+998 77 104 44 22');`);
   lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('whatsapp', '998771044422');`);
-  lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('telegram', 'btt_uz');`);
-  lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('email', 'hello@btt.uz');`);
+  lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('telegram', 'bententradeuz');`);
+  lines.push(`INSERT OR REPLACE INTO settings (key, value) VALUES ('email', 'hello@bententrade.uz');`);
   lines.push("");
 
   const out = join(root, "migrations", "seed.sql");

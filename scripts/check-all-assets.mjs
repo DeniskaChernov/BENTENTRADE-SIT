@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = 'c:\\BTT-Sit';
+const root = 'c:\\Bententrade-Sit';
 
 // Collect all referenced assets in HTML and CSS and JS
 const assetRefRegex = /(?:src|href|url)\s*[:=\(]\s*["']?([^"'()#?]+\.(?:jpg|png|svg|webp|woff|woff2|otf|ttf|css|js))/gi;

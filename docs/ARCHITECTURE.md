@@ -1,4 +1,4 @@
-# BTT - архитектура экосистемы
+# Bententrade - архитектура экосистемы
 
 Документ описывает **как устроены и связаны** сайт, CRM, Telegram-бот, базы данных и деплой.  
 Дополняет [CRM-QR-INTEGRATION.md](./CRM-QR-INTEGRATION.md) (контракты QR/webhooks) и [DEPLOY.md](../DEPLOY.md) (деплой сайта на Cloudflare).
@@ -21,7 +21,7 @@
                     ┌─────────────────────────────────────┐
                     │           Пользователь              │
                     └──────────────┬──────────────────────┘
-           btt.uz          │              Telegram
+           bententrade.uz          │              Telegram
                     │              │                  │
                     ▼              │                  ▼
             ┌──────────────┐       │         ┌────────────────┐
@@ -51,7 +51,7 @@
 Рекомендуемый репозиторий:
 
 ```
-btt/
+bententrade/
 ├── apps/
 │   ├── site/              # статика + API (или прокси на Cloudflare)
 │   ├── crm/               # бэкенд CRM + админка дилеров
@@ -68,11 +68,11 @@ btt/
 
 | Сервис | Тип | Порт | Переменные |
 |--------|-----|------|------------|
-| `btt-crm` | Web (Node/Python/Go) | 3000 | `DATABASE_URL`, `CRM_API_SECRET`, webhook URLs |
-| `btt-bot` | Worker (long-polling / webhook) | - | `TELEGRAM_BOT_TOKEN`, `CRM_API_BASE`, `CRM_API_KEY` |
-| `btt-site` | *опционально* | 8080 | Если переносите с Cloudflare |
+| `bententrade-crm` | Web (Node/Python/Go) | 3000 | `DATABASE_URL`, `CRM_API_SECRET`, webhook URLs |
+| `bententrade-bot` | Worker (long-polling / webhook) | - | `TELEGRAM_BOT_TOKEN`, `CRM_API_BASE`, `CRM_API_KEY` |
+| `bententrade-site` | *опционально* | 8080 | Если переносите с Cloudflare |
 
-**Сейчас сайт уже на Cloudflare** (`BTT-SIT` - один воркер: статика + `/api/*` + `/admin`). Перенос на Railway **не обязателен**: CRM и бот могут жить на Railway, сайт - на Cloudflare. Связь через HTTPS + webhooks.
+**Сейчас сайт уже на Cloudflare** (`BENTENTRADE-SIT` - один воркер: статика + `/api/*` + `/admin`). Перенос на Railway **не обязателен**: CRM и бот могут жить на Railway, сайт - на Cloudflare. Связь через HTTPS + webhooks.
 
 ---
 
@@ -110,7 +110,7 @@ btt/
    ```
    Все старые идентификаторы `p1`..`p15` вынесены в таблицу алиасов. Запросы к `/catalog/p1` перенаправляются через HTTP 301 Permanent Redirect на канонические страницы `/catalog/:slug`.
 5. **R2 Хранилище медиафайлов:**
-   В `wrangler.jsonc` подключен binding `MEDIA` на бакет `btt-media`.
+   В `wrangler.jsonc` подключен binding `MEDIA` на бакет `bententrade-media`.
 6. **Защита панели администратора:**
    Эндпоинты `/admin`, `/admin/` и `/admin/app.js` защищены серверным middleware с проверкой сессии в Cloudflare KV. Поисковые роботы заблокированы через `robots.txt` и заголовок `X-Robots-Tag: noindex, nofollow`.
 
@@ -179,7 +179,7 @@ inquiry → quote_sent → confirmed → production → ready → shipped → de
 CRM присваивает `crm_order_id`, дальше **все смены статуса - в CRM**. CRM шлёт webhook на сайт:
 
 ```
-POST https://btt.uz/api/sync/order-status
+POST https://bententrade.uz/api/sync/order-status
 { "public_id": "BT-2049", "status": "shipped", "updated_at": "..." }
 ```
 
@@ -292,7 +292,7 @@ CRM_API_BASE            # (будущее) чтение QR/каталога
 ```
 DATABASE_URL
 CRM_API_KEY
-SITE_WEBHOOK_URL=https://btt.uz/api/webhooks/crm
+SITE_WEBHOOK_URL=https://bententrade.uz/api/webhooks/crm
 SITE_WEBHOOK_SECRET
 PARTNER_REVIEW_WEBHOOKS=...
 ```

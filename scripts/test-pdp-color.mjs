@@ -9,7 +9,7 @@ async function testUrl(targetUrl) {
     '--remote-debugging-port=9225',
     '--disable-gpu',
     '--no-first-run',
-    '--user-data-dir=C:\\BTT-Sit\\.tmp-chrome-profile-pdp'
+    '--user-data-dir=C:\\Bententrade-Sit\\.tmp-chrome-profile-pdp'
   ]);
 
   await new Promise(r => setTimeout(r, 1200));
@@ -85,9 +85,9 @@ async function testUrl(targetUrl) {
 }
 
 async function run() {
-  await testUrl('https://btt.denisblackman2.workers.dev/catalog/stul-roero?color=black');
-  await testUrl('https://btt.denisblackman2.workers.dev/catalog/stul-todo?color=yellow');
-  await testUrl('https://btt.denisblackman2.workers.dev/catalog/stul-todo-soft?color=red');
+  await testUrl('https://bententrade.denisblackman2.workers.dev/catalog/stul-roero?color=black');
+  await testUrl('https://bententrade.denisblackman2.workers.dev/catalog/stul-todo?color=yellow');
+  await testUrl('https://bententrade.denisblackman2.workers.dev/catalog/stul-todo-soft?color=red');
 }
 
 run().catch(console.error);

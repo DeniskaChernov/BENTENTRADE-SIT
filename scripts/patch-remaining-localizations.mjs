@@ -50,7 +50,7 @@ const keysRU = {
   'seo.rotang.c3.l2': 'Taper Rotang 80×80 см (615 000 сум).',
   'seo.rotang.c3.l3': 'Taper Rotang 135×80 см (715 000 сум).',
   // returns
-  'ret.step1.d': 'Напишите в Telegram <a href="https://t.me/btt_uz" target="_blank" rel="noopener noreferrer" style="color:var(--copper)">@btt_uz</a> или позвоните по телефону <a href="tel:+998771044422" style="color:var(--copper)">+998 77 104 44 22</a>.'
+  'ret.step1.d': 'Напишите в Telegram <a href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" style="color:var(--copper)">@bententradeuz</a> или позвоните по телефону <a href="tel:+998771044422" style="color:var(--copper)">+998 77 104 44 22</a>.'
 };
 
 const keysUZ = {
@@ -90,7 +90,7 @@ const keysUZ = {
   'seo.rotang.stockBadge': 'Toshkentdagi omborda mavjud',
   'seo.rotang.c3.l2': 'Taper Rotang 80×80 sm (615 000 so\'m).',
   'seo.rotang.c3.l3': 'Taper Rotang 135×80 sm (715 000 so\'m).',
-  'ret.step1.d': 'Telegram orqali <a href="https://t.me/btt_uz" target="_blank" rel="noopener noreferrer" style="color:var(--copper)">@btt_uz</a> yozing yoki <a href="tel:+998771044422" style="color:var(--copper)">+998 77 104 44 22</a> telefon raqamiga qo\'ng\'iroq qiling.'
+  'ret.step1.d': 'Telegram orqali <a href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" style="color:var(--copper)">@bententradeuz</a> yozing yoki <a href="tel:+998771044422" style="color:var(--copper)">+998 77 104 44 22</a> telefon raqamiga qo\'ng\'iroq qiling.'
 };
 
 const keysEN = {
@@ -130,12 +130,12 @@ const keysEN = {
   'seo.rotang.stockBadge': 'In stock in Tashkent warehouse',
   'seo.rotang.c3.l2': 'Taper Rotang 80×80 cm (615 000 UZS).',
   'seo.rotang.c3.l3': 'Taper Rotang 135×80 cm (715 000 UZS).',
-  'ret.step1.d': 'Message us on Telegram <a href="https://t.me/btt_uz" target="_blank" rel="noopener noreferrer" style="color:var(--copper)">@btt_uz</a> or call <a href="tel:+998771044422" style="color:var(--copper)">+998 77 104 44 22</a>.'
+  'ret.step1.d': 'Message us on Telegram <a href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" style="color:var(--copper)">@bententradeuz</a> or call <a href="tel:+998771044422" style="color:var(--copper)">+998 77 104 44 22</a>.'
 };
 
 // Check em-dash or en-dash in any of the keys or values
 for (const [k, v] of Object.entries({...keysRU, ...keysUZ, ...keysEN})) {
-  if (k.includes('-') || k.includes('-') || v.includes('-') || v.includes('-')) {
+  if (k.includes('—') || k.includes('–') || v.includes('—') || v.includes('–')) {
     console.error(`ERROR: Dash found in ${k}: ${v}`);
     process.exit(1);
   }
@@ -367,8 +367,8 @@ console.log('rotang-tashkent.html patched');
 // 10. returns.html
 let ret = fs.readFileSync('returns.html', 'utf8');
 ret = ret.replace(
-  '<p class="help-step-text">Напишите в Telegram <a href="https://t.me/btt_uz" target="_blank" rel="noopener noreferrer" style="color:var(--copper)">@btt_uz</a> или позвоните по телефону <a href="tel:+998771044422" style="color:var(--copper)">+998 77 104 44 22</a>.</p>',
-  '<p class="help-step-text" data-i18n-html="ret.step1.d">Напишите в Telegram <a href="https://t.me/btt_uz" target="_blank" rel="noopener noreferrer" style="color:var(--copper)">@btt_uz</a> или позвоните по телефону <a href="tel:+998771044422" style="color:var(--copper)">+998 77 104 44 22</a>.</p>'
+  '<p class="help-step-text">Напишите в Telegram <a href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" style="color:var(--copper)">@bententradeuz</a> или позвоните по телефону <a href="tel:+998771044422" style="color:var(--copper)">+998 77 104 44 22</a>.</p>',
+  '<p class="help-step-text" data-i18n-html="ret.step1.d">Напишите в Telegram <a href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer" style="color:var(--copper)">@bententradeuz</a> или позвоните по телефону <a href="tel:+998771044422" style="color:var(--copper)">+998 77 104 44 22</a>.</p>'
 );
 fs.writeFileSync('returns.html', ret, 'utf8');
 console.log('returns.html patched');

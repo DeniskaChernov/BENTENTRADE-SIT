@@ -1,5 +1,5 @@
 /* ============================================================
-   BTT - Spotlight glass search (site-wide)
+   BENTENTRADE - Spotlight glass search (site-wide)
    Opens on the header search button or Cmd/Ctrl+K.
    ============================================================ */
 (function(){

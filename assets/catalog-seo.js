@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const SITE = "https://btt.uz";
+  const SITE = "https://bententrade.uz";
   const DICT = window.BTT_I18N || {};
   const CAT_META = {
     furniture: "meta.cat.furniture",
@@ -150,7 +150,7 @@
           name: listName,
           description: listDesc,
           url: SITE + "/catalog.html?cat=" + encodeURIComponent(cat),
-          isPartOf: { "@type": "WebSite", name: "BTT", url: SITE + "/" },
+          isPartOf: { "@type": "WebSite", name: "Bententrade", url: SITE + "/" },
         });
       } else {
         const old = document.getElementById("catalog-collection");

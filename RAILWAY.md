@@ -1,4 +1,4 @@
-# Деплой BTT на Railway
+# Деплой Bententrade на Railway
 
 Бэкенд переписан с Cloudflare Workers на **Node + Hono + PostgreSQL** и рассчитан
 на единый сервис Railway, который:
@@ -40,7 +40,7 @@
 
    | Переменная | Назначение |
    |---|---|
-   | `SITE_ORIGIN` | публичный адрес, напр. `https://btt.uz` |
+   | `SITE_ORIGIN` | публичный адрес, напр. `https://bententrade.uz` |
    | `MEDIA_DIR` | путь к Volume для медиа, напр. `/data` |
    | `ADMIN_BOOTSTRAP_TOKEN` | одноразовый токен для назначения первого админа |
    | `TELEGRAM_BOT_TOKEN` | (необязательно) уведомления о заявках/заказах |

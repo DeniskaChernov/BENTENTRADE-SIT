@@ -1,6 +1,6 @@
 /**
  * Cross-platform D1 backup helper.
- * Exports the remote `btt_db` to a timestamped SQL file under ./backups.
+ * Exports the remote `bententrade_db` to a timestamped SQL file under ./backups.
  *
  * Usage: npm run db:backup [-- --local]
  */
@@ -15,9 +15,9 @@ const dir = resolve(process.cwd(), "backups");
 mkdirSync(dir, { recursive: true });
 
 const stamp = new Date().toISOString().replace(/[:.]/g, "-");
-const out = resolve(dir, `btt_db-${local ? "local" : "remote"}-${stamp}.sql`);
+const out = resolve(dir, `bententrade_db-${local ? "local" : "remote"}-${stamp}.sql`);
 
-const args = ["d1", "export", "btt_db", scope, "--output", out];
+const args = ["d1", "export", "bententrade_db", scope, "--output", out];
 console.log("Running: wrangler " + args.join(" "));
 
 const res = spawnSync("wrangler", args, { stdio: "inherit", shell: true });

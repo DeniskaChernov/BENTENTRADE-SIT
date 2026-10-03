@@ -1,4 +1,4 @@
--- BTT - initial schema (D1 / SQLite)
+-- Bententrade - initial schema (D1 / SQLite)
 
 CREATE TABLE IF NOT EXISTS users (
   id            INTEGER PRIMARY KEY AUTOINCREMENT,

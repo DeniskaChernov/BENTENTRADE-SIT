@@ -43,7 +43,7 @@
 
 1. Администратор переходит по адресу:
    ```
-   https://btt.uz/login.html?redirect=/admin
+   https://bententrade.uz/login.html?redirect=/admin
    ```
 2. Вводит учетные данные (логин/пароль администратора, настроенные в D1/KV).
 3. При успешной проверке создается защищенная сессия с ролью `admin` в Cloudflare KV, выставляется cookie сессии, и происходит редирект в `/admin`.

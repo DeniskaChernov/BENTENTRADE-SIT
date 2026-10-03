@@ -1,5 +1,5 @@
 /* ============================================================
-   BTT - site interactions
+   BENTENTRADE - site interactions
    ============================================================ */
 (function(){
   const LANGS = ["ru","uz","en"];
@@ -166,12 +166,9 @@
 
   /* ---- animate product cards when category chips change ---- */
   const CHIP_URL_ALIAS = {
-    planter: "planters",
-    planters: "planters",
-    kashpo: "planters",
-    basket: "planters",
-    rattan: "rattan",
-    rotang: "rattan",
+    planter: "wicker-chairs",
+    basket: "wicker-chairs",
+    rattan: "wicker-chairs",
     wicker: "wicker-chairs",
     furniture: "wicker-chairs",
     plastic: "plastic-chairs",
@@ -184,9 +181,7 @@
     "wicker-chairs": ["wicker-chairs"],
     "plastic-chairs": ["plastic-chairs"],
     "upholstered-chairs": ["upholstered-chairs"],
-    tables: ["tables"],
-    planters: ["planters"],
-    rattan: ["rattan"]
+    tables: ["tables"]
   };
   const HOME_SECTION_IDS = new Set([
     "product-lines", "home-collection",
@@ -466,7 +461,7 @@
 
   function openManagerChat(msg){
     const mgr = window.BTT_UTIL && window.BTT_UTIL.managerUrl;
-    const url = mgr ? mgr(msg).telegram : "https://t.me/btt_uz";
+    const url = mgr ? mgr(msg).telegram : "https://t.me/bententradeuz";
     window.open(url, "_blank", "noopener");
   }
 

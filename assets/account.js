@@ -1,5 +1,5 @@
 /* ============================================================
-   BTT - account page (tabs, wishlist sync, mobile drawer)
+   BENTENTRADE - account page (tabs, wishlist sync, mobile drawer)
    ============================================================ */
 (function(){
   "use strict";

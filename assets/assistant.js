@@ -1,5 +1,5 @@
 /* ============================================================
-   BTT - site assistant "Бен"
+   BENTENTRADE - site assistant "Бен"
    Self-injecting glass chat widget. Scripted, multilingual,
    intelligent intent engine + catalog product resolution +
    Telegram lead capture + interactive cart & product cards.
@@ -39,7 +39,7 @@
         "Искусственный ротанг":"Первичный полимерный искусственный ротанг в бухтах на вес (кг). Высокая эластичность, прочность, УФ-стабилизация и различные профили (полумесяц, пруток, лента). Идеален для плетения мебели и кашпо. Смотрите в <a href='catalog.html?cat=rattan'>каталоге ротанга</a>.",
         "Цвета и отделка":"Мебель BTT представлена в трендовых архитектурных цветах: антрацит (чёрный), белый, бежевый/мокко, коричневый, серый и терракот. Металлические каркасы защищены долговечным полимерно-порошковым покрытием (чёрный муар). Выбрать цвет можно на странице каждого товара.",
         "Доставка и самовывоз":"Доставка по Ташкенту осуществляется за 1-2 рабочих дня по прямому тарифу сервиса (Яндекс / Labo / Porter). Возможен самовывоз со склада в Ташкенте по предварительной договорённости. В регионы Узбекистана отправляем через транспортные службы.",
-        "Связаться с менеджером":"Мы на связи в Telegram <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>@btt_uz</a> и по телефону <a href='tel:+998771044422'>+998 77 104 44 22</a>. Ответим на любые вопросы и поможем с выбором!"
+        "Связаться с менеджером":"Мы на связи в Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> и по телефону <a href='tel:+998771044422'>+998 77 104 44 22</a>. Ответим на любые вопросы и поможем с выбором!"
       },
       fallback:"Я могу подсказать по каталогу мебели, актуальным ценам, условиям доставки по Ташкенту, оплате (Click, Payme, наличные) или соединить с менеджером. Выберите тему ниже или задайте вопрос 👇",
       leadTitle:"Оставьте номер телефона, и наш менеджер свяжется с вами в течение 10-15 минут:",
@@ -85,7 +85,7 @@
         "Sun‘iy rotang":"Mebel, gultuvak va to‘siqlar to‘qish uchun rulon va buxtalarda kilogramm hisobida sotiladigan birlamchi sun‘iy polimer rotang. Yuqori elastiklik, mustahkamlik va quyoshga chidamlilik. <a href='catalog.html?cat=rattan'>Rotang katalogida</a> ko‘ring.",
         "Ranglar palitrasi":"BTT mebellari zamonaviy ranglarda taqdim etiladi: antrasit (qora), oq, bej/mokko, jigarrang, kulrang va terrakota. Metall karkaslar bardoshli kukunli bo‘yoq bilan qoplangan. Mahsulot sahifasida rangni tanlashingiz mumkin.",
         "Yetkazish va olib ketish":"Toshkent bo‘ylab yetkazish 1-2 ish kunida to‘g‘ridan-to‘g‘ri kuryer tarifi bo‘yicha amalga oshiriladi (Yandex / Labo / Porter). Ombordan olib ketish ham kelishuv asosida mavjud. Viloyatlarga yetkazib berish xizmatlari orqali yuboramiz.",
-        "Menejer bilan bog‘lanish":"Telegramda <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>@btt_uz</a> va telefon <a href='tel:+998771044422'>+998 77 104 44 22</a> orqali bog‘laning."
+        "Menejer bilan bog‘lanish":"Telegramda <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> va telefon <a href='tel:+998771044422'>+998 77 104 44 22</a> orqali bog‘laning."
       },
       fallback:"Mebel katalogi, amaldagi narxlar, yetkazib berish shartlari, to‘lov (Click, Payme, naqd) haqida yordam bera olaman. Mavzuni tanlang yoki savol bering 👇",
       leadTitle:"Telefon raqamingizni qoldiring, menejerimiz 10-15 daqiqa ichida bog‘lanadi:",
@@ -131,7 +131,7 @@
         "Synthetic rattan":"Premium virgin synthetic polymer rattan sold by weight (per kg in coils). High elasticity, UV-stabilized, in various profiles (half-round, flat, rod). Perfect for weaving furniture and planters. See our <a href='catalog.html?cat=rattan'>rattan catalog</a>.",
         "Color options":"BTT furniture is available in sought-after colors: anthracite black, white, beige/mocha, warm brown, grey, and terracotta. Metal frames feature heavy-duty matte powder coating. Select your preferred color on each product page.",
         "Delivery and pickup":"Delivery across Tashkent takes 1-2 business days at direct courier rates (Yandex / Labo / Porter). Warehouse pickup in Tashkent is available by appointment.",
-        "Talk to a manager":"Reach us on Telegram <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>@btt_uz</a> or call <a href='tel:+998771044422'>+998 77 104 44 22</a>."
+        "Talk to a manager":"Reach us on Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> or call <a href='tel:+998771044422'>+998 77 104 44 22</a>."
       },
       fallback:"I can help with our furniture catalog, current prices, delivery in Tashkent, payment methods (Click, Payme, cash), or connect you with a manager. Choose a topic below or type your question 👇",
       leadTitle:"Leave your phone number and our manager will contact you within 10-15 minutes:",
@@ -517,11 +517,11 @@
     // 12. Showroom, location, address
     if(/\b(где вы|где находитесь|адрес|шоурум|локация|геолокация|куда подъехать|manzil|qayerda|lokatsiya|showroom|address|location|where)\b/.test(norm)){
       if(curLang === "uz"){
-        return "Biz Toshkent shahrida joylashganmiz (ombor va ofis oldindan kelishuv bo‘yicha). Ish vaqti: Du-Sha, 10:00 - 20:00. Tashrif buyurishdan oldin Telegram <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>@btt_uz</a> yoki <a href='tel:+998771044422'>+998 77 104 44 22</a> raqamiga yozing!";
+        return "Biz Toshkent shahrida joylashganmiz (ombor va ofis oldindan kelishuv bo‘yicha). Ish vaqti: Du-Sha, 10:00 - 20:00. Tashrif buyurishdan oldin Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> yoki <a href='tel:+998771044422'>+998 77 104 44 22</a> raqamiga yozing!";
       } else if(curLang === "en"){
-        return "We are based in Tashkent, Uzbekistan (central warehouse and showroom by appointment). Working hours: Mon-Sat 10:00 - 20:00. Please contact us on Telegram <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>@btt_uz</a> or call <a href='tel:+998771044422'>+998 77 104 44 22</a> before visiting.";
+        return "We are based in Tashkent, Uzbekistan (central warehouse and showroom by appointment). Working hours: Mon-Sat 10:00 - 20:00. Please contact us on Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> or call <a href='tel:+998771044422'>+998 77 104 44 22</a> before visiting.";
       } else {
-        return "Мы находимся в Ташкенте (склад готовой продукции и офис по предварительной договорённости). Режим работы: Пн-Сб, 10:00 - 20:00. Перед визитом напишите в Telegram <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>@btt_uz</a> или позвоните <a href='tel:+998771044422'>+998 77 104 44 22</a>.";
+        return "Мы находимся в Ташкенте (склад готовой продукции и офис по предварительной договорённости). Режим работы: Пн-Сб, 10:00 - 20:00. Перед визитом напишите в Telegram <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a> или позвоните <a href='tel:+998771044422'>+998 77 104 44 22</a>.";
       }
     }
 
@@ -539,33 +539,33 @@
     // 14. How to order
     if(/\b(как заказать|заказ|купить|оформить|1 клик|в один клик|buyurtma|xarid|order|buy|how to order)\b/.test(norm)){
       if(curLang === "uz"){
-        return "Buyurtma berish juda oson: 1) Saytda savatga qo‘shing yoki «1-klikda xarid» tugmasini bosing; 2) Telefon raqamingizni qoldiring; 3) Menejer 10 daqiqa ichida bog‘lanib yetkazishni tasdiqlaydi. Yoki to‘g‘ridan-to‘g‘ri <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>Telegramda</a> buyurtma berishingiz mumkin.";
+        return "Buyurtma berish juda oson: 1) Saytda savatga qo‘shing yoki «1-klikda xarid» tugmasini bosing; 2) Telefon raqamingizni qoldiring; 3) Menejer 10 daqiqa ichida bog‘lanib yetkazishni tasdiqlaydi. Yoki to‘g‘ridan-to‘g‘ri <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>Telegramda</a> buyurtma berishingiz mumkin.";
       } else if(curLang === "en"){
-        return "Ordering is simple: 1) Add items to your cart or click «Buy in 1 click»; 2) Leave your contact details; 3) Our manager calls you within 10 minutes to verify items and delivery. Or order directly via <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>Telegram</a>.";
+        return "Ordering is simple: 1) Add items to your cart or click «Buy in 1 click»; 2) Leave your contact details; 3) Our manager calls you within 10 minutes to verify items and delivery. Or order directly via <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>Telegram</a>.";
       } else {
-        return "Оформить заказ очень просто: 1) Добавьте товары в корзину или нажмите «Купить в 1 клик»; 2) Укажите телефон и адрес; 3) Менеджер свяжется с вами в течение 10 минут для согласования доставки. Либо оформите заказ напрямую в <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>Telegram</a>.";
+        return "Оформить заказ очень просто: 1) Добавьте товары в корзину или нажмите «Купить в 1 клик»; 2) Укажите телефон и адрес; 3) Менеджер свяжется с вами в течение 10 минут для согласования доставки. Либо оформите заказ напрямую в <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>Telegram</a>.";
       }
     }
 
     // 15. Order tracking & account
     if(/\b(где мой заказ|статус|отследить|личный кабинет|аккаунт|профиль|мои заказы|войти|buyurtma holati|profil|kabinet|order status|track|account)\b/.test(norm)){
       if(curLang === "uz"){
-        return "Barcha buyurtmalaringiz va ularning holati <a href='account.html'>Shaxsiy kabinet</a>da ko‘rinadi. Shuningdek, buyurtma raqamini (masalan, BT-2049) Telegramda <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>menejerga</a> yuborib tezkor ma‘lumot olishingiz mumkin.";
+        return "Barcha buyurtmalaringiz va ularning holati <a href='account.html'>Shaxsiy kabinet</a>da ko‘rinadi. Shuningdek, buyurtma raqamini (masalan, BT-2049) Telegramda <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>menejerga</a> yuborib tezkor ma‘lumot olishingiz mumkin.";
       } else if(curLang === "en"){
-        return "You can track your orders and statuses in your <a href='account.html'>Personal Account</a>. Alternatively, send your order number (e.g., BT-2049) to our manager on <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>Telegram</a>.";
+        return "You can track your orders and statuses in your <a href='account.html'>Personal Account</a>. Alternatively, send your order number (e.g., BT-2049) to our manager on <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>Telegram</a>.";
       } else {
-        return "Статус заказа можно отслеживать в вашем <a href='account.html'>Личном кабинете</a>. Также вы можете отправить номер заказа (например: BT-2049) менеджеру в <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>Telegram</a> для мгновенного ответа.";
+        return "Статус заказа можно отслеживать в вашем <a href='account.html'>Личном кабинете</a>. Также вы можете отправить номер заказа (например: BT-2049) менеджеру в <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>Telegram</a> для мгновенного ответа.";
       }
     }
 
     // 16. HoReCa / Wholesale / B2B
     if(/\b(хорека|horeca|кафе|ресторан|опт|оптом|партия|для бизнеса|юридическ|веранда|терраса|летник|ulgurji|kafe|wholesale|b2b)\b/.test(norm)){
       if(curLang === "uz"){
-        return "Kafelar, restoranlar, mehmonxonalar va loyihalar uchun ulgurji narxlar va shartnoma asosida yetkazish mavjud. Batafsil: <a href='horeca.html'>HoReCa sahifasida</a> yoki menejer bilan bog‘laning: <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>@btt_uz</a>." + renderLeadForm(curLang);
+        return "Kafelar, restoranlar, mehmonxonalar va loyihalar uchun ulgurji narxlar va shartnoma asosida yetkazish mavjud. Batafsil: <a href='horeca.html'>HoReCa sahifasida</a> yoki menejer bilan bog‘laning: <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>@bententradeuz</a>." + renderLeadForm(curLang);
       } else if(curLang === "en"){
-        return "We offer wholesale pricing, custom batch supply, and commercial invoices for cafes, restaurants, hotels, and interior projects. Learn more on our <a href='horeca.html'>HoReCa page</a> or reach out on <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>Telegram</a>." + renderLeadForm(curLang);
+        return "We offer wholesale pricing, custom batch supply, and commercial invoices for cafes, restaurants, hotels, and interior projects. Learn more on our <a href='horeca.html'>HoReCa page</a> or reach out on <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>Telegram</a>." + renderLeadForm(curLang);
       } else {
-        return "Для кафе, ресторанов, отелей и веранд мы предлагаем оптовые цены, поставку партиями и работу по договору. Подробнее на нашей <a href='horeca.html'>странице HoReCa</a> или свяжитесь с B2B-менеджером в <a href='https://t.me/btt_uz' target='_blank' rel='noopener'>Telegram</a>." + renderLeadForm(curLang);
+        return "Для кафе, ресторанов, отелей и веранд мы предлагаем оптовые цены, поставку партиями и работу по договору. Подробнее на нашей <a href='horeca.html'>странице HoReCa</a> или свяжитесь с B2B-менеджером в <a href='https://t.me/bententradeuz' target='_blank' rel='noopener'>Telegram</a>." + renderLeadForm(curLang);
       }
     }
 
@@ -639,7 +639,7 @@
     fab.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.6 8.6 0 0 1-3.8-.9L3 21l1.4-5.2A8.4 8.4 0 0 1 3.5 11.5 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg><span class="bot-fab__badge">1</span>';
 
     const panel=document.createElement("div");
-    panel.className="bot-panel liquid spatial"; panel.setAttribute("role","dialog"); panel.setAttribute("aria-label","BTT assistant");
+    panel.className="bot-panel liquid spatial"; panel.setAttribute("role","dialog"); panel.setAttribute("aria-label","Bententrade assistant");
     panel.innerHTML=
       '<div class="bot-head"><div class="bot-head__ava">Б</div>'+
       '<div><div class="bot-head__t" data-bot-name>Бен</div><div class="bot-head__s" data-bot-role>Онлайн-помощник</div></div>'+
@@ -803,7 +803,7 @@
     function syncDynamicSettings(s) {
       if (!s) return;
       const phone = s.phone || "+998 77 104 44 22";
-      const tg = (s.telegram || "btt_uz").replace(/^@/, "");
+      const tg = (s.telegram || "bententradeuz").replace(/^@/, "");
       T.ru.ans["Связаться с менеджером"] = "Конечно! На связи в Telegram <a href='https://t.me/" + tg + "' target='_blank' rel='noopener'>@" + tg + "</a> и по телефону <a href='tel:" + phone.replace(/[^\d+]/g, "") + "'>" + phone + "</a>. Ответим на любые вопросы!";
       T.uz.ans["Menejer bilan bog‘lanish"] = "Albatta! Telegramda <a href='https://t.me/" + tg + "' target='_blank' rel='noopener'>@" + tg + "</a> va telefon <a href='tel:" + phone.replace(/[^\d+]/g, "") + "'>" + phone + "</a> orqali bog‘laning.";
       T.en.ans["Talk to a manager"] = "Of course! We are on Telegram <a href='https://t.me/" + tg + "' target='_blank' rel='noopener'>@" + tg + "</a> and phone <a href='tel:" + phone.replace(/[^\d+]/g, "") + "'>" + phone + "</a>. Feel free to ask!";

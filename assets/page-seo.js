@@ -3,7 +3,7 @@
   var t = window.BTT_I18N && window.BTT_I18N.t;
   if (!SEO || !SEO.injectJsonLd || !t) return;
 
-  var SITE = "https://btt.uz";
+  var SITE = "https://bententrade.uz";
   var page = (location.pathname.split("/").pop() || "index.html").toLowerCase();
 
   function orgRef() {
@@ -59,7 +59,7 @@
           "@id": SITE + "/#org",
           name: "BTT - мебель для дома и сада",
           telephone: "+998771044422",
-          email: "hello@btt.uz",
+          email: "hello@bententrade.uz",
           url: SITE + "/",
           address: {
             "@type": "PostalAddress",

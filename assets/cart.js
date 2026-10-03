@@ -1,5 +1,5 @@
 /* ============================================================
-   BTT - cart + favorites (site-wide, persistent)
+   BENTENTRADE - cart + favorites (site-wide, persistent)
    Self-injecting slide-in drawers. State lives in localStorage:
      btt_cart  → { id: {name, price, img, qty} }
      btt_favs  → { id: {name, price, img} }
@@ -12,7 +12,7 @@
   /* ---------- manager contact (edit these) ----------
      telegram : username after t.me/  (no @)
      whatsapp : full number, digits only (country code first)        */
-  const CONFIG = { telegram: "btt_uz", whatsapp: "998771044422", currency: "сум" };
+  const CONFIG = { telegram: "bententradeuz", whatsapp: "998771044422", currency: "сум" };
   function syncSettings(){
     try{
       const s = JSON.parse(sessionStorage.getItem("btt_settings")||"{}");
@@ -44,7 +44,7 @@
         ordTitle:"Подтверждение заказа",ordSub:"Отправьте заказ менеджеру - он подтвердит наличие, доставку и оплату.",
         ordTg:"Оформить в Telegram",ordWa:"Оформить в WhatsApp",ordBack:"Вернуться в корзину",
         ordCopied:"Заказ скопирован - вставьте его в чат с менеджером.",
-        ordHead:"Заказ с сайта BTT",ordNote:"Заполню контакты и адрес в чате.",
+        ordHead:"Заказ с сайта Bententrade",ordNote:"Заполню контакты и адрес в чате.",
         coName:"Имя",coNamePh:"Ваше имя",coPhone:"Телефон",coPhonePh:"+998 __ ___ __ __",
         coMethod:"Способ получения",coDelivery:"Доставка",coPickup:"Самовывоз",
         coAddress:"Адрес доставки",coAddressPh:"Город, улица, дом, квартира",
@@ -83,7 +83,7 @@
         ordTitle:"Buyurtma tasdiqlash",ordSub:"Buyurtmani menejerga yuboring - mavjudligi, yetkazish va to‘lovni tasdiqlaydi.",
         ordTg:"Telegramda rasmiylashtirish",ordWa:"WhatsAppda rasmiylashtirish",ordBack:"Savatga qaytish",
         ordCopied:"Buyurtma nusxalandi - menejer chatiga joylang.",
-        ordHead:"BTT saytidan buyurtma",ordNote:"Kontakt va manzilni chatda to‘ldiraman.",
+        ordHead:"Bententrade saytidan buyurtma",ordNote:"Kontakt va manzilni chatda to‘ldiraman.",
         coName:"Ism",coNamePh:"Ismingiz",coPhone:"Telefon",coPhonePh:"+998 __ ___ __ __",
         coMethod:"Olish usuli",coDelivery:"Yetkazib berish",coPickup:"Olib ketish",
         coAddress:"Yetkazish manzili",coAddressPh:"Shahar, ko‘cha, uy, xonadon",
@@ -123,7 +123,7 @@
         ordTitle:"Confirm your order",ordSub:"Send the order to our manager - they'll confirm stock, delivery and payment.",
         ordTg:"Order via Telegram",ordWa:"Order via WhatsApp",ordBack:"Back to cart",
         ordCopied:"Order copied - paste it into the chat with our manager.",
-        ordHead:"Order from the BTT website",ordNote:"I'll add my contacts and address in the chat.",
+        ordHead:"Order from the Bententrade website",ordNote:"I'll add my contacts and address in the chat.",
         coName:"Name",coNamePh:"Your name",coPhone:"Phone",coPhonePh:"+998 __ ___ __ __",
         coMethod:"Fulfilment",coDelivery:"Delivery",coPickup:"Pickup",
         coAddress:"Delivery address",coAddressPh:"City, street, house, apartment",

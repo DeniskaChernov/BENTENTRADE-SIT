@@ -1,12 +1,12 @@
 /* ============================================================
-   BTT - public articles/blog (list + single), API-driven.
+   BENTENTRADE - public articles/blog (list + single), API-driven.
    Robust fail-safe dictionary, automatic fallback covers,
    3-column luxury grid, editorial hero story, instant search.
    ============================================================ */
 (function () {
   "use strict";
 
-  const SITE = "https://btt.uz";
+  const SITE = "https://bententrade.uz";
 
   /* Embedded fail-safe dictionary so raw keys never leak */
   const BLOG_DICT = {
@@ -26,7 +26,7 @@
       "blog.readTime": "мин чтения",
       "blog.noResults": "Статьи по вашему запросу не найдены.",
       "blog.cta.title": "Нужен совет по выбору мебели или кашпо?",
-      "blog.cta.sub": "Мастер BTT поможет подобрать гарнитур под размер террасы, подскажет оттенок ротанга и рассчитает стоимость.",
+      "blog.cta.sub": "Мастер Bententrade поможет подобрать гарнитур под размер террасы, подскажет оттенок ротанга и рассчитает стоимость.",
       "blog.cta.btn": "Консультация в Telegram",
       "blog.read": "Читать",
       "blog.back": "Все статьи",
@@ -106,7 +106,7 @@
     "iskusstvennyy-rotang": "assets/hero-rattan.png",
     "zachem-iskusstvennyy-rotang": "assets/hero-rattan.png",
     "kak-vybrat-luchshiy-rotang": "assets/rattan-palette-hero.png",
-    "pochemu-rabotayut-s-btt": "assets/hero-garden-furniture.png",
+    "pochemu-rabotayut-s-bententrade": "assets/hero-garden-furniture.png",
     "kashpo-iz-iskusstvennogo-rotanga": "assets/bento-planter.png",
     "korziny-sunduki-rotang": "assets/hero-home-furniture.png",
     "kupit-rotang-buhtami": "assets/hero-rattan.png",
@@ -114,7 +114,7 @@
     "pletennaya-mebel-dlya-doma": "assets/scene-dining-cream.png",
     "dostavka-rotanga-po-uzbekistanu": "assets/hero-garden-furniture.png",
     "rotang-dlya-balkona": "assets/bento-rattan.png",
-    "palitra-tsvetov-rotanga-btt": "assets/rattan-palette-hero.png",
+    "palitra-tsvetov-rotanga-bententrade": "assets/rattan-palette-hero.png",
     "oformlenie-terassi-rotangom": "assets/scene-dining-warm.png"
   };
 
@@ -433,7 +433,7 @@
           '<h3 class="blog-cta-banner__title">' + esc(t("blog.cta.title")) + "</h3>" +
           '<p class="blog-cta-banner__sub">' + esc(t("blog.cta.sub")) + "</p>" +
         "</div>" +
-        '<a class="blog-cta-banner__btn" href="https://t.me/btt_uz" target="_blank" rel="noopener noreferrer">' +
+        '<a class="blog-cta-banner__btn" href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer">' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>' +
           "<span>" + esc(t("blog.cta.btn")) + "</span>" +
         "</a>" +
@@ -624,7 +624,7 @@
       return;
     }
 
-    const title = a.title || a.slug || "BTT";
+    const title = a.title || a.slug || "Bententrade";
     const desc = (a.excerpt || "").slice(0, 160) || t("blog.sub");
     const pageUrl = SITE + "/article.html?slug=" + encodeURIComponent(a.slug);
     const topic = getTopic(a);
@@ -632,13 +632,13 @@
     const readTime = getReadTime(a);
     const dateStr = fmtDate(a.published_at);
 
-    document.title = title + " - BTT";
+    document.title = title + " - Bententrade";
     setMeta("description", desc);
     setMeta("og:title", title, "property");
     setMeta("og:description", desc, "property");
     setMeta("og:url", pageUrl, "property");
     setCanonical(pageUrl);
-    const kwTpl = t("meta.article.keywords") || "{title}, rotang, btt";
+    const kwTpl = t("meta.article.keywords") || "{title}, rotang, bententrade";
     const kw = (a.keywords || kwTpl.replace(/\{title\}/g, title)).slice(0, 200);
     setMeta("keywords", kw);
 
@@ -675,10 +675,10 @@
       "headline": title,
       "description": desc,
       "datePublished": a.published_at || "",
-      "author": { "@type": "Organization", "name": "BTT" },
+      "author": { "@type": "Organization", "name": "Bententrade" },
       "publisher": {
         "@type": "Organization",
-        "name": "BTT",
+        "name": "Bententrade",
         "logo": { "@type": "ImageObject", "url": SITE + "/assets/btt-logo.png" },
       },
       "mainEntityOfPage": pageUrl,
@@ -704,7 +704,7 @@
       '<div class="article__body">' + bodyHtml + "</div>" +
       '<div class="article__cta">' +
       '<a class="btn btn--copper" href="catalog.html">' + esc(t("nav.catalog2")) + "</a>" +
-      '<a class="btn btn--ghost" href="https://t.me/btt_uz" target="_blank" rel="noopener noreferrer">Telegram</a>' +
+      '<a class="btn btn--ghost" href="https://t.me/bententradeuz" target="_blank" rel="noopener noreferrer">Telegram</a>' +
       '<a class="btn btn--ghost" href="blog.html">' + esc(t("blog.back")) + "</a>" +
       "</div></article>";
     root.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));

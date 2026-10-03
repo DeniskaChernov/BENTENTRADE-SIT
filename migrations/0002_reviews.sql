@@ -1,4 +1,4 @@
--- Reviews migration for BTT
+-- Reviews migration for Bententrade
 CREATE TABLE IF NOT EXISTS reviews (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   product_id TEXT NOT NULL,

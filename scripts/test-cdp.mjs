@@ -10,7 +10,7 @@ async function testPage(targetUrl) {
     '--remote-debugging-port=9222',
     '--disable-gpu',
     '--no-first-run',
-    '--user-data-dir=C:\\BTT-Sit\\.tmp-chrome-profile'
+    '--user-data-dir=C:\\Bententrade-Sit\\.tmp-chrome-profile'
   ]);
 
   await new Promise(r => setTimeout(r, 1200));
@@ -67,7 +67,7 @@ async function testPage(targetUrl) {
   errors.forEach(e => console.error('ERROR:', e));
 }
 
-testPage('https://btt.denisblackman2.workers.dev/catalog/stul-todo-soft')
-  .then(() => testPage('https://btt.denisblackman2.workers.dev/catalog/stul-todo'))
-  .then(() => testPage('https://btt.denisblackman2.workers.dev/catalog/stul-roero'))
+testPage('https://bententrade.denisblackman2.workers.dev/catalog/stul-todo-soft')
+  .then(() => testPage('https://bententrade.denisblackman2.workers.dev/catalog/stul-todo'))
+  .then(() => testPage('https://bententrade.denisblackman2.workers.dev/catalog/stul-roero'))
   .catch(console.error);

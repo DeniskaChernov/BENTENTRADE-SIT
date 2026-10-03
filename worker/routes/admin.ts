@@ -785,7 +785,7 @@ app.get("/stats", async (c) => {
 app.post("/sms/test", async (c) => {
   const b = await c.req.json().catch(() => ({}));
   const phone = str(b.phone, 30);
-  const message = str(b.message, 500) || "BTT: Тестовое SMS-сообщение успешно доставлено!";
+  const message = str(b.message, 500) || "Bententrade: Тестовое SMS-сообщение успешно доставлено!";
   if (!phone) return c.json({ error: "phone_required" }, 422);
 
   const res = await sendSms(c.env, { phone, message, skipRateLimit: true });

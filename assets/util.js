@@ -1,5 +1,5 @@
 /* ============================================================
-   BTT - tiny shared client helpers.
+   BENTENTRADE - tiny shared client helpers.
    Loaded before the feature scripts so they can reuse one copy of
    the language/i18n/escape helpers and the product-card SVG icons
    instead of each redefining them. Feature scripts still keep a
@@ -93,7 +93,7 @@
     try {
       s = window._btt_settings || JSON.parse(sessionStorage.getItem("btt_settings") || "{}");
     } catch(e){}
-    var tg = (s && s.telegram) ? String(s.telegram).replace(/^@/, "") : "btt_uz";
+    var tg = (s && s.telegram) ? String(s.telegram).replace(/^@/, "") : "bententradeuz";
     var wa = (s && s.whatsapp) ? String(s.whatsapp).replace(/[^\d]/g, "") : "998771044422";
     return {
       telegram: "https://t.me/" + tg + (msg ? "?text=" + msg : ""),
@@ -144,7 +144,7 @@
   };
 
   var OG_LOCALES = { ru: "ru_RU", uz: "uz_UZ", en: "en_US" };
-  var SITE_URL = "https://btt.uz";
+  var SITE_URL = "https://bententrade.uz";
 
   function seoPageUrl() {
     var path = location.pathname.split("/").pop() || "index.html";

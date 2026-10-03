@@ -122,7 +122,7 @@ if (missingInEn.length > 0) {
 }
 
 // 4. CHECK STRICT REPO RULES: ZERO EM-DASH / EN-DASH
-console.log('\n--- 4. STRICT RULE: ZERO EM-DASH (-) OR EN-DASH (-) ---');
+console.log('\n--- 4. STRICT RULE: ZERO EM-DASH (—) OR EN-DASH (–) ---');
 const allHtmlFiles = fs.readdirSync('.').filter(f => f.endsWith('.html'));
 const coreJsFiles = fs.readdirSync('assets').filter(f => f.endsWith('.js'));
 const allChecked = [...allHtmlFiles, ...coreJsFiles.map(f => `assets/${f}`), 'data/products-master.json'];

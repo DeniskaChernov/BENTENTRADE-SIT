@@ -9,7 +9,7 @@ async function testSwatches() {
     '--remote-debugging-port=9223',
     '--disable-gpu',
     '--no-first-run',
-    '--user-data-dir=C:\\BTT-Sit\\.tmp-chrome-profile-swatch'
+    '--user-data-dir=C:\\Bententrade-Sit\\.tmp-chrome-profile-swatch'
   ]);
 
   await new Promise(r => setTimeout(r, 1200));
@@ -50,7 +50,7 @@ async function testSwatches() {
 
   await send('Page.enable');
   await send('Runtime.enable');
-  await send('Page.navigate', { url: 'https://btt.denisblackman2.workers.dev/catalog.html' });
+  await send('Page.navigate', { url: 'https://bententrade.denisblackman2.workers.dev/catalog.html' });
 
   await new Promise(r => setTimeout(r, 2500));
 

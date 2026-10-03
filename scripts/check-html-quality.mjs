@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = 'c:\\BTT-Sit';
+const root = 'c:\\Bententrade-Sit';
 const i18n = JSON.parse(fs.readFileSync(path.join(root, 'data', 'products-master.json'), 'utf8'));
 const i18nJs = fs.readFileSync(path.join(root, 'assets', 'i18n.js'), 'utf8');
 
@@ -20,7 +20,7 @@ console.log('=== CHECKING ALL HTML FILES FOR I18N KEYS & DASHES ===');
 for (const file of htmlFiles) {
   const content = fs.readFileSync(path.join(root, file), 'utf8');
 
-  // Check em-dash (- \u2014) and en-dash (- \u2013)
+  // Check em-dash (— \u2014) and en-dash (– \u2013)
   const dashes = [];
   const lines = content.split('\n');
   lines.forEach((line, idx) => {

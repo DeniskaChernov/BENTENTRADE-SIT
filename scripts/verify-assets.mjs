@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = 'c:\\BTT-Sit';
+const root = 'c:\\Bententrade-Sit';
 const htmlFiles = fs.readdirSync(root).filter(f => f.endsWith('.html'));
 
 console.log('=== CHECKING ALL HTML FILES FOR 404 ASSETS, BROKEN LINKS, AND SCRIPT TAGS ===');

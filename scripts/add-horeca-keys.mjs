@@ -18,7 +18,7 @@ const newRUHrc = [
   '    "hrc.prod.badge7": "\u041a\u0432\u0430\u0434\u0440\u0430\u0442\u043d\u044b\u0439 80\u00d780",',
   '    "hrc.prod.badge8": "\u041f\u0440\u044f\u043c\u043e\u0443\u0433\u043e\u043b\u044c\u043d\u044b\u0439 135\u00d780",',
   '    "hrc.contact.note": "\u0412\u0438\u0437\u0438\u0442\u044b \u043f\u043e \u043f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0439 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0451\u043d\u043d\u043e\u0441\u0442\u0438",',
-  '    "hrc.contact.tg": "\u041d\u0430\u043f\u0438\u0441\u0430\u0442\u044c \u0432 Telegram @btt_uz",',
+  '    "hrc.contact.tg": "\u041d\u0430\u043f\u0438\u0441\u0430\u0442\u044c \u0432 Telegram @bententradeuz",',
 ];
 lines.splice(ruHrcIdx + 1, 0, ...newRUHrc);
 console.log(`RU: inserted ${newRUHrc.length} hrc keys after line ${ruHrcIdx + 1}`);
@@ -37,7 +37,7 @@ const newUZHrc = [
   '    "hrc.prod.badge7": "Kvadrat 80\u00d780",',
   '    "hrc.prod.badge8": "To\'g\'riburchak 135\u00d780",',
   '    "hrc.contact.note": "Tashriflar oldindan kelishilgan holda",',
-  '    "hrc.contact.tg": "Telegram orqali yozish @btt_uz",',
+  '    "hrc.contact.tg": "Telegram orqali yozish @bententradeuz",',
 ];
 lines.splice(uzHrcIdx + 1, 0, ...newUZHrc);
 console.log(`UZ: inserted ${newUZHrc.length} hrc keys`);
@@ -56,7 +56,7 @@ const newENHrc = [
   '    "hrc.prod.badge7": "Square 80\u00d780",',
   '    "hrc.prod.badge8": "Rectangular 135\u00d780",',
   '    "hrc.contact.note": "Visits by prior arrangement",',
-  '    "hrc.contact.tg": "Message on Telegram @btt_uz",',
+  '    "hrc.contact.tg": "Message on Telegram @bententradeuz",',
 ];
 lines.splice(enHrcIdx + 1, 0, ...newENHrc);
 console.log(`EN: inserted ${newENHrc.length} hrc keys`);
@@ -76,7 +76,7 @@ html = html.replace('<span class="horeca-prod-badge">Круглый Ø90</span>'
 html = html.replace('<span class="horeca-prod-badge">Квадратный 80×80</span>', '<span class="horeca-prod-badge" data-i18n="hrc.prod.badge7">Квадратный 80×80</span>');
 html = html.replace('<span class="horeca-prod-badge">Прямоугольный 135×80</span>', '<span class="horeca-prod-badge" data-i18n="hrc.prod.badge8">Прямоугольный 135×80</span>');
 html = html.replace('<span class="horeca-contact-note">Визиты по предварительной договорённости</span>', '<span class="horeca-contact-note" data-i18n="hrc.contact.note">Визиты по предварительной договорённости</span>');
-html = html.replace('<span>Написать в Telegram @btt_uz</span>', '<span data-i18n="hrc.contact.tg">Написать в Telegram @btt_uz</span>');
+html = html.replace('<span>Написать в Telegram @bententradeuz</span>', '<span data-i18n="hrc.contact.tg">Написать в Telegram @bententradeuz</span>');
 
 writeFileSync('horeca.html', html, 'utf8');
 console.log('horeca.html patched');

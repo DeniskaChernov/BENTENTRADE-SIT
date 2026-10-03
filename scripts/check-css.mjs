@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = 'c:\\BTT-Sit';
+const root = 'c:\\Bententrade-Sit';
 const cssDir = path.join(root, 'assets');
 const cssFiles = fs.readdirSync(cssDir).filter(f => f.endsWith('.css'));
 

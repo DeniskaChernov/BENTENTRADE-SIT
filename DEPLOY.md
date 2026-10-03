@@ -1,4 +1,4 @@
-# BTT - деплой и эксплуатация
+# Bententrade - деплой и эксплуатация
 
 Стек: **Cloudflare Workers** (Hono API + CRM) + **Static Assets** (статический сайт из корня репозитория) + **D1** (БД) + **R2** (медиа) + **KV** (сессии).
 
@@ -14,9 +14,9 @@ npx wrangler login
 ## 2. Разовая инициализация ресурсов
 
 ```bash
-npm run cf:provision:d1    # создаёт D1 базу btt_db
+npm run cf:provision:d1    # создаёт D1 базу bententrade_db
 npm run cf:provision:kv    # создаёт KV namespace SESSIONS
-npm run cf:provision:r2    # создаёт R2 bucket btt-media
+npm run cf:provision:r2    # создаёт R2 bucket bententrade-media
 ```
 
 Команды выведут `database_id` и KV `id`. Впишите их в `wrangler.jsonc` вместо
@@ -73,7 +73,7 @@ curl -X POST https://<домен>/api/auth/bootstrap-admin \
 ## 7. Резервные копии D1
 
 ```bash
-npm run db:backup          # remote → ./backups/btt_db-remote-<timestamp>.sql
+npm run db:backup          # remote → ./backups/bententrade_db-remote-<timestamp>.sql
 npm run db:backup -- --local
 ```
 

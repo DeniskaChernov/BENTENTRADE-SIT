@@ -1,5 +1,5 @@
 async function testBotLead() {
-  const target = process.env.TEST_URL || "https://btt.denisblackman2.workers.dev";
+  const target = process.env.TEST_URL || "https://bententrade.denisblackman2.workers.dev";
   console.log("Testing live bot lead submission to:", target);
   const res = await fetch(`${target}/api/contact`, {
     method: "POST",

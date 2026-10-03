@@ -54,7 +54,7 @@ const articles = [
 
 ## Где купить в Ташкенте
 
-В BTT мебель плетётся в мастерской в Ташкенте - можно посмотреть образцы, подобрать комплект и заказать доставку по городу и области. Напишите в Telegram @btt_uz - менеджер рассчитает комплект и сроки.`,
+В Bententrade мебель плетётся в мастерской в Ташкенте - можно посмотреть образцы, подобрать комплект и заказать доставку по городу и области. Напишите в Telegram @bententradeuz - менеджер рассчитает комплект и сроки.`,
     },
     {
       title: "Toshkentda bog‘ mebeli: rotang to‘plamini qanday tanlash",
@@ -77,7 +77,7 @@ Kichik terassa - 2 kreslo va stol. Katta oila - burchakli divan yoki 6-8 o‘rin
 
 ## Qayerdan sotib olish
 
-BTT Toshkentda ishlab chiqaradi. Telegram @btt_uz.`,
+Bententrade Toshkentda ishlab chiqaradi. Telegram @bententradeuz.`,
     },
     {
       title: "Garden rattan furniture in Tashkent: how to choose a set",
@@ -96,7 +96,7 @@ Small terrace: two chairs and a coffee table. Family of six: corner sofa or dini
 
 ## Buy in Tashkent
 
-BTT weaves in our Tashkent workshop. Message @btt_uz on Telegram.`,
+Bententrade weaves in our Tashkent workshop. Message @bententradeuz on Telegram.`,
     }),
   art("kashpo-iz-iskusstvennogo-rotanga", "2026-04-28", IMG.planter,
     "кашпо из ротанга, кашпо искусственный ротанг, плетеные кашпо ташкент",
@@ -120,7 +120,7 @@ BTT weaves in our Tashkent workshop. Message @btt_uz on Telegram.`,
 
 ### Комплекты
 
-Набор из 3-5 кашпо одного стиля визуально собирает зону отдыха. В каталоге BTT есть готовые комплекты и индивидуальные размеры.
+Набор из 3-5 кашпо одного стиля визуально собирает зону отдыха. В каталоге Bententrade есть готовые комплекты и индивидуальные размеры.
 
 ## Уход
 
@@ -128,10 +128,10 @@ BTT weaves in our Tashkent workshop. Message @btt_uz on Telegram.`,
 
 ## Заказ в Ташкенте
 
-Подберём форму и цвет под ваш проект - @btt_uz в Telegram.`,
+Подберём форму и цвет под ваш проект - @bententradeuz в Telegram.`,
     },
-    { title: "Sun’iy rotang gultuvaklari", excerpt: "Bog‘, terassa va interyer uchun.", body: `Rotang gultuvaklari namlikka chidamli.\n\n![Gultuvak](${IMG.heroPlanter})\n\nBTT - @btt_uz.` },
-    { title: "Synthetic rattan planters", excerpt: "For garden, terrace and interior.", body: `Won't crack in frost, easy to wash.\n\n![Planter](${IMG.heroPlanter})\n\nOrder via @btt_uz.` }),
+    { title: "Sun’iy rotang gultuvaklari", excerpt: "Bog‘, terassa va interyer uchun.", body: `Rotang gultuvaklari namlikka chidamli.\n\n![Gultuvak](${IMG.heroPlanter})\n\nBententrade - @bententradeuz.` },
+    { title: "Synthetic rattan planters", excerpt: "For garden, terrace and interior.", body: `Won't crack in frost, easy to wash.\n\n![Planter](${IMG.heroPlanter})\n\nOrder via @bententradeuz.` }),
   art("korziny-sunduki-rotang", "2026-05-05", IMG.home,
     "корзины из ротанга, плетеные корзины, сундук ротанг хранение",
     {
@@ -159,10 +159,10 @@ BTT weaves in our Tashkent workshop. Message @btt_uz on Telegram.`,
 
 Протирка влажной тканью раз в 2-3 недели. Не ставьте острые предметы вплотную к плетению без прокладки.
 
-Закажите в каталоге или напишите @btt_uz.`,
+Закажите в каталоге или напишите @bententradeuz.`,
     },
-    { title: "Rotang savatlar va sandiqlar", excerpt: "Uy va terassa uchun saqlash.", body: `Savatlar namlikka chidamli.\n\n![Saqlash](${IMG.home})\n\n@btt_uz` },
-    { title: "Rattan baskets and chests", excerpt: "Storage for home and terrace.", body: `Woven storage without plastic look.\n\n![Storage](${IMG.home})\n\n@btt_uz` }),
+    { title: "Rotang savatlar va sandiqlar", excerpt: "Uy va terassa uchun saqlash.", body: `Savatlar namlikka chidamli.\n\n![Saqlash](${IMG.home})\n\n@bententradeuz` },
+    { title: "Rattan baskets and chests", excerpt: "Storage for home and terrace.", body: `Woven storage without plastic look.\n\n![Storage](${IMG.home})\n\n@bententradeuz` }),
   art("kupit-rotang-buhtami", "2026-05-12", IMG.rattan,
     "купить ротанг бухтами, искусственный ротанг оптом ташкент, ротанг для плетения",
     {
@@ -188,12 +188,12 @@ BTT weaves in our Tashkent workshop. Message @btt_uz on Telegram.`,
 
 Стабильные партии, артикулы 0609, 1505, 0704, 2404. Склад в Ташкенте - самовывоз или доставка по Узбекистану.
 
-## Качество BTT
+## Качество Bententrade
 
-Собственное производство - окраска в массе, контроль диаметра, без «пустого» ядра. Напишите @btt_uz для прайса.`,
+Собственное производство - окраска в массе, контроль диаметра, без «пустого» ядра. Напишите @bententradeuz для прайса.`,
     },
-    { title: "Toshkentda rotang g‘iloflab sotib olish", excerpt: "Ustalar va B2B uchun.", body: `Profil va rang tanlang.\n\n![Rotang](${IMG.rattan})\n\n@btt_uz` },
-    { title: "Buy synthetic rattan by the coil in Tashkent", excerpt: "Profiles for workshops and B2B.", body: `Half-moon, round and flat profiles.\n\n![Coils](${IMG.rattan})\n\n@btt_uz` }),
+    { title: "Toshkentda rotang g‘iloflab sotib olish", excerpt: "Ustalar va B2B uchun.", body: `Profil va rang tanlang.\n\n![Rotang](${IMG.rattan})\n\n@bententradeuz` },
+    { title: "Buy synthetic rattan by the coil in Tashkent", excerpt: "Profiles for workshops and B2B.", body: `Half-moon, round and flat profiles.\n\n![Coils](${IMG.rattan})\n\n@bententradeuz` }),
   art("mebel-rotang-dlya-kafe", "2026-05-20", IMG.teal,
     "мебель ротанг для кафе, уличная мебель ресторан, терраса кафе узбекистан",
     {
@@ -219,12 +219,12 @@ BTT weaves in our Tashkent workshop. Message @btt_uz on Telegram.`,
 
 Поставляем партиями, собираем на объекте. Возможен нестандарт под планировку зала.
 
-## Связь с BTT
+## Связь с Bententrade
 
-Коммерческое предложение и 3D-подбор по фото зала - @btt_uz.`,
+Коммерческое предложение и 3D-подбор по фото зала - @bententradeuz.`,
     },
-    { title: "Kafe va restoranlar uchun rotang mebel", excerpt: "Ko‘cha zonalar va verandalar.", body: `Izosh qoplamasi va tez parvarish.\n\n![Kafe](${IMG.teal})\n\n@btt_uz` },
-    { title: "Rattan furniture for cafés and restaurants", excerpt: "Outdoor seating that lasts.", body: `Dense weave, aluminium frame.\n\n![Café](${IMG.teal})\n\n@btt_uz` }),
+    { title: "Kafe va restoranlar uchun rotang mebel", excerpt: "Ko‘cha zonalar va verandalar.", body: `Izosh qoplamasi va tez parvarish.\n\n![Kafe](${IMG.teal})\n\n@bententradeuz` },
+    { title: "Rattan furniture for cafés and restaurants", excerpt: "Outdoor seating that lasts.", body: `Dense weave, aluminium frame.\n\n![Café](${IMG.teal})\n\n@bententradeuz` }),
   art("pletennaya-mebel-dlya-doma", "2026-05-28", IMG.cream,
     "плетеная мебель для дома, ротанг интерьер, мебель для гостиной ротанг",
     {
@@ -250,16 +250,16 @@ BTT weaves in our Tashkent workshop. Message @btt_uz on Telegram.`,
 
 ## Доставка
 
-По Ташкенту - 1-3 дня после готовности. @btt_uz`,
+По Ташкенту - 1-3 дня после готовности. @bententradeuz`,
     },
-    { title: "Uy va mehmonxona uchun to‘qima mebel", excerpt: "Kreslo, komod, javon.", body: `Interyerda tabiiy ko‘rinish.\n\n![Uy](${IMG.cream})\n\n@btt_uz` },
-    { title: "Woven rattan furniture for home", excerpt: "Living room chairs and storage.", body: `Warm texture, easy care.\n\n![Home](${IMG.cream})\n\n@btt_uz` }),
+    { title: "Uy va mehmonxona uchun to‘qima mebel", excerpt: "Kreslo, komod, javon.", body: `Interyerda tabiiy ko‘rinish.\n\n![Uy](${IMG.cream})\n\n@bententradeuz` },
+    { title: "Woven rattan furniture for home", excerpt: "Living room chairs and storage.", body: `Warm texture, easy care.\n\n![Home](${IMG.cream})\n\n@bententradeuz` }),
   art("dostavka-rotanga-po-uzbekistanu", "2026-06-05", IMG.garden,
-    "доставка мебели ротанг узбекистан, доставка ротанга ташкент, btt доставка",
+    "доставка мебели ротанг узбекистан, доставка ротанга ташкент, bententrade доставка",
     {
       title: "Доставка мебели и ротанга по Узбекистану",
       excerpt: "Ташкент, область и регионы - сборка, упаковка и сроки. Как мы организуем логистику.",
-      body: `BTT доставляет плетёную мебель, кашпо и ротанг бухтами по Узбекистану. Ниже - как устроен процесс, чтобы вы заранее планировали сроки.
+      body: `Bententrade доставляет плетёную мебель, кашпо и ротанг бухтами по Узбекистану. Ниже - как устроен процесс, чтобы вы заранее планировали сроки.
 
 ## Ташкент и Ташкентская область
 
@@ -283,10 +283,10 @@ BTT weaves in our Tashkent workshop. Message @btt_uz on Telegram.`,
 
 ## Оформить доставку
 
-Telegram @btt_uz или форма на сайте после принятия cookie.`,
+Telegram @bententradeuz или форма на сайте после принятия cookie.`,
     },
-    { title: "O‘zbekiston bo‘ylab yetkazib berish", excerpt: "Toshkent va viloyatlar.", body: `1-3 kun ichida Toshkent.\n\n![Yetkazish](${IMG.garden})\n\n@btt_uz` },
-    { title: "Delivery across Uzbekistan", excerpt: "Tashkent and regions.", body: `Assembly on site in capital.\n\n![Delivery](${IMG.garden})\n\n@btt_uz` }),
+    { title: "O‘zbekiston bo‘ylab yetkazib berish", excerpt: "Toshkent va viloyatlar.", body: `1-3 kun ichida Toshkent.\n\n![Yetkazish](${IMG.garden})\n\n@bententradeuz` },
+    { title: "Delivery across Uzbekistan", excerpt: "Tashkent and regions.", body: `Assembly on site in capital.\n\n![Delivery](${IMG.garden})\n\n@bententradeuz` }),
   art("rotang-dlya-balkona", "2026-06-12", IMG.bento,
     "ротанг для балкона, мебель балкон узбекистан, компактная мебель терраса",
     {
@@ -312,16 +312,16 @@ Telegram @btt_uz или форма на сайте после принятия c
 
 ## Заказ
 
-Подберём габариты по вашим замерам - @btt_uz.`,
+Подберём габариты по вашим замерам - @bententradeuz.`,
     },
-    { title: "Balkon va lodjiya uchun rotang", excerpt: "Ixcham kreslo va stol.", body: `Quyoshga chidamli.\n\n![Balkon](${IMG.bento})\n\n@btt_uz` },
-    { title: "Rattan for balcony and loggia", excerpt: "Compact chairs and tables.", body: `UV-stable PE weave.\n\n![Balcony](${IMG.bento})\n\n@btt_uz` }),
-  art("palitra-tsvetov-rotanga-btt", "2026-06-20", IMG.palette,
+    { title: "Balkon va lodjiya uchun rotang", excerpt: "Ixcham kreslo va stol.", body: `Quyoshga chidamli.\n\n![Balkon](${IMG.bento})\n\n@bententradeuz` },
+    { title: "Rattan for balcony and loggia", excerpt: "Compact chairs and tables.", body: `UV-stable PE weave.\n\n![Balcony](${IMG.bento})\n\n@bententradeuz` }),
+  art("palitra-tsvetov-rotanga-bententrade", "2026-06-20", IMG.palette,
     "палитра ротанга, цвета искусственного ротанга, tobacco woody graphite",
     {
-      title: "Палитра цветов искусственного ротанга BTT",
+      title: "Палитра цветов искусственного ротанга Bententrade",
       excerpt: "Tobacco, Woody, Brown, Graphite, Choco - как выбрать оттенок под интерьер и фасад.",
-      body: `Цвет ротанга задаёт характер всей зоны отдыха. В BTT палитра построена на натуральных древесных тонах - без кислотных оттенков, которые выгорают неравномерно.
+      body: `Цвет ротанга задаёт характер всей зоны отдыха. В Bententrade палитра построена на натуральных древесных тонах - без кислотных оттенков, которые выгорают неравномерно.
 
 ## Базовые цвета
 
@@ -339,14 +339,14 @@ Telegram @btt_uz или форма на сайте после принятия c
 
 ### Образцы
 
-Закажите набор образцов 15-20 см - привезём в Ташкент или отправим с заказом. @btt_uz
+Закажите набор образцов 15-20 см - привезём в Ташкент или отправим с заказом. @bententradeuz
 
 ## Нестандарт
 
 Любой цвет под заказ от одной бухты - согласуем эталон до производства.`,
     },
-    { title: "BTT rotang rang palitrasi", excerpt: "Tobacco, Woody, Graphite.", body: `5 asosiy rang.\n\n![Palitra](${IMG.palette})\n\n@btt_uz` },
-    { title: "BTT rattan colour palette", excerpt: "Wood tones for outdoor and indoor.", body: `Five base shades plus custom.\n\n![Palette](${IMG.palette})\n\n@btt_uz` }),
+    { title: "Bententrade rotang rang palitrasi", excerpt: "Tobacco, Woody, Graphite.", body: `5 asosiy rang.\n\n![Palitra](${IMG.palette})\n\n@bententradeuz` },
+    { title: "Bententrade rattan colour palette", excerpt: "Wood tones for outdoor and indoor.", body: `Five base shades plus custom.\n\n![Palette](${IMG.palette})\n\n@bententradeuz` }),
   art("oformlenie-terassi-rotangom", "2026-06-28", IMG.warm,
     "оформление террасы ротанг, дизайн террасы узбекистан, зона отдыха терраса",
     {
@@ -376,12 +376,12 @@ Telegram @btt_uz или форма на сайте после принятия c
 
 Высокие кашпо из ротанга с фикусом или оливой визуально «потолок» зоны.
 
-## Реализация с BTT
+## Реализация с Bententrade
 
-Комплект под ключ + доставка - @btt_uz. Можем изготовить нестандартные размеры под вашу планировку.`,
+Комплект под ключ + доставка - @bententradeuz. Можем изготовить нестандартные размеры под вашу планировку.`,
     },
-    { title: "Terassani rotang bilan bezash", excerpt: "Zonalar va yoritish.", body: `4 qadamli qo‘llanma.\n\n![Terassa](${IMG.warm})\n\n@btt_uz` },
-    { title: "Terrace styling with rattan furniture", excerpt: "Zones, light and plants.", body: `Step-by-step guide.\n\n![Terrace](${IMG.warm})\n\n@btt_uz` }),
+    { title: "Terassani rotang bilan bezash", excerpt: "Zonalar va yoritish.", body: `4 qadamli qo‘llanma.\n\n![Terassa](${IMG.warm})\n\n@bententradeuz` },
+    { title: "Terrace styling with rattan furniture", excerpt: "Zones, light and plants.", body: `Step-by-step guide.\n\n![Terrace](${IMG.warm})\n\n@bententradeuz` }),
 ];
 
 writeFileSync("data/articles-seo.json", JSON.stringify({ articles }, null, 2), "utf8");
