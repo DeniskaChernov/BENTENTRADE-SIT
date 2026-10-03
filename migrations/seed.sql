@@ -212,7 +212,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-rotang-135-detail-black-edge.jpg', 'stol-taper-rotang-135', 'Taper Rotang 135x80', 5);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-135-white-scene.jpg', 'stol-taper-rotang-135', 'Taper Rotang 135x80', 6);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stol-taper-80', 'tables', 'stol-taper-80', 734000, 0, 0, 1, 12, 'unknown');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stol-taper-80', 'tables', 'stol-taper-80', 783000, 0, 0, 1, 12, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p12', 'stol-taper-80');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-taper-80', 'ru', 'Стол «Taper 80x80»', 'Столы', 'Практичный квадратный стол Taper 80×80 см в современном минималистичном стиле. Металлический каркас и столешница из ЛДСП с фактурой белого или чёрного мрамора. Оптимален для небольших кухонь, балконов, квартир-студий и кафе. Образует гармоничный комплект со стульями Jardin, Roero и Noero. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.', '["80 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"80 × 80 × 75 см","maxLoad":"","colors":"Белый мрамор, Чёрный мрамор"}', 'Купить Стол «Taper 80x80» в Ташкенте - BTT', 'Стол «Taper 80x80» (Столы) от BTT. Размеры: 80 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-taper-80', 'uz', '«Taper 80x80» stoli', 'Stollar', 'Zamonaviy minimalizm uslubidagi ixcham Taper 80×80 sm stoli. Metall karkas va oq yoki qora marmar fakturali chidamli LDSP stol usti. Kichik oshxonalar, balkonlar, studiyalar va kafelar uchun eng qulay tanlov. Jardin, Roero va Noero stullari bilan to''liq to''plam hosil qiladi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to''g''ridan-to''g''ri yog''ingarchilikdan himoya qilish tavsiya etiladi.', '["80 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"80 × 80 × 75 см","maxLoad":"","colors":"Oq marmar, Qora marmar"}', 'Toshkentda «Taper 80x80» stoli sotib olish - BTT', 'BTT dan «Taper 80x80» stoli (Stollar). O‘lchamlari: 80 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -246,7 +246,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-135-detail-texture.png', 'stol-taper-135', 'Taper 135x80', 6);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-135-scene.jpg', 'stol-taper-135', 'Taper 135x80', 7);
 
-INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stol-corda-135', 'tables', 'stol-corda-135', 949000, 0, 0, 1, 15, 'unknown');
+INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ('stol-corda-135', 'tables', 'stol-corda-135', 999000, 0, 0, 1, 15, 'unknown');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p15', 'stol-corda-135');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-corda-135', 'ru', 'Стол «Corda 135x80»', 'Столы', 'Большой обеденный стол Corda 135×80 см. Металлический каркас в сочетании со столешницей из ЛДСП под благородный мрамор формирует презентабельную обеденную группу для 4-6 человек. Превосходно гармонирует со стульями Corda и Jardin. Для помещений и крытых пространств. Столешницу из ЛДСП рекомендуется защищать от прямых осадков.', '["135 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"135 × 80 × 75 см","maxLoad":"","colors":"Белый мрамор, Чёрный мрамор"}', 'Купить Стол «Corda 135x80» в Ташкенте - BTT', 'Стол «Corda 135x80» (Столы) от BTT. Размеры: 135 × 80 × 75 см. Доставка по Ташкенту и всему Узбекистану.');
 INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, description, sizes, specs, seo_title, seo_description) VALUES ('stol-corda-135', 'uz', '«Corda 135x80» stoli', 'Stollar', 'Katta Corda 135×80 sm ovqat stoli. Metall karkas va nafis marmar ko''rinishidagi LDSP stol usti 4-6 kishi uchun qulay ovqatlanish guruhini tashkil etadi. Corda va Jardin stullari bilan juda chiroyli uyg''unlashadi. Xonalar va yopiq maydonlar uchun. LDSP stol ustini to''g''ridan-to''g''ri yog''ingarchilikdan himoya qilish tavsiya etiladi.', '["135 × 80 × 75 см"]', '{"mat":"ЛДСП, металл","dim":"135 × 80 × 75 см","maxLoad":"","colors":"Oq marmar, Qora marmar"}', 'Toshkentda «Corda 135x80» stoli sotib olish - BTT', 'BTT dan «Corda 135x80» stoli (Stollar). O‘lchamlari: 135 × 80 × 75 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish.');
@@ -276,17 +276,17 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ## Производство BTT
 
-В BTT мы плетём вручную из собственного ротанга - так контролируем плотность, цвет и качество каждой партии. Закажите образец или комплект через @btt_uz.');
+В BTT мы плетём вручную из качественного ротанга - так контролируем плотность, цвет и качество каждой партии. Закажите образец или комплект через @btt_uz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'uz', 'Nima uchun sun’iy rotangni tanlash kerak', 'Tabiiy ko‘rinish - chirish, rang o‘zgarishi va murakkab parvarishsiz. Mebel va dekor uchun asosiy afzalliklar.', 'Sun’iy rotang - massada bo‘yalgan polietilen tolasi. U tabiiy to‘quvga o‘xshaydi, lekin quyosh, yomg‘ir va sovuqqa chidamli.
 
 Bog‘ mebeli uchun bu terassada yil bo‘yi turishi mumkinligini anglatadi: qishga uyga olib kirish yoki moy surtish shart emas. Gultuvak va savatlar uchun - material namlikni singdirmaydi va oson yuviladi.
 
-BTT’da o‘z rotangimizdan qo‘lda to‘qiymiz - har bir partiyaning zichligi, rangi va sifatini nazorat qilamiz.');
+BTT’da sifatli rotangdan qo‘lda to‘qiymiz - har bir partiyaning zichligi, rangi va sifatini nazorat qilamiz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (1, 'en', 'Why choose synthetic rattan', 'A natural look without rot, fading or fussy care - the main benefits for furniture and décor.', 'Synthetic rattan is polyethylene fibre coloured through the material. It looks like natural weaving but shrugs off sun, rain and frost.
 
 For garden furniture that means the set can stay on the terrace all year - no need to store indoors or oil the weave. For planters and baskets the material won''t absorb moisture and wipes clean easily.
 
-At BTT we weave by hand from our own rattan stock, so we control density, colour and batch quality.');
+At BTT we weave by hand from quality rattan stock, so we control density, colour and batch quality.');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (2, 'kak-vybrat-luchshiy-rotang', 'assets/rattan-palette-hero.png', 'published', '2026-02-18');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (2, 'ru', 'Как выбрать лучший искусственный ротанг', 'Диаметр, профиль, плотность плетения и цвет - на что смотреть перед заказом мебели или материала.', 'Первое - профиль. Для мебели чаще берут полумесяц 8-10 мм: он гнётся ровно и держит форму сиденья. Для декора и каркаса подойдут круглые и плоские профили.
 
@@ -321,7 +321,7 @@ Second, density. The tighter the weave, the stronger and more premium the piece 
 Third, colour. Good rattan is coloured through the fibre, not just on the surface. Our Tobacco, Woody, Brown, Graphite and Choco palette echoes natural wood tones.
 
 Need a custom colour or diameter? We''ll make it to order - message our manager on Telegram.');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (3, 'pochemu-rabotayut-s-bententrade', 'assets/hero-garden-furniture.png', 'published', '2026-03-05');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (3, 'pochemu-rabotayut-s-btt', 'assets/hero-garden-furniture.png', 'published', '2026-03-05');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (3, 'ru', 'Почему с нами работают дизайнеры и мебельщики', 'Своё производство в Ташкенте, стабильные партии ротанга и честная консультация - без навязанных решений.', 'Мы не перекупаем готовую мебель - сами плетём и производим ротанг. Это даёт контроль над сроками, цветом и качеством.
 
 Для B2B-клиентов держим склад профилей и помогаем с образцами. Для частных заказов - бесплатно подбираем комплект под террасу, балкон или интерьер.
@@ -432,21 +432,21 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Для сада, террасы и уличного кафе мы рекомендуем только искусственный ротанг. Натуральный уместен в закрытых интерьерах с контролируемой влажностью.
 
-В BTT работаем с PE-профилями собственного производства - палитра Tobacco, Woody, Brown, Graphite, Choco. Закажите образец и сравните на месте.');
+В BTT работаем с качественными PE-профилями - палитра Tobacco, Woody, Brown, Graphite, Choco. Закажите образец и сравните на месте.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (8, 'uz', 'Sun’iy va tabiiy rotang: farqi nima', 'Xizmat muddati, parvarish, ko‘rinish va narxni solishtiramiz.', 'Tabiiy rotang chiroyli, lekin namlik va ultrabinafsha nurdan qo‘rqadi: ochiq havoda tez rangini yo‘qotadi.
 
 Sun’iy rotang (PE) massada bo‘yalgan, chirmaydi va sovuqqa chidamli. Sifatli to‘quvni farqlash qiyin.
 
 Bog‘, terassa va ko‘cha kafesi uchun faqat sun’iy rotangni tavsiya qilamiz.
 
-BTT o‘z PE profillarida ishlaydi - Tobacco, Woody, Brown, Graphite, Choco. Namuna buyurtma qiling.');
+BTT sifatli PE profillarida ishlaydi - Tobacco, Woody, Brown, Graphite, Choco. Namuna buyurtma qiling.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (8, 'en', 'Synthetic vs natural rattan: what''s the difference', 'We compare lifespan, care, look and price so you don''t overpay for the wrong material.', 'Natural rattan is beautiful but fears moisture and UV: outdoors it fades and cracks without regular care.
 
 Synthetic rattan (PE) is coloured through the fibre, won''t rot and handles frost. Quality weave is hard to tell from natural - especially in wood tones.
 
 For gardens, terraces and outdoor cafés we recommend synthetic rattan only.
 
-At BTT we work with our own PE profiles - Tobacco, Woody, Brown, Graphite, Choco. Order a sample and compare in person.');
+At BTT we work with high quality PE profiles - Tobacco, Woody, Brown, Graphite, Choco. Order a sample and compare in person.');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (9, 'sadovaya-mebel-rotang-tashkent', 'assets/hero-garden-furniture.png', 'published', '2026-04-22');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (9, 'ru', 'Садовая мебель из ротанга в Ташкенте: как выбрать комплект', 'Диваны, кресла и обеденные группы для террасы и дачи - на что смотреть перед покупкой в Узбекистане.', 'Садовая мебель из искусственного ротанга - один из самых частых запросов в Ташкенте: жаркий климат, яркое солнце и перепады температур требуют материала, который не выцветает и не требует ежегодного ухода маслом.
 
@@ -470,7 +470,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ## Цвет и плетение
 
-Для улицы лучше Tobacco, Woody или Graphite - меньше видны пыль и следы от рук. Плотное плетение полумесяц 10 мм выглядит премиально и служит дольше рыхлого.
+Для улицы лучше Tobacco, Woody или Graphite - меньше видны пыль и следы от рук. Плотное плетение полумесяц 10 мм выглядит аккуратно и плотно.
 
 ![Палитра профилей](assets/rattan-palette-hero.png)
 
@@ -519,7 +519,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 - Устойчивы к УФ и морозу
 - Не трескаются от перепадов температуры
 - Можно мыть из шланга (без агрессивной химии)
-- Выглядят как премиальное плетение
+- Выглядят как аккуратное плетение
 
 ![Кашпо для террасы](assets/hero-planter.png)
 
@@ -617,7 +617,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 @btt_uz');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (13, 'mebel-rotang-dlya-kafe', 'assets/scene-dining-teal.png', 'published', '2026-05-20');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (13, 'ru', 'Мебель из ротанга для кафе и ресторанов', 'Уличные зоны, веранды и летние площадки - износостойкое плетение и быстрая замена подушек.', 'Для HoReCa в Ташкенте и по Узбекистану мебель из искусственного ротанга - баланс между эстетикой и износостойкостью. Гости видят «премиальное плетение», а персонал тратит минимум времени на уход.
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (13, 'ru', 'Мебель из ротанга для кафе и ресторанов', 'Уличные зоны, веранды и летние площадки - практичное плетение и удобная замена подушек.', 'Для HoReCa в Ташкенте и по Узбекистану мебель из искусственного ротанга - баланс между эстетикой и практичностью. Гости видят аккуратное плетение, а персонал тратит минимум времени на уход.
 
 ## Что ставят чаще всего
 
@@ -826,5 +826,5 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 INSERT OR REPLACE INTO settings (key, value) VALUES ('brand', 'BTT - мебель для дома и сада');
 INSERT OR REPLACE INTO settings (key, value) VALUES ('phone', '+998 77 104 44 22');
 INSERT OR REPLACE INTO settings (key, value) VALUES ('whatsapp', '998771044422');
-INSERT OR REPLACE INTO settings (key, value) VALUES ('telegram', 'btt_uz');
-INSERT OR REPLACE INTO settings (key, value) VALUES ('email', 'hello@btt.uz');
+INSERT OR REPLACE INTO settings (key, value) VALUES ('telegram', 'bententradeuz');
+INSERT OR REPLACE INTO settings (key, value) VALUES ('email', 'hello@bententrade.uz');

@@ -1251,7 +1251,7 @@
     "legacyId": "p12",
     "model": "Taper 80x80",
     "category": "tables",
-    "price": 734000,
+    "price": 783000,
     "dimensions": "80 × 80 × 75 см",
     "materials": [
       "ЛДСП",
@@ -1505,7 +1505,7 @@
     "legacyId": "p15",
     "model": "Corda 135x80",
     "category": "tables",
-    "price": 949000,
+    "price": 999000,
     "dimensions": "135 × 80 × 75 см",
     "materials": [
       "ЛДСП",

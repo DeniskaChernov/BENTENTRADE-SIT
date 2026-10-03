@@ -1,0 +1,113 @@
+{
+  "currency": "UZS",
+  "updated_at": "2026-10-03",
+  "brand": "BTT",
+  "note": "Актуальные цены мебели BTT. Использовать в расчётах, объявлениях, каталогах и коммерческих предложениях.",
+  "rules": {
+    "bundle_prices_condition": "Комплектные цены стульев действуют только при покупке со столом. Для отдельных продаж используются розничные цены.",
+    "special_ready_combos_rule": "Для четырёх утверждённых готовых комплектов используется специальная фиксированная цена, а не сумма отдельных позиций. Цена TAPER 80x80 для расчёта комплекта 733 000 не отменяет специальную цену готового комплекта 2 850 000.",
+    "plastic_chair_combo_formula": "цена стола для комплекта + количество стульев * комплектная цена стула",
+    "disclaimer": "Не придумывать отсутствующие розничные цены (розничная цена TAPER 135x80 не подтверждена). Не путать стол CORDA (135x80) со стульями CORDA."
+  },
+  "plastic_chairs": {
+    "stul-roero": {
+      "model": "ROERO",
+      "slug": "stul-roero",
+      "retail_price": 188000,
+      "bundle_price": 168000
+    },
+    "stul-noero": {
+      "model": "NOERO",
+      "slug": "stul-noero",
+      "retail_price": 212000,
+      "bundle_price": 192000
+    },
+    "stul-todo": {
+      "model": "TODO",
+      "slug": "stul-todo",
+      "retail_price": 236000,
+      "bundle_price": 216000
+    },
+    "stul-jardin": {
+      "model": "JARDIN",
+      "slug": "stul-jardin",
+      "retail_price": 344000,
+      "bundle_price": 324000
+    }
+  },
+  "wicker_chairs": {
+    "stul-vertex": {
+      "model": "VERTEX",
+      "slug": "stul-vertex",
+      "retail_price": 499000,
+      "bundle_price": 499000
+    },
+    "stul-corda": {
+      "model": "CORDA",
+      "slug": "stul-corda",
+      "retail_price": 499000,
+      "bundle_price": 499000
+    }
+  },
+  "tables": {
+    "stol-vertex-d90": {
+      "model": "VERTEX D90",
+      "slug": "stol-vertex-d90",
+      "retail_price": 680000,
+      "bundle_calc_price": 680000
+    },
+    "stol-taper-80": {
+      "model": "TAPER 80x80",
+      "slug": "stol-taper-80",
+      "retail_price": 783000,
+      "bundle_calc_price": 733000
+    },
+    "stol-taper-135": {
+      "model": "TAPER 135x80",
+      "slug": "stol-taper-135",
+      "retail_price": null,
+      "retail_confirmed": false,
+      "bundle_calc_price": 860000
+    },
+    "stol-corda-135": {
+      "model": "CORDA 135x80",
+      "slug": "stol-corda-135",
+      "retail_price": 999000,
+      "bundle_calc_price": 949000
+    }
+  },
+  "special_ready_combos": [
+    {
+      "table": "stol-vertex-d90",
+      "tableName": "VERTEX D90",
+      "chair": "stul-vertex",
+      "chairName": "VERTEX",
+      "chairCount": 4,
+      "approved_price": 2676000
+    },
+    {
+      "table": "stol-vertex-d90",
+      "tableName": "VERTEX D90",
+      "chair": "stul-corda",
+      "chairName": "CORDA",
+      "chairCount": 4,
+      "approved_price": 2676000
+    },
+    {
+      "table": "stol-taper-80",
+      "tableName": "TAPER 80x80",
+      "chair": "stul-vertex",
+      "chairName": "VERTEX",
+      "chairCount": 4,
+      "approved_price": 2850000
+    },
+    {
+      "table": "stol-taper-80",
+      "tableName": "TAPER 80x80",
+      "chair": "stul-corda",
+      "chairName": "CORDA",
+      "chairCount": 4,
+      "approved_price": 2850000
+    }
+  ]
+}

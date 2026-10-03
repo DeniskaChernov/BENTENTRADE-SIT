@@ -482,7 +482,38 @@
 
     const sceneImg = getLifestyleScene(activeColorId);
 
-    const comboTotal = (tableProd.now || 0) + ((chairProd.now || 0) * chairCount);
+    const SPECIAL_COMBOS = {
+      "stol-vertex-d90+stul-vertex": 2676000,
+      "stol-vertex-d90+stul-corda": 2676000,
+      "stol-taper-80+stul-vertex": 2850000,
+      "stol-taper-80+stul-corda": 2850000
+    };
+    const TABLE_BUNDLE_PRICES = {
+      "stol-taper-80": 733000,
+      "stol-taper-135": 860000,
+      "stol-corda-135": 949000,
+      "stol-vertex-d90": 680000
+    };
+    const CHAIR_BUNDLE_PRICES = {
+      "stul-roero": 168000,
+      "stul-noero": 192000,
+      "stul-todo": 216000,
+      "stul-jardin": 324000
+    };
+
+    const comboKey = tableProd.slug + "+" + chairProd.slug;
+    let comboTotal = 0;
+    if (chairCount === 4 && SPECIAL_COMBOS[comboKey]) {
+      comboTotal = SPECIAL_COMBOS[comboKey];
+    } else {
+      const tablePrice = TABLE_BUNDLE_PRICES[tableProd.slug] !== undefined
+        ? TABLE_BUNDLE_PRICES[tableProd.slug]
+        : (tableProd.now || 0);
+      const chairPrice = CHAIR_BUNDLE_PRICES[chairProd.slug] !== undefined
+        ? CHAIR_BUNDLE_PRICES[chairProd.slug]
+        : (chairProd.now || 0);
+      comboTotal = tablePrice + chairPrice * chairCount;
+    }
 
     const infoTitle = isTable ? (t("pdp.life.pair.table") || "Рекомендуемые стулья к столу") : (t("pdp.life.pair.chair") || "Рекомендуемый обеденный стол");
 
