@@ -38,13 +38,15 @@
         '<button class="fav'+(on?" is-on":"")+'" data-fav data-i18n-aria="a11y.fav" aria-label="'+esc(t("a11y.fav"))+'">'+FAV_SVG+'</button>'+
         '<img src="'+esc(thumb)+'" alt="'+esc(t(slug+".name")||t(id+".name"))+'" loading="lazy" onerror="this.style.display=\'none\'">'+
         '<a class="see" href="/catalog/'+esc(slug)+'" data-i18n="see">'+esc(t("see"))+'</a>'+
-        '<button class="add" data-add data-i18n-aria="a11y.add" aria-label="'+esc(t("a11y.add"))+'">'+ADD_SVG+'</button>'+
       '</div>'+
       '<div>'+
         '<div class="product__cat">'+esc(t(slug+".cat")||t(id+".cat"))+'</div>'+
         '<div class="product__name acc-prod-name">'+esc(t(slug+".name")||t(id+".name"))+'</div>'+
-        '<div class="price acc-prod-price"><span class="price__now">'+((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(p.now):p.now)+'</span>'+
-        (p.old?'<span class="price__old">'+((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(p.old):p.old)+'</span>':"")+'</div>'+
+        '<div class="product__foot">'+
+          '<div class="price acc-prod-price"><span class="price__now">'+((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(p.now):p.now)+'</span>'+
+          (p.old?'<span class="price__old">'+((window.BTT_UTIL&&window.BTT_UTIL.formatMoney)?window.BTT_UTIL.formatMoney(p.old):p.old)+'</span>':"")+'</div>'+
+          '<button type="button" class="product__buy" data-add data-i18n="buy">'+esc(t("buy") || "Купить")+'</button>'+
+        '</div>'+
       '</div>'+
     '</article>';
   }

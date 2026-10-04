@@ -390,13 +390,15 @@
         '<button class="fav" data-fav data-prod-id="' + esc(item.slug) + '" data-i18n-aria="a11y.fav" aria-label="' + esc(t("a11y.fav")||"В избранное") + '">' + FAV_SVG + '</button>' +
         '<img src="' + esc(img) + '" alt="' + esc(nm) + '" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">' +
         '<a class="see" href="' + esc(cleanUrl) + '" data-i18n="see">' + esc(seeTxt) + '</a>' +
-        '<button class="add" data-add data-prod-id="' + esc(item.slug) + '" data-i18n-aria="a11y.add" aria-label="' + esc(t("a11y.add")||"Купить в 1 клик") + '" title="' + esc(t("a11y.add")||"Купить в 1 клик") + '">' + ADD_SVG + '</button>' +
         '</div>' +
         '<div>' +
         '<div class="product__cat">' + esc(cat) + '</div>' +
         '<div class="product__name">' + esc(nm) + '</div>' +
         swatchesHtml +
+        '<div class="product__foot">' +
         priceHtml +
+        '<button type="button" class="product__buy" data-add data-prod-id="' + esc(item.slug) + '" data-i18n="buy">' + esc(t("buy") || "Купить") + '</button>' +
+        '</div>' +
         '</div>' +
         '</article>';
     }).join("");
@@ -622,7 +624,7 @@
             id: prod.slug + "__combo__" + pairedProd.slug,
             name: comboLabel + " (" + tableModel + " + " + chairModel + ")",
             price: comboTotal,
-            img: sceneImg,
+            img: (sceneImg && !sceneImg.startsWith("/") && !sceneImg.startsWith("http")) ? ("/" + sceneImg) : sceneImg,
             qty: 1
           });
         }

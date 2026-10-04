@@ -1715,34 +1715,67 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 [data-related-grid] .product__media .fav svg{
   width:15px;height:15px;
 }
+.product__media .add,
 .catalog-layout .product__media .add,
 #catalog-grid .product__media .add,
 .prod-grid .product__media .add,
 [data-related-grid] .product__media .add{
-  width:36px !important;
-  height:36px !important;
-  bottom:8px !important;
-  right:8px !important;
-  border-radius:50% !important;
-  background:var(--copper) !important;
+  display:none !important;
+}
+
+.product__foot{
+  margin-top:auto !important;
+  padding-top:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+.product__foot .price{
+  margin-top:0 !important;
+  padding-top:0 !important;
+  flex:1;
+  min-width:0;
+}
+.product__buy{
+  flex:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 16px;
+  border-radius:var(--r-md, 10px);
+  background:var(--copper);
   color:#fff !important;
-  border:none !important;
-  box-shadow:0 3px 12px rgba(189,115,53,.35) !important;
-  transition:transform .22s var(--spring),background .2s ease,box-shadow .2s ease !important;
+  font-family:var(--font, inherit);
+  font-weight:700;
+  font-size:13.5px;
+  line-height:1.2;
+  border:none;
+  cursor:pointer;
+  transition:all .2s var(--spring, ease);
+  box-shadow:0 2px 8px rgba(189,115,53,.25);
+  white-space:nowrap;
+  text-decoration:none;
 }
-.catalog-layout .product__media .add:hover,
-#catalog-grid .product__media .add:hover,
-.prod-grid .product__media .add:hover,
-[data-related-grid] .product__media .add:hover{
-  transform:scale(1.12) !important;
-  background:var(--copper-bright) !important;
-  box-shadow:0 6px 18px rgba(189,115,53,.5) !important;
+.product__buy:hover{
+  background:var(--copper-bright);
+  transform:translateY(-1px);
+  box-shadow:0 4px 14px rgba(189,115,53,.4);
 }
-.catalog-layout .product__media .add svg,
-#catalog-grid .product__media .add svg,
-.prod-grid .product__media .add svg,
-[data-related-grid] .product__media .add svg{
-  width:17px;height:17px;
+.product__buy:active{
+  transform:scale(0.97);
+}
+@media (max-width: 480px){
+  .product__foot{
+    flex-direction:column;
+    align-items:stretch;
+    gap:8px;
+  }
+  .product__buy{
+    width:100%;
+    padding:9px 12px;
+    font-size:13px;
+  }
 }
 .catalog-layout .product__media .badge-sale,
 #catalog-grid .product__media .badge-sale,

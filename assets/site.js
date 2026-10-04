@@ -494,7 +494,7 @@
         }
         const d = dict[getLang()] || dict.ru || {};
         badge.textContent = d["mto.badge"] || "На заказ";
-        const add = media.querySelector("[data-add]");
+        const add = card.querySelector("[data-add]");
         if(add){
           add.classList.add("add--mto");
           add.setAttribute("aria-label", (dict[getLang()]||dict.ru||{})["mto.card"] || "Сделать на заказ");
@@ -509,7 +509,7 @@
         }
       } else if(badge){
         badge.remove();
-        const add = media.querySelector("[data-add]");
+        const add = card.querySelector("[data-add]");
         if(add) add.classList.remove("add--mto");
       }
     });

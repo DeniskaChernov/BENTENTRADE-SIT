@@ -156,12 +156,20 @@
         quickOrder:"Or quick 1-click order:",discount:"Discount"}
   };
   function t(k){
-    if(window.BTT_I18N && window.BTT_I18N.t){
-      const v=window.BTT_I18N.t(k);
-      if(v!==k) return v;
+    const l = lang();
+    if(window.BTT_I18N){
+      const d = window.BTT_I18N[l] || window.BTT_I18N.ru || {};
+      if(d[k] != null && d[k] !== "") return d[k];
+      if(window.BTT_I18N.ru && window.BTT_I18N.ru[k] != null && window.BTT_I18N.ru[k] !== "") return window.BTT_I18N.ru[k];
+      if(typeof window.BTT_I18N.t === "function"){
+        const v = window.BTT_I18N.t(k, l);
+        if(v && v !== k) return v;
+      }
     }
-    const s=(STR[lang()]||STR.ru)[k];
-    return s!=null?s:k;
+    const s = (STR[l] || STR.ru || {})[k];
+    if(s != null && s !== "") return s;
+    if(STR.ru && STR.ru[k] != null && STR.ru[k] !== "") return STR.ru[k];
+    return "";
   }
   function unitLabel(unit){
     if(!unit || unit === "pcs") return t("pcs") || "шт.";
@@ -284,7 +292,6 @@
     const name = (card.querySelector(".product__name")||{}).textContent || "";
     const priceEl = card.querySelector(".price__now");
     const price = priceEl ? parseInt((priceEl.textContent||"").replace(/[^\d]/g,""),10)||0 : 0;
-    const img = (card.querySelector("img")||{}).currentSrc || (card.querySelector("img")||{}).src || "";
     if(!id) id = "x-"+name.slice(0,18).replace(/\s+/g,"-").toLowerCase();
     if(id && window.BTT_RESOLVE_PRODUCT){
       const r = window.BTT_RESOLVE_PRODUCT(id);
@@ -295,7 +302,16 @@
     if(activeSwatch && activeSwatch.title) options.finish = activeSwatch.title.trim();
     const prodMaster = window.BTT_PRODUCTS && (window.BTT_PRODUCTS[id] || window.BTT_PRODUCTS[card.dataset.id] || (card.dataset.slug && window.BTT_PRODUCTS[card.dataset.slug]));
     const unit = card.dataset.unit || (prodMaster && prodMaster.unit) || undefined;
-    return { id, name:name.trim(), price, img, unit, options: Object.keys(options).length ? options : undefined };
+    const mediaImg = card.querySelector(".product__media img") || card.querySelector("img");
+    let img = (activeSwatch && activeSwatch.dataset && activeSwatch.dataset.img) ||
+      (mediaImg ? (mediaImg.getAttribute("src") || mediaImg.currentSrc || mediaImg.src) : "");
+    if(!img && prodMaster && prodMaster.images && prodMaster.images[0]){
+      img = prodMaster.images[0];
+    }
+    if(img && !img.startsWith("/") && !img.startsWith("http")){
+      img = "/" + img;
+    }
+    return { id, name:name.trim(), price, img: img || "/assets/placeholder.svg", unit, options: Object.keys(options).length ? options : undefined };
   }
   function snapFromPDP(){
     let id = null;
@@ -316,7 +332,13 @@
     const name = (document.querySelector(".pdp-info h1")||{}).textContent || "";
     const price = parseInt(((document.querySelector(".pdp-price .now")||{}).textContent||"").replace(/[^\d]/g,""),10)||0;
     const onImg = document.querySelector(".pdp-stage img.is-on") || document.querySelector(".pdp-stage img");
-    const img = onImg ? (onImg.currentSrc||onImg.src) : "";
+    let img = onImg ? (onImg.getAttribute("src") || onImg.currentSrc || onImg.src) : "";
+    if(!img && window.BTT_PDP_PRODUCT && window.BTT_PDP_PRODUCT.images && window.BTT_PDP_PRODUCT.images[0]){
+      img = window.BTT_PDP_PRODUCT.images[0];
+    }
+    if(img && !img.startsWith("/") && !img.startsWith("http")){
+      img = "/" + img;
+    }
     const finishVal = ((document.querySelector("[data-finish-val]")||{}).textContent||"").trim();
     const sizeVal = ((document.querySelector("[data-size-val]")||{}).textContent||"").trim();
     const options = {};
@@ -1117,6 +1139,12 @@
   function openQuickOrder(snap){
     if(!snap) snap = snapFromPDP();
     if(!snap || !snap.name) return;
+    if(snap.img && !snap.img.startsWith("/") && !snap.img.startsWith("http")){
+      snap.img = "/" + snap.img;
+    }
+    if(!snap.img){
+      snap.img = "/assets/placeholder.svg";
+    }
     ensureQuickOrderModal();
 
     const saved = getCheckout();
@@ -1143,7 +1171,7 @@
           '</div>' +
           '<div class="qk-body">' +
             '<div class="qk-product-row">' +
-              (snap.img ? '<img src="' + esc(snap.img) + '" class="qk-thumb" alt="" loading="lazy">' : '') +
+              (snap.img ? '<img src="' + esc(snap.img) + '" class="qk-thumb" alt="" loading="lazy" onerror="this.onerror=null;this.src=\'/assets/placeholder.svg\'">' : '') +
               '<div class="qk-product-info">' +
                 '<div class="qk-name">' + esc(snap.name) + '</div>' +
                 (optLine ? '<div class="qk-opt">' + esc(optLine) + '</div>' : '') +

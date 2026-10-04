@@ -806,6 +806,7 @@ window.BTT_I18N = {
     "mat.ldsp": "ЛДСП",
     "a11y.fav": "В избранное",
     "a11y.add": "Купить в 1 клик",
+    "buy": "Купить",
     "pdp.askColors": "Цвета уточняйте у менеджера",
     "ed.del.badge": "Сервис BTT",
     "ed.del.title": "Подбор и доставка по Ташкенту",
@@ -1714,6 +1715,7 @@ window.BTT_I18N = {
     "mat.ldsp": "LDSP",
     "a11y.fav": "Saralanganlarga",
     "a11y.add": "1 bosishda xarid qilish",
+    "buy": "Xarid qilish",
     "pdp.askColors": "Ranglarni menejerdan aniqlang",
     "ed.del.badge": "BTT xizmati",
     "ed.del.title": "Tanlash va Toshkent bo‘ylab yetkazib berish",
@@ -2622,6 +2624,7 @@ window.BTT_I18N = {
     "mat.ldsp": "Chipboard (LDSP)",
     "a11y.fav": "Add to wishlist",
     "a11y.add": "Buy in 1 click",
+    "buy": "Buy",
     "pdp.askColors": "Check color options with manager",
     "ed.del.badge": "BTT Service",
     "ed.del.title": "Selection & Delivery in Tashkent",
@@ -2728,4 +2731,13 @@ window.BTT_I18N = {
     "unit.m": "m",
     "bundle.composition": "Set bundle contents:"
   }
+};
+
+window.BTT_I18N.t = function(key, optLang){
+  if(!key) return "";
+  const curLang = optLang || document.documentElement.lang || (typeof localStorage !== "undefined" && localStorage.getItem("btt_lang")) || "ru";
+  const d = window.BTT_I18N[curLang] || window.BTT_I18N.ru || {};
+  if(d[key] != null) return d[key];
+  if(window.BTT_I18N.ru && window.BTT_I18N.ru[key] != null) return window.BTT_I18N.ru[key];
+  return key;
 };
