@@ -449,14 +449,52 @@ app.get("/catalog/:slug", async (c) => {
     updated_at: product.updated_at
   };
 
+  const allImageUrls = (images.length ? images : [rawImg]).map(img =>
+    img.startsWith("http") ? img : `https://btt.uz/${img.replace(/^\//, "")}`
+  );
+
   // Build authoritative Schema.org Offer
   const offerObj: Record<string, unknown> = {
     "@type": "Offer",
     "url": canonicalUrl,
     "priceCurrency": "UZS",
     "price": product.price_now,
+    "priceValidUntil": "2026-12-31",
     "itemCondition": "https://schema.org/NewCondition",
-    "seller": { "@type": "Organization", "name": "BTT - мебель для дома и сада" }
+    "seller": { "@type": "Organization", "name": "BTT - мебель для дома и сада" },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "UZ",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 14,
+      "returnMethod": "https://schema.org/ReturnInStore",
+      "returnFees": "https://schema.org/FreeReturn"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "UZS"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "UZ"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "businessDays": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 3,
+          "unitCode": "DAY"
+        }
+      }
+    }
   };
   if (product.availability === "in_stock") {
     offerObj.availability = "https://schema.org/InStock";
@@ -472,10 +510,12 @@ app.get("/catalog/:slug", async (c) => {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": productName,
-    "image": imageUrl,
+    "image": allImageUrls,
     "description": pageDesc,
     "sku": slug.toUpperCase(),
+    "category": catLabel,
     "brand": { "@type": "Brand", "name": "BTT" },
+    "manufacturer": { "@type": "Organization", "name": "BTT - мебель для дома и сада" },
     "offers": offerObj
   };
 
@@ -501,7 +541,18 @@ app.get("/catalog/:slug", async (c) => {
   html = html.replace(/<meta\s+name=["']twitter:image["']\s+content=["'].*?["']\s*\/?>/i, `<meta name="twitter:image" content="${escHtml(imageUrl)}">`);
 
   const headInject = [
+    `<meta property="og:type" content="product">`,
+    `<meta property="og:locale" content="ru_RU">`,
+    `<meta property="og:site_name" content="BTT - мебель для дома и сада">`,
     `<meta property="og:url" content="${canonicalUrl}">`,
+    `<meta property="og:image:width" content="1200">`,
+    `<meta property="og:image:height" content="800">`,
+    `<meta property="og:image:alt" content="${escHtml(productName)}">`,
+    `<meta property="product:price:amount" content="${product.price_now}">`,
+    `<meta property="product:price:currency" content="UZS">`,
+    `<meta property="product:availability" content="${product.availability === 'in_stock' ? 'in stock' : 'preorder'}">`,
+    `<meta property="product:brand" content="BTT">`,
+    `<meta property="product:retailer_item_id" content="${slug}">`,
     `<script type="application/ld+json" id="pdp-schema-product">${JSON.stringify(productJsonLd)}</script>`,
     `<script type="application/ld+json" id="pdp-schema-breadcrumb">${JSON.stringify(breadcrumbJsonLd)}</script>`,
     `<script id="btt-runtime-product" type="application/json">${JSON.stringify(runtimeProduct)}</script>`

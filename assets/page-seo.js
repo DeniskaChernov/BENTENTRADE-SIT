@@ -200,15 +200,71 @@
   }
 
   function renderHoreca() {
+    var l = document.documentElement.lang || "ru";
+    var faqEntities = [
+      {
+        "@type": "Question",
+        name: t("hrc.faq.q1"),
+        acceptedAnswer: { "@type": "Answer", text: t("hrc.faq.a1") }
+      },
+      {
+        "@type": "Question",
+        name: t("hrc.faq.q2"),
+        acceptedAnswer: { "@type": "Answer", text: t("hrc.faq.a2") }
+      },
+      {
+        "@type": "Question",
+        name: t("hrc.faq.q3"),
+        acceptedAnswer: { "@type": "Answer", text: t("hrc.faq.a3") }
+      },
+      {
+        "@type": "Question",
+        name: t("hrc.faq.q4"),
+        acceptedAnswer: { "@type": "Answer", text: t("hrc.faq.a4") }
+      }
+    ];
+
     SEO.injectJsonLd("btt-page-horeca", {
       "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: t("meta.horeca.title"),
-      description: t("meta.horeca.desc"),
-      url: SITE + "/horeca.html",
-      inLanguage: document.documentElement.lang || "ru",
-      about: { "@type": "Thing", name: "HoReCa furniture" }
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": SITE + "/horeca.html",
+          name: t("meta.horeca.title"),
+          description: t("meta.horeca.desc"),
+          url: SITE + "/horeca.html",
+          inLanguage: l,
+          isPartOf: orgRef()
+        },
+        {
+          "@type": "Service",
+          "@id": SITE + "/horeca.html#service",
+          name: t("hrc.hero.title") || "Мебель для ресторанов, кафе и отелей",
+          serviceType: "HoReCa Furniture Supply",
+          description: t("hrc.hero.sub"),
+          provider: {
+            "@type": "LocalBusiness",
+            "@id": SITE + "/#org",
+            name: "BTT - мебель для дома и сада",
+            telephone: "+998771044422",
+            email: "hello@btt.uz",
+            url: SITE + "/",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Ташкент",
+              addressCountry: "UZ"
+            }
+          },
+          areaServed: { "@type": "Country", name: "Uzbekistan" }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": SITE + "/horeca.html#faq",
+          mainEntity: faqEntities
+        }
+      ]
     });
+
     injectBreadcrumb("btt-page-bc", [
       { name: t("pdp.crumb.home") || "Главная", url: SITE + "/" },
       { name: t("nav.horeca") || "HoReCa", url: SITE + "/horeca.html" },

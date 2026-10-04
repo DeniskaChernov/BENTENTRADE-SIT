@@ -150,7 +150,7 @@
           name: listName,
           description: listDesc,
           url: SITE + "/catalog.html?cat=" + encodeURIComponent(cat),
-          isPartOf: { "@type": "WebSite", name: "BTT", url: SITE + "/" },
+          isPartOf: { "@type": "WebSite", name: "BTT - мебель для дома и сада", url: SITE + "/" },
         });
       } else {
         const old = document.getElementById("catalog-collection");

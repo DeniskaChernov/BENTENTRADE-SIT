@@ -630,3 +630,314 @@
     justify-content: center;
   }
 }
+
+/* ============================================================
+   B2B Seating & Budget Calculator & FAQ Styles
+   ============================================================ */
+
+.horeca-prod-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  background: color-mix(in oklab, var(--paper) 92%, var(--line));
+  border-top: 1px solid var(--line);
+  margin-top: auto;
+}
+
+.horeca-prod-foot .price__now {
+  font-family: var(--f-serif, 'Soyuz Grotesk', 'Unbounded', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.horeca-prod-foot .product__buy {
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: var(--r-pill);
+  background: var(--copper);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.horeca-prod-foot .product__buy:hover {
+  background: var(--copper-bright);
+  transform: translateY(-1px);
+}
+
+/* Calculator Section */
+.horeca-calc-section {
+  padding: 60px 0;
+}
+
+.horeca-calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.horeca-calc-controls,
+.horeca-calc-result {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: 36px 32px;
+  box-shadow: var(--spatial-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.horeca-calc-group-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.horeca-calc-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.horeca-calc-radio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  user-select: none;
+}
+
+.horeca-calc-radio:hover {
+  border-color: color-mix(in oklab, var(--copper) 40%, var(--line));
+  background: color-mix(in oklab, var(--copper) 4%, var(--paper));
+}
+
+.horeca-calc-radio input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--muted);
+  border-radius: 50%;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.horeca-calc-radio input[type="radio"]:checked {
+  border-color: var(--copper-bright);
+}
+
+.horeca-calc-radio input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--copper-bright);
+}
+
+.horeca-calc-slider-box {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.horeca-calc-slider-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.horeca-calc-slider-val {
+  font-family: var(--f-serif, 'Soyuz Grotesk', 'Unbounded', sans-serif);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--copper-bright);
+}
+
+.horeca-calc-slider {
+  width: 100%;
+  accent-color: var(--copper-bright);
+  cursor: pointer;
+  height: 6px;
+  border-radius: 3px;
+}
+
+.horeca-calc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.horeca-calc-chip {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.horeca-calc-chip:hover,
+.horeca-calc-chip.is-active {
+  background: var(--copper);
+  color: #fff;
+  border-color: var(--copper);
+}
+
+/* Result Card */
+.horeca-calc-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.horeca-calc-metric {
+  background: color-mix(in oklab, var(--paper) 90%, var(--line));
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 16px 14px;
+  text-align: center;
+}
+
+.horeca-calc-metric__val {
+  font-family: var(--f-serif, 'Soyuz Grotesk', 'Unbounded', sans-serif);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.horeca-calc-metric__label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+
+.horeca-calc-combo {
+  padding: 18px 20px;
+  border-left: 3px solid var(--copper-bright);
+  background: color-mix(in oklab, var(--copper) 6%, var(--paper));
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  font-size: 14.5px;
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.horeca-calc-total-box {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.horeca-calc-price {
+  font-family: var(--f-serif, 'Soyuz Grotesk', 'Unbounded', sans-serif);
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 800;
+  color: var(--copper-bright);
+  line-height: 1.1;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.horeca-calc-price__curr {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.horeca-calc-price__note {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.horeca-calc-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.horeca-calc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: var(--r-md);
+  font-size: 14.5px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.15s ease, background 0.2s ease;
+  border: none;
+}
+
+.horeca-calc-btn:hover {
+  transform: translateY(-1px);
+}
+
+.horeca-calc-btn--tg {
+  background: #229ed9;
+  color: #fff;
+}
+
+.horeca-calc-btn--tg svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.horeca-calc-btn--form {
+  background: var(--copper);
+  color: #fff;
+}
+
+.horeca-calc-btn--form:hover {
+  background: var(--copper-bright);
+}
+
+/* FAQ section on HoReCa */
+.horeca-faq-section {
+  padding: 60px 0;
+}
+
+@media (max-width: 900px) {
+  .horeca-calc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .horeca-calc-metrics {
+    grid-template-columns: 1fr;
+  }
+  .horeca-calc-controls,
+  .horeca-calc-result {
+    padding: 24px 18px;
+  }
+}
