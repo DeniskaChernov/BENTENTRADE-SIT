@@ -1153,7 +1153,7 @@
                     '<span class="qk-qty-val" style="min-width:24px;text-align:center;font-weight:700;font-size:13px">' + currentQty + (snap.unit && snap.unit !== 'pcs' ? ' ' + esc(unitLabel(snap.unit)) : '') + '</span>' +
                     '<button type="button" class="qk-qty-btn" data-qk-plus style="width:28px;height:28px;border:none;background:none;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center">+</button>' +
                   '</div>' +
-                  '<div class="qk-price" style="font-size:15px;color:var(--copper);font-weight:800">' + esc(fmt(itemTotal)) + '</div>' +
+                  '<div class="qk-price" style="font-size:15px;color:var(--copper);font-weight:800">' + esc(unitPrice > 0 ? fmt(itemTotal) : (t("price.on_request") || "По запросу")) + '</div>' +
                 '</div>' +
               '</div>' +
             '</div>' +
@@ -1212,13 +1212,13 @@
           if(currentQty > 1){
             currentQty--;
             valEl.textContent = currentQty + (snap.unit && snap.unit !== 'pcs' ? ' ' + unitLabel(snap.unit) : '');
-            priceEl.textContent = fmt(calcTotal());
+            priceEl.textContent = unitPrice > 0 ? fmt(calcTotal()) : (t("price.on_request") || "По запросу");
           }
         };
         plusBtn.onclick = () => {
           currentQty++;
           valEl.textContent = currentQty + (snap.unit && snap.unit !== 'pcs' ? ' ' + unitLabel(snap.unit) : '');
-          priceEl.textContent = fmt(calcTotal());
+          priceEl.textContent = unitPrice > 0 ? fmt(calcTotal()) : (t("price.on_request") || "По запросу");
         };
       }
 
@@ -1237,10 +1237,11 @@
         tgDirectBtn.onclick = () => {
           const ph = phoneInput ? phoneInput.value.trim() : "";
           const uText = unitLabel(snap.unit);
+          const sumText = unitPrice > 0 ? (" на сумму " + fmt(calcTotal())) : " (цена по запросу)";
           const msg = "Здравствуйте! Хочу оформить быстрый заказ: " + snap.name +
             (optLine ? " (" + optLine + ")" : "") +
             " - " + currentQty + " " + uText +
-            " на сумму " + fmt(calcTotal()) +
+            sumText +
             (ph ? ". Телефон: " + ph : "") +
             ". Пожалуйста, свяжитесь со мной для подтверждения.";
           copyText(msg);
@@ -1319,7 +1320,8 @@
         const tgBtn = qkModal.querySelector("[data-order-tg]");
         if(tgBtn){
           tgBtn.onclick = () => {
-            const quickText = "Здравствуйте! Я оформил быстрый заказ" + (orderId ? " № " + orderId : "") + ": " + snap.name + " (" + fmt(calcTotal()) + "). Телефон: " + phone;
+            const sumPart = unitPrice > 0 ? (" (" + fmt(calcTotal()) + ")") : "";
+            const quickText = "Здравствуйте! Я оформил быстрый заказ" + (orderId ? " № " + orderId : "") + ": " + snap.name + sumPart + ". Телефон: " + phone;
             copyText(quickText);
             window.open("https://t.me/" + CONFIG.telegram, "_blank", "noopener");
             toast(t("ordCopied"));
@@ -1328,7 +1330,8 @@
         const waBtn = qkModal.querySelector("[data-order-wa]");
         if(waBtn){
           waBtn.onclick = () => {
-            const quickText = "Здравствуйте! Я оформил быстрый заказ" + (orderId ? " № " + orderId : "") + ": " + snap.name + " (" + fmt(calcTotal()) + "). Телефон: " + phone;
+            const sumPart = unitPrice > 0 ? (" (" + fmt(calcTotal()) + ")") : "";
+            const quickText = "Здравствуйте! Я оформил быстрый заказ" + (orderId ? " № " + orderId : "") + ": " + snap.name + sumPart + ". Телефон: " + phone;
             window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(quickText), "_blank", "noopener");
           };
         }

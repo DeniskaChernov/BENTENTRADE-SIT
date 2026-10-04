@@ -230,7 +230,10 @@
   }
 
   function updateCTAs(nm){
-    const tgMsg = encodeURIComponent("Здравствуйте! Интересует: " + (nm || prod.model) + " (" + money(prod.now) + "). Уточните, пожалуйста, наличие и доставку.");
+    const priceStr = (prod.category === "rattan-raw" || prod.slug === "stol-taper-rotang-135" || prod.slug === "kreslo-como" || prod.slug === "stol-vertex-80" || !prod.now)
+      ? (t("price.on_request") || "По запросу")
+      : money(prod.now);
+    const tgMsg = encodeURIComponent("Здравствуйте! Интересует: " + (nm || prod.model) + " (" + priceStr + "). Уточните, пожалуйста, наличие и доставку.");
     const tgUrl = "https://t.me/btt_uz?text=" + tgMsg;
 
     $$("[data-pdp-tg], [data-pdp-tg-btn], [data-pdp-tg-order]").forEach(el=>{
@@ -336,9 +339,10 @@
       const disc = item.price_old && item.price_old > item.price
         ? Math.round((1 - item.price / item.price_old) * 100) : 0;
       const sale = disc ? '<span class="badge-sale">-' + disc + "%</span>" : "";
-      const avail = item.availability || "unknown";
+      const isSpecialRequest = item.category === "rattan-raw" || item.slug === "stol-taper-rotang-135" || item.slug === "kreslo-como" || item.slug === "stol-vertex-80" || !item.price;
+      const avail = item.availability || (isSpecialRequest ? "on_request" : "unknown");
       let availBadge = "";
-      if (avail === "on_request") {
+      if (avail === "on_request" || isSpecialRequest) {
         availBadge = '<span class="badge-mto" data-i18n="availability.on_request">' + esc(t("availability.on_request") || "Под заказ") + "</span>";
       } else if (avail === "out_of_stock") {
         availBadge = '<span class="badge-mto badge-oos" data-i18n="availability.out_of_stock">' + esc(t("availability.out_of_stock") || "Нет в наличии") + "</span>";
@@ -348,6 +352,15 @@
         availBadge = '<span class="badge-avail badge-avail--unknown" data-i18n="availability.unknown">' + esc(t("availability.unknown") || "Уточняйте наличие") + "</span>";
       }
       const old = item.price_old ? '<span class="price__old">' + money(item.price_old) + "</span>" : "";
+
+      let priceHtml = "";
+      if(item.category === "rattan-raw"){
+        priceHtml = '<div class="price"><span class="price__now">' + esc(t("price.on_request_moq") || "По запросу (от MOQ)") + '</span></div>';
+      } else if(isSpecialRequest){
+        priceHtml = '<div class="price"><span class="price__now">' + esc(t("price.on_request") || "По запросу") + '</span></div>';
+      } else {
+        priceHtml = '<div class="price"><span class="price__now">' + money(item.price) + '</span>' + old + '</div>';
+      }
 
       const confirmed = item.confirmedColors || [];
       let swatchesHtml = "";
@@ -383,7 +396,7 @@
         '<div class="product__cat">' + esc(cat) + '</div>' +
         '<div class="product__name">' + esc(nm) + '</div>' +
         swatchesHtml +
-        '<div class="price"><span class="price__now">' + money(item.price) + '</span>' + old + '</div>' +
+        priceHtml +
         '</div>' +
         '</article>';
     }).join("");
@@ -486,13 +499,17 @@
       "stol-vertex-d90+stul-vertex": 2676000,
       "stol-vertex-d90+stul-corda": 2676000,
       "stol-taper-80+stul-vertex": 2850000,
-      "stol-taper-80+stul-corda": 2850000
+      "stol-taper-80+stul-corda": 2850000,
+      "stol-taper-rotang-80+stul-vertex": 2850000,
+      "stol-taper-rotang-80+stul-corda": 2850000
     };
     const TABLE_BUNDLE_PRICES = {
+      "stol-vertex-d90": 680000,
       "stol-taper-80": 733000,
+      "stol-taper-rotang-80": 854000,
       "stol-taper-135": 860000,
       "stol-corda-135": 949000,
-      "stol-vertex-d90": 680000
+      "stol-taper-rotang-135": 954000
     };
     const CHAIR_BUNDLE_PRICES = {
       "stul-roero": 168000,
@@ -631,9 +648,15 @@
     $$("[data-crumb-cat]").forEach(a => a.href = "catalog.html?cat=" + prod.category);
 
     // Price and unit
-    const priceEl = $("[data-pdp-price]");
+    const priceEls = $$("[data-pdp-price]");
     const unitText = (prod.unit_label || (prod.unit && prod.unit !== "pcs" ? (" / " + t("unit." + prod.unit)) : ""));
-    if(priceEl) priceEl.textContent = money(prod.now) + (unitText ? (" " + unitText) : "");
+    let displayPrice = money(prod.now) + (unitText ? (" " + unitText) : "");
+    if(prod.category === "rattan-raw"){
+      displayPrice = t("price.on_request_moq") || "По запросу (от MOQ)";
+    } else if(prod.slug === "stol-taper-rotang-135" || prod.slug === "kreslo-como" || prod.slug === "stol-vertex-80" || !prod.now){
+      displayPrice = t("price.on_request") || "По запросу";
+    }
+    priceEls.forEach(el => el.textContent = displayPrice);
 
     // Dimensions
     const dims = prod.dimensions || (prod.specs && prod.specs.dim) || "-";
@@ -812,12 +835,29 @@
     }
   }
 
+  function initStickyBar(){
+    const bar = $("[data-pdp-sticky-bar]");
+    const buyBox = $(".pdp-buy");
+    if(!bar || !buyBox) return;
+
+    function checkSticky(){
+      const rect = buyBox.getBoundingClientRect();
+      const isOut = rect.bottom < 50;
+      bar.classList.toggle("is-visible", isOut);
+    }
+
+    window.addEventListener("scroll", checkSticky, { passive: true });
+    window.addEventListener("resize", checkSticky, { passive: true });
+    checkSticky();
+  }
+
   // Initial load & runtime product hydration
   function initPDP(){
     setImages();
     render();
     renderRelated();
     renderLifestylePairing(activeColorId);
+    initStickyBar();
   }
 
   async function bootstrapPDP(){
