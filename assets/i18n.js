@@ -882,7 +882,7 @@ window.BTT_I18N = {
     "quick.trust.callback": "Менеджер перезвонит в течение 10-15 минут для подтверждения времени доставки.",
     "quick.address.label": "Район / Адрес доставки (по желанию)",
     "quick.address.ph": "Ташкент, например: Чиланзарский р-н",
-    "quick.or_add_cart": "Или добавить в корзину",
+
     "home.solutions.eyebrow": "Интерьерные сценарии",
     "home.solutions.title": "Готовые решения для вашего пространства",
     "home.solutions.sub": "Гармоничные комплекты столов и стульев для террасы, кухни, сада и кафе.",
@@ -1788,7 +1788,7 @@ window.BTT_I18N = {
     "quick.trust.callback": "Menejer 10-15 daqiqa ichida yetkazib berish vaqtini kelishish uchun qo'ng'iroq qiladi.",
     "quick.address.label": "Yetkazib berish tumani / manzili (ixtiyoriy)",
     "quick.address.ph": "Toshkent, masalan: Chilonzor tumani",
-    "quick.or_add_cart": "Yoki savatga qo'shish",
+
     "home.solutions.eyebrow": "Interyer ssenariylari",
     "home.solutions.title": "Makoningiz uchun tayyor yechimlar",
     "home.solutions.sub": "Ayvon, oshxona, bog' va qahvaxona uchun stol va stullarning uyg'un to'plamlari.",
@@ -2694,7 +2694,7 @@ window.BTT_I18N = {
     "quick.trust.callback": "Manager will call back within 10-15 minutes to confirm delivery time.",
     "quick.address.label": "District / Delivery address (optional)",
     "quick.address.ph": "Tashkent, e.g. Chilanzar district",
-    "quick.or_add_cart": "Or add to cart",
+
     "home.solutions.eyebrow": "Interior scenarios",
     "home.solutions.title": "Ready solutions for your space",
     "home.solutions.sub": "Harmonious sets of tables and chairs for patio, kitchen, garden, and cafe.",
