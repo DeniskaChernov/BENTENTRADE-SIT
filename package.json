@@ -27,6 +27,7 @@
     "test:smoke": "node scripts/smoke-test.mjs",
     "test:live": "node scripts/test-live-deploy.mjs",
     "test:guest": "node scripts/test-live-guest-flow.mjs",
+    "test:modal": "node scripts/test-modal-cdp.mjs",
     "audit": "node scripts/audit-full-system.mjs",
     "typecheck": "tsc --noEmit"
   },
