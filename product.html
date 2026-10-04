@@ -27,6 +27,7 @@
 <title>BTT - Мебель для дома и сада</title>
 <link rel="stylesheet" href="assets/styles.css?v=20261001-1">
 <link rel="stylesheet" href="assets/pages.css?v=20261001-1">
+<link rel="stylesheet" href="assets/ar-viewer.css?v=20261001-1">
 <script>(function(){try{if(localStorage.getItem('btt_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 </head>
 <body>
@@ -104,6 +105,10 @@
         <img src="assets/prod-chair-vertex-detail-back.jpg" alt="" loading="lazy" decoding="async">
         <img src="assets/prod-chair-vertex-detail-seat.jpg" alt="" loading="lazy" decoding="async">
       </div>
+      <button type="button" class="btn btn--ghost sm pdp-ar-btn" data-pdp-ar-trigger style="margin-top:12px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <span data-i18n="ar.btn">Примерить в комнате (3D / AR)</span>
+      </button>
     </div>
 
     <!-- INFO -->
@@ -147,7 +152,6 @@
             <button type="button" data-qu data-i18n-aria="pdp.qty.plus" aria-label="Увеличить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
           </div>
           <button type="button" class="btn btn--copper pdp-buy__btn" data-add data-pdp-quick-buy>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18" style="margin-right:6px;flex-shrink:0"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             <span data-i18n="pdp.cta.add">Купить в 1 клик</span>
           </button>
           <button type="button" class="pdp-fav" data-fav data-i18n-aria="tool.fav" aria-label="Избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg></button>
@@ -258,7 +262,6 @@
       </div>
       <div class="pdp-sticky-bar__action">
         <button type="button" class="btn btn--copper pdp-sticky-bar__btn" data-add data-pdp-quick-buy>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16" style="margin-right:6px;flex-shrink:0"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           <span data-i18n="pdp.cta.add">Купить в 1 клик</span>
         </button>
       </div>
@@ -341,5 +344,6 @@
 <script src="assets/fx.js?v=20261001-1"></script>
 <script src="assets/pdp.js?v=20261001-1"></script>
 <script src="assets/catalog-sync.js?v=20261001-1"></script>
+<script defer src="assets/ar-viewer.js?v=20261001-1"></script>
 </body>
 </html>

@@ -97,9 +97,9 @@ for (const p of products) {
 
   // Check required fields
   assert(ALLOWED_CATEGORIES.has(p.category), `${p.slug}: valid category (${p.category})`);
-  assert(typeof p.price === 'number' && p.price > 0, `${p.slug}: valid price (${p.price})`);
   const avail = p.availability || 'unknown';
   assert(ALLOWED_AVAILABILITIES.has(avail), `${p.slug}: valid availability (${avail})`);
+  assert(typeof p.price === 'number' && (p.price > 0 || (p.price === 0 && avail === 'on_request')), `${p.slug}: valid price (${p.price})`);
   assert(p.dimensions && typeof p.dimensions === 'string', `${p.slug}: dimensions defined`);
   assert(p.maxLoad === null, `${p.slug}: maxLoad is null (unverified weight claims stripped)`);
 

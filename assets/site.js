@@ -808,7 +808,7 @@
           '<div class="qv-actions">' +
             (isMto
               ? '<a class="btn btn--copper" href="' + canonicalHref + '">' + esc(t("pdp.sticky.order") || "Сделать на заказ") + '</a>'
-              : '<button type="button" class="btn btn--copper" data-qv-quick-buy style="width:100%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16" style="margin-right:6px;vertical-align:-2px"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>' + esc(t("pdp.quickBuy") || "Купить в 1 клик") + '</button>'
+              : '<button type="button" class="btn btn--copper" data-qv-quick-buy style="width:100%">' + esc(t("pdp.quickBuy") || "Купить в 1 клик") + '</button>'
             ) +
           '</div>' +
           '<a class="qv-full-link" href="' + canonicalHref + '">' +

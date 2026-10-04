@@ -72,7 +72,6 @@
   const money = (n) => U.formatMoney ? U.formatMoney(n) : (String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0сум");
 
   const FAV_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>';
-  const ADD_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>';
 
   function setMetaPair(name, content){
     if(!content) return;
@@ -604,7 +603,6 @@
           '</div>' +
           '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
             '<button type="button" class="btn btn--copper" data-combo-quick-buy style="display:inline-flex;align-items:center;gap:6px">' +
-              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>' +
               '<span>' + esc(t("pdp.life.combo.one_click") || "Купить комплект в 1 клик") + '</span>' +
             '</button>' +
             '<a class="btn btn--ghost sm" href="' + tgUrl + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px">' +

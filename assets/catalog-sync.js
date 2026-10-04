@@ -30,7 +30,6 @@
   };
 
   const FAV_SVG = U.FAV_SVG || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg>';
-  const ADD_SVG = U.ADD_SVG || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>';
 
   const lang = U.lang || function () { const s = localStorage.getItem("btt_lang"); return ["ru", "uz", "en"].includes(s) ? s : "ru"; };
   const t = U.t || function (k) { const I = window.BTT_I18N || {}; const d = I[lang()] || {}; if (d[k] != null) return d[k]; const ru = I.ru || {}; return ru[k] != null ? ru[k] : k; };

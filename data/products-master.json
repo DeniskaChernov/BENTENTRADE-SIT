@@ -1333,7 +1333,7 @@
     "legacyId": "p13",
     "model": "Vertex 80x80",
     "category": "tables",
-    "price": 738000,
+    "price": 0,
     "dimensions": "80 × 80 × 75 см",
     "materials": [
       "ЛДСП",
@@ -1398,8 +1398,8 @@
         "seo_description": "Vertex 80x80 Table (Tables) by BTT. Dimensions: 80 × 80 × 75 см. Delivery across Tashkent and Uzbekistan."
       }
     },
-    "status": "unknown",
-    "availability": "unknown",
+    "status": "on_request",
+    "availability": "on_request",
     "active": 1,
     "sort": 13,
     "currency": "сум"

@@ -1214,7 +1214,6 @@
               '</div>' +
               '<p class="co-err" data-qk-err hidden></p>' +
               '<button type="submit" class="btn btn--copper qk-submit" data-qk-submit style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px">' +
-                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>' +
                 '<span>' + esc(t("quickOrderBtn") || "Подтвердить заказ в 1 клик") + '</span>' +
               '</button>' +
               '<div style="margin-top:10px">' +
