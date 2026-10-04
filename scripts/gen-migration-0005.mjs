@@ -43,11 +43,6 @@ const cats = [
     uz: { name: "Plastik stullar", desc: "Birlamchi polipropilendan tayyorlangan amaliy stullar.", seo_t: "Toshkentda plastik stullar sotib olish - BTT", seo_d: "BTT dan sifatli plastik stullar. Toshkent bo‘ylab yetkazib berish." },
     en: { name: "Plastic chairs", desc: "Modern chairs crafted from high-grade virgin polypropylene.", seo_t: "Buy Plastic Chairs in Tashkent - BTT", seo_d: "Plastic chairs by BTT. Delivery across Tashkent and Uzbekistan." }
   },
-  { id: 3, slug: "upholstered-chairs", sort: 30, image: "assets/prod-chair-como.jpg",
-    ru: { name: "Мягкие стулья", desc: "Стулья и кресла на металлическом каркасе с мягкой обивкой.", seo_t: "Купить мягкие стулья в Ташкенте - BTT", seo_d: "Мягкие стулья и полукресла для кухни, гостиной и кафе от BTT." },
-    uz: { name: "Yumshoq stullar", desc: "Yumshoq qoplamali metall karkasli qulay stullar va kreslolar.", seo_t: "Toshkentda yumshoq stullar sotib olish - BTT", seo_d: "BTT dan oshxona va kafelar uchun yumshoq stullar." },
-    en: { name: "Upholstered chairs", desc: "Upholstered chairs and armchairs on durable metal frames.", seo_t: "Buy Upholstered Chairs in Tashkent - BTT", seo_d: "Upholstered dining chairs and armchairs by BTT." }
-  },
   { id: 4, slug: "tables", sort: 40, image: "assets/prod-table-taper-80-scene.jpg",
     ru: { name: "Обеденные столы", desc: "Столы на металлокаркасе со столешницей из ЛДСП.", seo_t: "Купить обеденные столы в Ташкенте - BTT", seo_d: "Обеденные столы Taper, Vertex, Corda от BTT. Размеры 80x80, 135x80, круглые." },
     uz: { name: "Ovqat stollari", desc: "LDSP ustki qismli va metall karkasli mustahkam stollar.", seo_t: "Toshkentda ovqat stollari sotib olish - BTT", seo_d: "BTT dan to‘rtburchak va dumaloq ovqat stollari." },

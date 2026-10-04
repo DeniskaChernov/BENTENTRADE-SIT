@@ -229,7 +229,7 @@
   }
 
   function updateCTAs(nm){
-    const priceStr = (prod.category === "rattan-raw" || prod.slug === "stol-taper-rotang-135" || prod.slug === "kreslo-como" || prod.slug === "stol-vertex-80" || !prod.now)
+    const priceStr = (prod.category === "rattan-raw" || prod.slug === "stol-taper-rotang-135" || prod.slug === "stol-vertex-80" || !prod.now)
       ? (t("price.on_request") || "По запросу")
       : money(prod.now);
     const tgMsg = encodeURIComponent("Здравствуйте! Интересует: " + (nm || prod.model) + " (" + priceStr + "). Уточните, пожалуйста, наличие и доставку.");
@@ -338,7 +338,7 @@
       const disc = item.price_old && item.price_old > item.price
         ? Math.round((1 - item.price / item.price_old) * 100) : 0;
       const sale = disc ? '<span class="badge-sale">-' + disc + "%</span>" : "";
-      const isSpecialRequest = item.category === "rattan-raw" || item.slug === "stol-taper-rotang-135" || item.slug === "kreslo-como" || item.slug === "stol-vertex-80" || !item.price;
+      const isSpecialRequest = item.category === "rattan-raw" || item.slug === "stol-taper-rotang-135" || item.slug === "stol-vertex-80" || !item.price;
       const avail = item.availability || (isSpecialRequest ? "on_request" : "unknown");
       let availBadge = "";
       if (avail === "on_request" || isSpecialRequest) {
@@ -417,9 +417,6 @@
     "stul-noero": "stol-taper-80",
     "stul-todo": "stol-taper-135",
     "stul-todo-soft": "stol-taper-135",
-    "stul-lira": "stol-taper-135",
-    "kreslo-como": "stol-taper-135",
-
     // Tables -> Recommended Chair
     "stol-taper-rotang-80": "stul-vertex",
     "stol-vertex-d90": "stul-vertex",
@@ -448,8 +445,6 @@
   };
 
   const PRODUCT_DEFAULT_SCENES = {
-    "stul-lira": "assets/scene-dining-cream.png",
-    "kreslo-como": "assets/scene-dining-marble.png",
     "stul-vertex": "assets/scene-dining-warm.png",
     "stul-corda": "assets/scene-dining-warm.png"
   };
@@ -653,7 +648,7 @@
     let displayPrice = money(prod.now) + (unitText ? (" " + unitText) : "");
     if(prod.category === "rattan-raw"){
       displayPrice = t("price.on_request_moq") || "По запросу (от MOQ)";
-    } else if(prod.slug === "stol-taper-rotang-135" || prod.slug === "kreslo-como" || prod.slug === "stol-vertex-80" || !prod.now){
+    } else if(prod.slug === "stol-taper-rotang-135" || prod.slug === "stol-vertex-80" || !prod.now){
       displayPrice = t("price.on_request") || "По запросу";
     }
     priceEls.forEach(el => el.textContent = displayPrice);

@@ -871,108 +871,6 @@
     "currency": "сум"
   },
   {
-    "slug": "stul-lira",
-    "legacyId": "p7",
-    "model": "LIRA",
-    "category": "upholstered-chairs",
-    "price": 354000,
-    "dimensions": "95 × 55 × 48 см",
-    "materials": [
-      "металл",
-      "текстиль"
-    ],
-    "maxLoad": null,
-    "confirmedColors": [],
-    "isTable": false,
-    "images": [
-      "assets/placeholder.svg",
-      "assets/scene-dining-azure.png",
-      "assets/scene-dining-cream.png"
-    ],
-    "i18n": {
-      "ru": {
-        "name": "Стул «LIRA»",
-        "category_label": "Мягкие стулья",
-        "description": "Изысканный обеденный стул Lira с высокой спинкой 95 см, мягкой фактурной обивкой и металлическим каркасом. Создаёт атмосферу роскоши и уюта в интерьере гостиной, столовой или банкетного зала. Обеспечивает деликатную поддержку спины. Рекомендуется комплектовать с большим столом Taper 135 или Corda 135.",
-        "usage": "Для столовой, гостиной, кухни, банкетных залов",
-        "seo_title": "Купить Стул «LIRA» в Ташкенте - BTT",
-        "seo_description": "Стул «LIRA» (Мягкие стулья) от BTT. Размеры: 95 × 55 × 48 см. Доставка по Ташкенту и всему Узбекистану."
-      },
-      "uz": {
-        "name": "«LIRA» stuli",
-        "category_label": "Yumshoq stullar",
-        "description": "95 sm balandlikdagi suyanchiq, yumshoq sifatli qoplama va metall karkasga ega nafis Lira stuli. Mehmonxona, oshxona yoki banket zallarida hashamat va shinamlik muhitini yaratadi. Orqa qismni qulay quvvatlaydi. Katta Taper 135 yoki Corda 135 stollari bilan birgalikda tanlash tavsiya etiladi.",
-        "usage": "Oshxona, mehmonxona, banket zallari uchun",
-        "seo_title": "Toshkentda «LIRA» stuli sotib olish - BTT",
-        "seo_description": "BTT dan «LIRA» stuli (Yumshoq stullar). O‘lchamlari: 95 × 55 × 48 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
-      },
-      "en": {
-        "name": "LIRA Chair",
-        "category_label": "Upholstered chairs",
-        "description": "Refined dining chair Lira featuring an elegant 95 cm high backrest, soft upholstery, and a steel frame. Adds sophisticated warmth to dining rooms, living spaces, and banquet halls. Provides gentle, supportive posture. Highly recommended paired with large Taper 135 or Corda 135 dining tables.",
-        "usage": "For dining room, living room, kitchen, banquet halls",
-        "seo_title": "Buy LIRA Chair in Tashkent - BTT",
-        "seo_description": "LIRA Chair (Upholstered chairs) by BTT. Dimensions: 95 × 55 × 48 см. Delivery across Tashkent and Uzbekistan."
-      }
-    },
-    "status": "unknown",
-    "availability": "unknown",
-    "active": 1,
-    "sort": 7,
-    "currency": "сум"
-  },
-  {
-    "slug": "kreslo-como",
-    "legacyId": "p8",
-    "model": "COMO",
-    "category": "upholstered-chairs",
-    "price": 486000,
-    "dimensions": "82 × 63 × 60 см",
-    "materials": [
-      "металл",
-      "текстиль"
-    ],
-    "maxLoad": null,
-    "confirmedColors": [],
-    "isTable": false,
-    "images": [
-      "assets/placeholder.svg",
-      "assets/scene-dining-warm.png",
-      "assets/scene-dining-marble.png"
-    ],
-    "i18n": {
-      "ru": {
-        "name": "Кресло «COMO»",
-        "category_label": "Мягкие стулья",
-        "description": "Статусное мягкое полукресло Como с глубокой посадкой, широкими боковыми поддержками и металлическим основанием. Текстильная обивка приятна на ощупь. Превосходно подходит для лаунж-зоны, кабинета, каминной или просторной столовой. Идеально сочетается со столами Taper 135 и Corda 135.",
-        "usage": "Для гостиной, лаунж-зон, кабинета, спальни",
-        "seo_title": "Купить Кресло «COMO» в Ташкенте - BTT",
-        "seo_description": "Кресло «COMO» (Мягкие стулья) от BTT. Размеры: 82 × 63 × 60 см. Доставка по Ташкенту и всему Узбекистану."
-      },
-      "uz": {
-        "name": "«COMO» kreslosi",
-        "category_label": "Yumshoq stullar",
-        "description": "Chuqur o'rindiq, qulay yon suyangichlar va metall asosga ega viqorli Como yarim kreslosi. Qoplamasi teginish uchun yoqimli . Dam olish hududi, ish xonasi, kamin oldi yoki keng oshxona uchun ajoyib mos tushadi. Taper 135 va Corda 135 stollari bilan to'liq uyg'unlik hosil qiladi.",
-        "usage": "Mehmonxona, dam olish zonalari, ish xonasi, yotoqxona uchun",
-        "seo_title": "Toshkentda «COMO» kreslosi sotib olish - BTT",
-        "seo_description": "BTT dan «COMO» kreslosi (Yumshoq stullar). O‘lchamlari: 82 × 63 × 60 см. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
-      },
-      "en": {
-        "name": "COMO Armchair",
-        "category_label": "Upholstered chairs",
-        "description": "Distinguished Como armchair featuring deep generous seating, wraparound contours, and a metal frame. The tactile textile upholstery is pleasant to the touch. Perfect for lounge areas, home offices, and spacious dining rooms. Pairs exceptionally with Taper 135 and Corda 135 tables.",
-        "usage": "For living room, lounge areas, home office, bedroom",
-        "seo_title": "Buy COMO Armchair in Tashkent - BTT",
-        "seo_description": "COMO Armchair (Upholstered chairs) by BTT. Dimensions: 82 × 63 × 60 см. Delivery across Tashkent and Uzbekistan."
-      }
-    },
-    "status": "unknown",
-    "availability": "unknown",
-    "active": 1,
-    "sort": 8,
-    "currency": "сум"
-  },
-  {
     "slug": "stol-taper-rotang-80",
     "legacyId": "p9",
     "model": "Taper Rotang 80x80",
@@ -1061,7 +959,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 9,
+    "sort": 7,
     "currency": "сум"
   },
   {
@@ -1147,7 +1045,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 10,
+    "sort": 8,
     "currency": "сум"
   },
   {
@@ -1236,7 +1134,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 11,
+    "sort": 9,
     "currency": "сум"
   },
   {
@@ -1325,7 +1223,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 12,
+    "sort": 10,
     "currency": "сум"
   },
   {
@@ -1401,7 +1299,7 @@
     "status": "on_request",
     "availability": "on_request",
     "active": 1,
-    "sort": 13,
+    "sort": 11,
     "currency": "сум"
   },
   {
@@ -1490,7 +1388,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 14,
+    "sort": 12,
     "currency": "сум"
   },
   {
@@ -1574,7 +1472,7 @@
     "status": "unknown",
     "availability": "unknown",
     "active": 1,
-    "sort": 15,
+    "sort": 13,
     "currency": "сум"
   },
   {
@@ -1639,7 +1537,7 @@
     "availability": "in_stock",
     "active": 1,
     "currency": "сум",
-    "sort": 16
+    "sort": 14
   },
   {
     "slug": "lampa-sora",
@@ -1703,7 +1601,7 @@
     "availability": "in_stock",
     "active": 1,
     "currency": "сум",
-    "sort": 17
+    "sort": 15
   },
   {
     "slug": "lampa-vela",
@@ -1767,7 +1665,7 @@
     "availability": "in_stock",
     "active": 1,
     "currency": "сум",
-    "sort": 18
+    "sort": 16
   },
   {
     "slug": "lampa-runa",
@@ -1831,7 +1729,7 @@
     "availability": "in_stock",
     "active": 1,
     "currency": "сум",
-    "sort": 19
+    "sort": 17
   },
   {
     "slug": "lampa-liva",
@@ -1895,7 +1793,7 @@
     "availability": "in_stock",
     "active": 1,
     "currency": "сум",
-    "sort": 20
+    "sort": 18
   },
   {
     "slug": "lampa-aria",
@@ -1959,7 +1857,7 @@
     "availability": "in_stock",
     "active": 1,
     "currency": "сум",
-    "sort": 21
+    "sort": 19
   },
   {
     "slug": "rotang-polutrubka",
@@ -2022,7 +1920,7 @@
     "availability": "on_request",
     "active": 1,
     "currency": "сум",
-    "sort": 22
+    "sort": 20
   },
   {
     "slug": "rotang-polumesyats",
@@ -2085,7 +1983,7 @@
     "availability": "on_request",
     "active": 1,
     "currency": "сум",
-    "sort": 23
+    "sort": 21
   },
   {
     "slug": "rotang-ploskaya-lenta",
@@ -2148,7 +2046,7 @@
     "availability": "on_request",
     "active": 1,
     "currency": "сум",
-    "sort": 24
+    "sort": 22
   },
   {
     "slug": "rotang-trubka",
@@ -2211,7 +2109,7 @@
     "availability": "on_request",
     "active": 1,
     "currency": "сум",
-    "sort": 25
+    "sort": 23
   },
   {
     "slug": "rotang-polusfera",
@@ -2274,7 +2172,7 @@
     "availability": "on_request",
     "active": 1,
     "currency": "сум",
-    "sort": 26
+    "sort": 24
   },
   {
     "slug": "rotang-twist",
@@ -2337,6 +2235,6 @@
     "availability": "on_request",
     "active": 1,
     "currency": "сум",
-    "sort": 27
+    "sort": 25
   }
 ]

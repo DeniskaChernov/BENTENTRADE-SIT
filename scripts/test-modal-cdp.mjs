@@ -133,7 +133,7 @@ async function runTest() {
   chrome.kill();
 
   const c = catalogCheck.result.value;
-  if(c.cardCount !== 28 || c.buyBtnCount !== 28 || c.oldAddBtnCount !== 0 || (!c.thumbComplete && c.thumbNaturalWidth <= 0) || c.thumbNaturalWidth <= 0 || c.hasRawKeyAddress || c.hasRawKeyTrust || c.hasRawKeyTelegram){
+  if(c.cardCount !== 26 || c.buyBtnCount !== 26 || c.oldAddBtnCount !== 0 || (!c.thumbComplete && c.thumbNaturalWidth <= 0) || c.thumbNaturalWidth <= 0 || c.hasRawKeyAddress || c.hasRawKeyTrust || c.hasRawKeyTelegram){
     console.error('FAIL: Catalog 1-click modal assertions failed!');
     process.exit(1);
   }

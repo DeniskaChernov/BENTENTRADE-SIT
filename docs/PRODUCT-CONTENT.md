@@ -12,8 +12,6 @@
 
 ```
 assets/products/
-├── kreslo-como/
-│   └── .gitkeep
 ├── stol-corda-135/
 │   └── .gitkeep
 ├── stol-taper-80/
@@ -31,8 +29,6 @@ assets/products/
 ├── stul-corda/
 │   └── .gitkeep
 ├── stul-jardin/
-│   └── .gitkeep
-├── stul-lira/
 │   └── .gitkeep
 ├── stul-noero/
 │   └── .gitkeep

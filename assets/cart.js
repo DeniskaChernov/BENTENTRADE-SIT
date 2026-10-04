@@ -190,8 +190,6 @@
     p4: "stul-noero",
     p5: "stul-todo",
     p6: "stul-jardin",
-    p7: "stul-lira",
-    p8: "kreslo-como",
     p9: "stol-taper-80",
     p10: "stol-taper-135",
     p11: "stol-taper-rotang-80",

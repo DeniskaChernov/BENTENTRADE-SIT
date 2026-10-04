@@ -1,6 +1,6 @@
 /* ============================================================
    BTT - hero (switchable worlds, reference layout)
-   Worlds: all · wicker-chairs · plastic-chairs · upholstered-chairs · tables
+   Worlds: all · wicker-chairs · plastic-chairs · tables
    Multilingual (RU/UZ/EN); reacts to the global language switch.
    ============================================================ */
 (function(){
@@ -37,17 +37,6 @@
                 en:"ROERO, NOERO, TODO and JARDIN models - lightweight, sturdy, suitable for outdoor and indoor use."},
       store:   {ru:"Смотреть пластиковые стулья", uz:"Plastik stullarni ko‘rish", en:"Shop plastic chairs"},
       href:    "catalog.html?cat=plastic-chairs"
-    },
-    {
-      cat: "upholstered-chairs",
-      sideImg: "assets/hero-home-furniture.png",
-      t1:      {ru:"Мягкие",                  uz:"Yumshoq",                en:"Upholstered"},
-      t2:      {ru:"стулья и кресла",         uz:"stul va kreslolar",      en:"chairs & armchairs"},
-      sub:     {ru:"Стул LIRA и уютное кресло COMO на металлическом каркасе для столовой и гостиной.",
-                uz:"Oshxona va mehmonxona uchun metall karkasdagi LIRA stuli va qulay COMO kreslosi.",
-                en:"LIRA dining chair and COMO armchair on metal frames for dining and living spaces."},
-      store:   {ru:"Смотреть мягкие стулья",  uz:"Yumshoq stullarni ko‘rish", en:"Shop upholstered chairs"},
-      href:    "catalog.html?cat=upholstered-chairs"
     },
     {
       cat: "tables",

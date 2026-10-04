@@ -24,8 +24,6 @@
         { id: "corda", name: "CORDA", retail: 499000, slug: "stul-corda" }
       ],
       upholstered: [
-        { id: "lira", name: "LIRA", retail: 354000, slug: "stul-lira" },
-        { id: "como", name: "COMO", retail: 486000, slug: "kreslo-como" }
       ]
     },
     tables: [
@@ -145,8 +143,6 @@
           "• VERTEX: 499 000 сум<br>" +
           "• CORDA: 499 000 сум<br><br>" +
           "<b>Мягкие стулья:</b><br>" +
-          "• LIRA: 354 000 сум<br>" +
-          "• COMO: 486 000 сум",
         "Цены на столы": "<b>Актуальные цены на обеденные столы BTT:</b><br>" +
           "<b>Круглые:</b><br>" +
           "• <b>VERTEX D90</b> (Ø90 см): 730 000 сум отдельно (для комплекта 680 000 сум)<br><br>" +
@@ -193,7 +189,6 @@
           "Цена рассчитывается индивидуально в зависимости от профиля, цвета, объёма заказа и MOQ. Оставьте заявку в чате для расчёта стоимости партии.",
         "Пластиковые стулья": "Практичные стулья из ударопрочного полипропилена: ROERO (188 000 сум / 168 000 в комплекте), NOERO (212 000 сум / 192 000 в комплекте), TODO (236 000 сум / 216 000 в комплекте), TODO SOFT (236 000 сум) и кресло JARDIN (344 000 сум / 324 000 в комплекте). Легко моются, не выгорают на солнце.",
         "Плетёные стулья": "Плетёные стулья VERTEX и CORDA (499 000 сум за шт.) на прочном металлокаркасе со съёмными текстильными подушками в комплекте. Идеальны для веранд, террас, столовых зон и кафе.",
-        "Мягкие стулья": "Комфортные стулья с мягкой обивкой на надёжном металлокаркасе: LIRA (354 000 сум) и кресла COMO (486 000 сум). Отлично подходят для дома, гостиной, кухни и ресторанов.",
         "Доставка и самовывоз": "<b>Условия доставки BTT:</b><br>" +
           "• <b>По Ташкенту:</b> доставка за 1-2 рабочих дня по прямому тарифу сервиса (Яндекс Доставка / Labo / Porter). При крупных заказах поможем организовать аккуратную погрузку.<br>" +
           "• <b>Самовывоз:</b> со склада в Ташкенте по предварительной договорённости (Пн-Сб, 10:00 - 20:00).<br>" +
@@ -272,8 +267,6 @@
           "• VERTEX: 499 000 so‘m<br>" +
           "• CORDA: 499 000 so‘m<br><br>" +
           "<b>Yumshoq stullar:</b><br>" +
-          "• LIRA: 354 000 so‘m<br>" +
-          "• COMO: 486 000 so‘m",
         "Stollar narxlari": "<b>BTT stollarining amaldagi narxlari:</b><br>" +
           "<b>Dumaloq stollar:</b><br>" +
           "• <b>VERTEX D90</b> (Ø90 sm): 730 000 so‘m alohida (to‘plam uchun 680 000 so‘m)<br><br>" +
@@ -313,7 +306,6 @@
           "Narx buyurtma hajmi, rang va profil turiga qarab alohida hisoblanadi. Buyurtma berish uchun chatda murojaat qiling.",
         "Plastik stullar": "Yuqori sifatli birlamchi polipropilendan tayyorlangan amaliy stullar: ROERO (188 000 / 168 000 so‘m), NOERO (212 000 / 192 000 so‘m), TODO (236 000 / 216 000 so‘m), TODO SOFT (236 000 so‘m) va JARDIN kreslosi (344 000 / 324 000 so‘m). Quyoshda so‘nmaydi, yuvish oson.",
         "To‘qilgan stullar": "Mustahkam po‘lat metall karkasli va yumshoq matoli yostiqchali VERTEX va CORDA to‘qilgan stullari (har biri 499 000 so‘m). Terasalar, ayvonlar, kafelar va oshxonalar uchun juda qulay.",
-        "Yumshoq stullar": "Yumshoq qoplamali va chidamli metall karkasli zamonaviy stullar: LIRA (354 000 so‘m) va qulay COMO kreslosi (486 000 so‘m). Uy, oshxona va kafelar uchun ideal.",
         "Yetkazish va olib ketish": "<b>Yetkazib berish shartlari:</b><br>" +
           "• <b>Toshkent bo‘ylab:</b> 1-2 ish kunida kuryerlik xizmati to‘g‘ridan-to‘g‘ri tarifi bo‘yicha (Yandex / Labo / Porter).<br>" +
           "• <b>Olib ketish (samovivoz):</b> Toshkentdagi ombordan oldindan kelishilgan holda (Du-Sha, 10:00 - 20:00).<br>" +
@@ -392,8 +384,6 @@
           "• VERTEX: 499,000 UZS<br>" +
           "• CORDA: 499,000 UZS<br><br>" +
           "<b>Upholstered chairs:</b><br>" +
-          "• LIRA: 354,000 UZS<br>" +
-          "• COMO: 486,000 UZS",
         "Table prices": "<b>Current BTT dining table prices:</b><br>" +
           "<b>Round tables:</b><br>" +
           "• <b>VERTEX D90</b> (round Ø90 cm): 730,000 UZS individually (680,000 UZS in sets)<br><br>" +
@@ -434,7 +424,6 @@
           "Price depends on profile type, color, order volume, and MOQ. Submit an inquiry in chat for a custom B2B quote.",
         "Plastic chairs": "Durable chairs crafted from impact-resistant polypropylene: ROERO (188,000 / 168,000 UZS), NOERO (212,000 / 192,000 UZS), TODO (236,000 / 216,000 UZS), TODO SOFT (236,000 UZS), and JARDIN armchair (344,000 / 324,000 UZS). Weather-resistant and easy to clean.",
         "Wicker chairs": "VERTEX and CORDA wicker chairs (499,000 UZS each) on reinforced steel frames with soft removable cushions included. Ideal for patios, verandas, dining spaces, and cafes.",
-        "Upholstered chairs": "Elegant soft-cushioned chairs on sturdy steel frames: LIRA (354,000 UZS) and comfortable COMO armchair (486,000 UZS). Perfect for living rooms, kitchens, and HoReCa.",
         "Delivery and pickup": "<b>Delivery options:</b><br>" +
           "• <b>Across Tashkent:</b> 1-2 business days via on-demand courier services (Yandex / Labo / Porter) at direct carrier rates.<br>" +
           "• <b>Warehouse pickup:</b> from our Tashkent warehouse by prior appointment (Mon-Sat, 10:00 - 20:00).<br>" +
@@ -958,8 +947,6 @@
       { key: "todo-soft", slug: "stul-todo-soft", rx: /(?:^|[^\p{L}\p{N}])(todo\s*soft|тодо\s*софт|тодософт)(?:$|[^\p{L}\p{N}])/iu },
       { key: "todo", slug: "stul-todo", rx: /(?:^|[^\p{L}\p{N}])(todo|тодо|туду)(?:$|[^\p{L}\p{N}])/iu },
       { key: "jardin", slug: "stul-jardin", rx: /(?:^|[^\p{L}\p{N}])(jardin|жардин|жарден|джардин)(?:$|[^\p{L}\p{N}])/iu },
-      { key: "lira", slug: "stul-lira", rx: /(?:^|[^\p{L}\p{N}])(lira|лира)(?:$|[^\p{L}\p{N}])/iu },
-      { key: "como", slug: "kreslo-como", rx: /(?:^|[^\p{L}\p{N}])(como|комо|камо)(?:$|[^\p{L}\p{N}])/iu },
 
       // Distinguish table Corda vs chair Corda
       { key: "corda-table", slug: "stol-corda-135", rx: /(?:^|[^\p{L}\p{N}])((?:corda|корда).*?(?:стол|stol|table|135)|(?:стол|stol|table).*?(?:corda|корда))(?:$|[^\p{L}\p{N}])/iu },
@@ -1039,7 +1026,7 @@
         return baseAns + renderProductCard("stul-vertex", curLang) + renderProductCard("stul-corda", curLang);
       }
       if(rawText.indexOf("Мягкие") !== -1 || rawText.indexOf("Yumshoq") !== -1 || rawText.indexOf("Upholstered") !== -1){
-        return baseAns + renderProductCard("stul-lira", curLang) + renderProductCard("kreslo-como", curLang);
+        return baseAns + renderProductCard("stul-todo-soft", curLang) + renderProductCard("stul-vertex", curLang);
       }
       if(rawText.indexOf("столы") !== -1 || rawText.indexOf("stollari") !== -1 || rawText.indexOf("Table") !== -1){
         return baseAns + renderProductCard("stol-taper-80", curLang) + renderProductCard("stol-vertex-d90", curLang);
@@ -1154,11 +1141,11 @@
     // 8. Stock & availability
     if(/(?:^|[^\p{L}\p{N}])(в наличии|наличии|склад|есть ли|bor mi|bormi|mavjud|in stock|stock|available)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
       if(curLang === "uz"){
-        return "Barcha asosiy mebel modellari (Roero, Noero, Todo, Todo Soft, Jardin, Vertex, Corda, Como, Lira, Taper) Toshkentdagi omborda mavjud. Buyurtma berilgan kuni yoki ertasi kuni jo‘natishimiz mumkin!";
+        return "Barcha asosiy mebel modellari (Roero, Noero, Todo, Todo Soft, Jardin, Vertex, Corda, Taper) Toshkentdagi omborda mavjud. Buyurtma berilgan kuni yoki ertasi kuni jo‘natishimiz mumkin!";
       } else if(curLang === "en"){
-        return "All core furniture models (Roero, Noero, Todo, Todo Soft, Jardin, Vertex, Corda, Como, Lira, Taper) are in stock at our Tashkent warehouse. Same-day or next-day dispatch available!";
+        return "All core furniture models (Roero, Noero, Todo, Todo Soft, Jardin, Vertex, Corda, Taper) are in stock at our Tashkent warehouse. Same-day or next-day dispatch available!";
       } else {
-        return "Все основные модели мебели BTT (Roero, Noero, Todo, Todo Soft, Jardin, Vertex, Corda, Como, Lira, Taper) есть в наличии на складе в Ташкенте. Возможна отгрузка в день заказа!";
+        return "Все основные модели мебели BTT (Roero, Noero, Todo, Todo Soft, Jardin, Vertex, Corda, Taper) есть в наличии на складе в Ташкенте. Возможна отгрузка в день заказа!";
       }
     }
 
@@ -1258,7 +1245,7 @@
       return (d.ans["Пластиковые стулья"] || d.ans["Plastik stullar"] || d.ans["Plastic chairs"]) + renderProductCard("stul-roero", curLang) + renderProductCard("stul-todo", curLang);
     }
     if(/(?:^|[^\p{L}\p{N}])(мягк|экокож|велюр|ткань|кресло|yumshoq|upholstered)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
-      return (d.ans["Мягкие стулья"] || d.ans["Yumshoq stullar"] || d.ans["Upholstered chairs"]) + renderProductCard("stul-lira", curLang) + renderProductCard("kreslo-como", curLang);
+      return (d.ans["Пластиковые стулья"] || d.ans["Plastik stullar"] || d.ans["Plastic chairs"]) + renderProductCard("stul-todo-soft", curLang) + renderProductCard("stul-vertex", curLang);
     }
     if(/(?:^|[^\p{L}\p{N}])(стол|столы|столешниц|обеденн|stollar|stol|table|tables)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
       return (d.ans["Цены на столы"] || d.ans["Stollar narxlari"] || d.ans["Table prices"]) + renderProductCard("stol-taper-80", curLang) + renderProductCard("stol-vertex-d90", curLang);
