@@ -1060,7 +1060,7 @@
     "legacyId": "p11",
     "model": "Taper Rotang 135x80",
     "category": "tables",
-    "price": 954000,
+    "price": 0,
     "dimensions": "135 × 80 × 75 см",
     "materials": [
       "ЛДСП",
@@ -1138,11 +1138,12 @@
         "seo_description": "Taper Rotang 135x80 Table (Tables) by BTT. Dimensions: 135 × 80 × 75 см. Delivery across Tashkent and Uzbekistan."
       }
     },
-    "status": "unknown",
-    "availability": "unknown",
+    "status": "on_request",
+    "availability": "on_request",
     "active": 1,
     "sort": 9,
-    "currency": "сум"
+    "currency": "сум",
+    "bundlePrice": 954000
   },
   {
     "slug": "stol-taper-80",
@@ -1871,7 +1872,7 @@
     "legacyId": "r1",
     "model": "Полутрубка",
     "category": "rattan-raw",
-    "price": 120000,
+    "price": 0,
     "dimensions": "Бухты / бобины",
     "materials": [
       "первичный полимер",
@@ -1934,7 +1935,7 @@
     "legacyId": "r2",
     "model": "Полумесяц",
     "category": "rattan-raw",
-    "price": 120000,
+    "price": 0,
     "dimensions": "Бухты / бобины",
     "materials": [
       "первичный полимер",
@@ -1997,7 +1998,7 @@
     "legacyId": "r3",
     "model": "Плоская лента",
     "category": "rattan-raw",
-    "price": 120000,
+    "price": 0,
     "dimensions": "Бухты / бобины",
     "materials": [
       "первичный полимер",
@@ -2060,7 +2061,7 @@
     "legacyId": "r4",
     "model": "Трубка",
     "category": "rattan-raw",
-    "price": 120000,
+    "price": 0,
     "dimensions": "Бухты / бобины",
     "materials": [
       "первичный полимер",
@@ -2123,7 +2124,7 @@
     "legacyId": "r5",
     "model": "Полусфера",
     "category": "rattan-raw",
-    "price": 120000,
+    "price": 0,
     "dimensions": "Бухты / бобины",
     "materials": [
       "первичный полимер",
@@ -2186,7 +2187,7 @@
     "legacyId": "r6",
     "model": "TWIST",
     "category": "rattan-raw",
-    "price": 120000,
+    "price": 0,
     "dimensions": "Бухты / бобины",
     "materials": [
       "первичный полимер",

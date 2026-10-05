@@ -19,8 +19,9 @@
   const CATS = [
     { slug:"wicker-chairs",     k:"cat.wickerChairs",     img:"assets/prod-chair-corda.jpg" },
     { slug:"plastic-chairs",    k:"cat.plasticChairs",    img:"assets/prod-chair-roero.jpg" },
-    { slug:"upholstered-chairs",k:"cat.upholsteredChairs",img:"assets/hero-home-furniture.png" },
-    { slug:"tables",            k:"cat.tables",           img:"assets/prod-table-corda-135-black.jpg" }
+    { slug:"tables",            k:"cat.tables",           img:"assets/prod-table-corda-135-black.jpg" },
+    { slug:"lighting",          k:"cat.lighting",         img:"assets/prod-lamp-nova.svg" },
+    { slug:"rattan-raw",        k:"cat.rattanRaw",        img:"assets/prod-rattan-polutrubka.svg" }
   ];
   const PAGES = [
     { href:"index.html",    k:"nav.home" },

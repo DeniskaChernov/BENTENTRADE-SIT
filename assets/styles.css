@@ -661,12 +661,12 @@ p{margin:0;text-wrap:pretty;}
   box-shadow:var(--spatial-shadow);
 }
 .product__media:hover .see{opacity:1;transform:translate(-50%,-50%) scale(1);}
-.product__media img{transition:transform .65s cubic-bezier(.2,.7,.2,1);will-change:transform;}
+.product__media img{transition:transform .65s cubic-bezier(.2,.7,.2,1);will-change:transform;cursor:pointer;}
 .product:hover .product__media img{transform:scale(1.045);}
 
 .product__name{
   font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em;line-height:1.28;
-  color:var(--text);transition:color .25s ease;text-wrap:balance;
+  color:var(--text);transition:color .25s ease;text-wrap:balance;cursor:pointer;
 }
 .product:hover .product__name{color:var(--copper-bright);}
 .prod-grid .product__name,.catalog-grid .product__name,.acc-prod-name{

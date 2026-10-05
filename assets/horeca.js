@@ -180,6 +180,161 @@
       });
     }
 
+    const printBtn = document.getElementById("calc-print-btn");
+    if (printBtn) {
+      printBtn.addEventListener("click", e => {
+        e.preventDefault();
+        const seats = parseInt(slider ? slider.value : 40, 10) || 40;
+        const venue = getSelectedVenue();
+        const tier = getSelectedTier();
+        const conf = (SET_PRICES[venue] && SET_PRICES[venue][tier]) || SET_PRICES.cafe.wicker;
+
+        const tablesCount = Math.max(1, Math.ceil(seats / 4));
+        const chairsCount = tablesCount * 4;
+        const totalPrice = tablesCount * conf.pricePerSet;
+
+        let tableModel = "Стол «Vertex D90» (круглый Ø90 × 75 см, ЛДСП/металл)";
+        let tableUnitPrice = 680000;
+        let chairModel = "Плетёный стул «Vertex» (кручёный ротанг, металлокаркас, мягкая подушка)";
+        let chairUnitPrice = 499000;
+
+        if (venue === "terrace") {
+          tableModel = "Стол «Taper 80x80» (квадратный 80 × 80 × 75 см, влагостойкий ЛДСП/металл)";
+          tableUnitPrice = 733000;
+          if (tier === "wicker") {
+            chairModel = "Плетёный стул «Vertex / Corda» (кручёный ротанг, мягкая подушка)";
+            chairUnitPrice = (conf.pricePerSet - tableUnitPrice) / 4;
+          } else {
+            chairModel = "Пластиковый стул «ROERO» (высокопрочный полипропилен)";
+            chairUnitPrice = 168000;
+          }
+        } else if (venue === "rest") {
+          tableModel = "Стол «Corda 135x80» (прямоугольный 135 × 80 × 75 см, премиум ЛДСП/металл)";
+          tableUnitPrice = 949000;
+          if (tier === "wicker") {
+            chairModel = "Плетёный стул «Corda» (фактурное плетение, мягкая подушка)";
+            chairUnitPrice = 499000;
+          } else {
+            chairModel = "Пластиковый стул «ROERO» (эргономичный полипропилен)";
+            chairUnitPrice = 168000;
+          }
+        } else {
+          if (tier === "plastic") {
+            chairModel = "Пластиковый стул «ROERO» (эргономичный полипропилен)";
+            chairUnitPrice = 168000;
+          }
+        }
+
+        const tablesTotal = tablesCount * tableUnitPrice;
+        const chairsTotal = totalPrice - tablesTotal;
+
+        let venueLabel = "Кафе / кофейня";
+        if (venue === "terrace") venueLabel = "Летняя терраса / открытая веранда";
+        if (venue === "rest") venueLabel = "Ресторан / банкетный зал";
+
+        const now = new Date();
+        const docDate = now.toLocaleDateString("ru-RU", { day: "2-digit", month: "2-digit", year: "numeric" });
+        const docNum = String(now.getFullYear()).slice(-2) + String(now.getMonth() + 1).padStart(2, "0") + String(now.getDate()).padStart(2, "0") + "-" + String(Math.floor(100 + Math.random() * 900));
+
+        let printBox = document.getElementById("btt-print-estimate");
+        if (!printBox) {
+          printBox = document.createElement("div");
+          printBox.id = "btt-print-estimate";
+          document.body.appendChild(printBox);
+        }
+
+        printBox.innerHTML = `
+          <div class="print-header">
+            <div class="print-header__left">
+              <div class="print-logo">BTT</div>
+              <div class="print-tagline">BTT - мебель для дома, сада и HoReCa</div>
+              <div class="print-meta-line">г. Ташкент, ул. Паркентская · Тел: +998 77 104 44 22</div>
+              <div class="print-meta-line">Email: hello@btt.uz · Telegram: @btt_uz · btt.uz</div>
+            </div>
+            <div class="print-header__right">
+              <div class="print-doc-num">Смета № КП-BTT-${docNum}</div>
+              <div class="print-doc-date">Дата составления: ${docDate}</div>
+              <div class="print-doc-valid">Срок действия цен: 14 календарных дней</div>
+            </div>
+          </div>
+
+          <div class="print-title-box">
+            <h1 class="print-doc-title">КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ / СПЕЦИФИКАЦИЯ</h1>
+            <div class="print-doc-sub">Оснащение мебелью проекта: <strong>${venueLabel}</strong> на <strong>${seats}</strong> посадочных мест</div>
+          </div>
+
+          <table class="print-table">
+            <thead>
+              <tr>
+                <th style="width:36px;text-align:center">№</th>
+                <th>Наименование изделия и описание</th>
+                <th style="width:50px;text-align:center">Ед.</th>
+                <th style="width:60px;text-align:center">Кол-во</th>
+                <th style="width:120px;text-align:right">Цена (сум)</th>
+                <th style="width:140px;text-align:right">Сумма (сум)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align:center">1</td>
+                <td>
+                  <div class="print-item-name">${tableModel}</div>
+                  <div class="print-item-desc">Обеденный стол на прочном металлокаркасе с защитным полимерным покрытием. Столешница ЛДСП с фактурой мрамора.</div>
+                </td>
+                <td style="text-align:center">шт.</td>
+                <td style="text-align:center">${tablesCount}</td>
+                <td style="text-align:right">${fmtNum(tableUnitPrice)}</td>
+                <td style="text-align:right">${fmtNum(tablesTotal)}</td>
+              </tr>
+              <tr>
+                <td style="text-align:center">2</td>
+                <td>
+                  <div class="print-item-name">${chairModel}</div>
+                  <div class="print-item-desc">Стул повышенной прочности для интенсивной эксплуатации в секторе HoReCa. Устойчив к износу и нагрузкам.</div>
+                </td>
+                <td style="text-align:center">шт.</td>
+                <td style="text-align:center">${chairsCount}</td>
+                <td style="text-align:right">${fmtNum(chairUnitPrice)}</td>
+                <td style="text-align:right">${fmtNum(chairsTotal)}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr class="print-total-row">
+                <td colspan="4" style="text-align:right;font-weight:700">ИТОГО К ОПЛАТЕ:</td>
+                <td colspan="2" style="text-align:right;font-weight:800;font-size:15px">${fmtNum(totalPrice)} сум</td>
+              </tr>
+            </tfoot>
+          </table>
+
+          <div class="print-terms">
+            <div class="print-terms__title">УСЛОВИЯ ПОСТАВКИ И ГАРАНТИИ:</div>
+            <ul class="print-terms__list">
+              <li><strong>Комплектация:</strong> в комплект каждого плетёного стула включена мягкая текстильная подушка.</li>
+              <li><strong>Сроки поставки:</strong> 1-3 рабочих дня со склада в Ташкенте после согласования спецификации.</li>
+              <li><strong>Доставка:</strong> бесплатная доставка собственным автотранспортом по г. Ташкенту при проектном заказе.</li>
+              <li><strong>Порядок оплаты:</strong> безналичный расчёт по договору поставки (с оформлением ЭСФ) либо оплата по факту приёма партии.</li>
+              <li><strong>Гарантия:</strong> официальная гарантия 12 месяцев на металлокаркас, геометрию и целостность плетения.</li>
+            </ul>
+          </div>
+
+          <div class="print-signatures">
+            <div class="print-sig-col">
+              <div class="print-sig-title">Поставщик:</div>
+              <div class="print-sig-name">BTT (ООО "BTT Trade")</div>
+              <div class="print-sig-line">Отдел корпоративных продаж: ______________ / М.П.</div>
+            </div>
+            <div class="print-sig-col">
+              <div class="print-sig-title">Заказчик:</div>
+              <div class="print-sig-name">Представитель заведения / организации</div>
+              <div class="print-sig-line">Согласовано: ___________________________ / М.П.</div>
+            </div>
+          </div>
+        `;
+
+        window.print();
+      });
+    }
+
     calculate();
     document.addEventListener("btt:lang", calculate);
   }

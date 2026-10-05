@@ -338,6 +338,11 @@
                   ${t("builder.buy")}
                 </button>
 
+                <button type="button" class="btn btn--ghost sm set-builder-ar-btn" data-builder-ar style="margin-top:10px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                  <span>${t("ar.btn") || "Примерить в комнате (3D / AR)"}</span>
+                </button>
+
                 <div class="set-builder-trust-note">
                   <span>🛡️ Оплата строго при получении после осмотра мебели в Ташкенте.</span>
                 </div>
@@ -401,6 +406,26 @@
             img: c.tableColor.img,
             selectedColor: loc(c.tableColor.name) + " / " + loc(c.chairColor.name)
           });
+        }
+      };
+    }
+
+    const arBtn = container.querySelector("[data-builder-ar]");
+    if (arBtn) {
+      arBtn.onclick = () => {
+        if (window.BTT_AR && window.BTT_AR.open) {
+          const c = calculateSet();
+          const chairSlug = c.chair.id;
+          const chairObj = window.BTT_PRODUCTS ? window.BTT_PRODUCTS[chairSlug] : null;
+          const tableSlug = c.table.id;
+          const tableObj = window.BTT_PRODUCTS ? window.BTT_PRODUCTS[tableSlug] : null;
+          const prodToPreview = chairObj || tableObj || {
+            slug: chairSlug,
+            name: loc(c.chair.name),
+            model: loc(c.chair.name),
+            dimensions: "82 × 48 × 49 см"
+          };
+          window.BTT_AR.open(prodToPreview);
         }
       };
     }

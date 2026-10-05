@@ -1864,8 +1864,25 @@
 
     window.BTT_INIT_SWATCHES = initProductSwatches;
 
+    /* Product Card Click to Details (image & title) */
+    function initProductCardClicks(){
+      document.addEventListener("click", (e)=>{
+        const card = e.target.closest(".product, [data-product]");
+        if(!card) return;
+        if(e.target.closest("button, a, input, select, label, .product-swatch, .fav, .quickview-btn, .product__buy, [data-add], [data-fav]")) return;
+        const targetEl = e.target.closest(".product__media, .product__name, .product__cat");
+        if(targetEl){
+          const link = card.querySelector("a.see, a[href*='/catalog/'], a[href*='product.html']");
+          if(link && link.href){
+            window.location.href = link.href;
+          }
+        }
+      });
+    }
+
     initCatalogView();
     initProductSwatches();
+    initProductCardClicks();
     document.addEventListener("btt:related-rendered", initProductSwatches);
 
     // contact form
