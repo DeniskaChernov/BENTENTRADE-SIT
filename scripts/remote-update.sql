@@ -28,14 +28,7 @@ UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' W
 UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'stul-todo-soft' AND lang = 'uz';
 UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'stul-todo-soft' AND lang = 'en';
 UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'stul-jardin' AND lang = 'ru';
-UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'stul-jardin' AND lang = 'uz';
 UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'stul-jardin' AND lang = 'en';
-UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'stul-lira' AND lang = 'ru';
-UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'stul-lira' AND lang = 'uz';
-UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'stul-lira' AND lang = 'en';
-UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'kreslo-como' AND lang = 'ru';
-UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'kreslo-como' AND lang = 'uz';
-UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'kreslo-como' AND lang = 'en';
 UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'stol-taper-rotang-80' AND lang = 'ru';
 UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'stol-taper-rotang-80' AND lang = 'uz';
 UPDATE product_i18n SET description = '', seo_title = '', seo_description = '' WHERE product_id = 'stol-taper-rotang-80' AND lang = 'en';

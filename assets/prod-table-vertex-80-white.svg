@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 1024" width="768" height="1024">
+  <defs>
+    <linearGradient id="bgWhite" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF8F5" />
+      <stop offset="100%" stop-color="#EFEAE2" />
+    </linearGradient>
+    <radialGradient id="tableGlow" cx="50%" cy="42%" r="42%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="60%" stop-color="#F2EDE4" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#EFEAE2" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="marbleWhite" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="45%" stop-color="#F7F6F3" />
+      <stop offset="100%" stop-color="#ECE9E2" />
+    </linearGradient>
+    <linearGradient id="metalLegs" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A3836" />
+      <stop offset="100%" stop-color="#1F1D1B" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="768" height="1024" fill="url(#bgWhite)" />
+  <circle cx="384" cy="420" r="280" fill="url(#tableGlow)" />
+  <rect x="28" y="28" width="712" height="968" rx="24" fill="none" stroke="#E2DAD0" stroke-width="2" />
+
+  <!-- Category Tag -->
+  <text x="384" y="105" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="14" font-weight="700" letter-spacing="5" fill="#B35F20">СТОЛЫ BTT</text>
+
+  <!-- Table Vector Illustration -->
+  <g transform="translate(384, 410)">
+    <!-- Shadow beneath table -->
+    <ellipse cx="0" cy="180" rx="230" ry="46" fill="#000000" fill-opacity="0.08" filter="blur(8px)" />
+
+    <!-- Table Base & Legs (Metal) -->
+    <!-- Rear Legs -->
+    <rect x="-155" y="-10" width="14" height="175" rx="3" fill="#282624" />
+    <rect x="141" y="-10" width="14" height="175" rx="3" fill="#282624" />
+
+    <!-- Front Legs -->
+    <rect x="-185" y="35" width="16" height="170" rx="3" fill="url(#metalLegs)" />
+    <rect x="169" y="35" width="16" height="170" rx="3" fill="url(#metalLegs)" />
+
+    <!-- Lower crossbeams for stability -->
+    <path d="M-180,185 L180,185" stroke="#252321" stroke-width="8" stroke-linecap="round" />
+    <path d="M-150,150 L150,150" stroke="#1D1B1A" stroke-width="6" stroke-linecap="round" opacity="0.6" />
+
+    <!-- Under-table metal support sub-frame -->
+    <polygon points="-190,40 190,40 160,-15 -160,-15" fill="#2F2D2A" />
+
+    <!-- Table Top (Square Perspective Slab - White Marble) -->
+    <!-- Slab thickness / edge -->
+    <polygon points="-210,38 210,38 210,54 -210,54" fill="#D6D1C7" stroke="#C2BCB1" stroke-width="1.5" />
+    <!-- Main surface -->
+    <polygon points="0,-85 225,32 0,65 -225,32" fill="url(#marbleWhite)" stroke="#D2CCC1" stroke-width="2" />
+
+    <!-- Marble veining detail -->
+    <path d="M-120,10 Q-60,-15 10,-5 T130,25" fill="none" stroke="#D0C9BE" stroke-width="2.5" opacity="0.6" />
+    <path d="M-40,25 Q30,-40 90,-20 T170,10" fill="none" stroke="#C4BCB0" stroke-width="1.8" opacity="0.45" />
+    <path d="M-170,25 Q-110,40 -20,30" fill="none" stroke="#D8D2C7" stroke-width="2" opacity="0.7" />
+
+    <!-- Soft highlight on top edge -->
+    <line x1="-220" y1="32" x2="0" y2="65" stroke="#FFFFFF" stroke-width="2.5" opacity="0.9" />
+    <line x1="0" y1="65" x2="220" y2="32" stroke="#FFFFFF" stroke-width="1.8" opacity="0.7" />
+  </g>
+
+  <!-- Typography & Specs -->
+  <text x="384" y="680" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="32" font-weight="800" letter-spacing="1.5" fill="#221E1A">СТОЛ VERTEX 80×80</text>
+  <text x="384" y="722" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="16" font-weight="500" fill="#70665C">Белый мрамор · Квадратный обеденный стол</text>
+  <text x="384" y="758" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="16" font-weight="600" letter-spacing="1" fill="#403730">Габариты: 80 × 80 × 75 см · ЛДСП и металл</text>
+
+  <!-- CTA / Price Badge -->
+  <g transform="translate(384, 835)">
+    <rect x="-140" y="-26" width="280" height="52" rx="26" fill="#B35F20" />
+    <text x="0" y="8" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">ЦЕНА ПО ЗАПРОСУ</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="384" y="935" text-anchor="middle" font-family="'Montserrat', -apple-system, sans-serif" font-size="13" font-weight="600" letter-spacing="4" fill="#9C8E80">BTT - МЕБЕЛЬ ДЛЯ ДОМА И САДА</text>
+</svg>

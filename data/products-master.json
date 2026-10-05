@@ -1248,9 +1248,10 @@
           "en": "White Marble"
         },
         "hex": "#E8E6E1",
-        "image": "assets/placeholder.svg",
+        "image": "assets/prod-table-vertex-80-white.svg",
         "images": [
-          "assets/placeholder.svg"
+          "assets/prod-table-vertex-80-white.svg",
+          "assets/scene-dining-marble.png"
         ]
       },
       {
@@ -1261,15 +1262,18 @@
           "en": "Black Marble"
         },
         "hex": "#2B2A29",
-        "image": "assets/placeholder.svg",
+        "image": "assets/prod-table-vertex-80-black.svg",
         "images": [
-          "assets/placeholder.svg"
+          "assets/prod-table-vertex-80-black.svg",
+          "assets/scene-dining-contrast.png"
         ]
       }
     ],
     "isTable": true,
     "images": [
-      "assets/placeholder.svg"
+      "assets/prod-table-vertex-80-white.svg",
+      "assets/prod-table-vertex-80-black.svg",
+      "assets/scene-dining-marble.png"
     ],
     "i18n": {
       "ru": {

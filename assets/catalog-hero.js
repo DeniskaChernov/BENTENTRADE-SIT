@@ -8,24 +8,25 @@
   const CAT = (window.BTT_CAT_IMG) || {
     all:                "assets/hero-garden-furniture.png",
     "wicker-chairs":    "assets/prod-chair-corda.jpg",
-    "plastic-chairs":   "assets/hero-garden-furniture.png",
-    "upholstered-chairs":"assets/hero-home-furniture.png",
+    "plastic-chairs":   "assets/prod-chair-roero-black.jpg",
     tables:             "assets/prod-table-corda-135-black.jpg",
+    lighting:           "assets/prod-lamp-nova.svg",
+    "rattan-raw":       "assets/prod-rattan-polutrubka.svg",
     furniture:          "assets/hero-garden-furniture.png",
     planterMix:         "assets/bento-planter.png",
     planter:            "assets/hero-planter.png",
     basket:             "assets/bento-planter.png",
-    indoor:             "assets/hero-home-furniture.png",
-    rattan:             "assets/bento-rattan.png",
+    indoor:             "assets/scene-dining-marble.png",
+    rattan:             "assets/prod-rattan-polutrubka.svg",
     twisted:            "assets/hero-twisted-rattan.png"
   };
 
   const CFG = {
     all: {
       img: CAT.all,
-      ru:{k:"Каталог",t:"Мебель для дома и сада",s:"Плетёные, пластиковые и мягкие стулья, а также обеденные столы - вся коллекция BTT."},
-      uz:{k:"Katalog",t:"Uy va bog‘ uchun mebel",s:"To‘qilgan, plastik va yumshoq stullar, shuningdek ovqatlanish stollari - butun BTT to‘plami."},
-      en:{k:"Catalog",t:"Home & garden furniture",s:"Wicker, plastic and upholstered chairs, plus dining tables - the complete BTT collection."}
+      ru:{k:"Каталог",t:"Мебель для дома и сада",s:"Плетёные и пластиковые стулья, обеденные столы, настольные лампы и искусственный ротанг - коллекция BTT."},
+      uz:{k:"Katalog",t:"Uy va bog‘ uchun mebel",s:"To‘qilgan va plastik stullar, ovqatlanish stollari, stol lampalari va sun’iy rotang - butun BTT to‘plami."},
+      en:{k:"Catalog",t:"Home & garden furniture",s:"Wicker and plastic chairs, dining tables, table lamps and synthetic rattan - the complete BTT collection."}
     },
     "wicker-chairs": {
       img: CAT["wicker-chairs"],
@@ -39,11 +40,17 @@
       uz:{k:"Plastik stullar",t:"Qulay va chidamli plastik stullar",s:"Yengil va amaliy plastik stullar - uy va kafe uchun."},
       en:{k:"Plastic chairs",t:"Practical plastic chairs",s:"Lightweight, stackable chairs designed for home, garden and commercial terraces."}
     },
-    "upholstered-chairs": {
-      img: CAT["upholstered-chairs"],
-      ru:{k:"Мягкие стулья",t:"Мягкие стулья и полукресла",s:"Стулья с комфортной текстильной обивкой и эргономичной спинкой для столовой и гостиной."},
-      uz:{k:"Yumshoq stullar",t:"Yumshoq stul va yarim kreslolar",s:"Ovqatlanish va mehmonxona xonalari uchun yumshoq matoli va qulay stullar."},
-      en:{k:"Upholstered chairs",t:"Upholstered dining & accent chairs",s:"Soft upholstery and ergonomic contours for modern dining and living spaces."}
+    lighting: {
+      img: CAT.lighting,
+      ru:{k:"Настольные лампы",t:"Настольные лампы для дома",s:"Мягкое тёплое освещение для дома: модели Nova, Sora, Vela, Runa, Liva, Aria."},
+      uz:{k:"Stol lampalari",t:"Uy uchun stol lampalari",s:"Uy va xonadonlar uchun yumshoq iliq nur: Nova, Sora, Vela, Runa, Liva, Aria."},
+      en:{k:"Table lamps",t:"Table lamps for home",s:"Soft warm ambient illumination for modern living: Nova, Sora, Vela, Runa, Liva, Aria."}
+    },
+    "rattan-raw": {
+      img: CAT["rattan-raw"],
+      ru:{k:"Искусственный ротанг",t:"Искусственный ротанг BTT",s:"Первичный полимерный ротанг: полутрубка, полумесяц, плоская лента, трубка, полусфера и TWIST."},
+      uz:{k:"Sun’iy rotang",t:"BTT sun’iy rotang xomashyosi",s:"Birlamchi polimer rotang: yarim naycha, yarim oy, yassi tasma, naycha, yarim sfera va TWIST."},
+      en:{k:"Synthetic rattan",t:"BTT synthetic rattan raw material",s:"Virgin polymer rattan: half-round, crescent, flat strip, round tube, hemisphere and TWIST."}
     },
     tables: {
       img: CAT.tables,
@@ -113,18 +120,23 @@
     const h = (location.hash || "").replace("#","");
     const raw = q || h || "all";
     const alias = {
-      planter: "planters",
-      planters: "planters",
-      basket: "planters",
-      rattan: "rattan",
+      planter: "wicker-chairs",
+      planters: "wicker-chairs",
+      basket: "wicker-chairs",
+      rattan: "rattan-raw",
+      "rattan-raw": "rattan-raw",
       wicker: "wicker-chairs",
-      furniture: "furniture",
-      indoor: "indoor",
-      upholstered: "upholstered-chairs",
+      "wicker-chairs": "wicker-chairs",
+      furniture: "wicker-chairs",
+      indoor: "tables",
+      upholstered: "plastic-chairs",
       plastic: "plastic-chairs",
+      "plastic-chairs": "plastic-chairs",
       table: "tables",
-      lamp: "lamps",
-      lamps: "lamps",
+      tables: "tables",
+      lamp: "lighting",
+      lamps: "lighting",
+      lighting: "lighting",
       set: "sets",
       sets: "sets"
     };

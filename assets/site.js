@@ -168,20 +168,28 @@
   const CHIP_URL_ALIAS = {
     planter: "wicker-chairs",
     basket: "wicker-chairs",
-    rattan: "wicker-chairs",
+    rattan: "rattan-raw",
+    "rattan-raw": "rattan-raw",
     wicker: "wicker-chairs",
+    "wicker-chairs": "wicker-chairs",
     furniture: "wicker-chairs",
     plastic: "plastic-chairs",
-    upholstered: "upholstered-chairs",
-    indoor: "upholstered-chairs",
-    table: "tables"
+    "plastic-chairs": "plastic-chairs",
+    upholstered: "plastic-chairs",
+    indoor: "tables",
+    table: "tables",
+    tables: "tables",
+    lamp: "lighting",
+    lamps: "lighting",
+    lighting: "lighting"
   };
   const CHIP_CAT_GROUPS = {
-    chairs: ["wicker-chairs", "plastic-chairs", "upholstered-chairs"],
+    chairs: ["wicker-chairs", "plastic-chairs"],
     "wicker-chairs": ["wicker-chairs"],
     "plastic-chairs": ["plastic-chairs"],
-    "upholstered-chairs": ["upholstered-chairs"],
-    tables: ["tables"]
+    tables: ["tables"],
+    lighting: ["lighting"],
+    "rattan-raw": ["rattan-raw"]
   };
   const HOME_SECTION_IDS = new Set([
     "product-lines", "home-collection",

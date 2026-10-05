@@ -63,18 +63,17 @@ function syncProductsJs() {
   };
 
   window.BTT_CAT_IMG = {
-    all:                 "assets/placeholder.svg",
+    all:                 "assets/scene-dining-warm.png",
     "wicker-chairs":     "assets/prod-chair-corda.jpg",
-    "plastic-chairs":    "assets/placeholder.svg",
-    "upholstered-chairs":"assets/placeholder.svg",
+    "plastic-chairs":    "assets/prod-chair-roero-black.jpg",
     tables:              "assets/prod-table-corda-135-black.jpg",
     lighting:            "assets/prod-lamp-nova.svg",
     "rattan-raw":        "assets/prod-rattan-polutrubka.svg",
     // legacy category aliases
     furniture:           "assets/prod-chair-corda.jpg",
-    indoor:              "assets/placeholder.svg",
-    planter:             "assets/placeholder.svg",
-    basket:              "assets/placeholder.svg"
+    indoor:              "assets/scene-dining-marble.png",
+    planter:             "assets/prod-chair-corda.jpg",
+    basket:              "assets/prod-chair-corda.jpg"
   };
 
   window.BTT_IS_MTO = function(id) {
@@ -128,26 +127,6 @@ function syncProductsJs() {
         desc: "Practical and lightweight plastic chairs for home, patios and cafes.",
         dim: "For home, terrace, food courts and cafes",
         mat: "Plastic"
-      }
-    },
-    "upholstered-chairs": {
-      ru: {
-        name: "Мягкие стулья",
-        desc: "Стулья и кресла на металлическом каркасе с текстильной обивкой для комфортной обеденной зоны.",
-        dim: "Для гостиной, кухни и банкетных залов",
-        mat: "Металл, мягкий текстиль"
-      },
-      uz: {
-        name: "Yumshoq stullar",
-        desc: "Qulay ovqatlanish hududi uchun metall karkasdagi yumshoq matoli stul va kreslolar.",
-        dim: "Mehmonxona, oshxona va banket zallari uchun",
-        mat: "Metall, yumshoq to‘qimachilik"
-      },
-      en: {
-        name: "Upholstered chairs",
-        desc: "Chairs and armchairs on a sturdy metal frame with soft textile upholstery for dining comfort.",
-        dim: "For living rooms, kitchens and banquet venues",
-        mat: "Metal, soft textile"
       }
     },
     tables: {

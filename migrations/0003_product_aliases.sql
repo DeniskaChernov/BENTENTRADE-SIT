@@ -14,8 +14,6 @@ INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES
   ('p4', 'stul-noero'),
   ('p5', 'stul-todo'),
   ('p6', 'stul-jardin'),
-  ('p7', 'stul-lira'),
-  ('p8', 'kreslo-como'),
   ('p9', 'stol-taper-rotang-80'),
   ('p10', 'stol-vertex-d90'),
   ('p11', 'stol-taper-rotang-135'),
