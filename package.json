@@ -28,6 +28,7 @@
     "test:live": "node scripts/test-live-deploy.mjs",
     "test:guest": "node scripts/test-live-guest-flow.mjs",
     "test:modal": "node scripts/test-modal-cdp.mjs",
+    "test:assistant": "node scripts/test-assistant-cdp.mjs",
     "audit": "node scripts/audit-full-system.mjs",
     "typecheck": "tsc --noEmit"
   },

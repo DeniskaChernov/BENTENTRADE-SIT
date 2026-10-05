@@ -119,14 +119,8 @@
         "Цены на столы",
         "Готовые комплекты",
         "Настольные лампы",
-        "Искусственный ротанг",
-        "Пластиковые стулья",
-        "Плетёные стулья",
-        "Оформить заказ",
         "Доставка и самовывоз",
-        "Способы оплаты",
-        "Где мы находимся",
-        "Связаться с менеджером"
+        "Оформить заказ"
       ],
       ans: {
         "Цены на стулья": "<b>Актуальные цены на стулья BTT:</b><br>" +
@@ -358,14 +352,8 @@
         "Table prices",
         "Furniture sets",
         "Table lamps",
-        "Artificial rattan",
-        "Plastic chairs",
-        "Wicker chairs",
-        "Place an order",
         "Delivery and pickup",
-        "Payment methods",
-        "Our location",
-        "Talk to a manager"
+        "Place an order"
       ],
       ans: {
         "Chair prices": "<b>Current BTT chair prices:</b><br>" +
@@ -1250,7 +1238,36 @@
     return d.fallback + renderOrderForm(curLang, "");
   }
 
-  /* ---------------- DOM & UI WIRING ---------------- */
+  
+  function renderMenuGrid(curLang){
+    var items = [
+      { id: "chairs", icon: "🪑", ru: "Цены на стулья", uz: "Stullar narxlari", en: "Chair prices" },
+      { id: "tables", icon: "🪵", ru: "Цены на столы", uz: "Stollar narxlari", en: "Table prices" },
+      { id: "combos", icon: "✨", ru: "Готовые комплекты", uz: "Tayyor to‘plamlar", en: "Furniture sets" },
+      { id: "lamps", icon: "💡", ru: "Настольные лампы", uz: "Stol lampalari", en: "Table lamps" },
+      { id: "rattan", icon: "🧶", ru: "Искусственный ротанг", uz: "Sun'iy rotang", en: "Synthetic rattan" },
+      { id: "delivery", icon: "🚚", ru: "Доставка и оплата", uz: "Yetkazish va to‘lov", en: "Delivery & payment" },
+      { id: "order", icon: "📝", ru: "Оформить заказ", uz: "Buyurtma berish", en: "Place an order", cls: "bot-menu-item--accent" },
+      { id: "manager", icon: "💬", ru: "Связаться в Telegram", uz: "Telegramda bog‘lanish", en: "Chat on Telegram", cls: "bot-menu-item--tg" }
+    ];
+
+    var grid = '<div class="bot-menu-grid">';
+    items.forEach(function(it){
+      var label = it[curLang] || it.ru;
+      var query = it.ru;
+      if(it.id === "delivery") query = "Доставка и самовывоз";
+      if(it.id === "manager") query = "Связаться с менеджером";
+      if(it.id === "order") query = "Оформить заказ";
+      grid += '<button type="button" class="bot-menu-item' + (it.cls ? ' ' + it.cls : '') + '" data-bot-menu-action="' + esc(query) + '">' +
+        '<span class="bot-menu-icon">' + it.icon + '</span>' +
+        '<span class="bot-menu-text">' + esc(label) + '</span>' +
+      '</button>';
+    });
+    grid += '</div>';
+    return grid;
+  }
+
+/* ---------------- DOM & UI WIRING ---------------- */
   document.addEventListener("DOMContentLoaded", function(){
     if(document.querySelector(".bot-fab")) return;
 
@@ -1305,7 +1322,13 @@
       var t = typing();
       setTimeout(function(){
         t.remove();
-        add(text, "bot");
+        var curL = getActiveLang("");
+        var menuBtnTxt = curL === "uz" ? "📋 Bosh menyu" : (curL === "en" ? "📋 Main menu" : "📋 Главное меню");
+        var withMenu = text;
+        if(!text.includes("bot-menu-grid") && !text.includes("data-order-box")){
+          withMenu += '<div style="margin-top:10px;"><button type="button" class="bot-menu-trigger" data-bot-menu-action="__show_menu__">' + menuBtnTxt + '</button></div>';
+        }
+        add(withMenu, "bot");
       }, delay || 500);
     }
 
@@ -1356,9 +1379,12 @@
       if(!started){
         started = true;
         var curLang = getActiveLang("");
-        add(T[curLang].hi, "bot");
+        add(T[curLang].hi + renderMenuGrid(curLang), "bot");
+        msgs.scrollTop = 0;
       }
-      setTimeout(function(){ if(input) input.focus(); }, 320);
+      setTimeout(function(){
+        if(window.innerWidth > 560 && input) input.focus();
+      }, 320);
     }
 
     function close(){
@@ -1369,6 +1395,18 @@
     fab.addEventListener("click", open);
     var closeBtn = panel.querySelector("[data-bot-close]");
     if(closeBtn) closeBtn.addEventListener("click", close);
+
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape" && panel.classList.contains("open")){
+        close();
+      }
+    });
+
+    document.addEventListener("pointerdown", function(e){
+      if(panel.classList.contains("open") && !panel.contains(e.target) && !fab.contains(e.target)){
+        close();
+      }
+    });
 
     var formEl = panel.querySelector("[data-bot-form]");
     if(formEl){
@@ -1383,6 +1421,23 @@
 
     /* Delegated actions for interactive cards inside chat */
     msgs.addEventListener("click", function(e){
+      // 0. Menu action item clicks
+      var menuBtn = e.target.closest("[data-bot-menu-action]");
+      if(menuBtn){
+        var q = menuBtn.getAttribute("data-bot-menu-action");
+        if(q === "__show_menu__"){
+          var curL = getActiveLang("");
+          var promptTxt = curL === "uz" ? "Kerakli bo‘limni tanlang:" : (curL === "en" ? "Select a topic:" : "Выберите тему из каталога:");
+          botSay(promptTxt + renderMenuGrid(curL), 200);
+          return;
+        }
+        if(q === "Связаться с менеджером" || q === "Chat on Telegram" || q === "Telegramda bog‘lanish"){
+          window.open("https://t.me/btt_uz", "_blank", "noopener,noreferrer");
+          return;
+        }
+        handle(q);
+        return;
+      }
       // 1. Add to cart from product card
       var addBtn = e.target.closest("[data-bot-add]");
       if(addBtn){

@@ -1148,10 +1148,9 @@ body:has(.nav-scrim.on) .cookie-banner{
   opacity:0;pointer-events:none;transform:translateY(12px);
 }
 body.has-cookie-banner .bot-fab{bottom:calc(16px + var(--cookie-banner-h,0px));}
-body.has-cookie-banner .bot-panel{bottom:calc(12px + var(--cookie-banner-h,0px));}
+
 @media (min-width:561px){
   body.has-cookie-banner .bot-fab{bottom:calc(22px + var(--cookie-banner-h,0px));}
-  body.has-cookie-banner .bot-panel{bottom:calc(22px + var(--cookie-banner-h,0px));}
 }
 
 /* ============================================================
