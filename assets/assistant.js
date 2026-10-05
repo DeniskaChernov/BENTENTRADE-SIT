@@ -112,7 +112,7 @@
       name: "Бен",
       role: "Онлайн-помощник BTT",
       badge: "1",
-      ph: "Напишите вопрос (например: цены на стулья, комплект, заказ)…",
+      ph: "Спросите о ценах, комплектах, доставке…",
       hi: "Здравствуйте! Я помощник BTT 🌿 Помогу подобрать обеденные столы, стулья и готовые комплекты, рассчитаю точную стоимость и помогу оформить заявку. С чего начнём?",
       quick: [
         "Цены на стулья",
@@ -222,8 +222,8 @@
       leadSending: "Отправка…",
       leadOk: "Заявка передана менеджеру!",
       leadOkSub: "Менеджер свяжется с вами в течение 10-15 минут.",
-      cartEmpty: "Ваша корзина пока пуста 🛒<br>Хотите посмотреть популярные модели стульев?",
-      cartTotal: "Итого в корзине",
+      cartEmpty: "Хотите посмотреть популярные модели стульев и готовые комплекты?",
+      cartTotal: "Итого к оформлению",
       cartCheckout: "Оформить заказ",
       cartMore: "Подробнее",
       cartBuy: "Купить в 1 клик",
@@ -235,7 +235,7 @@
       name: "Ben",
       role: "BTT onlayn yordamchisi",
       badge: "1",
-      ph: "Savolingizni yozing (masalan: stullar narxi, to‘plam, buyurtma)…",
+      ph: "Savolingizni yozing (narxlar, to‘plamlar, yetkazish)…",
       hi: "Salom! Men BTT yordamchisiman 🌿 Ovqat stollari, stullar va tayyor to‘plamlarni tanlashda yordam beraman, narxlarni aniq hisoblab beraman va buyurtma rasmiylashtiraman. Nimadan boshlaymiz?",
       quick: [
         "Stullar narxlari",
@@ -339,7 +339,7 @@
       leadOk: "Arizangiz qabul qilindi!",
       leadOkSub: "Menejerimiz 10-15 daqiqa ichida bog‘lanadi.",
       cartEmpty: "Savat hozircha bo‘sh 🛒<br>Ommabop stullarni ko‘rishni xohlaysizmi?",
-      cartTotal: "Savatdagi jami summa",
+      cartTotal: "Jami rasmiylashtirish uchun",
       cartCheckout: "Buyurtma berish",
       cartMore: "Batafsil",
       cartBuy: "1-klikda xarid",
@@ -351,7 +351,7 @@
       name: "Ben",
       role: "BTT Online Assistant",
       badge: "1",
-      ph: "Type your question (e.g.: chair prices, set, delivery)…",
+      ph: "Ask about prices, furniture sets, delivery…",
       hi: "Hello! I am your BTT assistant 🌿 I can help you select dining tables, chairs, and matching sets, compute exact bundle prices, and process your order. Where shall we start?",
       quick: [
         "Chair prices",
@@ -455,8 +455,8 @@
       leadSending: "Sending…",
       leadOk: "Request received!",
       leadOkSub: "Our manager will contact you within 10-15 minutes.",
-      cartEmpty: "Your cart is currently empty 🛒<br>Would you like to browse our popular chairs?",
-      cartTotal: "Cart total",
+      cartEmpty: "Would you like to browse our popular chairs and dining sets?",
+      cartTotal: "Total for order",
       cartCheckout: "Checkout",
       cartMore: "Details",
       cartBuy: "Buy in 1 click",
@@ -1356,7 +1356,7 @@
       if(!started){
         started = true;
         var curLang = getActiveLang("");
-        setTimeout(function(){ botSay(T[curLang].hi, 300); }, 150);
+        add(T[curLang].hi, "bot");
       }
       setTimeout(function(){ if(input) input.focus(); }, 320);
     }
