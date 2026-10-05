@@ -309,7 +309,7 @@
     if(img && !img.startsWith("/") && !img.startsWith("http")){
       img = "/" + img;
     }
-    return { id, name:name.trim(), price, img: img || "/assets/placeholder.svg", unit, options: Object.keys(options).length ? options : undefined };
+    return { id, name:name.trim(), price, img: img || "/assets/prod-chair-vertex.jpg", unit, options: Object.keys(options).length ? options : undefined };
   }
   function snapFromPDP(){
     let id = null;
@@ -1141,7 +1141,7 @@
       snap.img = "/" + snap.img;
     }
     if(!snap.img){
-      snap.img = "/assets/placeholder.svg";
+      snap.img = "/assets/prod-chair-vertex.jpg";
     }
     ensureQuickOrderModal();
 

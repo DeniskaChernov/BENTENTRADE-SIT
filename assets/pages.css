@@ -2546,8 +2546,9 @@ body:has(.pdp-sticky-bar.is-visible) .bot-panel{
   height:100%;
   object-fit:cover;
   opacity:0;
-  transition:opacity .55s cubic-bezier(.4,0,.2,1);
+  transition:opacity .35s cubic-bezier(.16, 1, 0.3, 1), transform .45s cubic-bezier(.16, 1, 0.3, 1);
   transform:scale(1.02);
+  will-change:opacity, transform;
 }
 .pdp-stage img.is-on{
   opacity:1;

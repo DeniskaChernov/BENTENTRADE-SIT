@@ -255,7 +255,7 @@
       "ru": {
         "name": "Стул «ROERO»",
         "category_label": "Пластиковые стулья",
-        "description": "Современный эргономичный стул Roero из литого полипропилена. Анатомическая форма спинки обеспечивает комфортную посадку, а матовая поверхность легко очищается . Идеальный выбор для кухни, балкона, дачи, фудкортов и летних террас. Отлично комплектуется со столами Taper 80 и Taper 135 в серых, белых, чёрных и ярких оранжевых тонах.",
+        "description": "Современный эргономичный стул Roero из литого полипропилена. Анатомическая форма спинки обеспечивает комфортную посадку, а матовая поверхность легко очищается. Идеальный выбор для кухни, балкона, дачи, фудкортов и летних террас. Отлично комплектуется со столами Taper 80 и Taper 135 в серых, белых, чёрных и ярких оранжевых тонах.",
         "usage": "Для кухни, дачи, террасы, фудкортов и уличных кафе",
         "seo_title": "Купить Стул «ROERO» в Ташкенте - BTT",
         "seo_description": "Стул «ROERO» (Пластиковые стулья) от BTT. Размеры: 74 × 46 × 48 см. Доставка по Ташкенту и всему Узбекистану."
@@ -1523,7 +1523,7 @@
       "ru": {
         "name": "Настольная лампа «NOVA»",
         "category_label": "Настольные лампы",
-        "description": "Настольная лампа NOVA с мягким тёплым освещением. Лаконичный силуэт и комфортный рассеянный свет для спальни, гостиной и рабочего стола.",
+        "description": "Настольная лампа NOVA (235×309 мм) с мягким тёплым светом. Геометричный плафон обеспечивает рассеянное освещение для спальни, гостиной и рабочего стола.",
         "usage": "Для спальни, кабинета, прикроватной тумбы и гостиной",
         "seo_title": "Купить Настольная лампа «NOVA» в Ташкенте - BTT",
         "seo_description": "Настольная лампа «NOVA» от BTT. Мягкое тёплое освещение. Размеры: 23,5 × 30,9 см. Доставка по Ташкенту и всему Узбекистану."
@@ -1531,7 +1531,7 @@
       "uz": {
         "name": "«NOVA» stol lampasi",
         "category_label": "Stol lampalari",
-        "description": "Yumshoq iliq nur taratuvchi NOVA stol lampasi. Yotoqxona, mehmonxona va ish stoli uchun zamonaviy qulay dizayn.",
+        "description": "Yumshoq iliq nurli NOVA stol lampasi (235×309 mm). Geometrik qopqoq yotoqxona, mehmonxona va ish stoli uchun tarqoq yorug‘lik beradi.",
         "usage": "Yotoqxona, kabinet, tumba va mehmonxona uchun",
         "seo_title": "Toshkentda «NOVA» stol lampasi sotib olish - BTT",
         "seo_description": "BTT dan «NOVA» stol lampasi. O‘lchamlari: 23,5 × 30,9 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -1539,7 +1539,7 @@
       "en": {
         "name": "NOVA Table Lamp",
         "category_label": "Table lamps",
-        "description": "NOVA table lamp delivering soft warm ambient light. Clean minimal silhouette for bedside tables, desks, and cozy living corners.",
+        "description": "NOVA table lamp (235×309 mm) with soft warm illumination. Geometric shade provides diffused light for bedrooms, living spaces, and desks.",
         "usage": "For bedrooms, desks, bedside stands, and living spaces",
         "seo_title": "Buy NOVA Table Lamp in Tashkent - BTT",
         "seo_description": "NOVA Table Lamp by BTT. Dimensions: 23.5 × 30.9 cm. Delivery across Tashkent and Uzbekistan."
@@ -1587,7 +1587,7 @@
       "ru": {
         "name": "Настольная лампа «SORA»",
         "category_label": "Настольные лампы",
-        "description": "Настольная лампа SORA с мягким тёплым освещением. Выразительный куполообразный плафон и гармоничные пропорции для акцентного света.",
+        "description": "Настольная лампа SORA (250×430 мм) с мягким тёплым светом. Куполообразный плафон и гармоничные пропорции для вечернего освещения дома.",
         "usage": "Для гостиной, консоли, прикроватной зоны и кабинета",
         "seo_title": "Купить Настольная лампа «SORA» в Ташкенте - BTT",
         "seo_description": "Настольная лампа «SORA» от BTT. Мягкое тёплое освещение. Размеры: 25 × 43 см. Доставка по Ташкенту и всему Узбекистану."
@@ -1595,7 +1595,7 @@
       "uz": {
         "name": "«SORA» stol lampasi",
         "category_label": "Stol lampalari",
-        "description": "Yumshoq iliq yorug‘likli SORA stol lampasi. Gumbazsimon qopqoq va interyer uchun nafis proporsiyalar.",
+        "description": "Yumshoq iliq nurli SORA stol lampasi (250×430 mm). Gumbazsimon qopqoq va uyg‘un nisbatlar uyning oqshomgi yoritilishi uchun mos.",
         "usage": "Mehmonxona, konsol, karavot yonidagi hudud va ish xonasi uchun",
         "seo_title": "Toshkentda «SORA» stol lampasi sotib olish - BTT",
         "seo_description": "BTT dan «SORA» stol lampasi. O‘lchamlari: 25 × 43 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -1603,7 +1603,7 @@
       "en": {
         "name": "SORA Table Lamp",
         "category_label": "Table lamps",
-        "description": "SORA table lamp offering gentle warm lighting. Elegant dome shade and balanced proportions for refined interior styling.",
+        "description": "SORA table lamp (250×430 mm) with soft warm illumination. Dome-shaped shade and balanced proportions for cozy evening lighting at home.",
         "usage": "For living room, console, bedside area, and study",
         "seo_title": "Buy SORA Table Lamp in Tashkent - BTT",
         "seo_description": "SORA Table Lamp by BTT. Dimensions: 25 × 43 cm. Delivery across Tashkent and Uzbekistan."
@@ -1651,7 +1651,7 @@
       "ru": {
         "name": "Настольная лампа «VELA»",
         "category_label": "Настольные лампы",
-        "description": "Настольная лампа VELA с мягким тёплым освещением. Лаконичная геометрия и уютный вечерний свет для дома.",
+        "description": "Настольная лампа VELA (250×430 мм) с мягким тёплым светом. Лаконичный силуэт и комфортное вечернее освещение для жилых комнат.",
         "usage": "Для спальни, прикроватной тумбочки и зоны отдыха",
         "seo_title": "Купить Настольная лампа «VELA» в Ташкенте - BTT",
         "seo_description": "Настольная лампа «VELA» от BTT. Мягкое тёплое освещение. Размеры: 25 × 43 см. Доставка по Ташкенту и всему Узбекистану."
@@ -1659,7 +1659,7 @@
       "uz": {
         "name": "«VELA» stol lampasi",
         "category_label": "Stol lampalari",
-        "description": "Yumshoq iliq nurli VELA stol lampasi. Uy uchun qulay kechki muhit yaratuvchi sodda va ixcham dizayn.",
+        "description": "Yumshoq iliq nurli VELA stol lampasi (250×430 mm). Oddiy va qulay shakli xonalar uchun yoqimli oqshom yoritilishini ta’minlaydi.",
         "usage": "Yotoqxona, tumba va dam olish hududi uchun",
         "seo_title": "Toshkentda «VELA» stol lampasi sotib olish - BTT",
         "seo_description": "BTT dan «VELA» stol lampasi. O‘lchamlari: 25 × 43 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -1667,7 +1667,7 @@
       "en": {
         "name": "VELA Table Lamp",
         "category_label": "Table lamps",
-        "description": "VELA table lamp with soft warm illumination. Understated geometry that creates a restful atmosphere at home.",
+        "description": "VELA table lamp (250×430 mm) with soft warm illumination. Understated silhouette and comfortable evening lighting for living spaces.",
         "usage": "For bedrooms, bedside tables, and lounge spots",
         "seo_title": "Buy VELA Table Lamp in Tashkent - BTT",
         "seo_description": "VELA Table Lamp by BTT. Dimensions: 25 × 43 cm. Delivery across Tashkent and Uzbekistan."
@@ -1715,7 +1715,7 @@
       "ru": {
         "name": "Настольная лампа «RUNA»",
         "category_label": "Настольные лампы",
-        "description": "Настольная лампа RUNA с мягким тёплым освещением. Компактные габариты позволяют удобно разместить лампу на полке, подоконнике или столике.",
+        "description": "Настольная лампа RUNA (190×223 мм) с мягким тёплым светом. Компактный корпус позволяет разместить светильник на полке, тумбе или придиванном столике.",
         "usage": "Для журнального столика, полок, спальни и рабочего места",
         "seo_title": "Купить Настольная лампа «RUNA» в Ташкенте - BTT",
         "seo_description": "Настольная лампа «RUNA» от BTT. Мягкое тёплое освещение. Размеры: 19 × 22,3 см. Доставка по Ташкенту и всему Узбекистану."
@@ -1723,7 +1723,7 @@
       "uz": {
         "name": "«RUNA» stol lampasi",
         "category_label": "Stol lampalari",
-        "description": "Yumshoq iliq nurlanishli RUNA stol lampasi. Ixcham o‘lchamlari tufayli javonlar va kofe stollari ustiga qulay joylashadi.",
+        "description": "Yumshoq iliq nurli RUNA stol lampasi (190×223 mm). Ixcham korpusi tokcha, javon yoki divan yonidagi stolchada qulay joylashadi.",
         "usage": "Kofe stoli, javonlar, yotoqxona va ish joyi uchun",
         "seo_title": "Toshkentda «RUNA» stol lampasi sotib olish - BTT",
         "seo_description": "BTT dan «RUNA» stol lampasi. O‘lchamlari: 19 × 22,3 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -1731,7 +1731,7 @@
       "en": {
         "name": "RUNA Table Lamp",
         "category_label": "Table lamps",
-        "description": "RUNA table lamp featuring soft warm illumination. Compact footprint fits neatly on shelves, coffee tables, or nightstands.",
+        "description": "RUNA table lamp (190×223 mm) with soft warm illumination. Compact form fits easily on shelves, nightstands, and accent tables.",
         "usage": "For coffee tables, shelving, bedrooms, and workstations",
         "seo_title": "Buy RUNA Table Lamp in Tashkent - BTT",
         "seo_description": "RUNA Table Lamp by BTT. Dimensions: 19 × 22.3 cm. Delivery across Tashkent and Uzbekistan."
@@ -1779,7 +1779,7 @@
       "ru": {
         "name": "Настольная лампа «LIVA»",
         "category_label": "Настольные лампы",
-        "description": "Настольная лампа LIVA с мягким тёплым освещением. Изящный узкий корпус для компактных столиков и акцентного интерьерного света.",
+        "description": "Настольная лампа LIVA (120×248 мм) с мягким тёплым светом. Узкий стройный корпус подходит для небольших столиков и акцентной подсветки.",
         "usage": "Для прикроватной тумбочки, кафе, ресторанов и столика",
         "seo_title": "Купить Настольная лампа «LIVA» в Ташкенте - BTT",
         "seo_description": "Настольная лампа «LIVA» от BTT. Мягкое тёплое освещение. Размеры: 12 × 24,8 см. Доставка по Ташкенту и всему Узбекистану."
@@ -1787,7 +1787,7 @@
       "uz": {
         "name": "«LIVA» stol lampasi",
         "category_label": "Stol lampalari",
-        "description": "Yumshoq iliq nurli LIVA stol lampasi. Ixcham nozik korpusi kichik stollar va interyer yorug‘ligi uchun mos keladi.",
+        "description": "Yumshoq iliq nurli LIVA stol lampasi (120×248 mm). Ingichka korpusi kichik stollar va qo‘shimcha yoritish uchun qulay.",
         "usage": "Karavot yonidagi tumba, qahvaxona, restoran va stollar uchun",
         "seo_title": "Toshkentda «LIVA» stol lampasi sotib olish - BTT",
         "seo_description": "BTT dan «LIVA» stol lampasi. O‘lchamlari: 12 × 24,8 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -1795,7 +1795,7 @@
       "en": {
         "name": "LIVA Table Lamp",
         "category_label": "Table lamps",
-        "description": "LIVA table lamp with warm ambient glow. Slender footprint fits compact tabletops, restaurant tables, and bedside areas.",
+        "description": "LIVA table lamp (120×248 mm) with soft warm illumination. Slim profile suitable for small tables and layered accent lighting.",
         "usage": "For nightstands, restaurant tables, and accent lighting",
         "seo_title": "Buy LIVA Table Lamp in Tashkent - BTT",
         "seo_description": "LIVA Table Lamp by BTT. Dimensions: 12 × 24.8 cm. Delivery across Tashkent and Uzbekistan."
@@ -1843,7 +1843,7 @@
       "ru": {
         "name": "Настольная лампа «ARIA»",
         "category_label": "Настольные лампы",
-        "description": "Настольная лампа ARIA с мягким тёплым освещением. Минималистичный светильник для камерной атмосферы и вечернего чтения.",
+        "description": "Настольная лампа ARIA (118×243,5 мм) с мягким тёплым светом. Минималистичный светильник для спокойного вечернего освещения и отдыха.",
         "usage": "Для чтения, спальни, рабочего стола и прикроватной зоны",
         "seo_title": "Купить Настольная лампа «ARIA» в Ташкенте - BTT",
         "seo_description": "Настольная лампа «ARIA» от BTT. Мягкое тёплое освещение. Размеры: 11,8 × 24,35 см. Доставка по Ташкенту и всему Узбекистану."
@@ -1851,7 +1851,7 @@
       "uz": {
         "name": "«ARIA» stol lampasi",
         "category_label": "Stol lampalari",
-        "description": "Yumshoq iliq nurli ARIA stol lampasi. Oqshomgi mutolaa va shinam atmosfera uchun minimalistik ixcham chiroq.",
+        "description": "Yumshoq iliq nurli ARIA stol lampasi (118×243,5 mm). Tinch oqshom yoritilishi va dam olish uchun mo‘ljallangan ixcham chiroq.",
         "usage": "Mutolaa, yotoqxona, ish stoli va karavot yonidagi tumba uchun",
         "seo_title": "Toshkentda «ARIA» stol lampasi sotib olish - BTT",
         "seo_description": "BTT dan «ARIA» stol lampasi. O‘lchamlari: 11,8 × 24,35 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
@@ -1859,7 +1859,7 @@
       "en": {
         "name": "ARIA Table Lamp",
         "category_label": "Table lamps",
-        "description": "ARIA table lamp with soft warm lighting. Minimalist fixture designed for evening reading and ambient relaxation.",
+        "description": "ARIA table lamp (118×243.5 mm) with soft warm illumination. Minimalist luminaire designed for calm evening lighting and relaxation.",
         "usage": "For reading nooks, bedrooms, desks, and nightstands",
         "seo_title": "Buy ARIA Table Lamp in Tashkent - BTT",
         "seo_description": "ARIA Table Lamp by BTT. Dimensions: 11.8 × 24.35 cm. Delivery across Tashkent and Uzbekistan."
@@ -1906,7 +1906,7 @@
       "ru": {
         "name": "Искусственный ротанг - профиль Полутрубка",
         "category_label": "Искусственный ротанг",
-        "description": "Первичный искусственный ротанг BTT, профиль Полутрубка для производства плетёной мебели и декора. Расчёт под объём и MOQ.",
+        "description": "Искусственный ротанг BTT, профиль «Полутрубка» из первичного полимера. Полукруглое сечение для плетения мебели, кашпо и элементов декора. Поставляется в бухтах под заказ от минимального объёма (MOQ).",
         "usage": "Для мебельных производств, ремесленных мастерских и плетения",
         "seo_title": "Искусственный ротанг Полутрубка оптом в Ташкенте - BTT",
         "seo_description": "Искусственный ротанг BTT профиль Полутрубка. Производство плетёной мебели в Ташкенте."
@@ -1914,7 +1914,7 @@
       "uz": {
         "name": "Sun‘iy rotang - Yarim trubka profili",
         "category_label": "Sun‘iy rotang",
-        "description": "Mebel ishlab chiqarish va bezash uchun BTT sun‘iy rotangi, Yarim trubka profili. Buyurtma hajmi va MOQ bo‘yicha hisoblanadi.",
+        "description": "BTT sun'iy rotangi, birlamchi polimerdan tayyorlangan «Yarim naycha» profili. Mebel, gultuvak va bezak buyumlarini to‘qish uchun yarim aylana kesim. Minimal hajm (MOQ) asosida buyurtma bo‘yicha yetkaziladi.",
         "usage": "Mebel ishlab chiqarish, ustaxonalar va to‘quv uchun",
         "seo_title": "Toshkentda sun‘iy rotang Yarim trubka - BTT",
         "seo_description": "BTT dan sun‘iy rotang Yarim trubka profili. Toshkentda to‘qilgan mebel ishlab chiqarish uchun."
@@ -1922,7 +1922,7 @@
       "en": {
         "name": "Synthetic Rattan - Semi-tube Profile",
         "category_label": "Synthetic rattan",
-        "description": "BTT synthetic rattan raw material, Semi-tube profile for outdoor furniture manufacturing. Quoted by order volume and MOQ.",
+        "description": "BTT synthetic rattan, 'Half-tube' profile made from virgin polymer. Semi-circular cross-section for weaving furniture, planters, and decorative items. Supplied in coils on order from MOQ.",
         "usage": "For furniture makers, workshops, and weaving craft",
         "seo_title": "Synthetic Rattan Semi-tube Profile in Tashkent - BTT",
         "seo_description": "BTT Synthetic Rattan Semi-tube Profile for outdoor furniture manufacturing."
@@ -1969,7 +1969,7 @@
       "ru": {
         "name": "Искусственный ротанг - профиль Полумесяц",
         "category_label": "Искусственный ротанг",
-        "description": "Первичный искусственный ротанг BTT, профиль Полумесяц для ручного и машинного плетения. Расчёт под объём и MOQ.",
+        "description": "Искусственный ротанг BTT, профиль «Полумесяц» из первичного полимера. Серповидное сечение для фактурного плетения уличных кресел, стульев и панелей. Расчёт стоимости под объём заказа.",
         "usage": "Для мебельных фабрик и мастерских плетения",
         "seo_title": "Искусственный ротанг Полумесяц в Ташкенте - BTT",
         "seo_description": "Искусственный ротанг BTT профиль Полумесяц. Сырьё для мебели в Ташкенте."
@@ -1977,7 +1977,7 @@
       "uz": {
         "name": "Sun‘iy rotang - Yarim oy profili",
         "category_label": "Sun‘iy rotang",
-        "description": "Qo‘lda va stanokda to‘qish uchun BTT sun‘iy rotangi, Yarim oy profili. Buyurtma hajmi va MOQ bo‘yicha hisoblanadi.",
+        "description": "BTT sun'iy rotangi, birlamchi polimerdan tayyorlangan «Yarim oy» profili. Ochiq havodagi kreslo, stul va panellarni to‘qish uchun o‘roqsimon kesim. Narx buyurtma hajmiga qarab hisoblanadi.",
         "usage": "Mebel fabrikalari va to‘quv ustaxonalari uchun",
         "seo_title": "Toshkentda sun‘iy rotang Yarim oy - BTT",
         "seo_description": "BTT dan sun‘iy rotang Yarim oy profili. Toshkentda mebel ishlab chiqarish uchun xomashyo."
@@ -1985,7 +1985,7 @@
       "en": {
         "name": "Synthetic Rattan - Half-moon Profile",
         "category_label": "Synthetic rattan",
-        "description": "BTT synthetic rattan, Half-moon profile for manual and industrial weaving. Quoted based on volume and MOQ.",
+        "description": "BTT synthetic rattan, 'Crescent' profile made from virgin polymer. Crescent cross-section for textured weaving of patio chairs, seats, and panels. Quote calculated per order volume.",
         "usage": "For furniture factories and weaving studios",
         "seo_title": "Synthetic Rattan Half-moon Profile in Tashkent - BTT",
         "seo_description": "BTT Synthetic Rattan Half-moon profile raw material."
@@ -2032,7 +2032,7 @@
       "ru": {
         "name": "Искусственный ротанг - профиль Плоская лента",
         "category_label": "Искусственный ротанг",
-        "description": "Первичный искусственный ротанг BTT, профиль Плоская лента для каркасной мебели и ограждений. Расчёт под объём и MOQ.",
+        "description": "Искусственный ротанг BTT, профиль «Плоская лента» из первичного полимера. Подходит для сплошной оплётки широких каркасов, ограждений и ящиков. Поставляется в мотках от MOQ.",
         "usage": "Для плетения шезлонгов, столов, диванов и перегородок",
         "seo_title": "Искусственный ротанг Плоская лента в Ташкенте - BTT",
         "seo_description": "Искусственный ротанг BTT профиль Плоская лента в Ташкенте."
@@ -2040,7 +2040,7 @@
       "uz": {
         "name": "Sun‘iy rotang - Yassi lenta profili",
         "category_label": "Sun‘iy rotang",
-        "description": "Karkasli mebel va to‘siqlar uchun BTT sun‘iy rotangi, Yassi lenta profili. Buyurtma hajmi va MOQ bo‘yicha hisoblanadi.",
+        "description": "BTT sun'iy rotangi, birlamchi polimerdan tayyorlangan «Yassi lenta» profili. Keng karkaslar, to‘siqlar va sandiqlarni to‘liq o‘rash uchun mos. MOQ dan boshlab yetkaziladi.",
         "usage": "Shezlong, stol, divan va to‘siqlarni to‘qish uchun",
         "seo_title": "Toshkentda sun‘iy rotang Yassi lenta - BTT",
         "seo_description": "BTT dan sun‘iy rotang Yassi lenta profili."
@@ -2048,7 +2048,7 @@
       "en": {
         "name": "Synthetic Rattan - Flat Ribbon Profile",
         "category_label": "Synthetic rattan",
-        "description": "BTT synthetic rattan, Flat Ribbon profile for loungers, sofas, and dividers. Quoted by volume and MOQ.",
+        "description": "BTT synthetic rattan, 'Flat ribbon' profile made from virgin polymer. Designed for continuous wrapping of wide frames, screens, and chests. Supplied in coils from MOQ.",
         "usage": "For sun loungers, tables, sofas, and partitions",
         "seo_title": "Synthetic Rattan Flat Ribbon Profile in Tashkent - BTT",
         "seo_description": "BTT Synthetic Rattan Flat Ribbon profile for outdoor furniture."
@@ -2095,7 +2095,7 @@
       "ru": {
         "name": "Искусственный ротанг - профиль Трубка",
         "category_label": "Искусственный ротанг",
-        "description": "Первичный искусственный ротанг BTT, профиль Трубка для структурного плетения. Расчёт под объём и MOQ.",
+        "description": "Искусственный ротанг BTT, профиль «Трубка» из первичного полимера. Круглое сечение для структурного плетения, контуров и ручек изделий. Поставляется в бухтах под заказ.",
         "usage": "Для структурных элементов мебели, кашпо и корзин",
         "seo_title": "Искусственный ротанг Трубка в Ташкенте - BTT",
         "seo_description": "Искусственный ротанг BTT профиль Трубка в Ташкенте."
@@ -2103,7 +2103,7 @@
       "uz": {
         "name": "Sun‘iy rotang - Trubka profili",
         "category_label": "Sun‘iy rotang",
-        "description": "Mustahkam to‘qish uchun BTT sun‘iy rotangi, Trubka profili. Buyurtma hajmi va MOQ bo‘yicha hisoblanadi.",
+        "description": "BTT sun'iy rotangi, birlamchi polimerdan tayyorlangan «Naycha» profili. Asosiy to‘qish, konturlar va tutqichlar uchun dumaloq kesim. Buyurtma bo‘yicha buxtalarda yetkaziladi.",
         "usage": "Mebelning asosiy to‘qilishi, kashpo va savatlar uchun",
         "seo_title": "Toshkentda sun‘iy rotang Trubka - BTT",
         "seo_description": "BTT dan sun‘iy rotang Trubka profili."
@@ -2111,7 +2111,7 @@
       "en": {
         "name": "Synthetic Rattan - Round Tube Profile",
         "category_label": "Synthetic rattan",
-        "description": "BTT synthetic rattan, Round Tube profile for structural weaves and planters. Quoted by volume and MOQ.",
+        "description": "BTT synthetic rattan, 'Tube' profile made from virgin polymer. Round cross-section for structural weaving, edging, and handles. Supplied in coils on order.",
         "usage": "For structural furniture elements, planters, and baskets",
         "seo_title": "Synthetic Rattan Round Tube Profile in Tashkent - BTT",
         "seo_description": "BTT Synthetic Rattan Round Tube profile."
@@ -2158,7 +2158,7 @@
       "ru": {
         "name": "Искусственный ротанг - профиль Полусфера",
         "category_label": "Искусственный ротанг",
-        "description": "Первичный искусственный ротанг BTT, профиль Полусфера для декоративного плетения. Расчёт под объём и MOQ.",
+        "description": "Искусственный ротанг BTT, профиль «Полусфера» из первичного полимера. Рельефный объёмный профиль для дизайнерских рисунков плетения и оформления фасадных поверхностей.",
         "usage": "Для кресел, столов и декоративных интерьерных решений",
         "seo_title": "Искусственный ротанг Полусфера в Ташкенте - BTT",
         "seo_description": "Искусственный ротанг BTT профиль Полусфера в Ташкенте."
@@ -2166,7 +2166,7 @@
       "uz": {
         "name": "Sun‘iy rotang - Yarim sfera profili",
         "category_label": "Sun‘iy rotang",
-        "description": "Dekorativ to‘qish uchun BTT sun‘iy rotangi, Yarim sfera profili. Buyurtma hajmi va MOQ bo‘yicha hisoblanadi.",
+        "description": "BTT sun'iy rotangi, birlamchi polimerdan tayyorlangan «Yarim sfera» profili. Dizaynerlik to‘quv naqshlari va fasad yuzalarini bezash uchun relyefli profil.",
         "usage": "Kreslo, stol va dekorativ interyer to‘quvlari uchun",
         "seo_title": "Toshkentda sun‘iy rotang Yarim sfera - BTT",
         "seo_description": "BTT dan sun‘iy rotang Yarim sfera profili."
@@ -2174,7 +2174,7 @@
       "en": {
         "name": "Synthetic Rattan - Semi-sphere Profile",
         "category_label": "Synthetic rattan",
-        "description": "BTT synthetic rattan, Semi-sphere profile for decorative weaving. Quoted by volume and MOQ.",
+        "description": "BTT synthetic rattan, 'Half-sphere' profile made from virgin polymer. Embossed dome profile for bespoke weave patterns and facade surfaces.",
         "usage": "For chairs, dining sets, and decor items",
         "seo_title": "Synthetic Rattan Semi-sphere Profile in Tashkent - BTT",
         "seo_description": "BTT Synthetic Rattan Semi-sphere profile."
@@ -2221,7 +2221,7 @@
       "ru": {
         "name": "Искусственный ротанг - профиль TWIST",
         "category_label": "Искусственный ротанг",
-        "description": "Первичный искусственный ротанг BTT, профиль TWIST для плетёных кресел и диванов. Расчёт под объём и MOQ.",
+        "description": "Искусственный ротанг BTT, профиль «TWIST» из первичного полимера. Спирально закрученный жгут для стульев серии Vertex, Corda и фактурных садовых коллекций.",
         "usage": "Для плетёных кресел Vertex, Corda, диванов и шезлонгов",
         "seo_title": "Искусственный ротанг TWIST в Ташкенте - BTT",
         "seo_description": "Искусственный ротанг BTT кручёный профиль TWIST в Ташкенте."
@@ -2229,7 +2229,7 @@
       "uz": {
         "name": "Sun‘iy rotang - TWIST profili",
         "category_label": "Sun‘iy rotang",
-        "description": "To‘qilgan kreslo va divanlar uchun BTT sun‘iy rotangi, buralgan TWIST profili. Buyurtma hajmi va MOQ bo‘yicha hisoblanadi.",
+        "description": "BTT sun'iy rotangi, birlamchi polimerdan tayyorlangan «TWIST» profili. Vertex, Corda stullari va to‘qilgan bog‘ to‘plamlari uchun buralgan profil.",
         "usage": "Vertex, Corda kreslolari, divanlar va shezlonglar uchun",
         "seo_title": "Toshkentda sun‘iy rotang TWIST - BTT",
         "seo_description": "BTT dan buralgan sun‘iy rotang TWIST profili."
@@ -2237,7 +2237,7 @@
       "en": {
         "name": "Synthetic Rattan - TWIST Profile",
         "category_label": "Synthetic rattan",
-        "description": "BTT synthetic rattan, twisted TWIST profile for wicker chairs and lounges. Quoted by volume and MOQ.",
+        "description": "BTT synthetic rattan, 'TWIST' profile made from virgin polymer. Spirally twisted cord utilized for Vertex and Corda chairs and textured garden collections.",
         "usage": "For Vertex and Corda chairs, sofas, and sun loungers",
         "seo_title": "Synthetic Rattan TWIST Profile in Tashkent - BTT",
         "seo_description": "BTT Synthetic Rattan twisted TWIST profile."

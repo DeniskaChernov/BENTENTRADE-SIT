@@ -1122,13 +1122,13 @@
       var desc = "";
       if(curLang === "uz"){
         desc = "<b>" + esc(title) + "</b>" + (priceStr ? " - narxi: <b>" + esc(priceStr) + "</b>" : "") +
-          ". Toshkentdagi omborda mavjud, tezkor yetkazib berish xizmati bilan.";
+          ". Toshkentdagi omborda mavjud, yetkazib berish xizmati bilan.";
       } else if(curLang === "en"){
         desc = "<b>" + esc(title) + "</b>" + (priceStr ? " - price: <b>" + esc(priceStr) + "</b>" : "") +
-          ". In stock at our Tashkent warehouse with fast dispatch.";
+          ". In stock at our Tashkent warehouse with citywide delivery.";
       } else {
         desc = "<b>" + esc(title) + "</b>" + (priceStr ? " - цена: <b>" + esc(priceStr) + "</b>" : "") +
-          ". В наличии на складе в Ташкенте, быстрая доставка по городу.";
+          ". В наличии на складе в Ташкенте, доставка по городу.";
       }
       return desc + renderProductCard(slug, curLang);
     }
