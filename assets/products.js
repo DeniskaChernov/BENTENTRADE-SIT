@@ -1694,47 +1694,53 @@
     "maxLoad": null,
     "confirmedColors": [
       {
-        "id": "ochre",
+        "id": "white",
         "name": {
-          "ru": "Охра",
-          "uz": "Oxra",
-          "en": "Ochre"
+          "ru": "Белый",
+          "uz": "Oq",
+          "en": "White"
         },
-        "hex": "#BA7E45",
-        "image": "assets/prod-lamp-runa.svg",
+        "hex": "#F5F3EF",
+        "image": "assets/prod-lamp-runa.jpg",
         "images": [
-          "assets/prod-lamp-runa.svg"
+          "assets/prod-lamp-runa.jpg",
+          "assets/prod-lamp-runa-top.jpg",
+          "assets/prod-lamp-runa-base.jpg",
+          "assets/prod-lamp-runa-scene.jpg"
         ]
       }
     ],
     "isTable": false,
     "images": [
-      "assets/prod-lamp-runa.svg"
+      "assets/prod-lamp-runa.jpg",
+      "assets/prod-lamp-runa-top.jpg",
+      "assets/prod-lamp-runa-base.jpg",
+      "assets/prod-lamp-runa-scene.jpg"
     ],
     "i18n": {
       "ru": {
         "name": "Настольная лампа «RUNA»",
         "category_label": "Настольные лампы",
-        "description": "Настольная лампа RUNA (190×223 мм) с мягким тёплым светом. Компактный корпус позволяет разместить светильник на полке, тумбе или придиванном столике.",
-        "usage": "Для журнального столика, полок, спальни и рабочего места",
+        "description": "Настольная лампа RUNA (190×223 мм) в стиле органического минимализма. Фактурный корпус со спиральным рельефом мягко рассеивает тёплый вечерний свет, наполняя пространство домашним уютом. Устойчивое основание на ножках гармонично смотрится на журнальном столике, консоли, прикроватной тумбе или открытых полках.",
+        "usage": "Для спальни, гостиной, зоны отдыха, журнального столика и декоративных полок",
         "seo_title": "Купить Настольная лампа «RUNA» в Ташкенте - BTT",
-        "seo_description": "Настольная лампа «RUNA» от BTT. Мягкое тёплое освещение. Размеры: 19 × 22,3 см. Доставка по Ташкенту и всему Узбекистану."
+        "seo_description": "Настольная лампа «RUNA» от BTT. Мягкое тёплое освещение, спиральный рельеф. Размеры: 19 × 22,3 см. Доставка по Ташкенту и всему Узбекистану."
       },
       "uz": {
         "name": "«RUNA» stol lampasi",
         "category_label": "Stol lampalari",
-        "description": "Yumshoq iliq nurli RUNA stol lampasi (190×223 mm). Ixcham korpusi tokcha, javon yoki divan yonidagi stolchada qulay joylashadi.",
-        "usage": "Kofe stoli, javonlar, yotoqxona va ish joyi uchun",
+        "description": "Organik minimalizm uslubidagi RUNA stol lampasi (190×223 mm). Spiral naqshli korpusi iliq kechki nurni muloyim taratib, xonada shinam va sokin muhit yaratadi. Uchoyoqli barqaror asosi kofe stoli, yotoqxona tumbasi yoki dekorativ tokchalarda mukammal ko‘rinadi.",
+        "usage": "Yotoqxona, mehmonxona, kofe stoli va dekorativ javonlar uchun",
         "seo_title": "Toshkentda «RUNA» stol lampasi sotib olish - BTT",
-        "seo_description": "BTT dan «RUNA» stol lampasi. O‘lchamlari: 19 × 22,3 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+        "seo_description": "BTT dan «RUNA» stol lampasi. Yumshoq iliq nur, spiral relyef. O‘lchamlari: 19 × 22,3 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
       },
       "en": {
         "name": "RUNA Table Lamp",
         "category_label": "Table lamps",
-        "description": "RUNA table lamp (190×223 mm) with soft warm illumination. Compact form fits easily on shelves, nightstands, and accent tables.",
-        "usage": "For coffee tables, shelving, bedrooms, and workstations",
+        "description": "RUNA table lamp (190×223 mm) in organic minimalist design. The tactile spiral-fluted body gently diffuses warm ambient light, creating a serene and cozy atmosphere. Supported by tripod feet, it sits effortlessly on bedside tables, accent consoles, and coffee tables.",
+        "usage": "For bedrooms, living room consoles, accent tables, and open shelving",
         "seo_title": "Buy RUNA Table Lamp in Tashkent - BTT",
-        "seo_description": "RUNA Table Lamp by BTT. Dimensions: 19 × 22.3 cm. Delivery across Tashkent and Uzbekistan."
+        "seo_description": "RUNA Table Lamp by BTT. Warm ambient illumination with spiral-fluted texture. Dimensions: 19 × 22.3 cm. Delivery across Tashkent and Uzbekistan."
       }
     },
     "status": "in_stock",

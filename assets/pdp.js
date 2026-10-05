@@ -666,6 +666,12 @@
       box.style.display = prod.isTable ? "" : "none";
     });
 
+    // AR 3D preview visibility (supported for chairs/tables)
+    const arBtns = $$("[data-pdp-ar-trigger], .pdp-ar-btn");
+    arBtns.forEach(b => {
+      b.style.display = (prod.category === "lighting" || prod.category === "rattan-raw") ? "none" : "";
+    });
+
     // Description
     const descText = (i18nEntry && i18nEntry.description) || prod.description || ((CATTEXT[prod.category] && (CATTEXT[prod.category][l] || CATTEXT[prod.category].ru)) || {}).desc || "";
     $$("[data-pdp-desc], [data-pdp-full-desc]").forEach(el => el.textContent = descText);
