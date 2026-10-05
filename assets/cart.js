@@ -1135,6 +1135,7 @@
   }
 
   function openQuickOrder(snap){
+    if(navigator.vibrate) try{ navigator.vibrate(20); }catch(_){}
     if(!snap) snap = snapFromPDP();
     if(!snap || !snap.name) return;
     if(snap.img && !snap.img.startsWith("/") && !snap.img.startsWith("http")){
@@ -1203,7 +1204,7 @@
                   '<label class="co-radio" style="font-size:12px;padding:8px"><input type="radio" name="payment_method" value="click_payme"><span>Click / Payme</span></label>' +
                 '</div>' +
               '</div>' +
-              '<div style="background:rgba(189,115,53,0.08);border:1px solid rgba(189,115,53,0.22);border-radius:10px;padding:10px 12px;margin:12px 0;font-size:12px;line-height:1.45;color:var(--ink)">' +
+              '<div style="background:rgba(189,115,53,0.08);border:1px solid rgba(189,115,53,0.22);border-radius:10px;padding:10px 12px;margin:12px 0;font-size:12px;line-height:1.45;color:var(--text)">' +
                 '<div style="display:flex;align-items:center;gap:6px;font-weight:700;margin-bottom:2px">' +
                   '<span>🛡️</span>' +
                   '<span>' + esc(t("quick.trust.no_prepay") || "Оплата строго при получении после осмотра мебели.") + '</span>' +

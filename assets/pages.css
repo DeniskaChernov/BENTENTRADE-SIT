@@ -3064,6 +3064,38 @@ a.dl-name:hover{color:var(--copper);}
 .qk-done{text-align:center;padding:16px 8px;}
 .qk-done__icon svg{width:56px;height:56px;display:inline-block;margin-bottom:8px;}
 
+[data-theme="dark"] .qk-modal{
+  background:var(--ink);
+  border-color:rgba(255,255,255,.14);
+  box-shadow:0 32px 72px -16px rgba(0,0,0,.7);
+}
+[data-theme="dark"] .qk-head{border-color:rgba(255,255,255,.1);}
+[data-theme="dark"] .qk-product-row{
+  background:var(--ink-2);
+  border-color:rgba(255,255,255,.1);
+}
+[data-theme="dark"] .qk-qty-box{
+  background:var(--ink-2) !important;
+  border-color:rgba(255,255,255,.15) !important;
+}
+[data-theme="dark"] .qk-qty-btn{
+  color:var(--text) !important;
+}
+[data-theme="dark"] .qk-form input{
+  background:var(--ink-2);
+  color:var(--text);
+  border-color:rgba(255,255,255,.15);
+}
+[data-theme="dark"] .qk-form input:focus{
+  border-color:var(--copper-bright);
+}
+[data-theme="dark"] .co-radio{
+  background:var(--ink-2);
+  border-color:rgba(255,255,255,.12);
+  color:var(--text);
+}
+
+
 /* ---- toast ---- */
 .btt-toast{position:fixed;left:50%;bottom:calc(26px + var(--cookie-banner-h,0px));transform:translate(-50%,18px);z-index:9600;
   background:var(--ink);color:var(--on-dark);padding:13px 20px;border-radius:var(--r-pill);
