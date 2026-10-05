@@ -8,12 +8,9 @@ export const ADMIN_APP_JS = String.raw`
   var CATS = [
     { id: "wicker-chairs", label: "Плетёные стулья" },
     { id: "plastic-chairs", label: "Пластиковые стулья" },
-    { id: "upholstered-chairs", label: "Мягкие стулья" },
     { id: "tables", label: "Столы" },
-    { id: "sets", label: "Комплекты мебели" },
-    { id: "lamps", label: "Декоративные лампы" },
-    { id: "planters", label: "Кашпо" },
-    { id: "rattan", label: "Искусственный ротанг" }
+    { id: "lighting", label: "Настольные лампы" },
+    { id: "rattan-raw", label: "Искусственный ротанг" }
   ];
 
   async function loadCats(){
@@ -79,8 +76,11 @@ export const ADMIN_APP_JS = String.raw`
 
   function catFallback(cat){
     if (cat === "wicker-chairs") return "/assets/prod-chair-corda.jpg";
+    if (cat === "plastic-chairs") return "/assets/prod-chair-roero-black.jpg";
     if (cat === "tables") return "/assets/prod-table-corda-135-black.jpg";
-    return "/assets/placeholder.svg";
+    if (cat === "lighting") return "/assets/prod-lamp-nova.svg";
+    if (cat === "rattan-raw") return "/assets/prod-rattan-polutrubka.svg";
+    return "/assets/prod-chair-corda.jpg";
   }
 
   function catName(catId){
@@ -814,8 +814,8 @@ export const ADMIN_APP_JS = String.raw`
     if (countEl) countEl.textContent = "Показано: " + filtered.length + " из " + allProducts.length;
 
     // Update filter counts
-    document.querySelectorAll(".filters-group .filter-chip[data-cat]").forEach(function(chip){
-      var cat = chip.getAttribute("data-cat");
+    document.querySelectorAll(".filters-group .filter-chip[data-pcat]").forEach(function(chip){
+      var cat = chip.getAttribute("data-pcat");
       var n = cat === "all" ? allProducts.length : allProducts.filter(function(p){ return p.category === cat; }).length;
       var label = cat === "all" ? "Все категории" : catName(cat);
       chip.innerHTML = esc(label) + '<span class="chip-cnt">' + n + '</span>';

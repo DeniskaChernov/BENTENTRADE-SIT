@@ -511,7 +511,10 @@
       "stul-roero": 168000,
       "stul-noero": 192000,
       "stul-todo": 216000,
-      "stul-jardin": 324000
+      "stul-todo-soft": 216000,
+      "stul-jardin": 324000,
+      "stul-vertex": 499000,
+      "stul-corda": 499000
     };
 
     const comboKey = tableProd.slug + "+" + chairProd.slug;
