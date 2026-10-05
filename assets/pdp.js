@@ -677,7 +677,7 @@
         bundleBox = document.createElement("div");
         bundleBox.id = "pdp-bundle-composition";
         bundleBox.className = "pdp-bundle-box";
-        bundleBox.style.cssText = "margin:16px 0;padding:14px 16px;border:1px solid var(--border);border-radius:10px;background:var(--bg-soft, rgba(0,0,0,0.02));";
+        bundleBox.style.cssText = "margin:16px 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--cream);";
         const buySection = document.querySelector(".pdp-buy");
         if(buySection && buySection.parentNode){
           buySection.parentNode.insertBefore(bundleBox, buySection);

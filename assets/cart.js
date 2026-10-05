@@ -1108,8 +1108,85 @@
     qkModal.setAttribute("aria-modal", "true");
     qkModal.setAttribute("aria-hidden", "true");
 
+    enableModalSwipeToDismiss(qkModal, closeQuickOrder);
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && qkModal && qkModal.classList.contains("on")){
+        closeQuickOrder();
+      }
+    });
+
     document.body.appendChild(qkScrim);
     document.body.appendChild(qkModal);
+  }
+
+  function enableModalSwipeToDismiss(modal, onDismiss){
+    if(!modal) return;
+    let sy = 0, dy = 0, startTime = 0, isDragging = false;
+    modal.addEventListener("touchstart", e => {
+      if(window.innerWidth > 560) return;
+      if(e.touches.length !== 1) return;
+      const t = e.touches[0];
+      const isTopTouch = e.target.closest(".qk-modal-handle, .qk-head") || modal.scrollTop <= 0;
+      if(!isTopTouch) return;
+      sy = t.clientY;
+      dy = 0;
+      startTime = performance.now();
+      isDragging = false;
+    }, { passive: true });
+
+    modal.addEventListener("touchmove", e => {
+      if(window.innerWidth > 560) return;
+      if(e.touches.length !== 1) return;
+      const t = e.touches[0];
+      const diffY = t.clientY - sy;
+      if(diffY > 0 && modal.scrollTop <= 0){
+        dy = diffY;
+        modal.style.transform = "translateY(" + dy + "px)";
+        modal.style.transition = "none";
+        if(qkScrim) qkScrim.style.opacity = String(Math.max(0, 1 - dy / 260));
+        isDragging = true;
+      }
+    }, { passive: true });
+
+    modal.addEventListener("touchend", () => {
+      if(!isDragging){
+        modal.style.transform = "";
+        modal.style.transition = "";
+        if(qkScrim) qkScrim.style.opacity = "";
+        return;
+      }
+      isDragging = false;
+      const dt = Math.max(1, performance.now() - startTime);
+      const vy = dy / dt;
+      modal.style.transition = "transform .32s cubic-bezier(0.16, 1, 0.3, 1)";
+      if(qkScrim) qkScrim.style.transition = "opacity .32s ease";
+
+      if(dy > 80 || vy > 0.4){
+        modal.style.transform = "translateY(100%)";
+        if(qkScrim) qkScrim.style.opacity = "0";
+        setTimeout(() => {
+          modal.style.transform = "";
+          modal.style.transition = "";
+          if(qkScrim){
+            qkScrim.style.opacity = "";
+            qkScrim.style.transition = "";
+          }
+          if(onDismiss) onDismiss();
+        }, 280);
+      } else {
+        modal.style.transform = "translateY(0)";
+        if(qkScrim) qkScrim.style.opacity = "1";
+        setTimeout(() => {
+          modal.style.transform = "";
+          modal.style.transition = "";
+          if(qkScrim){
+            qkScrim.style.opacity = "";
+            qkScrim.style.transition = "";
+          }
+        }, 300);
+      }
+    }, { passive: true });
   }
 
   function closeQuickOrder(){
@@ -1159,6 +1236,7 @@
       const itemTotal = calcTotal();
       qkModal.innerHTML =
         '<div class="qk-card">' +
+          '<div class="qk-modal-handle" aria-hidden="true"></div>' +
           '<div class="qk-head">' +
             '<div style="display:flex;align-items:center;gap:8px">' +
               '<span style="display:inline-flex;color:var(--copper);font-size:18px">⚡</span>' +
@@ -1187,7 +1265,7 @@
             '<form class="qk-form" data-qk-form novalidate>' +
               '<div class="co-field">' +
                 '<label>' + esc(t("coPhone")) + ' *</label>' +
-                '<input name="phone" type="tel" autocomplete="tel" value="' + esc(saved.phone || "") + '" placeholder="+998 (__) ___-__-__" required autofocus>' +
+                '<input name="phone" type="tel" autocomplete="tel" value="' + esc(saved.phone || "") + '" placeholder="+998 (__) ___-__-__" required>' +
               '</div>' +
               '<div class="co-field">' +
                 '<label>' + esc(t("coName")) + '</label>' +
@@ -1371,9 +1449,11 @@
     qkModal.setAttribute("aria-hidden", "false");
     document.documentElement.style.overflow = "hidden";
     setTimeout(() => {
-      const ph = qkModal.querySelector('[name="phone"]');
-      if(ph) ph.focus();
-    }, 60);
+      if (window.innerWidth > 560) {
+        const ph = qkModal.querySelector('[name="phone"]');
+        if(ph) ph.focus();
+      }
+    }, 150);
   }
 
   function closeAll(){

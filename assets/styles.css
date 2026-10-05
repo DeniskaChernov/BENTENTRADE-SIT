@@ -1075,11 +1075,13 @@ html.no-js [data-stagger] > *{opacity:1;transform:none;filter:none;}
 .search-empty{padding:34px 18px;text-align:center;color:var(--muted);font-size:14px;}
 [data-theme="dark"] .search-item__ic{background:rgba(255,255,255,.06);}
 @media (max-width:600px){
-  .search-ov{padding:max(72px, calc(var(--head-h, 56px) + 20px)) 16px 32px;align-items:flex-start;}
-  .search-box__head{padding:14px 16px;}
+  .search-ov{padding:calc(14px + env(safe-area-inset-top, 0px)) 12px 24px;align-items:flex-start;}
+  .search-box{border-radius:18px;}
+  .search-box__head{padding:12px 14px;}
   .search-box__input{font-size:16px;}
   .search-box__kbd{display:none;}
   .search-box__close{display:flex;}
+  .search-box__body{max-height:min(52dvh, 340px);}
 }
 
 /* Cookie consent banner */

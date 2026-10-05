@@ -223,6 +223,9 @@
   function renderBuilder(container) {
     if (!container) return;
 
+    const prevTotalEl = container.querySelector(".set-builder-total-price");
+    const prevTotal = prevTotalEl ? (parseInt(prevTotalEl.textContent.replace(/\D/g, ""), 10) || 0) : 0;
+
     const calc = calculateSet();
 
     container.innerHTML = `
@@ -344,7 +347,7 @@
                 </button>
 
                 <div class="set-builder-trust-note">
-                  <span>🛡️ Оплата строго при получении после осмотра мебели в Ташкенте.</span>
+                  <span>🛡️ ${t("quick.trust.no_prepay") || "Оплата строго при получении после осмотра мебели в Ташкенте."}</span>
                 </div>
               </div>
             </div>
@@ -352,6 +355,11 @@
         </div>
       </div>
     `;
+
+    const totalEl = container.querySelector(".set-builder-total-price");
+    if(totalEl && prevTotal > 0 && prevTotal !== calc.bundlePrice && window.BTT_MOTION && window.BTT_MOTION.animateNumber){
+      window.BTT_MOTION.animateNumber(totalEl, prevTotal, calc.bundlePrice, 280, formatMoney);
+    }
 
     // Event listeners
     container.querySelectorAll("[data-select-table]").forEach(btn => {

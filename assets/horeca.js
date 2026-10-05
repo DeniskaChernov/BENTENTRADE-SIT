@@ -107,11 +107,40 @@
       else if (curLang === "en") comboName = conf.tableNameEn;
 
       if (numDisplay) numDisplay.textContent = String(seats);
-      if (outTables) outTables.textContent = String(tablesCount);
-      if (outChairs) outChairs.textContent = String(chairsCount);
-      if (outSeats) outSeats.textContent = String(seats);
-      if (outTotal) outTotal.textContent = fmtNum(totalPrice);
       if (outCombo) outCombo.textContent = comboName;
+
+      if (outTotal) {
+        const prevTotal = parseInt((outTotal.textContent || "").replace(/\s+/g, ""), 10) || 0;
+        if (window.BTT_MOTION && window.BTT_MOTION.animateNumber && prevTotal > 0 && prevTotal !== totalPrice) {
+          window.BTT_MOTION.animateNumber(outTotal, prevTotal, totalPrice, 280, fmtNum);
+        } else {
+          outTotal.textContent = fmtNum(totalPrice);
+        }
+      }
+      if (outTables) {
+        const prevTables = parseInt(outTables.textContent, 10) || 0;
+        if (window.BTT_MOTION && window.BTT_MOTION.animateNumber && prevTables > 0 && prevTables !== tablesCount) {
+          window.BTT_MOTION.animateNumber(outTables, prevTables, tablesCount, 240);
+        } else {
+          outTables.textContent = String(tablesCount);
+        }
+      }
+      if (outChairs) {
+        const prevChairs = parseInt(outChairs.textContent, 10) || 0;
+        if (window.BTT_MOTION && window.BTT_MOTION.animateNumber && prevChairs > 0 && prevChairs !== chairsCount) {
+          window.BTT_MOTION.animateNumber(outChairs, prevChairs, chairsCount, 240);
+        } else {
+          outChairs.textContent = String(chairsCount);
+        }
+      }
+      if (outSeats) {
+        const prevSeats = parseInt(outSeats.textContent, 10) || 0;
+        if (window.BTT_MOTION && window.BTT_MOTION.animateNumber && prevSeats > 0 && prevSeats !== seats) {
+          window.BTT_MOTION.animateNumber(outSeats, prevSeats, seats, 240);
+        } else {
+          outSeats.textContent = String(seats);
+        }
+      }
 
       // Update chips active state
       chips.forEach(c => {

@@ -1,11 +1,13 @@
 /* ============================================================
    BTT - Interactive Custom Set Builder Styles
+   Strict pricing policy: verified set prices, zero em-dash.
+   Harmonious luxury palette, seamless dark mode & mobile ergonomics.
    ============================================================ */
 
 .set-builder-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg, 16px);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl, 20px);
   padding: 32px 28px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   margin-top: 24px;
@@ -13,7 +15,9 @@
 }
 
 [data-theme="dark"] .set-builder-card {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: var(--ink);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
 .set-builder-header {
@@ -40,7 +44,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--ink);
+  color: var(--text);
   margin-bottom: 12px;
 }
 
@@ -55,25 +59,43 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: var(--surface-card, rgba(0, 0, 0, 0.02));
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
+  background: var(--cream);
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-md, 12px);
   padding: 10px 8px;
   cursor: pointer;
   transition: all 0.2s ease;
-  color: var(--ink);
+  color: var(--text);
   font-family: inherit;
 }
 
 .set-builder-opt:hover {
   border-color: var(--copper);
-  background: rgba(189, 115, 53, 0.04);
+  background: color-mix(in srgb, var(--copper) 8%, var(--cream));
+  transform: translateY(-2px);
 }
 
 .set-builder-opt.is-active {
   border-color: var(--copper);
-  background: rgba(189, 115, 53, 0.08);
+  background: color-mix(in srgb, var(--copper) 14%, var(--cream));
   box-shadow: 0 0 0 1px var(--copper);
+}
+
+[data-theme="dark"] .set-builder-opt {
+  background: var(--ink-2);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+[data-theme="dark"] .set-builder-opt:hover {
+  border-color: var(--copper-bright);
+  background: rgba(189, 115, 53, 0.14);
+}
+
+[data-theme="dark"] .set-builder-opt.is-active {
+  border-color: var(--copper-bright);
+  background: rgba(189, 115, 53, 0.22);
+  box-shadow: 0 0 0 1px var(--copper-bright);
 }
 
 .set-builder-opt img {
@@ -82,7 +104,11 @@
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 6px;
-  background: #fff;
+  background: var(--paper);
+}
+
+[data-theme="dark"] .set-builder-opt img {
+  background: var(--ink);
 }
 
 .set-builder-opt-name {
@@ -108,10 +134,10 @@
   font-size: 13px;
   font-weight: 600;
   font-family: inherit;
-  border: 1.5px solid var(--border);
+  border: 1.5px solid var(--line);
   border-radius: 10px;
-  background: var(--surface-card, rgba(0, 0, 0, 0.02));
-  color: var(--ink);
+  background: var(--cream);
+  color: var(--text);
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -126,14 +152,35 @@
   color: #fff;
 }
 
+[data-theme="dark"] .set-builder-qty-btn {
+  background: var(--ink-2);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+[data-theme="dark"] .set-builder-qty-btn:hover {
+  border-color: var(--copper-bright);
+}
+
+[data-theme="dark"] .set-builder-qty-btn.is-active {
+  border-color: var(--copper-bright);
+  background: var(--copper);
+  color: #fff;
+}
+
 /* Summary Box */
 .set-builder-preview-box {
-  background: var(--surface-card, rgba(0, 0, 0, 0.02));
-  border: 1px solid var(--border);
-  border-radius: var(--radius, 14px);
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg, 16px);
   padding: 22px;
   position: sticky;
   top: 90px;
+}
+
+[data-theme="dark"] .set-builder-preview-box {
+  background: var(--ink-2);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .set-builder-images {
@@ -151,8 +198,14 @@
   max-width: 140px;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid var(--border);
-  background: #fff;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+[data-theme="dark"] .set-builder-img-table,
+[data-theme="dark"] .set-builder-img-chair {
+  background: var(--ink);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .set-builder-img-table img,
@@ -187,9 +240,13 @@
 }
 
 .set-builder-breakdown {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--line);
   padding-top: 16px;
   margin-bottom: 18px;
+}
+
+[data-theme="dark"] .set-builder-breakdown {
+  border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 .set-builder-row {
@@ -219,15 +276,23 @@
 .set-builder-row--total {
   font-size: 16px;
   font-weight: 800;
-  color: var(--ink);
+  color: var(--text);
   margin-top: 10px;
   padding-top: 8px;
-  border-top: 1px dashed var(--border);
+  border-top: 1px dashed var(--line);
+}
+
+[data-theme="dark"] .set-builder-row--total {
+  border-top-color: rgba(255, 255, 255, 0.14);
 }
 
 .set-builder-total-price {
   font-size: 20px;
   color: var(--copper);
+}
+
+[data-theme="dark"] .set-builder-total-price {
+  color: var(--copper-bright);
 }
 
 .set-builder-buy-action {
@@ -247,4 +312,33 @@
   color: var(--muted);
   text-align: center;
   line-height: 1.4;
+}
+
+@media (max-width: 560px) {
+  .set-builder-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+  .set-builder-options {
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+    gap: 8px;
+  }
+  .set-builder-opt img {
+    width: 52px;
+    height: 52px;
+  }
+  .set-builder-images {
+    gap: 8px;
+  }
+  .set-builder-img-table,
+  .set-builder-img-chair {
+    max-width: 120px;
+  }
+  .set-builder-img-table img,
+  .set-builder-img-chair img {
+    height: 95px;
+  }
+  .set-builder-preview-box {
+    padding: 16px;
+  }
 }

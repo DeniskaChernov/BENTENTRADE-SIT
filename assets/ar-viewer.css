@@ -1,11 +1,14 @@
 /* ============================================================
    BTT - 3D / AR Viewer Styles
+   Strict adherence to design system: --line, --paper, --text, --copper.
+   Zero em-dash. Seamless dark theme & mobile responsiveness.
    ============================================================ */
 
 .btt-ar-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.72);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   z-index: 99999;
   display: flex;
@@ -23,9 +26,9 @@
 }
 
 .btt-ar-dialog {
-  background: var(--surface, #ffffff);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg, 16px);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl, 20px);
   width: 100%;
   max-width: 860px;
   height: 580px;
@@ -38,6 +41,12 @@
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+[data-theme="dark"] .btt-ar-dialog {
+  background: var(--ink);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+}
+
 .btt-ar-modal-backdrop.is-open .btt-ar-dialog {
   transform: scale(1);
 }
@@ -47,14 +56,18 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 24px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--line);
+}
+
+[data-theme="dark"] .btt-ar-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 .btt-ar-title {
   margin: 2px 0 0 0;
   font-size: 18px;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--text);
 }
 
 .btt-ar-close {
@@ -70,8 +83,8 @@
 }
 
 .btt-ar-close:hover {
-  color: var(--ink);
-  background: rgba(0, 0, 0, 0.05);
+  color: var(--text);
+  background: rgba(120, 120, 120, 0.12);
 }
 
 .btt-ar-body {
@@ -92,8 +105,12 @@
 .btt-ar-stage {
   flex: 1.4;
   position: relative;
-  background: var(--surface);
+  background: var(--paper);
   min-height: 280px;
+}
+
+[data-theme="dark"] .btt-ar-stage {
+  background: var(--ink);
 }
 
 .btt-ar-launch-btn {
@@ -113,19 +130,27 @@
 
 .btt-ar-sidebar {
   flex: 1;
-  border-left: 1px solid var(--border);
+  border-left: 1px solid var(--line);
   padding: 24px;
   display: flex;
   flex-direction: column;
-  background: var(--surface-card, rgba(0, 0, 0, 0.02));
+  background: var(--cream);
   overflow-y: auto;
+}
+
+[data-theme="dark"] .btt-ar-sidebar {
+  background: var(--ink-2);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 768px) {
   .btt-ar-sidebar {
     border-left: none;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--line);
     padding: 16px;
+  }
+  [data-theme="dark"] .btt-ar-sidebar {
+    border-top-color: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -144,7 +169,8 @@
 
 .btt-ar-dim-val {
   font-size: 18px;
-  color: var(--ink);
+  font-weight: 700;
+  color: var(--text);
 }
 
 .btt-ar-dim-desc {
@@ -155,12 +181,17 @@
 }
 
 .btt-ar-qr-box {
-  background: var(--surface, #ffffff);
-  border: 1px solid var(--border);
+  background: var(--paper);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 16px;
   text-align: center;
   margin-bottom: 20px;
+}
+
+[data-theme="dark"] .btt-ar-qr-box {
+  background: var(--ink);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -181,9 +212,28 @@
   padding: 6px;
   background: #ffffff;
   border-radius: 8px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
 }
 
 .btt-ar-qr-img-wrap img {
   display: block;
+}
+
+@media (max-width: 480px) {
+  .btt-ar-modal-backdrop {
+    padding: 8px;
+  }
+  .btt-ar-dialog {
+    border-radius: 16px;
+    height: 90vh;
+  }
+  .btt-ar-header {
+    padding: 12px 16px;
+  }
+  .btt-ar-title {
+    font-size: 16px;
+  }
+  .btt-ar-stage {
+    min-height: 220px;
+  }
 }

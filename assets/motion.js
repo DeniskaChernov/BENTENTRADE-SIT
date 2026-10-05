@@ -172,7 +172,10 @@
 
     document.addEventListener("pointerdown", function (e) {
       if (e.button !== 0 && e.pointerType === "mouse") return;
-      var target = e.target && e.target.closest && e.target.closest(".btn, .chip, .cat-chip, .smart-toggle, .del-calc__city-btn, .co-msg, .co-city-chip, .filter-toggle-btn");
+      var target = e.target && e.target.closest && e.target.closest(
+        ".btn, .chip, .cat-chip, .smart-toggle, .del-calc__city-btn, .co-msg, .co-city-chip, .filter-toggle-btn, " +
+        ".product__buy, .bot-menu-item, .bot-chip, .qk-qty-btn, .horeca-calc-chip, .set-builder-opt, .set-builder-qty-btn"
+      );
       if (!target) return;
 
       var rect = target.getBoundingClientRect();

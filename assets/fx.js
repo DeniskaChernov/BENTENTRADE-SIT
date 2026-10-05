@@ -137,7 +137,11 @@
 
   document.addEventListener("click", (e) => {
     if(isReduced()) return;
-    const target = e.target && e.target.closest && e.target.closest(".hero__cta, .swatch, .product-swatch, .cat-view-btn, .btn--copper, .pdp-thumb");
+    const target = e.target && e.target.closest && e.target.closest(
+      ".hero__cta, .swatch, .product-swatch, .cat-view-btn, .btn--copper, .pdp-thumb, " +
+      ".product__buy, [data-add], [data-quick-order], [data-combo-quick-buy], .set-builder-buy-action, " +
+      ".bot-menu-item, .bot-chip, .qk-qty-btn, .horeca-calc-chip, [data-pdp-ar-trigger]"
+    );
     if(target && e.clientX && e.clientY){
       burstParticles(e.clientX, e.clientY, 5);
     }
