@@ -22,8 +22,6 @@
       wicker: [
         { id: "vertex", name: "VERTEX", retail: 499000, slug: "stul-vertex" },
         { id: "corda", name: "CORDA", retail: 499000, slug: "stul-corda" }
-      ],
-      upholstered: [
       ]
     },
     tables: [
@@ -124,7 +122,6 @@
         "Искусственный ротанг",
         "Пластиковые стулья",
         "Плетёные стулья",
-        "Мягкие стулья",
         "Оформить заказ",
         "Доставка и самовывоз",
         "Способы оплаты",
@@ -137,12 +134,12 @@
           "• ROERO: 188 000 сум / 168 000 сум<br>" +
           "• NOERO: 212 000 сум / 192 000 сум<br>" +
           "• TODO: 236 000 сум / 216 000 сум<br>" +
+          "• TODO SOFT: 264 000 сум / 216 000 сум<br>" +
           "• JARDIN: 344 000 сум / 324 000 сум<br>" +
           "<i>Комплектная цена действует только при покупке со столом.</i><br><br>" +
           "<b>Плетёные стулья (с мягкой подушкой):</b><br>" +
           "• VERTEX: 499 000 сум<br>" +
-          "• CORDA: 499 000 сум<br><br>" +
-          "<b>Мягкие стулья:</b><br>" +
+          "• CORDA: 499 000 сум",
         "Цены на столы": "<b>Актуальные цены на обеденные столы BTT:</b><br>" +
           "<b>Круглые:</b><br>" +
           "• <b>VERTEX D90</b> (Ø90 см): 730 000 сум отдельно (для комплекта 680 000 сум)<br><br>" +
@@ -248,7 +245,6 @@
         "Sun'iy rotang",
         "Plastik stullar",
         "To‘qilgan stullar",
-        "Yumshoq stullar",
         "Buyurtma berish",
         "Yetkazish va olib ketish",
         "To‘lov usullari",
@@ -261,12 +257,12 @@
           "• ROERO: 188 000 so‘m / 168 000 so‘m<br>" +
           "• NOERO: 212 000 so‘m / 192 000 so‘m<br>" +
           "• TODO: 236 000 so‘m / 216 000 so‘m<br>" +
+          "• TODO SOFT: 264 000 so‘m / 216 000 so‘m<br>" +
           "• JARDIN: 344 000 so‘m / 324 000 so‘m<br>" +
           "<i>To‘plamdagi arzon narx faqat stol bilan birga xarid qilinganda amal qiladi.</i><br><br>" +
           "<b>To‘qilgan stullar (yumshoq yostiqchasi bilan):</b><br>" +
           "• VERTEX: 499 000 so‘m<br>" +
-          "• CORDA: 499 000 so‘m<br><br>" +
-          "<b>Yumshoq stullar:</b><br>" +
+          "• CORDA: 499 000 so‘m",
         "Stollar narxlari": "<b>BTT stollarining amaldagi narxlari:</b><br>" +
           "<b>Dumaloq stollar:</b><br>" +
           "• <b>VERTEX D90</b> (Ø90 sm): 730 000 so‘m alohida (to‘plam uchun 680 000 so‘m)<br><br>" +
@@ -365,7 +361,6 @@
         "Artificial rattan",
         "Plastic chairs",
         "Wicker chairs",
-        "Upholstered chairs",
         "Place an order",
         "Delivery and pickup",
         "Payment methods",
@@ -378,12 +373,12 @@
           "• ROERO: 188,000 UZS / 168,000 UZS<br>" +
           "• NOERO: 212,000 UZS / 192,000 UZS<br>" +
           "• TODO: 236,000 UZS / 216,000 UZS<br>" +
+          "• TODO SOFT: 264,000 UZS / 216,000 UZS<br>" +
           "• JARDIN: 344,000 UZS / 324,000 UZS<br>" +
           "<i>Bundle prices apply strictly when purchased together with a table.</i><br><br>" +
           "<b>Wicker chairs (with soft cushion):</b><br>" +
           "• VERTEX: 499,000 UZS<br>" +
-          "• CORDA: 499,000 UZS<br><br>" +
-          "<b>Upholstered chairs:</b><br>" +
+          "• CORDA: 499,000 UZS",
         "Table prices": "<b>Current BTT dining table prices:</b><br>" +
           "<b>Round tables:</b><br>" +
           "• <b>VERTEX D90</b> (round Ø90 cm): 730,000 UZS individually (680,000 UZS in sets)<br><br>" +
@@ -657,7 +652,7 @@
 
     // Fallback to internal SSOT PRICING catalogue
     var allP = [];
-    var chairTypes = ["plastic", "wicker", "upholstered"];
+    var chairTypes = ["plastic", "wicker"];
     chairTypes.forEach(function(t){
       if(PRICING.chairs[t]) allP = allP.concat(PRICING.chairs[t]);
     });

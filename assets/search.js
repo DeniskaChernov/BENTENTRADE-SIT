@@ -26,6 +26,7 @@
   const PAGES = [
     { href:"index.html",    k:"nav.home" },
     { href:"catalog.html",  k:"nav.catalog" },
+    { href:"horeca.html",   k:"nav.horeca" },
     { href:"blog.html",     k:"nav.blog" },
     { href:"faq.html",      k:"foot.faq" },
     { href:"delivery.html", k:"foot.delivery" },
