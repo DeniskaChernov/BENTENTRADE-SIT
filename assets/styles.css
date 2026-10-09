@@ -63,10 +63,27 @@
 
   /* shape */
   --r-xl:30px;
+  --r-2xl:36px;
   --r-lg:22px;
   --r-md:16px;
   --r-sm:12px;
   --r-pill:100px;
+
+  /* background & component aliases */
+  --bg:var(--paper);
+  --paper-2:var(--cream);
+  --copper-dark:#9c5825;
+  --font:var(--font-body);
+  --cookie-banner-h:80px;
+  --swatch-color:#333333;
+  --dl-idx:0;
+  --flow-i:0;
+  --glow-x:50%;
+  --glow-y:50%;
+  --mag-x:0px;
+  --mag-y:0px;
+  --dx:0px;
+  --dy:0px;
 
   --shadow-card:0 12px 40px -28px rgba(27,25,22,.22);
   --shadow-soft:0 8px 28px -20px rgba(27,25,22,.28);
@@ -109,6 +126,8 @@
   --cream:#242422;
   --cream-2:#2c2c29;
   --paper:#1a1a18;
+  --bg:var(--paper);
+  --paper-2:var(--cream-2);
   --text:#ebe8e1;
   --muted:#a8a49c;
   --muted-2:#848078;

@@ -1,100 +1,190 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
 
-const root = 'c:\\Bententrade-Sit';
+const ROOT = process.cwd();
 
-console.log('=== 1. CHECKING PRODUCTS MASTER VS PRODUCTS.JS VS SEED.SQL VS WORKER ===');
-const masterPath = path.join(root, 'data', 'products-master.json');
-const master = JSON.parse(fs.readFileSync(masterPath, 'utf8'));
-console.log(`Master products count: ${master.length}`);
+console.log('=== STARTING DEEP SYSTEM & BUG AUDIT ===\n');
 
-const masterSlugs = master.map(p => p.slug);
-const masterIds = master.map(p => p.legacyId);
+let issues = [];
 
-// Check assets/products.js
-const productsJs = fs.readFileSync(path.join(root, 'assets', 'products.js'), 'utf8');
-const missingInProductsJs = masterSlugs.filter(s => !productsJs.includes(`"slug": "${s}"`));
-console.log('Missing in products.js:', missingInProductsJs);
+// 1. Check all HTML files for broken local image references
+const htmlFiles = fs.readdirSync(ROOT).filter(f => f.endsWith('.html'));
 
-// Check worker/routes/orders.ts
-const ordersTs = fs.readFileSync(path.join(root, 'worker', 'routes', 'orders.ts'), 'utf8');
-const missingInWorkerSlugs = masterSlugs.filter(s => !ordersTs.includes(`"${s}"`));
-console.log('Missing in worker ALIAS_MAP slugs:', missingInWorkerSlugs);
-
-// Check worker aliases
-const missingInWorkerAliases = masterIds.filter(id => !ordersTs.includes(`${id}:`));
-console.log('Missing in worker ALIAS_MAP aliases:', missingInWorkerAliases);
-
-// Check seed.sql
-const seedSql = fs.readFileSync(path.join(root, 'migrations', 'seed.sql'), 'utf8');
-const missingInSeed = masterSlugs.filter(s => !seedSql.includes(`'${s}'`));
-console.log('Missing in seed.sql:', missingInSeed);
-
-console.log('\n=== 2. CHECKING CATALOG.HTML CARDS ===');
-const catalogHtml = fs.readFileSync(path.join(root, 'catalog.html'), 'utf8');
-const catalogCards = [...catalogHtml.matchAll(/data-slug="([^"]+)"/g)].map(m => m[1]);
-console.log(`Cards in catalog.html (${catalogCards.length}):`, catalogCards);
-const missingInCatalog = masterSlugs.filter(s => !catalogCards.includes(s));
-console.log('Missing in catalog.html:', missingInCatalog);
-
-// Check prices in catalog.html vs master
-master.forEach(p => {
-  const cardRegex = new RegExp(`data-slug="${p.slug}"[^>]*data-price="([^"]+)"`);
-  const m = catalogHtml.match(cardRegex);
-  if (m) {
-    const cardPrice = parseInt(m[1], 10);
-    if (cardPrice !== p.price) {
-      console.log(`PRICE MISMATCH for ${p.slug}: master=${p.price}, catalog=${cardPrice}`);
-    }
-  } else {
-    console.log(`Could not find data-price for ${p.slug} in catalog.html`);
-  }
-});
-
-console.log('\n=== 3. CHECKING ALL IMAGES IN MASTER & CATALOG ===');
-const checkImage = (img) => {
-  if (!img) return;
-  const p = path.join(root, img.replace(/^\//, ''));
-  if (!fs.existsSync(p)) {
-    console.log(`MISSING IMAGE ON DISK: ${img}`);
-  }
-};
-
-master.forEach(p => {
-  (p.images || []).forEach(checkImage);
-  (p.confirmedColors || []).forEach(c => {
-    checkImage(c.image);
-    (c.images || []).forEach(checkImage);
-  });
-});
-
-const catalogImgs = [...catalogHtml.matchAll(/src="([^"]+\.(?:jpg|png|svg|webp))"/g)].map(m => m[1]);
-catalogImgs.forEach(checkImage);
-
-console.log('\n=== 4. CHECKING I18N KEYS IN ASSETS/I18N.JS ===');
-const i18nJs = fs.readFileSync(path.join(root, 'assets', 'i18n.js'), 'utf8');
-master.forEach(p => {
-  const legacyKey = `${p.legacyId}.name`;
-  const slugKey = `${p.slug}.name`;
-  if (!i18nJs.includes(`"${legacyKey}"`) && !i18nJs.includes(`'${legacyKey}'`)) {
-    console.log(`MISSING i18n key: ${legacyKey}`);
-  }
-});
-
-console.log('\n=== 5. CHECKING LINKS IN ALL HTML FILES ===');
-const htmlFiles = fs.readdirSync(root).filter(f => f.endsWith('.html'));
+console.log('--- 1. AUDITING HTML FILES & ASSET INTEGRITY ---');
 for (const file of htmlFiles) {
-  const content = fs.readFileSync(path.join(root, file), 'utf8');
-  // Check for broken product.html?id= links
-  const oldLinks = [...content.matchAll(/href="([^"]*product\.html\?id=[^"]+)"/g)].map(m => m[1]);
-  if (oldLinks.length > 0) {
-    console.log(`${file} has old product.html?id= links:`, oldLinks);
-  }
-  // Check for /catalog/ links to ensure slug is valid
-  const catLinks = [...content.matchAll(/href="\/catalog\/([^"#?]+)"/g)].map(m => m[1]);
-  for (const slug of catLinks) {
-    if (!masterSlugs.includes(slug)) {
-      console.log(`${file} has INVALID /catalog/ link: ${slug}`);
+  const content = fs.readFileSync(path.join(ROOT, file), 'utf8');
+
+  // Check <img> src
+  const imgRegex = /<img[^>]+src=["']([^"']+)["']/gi;
+  let match;
+  while ((match = imgRegex.exec(content)) !== null) {
+    const src = match[1];
+    if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('data:')) {
+      continue;
+    }
+    // Remove query params or hash
+    const cleanSrc = src.split('?')[0].split('#')[0];
+    const absPath = path.join(ROOT, cleanSrc.replace(/^\//, ''));
+    if (!fs.existsSync(absPath)) {
+      issues.push({
+        type: 'BROKEN_IMAGE',
+        file,
+        detail: `Image src="${src}" not found on disk (${absPath})`
+      });
     }
   }
+
+  // Check <a> href
+  const hrefRegex = /<a[^>]+href=["']([^"']+)["']/gi;
+  while ((match = hrefRegex.exec(content)) !== null) {
+    const href = match[1];
+    if (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('tel:') || href.startsWith('mailto:') || href.startsWith('javascript:') || href.startsWith('#')) {
+      continue;
+    }
+    const cleanHref = href.split('?')[0].split('#')[0];
+    if (cleanHref.startsWith('/catalog/')) {
+      // Catalog slug
+      continue;
+    }
+    if (cleanHref.startsWith('/article/')) {
+      continue;
+    }
+    const absPath = path.join(ROOT, cleanHref.replace(/^\//, ''));
+    if (!fs.existsSync(absPath)) {
+      issues.push({
+        type: 'BROKEN_LINK',
+        file,
+        detail: `Link href="${href}" not found on disk (${absPath})`
+      });
+    }
+  }
+
+  // Check cart buttons: "В корзину" (Strict Rule #8: no cart)
+  if (content.includes('В корзину') || content.includes('в корзину')) {
+    issues.push({
+      type: 'RULE_VIOLATION_CART',
+      file,
+      detail: `Contains forbidden cart text "В корзину"`
+    });
+  }
+
+  // Check em-dash or en-dash in HTML files
+  if (content.includes('\u2014') || content.includes('\u2013')) {
+    issues.push({
+      type: 'RULE_VIOLATION_DASH',
+      file,
+      detail: 'Contains em-dash (\\u2014) or en-dash (\\u2013)'
+    });
+  }
+}
+
+// 2. Audit all data-i18n keys across all HTML files against assets/i18n.js
+console.log('--- 2. AUDITING I18N DATA KEYS IN HTML ---');
+const i18nCode = fs.readFileSync(path.join(ROOT, 'assets', 'i18n.js'), 'utf8');
+const sandbox = { window: {} };
+vm.createContext(sandbox);
+vm.runInContext(i18nCode, sandbox);
+const dictRU = sandbox.window.BTT_I18N?.ru || {};
+const dictUZ = sandbox.window.BTT_I18N?.uz || {};
+const dictEN = sandbox.window.BTT_I18N?.en || {};
+
+for (const file of htmlFiles) {
+  const content = fs.readFileSync(path.join(ROOT, file), 'utf8');
+  const i18nRegex = /data-i18n=["']([^"']+)["']/gi;
+  let match;
+  while ((match = i18nRegex.exec(content)) !== null) {
+    const key = match[1];
+    if (!dictRU[key]) {
+      issues.push({
+        type: 'MISSING_I18N_KEY',
+        file,
+        detail: `data-i18n="${key}" is missing in RU dictionary`
+      });
+    }
+  }
+  const ariaI18nRegex = /data-i18n-aria=["']([^"']+)["']/gi;
+  while ((match = ariaI18nRegex.exec(content)) !== null) {
+    const key = match[1];
+    if (!dictRU[key]) {
+      issues.push({
+        type: 'MISSING_I18N_ARIA_KEY',
+        file,
+        detail: `data-i18n-aria="${key}" is missing in RU dictionary`
+      });
+    }
+  }
+  const placeholderI18nRegex = /data-i18n-placeholder=["']([^"']+)["']/gi;
+  while ((match = placeholderI18nRegex.exec(content)) !== null) {
+    const key = match[1];
+    if (!dictRU[key]) {
+      issues.push({
+        type: 'MISSING_I18N_PLACEHOLDER_KEY',
+        file,
+        detail: `data-i18n-placeholder="${key}" is missing in RU dictionary`
+      });
+    }
+  }
+}
+
+// 3. Audit CSS files for broken variable references (var(--undefined))
+console.log('--- 3. AUDITING CSS VARIABLE INTEGRITY ---');
+const cssFiles = fs.readdirSync(path.join(ROOT, 'assets')).filter(f => f.endsWith('.css'));
+// Collect all CSS variables declared
+const declaredVars = new Set();
+const varDeclRegex = /(--[a-zA-Z0-9-_]+)\s*:/g;
+for (const file of cssFiles) {
+  const content = fs.readFileSync(path.join(ROOT, 'assets', file), 'utf8');
+  let match;
+  while ((match = varDeclRegex.exec(content)) !== null) {
+    declaredVars.add(match[1]);
+  }
+}
+
+// Now check usages: var(--foo)
+const varUsageRegex = /var\(\s*(--[a-zA-Z0-9-_]+)\s*(?:,[^)]+)?\)/g;
+for (const file of cssFiles) {
+  const content = fs.readFileSync(path.join(ROOT, 'assets', file), 'utf8');
+  let match;
+  while ((match = varUsageRegex.exec(content)) !== null) {
+    const varName = match[1];
+    if (!declaredVars.has(varName)) {
+      issues.push({
+        type: 'UNDEFINED_CSS_VARIABLE',
+        file: `assets/${file}`,
+        detail: `Usage of undefined CSS variable: ${varName}`
+      });
+    }
+  }
+}
+
+// 5. Audit CSS url() references
+console.log('--- 5. AUDITING CSS URL REFERENCES ---');
+for (const file of cssFiles) {
+  const content = fs.readFileSync(path.join(ROOT, 'assets', file), 'utf8');
+  const urlRegex = /url\(['"]?([^'")]+)['"]?\)/g;
+  let match;
+  while ((match = urlRegex.exec(content)) !== null) {
+    const u = match[1];
+    if (u.startsWith('data:') || u.startsWith('http://') || u.startsWith('https://')) continue;
+    const cleanU = u.split('?')[0].split('#')[0];
+    const absPath = path.resolve(ROOT, 'assets', cleanU);
+    if (!fs.existsSync(absPath)) {
+      issues.push({
+        type: 'BROKEN_CSS_URL',
+        file: `assets/${file}`,
+        detail: `url("${u}") not found on disk (${absPath})`
+      });
+    }
+  }
+}
+
+console.log('\n=== AUDIT RESULTS ===');
+console.log(`Total issues identified: ${issues.length}`);
+if (issues.length > 0) {
+  for (const iss of issues) {
+    console.log(`[${iss.type}] ${iss.file}: ${iss.detail}`);
+  }
+} else {
+  console.log('All static checks passed with 0 issues!');
 }
