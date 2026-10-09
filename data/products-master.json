@@ -2498,6 +2498,7 @@
         "image": "assets/bundle-taper-80-roero.jpg",
         "images": [
           "assets/bundle-taper-80-roero.jpg",
+          "assets/bundle-taper-80-roero-kitchen.jpg",
           "assets/prod-table-taper-80-white.jpg",
           "assets/prod-chair-roero-black.jpg",
           "assets/scene-dining-contrast.png"
@@ -2507,6 +2508,7 @@
     "isTable": false,
     "images": [
       "assets/bundle-taper-80-roero.jpg",
+      "assets/bundle-taper-80-roero-kitchen.jpg",
       "assets/prod-table-taper-80-white.jpg",
       "assets/prod-chair-roero-black.jpg",
       "assets/scene-dining-contrast.png"
@@ -2724,5 +2726,345 @@
     "active": 1,
     "currency": "сум",
     "sort": 104
+  },
+  {
+    "slug": "komplekt-vertex-d90-roero",
+    "legacyId": "b6",
+    "model": "Комплект Vertex D90 + 4 стула Roero",
+    "category": "sets",
+    "product_type": "bundle",
+    "unit": "set",
+    "price": 1352000,
+    "price_old": 1482000,
+    "dimensions": "Стол Ø90 × 75 см, 4 стула 74 × 46 × 48 см",
+    "materials": [
+      "металл",
+      "литой полипропилен",
+      "ЛДСП мрамор"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-black",
+        "name": {
+          "ru": "Белый мрамор / Чёрный",
+          "uz": "Oq marmar / Qora",
+          "en": "White marble / Black"
+        },
+        "hex": "#222222",
+        "image": "assets/bundle-vertex-d90-roero.jpg",
+        "images": [
+          "assets/bundle-vertex-d90-roero.jpg",
+          "assets/prod-table-vertex-d90.jpg",
+          "assets/prod-chair-roero-black.jpg",
+          "assets/scene-dining-contrast.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/bundle-vertex-d90-roero.jpg",
+      "assets/prod-table-vertex-d90.jpg",
+      "assets/prod-chair-roero-black.jpg",
+      "assets/scene-dining-contrast.png"
+    ],
+    "bundle_items": [
+      {
+        "component_product_id": "stol-vertex-d90",
+        "quantity": 1,
+        "sort": 0
+      },
+      {
+        "component_product_id": "stul-roero",
+        "quantity": 4,
+        "sort": 1
+      }
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Комплект: Круглый стол Vertex D90 + 4 стула Roero (чёрный)",
+        "category_label": "Комплекты мебели",
+        "description": "Практичный и лаконичный обеденный комплект: круглый стол Vertex D90 со столешницей под белый мрамор и 4 литых стула Roero в глубоком чёрном цвете. Отличное решение для уютной кухни, террасы, балкона или кафе. Экономия 130 000 сум при покупке комплектом.",
+        "usage": "Для кухни, террасы, балкона, кафе и бистро",
+        "seo_title": "Комплект стол Vertex D90 и 4 стула Roero - купить в Ташкенте BTT",
+        "seo_description": "Комплект: круглый стол Vertex D90 и 4 стула Roero черные по выгодной цене 1 352 000 сум от производителя BTT в Ташкенте."
+      },
+      "uz": {
+        "name": "To'plam: Yumaloq stol Vertex D90 + 4 ta Roero stuli (qora)",
+        "category_label": "Mebel to‘plamlari",
+        "description": "Zamonaviy tushlik to'plami: oq marmar naqshli yumaloq stol Vertex D90 va 4 ta qora Roero stullari. Oshxona, balkon va kafelar uchun qulay. 130 000 so'm tejamkorlik bilan.",
+        "usage": "Oshxona, terassa, balkon va kafelar uchun",
+        "seo_title": "Vertex D90 stoli va 4 ta Roero stuli to'plami - BTT Toshkent",
+        "seo_description": "Tayyor to'plam: yumaloq stol Vertex D90 va 4 ta qora Roero stullari 1 352 000 so'm maxsus narxda."
+      },
+      "en": {
+        "name": "Dining Set: Round Table Vertex D90 + 4 Roero Chairs (Black)",
+        "category_label": "Furniture sets",
+        "description": "Sleek and versatile dining set: round Vertex D90 table in white marble finish and 4 matte black Roero molded chairs. 130,000 UZS bundle discount.",
+        "usage": "For kitchens, terraces, balconies, and cafes",
+        "seo_title": "Round Table Vertex D90 + 4 Roero Chairs Set - BTT Tashkent",
+        "seo_description": "Buy dining set: round table Vertex D90 and 4 black Roero chairs for 1,352,000 UZS by BTT."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "currency": "сум",
+    "sort": 105
+  },
+  {
+    "slug": "komplekt-vertex-d90-noero",
+    "legacyId": "b7",
+    "model": "Комплект Vertex D90 + 4 стула Noero",
+    "category": "sets",
+    "product_type": "bundle",
+    "unit": "set",
+    "price": 1448000,
+    "price_old": 1578000,
+    "dimensions": "Стол Ø90 × 75 см, 4 стула 82 × 48 × 49 см",
+    "materials": [
+      "металл",
+      "литой полипропилен",
+      "ЛДСП мрамор"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-cappuccino",
+        "name": {
+          "ru": "Белый мрамор / Капучино",
+          "uz": "Oq marmar / Kapuchino",
+          "en": "White marble / Cappuccino"
+        },
+        "hex": "#C4A482",
+        "image": "assets/bundle-vertex-d90-noero.jpg",
+        "images": [
+          "assets/bundle-vertex-d90-noero.jpg",
+          "assets/prod-table-vertex-d90.jpg",
+          "assets/prod-chair-noero.jpg",
+          "assets/scene-dining-beige.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/bundle-vertex-d90-noero.jpg",
+      "assets/prod-table-vertex-d90.jpg",
+      "assets/prod-chair-noero.jpg",
+      "assets/scene-dining-beige.png"
+    ],
+    "bundle_items": [
+      {
+        "component_product_id": "stol-vertex-d90",
+        "quantity": 1,
+        "sort": 0
+      },
+      {
+        "component_product_id": "stul-noero",
+        "quantity": 4,
+        "sort": 1
+      }
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Комплект: Круглый стол Vertex D90 + 4 стула Noero (капучино)",
+        "category_label": "Комплекты мебели",
+        "description": "Тёплый и уютный обеденный ансамбль: круглый стол Vertex D90 под светлый мрамор и 4 стула Noero с узорной вентилируемой спинкой цвета капучино. Эргономичные и простые в уходе. Экономия 130 000 сум при покупке комплектом.",
+        "usage": "Для столовой, кухни, веранды и кофеен",
+        "seo_title": "Комплект стол Vertex D90 и 4 стула Noero - купить в Ташкенте BTT",
+        "seo_description": "Обеденный комплект: круглый стол Vertex D90 и 4 стула Noero капучино за 1 448 000 сум от производителя BTT в Ташкенте."
+      },
+      "uz": {
+        "name": "To'plam: Yumaloq stol Vertex D90 + 4 ta Noero stuli (kapuchino)",
+        "category_label": "Mebel to‘plamlari",
+        "description": "Shinam tushlik to'plami: oq marmar naqshli Vertex D90 stoli va 4 ta kapuchino rangli Noero stullari. Qulay tozalanishi mumkin. 130 000 so'm tejamkorlik.",
+        "usage": "Oshxona, veranda, qahvaxona va xonadonlar uchun",
+        "seo_title": "Vertex D90 stoli va 4 ta Noero stuli to'plami - BTT Toshkent",
+        "seo_description": "Tayyor to'plam: Vertex D90 va 4 ta Noero kapuchino stullari 1 448 000 so'm to'plam narxida."
+      },
+      "en": {
+        "name": "Dining Set: Round Table Vertex D90 + 4 Noero Chairs (Cappuccino)",
+        "category_label": "Furniture sets",
+        "description": "Warm and inviting dining set: round Vertex D90 table in white marble finish paired with 4 cappuccino-toned patterned Noero chairs. 130,000 UZS package discount.",
+        "usage": "For dining rooms, kitchens, verandas, and coffee shops",
+        "seo_title": "Vertex D90 Table + 4 Noero Chairs Dining Set - BTT Tashkent",
+        "seo_description": "Buy dining set: round table Vertex D90 and 4 cappuccino Noero chairs for 1,448,000 UZS."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "currency": "сум",
+    "sort": 106
+  },
+  {
+    "slug": "komplekt-vertex-d90-todo",
+    "legacyId": "b8",
+    "model": "Комплект Vertex D90 + 4 стула Todo",
+    "category": "sets",
+    "product_type": "bundle",
+    "unit": "set",
+    "price": 1544000,
+    "price_old": 1674000,
+    "dimensions": "Стол Ø90 × 75 см, 4 стула 80 × 51 × 51 см",
+    "materials": [
+      "металл",
+      "литой полипропилен",
+      "ЛДСП мрамор"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-coffee",
+        "name": {
+          "ru": "Белый мрамор / Кофейный",
+          "uz": "Oq marmar / Qahva",
+          "en": "White marble / Coffee"
+        },
+        "hex": "#8B6F47",
+        "image": "assets/bundle-vertex-d90-todo.jpg",
+        "images": [
+          "assets/bundle-vertex-d90-todo.jpg",
+          "assets/prod-table-vertex-d90.jpg",
+          "assets/prod-chair-todo-coffee.jpg",
+          "assets/scene-dining-warm.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/bundle-vertex-d90-todo.jpg",
+      "assets/prod-table-vertex-d90.jpg",
+      "assets/prod-chair-todo-coffee.jpg",
+      "assets/scene-dining-warm.png"
+    ],
+    "bundle_items": [
+      {
+        "component_product_id": "stol-vertex-d90",
+        "quantity": 1,
+        "sort": 0
+      },
+      {
+        "component_product_id": "stul-todo",
+        "quantity": 4,
+        "sort": 1
+      }
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Комплект: Круглый стол Vertex D90 + 4 стула Todo (кофейный)",
+        "category_label": "Комплекты мебели",
+        "description": "Гармоничная обеденная группа для семейных трапез: круглый стол Vertex D90 и 4 удобных широких стула Todo в кофейном оттенке. Скругленный силуэт и эргономичная форма. Экономия 130 000 сум при покупке комплектом.",
+        "usage": "Для столовой, кухни, террасы и ресторанов",
+        "seo_title": "Комплект стол Vertex D90 и 4 стула Todo - купить в Ташкенте BTT",
+        "seo_description": "Готовый комплект: стол Vertex D90 круглый и 4 стула Todo кофейные со скидкой за 1 544 000 сум от BTT в Ташкенте."
+      },
+      "uz": {
+        "name": "To'plam: Yumaloq stol Vertex D90 + 4 ta Todo stuli (qahva rangli)",
+        "category_label": "Mebel to‘plamlari",
+        "description": "Oilaviy tushlik uchun to'plam: Vertex D90 stoli va 4 ta Todo qahva rangli keng stullari. Qulay ergonomik shakl. 130 000 so'm tejamkorlik.",
+        "usage": "Oshxona, zal, terassa va restoranlar uchun",
+        "seo_title": "Vertex D90 stoli va 4 ta Todo stuli to'plami - BTT Toshkent",
+        "seo_description": "Tayyor to'plam: yumaloq stol Vertex D90 va 4 ta Todo stuli 1 544 000 so'm to'plam narxida."
+      },
+      "en": {
+        "name": "Dining Set: Round Table Vertex D90 + 4 Todo Chairs (Coffee)",
+        "category_label": "Furniture sets",
+        "description": "Charming family dining set: round Vertex D90 table in white marble finish and 4 comfortable Todo chairs in coffee shade. 130,000 UZS bundle discount.",
+        "usage": "For dining rooms, kitchens, patios, and restaurants",
+        "seo_title": "Vertex D90 Table + 4 Todo Chairs Set - BTT Tashkent",
+        "seo_description": "Buy dining set: round table Vertex D90 and 4 coffee Todo chairs for 1,544,000 UZS by BTT."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "currency": "сум",
+    "sort": 107
+  },
+  {
+    "slug": "komplekt-vertex-d90-jardin",
+    "legacyId": "b9",
+    "model": "Комплект Vertex D90 + 4 кресла Jardin",
+    "category": "sets",
+    "product_type": "bundle",
+    "unit": "set",
+    "price": 1976000,
+    "price_old": 2106000,
+    "dimensions": "Стол Ø90 × 75 см, 4 кресла 73.5 × 53.5 × 55.5 см",
+    "materials": [
+      "металл",
+      "литой полипропилен",
+      "ЛДСП мрамор"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-black",
+        "name": {
+          "ru": "Белый мрамор / Чёрный",
+          "uz": "Oq marmar / Qora",
+          "en": "White marble / Black"
+        },
+        "hex": "#222222",
+        "image": "assets/bundle-vertex-d90-jardin.jpg",
+        "images": [
+          "assets/bundle-vertex-d90-jardin.jpg",
+          "assets/prod-table-vertex-d90.jpg",
+          "assets/prod-chair-jardin.jpg",
+          "assets/scene-dining-contrast.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/bundle-vertex-d90-jardin.jpg",
+      "assets/prod-table-vertex-d90.jpg",
+      "assets/prod-chair-jardin.jpg",
+      "assets/scene-dining-contrast.png"
+    ],
+    "bundle_items": [
+      {
+        "component_product_id": "stol-vertex-d90",
+        "quantity": 1,
+        "sort": 0
+      },
+      {
+        "component_product_id": "stul-jardin",
+        "quantity": 4,
+        "sort": 1
+      }
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Комплект: Круглый стол Vertex D90 + 4 кресла Jardin (чёрный)",
+        "category_label": "Комплекты мебели",
+        "description": "Повышенный комфорт для террасы и столовой: круглый стол Vertex D90 и 4 просторных кресла Jardin с подлокотниками из литого полипропилена. Экономия 130 000 сум при покупке комплектом.",
+        "usage": "Для террасы, веранды, загородного дома, летних площадок и кафе",
+        "seo_title": "Комплект стол Vertex D90 и 4 кресла Jardin - купить в Ташкенте BTT",
+        "seo_description": "Комплект мебели: стол Vertex D90 круглый и 4 кресла Jardin с подлокотниками за 1 976 000 сум от производителя BTT в Ташкенте."
+      },
+      "uz": {
+        "name": "To'plam: Yumaloq stol Vertex D90 + 4 ta Jardin kreslosi (qora)",
+        "category_label": "Mebel to‘plamlari",
+        "description": "Terassa va oshxona uchun qulaylik: Vertex D90 stoli va suyanadigan 4 ta Jardin kreslosi. 130 000 so'm chegirma.",
+        "usage": "Terassa, veranda, hovli, yozgi kafelar uchun",
+        "seo_title": "Vertex D90 stoli va 4 ta Jardin kreslosi to'plami - BTT Toshkent",
+        "seo_description": "Tayyor to'plam: Vertex D90 va 4 ta qora Jardin kreslolari 1 976 000 so'm to'plam narxida."
+      },
+      "en": {
+        "name": "Dining Set: Round Table Vertex D90 + 4 Jardin Armchairs (Black)",
+        "category_label": "Furniture sets",
+        "description": "Relaxed dining set: round Vertex D90 table in white marble finish with 4 ergonomic Jardin armchairs. Molded polypropylene construction. 130,000 UZS bundle discount.",
+        "usage": "For terraces, verandas, outdoor lounges, and cafes",
+        "seo_title": "Vertex D90 Table + 4 Jardin Armchairs Set - BTT Tashkent",
+        "seo_description": "Buy dining set: round table Vertex D90 and 4 Jardin armchairs for 1,976,000 UZS by BTT."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "currency": "сум",
+    "sort": 108
   }
 ]
