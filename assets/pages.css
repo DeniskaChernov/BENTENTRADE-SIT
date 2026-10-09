@@ -835,12 +835,14 @@ a.mood-tile:hover img{transform:scale(1.04);}
 }
 
 /* ================= HOME - section rhythm ================= */
-.home-flow .section--after-hero{padding-top:clamp(40px,5vw,64px);}
+.home-flow .section--after-hero,
+.home-flow #product-lines{padding-top:clamp(56px,7.5vw,96px);}
 .home-flow .section--compact{padding-top:0;}
 .home-flow .section--split-y{padding-block:clamp(40px,6vw,88px);}
 .home-flow [id]{scroll-margin-top:calc(var(--head-h, 56px) + 16px);}
 @media (max-width:600px){
-  .home-flow .section--after-hero{padding-top:clamp(24px,6vw,40px);}
+  .home-flow .section--after-hero,
+  .home-flow #product-lines{padding-top:clamp(36px,6vw,56px);}
   .home-flow .section--compact{padding-bottom:clamp(32px,8vw,48px);}
   .home-flow .section--split-y{padding-block:clamp(32px,8vw,56px);}
 }
