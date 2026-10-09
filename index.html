@@ -39,7 +39,7 @@
     <nav class="nav">
       <a href="index.html" class="is-current" data-i18n="nav.home">Главная</a>
       <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
-      <a href="sets.html" data-i18n="nav.sets">Комплекты</a>
+      <a href="catalog.html?cat=sets" data-i18n="nav.sets">Комплекты</a>
       <a href="horeca.html" data-i18n="nav.horeca">HoReCa</a>
       <a href="blog.html" data-i18n="nav.blog">Статьи</a>
       <a href="about.html" data-i18n="nav.about">О нас</a>
@@ -68,7 +68,7 @@
 <nav class="mobile-drawer">
   <a href="index.html" data-i18n="nav.home">Главная</a>
   <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
-  <a href="sets.html" data-i18n="nav.sets">Комплекты</a>
+  <a href="catalog.html?cat=sets" data-i18n="nav.sets">Комплекты</a>
   <a href="horeca.html" data-i18n="nav.horeca">HoReCa</a>
   <a href="blog.html" data-i18n="nav.blog">Статьи</a>
   <a href="about.html" data-i18n="nav.about">О нас</a>
@@ -135,7 +135,7 @@
           <span class="bento-tile__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
         </div>
       </a>
-      <a class="bento-tile reveal" href="sets.html">
+      <a class="bento-tile reveal" href="catalog.html?cat=sets">
         <img src="assets/scene-dining-marble.png" alt="Комплекты мебели" loading="lazy" decoding="async">
         <div class="bento-tile__meta">
           <div><span class="bento-tile__title" data-i18n="builder.eyebrow">Комплекты мебели</span><span class="bento-tile__tag" data-i18n="line.discount">Скидка</span></div>
@@ -372,16 +372,16 @@
     <article class="sol-card product reveal" data-product data-slug="komplekt-vertex-d90-vertex" data-id="b1" data-cat="sets" data-price="2676000" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
       <div style="position:relative;height:240px;overflow:hidden">
         <img src="assets/bundle-vertex-d90-vertex.jpg" alt="Комплект: Стол Vertex D90 + 4 стула Vertex" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
-        <span class="pill pill--copper tl" style="position:absolute;top:14px;left:14px;font-size:12px">Спеццена фабрики</span>
+        <span class="pill pill--copper tl" style="position:absolute;top:14px;left:14px;font-size:12px" data-i18n="badge.factoryPrice">Спеццена фабрики</span>
       </div>
       <div style="padding:20px;display:flex;flex-direction:column;flex:1">
-        <div class="product__cat" style="font-size:12px;color:var(--muted);margin-bottom:4px">Комплекты мебели</div>
-        <h3 class="product__name" style="font-size:17px;font-weight:700;margin-bottom:6px">Комплект: Стол Vertex D90 + 4 стула Vertex</h3>
-        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px">Круглый стол Vertex D90 с текстурой белого мрамора и 4 плетёных стула Vertex с мягкими текстильными подушками.</p>
+        <div class="product__cat" style="font-size:12px;color:var(--muted);margin-bottom:4px" data-i18n="cat.sets">Комплекты мебели</div>
+        <h3 class="product__name" style="font-size:17px;font-weight:700;margin-bottom:6px" data-i18n="komplekt-vertex-d90-vertex.name">Комплект: Стол Vertex D90 + 4 стула Vertex</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px" data-i18n="komplekt-vertex-d90-vertex.desc">Круглый стол Vertex D90 с текстурой белого мрамора и 4 плетёных стула Vertex с мягкими текстильными подушками.</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Плетёный ротанг</span>
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Подушки в комплекте</span>
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Выгода 53 000 сум</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="benefit.wicker">Плетёный ротанг</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="benefit.cushions">Подушки в комплекте</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="badge.save53k">Выгода 53 000 сум</span>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line-2);padding-top:14px;gap:8px">
           <div>
@@ -406,13 +406,13 @@
         <span class="pill pill--copper tl" style="position:absolute;top:14px;left:14px;font-size:12px">Спеццена фабрики</span>
       </div>
       <div style="padding:20px;display:flex;flex-direction:column;flex:1">
-        <div class="product__cat" style="font-size:12px;color:var(--muted);margin-bottom:4px">Комплекты мебели</div>
-        <h3 class="product__name" style="font-size:17px;font-weight:700;margin-bottom:6px">Комплект: Стол Vertex D90 + 4 стула Corda</h3>
-        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px">Стол Vertex D90 и 4 плетёных стула Corda с изящным тёмным шнуровым плетением и подушками для сиденья.</p>
+        <div class="product__cat" style="font-size:12px;color:var(--muted);margin-bottom:4px" data-i18n="cat.sets">Комплекты мебели</div>
+        <h3 class="product__name" style="font-size:17px;font-weight:700;margin-bottom:6px" data-i18n="komplekt-vertex-d90-corda.name">Комплект: Стол Vertex D90 + 4 стула Corda</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px" data-i18n="komplekt-vertex-d90-corda.desc">Стол Vertex D90 и 4 плетёных стула Corda с изящным тёмным шнуровым плетением и подушками для сиденья.</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Шнуровое плетение</span>
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Подушки в комплекте</span>
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Выгода 53 000 сум</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="benefit.ropeWeave">Шнуровое плетение</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="benefit.cushions">Подушки в комплекте</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="badge.save53k">Выгода 53 000 сум</span>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line-2);padding-top:14px;gap:8px">
           <div>
@@ -434,16 +434,16 @@
     <article class="sol-card product reveal" data-product data-slug="komplekt-taper-80-roero" data-id="b3" data-cat="sets" data-price="1405000" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
       <div style="position:relative;height:240px;overflow:hidden">
         <img src="assets/bundle-taper-80-roero.jpg" alt="Комплект: Стол Taper 80x80 + 4 стула Roero" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
-        <span class="pill pill--ghost tl" style="position:absolute;top:14px;left:14px;font-size:12px">Хит продаж HoReCa</span>
+        <span class="pill pill--ghost tl" style="position:absolute;top:14px;left:14px;font-size:12px" data-i18n="badge.horecaHit">Хит продаж HoReCa</span>
       </div>
       <div style="padding:20px;display:flex;flex-direction:column;flex:1">
-        <div class="product__cat" style="font-size:12px;color:var(--muted);margin-bottom:4px">Комплекты мебели</div>
-        <h3 class="product__name" style="font-size:17px;font-weight:700;margin-bottom:6px">Комплект: Стол Taper 80x80 + 4 стула Roero</h3>
-        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px">Контрастный обеденный комплект: стол Taper 80x80 белый мрамор и 4 прочных литых стула Roero в чёрном цвете.</p>
+        <div class="product__cat" style="font-size:12px;color:var(--muted);margin-bottom:4px" data-i18n="cat.sets">Комплекты мебели</div>
+        <h3 class="product__name" style="font-size:17px;font-weight:700;margin-bottom:6px" data-i18n="komplekt-taper-80-roero.name">Комплект: Стол Taper 80x80 + 4 стула Roero</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px" data-i18n="komplekt-taper-80-roero.desc">Контрастный обеденный комплект: стол Taper 80x80 белый мрамор и 4 литых стула Roero в чёрном цвете.</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Штабелируемые</span>
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Металл + полимер</span>
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Выгода 130 000 сум</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="benefit.stackable">Штабелируемые</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="benefit.metalPolymer">Металл + полимер</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="badge.save130k">Выгода 130 000 сум</span>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line-2);padding-top:14px;gap:8px">
           <div>
@@ -465,16 +465,16 @@
     <article class="sol-card product reveal" data-product data-slug="komplekt-taper-80-todo" data-id="b4" data-cat="sets" data-price="1597000" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
       <div style="position:relative;height:240px;overflow:hidden">
         <img src="assets/bundle-taper-80-todo.jpg" alt="Комплект: Стол Taper 80x80 + 4 стула Todo" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
-        <span class="pill pill--ghost tl" style="position:absolute;top:14px;left:14px;font-size:12px">Современный стиль</span>
+        <span class="pill pill--ghost tl" style="position:absolute;top:14px;left:14px;font-size:12px" data-i18n="badge.modernStyle">Современный стиль</span>
       </div>
       <div style="padding:20px;display:flex;flex-direction:column;flex:1">
-        <div class="product__cat" style="font-size:12px;color:var(--muted);margin-bottom:4px">Комплекты мебели</div>
-        <h3 class="product__name" style="font-size:17px;font-weight:700;margin-bottom:6px">Комплект: Стол Taper 80x80 + 4 стула Todo</h3>
-        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px">Уютная обеденная группа в мягких тонах: стол Taper 80x80 белый мрамор и 4 минималистичных стула Todo в кофейном цвете.</p>
+        <div class="product__cat" style="font-size:12px;color:var(--muted);margin-bottom:4px" data-i18n="cat.sets">Комплекты мебели</div>
+        <h3 class="product__name" style="font-size:17px;font-weight:700;margin-bottom:6px" data-i18n="komplekt-taper-80-todo.name">Комплект: Стол Taper 80x80 + 4 стула Todo</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px" data-i18n="komplekt-taper-80-todo.desc">Уютная обеденная группа в мягких тонах: стол Taper 80x80 белый мрамор и 4 минималистичных стула Todo в кофейном цвете.</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Кофейный оттенок</span>
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Лёгкий уход</span>
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Выгода 130 000 сум</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="benefit.coffeeShade">Кофейный оттенок</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="benefit.easyCare">Лёгкий уход</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="badge.save130k">Выгода 130 000 сум</span>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line-2);padding-top:14px;gap:8px">
           <div>
@@ -496,16 +496,16 @@
     <article class="sol-card product reveal" data-product data-slug="komplekt-taper-80-noero" data-id="b5" data-cat="sets" data-price="1501000" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
       <div style="position:relative;height:240px;overflow:hidden">
         <img src="assets/bundle-taper-80-noero.jpg" alt="Комплект: Стол Taper 80x80 + 4 стула Noero" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
-        <span class="pill pill--ghost tl" style="position:absolute;top:14px;left:14px;font-size:12px">Комфорт и эргономика</span>
+        <span class="pill pill--ghost tl" style="position:absolute;top:14px;left:14px;font-size:12px" data-i18n="badge.comfortErgo">Комфорт и эргономика</span>
       </div>
       <div style="padding:20px;display:flex;flex-direction:column;flex:1">
-        <div class="product__cat" style="font-size:12px;color:var(--muted);margin-bottom:4px">Комплекты мебели</div>
-        <h3 class="product__name" style="font-size:17px;font-weight:700;margin-bottom:6px">Комплект: Стол Taper 80x80 + 4 стула Noero</h3>
-        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px">Элегантный гарнитур со стульями с реечной спинкой высотой 82 см. Стол Taper 80x80 и 4 стула Noero цвета капучино.</p>
+        <div class="product__cat" style="font-size:12px;color:var(--muted);margin-bottom:4px" data-i18n="cat.sets">Комплекты мебели</div>
+        <h3 class="product__name" style="font-size:17px;font-weight:700;margin-bottom:6px" data-i18n="komplekt-taper-80-noero.name">Комплект: Стол Taper 80x80 + 4 стула Noero</h3>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.45;flex:1;margin-bottom:14px" data-i18n="komplekt-taper-80-noero.desc">Элегантный гарнитур со стульями с реечной спинкой высотой 82 см. Стол Taper 80x80 и 4 стула Noero цвета капучино.</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Спинка 82 см</span>
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Цвет капучино</span>
-          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Выгода 130 000 сум</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="benefit.slatBack82">Спинка 82 см</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="benefit.cappuccinoColor">Цвет капучино</span>
+          <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px" data-i18n="badge.save130k">Выгода 130 000 сум</span>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line-2);padding-top:14px;gap:8px">
           <div>
@@ -530,14 +530,14 @@
   <div class="sets-banner-cta reveal" style="margin-top:36px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(135deg, var(--paper) 0%, var(--cream-2) 100%);padding:clamp(24px, 4vw, 36px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
     <div style="max-width:58ch">
       <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:10px">
-        <span class="pill pill--copper">Калькулятор комплектов</span>
+        <span class="pill pill--copper" data-i18n="sets.calc.badge">Калькулятор комплектов</span>
         <span class="pill pill--ghost">Скидка до 200 000 сум</span>
       </div>
-      <h3 style="font-size:clamp(19px, 2.2vw, 26px);font-weight:800;letter-spacing:-0.01em;margin-bottom:8px">Соберите свой вариант комплекта со скидкой</h3>
-      <p style="font-size:14.5px;color:var(--muted);line-height:1.55;margin-bottom:16px">Выберите любой обеденный стол BTT и от 4 до 6 стульев. Интерактивный калькулятор мгновенно рассчитает специальную фабричную цену с экономией до 200 000 сум.</p>
+      <h3 style="font-size:clamp(19px, 2.2vw, 26px);font-weight:800;letter-spacing:-0.01em;margin-bottom:8px" data-i18n="sets.calc.title">Соберите свой вариант комплекта со скидкой</h3>
+      <p style="font-size:14.5px;color:var(--muted);line-height:1.55;margin-bottom:16px" data-i18n="sets.calc.desc">Выберите любой обеденный стол BTT и от 4 до 6 стульев. Интерактивный калькулятор мгновенно рассчитает специальную фабричную цену с экономией до 200 000 сум.</p>
       <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--text);margin-bottom:22px">
-        <span style="display:flex;align-items:center;gap:6px">✓ Скидка 20 000 сум на каждый стул</span>
-        <span style="display:flex;align-items:center;gap:6px">✓ Моментальный расчёт</span>
+        <span style="display:flex;align-items:center;gap:6px" data-i18n="sets.calc.f1">✓ Скидка 20 000 сум на каждый стул</span>
+        <span style="display:flex;align-items:center;gap:6px" data-i18n="sets.calc.f2">✓ Моментальный расчёт</span>
         <span style="display:flex;align-items:center;gap:6px">✓ Покупка в 1 клик</span>
       </div>
       <a href="sets.html" class="btn btn--copper btn--lg" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none">

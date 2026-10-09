@@ -17,6 +17,17 @@
       href:    "catalog.html"
     },
     {
+      cat: "sets",
+      sideImg: "assets/bundle-vertex-d90-vertex.jpg",
+      t1:      {ru:"Обеденные",               uz:"Tushlik",                en:"Dining"},
+      t2:      {ru:"комплекты",               uz:"to‘plamlari",            en:"sets"},
+      sub:     {ru:"Готовые комплекты столов со стульями по специальным фабричным ценам с экономией до 200 000 сум.",
+                uz:"Stol va stullardan iborat tayyor to‘plamlar maxsus narxlarda. 200 000 so‘mgacha tejamkorlik.",
+                en:"Ready dining sets of tables and chairs at special factory bundle prices saving up to 200,000 UZS."},
+      store:   {ru:"Смотреть комплекты",      uz:"To‘plamlarni ko‘rish",   en:"Explore sets"},
+      href:    "catalog.html?cat=sets"
+    },
+    {
       cat: "wicker-chairs",
       sideImg: "assets/prod-chair-corda.jpg",
       t1:      {ru:"Плетёные",                uz:"To‘qilgan",              en:"Wicker"},
