@@ -247,7 +247,14 @@
     if(!wrap) return;
 
     wrap.innerHTML = "";
-    const confirmed = prod.confirmedColors || [];
+    let confirmed = (prod && prod.confirmedColors) || [];
+    if((!confirmed || !confirmed.length) && currentSlug){
+      const staticProd = PRODUCTS[currentSlug] || (MASTER && MASTER.find(m => m.slug === currentSlug));
+      if(staticProd && staticProd.confirmedColors && staticProd.confirmedColors.length){
+        confirmed = staticProd.confirmedColors;
+        if(prod) prod.confirmedColors = confirmed;
+      }
+    }
     const curLang = lang();
 
     // Check URL for ?color=... parameter
@@ -881,6 +888,19 @@
       currentSlug = resolveProductIdentifier();
       if(currentSlug && PRODUCTS[currentSlug]){
         prod = PRODUCTS[currentSlug];
+      }
+    }
+
+    // Fallback enrichment for confirmedColors and images
+    if(prod && currentSlug){
+      const staticProd = PRODUCTS[currentSlug] || (MASTER && MASTER.find(m => m.slug === currentSlug));
+      if(staticProd){
+        if((!prod.confirmedColors || !prod.confirmedColors.length) && staticProd.confirmedColors && staticProd.confirmedColors.length){
+          prod.confirmedColors = staticProd.confirmedColors;
+        }
+        if((!prod.images || !prod.images.length || prod.images[0] === "assets/btt-logo.png") && staticProd.images && staticProd.images.length){
+          prod.images = staticProd.images;
+        }
       }
     }
 
