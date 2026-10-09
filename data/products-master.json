@@ -3493,5 +3493,90 @@
     "active": 1,
     "currency": "сум",
     "sort": 113
+  },
+  {
+    "slug": "komplekt-taper-135-todo",
+    "legacyId": "b15",
+    "model": "Комплект Taper 135×80 + 4 стула Todo",
+    "category": "sets",
+    "product_type": "bundle",
+    "unit": "set",
+    "price": 1724000,
+    "price_old": 1854000,
+    "dimensions": "Стол 135 × 80 × 75 см, 4 стула 80 × 51 × 51 см",
+    "materials": [
+      "металл",
+      "литой полипропилен",
+      "ЛДСП мрамор"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-black",
+        "name": {
+          "ru": "Белый мрамор / Чёрный",
+          "uz": "Oq marmar / Qora",
+          "en": "White marble / Black"
+        },
+        "hex": "#222222",
+        "image": "assets/bundle-taper-135-todo.jpg",
+        "images": [
+          "assets/bundle-taper-135-todo.jpg",
+          "assets/prod-table-taper-135-white.jpg",
+          "assets/prod-chair-todo.jpg",
+          "assets/scene-dining-contrast.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/bundle-taper-135-todo.jpg",
+      "assets/prod-table-taper-135-white.jpg",
+      "assets/prod-chair-todo.jpg",
+      "assets/scene-dining-contrast.png"
+    ],
+    "bundle_items": [
+      {
+        "component_product_id": "stol-taper-135",
+        "quantity": 1,
+        "sort": 0
+      },
+      {
+        "component_product_id": "stul-todo",
+        "quantity": 4,
+        "sort": 1
+      }
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Комплект: Стол Taper 135×80 + 4 стула Todo (чёрный)",
+        "category_label": "Комплекты мебели",
+        "description": "Вместительный обеденный комплект в контрастном дизайне: большой стол Taper 135×80 см с белой мраморной столешницей и 4 лаконичных стула Todo в глубоком чёрном цвете. Монолитные полимерные сиденья и устойчивый металлический каркас. Экономия 130 000 сум при покупке комплектом.",
+        "usage": "Для обеденной зоны, кухни, квартиры-студии и заведений HoReCa",
+        "seo_title": "Комплект стол Taper 135x80 и 4 стула Todo - купить в Ташкенте BTT",
+        "seo_description": "Обеденный комплект: прямоугольный стол Taper 135x80 и 4 стула Todo чёрные со скидкой за 1 724 000 сум от BTT в Ташкенте."
+      },
+      "uz": {
+        "name": "To'plam: Taper 135×80 stoli + 4 ta Todo stuli (qora)",
+        "category_label": "Mebel to‘plamlari",
+        "description": "Katta zamonaviy tushlik to'plami: oq marmar naqshli Taper 135x80 stoli va 4 ta qora rangli Todo stullari. 130 000 so'm tejamkorlik bilan.",
+        "usage": "Oshxona, ovqatlanish xonasi, studiya va HoReCa maskanlari uchun",
+        "seo_title": "Taper 135x80 va 4 ta Todo stuli to'plami - BTT Toshkent",
+        "seo_description": "Tayyor to'plam: Taper 135x80 stoli va 4 ta qora Todo stullari 1 724 000 so'm maxsus narxda."
+      },
+      "en": {
+        "name": "Dining Set: Taper 135×80 Table + 4 Todo Chairs (Black)",
+        "category_label": "Furniture sets",
+        "description": "Spacious contemporary dining set: large Taper 135×80 cm table in white marble finish and 4 sleek Todo chairs in solid black. Bundle savings: 130,000 UZS.",
+        "usage": "For dining spaces, open-plan kitchens, and HoReCa venues",
+        "seo_title": "Taper 135x80 Table + 4 Todo Chairs Set - BTT Tashkent",
+        "seo_description": "Buy modern dining set: rectangular Taper 135x80 table + 4 black Todo chairs for 1,724,000 UZS by BTT."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "currency": "сум",
+    "sort": 114
   }
 ]
