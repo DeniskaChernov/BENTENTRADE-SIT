@@ -41,6 +41,7 @@
     "isTable": false,
     "images": [
       "assets/prod-chair-vertex.jpg",
+      "assets/prod-chair-corda-colors.jpg",
       "assets/prod-chair-vertex-side.jpg",
       "assets/prod-chair-vertex-detail-back.jpg",
       "assets/prod-chair-vertex-detail-seat.jpg",
@@ -113,6 +114,7 @@
     "isTable": false,
     "images": [
       "assets/prod-chair-corda.jpg",
+      "assets/prod-chair-corda-colors.jpg",
       "assets/prod-chair-corda-side.jpg",
       "assets/prod-chair-corda-detail-back.jpg",
       "assets/prod-chair-corda-detail-seat.jpg",
@@ -234,6 +236,7 @@
     "isTable": false,
     "images": [
       "assets/prod-chair-roero.jpg",
+      "assets/prod-chair-roero-colors.jpg",
       "assets/prod-chair-roero-front.jpg",
       "assets/prod-chair-roero-detail-back.jpg",
       "assets/prod-chair-roero-detail-seat.jpg",
@@ -366,6 +369,7 @@
     "isTable": false,
     "images": [
       "assets/prod-chair-noero.jpg",
+      "assets/prod-chair-noero-colors.jpg",
       "assets/prod-chair-noero-detail-back.jpg",
       "assets/prod-chair-noero-detail-seat.jpg",
       "assets/prod-chair-noero-detail-leg.jpg",
@@ -532,6 +536,7 @@
     "isTable": false,
     "images": [
       "assets/prod-chair-todo.jpg",
+      "assets/prod-chair-todo-colors.jpg",
       "assets/prod-chair-todo-side.jpg",
       "assets/prod-chair-todo-detail-back.jpg",
       "assets/prod-chair-todo-detail-seat.jpg",
@@ -831,6 +836,7 @@
     "isTable": false,
     "images": [
       "assets/prod-chair-jardin.jpg",
+      "assets/prod-chair-jardin-colors.jpg",
       "assets/prod-chair-jardin-back.jpg",
       "assets/prod-chair-jardin-detail-seat.jpg",
       "assets/scene-dining-warm.png",
