@@ -7,7 +7,7 @@
   const SLIDES = [
     {
       cat: "all",
-      sideImg: "assets/hero-garden-furniture.png",
+      sideImg: "assets/bundle-vertex-d90-vertex.jpg",
       t1:      {ru:"BTT - мебель",            uz:"BTT - mebel",            en:"BTT - Furniture"},
       t2:      {ru:"для дома и сада",         uz:"uy va bog‘ uchun",       en:"for Home & Garden"},
       sub:     {ru:"Столы, стулья и готовые решения для дома, сада и HoReCa в Ташкенте.",
@@ -40,7 +40,7 @@
     },
     {
       cat: "plastic-chairs",
-      sideImg: "assets/hero-garden-furniture.png",
+      sideImg: "assets/prod-chair-jardin-colors.jpg",
       t1:      {ru:"Пластиковые",             uz:"Plastik",                en:"Plastic"},
       t2:      {ru:"стулья",                  uz:"stullar",                en:"chairs"},
       sub:     {ru:"Модели ROERO, NOERO, TODO и JARDIN - лёгкие, прочные, подходят для улицы и помещений.",

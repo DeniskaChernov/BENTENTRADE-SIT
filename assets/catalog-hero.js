@@ -6,17 +6,17 @@
 (function(){
   const LANGS = ["ru","uz","en"];
   const CAT = (window.BTT_CAT_IMG) || {
-    all:                "assets/hero-garden-furniture.png",
+    all:                "assets/bundle-vertex-d90-vertex.jpg",
     "wicker-chairs":    "assets/prod-chair-corda.jpg",
-    "plastic-chairs":   "assets/prod-chair-roero-black.jpg",
+    "plastic-chairs":   "assets/prod-chair-jardin-colors.jpg",
     tables:             "assets/prod-table-corda-135-black.jpg",
     lighting:           "assets/prod-lamp-nova.svg",
     "rattan-raw":       "assets/prod-rattan-polutrubka.svg",
-    furniture:          "assets/hero-garden-furniture.png",
+    furniture:          "assets/bundle-vertex-d90-corda.jpg",
     planterMix:         "assets/bento-planter.png",
     planter:            "assets/hero-planter.png",
     basket:             "assets/bento-planter.png",
-    indoor:             "assets/scene-dining-marble.png",
+    indoor:             "assets/prod-table-taper-135-scene.jpg",
     rattan:             "assets/prod-rattan-polutrubka.svg",
     twisted:            "assets/hero-twisted-rattan.png"
   };

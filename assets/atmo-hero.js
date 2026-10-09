@@ -2,14 +2,14 @@
 (function(){
   const SLIDES = [
     {
-      img: "assets/hero-garden-furniture.png",
+      img: "assets/bundle-vertex-d90-corda.jpg",
       loc: { ru:"Терраса и сад", uz:"Terassa va bog‘", en:"Terrace & garden" },
       title: { ru:"Мебель для открытого воздуха", uz:"Ochiq havoda mebel", en:"Outdoor furniture" },
       sub: { ru:"Комплекты, столы и кресла из искусственного ротанга - не выгорают на солнце и не боятся дождя.", uz:"Sun’iy rotangdan to‘plamlar, stollar va kreslolar - quyoshda rangini yo‘qotmaydi.", en:"Synthetic rattan sets, tables and chairs - they won’t fade in the sun or fear the rain." },
       href: "catalog.html?cat=furniture"
     },
     {
-      img: "assets/scene-dining-beige.png",
+      img: "assets/prod-table-taper-135-white-scene.jpg",
       loc: { ru:"Гостиная", uz:"Mehmonxona", en:"Living room" },
       title: { ru:"Уют, в который хочется вернуться", uz:"Qaytishni xohlagan qulaylik", en:"Comfort you want to come home to" },
       sub: { ru:"Мягкий свет, натуральные фактуры и мебель, которая живёт в интерьере, а не на белом фоне.", uz:"Yumshoq yorug‘lik, tabiiy tekstura va ichkarida yashaydigan mebel.", en:"Soft light, natural textures and furniture that lives in the room - not on a white backdrop." },
@@ -23,17 +23,17 @@
       href: "catalog.html?cat=planterMix"
     },
     {
-      img: "assets/scene-dining-warm.png",
+      img: "assets/prod-table-taper-135-scene.jpg",
       loc: { ru:"Вечер дома", uz:"Uyda kechki vaqt", en:"Evening at home" },
       title: { ru:"Тепло вечернего света", uz:"Kechki yorug‘lik iliqligi", en:"The warmth of evening light" },
       sub: { ru:"Обеденная зона как центр семейных встреч - спокойно, стильно, по-настоящему.", uz:"Oila uchrashuvlari markazi - xotirjam va zamonaviy.", en:"A dining zone as the heart of family gatherings - calm, stylish, real." },
       href: "catalog.html?cat=indoor"
     },
     {
-      img: "assets/scene-dining-teal.png",
+      img: "assets/bundle-taper-80-todo.jpg",
       loc: { ru:"Кухня-столовая", uz:"Oshxona-zal", en:"Kitchen-dining" },
       title: { ru:"Современная открытая планировка", uz:"Zamonaviy ochiq reja", en:"Modern open plan" },
-      sub: { ru:"Светлые деревянные поверхности и акцентная обивка - интерьер с характером.", uz:"Yorug‘ yog‘och va ta’kidli qoplamalar - xarakterli interyer.", en:"Light wood surfaces and bold upholstery - an interior with character." },
+      sub: { ru:"Столы Taper с текстурой дерева и яркие прочные стулья TODO - практичный современный интерьер.", uz:"Yog‘och teksturali Taper stollari va yorqin TODO stullari - zamonaviy amaliy interyer.", en:"Taper wood-grain tables and durable TODO chairs - practical modern dining interior." },
       href: "catalog.html?cat=indoor"
     },
     {

@@ -776,7 +776,7 @@
     const cInfo = CATTEXT[prod.cat] || CATTEXT.furniture || {};
     const cDesc = (cInfo[l] || cInfo.ru || {}).desc || "";
     const imgs = window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(pid) : null;
-    const photos = imgs && imgs.length ? imgs : [{ thumb: "assets/hero-garden-furniture.png", full: "assets/hero-garden-furniture.png" }];
+    const photos = imgs && imgs.length ? imgs : [{ thumb: "assets/bundle-vertex-d90-vertex.jpg", full: "assets/bundle-vertex-d90-vertex.jpg" }];
 
     const oldPriceHtml = prod.old ? '<span class="old">' + esc(fmt(prod.old)) + '</span>' : '';
     const isMto = window.BTT_IS_MTO ? window.BTT_IS_MTO(pid) : (prod.availability === "on_request" || prod.stock === 0);

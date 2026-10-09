@@ -48,7 +48,7 @@
     if (window.BTT_PRODUCT_IMG) { const im = window.BTT_PRODUCT_IMG(p.id); if (im && im[0]) return im[0].full; }
     const cat = p.category || "tables";
     const C = window.BTT_CAT_IMG || {};
-    return C[cat] || C["wicker-chairs"] || "assets/hero-garden-furniture.png";
+    return C[cat] || C["wicker-chairs"] || "assets/bundle-vertex-d90-vertex.jpg";
   }
 
   function hydrateStaticProductImgs(root) {

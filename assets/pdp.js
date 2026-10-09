@@ -452,23 +452,27 @@
   };
 
   const PRODUCT_DEFAULT_SCENES = {
-    "stul-vertex": "assets/scene-dining-warm.png",
-    "stul-corda": "assets/scene-dining-warm.png"
+    "stul-vertex": "assets/bundle-vertex-d90-vertex.jpg",
+    "stul-corda": "assets/bundle-vertex-d90-corda.jpg",
+    "stul-roero": "assets/bundle-taper-80-roero.jpg",
+    "stul-todo": "assets/bundle-taper-80-todo.jpg",
+    "stul-noero": "assets/bundle-taper-135-noero.jpg",
+    "stul-jardin": "assets/bundle-taper-135-jardin.jpg"
   };
 
   let activeColorId = null;
 
   function getLifestyleScene(colorId){
-    if(colorId && COLOR_SCENES[colorId]){
-      return COLOR_SCENES[colorId];
-    }
     if(PRODUCT_DEFAULT_SCENES[prod.slug]){
       return PRODUCT_DEFAULT_SCENES[prod.slug];
     }
     if(prod.isTable && prod.slug.includes("135")){
       return (colorId === "white-marble") ? "assets/prod-table-taper-135-white-scene.jpg" : "assets/prod-table-taper-135-scene.jpg";
     }
-    return "assets/scene-dining-warm.png";
+    if(colorId && COLOR_SCENES[colorId]){
+      return COLOR_SCENES[colorId];
+    }
+    return "assets/bundle-vertex-d90-vertex.jpg";
   }
 
   function renderLifestylePairing(colorId){
