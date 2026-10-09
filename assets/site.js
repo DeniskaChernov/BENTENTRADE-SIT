@@ -823,7 +823,7 @@
           '<div class="qv-actions">' +
             (isMto
               ? '<a class="btn btn--copper" href="' + canonicalHref + '">' + esc(t("pdp.sticky.order") || "Сделать на заказ") + '</a>'
-              : '<button type="button" class="btn btn--copper" data-qv-quick-buy style="width:100%">' + esc(t("pdp.quickBuy") || "Купить в 1 клик") + '</button>'
+              : '<button type="button" class="btn btn--copper" data-qv-quick-buy style="width:100%">' + esc(t("pdp.quickBuy") || "Купить") + '</button>'
             ) +
           '</div>' +
           '<a class="qv-full-link" href="' + canonicalHref + '">' +

@@ -3333,7 +3333,7 @@ export const ADMIN_APP_JS = String.raw`
         '<tbody>' +
           filtered.map(function(o){
             return '<tr data-ord-id="' + o.id + '">' +
-              '<td><span style="font-weight:700;color:var(--copper)">' + esc(o.public_id) + '</span>' + (o.delivery_method === "quick_order" ? '<span class="pill" style="font-size:10.5px;padding:1px 6px;background:rgba(184,115,51,0.15);color:var(--copper);font-weight:700;margin-left:6px">⚡ 1 клик</span>' : '') + '</td>' +
+              '<td><span style="font-weight:700;color:var(--copper)">' + esc(o.public_id) + '</span>' + (o.delivery_method === "quick_order" ? '<span class="pill" style="font-size:10.5px;padding:1px 6px;background:rgba(184,115,51,0.15);color:var(--copper);font-weight:700;margin-left:6px">⚡ Быстрый</span>' : '') + '</td>' +
               '<td>' +
                 '<div style="font-weight:600">' + esc(o.customer_name || "-") + '</div>' +
                 '<div class="hint">' + esc(o.customer_phone || "") + (o.customer_email ? ' · ' + esc(o.customer_email) : '') + '</div>' +

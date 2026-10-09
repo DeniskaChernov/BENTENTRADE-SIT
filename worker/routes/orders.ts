@@ -141,7 +141,7 @@ app.post("/", async (c) => {
 
   let finalComment = comment;
   if (isQuick) {
-    const quickNote = "[⚡ Быстрый заказ в 1 клик]";
+    const quickNote = "[⚡ Быстрый заказ]";
     finalComment = finalComment ? `${quickNote}\n${finalComment}` : quickNote;
   }
   if (promoPct > 0) {
@@ -245,7 +245,7 @@ app.post("/", async (c) => {
   };
 
   const header = isQuick
-    ? `⚡ <b>БЫСТРЫЙ ЗАКАЗ В 1 КЛИК ${publicId}</b> - ${fmtMoney(total)}`
+    ? `⚡ <b>БЫСТРЫЙ ЗАКАЗ ${publicId}</b> - ${fmtMoney(total)}`
     : `<b>Новый заказ ${publicId}</b> - ${fmtMoney(total)}`;
 
   await notifyTelegram(

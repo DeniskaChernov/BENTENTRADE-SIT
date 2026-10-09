@@ -220,7 +220,7 @@
       cartTotal: "Итого к оформлению",
       cartCheckout: "Оформить заказ",
       cartMore: "Подробнее",
-      cartBuy: "Купить в 1 клик",
+      cartBuy: "Купить",
       cartAdded: "Добавлено!",
       phoneInvalid: "Укажите номер телефона (например: +998 90 123 45 67)",
       nameInvalid: "Пожалуйста, укажите ваше имя"
@@ -336,7 +336,7 @@
       cartTotal: "Jami rasmiylashtirish uchun",
       cartCheckout: "Buyurtma berish",
       cartMore: "Batafsil",
-      cartBuy: "1-klikda xarid",
+      cartBuy: "Sotib olish",
       cartAdded: "Qo‘shildi!",
       phoneInvalid: "Telefon raqamingizni kiriting (masalan: +998 90 123 45 67)",
       nameInvalid: "Iltimos, ismingizni kiriting"
@@ -447,7 +447,7 @@
       cartTotal: "Total for order",
       cartCheckout: "Checkout",
       cartMore: "Details",
-      cartBuy: "Buy in 1 click",
+      cartBuy: "Buy",
       cartAdded: "Added!",
       phoneInvalid: "Please enter a valid phone number (e.g.: +998 90 123 45 67)",
       nameInvalid: "Please enter your name"
@@ -1033,9 +1033,9 @@
 
     // 3. Cart / Quick purchase inquiry
     if(/(?:^|[^\p{L}\p{N}])(корзин|в корзине|заказ в корзине|что я выбрал|savat|savatda|cart|my cart|in my cart|basket)(?:$|[^\p{L}\p{N}])/iu.test(padded)){
-      var cartMsg = curLang === "uz" ? "BTT da murakkab savatchalarsiz 1 bosishda tezkor xarid tizimi ishlaydi. Har qanday modelni 1 bosishda rasmiylashtirishingiz mumkin. Quyida buyurtma berishingiz mumkin:" :
-        curLang === "en" ? "At BTT, we use a 1-click express checkout without cumbersome carts. You can order any item instantly. Place an order directly below:" :
-        "На сайте BTT действует покупка в 1 клик без лишних корзин. Вы можете быстро оформить любую мебель за пару кликов прямо здесь:";
+      var cartMsg = curLang === "uz" ? "BTT da ortiqcha qiyinchiliklarsiz tezkor buyurtma tizimi ishlaydi. Har qanday modelni to‘g‘ridan-to‘g‘ri rasmiylashtirishingiz mumkin. Quyida buyurtma berishingiz mumkin:" :
+        curLang === "en" ? "At BTT, we offer fast and convenient direct checkout. You can order any item easily. Place an order directly below:" :
+        "На сайте BTT действует быстрое и удобное оформление заказа без лишней регистрации. Вы можете заказать любую мебель прямо здесь, и менеджер согласует все детали:";
       return cartMsg + renderOrderForm(curLang, "");
     }
 

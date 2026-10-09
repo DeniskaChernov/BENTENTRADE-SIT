@@ -40,7 +40,7 @@
         done:"Заказ оформлен! Менеджер свяжется с вами.",remove:"Убрать",
         fav:"Избранное",favEmpty:"В избранном пусто",favHint:"Нажмите на сердечко у товара, чтобы сохранить его.",
         favAdded:"Добавлено в избранное",favRemoved:"Удалено из избранного",
-        addCart:"Купить в 1 клик",
+        addCart:"Купить",
         ordTitle:"Подтверждение заказа",ordSub:"Отправьте заказ менеджеру - он подтвердит наличие, доставку и оплату.",
         ordTg:"Оформить в Telegram",ordWa:"Оформить в WhatsApp",ordBack:"Вернуться в корзину",
         ordCopied:"Заказ скопирован - вставьте его в чат с менеджером.",
@@ -56,8 +56,8 @@
         payCashPos:"При получении (наличными или терминалом)",
         payClickPayme:"Click / Payme (онлайн по QR или ссылке)",
         payCardInvoice:"Перевод на карту / Счёт юрлица",
-        quickBuy:"Купить в 1 клик",
-        quickOrderTitle:"Быстрый заказ в 1 клик",
+        quickBuy:"Купить",
+        quickOrderTitle:"Оформление заказа",
         quickOrderSub:"Оставьте телефон - менеджер свяжется с вами в течение 10 минут для подтверждения.",
         quickOrderBtn:"Подтвердить быстрый заказ",
         quickOrderDone:"Быстрый заказ принят!",
@@ -73,13 +73,13 @@
         guestTrackTitle:"Хотите отслеживать этот заказ онлайн?",
         guestTrackDesc:"Зарегистрируйтесь по вашему номеру телефона - заказ автоматически появится в личном кабинете.",
         guestTrackBtn:"Создать аккаунт / Войти",
-        quickOrder:"Или быстрый заказ в 1 клик:",discount:"Скидка"},
+        quickOrder:"Или быстрое оформление:",discount:"Скидка"},
     uz:{cart:"Savat",empty:"Savat bo‘sh",emptyHint:"Katalogdan mebel qo‘shing - u shu yerda paydo bo‘ladi.",
         toCat:"Katalogga o‘tish",total:"Jami",checkout:"Buyurtma berish",pcs:"dona",
         done:"Buyurtma qabul qilindi! Menejer bog‘lanadi.",remove:"Olib tashlash",
         fav:"Sevimlilar",favEmpty:"Sevimlilar bo‘sh",favHint:"Saqlash uchun mahsulotdagi yurakchani bosing.",
         favAdded:"Tanlanganlarga qo‘shildi",favRemoved:"Tanlanganlardan o‘chirildi",
-        addCart:"1-klikda xarid",
+        addCart:"Sotib olish",
         ordTitle:"Buyurtma tasdiqlash",ordSub:"Buyurtmani menejerga yuboring - mavjudligi, yetkazish va to‘lovni tasdiqlaydi.",
         ordTg:"Telegramda rasmiylashtirish",ordWa:"WhatsAppda rasmiylashtirish",ordBack:"Savatga qaytish",
         ordCopied:"Buyurtma nusxalandi - menejer chatiga joylang.",
@@ -96,8 +96,8 @@
         payCashPos:"Qabul qilishda (naqd yoki Humo/Uzcard terminal)",
         payClickPayme:"Click / Payme (QR yoki havola orqali)",
         payCardInvoice:"Karta o‘tkazmasi / Tashkilot hisob raqami",
-        quickBuy:"1-klikda xarid",
-        quickOrderTitle:"1-klikda tezkor buyurtma",
+        quickBuy:"Sotib olish",
+        quickOrderTitle:"Buyurtmani rasmiylashtirish",
         quickOrderSub:"Telefoningizni qoldiring - menejer 10 daqiqa ichida bog‘lanadi.",
         quickOrderBtn:"Tezkor buyurtmani tasdiqlash",
         quickOrderDone:"Tezkor buyurtma qabul qilindi!",
@@ -119,7 +119,7 @@
         done:"Order placed! Our manager will be in touch.",remove:"Remove",
         fav:"Wishlist",favEmpty:"No saved items yet",favHint:"Tap the heart on a product to save it.",
         favAdded:"Added to wishlist",favRemoved:"Removed from wishlist",
-        addCart:"Buy in 1 click",
+        addCart:"Buy",
         ordTitle:"Confirm your order",ordSub:"Send the order to our manager - they'll confirm stock, delivery and payment.",
         ordTg:"Order via Telegram",ordWa:"Order via WhatsApp",ordBack:"Back to cart",
         ordCopied:"Order copied - paste it into the chat with our manager.",
@@ -136,8 +136,8 @@
         payCashPos:"Upon delivery (cash or card terminal)",
         payClickPayme:"Click / Payme (via QR or link)",
         payCardInvoice:"Card transfer / Company invoice",
-        quickBuy:"Buy in 1 click",
-        quickOrderTitle:"Quick 1-click order",
+        quickBuy:"Buy",
+        quickOrderTitle:"Order Checkout",
         quickOrderSub:"Leave your phone - our manager will call you within 10 minutes.",
         quickOrderBtn:"Confirm quick order",
         quickOrderDone:"Quick order received!",
@@ -153,7 +153,7 @@
         guestTrackTitle:"Want to track this order online?",
         guestTrackDesc:"Register with your phone number - your order will appear in your account automatically.",
         guestTrackBtn:"Create account / Sign in",
-        quickOrder:"Or quick 1-click order:",discount:"Discount"}
+        quickOrder:"Or fast checkout:",discount:"Discount"}
   };
   function t(k){
     const l = lang();
@@ -644,7 +644,7 @@
           '<a class="dl-thumb" href="'+href+'">'+(it.img?'<img src="'+esc(it.img)+'" alt="" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">':'')+'</a>'+
           '<div class="dl-main"><a class="dl-name" href="'+href+'">'+esc(it.name)+'</a>'+
             '<div class="dl-price">'+esc(fmt(it.price||0))+'</div>'+
-            '<button class="btn btn--copper btn--sm" data-fav-quick="'+esc(id)+'" style="font-weight:700">⚡ '+esc(t("quickBuy")||"Купить в 1 клик")+'</button>'+
+            '<button class="btn btn--copper btn--sm" data-fav-quick="'+esc(id)+'" style="font-weight:700">⚡ '+esc(t("quickBuy")||"Купить")+'</button>'+
           '</div>'+
           '<button class="dl-del" data-fav-del="'+esc(id)+'" aria-label="'+esc(t("remove"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg></button>'+
         '</div>';
@@ -1240,7 +1240,7 @@
           '<div class="qk-head">' +
             '<div style="display:flex;align-items:center;gap:8px">' +
               '<span style="display:inline-flex;color:var(--copper);font-size:18px">⚡</span>' +
-              '<h3>' + esc(t("quickOrderTitle") || "Быстрый заказ в 1 клик") + '</h3>' +
+              '<h3>' + esc(t("quickOrderTitle") || "Оформление заказа") + '</h3>' +
             '</div>' +
             '<button type="button" class="drawer-x" data-qk-close aria-label="' + esc(t("close")) + '">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>' +
@@ -1291,7 +1291,7 @@
               '</div>' +
               '<p class="co-err" data-qk-err hidden></p>' +
               '<button type="submit" class="btn btn--copper qk-submit" data-qk-submit style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px">' +
-                '<span>' + esc(t("quickOrderBtn") || "Подтвердить заказ в 1 клик") + '</span>' +
+                '<span>' + esc(t("quickOrderBtn") || "Подтвердить заказ") + '</span>' +
               '</button>' +
               '<div style="margin-top:10px">' +
                 '<button type="button" class="btn btn--ghost sm qk-tg-direct" data-qk-tg-direct style="width:100%;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12.5px">' +
