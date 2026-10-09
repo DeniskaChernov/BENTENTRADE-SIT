@@ -115,7 +115,12 @@
     "dostavka-rotanga-po-uzbekistanu": "assets/hero-garden-furniture.png",
     "rotang-dlya-balkona": "assets/bento-rattan.png",
     "palitra-tsvetov-rotanga-btt": "assets/rattan-palette-hero.png",
-    "oformlenie-terassi-rotangom": "assets/scene-dining-warm.png"
+    "oformlenie-terassi-rotangom": "assets/scene-dining-warm.png",
+    "stulya-dlya-kafe-horeca-tashkent": "assets/scene-dining-teal.png",
+    "plastikovye-stulya-vs-rotang": "assets/scene-dining-cream.png",
+    "gotovye-komplekty-mebeli-so-skidkoy": "assets/scene-dining-warm.png",
+    "treny-osveshcheniya-nastolnye-lampy": "assets/prod-lamp-nova.jpg",
+    "uhod-za-mebelyu-v-klimate-uzbekistana": "assets/hero-garden-furniture.png"
   };
 
   function lang() {

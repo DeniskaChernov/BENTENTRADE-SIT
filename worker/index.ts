@@ -691,6 +691,21 @@ app.get("/horeca", async (c) => {
   });
 });
 
+// Sets / Bundle Calculator page
+app.get("/sets", async (c) => {
+  const url = new URL("/sets.html", c.req.url);
+  const res = await c.env.ASSETS.fetch(new Request(url.toString(), c.req.raw));
+  return new Response(res.body, {
+    status: 200,
+    headers: {
+      ...Object.fromEntries(res.headers.entries()),
+      "content-type": "text/html; charset=utf-8",
+    },
+  });
+});
+
+app.get("/calc", (c) => c.redirect("/sets", 301));
+
 // Anything else that reached the Worker is delegated to the static assets binding.
 // On 404 for non-API routes, serve the branded 404.html.
 app.all("*", async (c) => {

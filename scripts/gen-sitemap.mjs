@@ -38,6 +38,7 @@ function main() {
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     url(SITE + "/", "1.0", "weekly"),
     url(SITE + "/catalog.html", "0.95", "weekly"),
+    url(SITE + "/sets.html", "0.92", "weekly"),
     url(SITE + "/horeca.html", "0.88", "weekly"),
     url(SITE + "/rotang-tashkent.html", "0.88", "monthly"),
     url(SITE + "/sadovaya-mebel-rotang.html", "0.88", "monthly"),

@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://bententrade.uz/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://bententrade.uz/catalog.html</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://bententrade.uz/sets.html</loc><changefreq>weekly</changefreq><priority>0.92</priority></url>
   <url><loc>https://bententrade.uz/horeca.html</loc><changefreq>weekly</changefreq><priority>0.88</priority></url>
   <url><loc>https://bententrade.uz/rotang-tashkent.html</loc><changefreq>monthly</changefreq><priority>0.88</priority></url>
   <url><loc>https://bententrade.uz/sadovaya-mebel-rotang.html</loc><changefreq>monthly</changefreq><priority>0.88</priority></url>
@@ -26,6 +27,11 @@
   <url><loc>https://bententrade.uz/article.html?slug=rotang-dlya-balkona</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
   <url><loc>https://bententrade.uz/article.html?slug=palitra-tsvetov-rotanga-btt</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
   <url><loc>https://bententrade.uz/article.html?slug=oformlenie-terassi-rotangom</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://bententrade.uz/article.html?slug=stulya-dlya-kafe-horeca-tashkent</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://bententrade.uz/article.html?slug=plastikovye-stulya-vs-rotang</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://bententrade.uz/article.html?slug=gotovye-komplekty-mebeli-so-skidkoy</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://bententrade.uz/article.html?slug=treny-osveshcheniya-nastolnye-lampy</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://bententrade.uz/article.html?slug=uhod-za-mebelyu-v-klimate-uzbekistana</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
   <url><loc>https://bententrade.uz/faq.html</loc><changefreq>monthly</changefreq><priority>0.55</priority></url>
   <url><loc>https://bententrade.uz/delivery.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://bententrade.uz/returns.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
