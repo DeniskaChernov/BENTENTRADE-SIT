@@ -3073,6 +3073,433 @@
     "active": 1,
     "currency": "сум",
     "sort": 108
+  },
+  {
+    "slug": "komplekt-taper-80-corda",
+    "legacyId": "b10",
+    "model": "Комплект Taper 80×80 + 4 стула Corda",
+    "category": "sets",
+    "product_type": "bundle",
+    "unit": "set",
+    "price": 2850000,
+    "price_old": 2850000,
+    "dimensions": "Стол 80 × 80 × 75 см, 4 стула 57 × 63 × 75 см",
+    "materials": [
+      "металл",
+      "искусственный ротанг",
+      "ЛДСП мрамор",
+      "текстиль"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-corda",
+        "name": {
+          "ru": "Белый мрамор / Тёмный шнур",
+          "uz": "Oq marmar / To'q to'qima",
+          "en": "White marble / Dark cord"
+        },
+        "hex": "#C4A482",
+        "image": "assets/bundle-taper-80-corda.jpg",
+        "images": [
+          "assets/bundle-taper-80-corda.jpg",
+          "assets/prod-table-taper-80-white.jpg",
+          "assets/prod-chair-corda.jpg",
+          "assets/scene-dining-warm.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/bundle-taper-80-corda.jpg",
+      "assets/prod-table-taper-80-white.jpg",
+      "assets/prod-chair-corda.jpg",
+      "assets/scene-dining-warm.png"
+    ],
+    "bundle_items": [
+      {
+        "component_product_id": "stol-taper-80",
+        "quantity": 1,
+        "sort": 0
+      },
+      {
+        "component_product_id": "stul-corda",
+        "quantity": 4,
+        "sort": 1
+      }
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Комплект: Стол Taper 80×80 + 4 плетёных стула Corda",
+        "category_label": "Комплекты мебели",
+        "description": "Утверждённый обеденный гарнитур BTT: компактный стол Taper 80×80 со столешницей под белый мрамор и 4 плетёных стула Corda с тёмными акцентами и мягкими подушками. Готовое решение для террасы, столовой или кухни по специальной цене.",
+        "usage": "Для террасы, веранды, кухни, столовой и кафе",
+        "seo_title": "Комплект стол Taper 80x80 и 4 стула Corda - купить в Ташкенте BTT",
+        "seo_description": "Готовый комплект: стол Taper 80x80 и 4 плетёных стула Corda по утверждённой спеццене 2 850 000 сум от BTT в Ташкенте."
+      },
+      "uz": {
+        "name": "To'plam: Taper 80×80 stoli + 4 ta to'qilgan Corda stuli",
+        "category_label": "Mebel to‘plamlari",
+        "description": "BTT tasdiqlangan tushlik to'plami: oq marmar naqshli Taper 80x80 stoli va 4 ta o'rilgan Corda stuli. Terrasa, oshxona va kafelar uchun maxsus narxda.",
+        "usage": "Terrasa, veranda, oshxona va kafelar uchun",
+        "seo_title": "Taper 80x80 stoli va 4 ta Corda stuli to'plami - BTT Toshkent",
+        "seo_description": "Tayyor to'plam: Taper 80x80 stoli va 4 ta Corda stuli 2 850 000 so'm tasdiqlangan maxsus narxda."
+      },
+      "en": {
+        "name": "Dining Set: Taper 80×80 Table + 4 Corda Wicker Chairs",
+        "category_label": "Furniture sets",
+        "description": "Approved BTT dining package: compact square Taper 80×80 table in white marble finish and 4 Corda wicker chairs with dark accents and soft cushions. Special package price.",
+        "usage": "For terraces, verandas, dining rooms, and cafes",
+        "seo_title": "Taper 80x80 Table + 4 Corda Chairs Dining Set - BTT Tashkent",
+        "seo_description": "Buy dining set: square Taper 80x80 table + 4 Corda wicker chairs for 2,850,000 UZS by BTT."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "currency": "сум",
+    "sort": 109
+  },
+  {
+    "slug": "komplekt-taper-80-vertex",
+    "legacyId": "b11",
+    "model": "Комплект Taper 80×80 + 4 стула Vertex",
+    "category": "sets",
+    "product_type": "bundle",
+    "unit": "set",
+    "price": 2850000,
+    "price_old": 2850000,
+    "dimensions": "Стол 80 × 80 × 75 см, 4 стула 57 × 63 × 75 см",
+    "materials": [
+      "металл",
+      "кручёный искусственный ротанг",
+      "ЛДСП мрамор",
+      "текстиль"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-beige",
+        "name": {
+          "ru": "Белый мрамор / Бежевый",
+          "uz": "Oq marmar / Bej",
+          "en": "White marble / Beige"
+        },
+        "hex": "#C2B280",
+        "image": "assets/bundle-taper-80-vertex.jpg",
+        "images": [
+          "assets/bundle-taper-80-vertex.jpg",
+          "assets/prod-table-taper-80-white.jpg",
+          "assets/prod-chair-vertex.jpg",
+          "assets/scene-dining-warm.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/bundle-taper-80-vertex.jpg",
+      "assets/prod-table-taper-80-white.jpg",
+      "assets/prod-chair-vertex.jpg",
+      "assets/scene-dining-warm.png"
+    ],
+    "bundle_items": [
+      {
+        "component_product_id": "stol-taper-80",
+        "quantity": 1,
+        "sort": 0
+      },
+      {
+        "component_product_id": "stul-vertex",
+        "quantity": 4,
+        "sort": 1
+      }
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Комплект: Стол Taper 80×80 + 4 плетёных стула Vertex",
+        "category_label": "Комплекты мебели",
+        "description": "Утверждённый обеденный гарнитур BTT: квадратный стол Taper 80×80 со столешницей под белый мрамор и 4 плетёных стула Vertex из кручёного искусственного ротанга со светлыми подушками. Готовое решение по специальной цене.",
+        "usage": "Для столовой, террасы, веранды и загородного дома",
+        "seo_title": "Комплект стол Taper 80x80 и 4 стула Vertex - купить в Ташкенте BTT",
+        "seo_description": "Комплект: стол Taper 80x80 и 4 плетёных стула Vertex по утверждённой спеццене 2 850 000 сум от BTT в Ташкенте."
+      },
+      "uz": {
+        "name": "To'plam: Taper 80×80 stoli + 4 ta to'qilgan Vertex stuli",
+        "category_label": "Mebel to‘plamlari",
+        "description": "BTT tasdiqlangan to'plami: kvadrat Taper 80x80 stoli va 4 ta o'rilgan rotangli Vertex stullari. Shinam oshxona va terrasa uchun maxsus narxda.",
+        "usage": "Oshxona, terrasa, veranda va xonadonlar uchun",
+        "seo_title": "Taper 80x80 stoli va 4 ta Vertex stuli to'plami - BTT Toshkent",
+        "seo_description": "Tayyor to'plam: Taper 80x80 stoli va 4 ta Vertex stuli 2 850 000 so'm tasdiqlangan narxda."
+      },
+      "en": {
+        "name": "Dining Set: Taper 80×80 Table + 4 Vertex Wicker Chairs",
+        "category_label": "Furniture sets",
+        "description": "Approved BTT dining package: square Taper 80×80 table in white marble finish and 4 Vertex twisted rattan chairs with comfortable cushions. Special package price.",
+        "usage": "For dining rooms, verandas, covered patios, and homes",
+        "seo_title": "Taper 80x80 Table + 4 Vertex Chairs Set - BTT Tashkent",
+        "seo_description": "Buy dining set: square table Taper 80x80 and 4 Vertex wicker chairs for 2,850,000 UZS by BTT."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "currency": "сум",
+    "sort": 110
+  },
+  {
+    "slug": "komplekt-taper-135-roero",
+    "legacyId": "b12",
+    "model": "Комплект Taper 135×80 + 4 стула Roero",
+    "category": "sets",
+    "product_type": "bundle",
+    "unit": "set",
+    "price": 1532000,
+    "price_old": 1662000,
+    "dimensions": "Стол 135 × 80 × 75 см, 4 стула 74 × 46 × 48 см",
+    "materials": [
+      "металл",
+      "литой полипропилен",
+      "ЛДСП мрамор"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-grey",
+        "name": {
+          "ru": "Белый мрамор / Серый",
+          "uz": "Oq marmar / Kulrang",
+          "en": "White marble / Grey"
+        },
+        "hex": "#8A8D8F",
+        "image": "assets/bundle-taper-135-roero.jpg",
+        "images": [
+          "assets/bundle-taper-135-roero.jpg",
+          "assets/prod-table-taper-135-white.jpg",
+          "assets/prod-chair-roero-grey.jpg",
+          "assets/scene-dining-marble.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/bundle-taper-135-roero.jpg",
+      "assets/prod-table-taper-135-white.jpg",
+      "assets/prod-chair-roero-grey.jpg",
+      "assets/scene-dining-marble.png"
+    ],
+    "bundle_items": [
+      {
+        "component_product_id": "stol-taper-135",
+        "quantity": 1,
+        "sort": 0
+      },
+      {
+        "component_product_id": "stul-roero",
+        "quantity": 4,
+        "sort": 1
+      }
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Комплект: Стол Taper 135×80 + 4 стула Roero (серый)",
+        "category_label": "Комплекты мебели",
+        "description": "Просторный обеденный комплект для всей семьи: большой стол Taper 135×80 см с белой мраморной столешницей и 4 эргономичных стула Roero в стильном сером оттенке. Экономия 130 000 сум при покупке комплектом.",
+        "usage": "Для кухни, столовой, гостиной и просторных террас",
+        "seo_title": "Комплект стол Taper 135x80 и 4 стула Roero - купить в Ташкенте BTT",
+        "seo_description": "Комплект мебели: стол Taper 135x80 и 4 стула Roero серые со скидкой за 1 532 000 сум от производителя BTT в Ташкенте."
+      },
+      "uz": {
+        "name": "To'plam: Taper 135×80 stoli + 4 ta Roero stuli (kulrang)",
+        "category_label": "Mebel to‘plamlari",
+        "description": "Keng oilaviy tushlik to'plami: oq marmar naqshli katta Taper 135x80 stoli va 4 ta kulrang Roero stullari. 130 000 so'm tejamkorlik bilan.",
+        "usage": "Oshxona, mehmonxona, oshxona zali va terrasa uchun",
+        "seo_title": "Taper 135x80 stoli va 4 ta Roero stuli to'plami - BTT Toshkent",
+        "seo_description": "Tayyor to'plam: Taper 135x80 stoli va 4 ta kulrang Roero stullari 1 532 000 so'm to'plam narxida."
+      },
+      "en": {
+        "name": "Dining Set: Taper 135×80 Table + 4 Roero Chairs (Grey)",
+        "category_label": "Furniture sets",
+        "description": "Spacious family dining set: large Taper 135×80 cm table in white marble finish and 4 ergonomic Roero chairs in sleek grey tone. 130,000 UZS bundle discount.",
+        "usage": "For dining rooms, open kitchens, and verandas",
+        "seo_title": "Taper 135x80 Table + 4 Roero Chairs Dining Set - BTT Tashkent",
+        "seo_description": "Buy dining set: rectangular Taper 135x80 table + 4 grey Roero chairs for 1,532,000 UZS by BTT."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "currency": "сум",
+    "sort": 111
+  },
+  {
+    "slug": "komplekt-taper-135-noero",
+    "legacyId": "b13",
+    "model": "Комплект Taper 135×80 + 4 стула Noero",
+    "category": "sets",
+    "product_type": "bundle",
+    "unit": "set",
+    "price": 1628000,
+    "price_old": 1758000,
+    "dimensions": "Стол 135 × 80 × 75 см, 4 стула 82 × 48 × 49 см",
+    "materials": [
+      "металл",
+      "литой полипропилен",
+      "ЛДСП мрамор"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-black",
+        "name": {
+          "ru": "Белый мрамор / Чёрный",
+          "uz": "Oq marmar / Qora",
+          "en": "White marble / Black"
+        },
+        "hex": "#222222",
+        "image": "assets/bundle-taper-135-noero.jpg",
+        "images": [
+          "assets/bundle-taper-135-noero.jpg",
+          "assets/prod-table-taper-135-white.jpg",
+          "assets/prod-chair-noero.jpg",
+          "assets/scene-dining-contrast.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/bundle-taper-135-noero.jpg",
+      "assets/prod-table-taper-135-white.jpg",
+      "assets/prod-chair-noero.jpg",
+      "assets/scene-dining-contrast.png"
+    ],
+    "bundle_items": [
+      {
+        "component_product_id": "stol-taper-135",
+        "quantity": 1,
+        "sort": 0
+      },
+      {
+        "component_product_id": "stul-noero",
+        "quantity": 4,
+        "sort": 1
+      }
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Комплект: Стол Taper 135×80 + 4 стула Noero (чёрный)",
+        "category_label": "Комплекты мебели",
+        "description": "Выразительная контрастная обеденная группа: большой стол Taper 135×80 см со столешницей под белый мрамор и 4 стула Noero с узорной вентилируемой высокой спинкой в чёрном цвете. Экономия 130 000 сум при покупке комплектом.",
+        "usage": "Для столовой, кухни, просторной веранды и кафе",
+        "seo_title": "Комплект стол Taper 135x80 и 4 стула Noero - купить в Ташкенте BTT",
+        "seo_description": "Комплект мебели: стол Taper 135x80 и 4 стула Noero черные со скидкой за 1 628 000 сум от производителя BTT в Ташкенте."
+      },
+      "uz": {
+        "name": "To'plam: Taper 135×80 stoli + 4 ta Noero stuli (qora)",
+        "category_label": "Mebel to‘plamlari",
+        "description": "Kontrastli zamonaviy tushlik to'plami: oq marmar naqshli Taper 135x80 stoli va 4 ta qora Noero baland orqa qismli stullari. 130 000 so'm tejamkorlik.",
+        "usage": "Oshxona, mehmonxona, veranda va kafelar uchun",
+        "seo_title": "Taper 135x80 stoli va 4 ta Noero stuli to'plami - BTT Toshkent",
+        "seo_description": "Tayyor to'plam: Taper 135x80 stoli va 4 ta qora Noero stullari 1 628 000 so'm to'plam narxida."
+      },
+      "en": {
+        "name": "Dining Set: Taper 135×80 Table + 4 Noero Chairs (Black)",
+        "category_label": "Furniture sets",
+        "description": "Bold contrast dining set: large Taper 135×80 cm table in white marble finish and 4 matte black Noero chairs with patterned high backs. 130,000 UZS bundle discount.",
+        "usage": "For dining rooms, kitchens, verandas, and cafes",
+        "seo_title": "Taper 135x80 Table + 4 Noero Chairs Dining Set - BTT Tashkent",
+        "seo_description": "Buy dining set: rectangular table Taper 135x80 and 4 black Noero chairs for 1,628,000 UZS."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "currency": "сум",
+    "sort": 112
+  },
+  {
+    "slug": "komplekt-taper-135-jardin",
+    "legacyId": "b14",
+    "model": "Комплект Taper 135×80 + 4 кресла Jardin",
+    "category": "sets",
+    "product_type": "bundle",
+    "unit": "set",
+    "price": 2156000,
+    "price_old": 2286000,
+    "dimensions": "Стол 135 × 80 × 75 см, 4 кресла 73.5 × 53.5 × 55.5 см",
+    "materials": [
+      "металл",
+      "литой полипропилен",
+      "ЛДСП мрамор"
+    ],
+    "maxLoad": null,
+    "confirmedColors": [
+      {
+        "id": "white-cappuccino",
+        "name": {
+          "ru": "Белый мрамор / Капучино",
+          "uz": "Oq marmar / Kapuchino",
+          "en": "White marble / Cappuccino"
+        },
+        "hex": "#C4A482",
+        "image": "assets/bundle-taper-135-jardin.jpg",
+        "images": [
+          "assets/bundle-taper-135-jardin.jpg",
+          "assets/prod-table-taper-135-white.jpg",
+          "assets/prod-chair-jardin.jpg",
+          "assets/scene-dining-beige.png"
+        ]
+      }
+    ],
+    "isTable": false,
+    "images": [
+      "assets/bundle-taper-135-jardin.jpg",
+      "assets/prod-table-taper-135-white.jpg",
+      "assets/prod-chair-jardin.jpg",
+      "assets/scene-dining-beige.png"
+    ],
+    "bundle_items": [
+      {
+        "component_product_id": "stol-taper-135",
+        "quantity": 1,
+        "sort": 0
+      },
+      {
+        "component_product_id": "stul-jardin",
+        "quantity": 4,
+        "sort": 1
+      }
+    ],
+    "i18n": {
+      "ru": {
+        "name": "Комплект: Стол Taper 135×80 + 4 кресла Jardin (капучино)",
+        "category_label": "Комплекты мебели",
+        "description": "Большая обеденная группа для максимального комфорта: стол Taper 135×80 см с белой мраморной столешницей и 4 просторных кресла Jardin с подлокотниками в тёплом оттенке капучино. Экономия 130 000 сум при покупке комплектом.",
+        "usage": "Для столовой, кухни, террасы, загородного дома и ресторанов",
+        "seo_title": "Комплект стол Taper 135x80 и 4 кресла Jardin - купить в Ташкенте BTT",
+        "seo_description": "Обеденный комплект: стол Taper 135x80 и 4 кресла Jardin с подлокотниками за 2 156 000 сум от производителя BTT в Ташкенте."
+      },
+      "uz": {
+        "name": "To'plam: Taper 135×80 stoli + 4 ta Jardin kreslosi (kapuchino)",
+        "category_label": "Mebel to‘plamlari",
+        "description": "Maksimal qulaylik uchun katta tushlik to'plami: oq marmar naqshli Taper 135x80 stoli va 4 ta kapuchino rangli Jardin kreslolari. 130 000 so'm tejamkorlik.",
+        "usage": "Oshxona, mehmonxona, terrasa va restoranlar uchun",
+        "seo_title": "Taper 135x80 stoli va 4 ta Jardin kreslosi to'plami - BTT Toshkent",
+        "seo_description": "Tayyor to'plam: Taper 135x80 stoli va 4 ta Jardin kreslolari 2 156 000 so'm to'plam narxida."
+      },
+      "en": {
+        "name": "Dining Set: Taper 135×80 Table + 4 Jardin Armchairs (Cappuccino)",
+        "category_label": "Furniture sets",
+        "description": "Generous dining set for ultimate comfort: large Taper 135×80 cm table in white marble finish and 4 ergonomic Jardin armchairs in warm cappuccino tone. 130,000 UZS bundle discount.",
+        "usage": "For dining areas, terraces, verandas, and restaurants",
+        "seo_title": "Taper 135x80 Table + 4 Jardin Armchairs Set - BTT Tashkent",
+        "seo_description": "Buy dining set: rectangular table Taper 135x80 and 4 Jardin armchairs for 2,156,000 UZS by BTT."
+      }
+    },
+    "status": "in_stock",
+    "availability": "in_stock",
+    "active": 1,
+    "currency": "сум",
+    "sort": 113
   }
 ];
 
