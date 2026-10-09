@@ -197,62 +197,156 @@
   </section>
 
   <!-- SPECIAL APPROVED BUNDLE PRICES -->
-  <section class="wrap section section--compact" style="margin-top:10px">
+  <section class="wrap section section--compact" style="margin-top:10px" id="popular-sets">
     <div class="reveal" style="background:var(--cream, #f7f5f0);border:1px solid var(--line);border-radius:24px;padding:clamp(24px, 4vw, 40px)">
       <div style="text-align:center;max-width:65ch;margin:0 auto 28px">
-        <span class="eyebrow" data-i18n="sets.approved.eyebrow">Специальные условия</span>
-        <h2 style="font-size:clamp(20px, 2.4vw, 30px);font-weight:800;margin-top:6px" data-i18n="sets.approved.title">Утверждённые спеццены на готовые комплекты BTT</h2>
-        <p class="muted" style="margin-top:6px;font-size:14.5px" data-i18n="sets.approved.sub">Для гарнитуров с плетёными стульями Vertex и Corda действуют фиксированные цены под ключ.</p>
+        <span class="eyebrow" data-i18n="sets.approved.eyebrow">Популярные комплекты</span>
+        <h2 style="font-size:clamp(20px, 2.4vw, 30px);font-weight:800;margin-top:6px" data-i18n="sets.approved.title">Готовые комплекты BTT с утверждёнными ценами</h2>
+        <p class="muted" style="margin-top:6px;font-size:14.5px" data-i18n="sets.approved.sub">Выбирайте готовые обеденные группы для террасы, гостиной, загородного дома или летней веранды кафе со скидкой от фабрики.</p>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px">
-        <!-- Card 1: Vertex D90 + 4 Vertex/Corda -->
-        <div style="background:var(--paper);border:1px solid var(--line-2);border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:space-between">
-          <div>
-            <span class="pill pill--copper" style="font-size:11.5px;margin-bottom:10px;display:inline-block">Круглый комплект</span>
-            <h3 style="font-size:17px;font-weight:700;margin-bottom:6px">1 стол Vertex D90 + 4 плетёных стула</h3>
-            <p style="font-size:13px;color:var(--muted);line-height:1.45;margin-bottom:12px">Стол круглый Ø90 см (Белый мрамор) + 4 стула Vertex или Corda с мягкими подушками.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:20px">
+        
+        <!-- Bundle 1: Vertex D90 + 4 Vertex -->
+        <article class="sol-card reveal" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
+          <div style="position:relative;height:240px;overflow:hidden">
+            <img src="assets/bundle-vertex-d90-vertex.jpg" alt="Комплект стол Vertex D90 и 4 плетёных стула Vertex" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
+            <span class="pill pill--copper tl" style="position:absolute;top:14px;left:14px;font-size:12px">Хит продаж</span>
+            <span class="pill pill--ghost tr" style="position:absolute;top:14px;right:14px;font-size:12px;background:rgba(255,255,255,0.9)">Круглый гарнитур</span>
           </div>
-          <div style="border-top:1px solid var(--line-2);padding-top:14px;display:flex;align-items:center;justify-content:space-between">
-            <div>
-              <span style="font-size:11px;color:var(--muted);display:block">Фиксированная спеццена</span>
-              <strong style="font-size:18px;color:var(--copper)">2 676 000 сум</strong>
+          <div style="padding:22px;display:flex;flex-direction:column;flex:1">
+            <h3 style="font-size:17.5px;font-weight:700;margin-bottom:8px">1 стол Vertex D90 + 4 плетёных стула Vertex</h3>
+            <p style="font-size:13.5px;color:var(--muted);line-height:1.5;flex:1;margin-bottom:14px">Круглый обеденный стол Ø90 см с белой мраморной столешницей и 4 плетёных стула Vertex из кручёного искусственного ротанга с мягкими подушками.</p>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Стол Ø90 × 75 см</span>
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">4 стула с подушками</span>
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Кручёный ротанг BTT</span>
             </div>
-            <button type="button" class="btn btn--copper btn--sm" data-quick-bundle='{"table":"stol-vertex-d90","chair":"stul-vertex","qty":4}'>Выбрать</button>
+            <div style="border-top:1px solid var(--line-2);padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+              <div>
+                <span style="font-size:11px;color:var(--muted);display:block"><del>2 726 000 сум</del></span>
+                <strong style="font-size:18px;color:var(--copper)">2 676 000 сум</strong>
+              </div>
+              <div style="display:flex;gap:8px">
+                <button type="button" class="btn btn--copper btn--sm" onclick="window.BTT_CART && window.BTT_CART.openQuickOrder({ id: 'komplekt-vertex-d90-vertex', slug: 'komplekt-vertex-d90-vertex', name: 'Комплект: стол Vertex D90 + 4 стула Vertex', price: 2676000, now: 2676000, img: 'assets/bundle-vertex-d90-vertex.jpg' })">В 1 клик</button>
+                <button type="button" class="btn btn--ghost btn--sm" data-quick-bundle='{"table":"stol-vertex-d90","chair":"stul-vertex","qty":4}'>В конструктор</button>
+              </div>
+            </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Card 2: Taper 80x80 + 4 Vertex/Corda -->
-        <div style="background:var(--paper);border:1px solid var(--line-2);border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:space-between">
-          <div>
-            <span class="pill pill--copper" style="font-size:11.5px;margin-bottom:10px;display:inline-block">Квадратный комплект</span>
-            <h3 style="font-size:17px;font-weight:700;margin-bottom:6px">1 стол Taper 80×80 + 4 плетёных стула</h3>
-            <p style="font-size:13px;color:var(--muted);line-height:1.45;margin-bottom:12px">Стол квадратный 80×80 см (ЛДСП мрамор) + 4 стула Vertex или Corda.</p>
+        <!-- Bundle 2: Vertex D90 + 4 Corda -->
+        <article class="sol-card reveal" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
+          <div style="position:relative;height:240px;overflow:hidden">
+            <img src="assets/bundle-vertex-d90-corda.jpg" alt="Комплект стол Vertex D90 и 4 плетёных стула Corda" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
+            <span class="pill pill--copper tl" style="position:absolute;top:14px;left:14px;font-size:12px">Премиум</span>
+            <span class="pill pill--ghost tr" style="position:absolute;top:14px;right:14px;font-size:12px;background:rgba(255,255,255,0.9)">Шнуровое плетение</span>
           </div>
-          <div style="border-top:1px solid var(--line-2);padding-top:14px;display:flex;align-items:center;justify-content:space-between">
-            <div>
-              <span style="font-size:11px;color:var(--muted);display:block">Фиксированная спеццена</span>
-              <strong style="font-size:18px;color:var(--copper)">2 850 000 сум</strong>
+          <div style="padding:22px;display:flex;flex-direction:column;flex:1">
+            <h3 style="font-size:17.5px;font-weight:700;margin-bottom:8px">1 стол Vertex D90 + 4 плетёных стула Corda</h3>
+            <p style="font-size:13.5px;color:var(--muted);line-height:1.5;flex:1;margin-bottom:14px">Стол Vertex D90 на чёрных ножках и 4 стула Corda с тёмными акцентами и мягкими посадочными подушками. Изысканная современная композиция.</p>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Стол Ø90 × 75 см</span>
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">4 стула Corda</span>
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Чёрные акценты</span>
             </div>
-            <button type="button" class="btn btn--copper btn--sm" data-quick-bundle='{"table":"stol-taper-80","chair":"stul-corda","qty":4}'>Выбрать</button>
+            <div style="border-top:1px solid var(--line-2);padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+              <div>
+                <span style="font-size:11px;color:var(--muted);display:block"><del>2 726 000 сум</del></span>
+                <strong style="font-size:18px;color:var(--copper)">2 676 000 сум</strong>
+              </div>
+              <div style="display:flex;gap:8px">
+                <button type="button" class="btn btn--copper btn--sm" onclick="window.BTT_CART && window.BTT_CART.openQuickOrder({ id: 'komplekt-vertex-d90-corda', slug: 'komplekt-vertex-d90-corda', name: 'Комплект: стол Vertex D90 + 4 стула Corda', price: 2676000, now: 2676000, img: 'assets/bundle-vertex-d90-corda.jpg' })">В 1 клик</button>
+                <button type="button" class="btn btn--ghost btn--sm" data-quick-bundle='{"table":"stol-vertex-d90","chair":"stul-corda","qty":4}'>В конструктор</button>
+              </div>
+            </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Card 3: Taper Rotang 80x80 + 4 Vertex/Corda -->
-        <div style="background:var(--paper);border:1px solid var(--line-2);border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:space-between">
-          <div>
-            <span class="pill pill--copper" style="font-size:11.5px;margin-bottom:10px;display:inline-block">Ротанговый гарнитур</span>
-            <h3 style="font-size:17px;font-weight:700;margin-bottom:6px">1 стол Taper Rotang 80 + 4 плетёных стула</h3>
-            <p style="font-size:13px;color:var(--muted);line-height:1.45;margin-bottom:12px">Стол с ротанговым подстольем 80×80 см + 4 плетёных стула Vertex или Corda.</p>
+        <!-- Bundle 3: Taper 80x80 + 4 Roero Black -->
+        <article class="sol-card reveal" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
+          <div style="position:relative;height:240px;overflow:hidden">
+            <img src="assets/bundle-taper-80-roero.jpg" alt="Комплект стол Taper 80x80 и 4 стула Roero" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
+            <span class="pill pill--copper tl" style="position:absolute;top:14px;left:14px;font-size:12px">Контраст</span>
+            <span class="pill pill--ghost tr" style="position:absolute;top:14px;right:14px;font-size:12px;background:rgba(255,255,255,0.9)">Экономия 130 000 сум</span>
           </div>
-          <div style="border-top:1px solid var(--line-2);padding-top:14px;display:flex;align-items:center;justify-content:space-between">
-            <div>
-              <span style="font-size:11px;color:var(--muted);display:block">Фиксированная спеццена</span>
-              <strong style="font-size:18px;color:var(--copper)">2 850 000 сум</strong>
+          <div style="padding:22px;display:flex;flex-direction:column;flex:1">
+            <h3 style="font-size:17.5px;font-weight:700;margin-bottom:8px">1 стол Taper 80×80 + 4 стула Roero (чёрный)</h3>
+            <p style="font-size:13.5px;color:var(--muted);line-height:1.5;flex:1;margin-bottom:14px">Квадратный стол Taper 80×80 см с белой мраморной текстурой и 4 монолитных эргономичных стула Roero в чёрном цвете. Практично для кухни, террасы или кафе.</p>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Стол 80 × 80 × 75 см</span>
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">4 стула Roero</span>
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Штабелируемые</span>
             </div>
-            <button type="button" class="btn btn--copper btn--sm" data-quick-bundle='{"table":"stol-taper-rotang-80","chair":"stul-vertex","qty":4}'>Выбрать</button>
+            <div style="border-top:1px solid var(--line-2);padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+              <div>
+                <span style="font-size:11px;color:var(--muted);display:block"><del>1 535 000 сум</del></span>
+                <strong style="font-size:18px;color:var(--copper)">1 405 000 сум</strong>
+              </div>
+              <div style="display:flex;gap:8px">
+                <button type="button" class="btn btn--copper btn--sm" onclick="window.BTT_CART && window.BTT_CART.openQuickOrder({ id: 'komplekt-taper-80-roero', slug: 'komplekt-taper-80-roero', name: 'Комплект: стол Taper 80x80 + 4 стула Roero (чёрный)', price: 1405000, now: 1405000, img: 'assets/bundle-taper-80-roero.jpg' })">В 1 клик</button>
+                <button type="button" class="btn btn--ghost btn--sm" data-quick-bundle='{"table":"stol-taper-80","chair":"stul-roero","qty":4,"chairColor":"black"}'>В конструктор</button>
+              </div>
+            </div>
           </div>
-        </div>
+        </article>
+
+        <!-- Bundle 4: Taper 80x80 + 4 Todo Coffee -->
+        <article class="sol-card reveal" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
+          <div style="position:relative;height:240px;overflow:hidden">
+            <img src="assets/bundle-taper-80-todo.jpg" alt="Комплект стол Taper 80x80 и 4 стула Todo" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
+            <span class="pill pill--copper tl" style="position:absolute;top:14px;left:14px;font-size:12px">Минимализм</span>
+            <span class="pill pill--ghost tr" style="position:absolute;top:14px;right:14px;font-size:12px;background:rgba(255,255,255,0.9)">Экономия 130 000 сум</span>
+          </div>
+          <div style="padding:22px;display:flex;flex-direction:column;flex:1">
+            <h3 style="font-size:17.5px;font-weight:700;margin-bottom:8px">1 стол Taper 80×80 + 4 стула Todo (кофейный)</h3>
+            <p style="font-size:13.5px;color:var(--muted);line-height:1.5;flex:1;margin-bottom:14px">Стол Taper 80×80 см с белой мраморной столешницей и 4 лаконичных стула Todo в теплом кофейно-бежевом тоне. Сбалансированный уют для квартиры или загородного дома.</p>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Стол 80 × 80 × 75 см</span>
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">4 стула Todo</span>
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Лёгкий уход</span>
+            </div>
+            <div style="border-top:1px solid var(--line-2);padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+              <div>
+                <span style="font-size:11px;color:var(--muted);display:block"><del>1 727 000 сум</del></span>
+                <strong style="font-size:18px;color:var(--copper)">1 597 000 сум</strong>
+              </div>
+              <div style="display:flex;gap:8px">
+                <button type="button" class="btn btn--copper btn--sm" onclick="window.BTT_CART && window.BTT_CART.openQuickOrder({ id: 'komplekt-taper-80-todo', slug: 'komplekt-taper-80-todo', name: 'Комплект: стол Taper 80x80 + 4 стула Todo (кофейный)', price: 1597000, now: 1597000, img: 'assets/bundle-taper-80-todo.jpg' })">В 1 клик</button>
+                <button type="button" class="btn btn--ghost btn--sm" data-quick-bundle='{"table":"stol-taper-80","chair":"stul-todo","qty":4,"chairColor":"coffee"}'>В конструктор</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Bundle 5: Taper 80x80 + 4 Noero Cappuccino -->
+        <article class="sol-card reveal" style="border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--spatial-shadow);display:flex;flex-direction:column">
+          <div style="position:relative;height:240px;overflow:hidden">
+            <img src="assets/bundle-taper-80-noero.jpg" alt="Комплект стол Taper 80x80 и 4 стула Noero" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease">
+            <span class="pill pill--copper tl" style="position:absolute;top:14px;left:14px;font-size:12px">Реечный дизайн</span>
+            <span class="pill pill--ghost tr" style="position:absolute;top:14px;right:14px;font-size:12px;background:rgba(255,255,255,0.9)">Экономия 130 000 сум</span>
+          </div>
+          <div style="padding:22px;display:flex;flex-direction:column;flex:1">
+            <h3 style="font-size:17.5px;font-weight:700;margin-bottom:8px">1 стол Taper 80×80 + 4 стула Noero (капучино)</h3>
+            <p style="font-size:13.5px;color:var(--muted);line-height:1.5;flex:1;margin-bottom:14px">Стол Taper 80×80 см с белой мраморной столешницей и 4 стула Noero с выразительной высокой спинкой 82 см в оттенке капучино. Повышенный комфорт посадки.</p>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Стол 80 × 80 × 75 см</span>
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">4 стула Noero</span>
+              <span class="chip-pill" style="font-size:11.5px;padding:3px 8px;background:var(--cream-2);border-radius:6px">Спинка 82 см</span>
+            </div>
+            <div style="border-top:1px solid var(--line-2);padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+              <div>
+                <span style="font-size:11px;color:var(--muted);display:block"><del>1 631 000 сум</del></span>
+                <strong style="font-size:18px;color:var(--copper)">1 501 000 сум</strong>
+              </div>
+              <div style="display:flex;gap:8px">
+                <button type="button" class="btn btn--copper btn--sm" onclick="window.BTT_CART && window.BTT_CART.openQuickOrder({ id: 'komplekt-taper-80-noero', slug: 'komplekt-taper-80-noero', name: 'Комплект: стол Taper 80x80 + 4 стула Noero (капучино)', price: 1501000, now: 1501000, img: 'assets/bundle-taper-80-noero.jpg' })">В 1 клик</button>
+                <button type="button" class="btn btn--ghost btn--sm" data-quick-bundle='{"table":"stol-taper-80","chair":"stul-noero","qty":4,"chairColor":"cappuccino"}'>В конструктор</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>

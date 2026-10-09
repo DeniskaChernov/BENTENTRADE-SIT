@@ -35,7 +35,8 @@ function syncProductsJs() {
       category: item.category,
       now: item.price,
       price: item.price,
-      old: 0,
+      old: item.price_old || 0,
+      price_old: item.price_old || 0,
       status: item.availability || item.status || "unknown",
       availability: item.availability || item.status || "unknown",
       stock: item.availability === "in_stock" ? 1 : (item.availability === "out_of_stock" ? 0 : null),
@@ -44,6 +45,9 @@ function syncProductsJs() {
       maxLoad: item.maxLoad || null,
       confirmedColors: item.confirmedColors || [],
       isTable: !!item.isTable,
+      product_type: item.product_type || "simple",
+      unit: item.unit || "pcs",
+      bundle_items: item.bundle_items || [],
       images: item.images || []
     };
     PRODUCTS[item.slug] = obj;

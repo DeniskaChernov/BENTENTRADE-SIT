@@ -36,6 +36,7 @@ const ALLOWED_CATEGORIES = new Set([
   'plastic-chairs',
   'upholstered-chairs',
   'tables',
+  'sets',
   'lighting',
   'rattan-raw'
 ]);

@@ -181,13 +181,20 @@
     tables: "tables",
     lamp: "lighting",
     lamps: "lighting",
-    lighting: "lighting"
+    lighting: "lighting",
+    set: "sets",
+    sets: "sets",
+    bundle: "sets",
+    bundles: "sets",
+    komplekt: "sets",
+    komplekty: "sets"
   };
   const CHIP_CAT_GROUPS = {
     chairs: ["wicker-chairs", "plastic-chairs"],
     "wicker-chairs": ["wicker-chairs"],
     "plastic-chairs": ["plastic-chairs"],
     tables: ["tables"],
+    sets: ["sets"],
     lighting: ["lighting"],
     "rattan-raw": ["rattan-raw"]
   };

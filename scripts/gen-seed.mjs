@@ -21,6 +21,7 @@ function main() {
   lines.push("DELETE FROM product_i18n;");
   lines.push("DELETE FROM media WHERE product_id IS NOT NULL;");
   lines.push("DELETE FROM product_aliases;");
+  lines.push("DELETE FROM bundle_items;");
   lines.push("DELETE FROM product_variants;");
   lines.push("DELETE FROM products;");
   lines.push("");
@@ -28,8 +29,8 @@ function main() {
   // 1. Insert canonical products & aliases
   MASTER.forEach((p, i) => {
     lines.push(
-      `INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability) VALUES ` +
-        `(${q(p.slug)}, ${q(p.category)}, ${q(p.slug)}, ${n(p.price)}, 0, 0, 1, ${i}, ${q(p.availability || "unknown")});`,
+      `INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, product_type, unit) VALUES ` +
+        `(${q(p.slug)}, ${q(p.category)}, ${q(p.slug)}, ${n(p.price)}, ${n(p.price_old || 0)}, 0, 1, ${p.sort != null ? p.sort : i}, ${q(p.availability || "unknown")}, ${q(p.product_type || "simple")}, ${q(p.unit || "pcs")});`,
     );
 
     if (p.legacyId) {
@@ -80,6 +81,16 @@ function main() {
         lines.push(
           `INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ` +
             `(${q(p.slug)}, ${q(code)}, ${q(nameRu)}, ${q(nameUz)}, ${q(nameEn)}, ${q(hex)}, ${q(mainImg)}, ${q(imgsJson)}, 0, 1, ${sort});`,
+        );
+      });
+    }
+
+    // Bundle items
+    if (Array.isArray(p.bundle_items)) {
+      p.bundle_items.forEach((bi, biIdx) => {
+        lines.push(
+          `INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ` +
+            `(${q(p.slug)}, ${q(bi.component_product_id)}, ${n(bi.quantity)}, ${n(bi.sort != null ? bi.sort : biIdx)});`,
         );
       });
     }

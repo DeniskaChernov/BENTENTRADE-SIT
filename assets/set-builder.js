@@ -439,6 +439,39 @@
     }
   }
 
+  function selectBundle(tableId, chairId, qty, chairColorId) {
+    const tIdx = TABLES.findIndex(t => t.id === tableId);
+    if (tIdx >= 0) selectedTableIndex = tIdx;
+    const cIdx = CHAIRS.findIndex(c => c.id === chairId);
+    if (cIdx >= 0) {
+      selectedChairIndex = cIdx;
+      selectedChairColorIndex = 0;
+      if (chairColorId && CHAIRS[cIdx].colors) {
+        const clrIdx = CHAIRS[cIdx].colors.findIndex(c => c.id === chairColorId);
+        if (clrIdx >= 0) selectedChairColorIndex = clrIdx;
+      }
+    }
+    if (qty) selectedChairQty = qty;
+    const targets = document.querySelectorAll("[data-set-builder-root]");
+    targets.forEach(el => renderBuilder(el));
+    const firstTarget = targets[0];
+    if (firstTarget) {
+      firstTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  // Handle [data-quick-bundle] click across the page
+  document.addEventListener("click", function(e) {
+    const btn = e.target.closest("[data-quick-bundle]");
+    if (!btn) return;
+    try {
+      const data = JSON.parse(btn.dataset.quickBundle);
+      if (data && data.table && data.chair) {
+        selectBundle(data.table, data.chair, data.qty || 4, data.chairColor);
+      }
+    } catch(err){}
+  });
+
   function init() {
     const targets = document.querySelectorAll("[data-set-builder-root]");
     targets.forEach(el => renderBuilder(el));
@@ -447,7 +480,8 @@
   window.BTT_SET_BUILDER = {
     init: init,
     render: renderBuilder,
-    calculate: calculateSet
+    calculate: calculateSet,
+    selectBundle: selectBundle
   };
 
   if (document.readyState === "loading") {
