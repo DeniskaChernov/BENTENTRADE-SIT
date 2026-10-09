@@ -1492,7 +1492,7 @@
     "legacyId": "l1",
     "model": "NOVA",
     "category": "lighting",
-    "price": 401000,
+    "price": 401047,
     "dimensions": "23,5 × 30,9 см",
     "materials": [
       "металл",
@@ -1502,47 +1502,53 @@
     "maxLoad": null,
     "confirmedColors": [
       {
-        "id": "gold",
+        "id": "white",
         "name": {
-          "ru": "Золотистый",
-          "uz": "Oltinrang",
-          "en": "Gold"
+          "ru": "Белый с чёрным основанием",
+          "uz": "Qora asosli oq",
+          "en": "White with black base"
         },
-        "hex": "#C5A059",
-        "image": "assets/prod-lamp-nova.svg",
+        "hex": "#F5F3EF",
+        "image": "assets/prod-lamp-nova.jpg",
         "images": [
-          "assets/prod-lamp-nova.svg"
+          "assets/prod-lamp-nova.jpg",
+          "assets/prod-lamp-nova-top.jpg",
+          "assets/prod-lamp-nova-shade.jpg",
+          "assets/prod-lamp-nova-base.jpg"
         ]
       }
     ],
     "isTable": false,
     "images": [
-      "assets/prod-lamp-nova.svg"
+      "assets/prod-lamp-nova.jpg",
+      "assets/prod-lamp-nova-top.jpg",
+      "assets/prod-lamp-nova-shade.jpg",
+      "assets/prod-lamp-nova-base.jpg"
     ],
     "i18n": {
       "ru": {
         "name": "Настольная лампа «NOVA»",
         "category_label": "Настольные лампы",
-        "description": "Настольная лампа NOVA (235×309 мм) с мягким тёплым светом. Геометричный плафон обеспечивает рассеянное освещение для спальни, гостиной и рабочего стола.",
+        "description": "Настольная лампа NOVA (235×309 мм) на архитектурном штативе-треноге. Органический плафон со скруглённым квадратным куполом и фактурным рельефом мягко рассеивает тёплый вечерний свет. Чёрные наклонные ножки обеспечивают устойчивость светильника на тумбе, консоли или рабочем столе, создавая стильный световой акцент.",
         "usage": "Для спальни, кабинета, прикроватной тумбы и гостиной",
         "seo_title": "Купить Настольная лампа «NOVA» в Ташкенте - BTT",
-        "seo_description": "Настольная лампа «NOVA» от BTT. Мягкое тёплое освещение. Размеры: 23,5 × 30,9 см. Доставка по Ташкенту и всему Узбекистану."
+        "seo_description": "Настольная лампа «NOVA» от BTT. Мягкое тёплое освещение, органический купол, ножки-тренога. Размеры: 23,5 × 30,9 см. Доставка по Ташкенту и всему Узбекистану."
       },
       "uz": {
         "name": "«NOVA» stol lampasi",
         "category_label": "Stol lampalari",
-        "description": "Yumshoq iliq nurli NOVA stol lampasi (235×309 mm). Geometrik qopqoq yotoqxona, mehmonxona va ish stoli uchun tarqoq yorug‘lik beradi.",
+        "description": "Qora uchoyoqli me’moriy asosdagi NOVA stol lampasi (235×309 mm). Dumaloqlangan to‘rtburchak shaklidagi relyefli gumbazi iliq oqshom nurini muloyim taratadi. Qiya oyoqchalari chiroqning tumba, konsol yoki ish stolida mustahkam turishini ta’minlaydi.",
         "usage": "Yotoqxona, kabinet, tumba va mehmonxona uchun",
         "seo_title": "Toshkentda «NOVA» stol lampasi sotib olish - BTT",
-        "seo_description": "BTT dan «NOVA» stol lampasi. O‘lchamlari: 23,5 × 30,9 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+        "seo_description": "BTT dan «NOVA» stol lampasi. Yumshoq iliq nur, relyefli gumbaz, uchoyoqli asos. O‘lchamlari: 23,5 × 30,9 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
       },
       "en": {
         "name": "NOVA Table Lamp",
         "category_label": "Table lamps",
-        "description": "NOVA table lamp (235×309 mm) with soft warm illumination. Geometric shade provides diffused light for bedrooms, living spaces, and desks.",
+        "description": "NOVA table lamp (235×309 mm) elevated on an architectural black tripod base. The organic square-rounded shade with horizontal texturing gently diffuses warm evening light. Angled tripod feet lend stability and understated sculptural presence to consoles, bedside tables, and desks.",
         "usage": "For bedrooms, desks, bedside stands, and living spaces",
         "seo_title": "Buy NOVA Table Lamp in Tashkent - BTT",
-        "seo_description": "NOVA Table Lamp by BTT. Dimensions: 23.5 × 30.9 cm. Delivery across Tashkent and Uzbekistan."
+        "seo_description": "NOVA Table Lamp by BTT. Warm ambient illumination, organic square-rounded shade, black tripod base. Dimensions: 23.5 × 30.9 cm. Delivery across Tashkent and Uzbekistan."
       }
     },
     "status": "in_stock",
@@ -1556,7 +1562,7 @@
     "legacyId": "l2",
     "model": "SORA",
     "category": "lighting",
-    "price": 740000,
+    "price": 740113,
     "dimensions": "25 × 43 см",
     "materials": [
       "металл",
@@ -1566,47 +1572,53 @@
     "maxLoad": null,
     "confirmedColors": [
       {
-        "id": "amber",
+        "id": "white",
         "name": {
-          "ru": "Янтарный",
-          "uz": "Qahrabo",
-          "en": "Amber"
+          "ru": "Белый",
+          "uz": "Oq",
+          "en": "White"
         },
-        "hex": "#D49B5B",
-        "image": "assets/prod-lamp-sora.svg",
+        "hex": "#F5F3EF",
+        "image": "assets/prod-lamp-sora.jpg",
         "images": [
-          "assets/prod-lamp-sora.svg"
+          "assets/prod-lamp-sora.jpg",
+          "assets/prod-lamp-sora-shade.jpg",
+          "assets/prod-lamp-sora-base.jpg",
+          "assets/prod-lamp-sora-scene.jpg"
         ]
       }
     ],
     "isTable": false,
     "images": [
-      "assets/prod-lamp-sora.svg"
+      "assets/prod-lamp-sora.jpg",
+      "assets/prod-lamp-sora-shade.jpg",
+      "assets/prod-lamp-sora-base.jpg",
+      "assets/prod-lamp-sora-scene.jpg"
     ],
     "i18n": {
       "ru": {
         "name": "Настольная лампа «SORA»",
         "category_label": "Настольные лампы",
-        "description": "Настольная лампа SORA (250×430 мм) с мягким тёплым светом. Куполообразный плафон и гармоничные пропорции для вечернего освещения дома.",
+        "description": "Настольная лампа SORA (250×430 мм) в гармоничной двухъярусной геометрии. Цилиндрический плафон с волнообразным каннелированным рельефом опирается на сферическое спиральное основание. Светильник мягко светится обоими объёмами, наполняя интерьер спальни или гостиной глубоким тёплым светом и скульптурной эстетикой.",
         "usage": "Для гостиной, консоли, прикроватной зоны и кабинета",
         "seo_title": "Купить Настольная лампа «SORA» в Ташкенте - BTT",
-        "seo_description": "Настольная лампа «SORA» от BTT. Мягкое тёплое освещение. Размеры: 25 × 43 см. Доставка по Ташкенту и всему Узбекистану."
+        "seo_description": "Настольная лампа «SORA» от BTT. Мягкое тёплое освещение, двухъярусная скульптурная форма. Размеры: 25 × 43 см. Доставка по Ташкенту и всему Узбекистану."
       },
       "uz": {
         "name": "«SORA» stol lampasi",
         "category_label": "Stol lampalari",
-        "description": "Yumshoq iliq nurli SORA stol lampasi (250×430 mm). Gumbazsimon qopqoq va uyg‘un nisbatlar uyning oqshomgi yoritilishi uchun mos.",
+        "description": "Mukammal ikki qismli geometriyaga ega SORA stol lampasi (250×430 mm). To‘lqinsimon naqshli silindrsimon qopqog‘i spiral sharsimon asos bilan uyg‘unlashgan. Har ikki qismi ham muloyim nur taratib, yotoqxona yoki mehmonxonaga iliq sokinlik va estetik joziba bag‘ishlaydi.",
         "usage": "Mehmonxona, konsol, karavot yonidagi hudud va ish xonasi uchun",
         "seo_title": "Toshkentda «SORA» stol lampasi sotib olish - BTT",
-        "seo_description": "BTT dan «SORA» stol lampasi. O‘lchamlari: 25 × 43 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+        "seo_description": "BTT dan «SORA» stol lampasi. Yumshoq iliq nur, ikki qismli skulptur shakl. O‘lchamlari: 25 × 43 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
       },
       "en": {
         "name": "SORA Table Lamp",
         "category_label": "Table lamps",
-        "description": "SORA table lamp (250×430 mm) with soft warm illumination. Dome-shaped shade and balanced proportions for cozy evening lighting at home.",
+        "description": "SORA table lamp (250×430 mm) featuring a balanced two-tier composition. A wave-fluted cylindrical upper shade perches upon a spherical spiral-ribbed glowing base. Both sculpted volumes illuminate with warm ambient light, turning any living room console or bedside table into an artful sanctuary.",
         "usage": "For living room, console, bedside area, and study",
         "seo_title": "Buy SORA Table Lamp in Tashkent - BTT",
-        "seo_description": "SORA Table Lamp by BTT. Dimensions: 25 × 43 cm. Delivery across Tashkent and Uzbekistan."
+        "seo_description": "SORA Table Lamp by BTT. Warm ambient illumination, two-tier sculptural silhouette. Dimensions: 25 × 43 cm. Delivery across Tashkent and Uzbekistan."
       }
     },
     "status": "in_stock",
@@ -1620,7 +1632,7 @@
     "legacyId": "l3",
     "model": "VELA",
     "category": "lighting",
-    "price": 332000,
+    "price": 332252,
     "dimensions": "25 × 43 см",
     "materials": [
       "металл",
@@ -1630,47 +1642,53 @@
     "maxLoad": null,
     "confirmedColors": [
       {
-        "id": "sand",
+        "id": "white",
         "name": {
-          "ru": "Песочный",
-          "uz": "Qumrang",
-          "en": "Sand"
+          "ru": "Белый с чёрным основанием",
+          "uz": "Qora asosli oq",
+          "en": "White with black base"
         },
-        "hex": "#C9B086",
-        "image": "assets/prod-lamp-vela.svg",
+        "hex": "#F5F3EF",
+        "image": "assets/prod-lamp-vela.jpg",
         "images": [
-          "assets/prod-lamp-vela.svg"
+          "assets/prod-lamp-vela.jpg",
+          "assets/prod-lamp-vela-top.jpg",
+          "assets/prod-lamp-vela-shade.jpg",
+          "assets/prod-lamp-vela-base.jpg"
         ]
       }
     ],
     "isTable": false,
     "images": [
-      "assets/prod-lamp-vela.svg"
+      "assets/prod-lamp-vela.jpg",
+      "assets/prod-lamp-vela-top.jpg",
+      "assets/prod-lamp-vela-shade.jpg",
+      "assets/prod-lamp-vela-base.jpg"
     ],
     "i18n": {
       "ru": {
         "name": "Настольная лампа «VELA»",
         "category_label": "Настольные лампы",
-        "description": "Настольная лампа VELA (250×430 мм) с мягким тёплым светом. Лаконичный силуэт и комфортное вечернее освещение для жилых комнат.",
-        "usage": "Для спальни, прикроватной тумбочки и зоны отдыха",
+        "description": "Настольная лампа VELA (250×430 мм) в стиле скульптурного биоморфизма. Выразительный вихревой плафон с рельефной фактурой мягко рассеивает тёплый вечерний свет, создавая атмосферу уюта и гармонии. Контрастное основание в виде чёрной каннелированной колонны придаёт светильнику архитектурную устойчивость. Идеально смотрится на консоли, журнальном столике или прикроватной тумбе.",
+        "usage": "Для спальни, гостиной, консоли, прикроватной тумбы и зоны отдыха",
         "seo_title": "Купить Настольная лампа «VELA» в Ташкенте - BTT",
-        "seo_description": "Настольная лампа «VELA» от BTT. Мягкое тёплое освещение. Размеры: 25 × 43 см. Доставка по Ташкенту и всему Узбекистану."
+        "seo_description": "Настольная лампа «VELA» от BTT. Мягкое тёплое освещение, скульптурный вихревой плафон, чёрное основание. Размеры: 25 × 43 см. Доставка по Ташкенту и всему Узбекистану."
       },
       "uz": {
         "name": "«VELA» stol lampasi",
         "category_label": "Stol lampalari",
-        "description": "Yumshoq iliq nurli VELA stol lampasi (250×430 mm). Oddiy va qulay shakli xonalar uchun yoqimli oqshom yoritilishini ta’minlaydi.",
-        "usage": "Yotoqxona, tumba va dam olish hududi uchun",
+        "description": "Skulptur biomorfizm uslubidagi VELA stol lampasi (250×430 mm). Relyefli to‘lqinsimon gumbazi yumshoq iliq oqshom nurini taratib, xonada shinam va sokin muhit yaratadi. Qora rangli qirrali silindr asosi chiroqqa mustahkam me’moriy ko‘rinish beradi. Konsol, kofe stoli yoki yotoqxona tumbasi uchun ajoyib tanlov.",
+        "usage": "Yotoqxona, mehmonxona, konsol, tumba va dam olish hududi uchun",
         "seo_title": "Toshkentda «VELA» stol lampasi sotib olish - BTT",
-        "seo_description": "BTT dan «VELA» stol lampasi. O‘lchamlari: 25 × 43 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+        "seo_description": "BTT dan «VELA» stol lampasi. Yumshoq iliq nur, skulptur to‘lqinsimon plafon, qora asos. O‘lchamlari: 25 × 43 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
       },
       "en": {
         "name": "VELA Table Lamp",
         "category_label": "Table lamps",
-        "description": "VELA table lamp (250×430 mm) with soft warm illumination. Understated silhouette and comfortable evening lighting for living spaces.",
-        "usage": "For bedrooms, bedside tables, and lounge spots",
+        "description": "VELA table lamp (250×430 mm) in sculptural biomorphic design. The expressive swirling shade with textured fluting gently diffuses warm evening light, cultivating an atmosphere of cozy serenity. A contrasting fluted black column base provides architectural presence. Ideal for accent consoles, coffee tables, and bedside nightstands.",
+        "usage": "For bedrooms, living room consoles, nightstands, and lounge spaces",
         "seo_title": "Buy VELA Table Lamp in Tashkent - BTT",
-        "seo_description": "VELA Table Lamp by BTT. Dimensions: 25 × 43 cm. Delivery across Tashkent and Uzbekistan."
+        "seo_description": "VELA Table Lamp by BTT. Warm ambient lighting, sculptural swirling shade, black reeded base. Dimensions: 25 × 43 cm. Delivery across Tashkent and Uzbekistan."
       }
     },
     "status": "in_stock",
@@ -1754,7 +1772,7 @@
     "legacyId": "l5",
     "model": "LIVA",
     "category": "lighting",
-    "price": 442000,
+    "price": 442495,
     "dimensions": "12 × 24,8 см",
     "materials": [
       "металл",
@@ -1764,47 +1782,73 @@
     "maxLoad": null,
     "confirmedColors": [
       {
-        "id": "bronze",
+        "id": "white",
         "name": {
-          "ru": "Бронза",
-          "uz": "Bronza",
-          "en": "Bronze"
+          "ru": "Белый",
+          "uz": "Oq",
+          "en": "White"
         },
-        "hex": "#A26E3F",
-        "image": "assets/prod-lamp-liva.svg",
+        "hex": "#F5F3EF",
+        "image": "assets/prod-lamp-liva.jpg",
         "images": [
-          "assets/prod-lamp-liva.svg"
+          "assets/prod-lamp-liva.jpg",
+          "assets/prod-lamp-liva-top.jpg",
+          "assets/prod-lamp-liva-detail.jpg",
+          "assets/prod-lamp-liva-base.jpg"
+        ]
+      },
+      {
+        "id": "mint",
+        "name": {
+          "ru": "Мятный",
+          "uz": "Yalpiz",
+          "en": "Mint"
+        },
+        "hex": "#7DC2AF",
+        "image": "assets/prod-lamp-liva-mint.jpg",
+        "images": [
+          "assets/prod-lamp-liva-mint.jpg",
+          "assets/prod-lamp-liva-mint-top.jpg",
+          "assets/prod-lamp-liva-mint-detail.jpg",
+          "assets/prod-lamp-liva-mint-base.jpg"
         ]
       }
     ],
     "isTable": false,
     "images": [
-      "assets/prod-lamp-liva.svg"
+      "assets/prod-lamp-liva.jpg",
+      "assets/prod-lamp-liva-top.jpg",
+      "assets/prod-lamp-liva-detail.jpg",
+      "assets/prod-lamp-liva-base.jpg",
+      "assets/prod-lamp-liva-mint.jpg",
+      "assets/prod-lamp-liva-mint-top.jpg",
+      "assets/prod-lamp-liva-mint-detail.jpg",
+      "assets/prod-lamp-liva-mint-base.jpg"
     ],
     "i18n": {
       "ru": {
         "name": "Настольная лампа «LIVA»",
         "category_label": "Настольные лампы",
-        "description": "Настольная лампа LIVA (120×248 мм) с мягким тёплым светом. Узкий стройный корпус подходит для небольших столиков и акцентной подсветки.",
+        "description": "Настольная лампа LIVA (120×248 мм) в форме изящной спиральной колонны с динамичными рёбрами. Компактный вертикальный силуэт на тёмном квадратном основании создаёт мягкий рассеянный свет, идеально подходящий для акцентной подсветки журнальных столиков, прикроватных тумб, полок и интерьеров кафе.",
         "usage": "Для прикроватной тумбочки, кафе, ресторанов и столика",
         "seo_title": "Купить Настольная лампа «LIVA» в Ташкенте - BTT",
-        "seo_description": "Настольная лампа «LIVA» от BTT. Мягкое тёплое освещение. Размеры: 12 × 24,8 см. Доставка по Ташкенту и всему Узбекистану."
+        "seo_description": "Настольная лампа «LIVA» от BTT. Мягкое тёплое освещение, спиральная колонна с тонкими рёбрами. Размеры: 12 × 24,8 см. Доставка по Ташкенту и всему Узбекистану."
       },
       "uz": {
         "name": "«LIVA» stol lampasi",
         "category_label": "Stol lampalari",
-        "description": "Yumshoq iliq nurli LIVA stol lampasi (120×248 mm). Ingichka korpusi kichik stollar va qo‘shimcha yoritish uchun qulay.",
+        "description": "Dinamik qirrali nafis spiral ustun shaklidagi LIVA stol lampasi (120×248 mm). Qora kvadrat asosdagi ixcham vertikal silueti kofe stoli, yotoqxona tumbasi yoki javonlar uchun tarqoq yumshoq nur hosil qiladi.",
         "usage": "Karavot yonidagi tumba, qahvaxona, restoran va stollar uchun",
         "seo_title": "Toshkentda «LIVA» stol lampasi sotib olish - BTT",
-        "seo_description": "BTT dan «LIVA» stol lampasi. O‘lchamlari: 12 × 24,8 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+        "seo_description": "BTT dan «LIVA» stol lampasi. Yumshoq iliq nur, nafis spiral ustun. O‘lchamlari: 12 × 24,8 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
       },
       "en": {
         "name": "LIVA Table Lamp",
         "category_label": "Table lamps",
-        "description": "LIVA table lamp (120×248 mm) with soft warm illumination. Slim profile suitable for small tables and layered accent lighting.",
+        "description": "LIVA table lamp (120×248 mm) shaped as an elegant twisting fluted column. Rising gracefully from a dark square pedestal, its slender vertical silhouette diffuses gentle ambient lighting ideal for nightstands, coffee tables, shelving, and boutique hospitality settings.",
         "usage": "For nightstands, restaurant tables, and accent lighting",
         "seo_title": "Buy LIVA Table Lamp in Tashkent - BTT",
-        "seo_description": "LIVA Table Lamp by BTT. Dimensions: 12 × 24.8 cm. Delivery across Tashkent and Uzbekistan."
+        "seo_description": "LIVA Table Lamp by BTT. Warm ambient illumination, twisting fluted column silhouette. Dimensions: 12 × 24.8 cm. Delivery across Tashkent and Uzbekistan."
       }
     },
     "status": "in_stock",
@@ -1818,7 +1862,7 @@
     "legacyId": "l6",
     "model": "ARIA",
     "category": "lighting",
-    "price": 317000,
+    "price": 316941,
     "dimensions": "11,8 × 24,35 см",
     "materials": [
       "металл",
@@ -1828,47 +1872,53 @@
     "maxLoad": null,
     "confirmedColors": [
       {
-        "id": "brass",
+        "id": "white",
         "name": {
-          "ru": "Латунь",
-          "uz": "Latun",
-          "en": "Brass"
+          "ru": "Белый с деревом",
+          "uz": "Oq yog‘ochli",
+          "en": "White with wooden base"
         },
-        "hex": "#B8860B",
-        "image": "assets/prod-lamp-aria.svg",
+        "hex": "#F5F3EF",
+        "image": "assets/prod-lamp-aria.jpg",
         "images": [
-          "assets/prod-lamp-aria.svg"
+          "assets/prod-lamp-aria.jpg",
+          "assets/prod-lamp-aria-top.jpg",
+          "assets/prod-lamp-aria-shade.jpg",
+          "assets/prod-lamp-aria-base.jpg"
         ]
       }
     ],
     "isTable": false,
     "images": [
-      "assets/prod-lamp-aria.svg"
+      "assets/prod-lamp-aria.jpg",
+      "assets/prod-lamp-aria-top.jpg",
+      "assets/prod-lamp-aria-shade.jpg",
+      "assets/prod-lamp-aria-base.jpg"
     ],
     "i18n": {
       "ru": {
         "name": "Настольная лампа «ARIA»",
         "category_label": "Настольные лампы",
-        "description": "Настольная лампа ARIA (118×243,5 мм) с мягким тёплым светом. Минималистичный светильник для спокойного вечернего освещения и отдыха.",
+        "description": "Настольная лампа ARIA (118×243,5 мм) с волнообразными вертикальными лепестками на тёплом деревянном основании. Тонкие пластины мягко направляют световой поток изнутри, создавая игру полутеней и уютную атмосферу для вечернего чтения, отдыха и умиротворения.",
         "usage": "Для чтения, спальни, рабочего стола и прикроватной зоны",
         "seo_title": "Купить Настольная лампа «ARIA» в Ташкенте - BTT",
-        "seo_description": "Настольная лампа «ARIA» от BTT. Мягкое тёплое освещение. Размеры: 11,8 × 24,35 см. Доставка по Ташкенту и всему Узбекистану."
+        "seo_description": "Настольная лампа «ARIA» от BTT. Мягкое тёплое освещение, волнообразные лепестки, деревянное основание. Размеры: 11,8 × 24,35 см. Доставка по Ташкенту и всему Узбекистану."
       },
       "uz": {
         "name": "«ARIA» stol lampasi",
         "category_label": "Stol lampalari",
-        "description": "Yumshoq iliq nurli ARIA stol lampasi (118×243,5 mm). Tinch oqshom yoritilishi va dam olish uchun mo‘ljallangan ixcham chiroq.",
+        "description": "Yog‘och asosli to‘lqinsimon vertikal qirralarga ega ARIA stol lampasi (118×243,5 mm). Ichki iliq nur nozik qirralar orasidan mayin taralib, xonada oqshomgi mutolaa va dam olish uchun sokin yoqimli muhit yaratadi.",
         "usage": "Mutolaa, yotoqxona, ish stoli va karavot yonidagi tumba uchun",
         "seo_title": "Toshkentda «ARIA» stol lampasi sotib olish - BTT",
-        "seo_description": "BTT dan «ARIA» stol lampasi. O‘lchamlari: 11,8 × 24,35 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
+        "seo_description": "BTT dan «ARIA» stol lampasi. Yumshoq iliq nur, vertikal to‘lqinli qirralar, yog‘och asos. O‘lchamlari: 11,8 × 24,35 sm. Toshkent va butun O‘zbekiston bo‘ylab yetkazib berish."
       },
       "en": {
         "name": "ARIA Table Lamp",
         "category_label": "Table lamps",
-        "description": "ARIA table lamp (118×243.5 mm) with soft warm illumination. Minimalist luminaire designed for calm evening lighting and relaxation.",
+        "description": "ARIA table lamp (118×243.5 mm) enveloped in undulating vertical ribbons upon a rich wooden pedestal. Light filters gently through the vertical fins, casting soft shadows and serene warmth across bedside tables, desks, and reading nooks.",
         "usage": "For reading nooks, bedrooms, desks, and nightstands",
         "seo_title": "Buy ARIA Table Lamp in Tashkent - BTT",
-        "seo_description": "ARIA Table Lamp by BTT. Dimensions: 11.8 × 24.35 cm. Delivery across Tashkent and Uzbekistan."
+        "seo_description": "ARIA Table Lamp by BTT. Warm ambient illumination, undulating vertical ribbons, wooden base. Dimensions: 11.8 × 24.35 cm. Delivery across Tashkent and Uzbekistan."
       }
     },
     "status": "in_stock",

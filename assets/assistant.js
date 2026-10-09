@@ -89,12 +89,12 @@
       }
     ],
     lamps: [
-      { id: "nova", name: "NOVA", price: 401000, size: "235×309 мм", desc: "Мягкое тёплое освещение", slug: "lampa-nova" },
-      { id: "sora", name: "SORA", price: 740000, size: "250×430 мм", desc: "Мягкое тёплое освещение", slug: "lampa-sora" },
-      { id: "vela", name: "VELA", price: 332000, size: "250×430 мм", desc: "Мягкое тёплое освещение", slug: "lampa-vela" },
+      { id: "nova", name: "NOVA", price: 401047, size: "235×309 мм", desc: "Мягкое тёплое освещение", slug: "lampa-nova" },
+      { id: "sora", name: "SORA", price: 740113, size: "250×430 мм", desc: "Мягкое тёплое освещение", slug: "lampa-sora" },
+      { id: "vela", name: "VELA", price: 332252, size: "250×430 мм", desc: "Мягкое тёплое освещение", slug: "lampa-vela" },
       { id: "runa", name: "RUNA", price: 491000, size: "190×223 мм", desc: "Мягкое тёплое освещение", slug: "lampa-runa" },
-      { id: "liva", name: "LIVA", price: 442000, size: "120×248 мм", desc: "Мягкое тёплое освещение", slug: "lampa-liva" },
-      { id: "aria", name: "ARIA", price: 317000, size: "118×243,5 мм", desc: "Мягкое тёплое освещение", slug: "lampa-aria" }
+      { id: "liva", name: "LIVA", price: 442495, size: "120×248 мм", desc: "Мягкое тёплое освещение", slug: "lampa-liva" },
+      { id: "aria", name: "ARIA", price: 316941, size: "118×243,5 мм", desc: "Мягкое тёплое освещение", slug: "lampa-aria" }
     ],
     rattan: [
       { id: "polutrubka", name: "Полутрубка", slug: "rotang-polutrubka" },
@@ -162,12 +162,12 @@
           "<b>Другие комплекты с плетёными стульями:</b> [цена стола в комплекте] + 4 × 499 000 сум.<br>" +
           "Например: Taper 135 + 4 Vertex = <b>2 856 000 сум</b>, Corda 135 + 4 Corda = <b>2 945 000 сум</b>, Taper Rotang 135 + 4 Vertex = <b>2 950 000 сум</b>.",
         "Настольные лампы": "<b>Настольные лампы для дома BTT (мягкое тёплое освещение):</b><br>" +
-          "• <b>NOVA</b> (235×309 мм): 401 000 сум / шт.<br>" +
-          "• <b>SORA</b> (250×430 мм): 740 000 сум / шт.<br>" +
-          "• <b>VELA</b> (250×430 мм): 332 000 сум / шт.<br>" +
+          "• <b>NOVA</b> (235×309 мм): 401 047 сум / шт.<br>" +
+          "• <b>SORA</b> (250×430 мм): 740 113 сум / шт.<br>" +
+          "• <b>VELA</b> (250×430 мм): 332 252 сум / шт.<br>" +
           "• <b>RUNA</b> (190×223 мм): 491 000 сум / шт.<br>" +
-          "• <b>LIVA</b> (120×248 мм): 442 000 сум / шт.<br>" +
-          "• <b>ARIA</b> (118×243,5 мм): 317 000 сум / шт.<br>" +
+          "• <b>LIVA</b> (120×248 мм): 442 495 сум / шт.<br>" +
+          "• <b>ARIA</b> (118×243,5 мм): 316 941 сум / шт.<br>" +
           "Идеальны для спальни, гостиной и создания уютного тёплого интерьера.",
         "Искусственный ротанг": "<b>Искусственный ротанг BTT (производство и сырьё):</b><br>" +
           "Доступные профили:<br>" +
@@ -279,12 +279,12 @@
           "Masalan: Taper 80x80 + 4 ta Roero = <b>1 405 000 so‘m</b>, Vertex D90 + 4 ta Roero = <b>1 352 000 so‘m</b>.<br><br>" +
           "<b>To‘qilgan stulli boshqa to‘plamlar:</b> [stol narxi] + 4 × 499 000 so‘m (masalan: Taper 135 + 4 ta Vertex = <b>2 856 000 so‘m</b>, Corda 135 + 4 ta Corda = <b>2 945 000 so‘m</b>).",
         "Stol lampalari": "<b>Uy uchun BTT stol lampalari (iliq va mayin yorug‘lik):</b><br>" +
-          "• <b>NOVA</b> (235×309 mm): 401 000 so‘m<br>" +
-          "• <b>SORA</b> (250×430 mm): 740 000 so‘m<br>" +
-          "• <b>VELA</b> (250×430 mm): 332 000 so‘m<br>" +
+          "• <b>NOVA</b> (235×309 mm): 401 047 so‘m<br>" +
+          "• <b>SORA</b> (250×430 mm): 740 113 so‘m<br>" +
+          "• <b>VELA</b> (250×430 mm): 332 252 so‘m<br>" +
           "• <b>RUNA</b> (190×223 mm): 491 000 so‘m<br>" +
-          "• <b>LIVA</b> (120×248 mm): 442 000 so‘m<br>" +
-          "• <b>ARIA</b> (118×243,5 mm): 317 000 so‘m<br>" +
+          "• <b>LIVA</b> (120×248 mm): 442 495 so‘m<br>" +
+          "• <b>ARIA</b> (118×243,5 mm): 316 941 so‘m<br>" +
           "Yotoqxona va mehmonxona uchun ajoyib qulaylik yaratadi.",
         "Sun'iy rotang": "<b>BTT sun'iy rotang xomashyosi va profillari:</b><br>" +
           "• Yarim naycha (Полутрубка)<br>" +
@@ -389,12 +389,12 @@
           "Example: Taper 80x80 + 4 Roero = <b>1,405,000 UZS</b>, Vertex D90 + 4 Roero = <b>1,352,000 UZS</b>.<br><br>" +
           "<b>Other wicker chair sets:</b> [table combo price] + 4 × 499,000 UZS (e.g. Taper 135 + 4 Vertex = <b>2,856,000 UZS</b>, Corda 135 + 4 Corda = <b>2,945,000 UZS</b>).",
         "Table lamps": "<b>BTT Table Lamps for Home (soft warm ambient lighting):</b><br>" +
-          "• <b>NOVA</b> (235×309 mm): 401,000 UZS<br>" +
-          "• <b>SORA</b> (250×430 mm): 740,000 UZS<br>" +
-          "• <b>VELA</b> (250×430 mm): 332,000 UZS<br>" +
+          "• <b>NOVA</b> (235×309 mm): 401,047 UZS<br>" +
+          "• <b>SORA</b> (250×430 mm): 740,113 UZS<br>" +
+          "• <b>VELA</b> (250×430 mm): 332,252 UZS<br>" +
           "• <b>RUNA</b> (190×223 mm): 491,000 UZS<br>" +
-          "• <b>LIVA</b> (120×248 mm): 442,000 UZS<br>" +
-          "• <b>ARIA</b> (118×243.5 mm): 317,000 UZS<br>" +
+          "• <b>LIVA</b> (120×248 mm): 442,495 UZS<br>" +
+          "• <b>ARIA</b> (118×243.5 mm): 316,941 UZS<br>" +
           "Crafted for cozy bedrooms, living areas, and nightstands.",
         "Artificial rattan": "<b>BTT Synthetic Rattan Profiles (raw material manufacturing):</b><br>" +
           "Available profiles:<br>" +
