@@ -911,7 +911,7 @@
           "assets/prod-table-taper-rotang-80-white-front.jpg",
           "assets/prod-table-taper-rotang-80-detail-white.jpg",
           "assets/prod-table-taper-rotang-80-detail-leg.jpg",
-          "assets/scene-dining-marble.png"
+          "assets/bundle-taper-80-corda.jpg"
         ]
       },
       {
@@ -941,7 +941,7 @@
       "assets/prod-table-taper-rotang-80-detail-white.jpg",
       "assets/prod-table-taper-rotang-80-detail-black.jpg",
       "assets/prod-table-taper-rotang-80-detail-leg.jpg",
-      "assets/scene-dining-marble.png"
+      "assets/bundle-taper-80-corda.jpg"
     ],
     "i18n": {
       "ru": {
@@ -1001,7 +1001,7 @@
           "assets/prod-table-vertex-d90.jpg",
           "assets/prod-table-vertex-d90-detail-top.jpg",
           "assets/prod-table-vertex-d90-detail-leg.jpg",
-          "assets/scene-dining-marble.png"
+          "assets/bundle-vertex-d90-vertex.jpg"
         ]
       },
       {
@@ -1027,7 +1027,7 @@
       "assets/prod-table-vertex-black.jpg",
       "assets/prod-table-vertex-d90-detail-top.jpg",
       "assets/prod-table-vertex-d90-detail-leg.jpg",
-      "assets/scene-dining-marble.png"
+      "assets/bundle-vertex-d90-vertex.jpg"
     ],
     "i18n": {
       "ru": {
@@ -1264,7 +1264,7 @@
         "image": "assets/prod-table-vertex-80-white.svg",
         "images": [
           "assets/prod-table-vertex-80-white.svg",
-          "assets/scene-dining-marble.png"
+          "assets/bundle-taper-80-vertex.jpg"
         ]
       },
       {
@@ -1286,7 +1286,7 @@
     "images": [
       "assets/prod-table-vertex-80-white.svg",
       "assets/prod-table-vertex-80-black.svg",
-      "assets/scene-dining-marble.png"
+      "assets/bundle-taper-80-vertex.jpg"
     ],
     "i18n": {
       "ru": {
@@ -3282,7 +3282,7 @@
           "assets/bundle-taper-135-roero.jpg",
           "assets/prod-table-taper-135-white.jpg",
           "assets/prod-chair-roero-grey.jpg",
-          "assets/scene-dining-marble.png"
+          "assets/prod-table-taper-135-white-scene.jpg"
         ]
       }
     ],
@@ -3291,7 +3291,7 @@
       "assets/bundle-taper-135-roero.jpg",
       "assets/prod-table-taper-135-white.jpg",
       "assets/prod-chair-roero-grey.jpg",
-      "assets/scene-dining-marble.png"
+      "assets/prod-table-taper-135-white-scene.jpg"
     ],
     "bundle_items": [
       {
@@ -3640,7 +3640,7 @@
   };
 
   window.BTT_CAT_IMG = {
-    all:                 "assets/scene-dining-warm.png",
+    all:                 "assets/bundle-vertex-d90-vertex.jpg",
     "wicker-chairs":     "assets/prod-chair-corda.jpg",
     "plastic-chairs":    "assets/prod-chair-roero-black.jpg",
     tables:              "assets/prod-table-corda-135-black.jpg",
@@ -3648,7 +3648,7 @@
     "rattan-raw":        "assets/prod-rattan-polutrubka.svg",
     // legacy category aliases
     furniture:           "assets/prod-chair-corda.jpg",
-    indoor:              "assets/scene-dining-marble.png",
+    indoor:              "assets/prod-table-taper-135-scene.jpg",
     planter:             "assets/prod-chair-corda.jpg",
     basket:              "assets/prod-chair-corda.jpg"
   };

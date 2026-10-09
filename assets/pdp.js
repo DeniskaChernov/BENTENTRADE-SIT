@@ -447,7 +447,7 @@
     "white": "assets/scene-dining-light.png",
     "yellow": "assets/scene-dining-warm.png",
     "red": "assets/scene-dining-warm.png",
-    "white-marble": "assets/scene-dining-marble.png",
+    "white-marble": "assets/bundle-vertex-d90-vertex.jpg",
     "black-marble": "assets/scene-dining-contrast.png"
   };
 
