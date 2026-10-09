@@ -101,7 +101,7 @@
       en:{k:"Planters",t:"Wicker planters & baskets",s:"Woven synthetic rattan planters and baskets for plants, home and garden."}
     },
     sets: {
-      img: CAT.furniture || "assets/hero-garden-furniture.png",
+      img: "assets/bundle-taper-80-corda.jpg",
       ru:{k:"Комплекты мебели",t:"Готовые мебельные комплекты",s:"Обеденные и лаунж-наборы столов и стульев для дома, сада, веранды и HoReCa."},
       uz:{k:"Mebel to‘plamlari",t:"Tayyor mebel to‘plamlari",s:"Uy, bog‘, ayvon va HoReCa uchun stol va stullardan iborat qulay to‘plamlar."},
       en:{k:"Furniture Sets",t:"Coordinated furniture sets",s:"Dining and lounge table and chair sets for home, patio, garden and HoReCa."}
@@ -120,11 +120,11 @@
     const h = (location.hash || "").replace("#","");
     const raw = q || h || "all";
     const alias = {
-      planter: "wicker-chairs",
-      planters: "wicker-chairs",
-      basket: "wicker-chairs",
-      rattan: "rattan-raw",
-      "rattan-raw": "rattan-raw",
+      planter: "planters",
+      planters: "planters",
+      basket: "planters",
+      rattan: "rattan",
+      "rattan-raw": "rattan",
       wicker: "wicker-chairs",
       "wicker-chairs": "wicker-chairs",
       furniture: "wicker-chairs",

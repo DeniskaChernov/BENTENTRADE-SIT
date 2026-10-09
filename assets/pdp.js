@@ -435,20 +435,20 @@
   };
 
   const COLOR_SCENES = {
-    "cappuccino": "assets/scene-dining-warm.png",
-    "beige": "assets/scene-dining-warm.png",
-    "coffee": "assets/scene-dining-beige.png",
-    "olive": "assets/hero-garden-furniture.png",
-    "blue": "assets/scene-dining-azure.png",
-    "orange": "assets/scene-dining-warm.png",
-    "grey": "assets/scene-dining-grey.png",
-    "gray": "assets/scene-dining-grey.png",
-    "black": "assets/scene-dining-contrast.png",
-    "white": "assets/scene-dining-light.png",
-    "yellow": "assets/scene-dining-warm.png",
-    "red": "assets/scene-dining-warm.png",
+    "cappuccino": "assets/bundle-taper-80-todo.jpg",
+    "beige": "assets/bundle-vertex-d90-vertex.jpg",
+    "coffee": "assets/bundle-taper-80-roero.jpg",
+    "olive": "assets/bundle-vertex-d90-jardin.jpg",
+    "blue": "assets/bundle-taper-135-noero.jpg",
+    "orange": "assets/bundle-taper-80-roero.jpg",
+    "grey": "assets/bundle-taper-135-jardin.jpg",
+    "gray": "assets/bundle-taper-135-jardin.jpg",
+    "black": "assets/bundle-vertex-d90-corda.jpg",
+    "white": "assets/prod-table-taper-135-white-scene.jpg",
+    "yellow": "assets/bundle-taper-80-todo.jpg",
+    "red": "assets/bundle-taper-80-todo.jpg",
     "white-marble": "assets/bundle-vertex-d90-vertex.jpg",
-    "black-marble": "assets/scene-dining-contrast.png"
+    "black-marble": "assets/prod-table-corda-135-black.jpg"
   };
 
   const PRODUCT_DEFAULT_SCENES = {

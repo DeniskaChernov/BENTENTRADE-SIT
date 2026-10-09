@@ -812,7 +812,7 @@
           "assets/prod-chair-jardin-olive-back.jpg",
           "assets/prod-chair-jardin-olive-detail-seat.jpg",
           "assets/prod-chair-jardin-olive-detail-back.jpg",
-          "assets/hero-garden-furniture.png"
+          "assets/bundle-vertex-d90-jardin.jpg"
         ]
       },
       {
@@ -829,7 +829,7 @@
           "assets/prod-chair-jardin-grey-back.jpg",
           "assets/prod-chair-jardin-grey-detail-seat.jpg",
           "assets/prod-chair-jardin-grey-detail-back.jpg",
-          "assets/scene-dining-grey.png"
+          "assets/bundle-taper-135-jardin.jpg"
         ]
       }
     ],
@@ -839,17 +839,16 @@
       "assets/prod-chair-jardin-colors.jpg",
       "assets/prod-chair-jardin-back.jpg",
       "assets/prod-chair-jardin-detail-seat.jpg",
-      "assets/scene-dining-warm.png",
+      "assets/bundle-vertex-d90-jardin.jpg",
       "assets/prod-chair-jardin-olive.jpg",
       "assets/prod-chair-jardin-olive-back.jpg",
       "assets/prod-chair-jardin-olive-detail-seat.jpg",
       "assets/prod-chair-jardin-olive-detail-back.jpg",
-      "assets/hero-garden-furniture.png",
+      "assets/bundle-taper-135-jardin.jpg",
       "assets/prod-chair-jardin-grey.jpg",
       "assets/prod-chair-jardin-grey-back.jpg",
       "assets/prod-chair-jardin-grey-detail-seat.jpg",
-      "assets/prod-chair-jardin-grey-detail-back.jpg",
-      "assets/scene-dining-grey.png"
+      "assets/prod-chair-jardin-grey-detail-back.jpg"
     ],
     "i18n": {
       "ru": {

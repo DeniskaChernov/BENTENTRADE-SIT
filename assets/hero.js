@@ -18,7 +18,7 @@
     },
     {
       cat: "sets",
-      sideImg: "assets/bundle-vertex-d90-vertex.jpg",
+      sideImg: "assets/bundle-taper-80-corda.jpg",
       t1:      {ru:"Обеденные",               uz:"Tushlik",                en:"Dining"},
       t2:      {ru:"комплекты",               uz:"to‘plamlari",            en:"sets"},
       sub:     {ru:"Готовые комплекты столов со стульями по специальным фабричным ценам с экономией до 200 000 сум.",
@@ -29,7 +29,7 @@
     },
     {
       cat: "wicker-chairs",
-      sideImg: "assets/prod-chair-corda.jpg",
+      sideImg: "assets/bundle-vertex-d90-corda.jpg",
       t1:      {ru:"Плетёные",                uz:"To‘qilgan",              en:"Wicker"},
       t2:      {ru:"стулья",                  uz:"stullar",                en:"chairs"},
       sub:     {ru:"Модели Vertex и Corda с металлическим каркасом, плетением и мягкими подушками.",
@@ -40,7 +40,7 @@
     },
     {
       cat: "plastic-chairs",
-      sideImg: "assets/prod-chair-jardin-colors.jpg",
+      sideImg: "assets/bundle-vertex-d90-jardin.jpg",
       t1:      {ru:"Пластиковые",             uz:"Plastik",                en:"Plastic"},
       t2:      {ru:"стулья",                  uz:"stullar",                en:"chairs"},
       sub:     {ru:"Модели ROERO, NOERO, TODO и JARDIN - лёгкие, прочные, подходят для улицы и помещений.",
