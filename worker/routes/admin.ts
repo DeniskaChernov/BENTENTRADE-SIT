@@ -617,11 +617,10 @@ app.post("/articles", async (c) => {
   const slug = str(b.slug, 120).replace(/[^a-z0-9-]/gi, "-").toLowerCase();
   if (!slug) return c.json({ error: "slug_required" }, 422);
   const status = b.status === "published" ? "published" : "draft";
-  const publishedAt = status === "published" ? "datetime('now')" : "NULL";
   const ins = await c.env.DB.prepare(
-    `INSERT INTO articles (slug, cover_media, status, published_at) VALUES (?, ?, ?, ${publishedAt})`,
+    `INSERT INTO articles (slug, cover_media, status, published_at) VALUES (?, ?, ?, CASE WHEN ? = 'published' THEN datetime('now') ELSE NULL END)`,
   )
-    .bind(slug, str(b.cover_media, 300) || null, status)
+    .bind(slug, str(b.cover_media, 300) || null, status, status)
     .run();
   const id = ins.meta.last_row_id as number;
   await upsertArticleI18n(c, id, b.i18n);

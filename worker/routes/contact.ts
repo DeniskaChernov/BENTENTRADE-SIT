@@ -76,8 +76,8 @@ app.post("/", async (c) => {
       }).join("\n");
       tgMsg += `\n\n<b>Контекст диалога:</b>\n${recent}`;
     }
-  } else {
-    tgMsg = `<b>Новая заявка #${res.meta.last_row_id}</b>\n` +
+    const reqId = res.meta?.last_row_id ?? "";
+    tgMsg = `<b>Новая заявка${reqId ? ` #${reqId}` : ""}</b>\n` +
       `Имя: ${escapeHtml(name)}\n` +
       (phone ? `Телефон: ${escapeHtml(phone)}\n` : "") +
       (email ? `Email: ${escapeHtml(email)}\n` : "") +
@@ -86,7 +86,7 @@ app.post("/", async (c) => {
 
   await notifyTelegram(c.env, tgMsg);
 
-  return c.json({ ok: true, id: res.meta.last_row_id });
+  return c.json({ ok: true, id: res.meta?.last_row_id ?? 0 });
 });
 
 export default app;

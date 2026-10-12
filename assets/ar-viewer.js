@@ -72,7 +72,7 @@
 
     const curUrl = window.location.href;
     const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=" + encodeURIComponent(curUrl);
-    const modelSrc = "assets/models/chair.glb";
+    const modelSrc = prod.model3d || prod.glb || "/assets/models/chair.glb";
     const dimText = prod.dimensions || "82 × 48 × 49 см";
     const prodName = (window.BTT_I18N && window.BTT_I18N.t) ? window.BTT_I18N.t(prod.slug + ".name") : (prod.name || prod.model);
 

@@ -41,10 +41,13 @@ app.post("/", async (c) => {
   const customerName = str(body.name, 120) || (isQuick ? "Покупатель (быстрый заказ)" : "");
   const customerPhone = str(body.phone, 40);
   const customerEmail = str(body.email, 160);
-  const address = str(body.address, 400);
+  let address = str(body.address, 400);
+  if (!address && body.delivery && typeof body.delivery === "string" && body.delivery.startsWith("Адрес: ")) {
+    address = body.delivery.replace(/^Адрес:\s*/, "").slice(0, 400);
+  }
   const comment = str(body.comment, 2000);
   const rawDelivery = str(body.delivery, 20);
-  const deliveryMethod = rawDelivery === "pickup" ? "pickup" : (isQuick && !rawDelivery ? "quick_order" : "delivery");
+  const deliveryMethod = rawDelivery === "pickup" ? "pickup" : (isQuick && (!rawDelivery || rawDelivery.startsWith("Адрес: ")) ? "quick_order" : "delivery");
   const rawPayment = str(body.payment || body.payment_method, 40) || "cash_or_pos";
   const paymentMethod = ["cash_or_pos", "click_payme", "card_or_invoice"].includes(rawPayment) ? rawPayment : "cash_or_pos";
   const promo = (str(body.promo, 30) || "").trim().toUpperCase();
@@ -296,7 +299,8 @@ app.post("/", async (c) => {
   }
 
   // Claim/link any past guest orders matching this user's email or phone
-  if (userId && (customerEmail || cleanPhone)) {
+  const matchPhone = cleanPhone && cleanPhone.length >= 9 ? cleanPhone.slice(-9) : "";
+  if (userId && (customerEmail || matchPhone)) {
     try {
       await c.env.DB.prepare(
         `UPDATE orders 
@@ -307,7 +311,7 @@ app.post("/", async (c) => {
              OR (? != '' AND customer_phone IS NOT NULL AND replace(replace(replace(replace(customer_phone, ' ', ''), '-', ''), '(', ''), ')', '') LIKE ?)
            )`,
       )
-        .bind(userId, customerEmail ? customerEmail.toLowerCase() : "", cleanPhone, `%${cleanPhone.slice(-9)}%`)
+        .bind(userId, customerEmail ? customerEmail.toLowerCase() : "", matchPhone, `%${matchPhone}%`)
         .run();
     } catch (_) {}
   }

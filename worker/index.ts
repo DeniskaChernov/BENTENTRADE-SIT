@@ -592,21 +592,21 @@ app.get("/sitemap.xml", async (c) => {
         { loc: "https://btt.uz/article.html?slug=zachem-iskusstvennyy-rotang", freq: "monthly", priority: "0.65" },
         { loc: "https://btt.uz/article.html?slug=kak-vybrat-luchshiy-rotang", freq: "monthly", priority: "0.65" },
         { loc: "https://btt.uz/article.html?slug=pochemu-rabotayut-s-btt", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/uhod-za-mebelyu-iz-rotanga", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/profil-polumesyats-dlya-mebeli", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/rotang-dlya-terrasy", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/mebel-iz-rotanga-na-zakaz", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/iskusstvennyy-i-naturalnyy-rotang", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/sadovaya-mebel-rotang-tashkent", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/kashpo-iz-iskusstvennogo-rotanga", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/korziny-sunduki-rotang", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/kupit-rotang-buhtami", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/mebel-rotang-dlya-kafe", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/pletennaya-mebel-dlya-doma", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/dostavka-rotanga-po-uzbekistanu", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/rotang-dlya-balkona", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/palitra-tsvetov-rotanga-btt", freq: "monthly", priority: "0.65" },
-        { loc: "https://btt.uz/oformlenie-terassi-rotangom", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=uhod-za-mebelyu-iz-rotanga", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=profil-polumesyats-dlya-mebeli", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=rotang-dlya-terrasy", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=mebel-iz-rotanga-na-zakaz", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=iskusstvennyy-i-naturalnyy-rotang", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=sadovaya-mebel-rotang-tashkent", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=kashpo-iz-iskusstvennogo-rotanga", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=korziny-sunduki-rotang", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=kupit-rotang-buhtami", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=mebel-rotang-dlya-kafe", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=pletennaya-mebel-dlya-doma", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=dostavka-rotanga-po-uzbekistanu", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=rotang-dlya-balkona", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=palitra-tsvetov-rotanga-btt", freq: "monthly", priority: "0.65" },
+        { loc: "https://btt.uz/article.html?slug=oformlenie-terassi-rotangom", freq: "monthly", priority: "0.65" },
         { loc: "https://btt.uz/faq.html", freq: "monthly", priority: "0.55" },
         { loc: "https://btt.uz/delivery.html", freq: "monthly", priority: "0.5" },
         { loc: "https://btt.uz/returns.html", freq: "monthly", priority: "0.5" },
@@ -667,15 +667,40 @@ app.get("/product", async (c) => {
   return c.redirect("/catalog.html", 301);
 });
 
-// Legacy article redirects
-const ARTICLE_REDIRECTS: Record<string, string> = {
-  "/kashpo-iz-iskusstvennogo-rotanga": "/article.html?slug=kashpo-iz-iskusstvennogo-rotanga",
-  "/korziny-sunduki-rotang": "/article.html?slug=korziny-sunduki-rotang",
-  "/palitra-tsvetov-rotanga-btt": "/article.html?slug=palitra-tsvetov-rotanga-btt",
-};
+// Clean article routes: /article/:slug -> /article.html?slug=:slug and /articles/:slug -> /article.html?slug=:slug
+app.get("/article/:slug", (c) => {
+  const slug = c.req.param("slug");
+  return c.redirect(`/article.html?slug=${encodeURIComponent(slug)}`, 301);
+});
+app.get("/articles/:slug", (c) => {
+  const slug = c.req.param("slug");
+  return c.redirect(`/article.html?slug=${encodeURIComponent(slug)}`, 301);
+});
 
-for (const [fromPath, toPath] of Object.entries(ARTICLE_REDIRECTS)) {
-  app.get(fromPath, (c) => c.redirect(toPath, 301));
+// Legacy article slug redirects to canonical article.html?slug=...
+const ARTICLE_SLUGS = [
+  "zachem-iskusstvennyy-rotang",
+  "kak-vybrat-luchshiy-rotang",
+  "pochemu-rabotayut-s-btt",
+  "uhod-za-mebelyu-iz-rotanga",
+  "profil-polumesyats-dlya-mebeli",
+  "rotang-dlya-terrasy",
+  "mebel-iz-rotanga-na-zakaz",
+  "iskusstvennyy-i-naturalnyy-rotang",
+  "sadovaya-mebel-rotang-tashkent",
+  "kashpo-iz-iskusstvennogo-rotanga",
+  "korziny-sunduki-rotang",
+  "kupit-rotang-buhtami",
+  "mebel-rotang-dlya-kafe",
+  "pletennaya-mebel-dlya-doma",
+  "dostavka-rotanga-po-uzbekistanu",
+  "rotang-dlya-balkona",
+  "palitra-tsvetov-rotanga-btt",
+  "oformlenie-terassi-rotangom",
+];
+
+for (const slug of ARTICLE_SLUGS) {
+  app.get(`/${slug}`, (c) => c.redirect(`/article.html?slug=${encodeURIComponent(slug)}`, 301));
 }
 
 // HoReCa landing page

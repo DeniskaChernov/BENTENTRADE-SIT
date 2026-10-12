@@ -82,6 +82,7 @@
   function isPublicReadPath(p) {
     if (p === "/data/articles.json" || p === "/data/articles-seo.json") return true;
     if (p === "/api/products" || p.indexOf("/api/products/") === 0) return true;
+    if (p === "/api/categories" || p.indexOf("/api/categories/") === 0) return true;
     if (p === "/api/settings" || p === "/api/health") return true;
     if (p === "/api/articles" || p.indexOf("/api/articles/") === 0) return true;
     if (p === "/api/reviews") return true;

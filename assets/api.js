@@ -14,6 +14,7 @@
     if (method && method !== "GET") return false;
     const clean = path.split("?")[0];
     if (clean === "/api/products" || clean.indexOf("/api/products/") === 0) return true;
+    if (clean === "/api/categories" || clean.indexOf("/api/categories/") === 0) return true;
     if (clean === "/api/settings" || clean === "/api/health") return true;
     if (clean === "/api/articles" || clean.indexOf("/api/articles/") === 0) return true;
     if (clean === "/api/reviews") return true;

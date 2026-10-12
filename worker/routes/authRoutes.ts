@@ -42,8 +42,9 @@ app.post("/register", async (c) => {
   const userId = ins.meta.last_row_id as number;
 
   // Claim/link any existing orders placed by this user as a guest
-  const cleanPhone = (phone || "").replace(/\D/g, "");
-  if (email || cleanPhone) {
+  const rawDigits = (phone || "").replace(/\D/g, "");
+  const matchPhone = rawDigits.length >= 9 ? rawDigits.slice(-9) : "";
+  if (email || matchPhone) {
     try {
       await c.env.DB.prepare(
         `UPDATE orders 
@@ -54,7 +55,7 @@ app.post("/register", async (c) => {
              OR (? != '' AND customer_phone IS NOT NULL AND replace(replace(replace(replace(customer_phone, ' ', ''), '-', ''), '(', ''), ')', '') LIKE ?)
            )`,
       )
-        .bind(userId, email, cleanPhone, `%${cleanPhone.slice(-9)}%`)
+        .bind(userId, email, matchPhone, `%${matchPhone}%`)
         .run();
     } catch (_) {}
   }
@@ -95,8 +96,9 @@ app.post("/login", async (c) => {
   }
 
   // Claim/link any existing orders placed as guest with this user's email or phone
-  const cleanPhone = (user.phone || "").replace(/\D/g, "");
-  if (user.email || cleanPhone) {
+  const rawDigits = (user.phone || "").replace(/\D/g, "");
+  const matchPhone = rawDigits.length >= 9 ? rawDigits.slice(-9) : "";
+  if (user.email || matchPhone) {
     try {
       await c.env.DB.prepare(
         `UPDATE orders 
@@ -107,7 +109,7 @@ app.post("/login", async (c) => {
              OR (? != '' AND customer_phone IS NOT NULL AND replace(replace(replace(replace(customer_phone, ' ', ''), '-', ''), '(', ''), ')', '') LIKE ?)
            )`,
       )
-        .bind(user.id, user.email, cleanPhone, `%${cleanPhone.slice(-9)}%`)
+        .bind(user.id, user.email, matchPhone, `%${matchPhone}%`)
         .run();
     } catch (_) {}
   }

@@ -12,9 +12,11 @@ app.get("/", async (c) => {
   const lang = pickLang(c.req.query("lang"));
   const { results } = await c.env.DB.prepare(
     `SELECT a.id, a.slug, a.cover_media, a.published_at,
-            i.title, i.excerpt
+            COALESCE(i.title, i_ru.title) AS title,
+            COALESCE(i.excerpt, i_ru.excerpt) AS excerpt
      FROM articles a
      LEFT JOIN article_i18n i ON i.article_id = a.id AND i.lang = ?
+     LEFT JOIN article_i18n i_ru ON i_ru.article_id = a.id AND i_ru.lang = 'ru'
      WHERE a.status = 'published'
      ORDER BY a.published_at DESC, a.id DESC`,
   )
@@ -33,11 +35,18 @@ app.get("/:slug", async (c) => {
     .bind(slug)
     .first<{ id: number }>();
   if (!article) return c.json({ error: "not_found" }, 404);
-  const i18n = await c.env.DB.prepare(
+  let i18n = await c.env.DB.prepare(
     `SELECT title, excerpt, body FROM article_i18n WHERE article_id = ? AND lang = ?`,
   )
     .bind(article.id, lang)
     .first();
+  if (!i18n && lang !== "ru") {
+    i18n = await c.env.DB.prepare(
+      `SELECT title, excerpt, body FROM article_i18n WHERE article_id = ? AND lang = 'ru'`,
+    )
+      .bind(article.id)
+      .first();
+  }
   return c.json({ lang, article: { ...article, ...(i18n || {}) } });
 });
 

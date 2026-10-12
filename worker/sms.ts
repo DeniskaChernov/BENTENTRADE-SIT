@@ -178,6 +178,7 @@ export interface OrderSmsPayload {
 
 const DEFAULT_TEMPLATES: Record<string, string> = {
   created: "BTT: Ваш заказ #{order_id} на сумму {total} принят! Скоро свяжемся с вами.",
+  new: "BTT: Ваш заказ #{order_id} на сумму {total} принят! Скоро свяжемся с вами.",
   processing: "BTT: Заказ #{order_id} передан на комплектацию. Срок уточнит менеджер.",
   shipped: "BTT: Заказ #{order_id} передан курьеру/в службу доставки. Ожидайте прибытия.",
   delivered: "BTT: Заказ #{order_id} успешно доставлен! Спасибо за выбор BTT.",
@@ -213,11 +214,12 @@ export async function notifyOrderSms(
   }
 
   const statusKey = newStatus || order.status || "created";
-  const customKey = `sms_tpl_${statusKey}` as keyof SmsSettings;
-  const tpl = (settings[customKey] as string) || DEFAULT_TEMPLATES[statusKey] || DEFAULT_TEMPLATES.created;
+  const normKey = (statusKey === "new" || statusKey === "created") ? "created" : statusKey;
+  const customKey = `sms_tpl_${normKey}` as keyof SmsSettings;
+  const tpl = (settings[customKey] as string) || (settings[`sms_tpl_${statusKey}` as keyof SmsSettings] as string) || DEFAULT_TEMPLATES[normKey] || DEFAULT_TEMPLATES.created;
 
   const fmtTotal = () => {
-    const formatted = Math.round(order.total).toLocaleString("ru-RU").replace(/\s/g, " ");
+    const formatted = Math.round(Number(order.total) || 0).toLocaleString("ru-RU").replace(/\s/g, " ");
     const cur = order.currency || "сум";
     return `${formatted} ${cur}`;
   };
