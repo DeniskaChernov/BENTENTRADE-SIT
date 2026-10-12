@@ -29,7 +29,7 @@ app.get("/*", async (c) => {
 
   // Stored XSS prevention: force attachment download for non-safe media types
   const cType = (headers.get("content-type") || "").toLowerCase();
-  if (cType.includes("html") || cType.includes("javascript")) {
+  if (cType.includes("html") || cType.includes("javascript") || cType.includes("svg") || cType.includes("xml")) {
     headers.set("content-type", "application/octet-stream");
     headers.set("Content-Disposition", "attachment");
   }

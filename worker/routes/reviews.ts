@@ -7,16 +7,21 @@ const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
 /** GET /api/reviews?product_id=:id */
 app.get("/", async (c) => {
-  const productId = str(c.req.query("product_id"), 80);
+  const rawProductId = str(c.req.query("product_id"), 80);
   try {
     let query: string;
     let params: unknown[];
-    if (productId) {
+    if (rawProductId) {
+      let canonicalId = rawProductId;
+      const aliasRow = await c.env.DB.prepare(`SELECT product_id FROM product_aliases WHERE alias = ?`).bind(rawProductId).first<{ product_id: string }>();
+      if (aliasRow?.product_id) {
+        canonicalId = aliasRow.product_id;
+      }
       query = `SELECT id, product_id, author_name, city, rating, text, is_verified, created_at
                FROM reviews
-               WHERE product_id = ? AND status = 'approved'
+               WHERE (product_id = ? OR product_id = ?) AND status = 'approved'
                ORDER BY created_at DESC LIMIT 50`;
-      params = [productId];
+      params = [canonicalId, rawProductId];
     } else {
       query = `SELECT id, product_id, author_name, city, rating, text, is_verified, created_at
                FROM reviews
@@ -60,8 +65,16 @@ app.post("/", async (c) => {
     return c.json({ error: "validation", fields: ["product_id", "author_name", "text"] }, 422);
   }
 
-  // Validate that the target product actually exists in the database
-  const prodExists = await c.env.DB.prepare(`SELECT id FROM products WHERE id = ?`).bind(productId).first();
+  // Validate that the target product actually exists in the database (resolving aliases)
+  let targetProductId = productId;
+  let prodExists = await c.env.DB.prepare(`SELECT id FROM products WHERE id = ?`).bind(targetProductId).first();
+  if (!prodExists) {
+    const aliasRow = await c.env.DB.prepare(`SELECT product_id FROM product_aliases WHERE alias = ?`).bind(targetProductId).first<{ product_id: string }>();
+    if (aliasRow?.product_id) {
+      targetProductId = aliasRow.product_id;
+      prodExists = await c.env.DB.prepare(`SELECT id FROM products WHERE id = ?`).bind(targetProductId).first();
+    }
+  }
   if (!prodExists) {
     return c.json({ error: "product_not_found" }, 422);
   }
@@ -76,9 +89,9 @@ app.post("/", async (c) => {
       const ord = await c.env.DB.prepare(
         `SELECT oi.id FROM order_items oi
          JOIN orders o ON o.id = oi.order_id
-         WHERE o.user_id = ? AND oi.product_id = ? AND o.status != 'cancelled' LIMIT 1`,
+         WHERE o.user_id = ? AND (oi.product_id = ? OR oi.product_id = ?) AND o.status != 'cancelled' LIMIT 1`,
       )
-        .bind(userId, productId)
+        .bind(userId, targetProductId, productId)
         .first();
       if (ord) isVerified = 1;
     } catch (_) {}
@@ -92,7 +105,7 @@ app.post("/", async (c) => {
     `INSERT INTO reviews (product_id, user_id, author_name, city, rating, text, is_verified, status, created_at)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   )
-    .bind(productId, userId, authorName, city, rating, text, isVerified, status, createdAt)
+    .bind(targetProductId, userId, authorName, city, rating, text, isVerified, status, createdAt)
     .run();
 
   const newId = res.meta.last_row_id;
@@ -101,7 +114,7 @@ app.post("/", async (c) => {
   // Notify manager via Telegram
   await notifyTelegram(
     c.env,
-    `⭐ <b>Новый отзыв о товаре #${escapeHtml(productId)}</b>\n` +
+    `⭐ <b>Новый отзыв о товаре #${escapeHtml(targetProductId)}</b>\n` +
       `Оценка: ${stars} (${rating}/5)\n` +
       `Автор: ${escapeHtml(authorName)} (${escapeHtml(city)})\n` +
       (isVerified ? `Статус: <i>Проверенная покупка ✓</i>\n` : "") +

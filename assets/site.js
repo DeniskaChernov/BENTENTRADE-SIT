@@ -942,6 +942,7 @@
       sidebar.classList.add("is-open");
       if(scrim) scrim.classList.add("is-open");
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
       if(trigger) trigger.setAttribute("aria-expanded", "true");
       if(closeBtn) setTimeout(()=> closeBtn.focus(), 150);
     }
@@ -949,6 +950,7 @@
       sidebar.classList.remove("is-open");
       if(scrim) scrim.classList.remove("is-open");
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       if(trigger){
         trigger.setAttribute("aria-expanded", "false");
         trigger.focus();
