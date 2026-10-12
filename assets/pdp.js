@@ -327,12 +327,95 @@
     }
   }
 
+  function getCuratedRelated(){
+    if(!prod) return [];
+    const isTable = !!prod.isTable || prod.category === "tables";
+    const isChair = prod.category === "wicker-chairs" || prod.category === "plastic-chairs";
+    const isSet = prod.category === "sets";
+    const isLighting = prod.category === "lighting";
+    const isRattan = prod.category === "rattan-raw";
+
+    const bySlug = function(s){ return MASTER.find(function(m){ return m.slug === s; }); };
+    let candidateSlugs = [];
+
+    if(isTable){
+      if(prod.slug === "stol-vertex-d90"){
+        candidateSlugs = ["stul-vertex", "stul-roero", "stol-taper-80", "komplekt-vertex-d90-vertex"];
+      } else if(prod.slug === "stol-taper-80" || prod.slug === "stol-vertex-80"){
+        candidateSlugs = ["stul-jardin", "stul-roero", "stol-vertex-d90", "komplekt-taper-80-vertex"];
+      } else if(prod.slug === "stol-taper-rotang-80"){
+        candidateSlugs = ["stul-vertex", "stul-corda", "stol-taper-80", "komplekt-taper-rotang-80-vertex"];
+      } else if(prod.slug === "stol-taper-135"){
+        candidateSlugs = ["stul-todo", "stul-roero", "stol-corda-135", "komplekt-taper-135-vertex"];
+      } else if(prod.slug === "stol-corda-135"){
+        candidateSlugs = ["stul-corda", "stul-jardin", "stol-taper-135", "komplekt-corda-135-corda"];
+      } else if(prod.slug === "stol-taper-rotang-135"){
+        candidateSlugs = ["stul-corda", "stul-vertex", "stol-corda-135", "komplekt-taper-135-vertex"];
+      } else {
+        candidateSlugs = ["stul-vertex", "stul-roero", "stol-taper-80", "komplekt-vertex-d90-vertex"];
+      }
+    } else if(isChair){
+      if(prod.slug === "stul-vertex"){
+        candidateSlugs = ["stol-vertex-d90", "stul-corda", "stol-taper-80", "komplekt-vertex-d90-vertex"];
+      } else if(prod.slug === "stul-corda"){
+        candidateSlugs = ["stol-corda-135", "stul-vertex", "stol-vertex-d90", "komplekt-vertex-d90-corda"];
+      } else if(prod.slug === "stul-roero"){
+        candidateSlugs = ["stol-taper-80", "stul-noero", "stol-vertex-d90", "komplekt-taper-80-roero"];
+      } else if(prod.slug === "stul-noero"){
+        candidateSlugs = ["stol-taper-80", "stul-roero", "stol-taper-135", "komplekt-taper-80-noero"];
+      } else if(prod.slug === "stul-todo" || prod.slug === "stul-todo-soft"){
+        candidateSlugs = ["stol-taper-135", "stul-roero", "stol-taper-80", "komplekt-taper-80-todo"];
+      } else if(prod.slug === "stul-jardin"){
+        candidateSlugs = ["stol-taper-80", "stul-corda", "stol-vertex-d90", "komplekt-taper-80-jardin"];
+      } else {
+        candidateSlugs = ["stol-vertex-d90", "stul-corda", "stol-taper-80", "komplekt-vertex-d90-vertex"];
+      }
+    } else if(isSet){
+      if(prod.slug.includes("vertex-d90")){
+        candidateSlugs = ["stol-vertex-d90", "stul-vertex", "komplekt-taper-80-vertex", "lampa-nova"];
+      } else if(prod.slug.includes("corda")){
+        candidateSlugs = ["stol-corda-135", "stul-corda", "komplekt-vertex-d90-corda", "lampa-sora"];
+      } else if(prod.slug.includes("taper-80")){
+        candidateSlugs = ["stol-taper-80", "stul-jardin", "komplekt-vertex-d90-vertex", "lampa-nova"];
+      } else {
+        candidateSlugs = ["stol-taper-135", "stul-todo", "komplekt-vertex-d90-vertex", "lampa-nova"];
+      }
+    } else if(isLighting){
+      candidateSlugs = ["stol-vertex-d90", "stul-corda", "komplekt-vertex-d90-vertex", "lampa-sora"];
+    } else if(isRattan){
+      candidateSlugs = ["stul-vertex", "stul-corda", "komplekt-vertex-d90-vertex", "rotang-polumesyats"];
+    } else {
+      candidateSlugs = ["stol-vertex-d90", "stul-vertex", "stol-taper-80", "komplekt-vertex-d90-vertex"];
+    }
+
+    const seen = new Set([prod.slug]);
+    const items = [];
+    candidateSlugs.forEach(function(s){
+      if(!seen.has(s)){
+        seen.add(s);
+        const it = bySlug(s);
+        if(it) items.push(it);
+      }
+    });
+
+    if(items.length < 4){
+      const fallbacks = ["stol-vertex-d90", "stul-vertex", "stul-roero", "komplekt-vertex-d90-vertex", "stol-taper-80", "stul-corda"];
+      fallbacks.forEach(function(s){
+        if(items.length < 4 && !seen.has(s)){
+          seen.add(s);
+          const it = bySlug(s);
+          if(it) items.push(it);
+        }
+      });
+    }
+
+    return items.slice(0, 4);
+  }
+
   function renderRelated(){
     const grid = $("[data-related-grid]");
     if(!grid) return;
-    const sameCat = MASTER.filter(m => m.slug !== prod.slug && m.category === prod.category);
-    const otherCat = MASTER.filter(m => m.slug !== prod.slug && m.category !== prod.category);
-    const related = sameCat.concat(otherCat).slice(0, 4);
+    const related = getCuratedRelated();
     const seeTxt = t("see") || "Подробнее";
     const l = lang();
 
@@ -563,13 +646,43 @@
     if(chairCount === 1) chairWord = "стул";
     else if(chairCount >= 2 && chairCount <= 4) chairWord = "стула";
 
+    const lifeHead = $(".pdp-lifestyle .section-head");
+    if(lifeHead){
+      const lifeEye = lifeHead.querySelector(".eyebrow");
+      const lifeH2 = lifeHead.querySelector("h2");
+      const lifeSub = lifeHead.querySelector(".section-sub");
+      if(isTable){
+        if(lifeEye) lifeEye.textContent = curLang === "uz" ? "BTT tushlik guruhi" : (curLang === "en" ? "BTT Dining Group" : "Обеденная группа BTT");
+        if(lifeH2) lifeH2.textContent = curLang === "uz" ? "Interyerda va stullar bilan uyg'unlikda" : (curLang === "en" ? "In the interior and paired with chairs" : "В интерьере и в гарнитуре со стульями");
+        if(lifeSub) lifeSub.textContent = curLang === "uz"
+          ? "Stol xonada qanday ko'rinishini va BTT stullari bilan qanday to'ldirilishini ko'ring."
+          : (curLang === "en"
+            ? "See how the table looks in the interior and pairs with signature BTT chairs."
+            : "Посмотрите, как стол смотрится в интерьере и дополняется фирменными стульями BTT.");
+      } else {
+        if(lifeEye) lifeEye.textContent = curLang === "uz" ? "Tayyor yechimlar" : (curLang === "en" ? "Ready Solutions" : "Готовые решения для дома и сада");
+        if(lifeH2) lifeH2.textContent = curLang === "uz" ? "Interyerda va stol bilan to'plamda" : (curLang === "en" ? "In the interior and paired with table" : "В интерьере и в комплекте со столом");
+        if(lifeSub) lifeSub.textContent = curLang === "uz"
+          ? "Mebel real interyerda qanday ko'rinishini va BTT stollari bilan qanday uyg'unlashishini ko'ring."
+          : (curLang === "en"
+            ? "See how furniture looks in a real interior and pairs with BTT dining tables."
+            : "Посмотрите, как мебель смотрится в реальном интерьере и сочетается с обеденными столами BTT.");
+      }
+    }
+
     let comboLabel = "";
     if(curLang === "uz"){
-      comboLabel = "To'liq to'plam: 1 ta stol + " + chairCount + " ta stul";
+      comboLabel = isTable
+        ? ("Tushlik guruhi: «" + tableModel + "» stoli + " + chairCount + " ta «" + chairModel + "» stuli")
+        : ("To'liq to'plam: 1 ta stol + " + chairCount + " ta stul");
     } else if(curLang === "en"){
-      comboLabel = "Complete set: 1 table + " + chairCount + " chairs";
+      comboLabel = isTable
+        ? ("Dining group: " + tableModel + " table + " + chairCount + " " + chairModel + " chairs")
+        : ("Complete set: 1 table + " + chairCount + " chairs");
     } else {
-      comboLabel = "Комплект: 1 стол + " + chairCount + " " + chairWord;
+      comboLabel = isTable
+        ? ("Обеденная группа: стол «" + tableModel + "» + " + chairCount + " " + chairWord + " «" + chairModel + "»")
+        : ("Комплект: 1 стол + " + chairCount + " " + chairWord);
     }
 
     const tgOrderText = encodeURIComponent(
@@ -612,7 +725,7 @@
           '</div>' +
           '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
             '<button type="button" class="btn btn--copper" data-combo-quick-buy style="display:inline-flex;align-items:center;gap:6px">' +
-              '<span>' + esc(t("pdp.life.combo.one_click") || "Купить комплект") + '</span>' +
+              '<span>' + esc(isTable ? (curLang === "uz" ? "Guruhni xarid qilish" : (curLang === "en" ? "Buy Dining Group" : "Купить готовую группу")) : (t("pdp.life.combo.one_click") || "Купить комплект")) + '</span>' +
             '</button>' +
             '<a class="btn btn--ghost sm" href="' + tgUrl + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px">' +
               '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>' +
