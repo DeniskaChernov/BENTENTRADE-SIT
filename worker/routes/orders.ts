@@ -125,6 +125,17 @@ app.post("/", async (c) => {
   };
 
   function resolveAuthoritativeBundlePrice(id: string): number | null {
+    if (id.includes("__combo__")) {
+      const parts = id.split("__combo__");
+      if (parts.length === 2) {
+        const [p1, p2] = parts;
+        const tableId = p1.startsWith("stol-") ? p1 : (p2.startsWith("stol-") ? p2 : null);
+        const chairId = p1.startsWith("stul-") ? p1 : (p2.startsWith("stul-") ? p2 : null);
+        if (tableId && chairId) {
+          return resolveAuthoritativeBundlePrice(`bundle-${tableId}-${chairId}-4`);
+        }
+      }
+    }
     const m = id.match(/^(?:bundle|komplekt)-(stol-[a-z0-9-]+)-(stul-[a-z0-9-]+)-(\d+)$/);
     if (!m) return null;
     const [, tableId, chairId, qtyStr] = m;
@@ -151,7 +162,9 @@ app.post("/", async (c) => {
   // Resolve authoritative prices from DB and bundle calculator
   const rawIds = rawItems.map((i) => {
     const s = str(i.id, 60);
-    return s ? s.split("__")[0].trim() : "";
+    if (!s) return "";
+    if (s.includes("__combo__")) return s.trim();
+    return s.split("__")[0].trim();
   }).filter(Boolean);
   const resolvedIds = rawIds.map((rawId) => ALIAS_MAP[rawId] || rawId);
 
@@ -192,7 +205,8 @@ app.post("/", async (c) => {
   const parsedItems = [];
   for (const i of rawItems) {
     const rawId = str(i.id, 60) || null;
-    const baseId = rawId ? rawId.split("__")[0].trim() : null;
+    const isCombo = Boolean(rawId && rawId.includes("__combo__"));
+    const baseId = rawId ? (isCombo ? rawId.trim() : rawId.split("__")[0].trim()) : null;
     const resolvedId = baseId ? (ALIAS_MAP[baseId] || baseId) : null;
     const qty = Math.max(1, Math.min(99, Math.floor(Number(i.qty) || 1)));
     const clientPrice = Math.max(0, Math.floor(Number(i.price) || 0));

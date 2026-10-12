@@ -60,7 +60,7 @@ app.post("/addresses", async (c) => {
   )
     .bind(userId, str(b.label, 60), str(b.recipient, 120), str(b.phone, 40), str(b.city, 80), str(b.line, 300), isDefault)
     .run();
-  return c.json({ ok: true, id: r.meta.last_row_id });
+  return c.json({ ok: true, id: r.meta?.last_row_id ?? 0 });
 });
 
 app.put("/addresses/:id", async (c) => {

@@ -627,8 +627,9 @@
       comboBtn.onclick = function(e){
         e.preventDefault();
         if(window.BTT_CART && window.BTT_CART.openQuickOrder){
+          const bundleId = "bundle-" + tableProd.slug + "-" + chairProd.slug + "-" + chairCount;
           window.BTT_CART.openQuickOrder({
-            id: prod.slug + "__combo__" + pairedProd.slug,
+            id: bundleId,
             name: comboLabel + " (" + tableModel + " + " + chairModel + ")",
             price: comboTotal,
             img: (sceneImg && !sceneImg.startsWith("/") && !sceneImg.startsWith("http")) ? ("/" + sceneImg) : sceneImg,

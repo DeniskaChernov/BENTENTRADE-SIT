@@ -24,29 +24,34 @@ export async function notifyTelegram(env: Env, text: string): Promise<void> {
 
   if (!token || !chat) return;
 
+  const safeHtml = text.length > 4000 ? text.slice(0, 3990) + "\n…" : text;
+
   try {
     const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         chat_id: chat,
-        text,
+        text: safeHtml,
         parse_mode: "HTML",
         disable_web_page_preview: true,
+        link_preview_options: { is_disabled: true },
       }),
     });
     if (!res.ok) {
       const errText = await res.text().catch(() => "");
       console.warn("Telegram HTML notify returned status", res.status, errText);
       // Fallback: If HTML formatting failed, send as clean plain text
-      const plainText = text.replace(/<[^>]+>/g, "").replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+      const rawPlain = text.replace(/<[^>]+>/g, "").replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+      const safePlain = rawPlain.length > 4000 ? rawPlain.slice(0, 3990) + "\n…" : rawPlain;
       await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           chat_id: chat,
-          text: plainText,
+          text: safePlain,
           disable_web_page_preview: true,
+          link_preview_options: { is_disabled: true },
         }),
       });
     }

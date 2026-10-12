@@ -58,7 +58,7 @@ app.post("/", async (c) => {
   const productId = str(body.product_id, 80);
   const authorName = str(body.author_name, 100);
   const city = str(body.city, 80) || "Ташкент";
-  const rating = Math.min(5, Math.max(1, Number(body.rating) || 5));
+  const rating = Math.min(5, Math.max(1, Math.round(Number(body.rating)) || 5));
   const text = str(body.text, 2500);
 
   if (!productId || !authorName || !text || text.length < 5) {
@@ -108,7 +108,7 @@ app.post("/", async (c) => {
     .bind(targetProductId, userId, authorName, city, rating, text, isVerified, status, createdAt)
     .run();
 
-  const newId = res.meta.last_row_id;
+  const newId = res.meta?.last_row_id ?? 0;
   const stars = "★".repeat(rating) + "☆".repeat(5 - rating);
 
   // Notify manager via Telegram

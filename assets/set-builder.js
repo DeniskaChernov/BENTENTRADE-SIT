@@ -65,7 +65,7 @@
       id: "stol-taper-rotang-135",
       name: { ru: "Taper Rotang 135×80", uz: "Taper Rotang 135×80", en: "Taper Rotang 135×80" },
       dim: "135 × 80 × 75 см",
-      retailPrice: 954000,
+      retailPrice: null, // Отдельная розничная цена пока не подтверждена (не выдумывать по правилу AGENTS.md)
       bundlePrice: 954000,
       colors: [
         { id: "white-marble", name: { ru: "Белый мрамор", uz: "Oq marmar", en: "White Marble" }, hex: "#E8E6E1", img: "assets/prod-table-taper-rotang-135-white.jpg" },
@@ -191,7 +191,9 @@
     const chair = CHAIRS[selectedChairIndex];
     const qty = selectedChairQty;
 
-    const separateTotal = table.retailPrice + (chair.retailPrice * qty);
+    const hasTableRetail = table.retailPrice != null;
+    const chairRetailTotal = chair.retailPrice * qty;
+    const separateTotal = hasTableRetail ? (table.retailPrice + chairRetailTotal) : null;
 
     let bundlePrice = 0;
     const comboKey = table.id + "+" + chair.id;
@@ -206,7 +208,9 @@
       }
     }
 
-    const savings = Math.max(0, separateTotal - bundlePrice);
+    const savings = separateTotal != null
+      ? Math.max(0, separateTotal - bundlePrice)
+      : Math.max(0, chairRetailTotal - (chair.bundlePrice * qty));
 
     return {
       table,
@@ -323,14 +327,16 @@
 
               <div class="set-builder-summary-details">
                 <div class="set-builder-breakdown">
+                  ${calc.separateTotal != null ? `
                   <div class="set-builder-row">
                     <span class="muted">${t("builder.separate")}</span>
                     <span class="set-builder-old-price">${formatMoney(calc.separateTotal)}</span>
-                  </div>
+                  </div>` : ""}
+                  ${calc.savings > 0 ? `
                   <div class="set-builder-row set-builder-row--savings">
                     <span>${t("builder.savings")}</span>
                     <span class="set-builder-savings-val">-${formatMoney(calc.savings)}</span>
-                  </div>
+                  </div>` : ""}
                   <div class="set-builder-row set-builder-row--total">
                     <span>${t("builder.bundlePrice")}</span>
                     <span class="set-builder-total-price">${formatMoney(calc.bundlePrice)}</span>
