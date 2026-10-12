@@ -49,7 +49,7 @@
     {
       "slug": "pochemu-rabotayut-s-btt",
       "published_at": "2026-03-05",
-      "cover_media": "assets/hero-garden-furniture.png",
+      "cover_media": "assets/bundle-vertex-d90-corda.jpg",
       "i18n": {
         "ru": {
           "title": "Почему с нами работают дизайнеры и мебельщики",
@@ -71,7 +71,7 @@
     {
       "slug": "uhod-za-mebelyu-iz-rotanga",
       "published_at": "2026-03-12",
-      "cover_media": "assets/scene-dining-warm.png",
+      "cover_media": "assets/bundle-vertex-d90-corda.jpg",
       "i18n": {
         "ru": {
           "title": "Уход за мебелью из искусственного ротанга",
@@ -115,7 +115,7 @@
     {
       "slug": "rotang-dlya-terrasy",
       "published_at": "2026-04-02",
-      "cover_media": "assets/scene-dining-warm.png",
+      "cover_media": "assets/bundle-taper-80-corda.jpg",
       "i18n": {
         "ru": {
           "title": "Искусственный ротанг для террасы и веранды",

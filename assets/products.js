@@ -34,7 +34,7 @@
           "assets/prod-chair-vertex-side.jpg",
           "assets/prod-chair-vertex-detail-back.jpg",
           "assets/prod-chair-vertex-detail-seat.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/bundle-vertex-d90-vertex.jpg"
         ]
       }
     ],
@@ -45,7 +45,7 @@
       "assets/prod-chair-vertex-side.jpg",
       "assets/prod-chair-vertex-detail-back.jpg",
       "assets/prod-chair-vertex-detail-seat.jpg",
-      "assets/scene-dining-warm.png"
+      "assets/bundle-vertex-d90-vertex.jpg"
     ],
     "i18n": {
       "ru": {
@@ -107,7 +107,7 @@
           "assets/prod-chair-corda-side.jpg",
           "assets/prod-chair-corda-detail-back.jpg",
           "assets/prod-chair-corda-detail-seat.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/bundle-vertex-d90-corda.jpg"
         ]
       }
     ],
@@ -118,7 +118,7 @@
       "assets/prod-chair-corda-side.jpg",
       "assets/prod-chair-corda-detail-back.jpg",
       "assets/prod-chair-corda-detail-seat.jpg",
-      "assets/scene-dining-warm.png"
+      "assets/bundle-vertex-d90-corda.jpg"
     ],
     "i18n": {
       "ru": {
@@ -178,7 +178,7 @@
           "assets/prod-chair-roero-front.jpg",
           "assets/prod-chair-roero-detail-back.jpg",
           "assets/prod-chair-roero-detail-seat.jpg",
-          "assets/scene-dining-grey.png"
+          "assets/bundle-taper-80-roero.jpg"
         ]
       },
       {
@@ -195,7 +195,7 @@
           "assets/prod-chair-roero-black-front.jpg",
           "assets/prod-chair-roero-black-detail-back.jpg",
           "assets/prod-chair-roero-black-detail-seat.jpg",
-          "assets/scene-dining-contrast.png"
+          "assets/bundle-taper-80-roero.jpg"
         ]
       },
       {
@@ -212,7 +212,7 @@
           "assets/prod-chair-roero-white-front.jpg",
           "assets/prod-chair-roero-white-detail-back.jpg",
           "assets/prod-chair-roero-white-detail-seat.jpg",
-          "assets/scene-dining-light.png"
+          "assets/bundle-taper-80-roero.jpg"
         ]
       },
       {
@@ -229,7 +229,7 @@
           "assets/prod-chair-roero-orange-front.jpg",
           "assets/prod-chair-roero-orange-detail-back.jpg",
           "assets/prod-chair-roero-orange-detail-seat.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/bundle-taper-80-roero.jpg"
         ]
       }
     ],
@@ -252,7 +252,7 @@
       "assets/prod-chair-roero-orange-front.jpg",
       "assets/prod-chair-roero-orange-detail-back.jpg",
       "assets/prod-chair-roero-orange-detail-seat.jpg",
-      "assets/scene-dining-grey.png"
+      "assets/bundle-taper-80-roero.jpg"
     ],
     "i18n": {
       "ru": {
@@ -312,7 +312,7 @@
           "assets/prod-chair-noero-detail-back.jpg",
           "assets/prod-chair-noero-detail-seat.jpg",
           "assets/prod-chair-noero-detail-leg.jpg",
-          "assets/scene-dining-beige.png"
+          "assets/bundle-taper-80-noero.jpg"
         ]
       },
       {
@@ -329,7 +329,7 @@
           "assets/prod-chair-noero-blue-back.jpg",
           "assets/prod-chair-noero-blue-detail-back.jpg",
           "assets/prod-chair-noero-blue-detail-seat.jpg",
-          "assets/scene-dining-azure.png"
+          "assets/bundle-taper-80-noero.jpg"
         ]
       },
       {
@@ -346,7 +346,7 @@
           "assets/prod-chair-noero-orange-back.jpg",
           "assets/prod-chair-noero-orange-detail-back.jpg",
           "assets/prod-chair-noero-orange-detail-seat.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/bundle-taper-80-noero.jpg"
         ]
       },
       {
@@ -362,7 +362,7 @@
           "assets/prod-chair-noero-olive.jpg",
           "assets/prod-chair-noero-olive-detail-back.jpg",
           "assets/prod-chair-noero-olive-detail-seat.jpg",
-          "assets/scene-dining-teal.png"
+          "assets/bundle-taper-80-noero.jpg"
         ]
       }
     ],
@@ -384,7 +384,7 @@
       "assets/prod-chair-noero-olive.jpg",
       "assets/prod-chair-noero-olive-detail-back.jpg",
       "assets/prod-chair-noero-olive-detail-seat.jpg",
-      "assets/scene-dining-beige.png"
+      "assets/bundle-taper-80-noero.jpg"
     ],
     "i18n": {
       "ru": {
@@ -444,7 +444,7 @@
           "assets/prod-chair-todo-side.jpg",
           "assets/prod-chair-todo-detail-back.jpg",
           "assets/prod-chair-todo-detail-seat.jpg",
-          "assets/scene-dining-contrast.png"
+          "assets/bundle-taper-80-todo.jpg"
         ]
       },
       {
@@ -461,7 +461,7 @@
           "assets/prod-chair-todo-yellow-side.jpg",
           "assets/prod-chair-todo-yellow-detail-back.jpg",
           "assets/prod-chair-todo-yellow-detail-seat.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/bundle-taper-80-todo.jpg"
         ]
       },
       {
@@ -478,7 +478,7 @@
           "assets/prod-chair-todo-gray-side.jpg",
           "assets/prod-chair-todo-gray-detail-back.jpg",
           "assets/prod-chair-todo-gray-detail-seat.jpg",
-          "assets/scene-dining-grey.png"
+          "assets/bundle-taper-80-todo.jpg"
         ]
       },
       {
@@ -495,7 +495,7 @@
           "assets/prod-chair-todo-red-side.jpg",
           "assets/prod-chair-todo-red-detail-back.jpg",
           "assets/prod-chair-todo-red-detail-seat.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/bundle-taper-80-todo.jpg"
         ]
       },
       {
@@ -512,7 +512,7 @@
           "assets/prod-chair-todo-coffee-side.jpg",
           "assets/prod-chair-todo-coffee-detail-back.jpg",
           "assets/prod-chair-todo-coffee-detail-seat.jpg",
-          "assets/scene-dining-beige.png"
+          "assets/bundle-taper-80-todo.jpg"
         ]
       },
       {
@@ -529,7 +529,7 @@
           "assets/prod-chair-todo-white-side.jpg",
           "assets/prod-chair-todo-white-detail-back.jpg",
           "assets/prod-chair-todo-white-detail-seat.jpg",
-          "assets/scene-dining-light.png"
+          "assets/bundle-taper-80-todo.jpg"
         ]
       }
     ],
@@ -560,7 +560,7 @@
       "assets/prod-chair-todo-white-side.jpg",
       "assets/prod-chair-todo-white-detail-back.jpg",
       "assets/prod-chair-todo-white-detail-seat.jpg",
-      "assets/scene-dining-contrast.png"
+      "assets/bundle-taper-80-todo.jpg"
     ],
     "i18n": {
       "ru": {
@@ -621,7 +621,7 @@
           "assets/prod-chair-todo-soft-side.jpg",
           "assets/prod-chair-todo-soft-detail-seat.jpg",
           "assets/prod-chair-todo-soft-detail-back.jpg",
-          "assets/scene-dining-contrast.png"
+          "assets/bundle-taper-80-todo.jpg"
         ]
       },
       {
@@ -638,7 +638,7 @@
           "assets/prod-chair-todo-soft-yellow-side.jpg",
           "assets/prod-chair-todo-soft-yellow-detail-seat.jpg",
           "assets/prod-chair-todo-soft-yellow-detail-back.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/bundle-taper-80-todo.jpg"
         ]
       },
       {
@@ -655,7 +655,7 @@
           "assets/prod-chair-todo-soft-gray-side.jpg",
           "assets/prod-chair-todo-soft-gray-detail-seat.jpg",
           "assets/prod-chair-todo-soft-gray-detail-back.jpg",
-          "assets/scene-dining-grey.png"
+          "assets/bundle-taper-80-todo.jpg"
         ]
       },
       {
@@ -672,7 +672,7 @@
           "assets/prod-chair-todo-soft-red-side.jpg",
           "assets/prod-chair-todo-soft-red-detail-seat.jpg",
           "assets/prod-chair-todo-soft-red-detail-back.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/bundle-taper-80-todo.jpg"
         ]
       },
       {
@@ -689,7 +689,7 @@
           "assets/prod-chair-todo-soft-coffee-side.jpg",
           "assets/prod-chair-todo-soft-coffee-detail-seat.jpg",
           "assets/prod-chair-todo-soft-coffee-detail-back.jpg",
-          "assets/scene-dining-beige.png"
+          "assets/bundle-taper-80-todo.jpg"
         ]
       },
       {
@@ -706,7 +706,7 @@
           "assets/prod-chair-todo-soft-white-side.jpg",
           "assets/prod-chair-todo-soft-white-detail-seat.jpg",
           "assets/prod-chair-todo-soft-white-detail-back.jpg",
-          "assets/scene-dining-light.png"
+          "assets/bundle-taper-80-todo.jpg"
         ]
       }
     ],
@@ -736,7 +736,7 @@
       "assets/prod-chair-todo-soft-white-side.jpg",
       "assets/prod-chair-todo-soft-white-detail-seat.jpg",
       "assets/prod-chair-todo-soft-white-detail-back.jpg",
-      "assets/scene-dining-contrast.png"
+      "assets/bundle-taper-80-todo.jpg"
     ],
     "i18n": {
       "ru": {
@@ -795,7 +795,7 @@
           "assets/prod-chair-jardin.jpg",
           "assets/prod-chair-jardin-back.jpg",
           "assets/prod-chair-jardin-detail-seat.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/bundle-vertex-d90-jardin.jpg"
         ]
       },
       {
@@ -927,7 +927,7 @@
           "assets/prod-table-taper-rotang-80-black-front.jpg",
           "assets/prod-table-taper-rotang-80-detail-black.jpg",
           "assets/prod-table-taper-rotang-80-detail-leg.jpg",
-          "assets/scene-dining-contrast.png"
+          "assets/bundle-taper-80-vertex.jpg"
         ]
       }
     ],
@@ -1016,7 +1016,7 @@
           "assets/prod-table-vertex-black.jpg",
           "assets/prod-table-vertex-d90-detail-top.jpg",
           "assets/prod-table-vertex-d90-detail-leg.jpg",
-          "assets/scene-dining-contrast.png"
+          "assets/bundle-vertex-d90-vertex.jpg"
         ]
       }
     ],
@@ -1177,7 +1177,7 @@
           "assets/prod-table-taper-80-detail-white-side.jpg",
           "assets/prod-table-taper-80-detail-white-leg.jpg",
           "assets/prod-table-taper-80-detail-top.jpg",
-          "assets/scene-dining-light.png"
+          "assets/bundle-taper-80-corda.jpg"
         ]
       },
       {
@@ -1193,7 +1193,7 @@
           "assets/prod-table-taper-80-black.jpg",
           "assets/prod-table-taper-80-detail-top.jpg",
           "assets/prod-table-taper-80-detail-leg.jpg",
-          "assets/scene-dining-grey.png"
+          "assets/bundle-taper-80-corda.jpg"
         ]
       }
     ],
@@ -1205,7 +1205,7 @@
       "assets/prod-table-taper-80-detail-white-leg.jpg",
       "assets/prod-table-taper-80-detail-top.jpg",
       "assets/prod-table-taper-80-detail-leg.jpg",
-      "assets/scene-dining-light.png"
+      "assets/bundle-taper-80-corda.jpg"
     ],
     "i18n": {
       "ru": {
@@ -1277,7 +1277,7 @@
         "image": "assets/prod-table-vertex-80-black.svg",
         "images": [
           "assets/prod-table-vertex-80-black.svg",
-          "assets/scene-dining-contrast.png"
+          "assets/bundle-vertex-d90-vertex.jpg"
         ]
       }
     ],
@@ -2340,8 +2340,7 @@
         "images": [
           "assets/bundle-vertex-d90-vertex.jpg",
           "assets/prod-table-vertex-d90.jpg",
-          "assets/prod-chair-vertex.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/prod-chair-vertex.jpg"
         ]
       }
     ],
@@ -2349,8 +2348,7 @@
     "images": [
       "assets/bundle-vertex-d90-vertex.jpg",
       "assets/prod-table-vertex-d90.jpg",
-      "assets/prod-chair-vertex.jpg",
-      "assets/scene-dining-warm.png"
+      "assets/prod-chair-vertex.jpg"
     ],
     "bundle_items": [
       {
@@ -2426,8 +2424,7 @@
         "images": [
           "assets/bundle-vertex-d90-corda.jpg",
           "assets/prod-table-vertex-d90.jpg",
-          "assets/prod-chair-corda.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/prod-chair-corda.jpg"
         ]
       }
     ],
@@ -2435,8 +2432,7 @@
     "images": [
       "assets/bundle-vertex-d90-corda.jpg",
       "assets/prod-table-vertex-d90.jpg",
-      "assets/prod-chair-corda.jpg",
-      "assets/scene-dining-warm.png"
+      "assets/prod-chair-corda.jpg"
     ],
     "bundle_items": [
       {
@@ -2512,8 +2508,7 @@
           "assets/bundle-taper-80-roero.jpg",
           "assets/bundle-taper-80-roero-kitchen.jpg",
           "assets/prod-table-taper-80-white.jpg",
-          "assets/prod-chair-roero-black.jpg",
-          "assets/scene-dining-contrast.png"
+          "assets/prod-chair-roero-black.jpg"
         ]
       }
     ],
@@ -2522,8 +2517,7 @@
       "assets/bundle-taper-80-roero.jpg",
       "assets/bundle-taper-80-roero-kitchen.jpg",
       "assets/prod-table-taper-80-white.jpg",
-      "assets/prod-chair-roero-black.jpg",
-      "assets/scene-dining-contrast.png"
+      "assets/prod-chair-roero-black.jpg"
     ],
     "bundle_items": [
       {
@@ -2598,8 +2592,7 @@
         "images": [
           "assets/bundle-taper-80-todo.jpg",
           "assets/prod-table-taper-80-white.jpg",
-          "assets/prod-chair-todo-coffee.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/prod-chair-todo-coffee.jpg"
         ]
       }
     ],
@@ -2607,8 +2600,7 @@
     "images": [
       "assets/bundle-taper-80-todo.jpg",
       "assets/prod-table-taper-80-white.jpg",
-      "assets/prod-chair-todo-coffee.jpg",
-      "assets/scene-dining-warm.png"
+      "assets/prod-chair-todo-coffee.jpg"
     ],
     "bundle_items": [
       {
@@ -2683,8 +2675,7 @@
         "images": [
           "assets/bundle-taper-80-noero.jpg",
           "assets/prod-table-taper-80-white.jpg",
-          "assets/prod-chair-noero.jpg",
-          "assets/scene-dining-beige.png"
+          "assets/prod-chair-noero.jpg"
         ]
       }
     ],
@@ -2692,8 +2683,7 @@
     "images": [
       "assets/bundle-taper-80-noero.jpg",
       "assets/prod-table-taper-80-white.jpg",
-      "assets/prod-chair-noero.jpg",
-      "assets/scene-dining-beige.png"
+      "assets/prod-chair-noero.jpg"
     ],
     "bundle_items": [
       {
@@ -2768,8 +2758,7 @@
         "images": [
           "assets/bundle-vertex-d90-roero.jpg",
           "assets/prod-table-vertex-d90.jpg",
-          "assets/prod-chair-roero-black.jpg",
-          "assets/scene-dining-contrast.png"
+          "assets/prod-chair-roero-black.jpg"
         ]
       }
     ],
@@ -2777,8 +2766,7 @@
     "images": [
       "assets/bundle-vertex-d90-roero.jpg",
       "assets/prod-table-vertex-d90.jpg",
-      "assets/prod-chair-roero-black.jpg",
-      "assets/scene-dining-contrast.png"
+      "assets/prod-chair-roero-black.jpg"
     ],
     "bundle_items": [
       {
@@ -2853,8 +2841,7 @@
         "images": [
           "assets/bundle-vertex-d90-noero.jpg",
           "assets/prod-table-vertex-d90.jpg",
-          "assets/prod-chair-noero.jpg",
-          "assets/scene-dining-beige.png"
+          "assets/prod-chair-noero.jpg"
         ]
       }
     ],
@@ -2862,8 +2849,7 @@
     "images": [
       "assets/bundle-vertex-d90-noero.jpg",
       "assets/prod-table-vertex-d90.jpg",
-      "assets/prod-chair-noero.jpg",
-      "assets/scene-dining-beige.png"
+      "assets/prod-chair-noero.jpg"
     ],
     "bundle_items": [
       {
@@ -2938,8 +2924,7 @@
         "images": [
           "assets/bundle-vertex-d90-todo.jpg",
           "assets/prod-table-vertex-d90.jpg",
-          "assets/prod-chair-todo-coffee.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/prod-chair-todo-coffee.jpg"
         ]
       }
     ],
@@ -2947,8 +2932,7 @@
     "images": [
       "assets/bundle-vertex-d90-todo.jpg",
       "assets/prod-table-vertex-d90.jpg",
-      "assets/prod-chair-todo-coffee.jpg",
-      "assets/scene-dining-warm.png"
+      "assets/prod-chair-todo-coffee.jpg"
     ],
     "bundle_items": [
       {
@@ -3023,8 +3007,7 @@
         "images": [
           "assets/bundle-vertex-d90-jardin.jpg",
           "assets/prod-table-vertex-d90.jpg",
-          "assets/prod-chair-jardin.jpg",
-          "assets/scene-dining-contrast.png"
+          "assets/prod-chair-jardin.jpg"
         ]
       }
     ],
@@ -3032,8 +3015,7 @@
     "images": [
       "assets/bundle-vertex-d90-jardin.jpg",
       "assets/prod-table-vertex-d90.jpg",
-      "assets/prod-chair-jardin.jpg",
-      "assets/scene-dining-contrast.png"
+      "assets/prod-chair-jardin.jpg"
     ],
     "bundle_items": [
       {
@@ -3109,8 +3091,7 @@
         "images": [
           "assets/bundle-taper-80-corda.jpg",
           "assets/prod-table-taper-80-white.jpg",
-          "assets/prod-chair-corda.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/prod-chair-corda.jpg"
         ]
       }
     ],
@@ -3118,8 +3099,7 @@
     "images": [
       "assets/bundle-taper-80-corda.jpg",
       "assets/prod-table-taper-80-white.jpg",
-      "assets/prod-chair-corda.jpg",
-      "assets/scene-dining-warm.png"
+      "assets/prod-chair-corda.jpg"
     ],
     "bundle_items": [
       {
@@ -3195,8 +3175,7 @@
         "images": [
           "assets/bundle-taper-80-vertex.jpg",
           "assets/prod-table-taper-80-white.jpg",
-          "assets/prod-chair-vertex.jpg",
-          "assets/scene-dining-warm.png"
+          "assets/prod-chair-vertex.jpg"
         ]
       }
     ],
@@ -3204,8 +3183,7 @@
     "images": [
       "assets/bundle-taper-80-vertex.jpg",
       "assets/prod-table-taper-80-white.jpg",
-      "assets/prod-chair-vertex.jpg",
-      "assets/scene-dining-warm.png"
+      "assets/prod-chair-vertex.jpg"
     ],
     "bundle_items": [
       {
@@ -3365,8 +3343,7 @@
         "images": [
           "assets/bundle-taper-135-noero.jpg",
           "assets/prod-table-taper-135-white.jpg",
-          "assets/prod-chair-noero.jpg",
-          "assets/scene-dining-contrast.png"
+          "assets/prod-chair-noero.jpg"
         ]
       }
     ],
@@ -3374,8 +3351,7 @@
     "images": [
       "assets/bundle-taper-135-noero.jpg",
       "assets/prod-table-taper-135-white.jpg",
-      "assets/prod-chair-noero.jpg",
-      "assets/scene-dining-contrast.png"
+      "assets/prod-chair-noero.jpg"
     ],
     "bundle_items": [
       {
@@ -3450,8 +3426,7 @@
         "images": [
           "assets/bundle-taper-135-jardin.jpg",
           "assets/prod-table-taper-135-white.jpg",
-          "assets/prod-chair-jardin.jpg",
-          "assets/scene-dining-beige.png"
+          "assets/prod-chair-jardin.jpg"
         ]
       }
     ],
@@ -3459,8 +3434,7 @@
     "images": [
       "assets/bundle-taper-135-jardin.jpg",
       "assets/prod-table-taper-135-white.jpg",
-      "assets/prod-chair-jardin.jpg",
-      "assets/scene-dining-beige.png"
+      "assets/prod-chair-jardin.jpg"
     ],
     "bundle_items": [
       {
@@ -3535,8 +3509,7 @@
         "images": [
           "assets/bundle-taper-135-todo.jpg",
           "assets/prod-table-taper-135-white.jpg",
-          "assets/prod-chair-todo.jpg",
-          "assets/scene-dining-contrast.png"
+          "assets/prod-chair-todo.jpg"
         ]
       }
     ],
@@ -3544,8 +3517,7 @@
     "images": [
       "assets/bundle-taper-135-todo.jpg",
       "assets/prod-table-taper-135-white.jpg",
-      "assets/prod-chair-todo.jpg",
-      "assets/scene-dining-contrast.png"
+      "assets/prod-chair-todo.jpg"
     ],
     "bundle_items": [
       {
@@ -3647,7 +3619,7 @@
     "rattan-raw":        "assets/prod-rattan-polutrubka.svg",
     // legacy category aliases
     furniture:           "assets/prod-chair-corda.jpg",
-    indoor:              "assets/prod-table-taper-135-scene.jpg",
+    indoor:              "assets/bundle-taper-80-corda.jpg",
     planter:             "assets/prod-chair-corda.jpg",
     basket:              "assets/prod-chair-corda.jpg"
   };

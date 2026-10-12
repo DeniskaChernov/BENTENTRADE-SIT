@@ -76,7 +76,7 @@ async function runTests() {
   check(pdpRes.status === 200, "PDP /catalog/stul-roero returns HTTP 200");
   const pdpHtml = await pdpRes.text();
   check(
-    pdpHtml.includes('<link rel="canonical" href="https://bententrade.uz/catalog/stul-roero">'),
+    pdpHtml.includes('<link rel="canonical" href="https://btt.uz/catalog/stul-roero">'),
     "PDP contains canonical URL link"
   );
   check(
@@ -153,7 +153,7 @@ async function runTests() {
     check(newSkuPdpRes.status === 200, "New SKU PDP returns HTTP 200 (No 404 flash!)");
     const newSkuPdpHtml = await newSkuPdpRes.text();
     check(
-      newSkuPdpHtml.includes('<link rel="canonical" href="https://bententrade.uz/catalog/stul-aurora-test">'),
+      newSkuPdpHtml.includes('<link rel="canonical" href="https://btt.uz/catalog/stul-aurora-test">'),
       "New SKU PDP has authoritative canonical link"
     );
     check(

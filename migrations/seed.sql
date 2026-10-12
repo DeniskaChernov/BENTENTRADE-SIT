@@ -19,8 +19,8 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-vertex
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-vertex-side.jpg', 'stul-vertex', 'Vertex', 2);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-vertex-detail-back.jpg', 'stul-vertex', 'Vertex', 3);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-vertex-detail-seat.jpg', 'stul-vertex', 'Vertex', 4);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-warm.png', 'stul-vertex', 'Vertex', 5);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-vertex', 'beige', 'Бежевый', 'Bej', 'Beige', '#C2B280', 'assets/prod-chair-vertex.jpg', '["assets/prod-chair-vertex.jpg","assets/prod-chair-vertex-side.jpg","assets/prod-chair-vertex-detail-back.jpg","assets/prod-chair-vertex-detail-seat.jpg","assets/scene-dining-warm.png"]', 0, 1, 10);
+INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-vertex-d90-vertex.jpg', 'stul-vertex', 'Vertex', 5);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-vertex', 'beige', 'Бежевый', 'Bej', 'Beige', '#C2B280', 'assets/prod-chair-vertex.jpg', '["assets/prod-chair-vertex.jpg","assets/prod-chair-vertex-side.jpg","assets/prod-chair-vertex-detail-back.jpg","assets/prod-chair-vertex-detail-seat.jpg","assets/bundle-vertex-d90-vertex.jpg"]', 0, 1, 10);
 
 INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, product_type, unit) VALUES ('stul-corda', 'wicker-chairs', 'stul-corda', 499000, 0, 0, 1, 1, 'unknown', 'simple', 'pcs');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p2', 'stul-corda');
@@ -32,8 +32,8 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-corda-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-corda-side.jpg', 'stul-corda', 'Corda', 2);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-corda-detail-back.jpg', 'stul-corda', 'Corda', 3);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-corda-detail-seat.jpg', 'stul-corda', 'Corda', 4);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-warm.png', 'stul-corda', 'Corda', 5);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-corda', 'beige', 'Бежевый', 'Bej', 'Beige', '#C4A482', 'assets/prod-chair-corda.jpg', '["assets/prod-chair-corda.jpg","assets/prod-chair-corda-side.jpg","assets/prod-chair-corda-detail-back.jpg","assets/prod-chair-corda-detail-seat.jpg","assets/scene-dining-warm.png"]', 0, 1, 10);
+INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-vertex-d90-corda.jpg', 'stul-corda', 'Corda', 5);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-corda', 'beige', 'Бежевый', 'Bej', 'Beige', '#C4A482', 'assets/prod-chair-corda.jpg', '["assets/prod-chair-corda.jpg","assets/prod-chair-corda-side.jpg","assets/prod-chair-corda-detail-back.jpg","assets/prod-chair-corda-detail-seat.jpg","assets/bundle-vertex-d90-corda.jpg"]', 0, 1, 10);
 
 INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, product_type, unit) VALUES ('stul-roero', 'plastic-chairs', 'stul-roero', 188000, 0, 0, 1, 2, 'unknown', 'simple', 'pcs');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p3', 'stul-roero');
@@ -57,11 +57,11 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-roero-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-roero-orange-front.jpg', 'stul-roero', 'ROERO', 14);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-roero-orange-detail-back.jpg', 'stul-roero', 'ROERO', 15);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-roero-orange-detail-seat.jpg', 'stul-roero', 'ROERO', 16);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-grey.png', 'stul-roero', 'ROERO', 17);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-roero', 'grey', 'Серый', 'Kulrang', 'Grey', '#808080', 'assets/prod-chair-roero.jpg', '["assets/prod-chair-roero.jpg","assets/prod-chair-roero-front.jpg","assets/prod-chair-roero-detail-back.jpg","assets/prod-chair-roero-detail-seat.jpg","assets/scene-dining-grey.png"]', 0, 1, 10);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-roero', 'black', 'Чёрный', 'Qora', 'Black', '#222222', 'assets/prod-chair-roero-black.jpg', '["assets/prod-chair-roero-black.jpg","assets/prod-chair-roero-black-front.jpg","assets/prod-chair-roero-black-detail-back.jpg","assets/prod-chair-roero-black-detail-seat.jpg","assets/scene-dining-contrast.png"]', 0, 1, 20);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-roero', 'white', 'Белый', 'Oq', 'White', '#FFFFFF', 'assets/prod-chair-roero-white.jpg', '["assets/prod-chair-roero-white.jpg","assets/prod-chair-roero-white-front.jpg","assets/prod-chair-roero-white-detail-back.jpg","assets/prod-chair-roero-white-detail-seat.jpg","assets/scene-dining-light.png"]', 0, 1, 30);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-roero', 'orange', 'Оранжевый', 'To‘q sariq', 'Orange', '#D9633B', 'assets/prod-chair-roero-orange.jpg', '["assets/prod-chair-roero-orange.jpg","assets/prod-chair-roero-orange-front.jpg","assets/prod-chair-roero-orange-detail-back.jpg","assets/prod-chair-roero-orange-detail-seat.jpg","assets/scene-dining-warm.png"]', 0, 1, 40);
+INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-roero.jpg', 'stul-roero', 'ROERO', 17);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-roero', 'grey', 'Серый', 'Kulrang', 'Grey', '#808080', 'assets/prod-chair-roero.jpg', '["assets/prod-chair-roero.jpg","assets/prod-chair-roero-front.jpg","assets/prod-chair-roero-detail-back.jpg","assets/prod-chair-roero-detail-seat.jpg","assets/bundle-taper-80-roero.jpg"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-roero', 'black', 'Чёрный', 'Qora', 'Black', '#222222', 'assets/prod-chair-roero-black.jpg', '["assets/prod-chair-roero-black.jpg","assets/prod-chair-roero-black-front.jpg","assets/prod-chair-roero-black-detail-back.jpg","assets/prod-chair-roero-black-detail-seat.jpg","assets/bundle-taper-80-roero.jpg"]', 0, 1, 20);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-roero', 'white', 'Белый', 'Oq', 'White', '#FFFFFF', 'assets/prod-chair-roero-white.jpg', '["assets/prod-chair-roero-white.jpg","assets/prod-chair-roero-white-front.jpg","assets/prod-chair-roero-white-detail-back.jpg","assets/prod-chair-roero-white-detail-seat.jpg","assets/bundle-taper-80-roero.jpg"]', 0, 1, 30);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-roero', 'orange', 'Оранжевый', 'To‘q sariq', 'Orange', '#D9633B', 'assets/prod-chair-roero-orange.jpg', '["assets/prod-chair-roero-orange.jpg","assets/prod-chair-roero-orange-front.jpg","assets/prod-chair-roero-orange-detail-back.jpg","assets/prod-chair-roero-orange-detail-seat.jpg","assets/bundle-taper-80-roero.jpg"]', 0, 1, 40);
 
 INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, product_type, unit) VALUES ('stul-noero', 'plastic-chairs', 'stul-noero', 212000, 0, 0, 1, 3, 'unknown', 'simple', 'pcs');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p4', 'stul-noero');
@@ -84,11 +84,11 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-noero-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-noero-olive.jpg', 'stul-noero', 'NOERO', 13);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-noero-olive-detail-back.jpg', 'stul-noero', 'NOERO', 14);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-noero-olive-detail-seat.jpg', 'stul-noero', 'NOERO', 15);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-beige.png', 'stul-noero', 'NOERO', 16);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-noero', 'cappuccino', 'Капучино', 'Kapuchino', 'Cappuccino', '#A88D73', 'assets/prod-chair-noero.jpg', '["assets/prod-chair-noero.jpg","assets/prod-chair-noero-detail-back.jpg","assets/prod-chair-noero-detail-seat.jpg","assets/prod-chair-noero-detail-leg.jpg","assets/scene-dining-beige.png"]', 0, 1, 10);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-noero', 'blue', 'Синий', 'Ko‘k', 'Blue', '#4E7D9A', 'assets/prod-chair-noero-blue.jpg', '["assets/prod-chair-noero-blue.jpg","assets/prod-chair-noero-blue-back.jpg","assets/prod-chair-noero-blue-detail-back.jpg","assets/prod-chair-noero-blue-detail-seat.jpg","assets/scene-dining-azure.png"]', 0, 1, 20);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-noero', 'orange', 'Оранжевый', 'To‘q sariq', 'Orange', '#D9633B', 'assets/prod-chair-noero-orange.jpg', '["assets/prod-chair-noero-orange.jpg","assets/prod-chair-noero-orange-back.jpg","assets/prod-chair-noero-orange-detail-back.jpg","assets/prod-chair-noero-orange-detail-seat.jpg","assets/scene-dining-warm.png"]', 0, 1, 30);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-noero', 'olive', 'Оливковый', 'Zaytun', 'Olive', '#8A9364', 'assets/prod-chair-noero-olive.jpg', '["assets/prod-chair-noero-olive.jpg","assets/prod-chair-noero-olive-detail-back.jpg","assets/prod-chair-noero-olive-detail-seat.jpg","assets/scene-dining-teal.png"]', 0, 1, 40);
+INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-noero.jpg', 'stul-noero', 'NOERO', 16);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-noero', 'cappuccino', 'Капучино', 'Kapuchino', 'Cappuccino', '#A88D73', 'assets/prod-chair-noero.jpg', '["assets/prod-chair-noero.jpg","assets/prod-chair-noero-detail-back.jpg","assets/prod-chair-noero-detail-seat.jpg","assets/prod-chair-noero-detail-leg.jpg","assets/bundle-taper-80-noero.jpg"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-noero', 'blue', 'Синий', 'Ko‘k', 'Blue', '#4E7D9A', 'assets/prod-chair-noero-blue.jpg', '["assets/prod-chair-noero-blue.jpg","assets/prod-chair-noero-blue-back.jpg","assets/prod-chair-noero-blue-detail-back.jpg","assets/prod-chair-noero-blue-detail-seat.jpg","assets/bundle-taper-80-noero.jpg"]', 0, 1, 20);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-noero', 'orange', 'Оранжевый', 'To‘q sariq', 'Orange', '#D9633B', 'assets/prod-chair-noero-orange.jpg', '["assets/prod-chair-noero-orange.jpg","assets/prod-chair-noero-orange-back.jpg","assets/prod-chair-noero-orange-detail-back.jpg","assets/prod-chair-noero-orange-detail-seat.jpg","assets/bundle-taper-80-noero.jpg"]', 0, 1, 30);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-noero', 'olive', 'Оливковый', 'Zaytun', 'Olive', '#8A9364', 'assets/prod-chair-noero-olive.jpg', '["assets/prod-chair-noero-olive.jpg","assets/prod-chair-noero-olive-detail-back.jpg","assets/prod-chair-noero-olive-detail-seat.jpg","assets/bundle-taper-80-noero.jpg"]', 0, 1, 40);
 
 INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, product_type, unit) VALUES ('stul-todo', 'plastic-chairs', 'stul-todo', 236000, 0, 0, 1, 4, 'unknown', 'simple', 'pcs');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p5', 'stul-todo');
@@ -120,13 +120,13 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-w
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-white-side.jpg', 'stul-todo', 'TODO', 22);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-white-detail-back.jpg', 'stul-todo', 'TODO', 23);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-white-detail-seat.jpg', 'stul-todo', 'TODO', 24);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-contrast.png', 'stul-todo', 'TODO', 25);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo', 'black', 'Чёрный', 'Qora', 'Black', '#222222', 'assets/prod-chair-todo.jpg', '["assets/prod-chair-todo.jpg","assets/prod-chair-todo-side.jpg","assets/prod-chair-todo-detail-back.jpg","assets/prod-chair-todo-detail-seat.jpg","assets/scene-dining-contrast.png"]', 0, 1, 10);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo', 'yellow', 'Жёлтый', 'Sariq', 'Yellow', '#EAA824', 'assets/prod-chair-todo-yellow.jpg', '["assets/prod-chair-todo-yellow.jpg","assets/prod-chair-todo-yellow-side.jpg","assets/prod-chair-todo-yellow-detail-back.jpg","assets/prod-chair-todo-yellow-detail-seat.jpg","assets/scene-dining-warm.png"]', 0, 1, 20);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo', 'grey', 'Серый', 'Kulrang', 'Grey', '#808080', 'assets/prod-chair-todo-gray.jpg', '["assets/prod-chair-todo-gray.jpg","assets/prod-chair-todo-gray-side.jpg","assets/prod-chair-todo-gray-detail-back.jpg","assets/prod-chair-todo-gray-detail-seat.jpg","assets/scene-dining-grey.png"]', 0, 1, 30);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo', 'red', 'Красный', 'Qizil', 'Red', '#E32626', 'assets/prod-chair-todo-red.jpg', '["assets/prod-chair-todo-red.jpg","assets/prod-chair-todo-red-side.jpg","assets/prod-chair-todo-red-detail-back.jpg","assets/prod-chair-todo-red-detail-seat.jpg","assets/scene-dining-warm.png"]', 0, 1, 40);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo', 'coffee', 'Кофейный', 'Kofe', 'Coffee', '#9E7E6B', 'assets/prod-chair-todo-coffee.jpg', '["assets/prod-chair-todo-coffee.jpg","assets/prod-chair-todo-coffee-side.jpg","assets/prod-chair-todo-coffee-detail-back.jpg","assets/prod-chair-todo-coffee-detail-seat.jpg","assets/scene-dining-beige.png"]', 0, 1, 50);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo', 'white', 'Белый', 'Oq', 'White', '#FFFFFF', 'assets/prod-chair-todo-white.jpg', '["assets/prod-chair-todo-white.jpg","assets/prod-chair-todo-white-side.jpg","assets/prod-chair-todo-white-detail-back.jpg","assets/prod-chair-todo-white-detail-seat.jpg","assets/scene-dining-light.png"]', 0, 1, 60);
+INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-todo.jpg', 'stul-todo', 'TODO', 25);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo', 'black', 'Чёрный', 'Qora', 'Black', '#222222', 'assets/prod-chair-todo.jpg', '["assets/prod-chair-todo.jpg","assets/prod-chair-todo-side.jpg","assets/prod-chair-todo-detail-back.jpg","assets/prod-chair-todo-detail-seat.jpg","assets/bundle-taper-80-todo.jpg"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo', 'yellow', 'Жёлтый', 'Sariq', 'Yellow', '#EAA824', 'assets/prod-chair-todo-yellow.jpg', '["assets/prod-chair-todo-yellow.jpg","assets/prod-chair-todo-yellow-side.jpg","assets/prod-chair-todo-yellow-detail-back.jpg","assets/prod-chair-todo-yellow-detail-seat.jpg","assets/bundle-taper-80-todo.jpg"]', 0, 1, 20);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo', 'grey', 'Серый', 'Kulrang', 'Grey', '#808080', 'assets/prod-chair-todo-gray.jpg', '["assets/prod-chair-todo-gray.jpg","assets/prod-chair-todo-gray-side.jpg","assets/prod-chair-todo-gray-detail-back.jpg","assets/prod-chair-todo-gray-detail-seat.jpg","assets/bundle-taper-80-todo.jpg"]', 0, 1, 30);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo', 'red', 'Красный', 'Qizil', 'Red', '#E32626', 'assets/prod-chair-todo-red.jpg', '["assets/prod-chair-todo-red.jpg","assets/prod-chair-todo-red-side.jpg","assets/prod-chair-todo-red-detail-back.jpg","assets/prod-chair-todo-red-detail-seat.jpg","assets/bundle-taper-80-todo.jpg"]', 0, 1, 40);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo', 'coffee', 'Кофейный', 'Kofe', 'Coffee', '#9E7E6B', 'assets/prod-chair-todo-coffee.jpg', '["assets/prod-chair-todo-coffee.jpg","assets/prod-chair-todo-coffee-side.jpg","assets/prod-chair-todo-coffee-detail-back.jpg","assets/prod-chair-todo-coffee-detail-seat.jpg","assets/bundle-taper-80-todo.jpg"]', 0, 1, 50);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo', 'white', 'Белый', 'Oq', 'White', '#FFFFFF', 'assets/prod-chair-todo-white.jpg', '["assets/prod-chair-todo-white.jpg","assets/prod-chair-todo-white-side.jpg","assets/prod-chair-todo-white-detail-back.jpg","assets/prod-chair-todo-white-detail-seat.jpg","assets/bundle-taper-80-todo.jpg"]', 0, 1, 60);
 
 INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, product_type, unit) VALUES ('stul-todo-soft', 'plastic-chairs', 'stul-todo-soft', 264000, 0, 0, 1, 5, 'unknown', 'simple', 'pcs');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p16', 'stul-todo-soft');
@@ -157,13 +157,13 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-s
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-soft-white-side.jpg', 'stul-todo-soft', 'TODO SOFT', 21);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-soft-white-detail-seat.jpg', 'stul-todo-soft', 'TODO SOFT', 22);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-soft-white-detail-back.jpg', 'stul-todo-soft', 'TODO SOFT', 23);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-contrast.png', 'stul-todo-soft', 'TODO SOFT', 24);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo-soft', 'black', 'Чёрный', 'Qora', 'Black', '#222222', 'assets/prod-chair-todo-soft.jpg', '["assets/prod-chair-todo-soft.jpg","assets/prod-chair-todo-soft-side.jpg","assets/prod-chair-todo-soft-detail-seat.jpg","assets/prod-chair-todo-soft-detail-back.jpg","assets/scene-dining-contrast.png"]', 0, 1, 10);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo-soft', 'yellow', 'Жёлтый', 'Sariq', 'Yellow', '#EAA824', 'assets/prod-chair-todo-soft-yellow.jpg', '["assets/prod-chair-todo-soft-yellow.jpg","assets/prod-chair-todo-soft-yellow-side.jpg","assets/prod-chair-todo-soft-yellow-detail-seat.jpg","assets/prod-chair-todo-soft-yellow-detail-back.jpg","assets/scene-dining-warm.png"]', 0, 1, 20);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo-soft', 'grey', 'Серый', 'Kulrang', 'Grey', '#808080', 'assets/prod-chair-todo-soft-gray.jpg', '["assets/prod-chair-todo-soft-gray.jpg","assets/prod-chair-todo-soft-gray-side.jpg","assets/prod-chair-todo-soft-gray-detail-seat.jpg","assets/prod-chair-todo-soft-gray-detail-back.jpg","assets/scene-dining-grey.png"]', 0, 1, 30);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo-soft', 'red', 'Красный', 'Qizil', 'Red', '#E32626', 'assets/prod-chair-todo-soft-red.jpg', '["assets/prod-chair-todo-soft-red.jpg","assets/prod-chair-todo-soft-red-side.jpg","assets/prod-chair-todo-soft-red-detail-seat.jpg","assets/prod-chair-todo-soft-red-detail-back.jpg","assets/scene-dining-warm.png"]', 0, 1, 40);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo-soft', 'coffee', 'Кофейный', 'Kofe', 'Coffee', '#9E7E6B', 'assets/prod-chair-todo-soft-coffee.jpg', '["assets/prod-chair-todo-soft-coffee.jpg","assets/prod-chair-todo-soft-coffee-side.jpg","assets/prod-chair-todo-soft-coffee-detail-seat.jpg","assets/prod-chair-todo-soft-coffee-detail-back.jpg","assets/scene-dining-beige.png"]', 0, 1, 50);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo-soft', 'white', 'Белый', 'Oq', 'White', '#FFFFFF', 'assets/prod-chair-todo-soft-white.jpg', '["assets/prod-chair-todo-soft-white.jpg","assets/prod-chair-todo-soft-white-side.jpg","assets/prod-chair-todo-soft-white-detail-seat.jpg","assets/prod-chair-todo-soft-white-detail-back.jpg","assets/scene-dining-light.png"]', 0, 1, 60);
+INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-todo.jpg', 'stul-todo-soft', 'TODO SOFT', 24);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo-soft', 'black', 'Чёрный', 'Qora', 'Black', '#222222', 'assets/prod-chair-todo-soft.jpg', '["assets/prod-chair-todo-soft.jpg","assets/prod-chair-todo-soft-side.jpg","assets/prod-chair-todo-soft-detail-seat.jpg","assets/prod-chair-todo-soft-detail-back.jpg","assets/bundle-taper-80-todo.jpg"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo-soft', 'yellow', 'Жёлтый', 'Sariq', 'Yellow', '#EAA824', 'assets/prod-chair-todo-soft-yellow.jpg', '["assets/prod-chair-todo-soft-yellow.jpg","assets/prod-chair-todo-soft-yellow-side.jpg","assets/prod-chair-todo-soft-yellow-detail-seat.jpg","assets/prod-chair-todo-soft-yellow-detail-back.jpg","assets/bundle-taper-80-todo.jpg"]', 0, 1, 20);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo-soft', 'grey', 'Серый', 'Kulrang', 'Grey', '#808080', 'assets/prod-chair-todo-soft-gray.jpg', '["assets/prod-chair-todo-soft-gray.jpg","assets/prod-chair-todo-soft-gray-side.jpg","assets/prod-chair-todo-soft-gray-detail-seat.jpg","assets/prod-chair-todo-soft-gray-detail-back.jpg","assets/bundle-taper-80-todo.jpg"]', 0, 1, 30);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo-soft', 'red', 'Красный', 'Qizil', 'Red', '#E32626', 'assets/prod-chair-todo-soft-red.jpg', '["assets/prod-chair-todo-soft-red.jpg","assets/prod-chair-todo-soft-red-side.jpg","assets/prod-chair-todo-soft-red-detail-seat.jpg","assets/prod-chair-todo-soft-red-detail-back.jpg","assets/bundle-taper-80-todo.jpg"]', 0, 1, 40);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo-soft', 'coffee', 'Кофейный', 'Kofe', 'Coffee', '#9E7E6B', 'assets/prod-chair-todo-soft-coffee.jpg', '["assets/prod-chair-todo-soft-coffee.jpg","assets/prod-chair-todo-soft-coffee-side.jpg","assets/prod-chair-todo-soft-coffee-detail-seat.jpg","assets/prod-chair-todo-soft-coffee-detail-back.jpg","assets/bundle-taper-80-todo.jpg"]', 0, 1, 50);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-todo-soft', 'white', 'Белый', 'Oq', 'White', '#FFFFFF', 'assets/prod-chair-todo-soft-white.jpg', '["assets/prod-chair-todo-soft-white.jpg","assets/prod-chair-todo-soft-white-side.jpg","assets/prod-chair-todo-soft-white-detail-seat.jpg","assets/prod-chair-todo-soft-white-detail-back.jpg","assets/bundle-taper-80-todo.jpg"]', 0, 1, 60);
 
 INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, product_type, unit) VALUES ('stul-jardin', 'plastic-chairs', 'stul-jardin', 344000, 0, 0, 1, 6, 'unknown', 'simple', 'pcs');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p6', 'stul-jardin');
@@ -174,17 +174,16 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin-colors.jpg', 'stul-jardin', 'JARDIN', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin-back.jpg', 'stul-jardin', 'JARDIN', 2);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin-detail-seat.jpg', 'stul-jardin', 'JARDIN', 3);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-warm.png', 'stul-jardin', 'JARDIN', 4);
+INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-vertex-d90-jardin.jpg', 'stul-jardin', 'JARDIN', 4);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin-olive.jpg', 'stul-jardin', 'JARDIN', 5);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin-olive-back.jpg', 'stul-jardin', 'JARDIN', 6);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin-olive-detail-seat.jpg', 'stul-jardin', 'JARDIN', 7);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin-olive-detail-back.jpg', 'stul-jardin', 'JARDIN', 8);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-vertex-d90-jardin.jpg', 'stul-jardin', 'JARDIN', 9);
+INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-135-jardin.jpg', 'stul-jardin', 'JARDIN', 9);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin-grey.jpg', 'stul-jardin', 'JARDIN', 10);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin-grey-back.jpg', 'stul-jardin', 'JARDIN', 11);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin-grey-detail-seat.jpg', 'stul-jardin', 'JARDIN', 12);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin-grey-detail-back.jpg', 'stul-jardin', 'JARDIN', 13);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-135-jardin.jpg', 'stul-jardin', 'JARDIN', 14);
 INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-jardin', 'cappuccino', 'Капучино', 'Kapuchino', 'Cappuccino', '#A88D73', 'assets/prod-chair-jardin.jpg', '["assets/prod-chair-jardin.jpg","assets/prod-chair-jardin-back.jpg","assets/prod-chair-jardin-detail-seat.jpg","assets/bundle-vertex-d90-jardin.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-jardin', 'olive', 'Оливковый', 'Zaytun', 'Olive', '#768C65', 'assets/prod-chair-jardin-olive.jpg', '["assets/prod-chair-jardin-olive.jpg","assets/prod-chair-jardin-olive-back.jpg","assets/prod-chair-jardin-olive-detail-seat.jpg","assets/prod-chair-jardin-olive-detail-back.jpg","assets/bundle-vertex-d90-jardin.jpg"]', 0, 1, 20);
 INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stul-jardin', 'grey', 'Серый', 'Kulrang', 'Grey', '#808080', 'assets/prod-chair-jardin-grey.jpg', '["assets/prod-chair-jardin-grey.jpg","assets/prod-chair-jardin-grey-back.jpg","assets/prod-chair-jardin-grey-detail-seat.jpg","assets/prod-chair-jardin-grey-detail-back.jpg","assets/bundle-taper-135-jardin.jpg"]', 0, 1, 30);
@@ -203,7 +202,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-rotang-80-detail-leg.jpg', 'stol-taper-rotang-80', 'Taper Rotang 80x80', 6);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-corda.jpg', 'stol-taper-rotang-80', 'Taper Rotang 80x80', 7);
 INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-taper-rotang-80', 'white-marble', 'Белый мрамор', 'Oq marmar', 'White Marble', '#E8E6E1', 'assets/prod-table-taper-rotang-80-white.jpg', '["assets/prod-table-taper-rotang-80-white.jpg","assets/prod-table-taper-rotang-80-white-front.jpg","assets/prod-table-taper-rotang-80-detail-white.jpg","assets/prod-table-taper-rotang-80-detail-leg.jpg","assets/bundle-taper-80-corda.jpg"]', 0, 1, 10);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-taper-rotang-80', 'black-marble', 'Чёрный мрамор', 'Qora marmar', 'Black Marble', '#2B2A29', 'assets/prod-table-taper-rotang-80-black.jpg', '["assets/prod-table-taper-rotang-80-black.jpg","assets/prod-table-taper-rotang-80-black-front.jpg","assets/prod-table-taper-rotang-80-detail-black.jpg","assets/prod-table-taper-rotang-80-detail-leg.jpg","assets/scene-dining-contrast.png"]', 0, 1, 20);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-taper-rotang-80', 'black-marble', 'Чёрный мрамор', 'Qora marmar', 'Black Marble', '#2B2A29', 'assets/prod-table-taper-rotang-80-black.jpg', '["assets/prod-table-taper-rotang-80-black.jpg","assets/prod-table-taper-rotang-80-black-front.jpg","assets/prod-table-taper-rotang-80-detail-black.jpg","assets/prod-table-taper-rotang-80-detail-leg.jpg","assets/bundle-taper-80-vertex.jpg"]', 0, 1, 20);
 
 INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, product_type, unit) VALUES ('stol-vertex-d90', 'tables', 'stol-vertex-d90', 730000, 0, 0, 1, 8, 'unknown', 'simple', 'pcs');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p10', 'stol-vertex-d90');
@@ -216,7 +215,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-vertex
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-vertex-d90-detail-leg.jpg', 'stol-vertex-d90', 'Vertex D90', 3);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-vertex-d90-vertex.jpg', 'stol-vertex-d90', 'Vertex D90', 4);
 INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-vertex-d90', 'white-marble', 'Белый мрамор', 'Oq marmar', 'White Marble', '#E8E6E1', 'assets/prod-table-vertex-d90.jpg', '["assets/prod-table-vertex-d90.jpg","assets/prod-table-vertex-d90-detail-top.jpg","assets/prod-table-vertex-d90-detail-leg.jpg","assets/bundle-vertex-d90-vertex.jpg"]', 0, 1, 10);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-vertex-d90', 'black-marble', 'Чёрный мрамор', 'Qora marmar', 'Black Marble', '#2B2A29', 'assets/prod-table-vertex-black.jpg', '["assets/prod-table-vertex-black.jpg","assets/prod-table-vertex-d90-detail-top.jpg","assets/prod-table-vertex-d90-detail-leg.jpg","assets/scene-dining-contrast.png"]', 0, 1, 20);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-vertex-d90', 'black-marble', 'Чёрный мрамор', 'Qora marmar', 'Black Marble', '#2B2A29', 'assets/prod-table-vertex-black.jpg', '["assets/prod-table-vertex-black.jpg","assets/prod-table-vertex-d90-detail-top.jpg","assets/prod-table-vertex-d90-detail-leg.jpg","assets/bundle-vertex-d90-vertex.jpg"]', 0, 1, 20);
 
 INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, product_type, unit) VALUES ('stol-taper-rotang-135', 'tables', 'stol-taper-rotang-135', 0, 0, 0, 1, 9, 'on_request', 'simple', 'pcs');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p11', 'stol-taper-rotang-135');
@@ -244,9 +243,9 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-80-detail-white-leg.jpg', 'stol-taper-80', 'Taper 80x80', 3);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-80-detail-top.jpg', 'stol-taper-80', 'Taper 80x80', 4);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-80-detail-leg.jpg', 'stol-taper-80', 'Taper 80x80', 5);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-light.png', 'stol-taper-80', 'Taper 80x80', 6);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-taper-80', 'white-marble', 'Белый мрамор', 'Oq marmar', 'White Marble', '#E8E6E1', 'assets/prod-table-taper-80-white.jpg', '["assets/prod-table-taper-80-white.jpg","assets/prod-table-taper-80-detail-white-side.jpg","assets/prod-table-taper-80-detail-white-leg.jpg","assets/prod-table-taper-80-detail-top.jpg","assets/scene-dining-light.png"]', 0, 1, 10);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-taper-80', 'black-marble', 'Чёрный мрамор', 'Qora marmar', 'Black Marble', '#2B2A29', 'assets/prod-table-taper-80-black.jpg', '["assets/prod-table-taper-80-black.jpg","assets/prod-table-taper-80-detail-top.jpg","assets/prod-table-taper-80-detail-leg.jpg","assets/scene-dining-grey.png"]', 0, 1, 20);
+INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-corda.jpg', 'stol-taper-80', 'Taper 80x80', 6);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-taper-80', 'white-marble', 'Белый мрамор', 'Oq marmar', 'White Marble', '#E8E6E1', 'assets/prod-table-taper-80-white.jpg', '["assets/prod-table-taper-80-white.jpg","assets/prod-table-taper-80-detail-white-side.jpg","assets/prod-table-taper-80-detail-white-leg.jpg","assets/prod-table-taper-80-detail-top.jpg","assets/bundle-taper-80-corda.jpg"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-taper-80', 'black-marble', 'Чёрный мрамор', 'Qora marmar', 'Black Marble', '#2B2A29', 'assets/prod-table-taper-80-black.jpg', '["assets/prod-table-taper-80-black.jpg","assets/prod-table-taper-80-detail-top.jpg","assets/prod-table-taper-80-detail-leg.jpg","assets/bundle-taper-80-corda.jpg"]', 0, 1, 20);
 
 INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, product_type, unit) VALUES ('stol-vertex-80', 'tables', 'stol-vertex-80', 0, 0, 0, 1, 11, 'on_request', 'simple', 'pcs');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p13', 'stol-vertex-80');
@@ -257,7 +256,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-vertex
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-vertex-80-black.svg', 'stol-vertex-80', 'Vertex 80x80', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-vertex.jpg', 'stol-vertex-80', 'Vertex 80x80', 2);
 INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-vertex-80', 'white-marble', 'Белый мрамор', 'Oq marmar', 'White Marble', '#E8E6E1', 'assets/prod-table-vertex-80-white.svg', '["assets/prod-table-vertex-80-white.svg","assets/bundle-taper-80-vertex.jpg"]', 0, 1, 10);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-vertex-80', 'black-marble', 'Чёрный мрамор', 'Qora marmar', 'Black Marble', '#2B2A29', 'assets/prod-table-vertex-80-black.svg', '["assets/prod-table-vertex-80-black.svg","assets/scene-dining-contrast.png"]', 0, 1, 20);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('stol-vertex-80', 'black-marble', 'Чёрный мрамор', 'Qora marmar', 'Black Marble', '#2B2A29', 'assets/prod-table-vertex-80-black.svg', '["assets/prod-table-vertex-80-black.svg","assets/bundle-vertex-d90-vertex.jpg"]', 0, 1, 20);
 
 INSERT OR REPLACE INTO products (id, category, look, price_now, price_old, default_size, active, sort, availability, product_type, unit) VALUES ('stol-taper-135', 'tables', 'stol-taper-135', 910000, 0, 0, 1, 12, 'unknown', 'simple', 'pcs');
 INSERT OR REPLACE INTO product_aliases (alias, product_id) VALUES ('p14', 'stol-taper-135');
@@ -415,8 +414,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-vertex-d90-vertex.jpg', 'komplekt-vertex-d90-vertex', 'Комплект Vertex D90 + 4 стула Vertex', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-vertex-d90.jpg', 'komplekt-vertex-d90-vertex', 'Комплект Vertex D90 + 4 стула Vertex', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-vertex.jpg', 'komplekt-vertex-d90-vertex', 'Комплект Vertex D90 + 4 стула Vertex', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-warm.png', 'komplekt-vertex-d90-vertex', 'Комплект Vertex D90 + 4 стула Vertex', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-vertex-d90-vertex', 'beige-white', 'Белый мрамор / Бежевый', 'Oq marmar / Bej', 'White marble / Beige', '#C2B280', 'assets/bundle-vertex-d90-vertex.jpg', '["assets/bundle-vertex-d90-vertex.jpg","assets/prod-table-vertex-d90.jpg","assets/prod-chair-vertex.jpg","assets/scene-dining-warm.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-vertex-d90-vertex', 'beige-white', 'Белый мрамор / Бежевый', 'Oq marmar / Bej', 'White marble / Beige', '#C2B280', 'assets/bundle-vertex-d90-vertex.jpg', '["assets/bundle-vertex-d90-vertex.jpg","assets/prod-table-vertex-d90.jpg","assets/prod-chair-vertex.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-vertex-d90-vertex', 'stol-vertex-d90', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-vertex-d90-vertex', 'stul-vertex', 4, 1);
 
@@ -428,8 +426,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-vertex-d90-corda.jpg', 'komplekt-vertex-d90-corda', 'Комплект Vertex D90 + 4 стула Corda', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-vertex-d90.jpg', 'komplekt-vertex-d90-corda', 'Комплект Vertex D90 + 4 стула Corda', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-corda.jpg', 'komplekt-vertex-d90-corda', 'Комплект Vertex D90 + 4 стула Corda', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-warm.png', 'komplekt-vertex-d90-corda', 'Комплект Vertex D90 + 4 стула Corda', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-vertex-d90-corda', 'corda-white', 'Белый мрамор / Тёмный шнур', 'Oq marmar / To''q to''qima', 'White marble / Dark cord', '#C4A482', 'assets/bundle-vertex-d90-corda.jpg', '["assets/bundle-vertex-d90-corda.jpg","assets/prod-table-vertex-d90.jpg","assets/prod-chair-corda.jpg","assets/scene-dining-warm.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-vertex-d90-corda', 'corda-white', 'Белый мрамор / Тёмный шнур', 'Oq marmar / To''q to''qima', 'White marble / Dark cord', '#C4A482', 'assets/bundle-vertex-d90-corda.jpg', '["assets/bundle-vertex-d90-corda.jpg","assets/prod-table-vertex-d90.jpg","assets/prod-chair-corda.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-vertex-d90-corda', 'stol-vertex-d90', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-vertex-d90-corda', 'stul-corda', 4, 1);
 
@@ -442,8 +439,7 @@ INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-r
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-roero-kitchen.jpg', 'komplekt-taper-80-roero', 'Комплект Taper 80×80 + 4 стула Roero', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-80-white.jpg', 'komplekt-taper-80-roero', 'Комплект Taper 80×80 + 4 стула Roero', 2);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-roero-black.jpg', 'komplekt-taper-80-roero', 'Комплект Taper 80×80 + 4 стула Roero', 3);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-contrast.png', 'komplekt-taper-80-roero', 'Комплект Taper 80×80 + 4 стула Roero', 4);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-80-roero', 'black-white', 'Белый мрамор / Чёрный', 'Oq marmar / Qora', 'White marble / Black', '#222222', 'assets/bundle-taper-80-roero.jpg', '["assets/bundle-taper-80-roero.jpg","assets/bundle-taper-80-roero-kitchen.jpg","assets/prod-table-taper-80-white.jpg","assets/prod-chair-roero-black.jpg","assets/scene-dining-contrast.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-80-roero', 'black-white', 'Белый мрамор / Чёрный', 'Oq marmar / Qora', 'White marble / Black', '#222222', 'assets/bundle-taper-80-roero.jpg', '["assets/bundle-taper-80-roero.jpg","assets/bundle-taper-80-roero-kitchen.jpg","assets/prod-table-taper-80-white.jpg","assets/prod-chair-roero-black.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-80-roero', 'stol-taper-80', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-80-roero', 'stul-roero', 4, 1);
 
@@ -455,8 +451,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-todo.jpg', 'komplekt-taper-80-todo', 'Комплект Taper 80×80 + 4 стула Todo', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-80-white.jpg', 'komplekt-taper-80-todo', 'Комплект Taper 80×80 + 4 стула Todo', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-coffee.jpg', 'komplekt-taper-80-todo', 'Комплект Taper 80×80 + 4 стула Todo', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-warm.png', 'komplekt-taper-80-todo', 'Комплект Taper 80×80 + 4 стула Todo', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-80-todo', 'coffee-white', 'Белый мрамор / Кофейный', 'Oq marmar / Kofe', 'White marble / Coffee', '#9E7E6B', 'assets/bundle-taper-80-todo.jpg', '["assets/bundle-taper-80-todo.jpg","assets/prod-table-taper-80-white.jpg","assets/prod-chair-todo-coffee.jpg","assets/scene-dining-warm.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-80-todo', 'coffee-white', 'Белый мрамор / Кофейный', 'Oq marmar / Kofe', 'White marble / Coffee', '#9E7E6B', 'assets/bundle-taper-80-todo.jpg', '["assets/bundle-taper-80-todo.jpg","assets/prod-table-taper-80-white.jpg","assets/prod-chair-todo-coffee.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-80-todo', 'stol-taper-80', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-80-todo', 'stul-todo', 4, 1);
 
@@ -468,8 +463,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-noero.jpg', 'komplekt-taper-80-noero', 'Комплект Taper 80×80 + 4 стула Noero', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-80-white.jpg', 'komplekt-taper-80-noero', 'Комплект Taper 80×80 + 4 стула Noero', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-noero.jpg', 'komplekt-taper-80-noero', 'Комплект Taper 80×80 + 4 стула Noero', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-beige.png', 'komplekt-taper-80-noero', 'Комплект Taper 80×80 + 4 стула Noero', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-80-noero', 'cappuccino-white', 'Белый мрамор / Капучино', 'Oq marmar / Kapuchino', 'White marble / Cappuccino', '#A88D73', 'assets/bundle-taper-80-noero.jpg', '["assets/bundle-taper-80-noero.jpg","assets/prod-table-taper-80-white.jpg","assets/prod-chair-noero.jpg","assets/scene-dining-beige.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-80-noero', 'cappuccino-white', 'Белый мрамор / Капучино', 'Oq marmar / Kapuchino', 'White marble / Cappuccino', '#A88D73', 'assets/bundle-taper-80-noero.jpg', '["assets/bundle-taper-80-noero.jpg","assets/prod-table-taper-80-white.jpg","assets/prod-chair-noero.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-80-noero', 'stol-taper-80', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-80-noero', 'stul-noero', 4, 1);
 
@@ -481,8 +475,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-vertex-d90-roero.jpg', 'komplekt-vertex-d90-roero', 'Комплект Vertex D90 + 4 стула Roero', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-vertex-d90.jpg', 'komplekt-vertex-d90-roero', 'Комплект Vertex D90 + 4 стула Roero', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-roero-black.jpg', 'komplekt-vertex-d90-roero', 'Комплект Vertex D90 + 4 стула Roero', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-contrast.png', 'komplekt-vertex-d90-roero', 'Комплект Vertex D90 + 4 стула Roero', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-vertex-d90-roero', 'white-black', 'Белый мрамор / Чёрный', 'Oq marmar / Qora', 'White marble / Black', '#222222', 'assets/bundle-vertex-d90-roero.jpg', '["assets/bundle-vertex-d90-roero.jpg","assets/prod-table-vertex-d90.jpg","assets/prod-chair-roero-black.jpg","assets/scene-dining-contrast.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-vertex-d90-roero', 'white-black', 'Белый мрамор / Чёрный', 'Oq marmar / Qora', 'White marble / Black', '#222222', 'assets/bundle-vertex-d90-roero.jpg', '["assets/bundle-vertex-d90-roero.jpg","assets/prod-table-vertex-d90.jpg","assets/prod-chair-roero-black.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-vertex-d90-roero', 'stol-vertex-d90', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-vertex-d90-roero', 'stul-roero', 4, 1);
 
@@ -494,8 +487,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-vertex-d90-noero.jpg', 'komplekt-vertex-d90-noero', 'Комплект Vertex D90 + 4 стула Noero', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-vertex-d90.jpg', 'komplekt-vertex-d90-noero', 'Комплект Vertex D90 + 4 стула Noero', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-noero.jpg', 'komplekt-vertex-d90-noero', 'Комплект Vertex D90 + 4 стула Noero', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-beige.png', 'komplekt-vertex-d90-noero', 'Комплект Vertex D90 + 4 стула Noero', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-vertex-d90-noero', 'white-cappuccino', 'Белый мрамор / Капучино', 'Oq marmar / Kapuchino', 'White marble / Cappuccino', '#C4A482', 'assets/bundle-vertex-d90-noero.jpg', '["assets/bundle-vertex-d90-noero.jpg","assets/prod-table-vertex-d90.jpg","assets/prod-chair-noero.jpg","assets/scene-dining-beige.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-vertex-d90-noero', 'white-cappuccino', 'Белый мрамор / Капучино', 'Oq marmar / Kapuchino', 'White marble / Cappuccino', '#C4A482', 'assets/bundle-vertex-d90-noero.jpg', '["assets/bundle-vertex-d90-noero.jpg","assets/prod-table-vertex-d90.jpg","assets/prod-chair-noero.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-vertex-d90-noero', 'stol-vertex-d90', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-vertex-d90-noero', 'stul-noero', 4, 1);
 
@@ -507,8 +499,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-vertex-d90-todo.jpg', 'komplekt-vertex-d90-todo', 'Комплект Vertex D90 + 4 стула Todo', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-vertex-d90.jpg', 'komplekt-vertex-d90-todo', 'Комплект Vertex D90 + 4 стула Todo', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo-coffee.jpg', 'komplekt-vertex-d90-todo', 'Комплект Vertex D90 + 4 стула Todo', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-warm.png', 'komplekt-vertex-d90-todo', 'Комплект Vertex D90 + 4 стула Todo', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-vertex-d90-todo', 'white-coffee', 'Белый мрамор / Кофейный', 'Oq marmar / Qahva', 'White marble / Coffee', '#8B6F47', 'assets/bundle-vertex-d90-todo.jpg', '["assets/bundle-vertex-d90-todo.jpg","assets/prod-table-vertex-d90.jpg","assets/prod-chair-todo-coffee.jpg","assets/scene-dining-warm.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-vertex-d90-todo', 'white-coffee', 'Белый мрамор / Кофейный', 'Oq marmar / Qahva', 'White marble / Coffee', '#8B6F47', 'assets/bundle-vertex-d90-todo.jpg', '["assets/bundle-vertex-d90-todo.jpg","assets/prod-table-vertex-d90.jpg","assets/prod-chair-todo-coffee.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-vertex-d90-todo', 'stol-vertex-d90', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-vertex-d90-todo', 'stul-todo', 4, 1);
 
@@ -520,8 +511,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-vertex-d90-jardin.jpg', 'komplekt-vertex-d90-jardin', 'Комплект Vertex D90 + 4 кресла Jardin', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-vertex-d90.jpg', 'komplekt-vertex-d90-jardin', 'Комплект Vertex D90 + 4 кресла Jardin', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin.jpg', 'komplekt-vertex-d90-jardin', 'Комплект Vertex D90 + 4 кресла Jardin', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-contrast.png', 'komplekt-vertex-d90-jardin', 'Комплект Vertex D90 + 4 кресла Jardin', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-vertex-d90-jardin', 'white-black', 'Белый мрамор / Чёрный', 'Oq marmar / Qora', 'White marble / Black', '#222222', 'assets/bundle-vertex-d90-jardin.jpg', '["assets/bundle-vertex-d90-jardin.jpg","assets/prod-table-vertex-d90.jpg","assets/prod-chair-jardin.jpg","assets/scene-dining-contrast.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-vertex-d90-jardin', 'white-black', 'Белый мрамор / Чёрный', 'Oq marmar / Qora', 'White marble / Black', '#222222', 'assets/bundle-vertex-d90-jardin.jpg', '["assets/bundle-vertex-d90-jardin.jpg","assets/prod-table-vertex-d90.jpg","assets/prod-chair-jardin.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-vertex-d90-jardin', 'stol-vertex-d90', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-vertex-d90-jardin', 'stul-jardin', 4, 1);
 
@@ -533,8 +523,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-corda.jpg', 'komplekt-taper-80-corda', 'Комплект Taper 80×80 + 4 стула Corda', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-80-white.jpg', 'komplekt-taper-80-corda', 'Комплект Taper 80×80 + 4 стула Corda', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-corda.jpg', 'komplekt-taper-80-corda', 'Комплект Taper 80×80 + 4 стула Corda', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-warm.png', 'komplekt-taper-80-corda', 'Комплект Taper 80×80 + 4 стула Corda', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-80-corda', 'white-corda', 'Белый мрамор / Тёмный шнур', 'Oq marmar / To''q to''qima', 'White marble / Dark cord', '#C4A482', 'assets/bundle-taper-80-corda.jpg', '["assets/bundle-taper-80-corda.jpg","assets/prod-table-taper-80-white.jpg","assets/prod-chair-corda.jpg","assets/scene-dining-warm.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-80-corda', 'white-corda', 'Белый мрамор / Тёмный шнур', 'Oq marmar / To''q to''qima', 'White marble / Dark cord', '#C4A482', 'assets/bundle-taper-80-corda.jpg', '["assets/bundle-taper-80-corda.jpg","assets/prod-table-taper-80-white.jpg","assets/prod-chair-corda.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-80-corda', 'stol-taper-80', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-80-corda', 'stul-corda', 4, 1);
 
@@ -546,8 +535,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-80-vertex.jpg', 'komplekt-taper-80-vertex', 'Комплект Taper 80×80 + 4 стула Vertex', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-80-white.jpg', 'komplekt-taper-80-vertex', 'Комплект Taper 80×80 + 4 стула Vertex', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-vertex.jpg', 'komplekt-taper-80-vertex', 'Комплект Taper 80×80 + 4 стула Vertex', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-warm.png', 'komplekt-taper-80-vertex', 'Комплект Taper 80×80 + 4 стула Vertex', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-80-vertex', 'white-beige', 'Белый мрамор / Бежевый', 'Oq marmar / Bej', 'White marble / Beige', '#C2B280', 'assets/bundle-taper-80-vertex.jpg', '["assets/bundle-taper-80-vertex.jpg","assets/prod-table-taper-80-white.jpg","assets/prod-chair-vertex.jpg","assets/scene-dining-warm.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-80-vertex', 'white-beige', 'Белый мрамор / Бежевый', 'Oq marmar / Bej', 'White marble / Beige', '#C2B280', 'assets/bundle-taper-80-vertex.jpg', '["assets/bundle-taper-80-vertex.jpg","assets/prod-table-taper-80-white.jpg","assets/prod-chair-vertex.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-80-vertex', 'stol-taper-80', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-80-vertex', 'stul-vertex', 4, 1);
 
@@ -572,8 +560,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-135-noero.jpg', 'komplekt-taper-135-noero', 'Комплект Taper 135×80 + 4 стула Noero', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-135-white.jpg', 'komplekt-taper-135-noero', 'Комплект Taper 135×80 + 4 стула Noero', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-noero.jpg', 'komplekt-taper-135-noero', 'Комплект Taper 135×80 + 4 стула Noero', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-contrast.png', 'komplekt-taper-135-noero', 'Комплект Taper 135×80 + 4 стула Noero', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-135-noero', 'white-black', 'Белый мрамор / Чёрный', 'Oq marmar / Qora', 'White marble / Black', '#222222', 'assets/bundle-taper-135-noero.jpg', '["assets/bundle-taper-135-noero.jpg","assets/prod-table-taper-135-white.jpg","assets/prod-chair-noero.jpg","assets/scene-dining-contrast.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-135-noero', 'white-black', 'Белый мрамор / Чёрный', 'Oq marmar / Qora', 'White marble / Black', '#222222', 'assets/bundle-taper-135-noero.jpg', '["assets/bundle-taper-135-noero.jpg","assets/prod-table-taper-135-white.jpg","assets/prod-chair-noero.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-135-noero', 'stol-taper-135', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-135-noero', 'stul-noero', 4, 1);
 
@@ -585,8 +572,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-135-jardin.jpg', 'komplekt-taper-135-jardin', 'Комплект Taper 135×80 + 4 кресла Jardin', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-135-white.jpg', 'komplekt-taper-135-jardin', 'Комплект Taper 135×80 + 4 кресла Jardin', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-jardin.jpg', 'komplekt-taper-135-jardin', 'Комплект Taper 135×80 + 4 кресла Jardin', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-beige.png', 'komplekt-taper-135-jardin', 'Комплект Taper 135×80 + 4 кресла Jardin', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-135-jardin', 'white-cappuccino', 'Белый мрамор / Капучино', 'Oq marmar / Kapuchino', 'White marble / Cappuccino', '#C4A482', 'assets/bundle-taper-135-jardin.jpg', '["assets/bundle-taper-135-jardin.jpg","assets/prod-table-taper-135-white.jpg","assets/prod-chair-jardin.jpg","assets/scene-dining-beige.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-135-jardin', 'white-cappuccino', 'Белый мрамор / Капучино', 'Oq marmar / Kapuchino', 'White marble / Cappuccino', '#C4A482', 'assets/bundle-taper-135-jardin.jpg', '["assets/bundle-taper-135-jardin.jpg","assets/prod-table-taper-135-white.jpg","assets/prod-chair-jardin.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-135-jardin', 'stol-taper-135', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-135-jardin', 'stul-jardin', 4, 1);
 
@@ -598,8 +584,7 @@ INSERT OR REPLACE INTO product_i18n (product_id, lang, name, category_label, des
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/bundle-taper-135-todo.jpg', 'komplekt-taper-135-todo', 'Комплект Taper 135×80 + 4 стула Todo', 0);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-table-taper-135-white.jpg', 'komplekt-taper-135-todo', 'Комплект Taper 135×80 + 4 стула Todo', 1);
 INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/prod-chair-todo.jpg', 'komplekt-taper-135-todo', 'Комплект Taper 135×80 + 4 стула Todo', 2);
-INSERT INTO media (key, product_id, alt, sort) VALUES ('assets/scene-dining-contrast.png', 'komplekt-taper-135-todo', 'Комплект Taper 135×80 + 4 стула Todo', 3);
-INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-135-todo', 'white-black', 'Белый мрамор / Чёрный', 'Oq marmar / Qora', 'White marble / Black', '#222222', 'assets/bundle-taper-135-todo.jpg', '["assets/bundle-taper-135-todo.jpg","assets/prod-table-taper-135-white.jpg","assets/prod-chair-todo.jpg","assets/scene-dining-contrast.png"]', 0, 1, 10);
+INSERT OR REPLACE INTO product_variants (product_id, variant_code, name_ru, name_uz, name_en, hex, image, images, price_modifier, active, sort) VALUES ('komplekt-taper-135-todo', 'white-black', 'Белый мрамор / Чёрный', 'Oq marmar / Qora', 'White marble / Black', '#222222', 'assets/bundle-taper-135-todo.jpg', '["assets/bundle-taper-135-todo.jpg","assets/prod-table-taper-135-white.jpg","assets/prod-chair-todo.jpg"]', 0, 1, 10);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-135-todo', 'stol-taper-135', 1, 0);
 INSERT OR REPLACE INTO bundle_items (bundle_product_id, component_product_id, quantity, sort) VALUES ('komplekt-taper-135-todo', 'stul-todo', 4, 1);
 
@@ -667,7 +652,7 @@ Second, density. The tighter the weave, the stronger and more premium the piece 
 Third, colour. Good rattan is coloured through the fibre, not just on the surface. Our Tobacco, Woody, Brown, Graphite and Choco palette echoes natural wood tones.
 
 Need a custom colour or diameter? We''ll make it to order - message our manager on Telegram.');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (3, 'pochemu-rabotayut-s-btt', 'assets/hero-garden-furniture.png', 'published', '2026-03-05');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (3, 'pochemu-rabotayut-s-btt', 'assets/bundle-vertex-d90-corda.jpg', 'published', '2026-03-05');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (3, 'ru', 'Почему с нами работают дизайнеры и мебельщики', 'Своё производство в Ташкенте, стабильные партии ротанга и честная консультация - без навязанных решений.', 'Мы не перекупаем готовую мебель - сами плетём и производим ротанг. Это даёт контроль над сроками, цветом и качеством.
 
 Для B2B-клиентов держим склад профилей и помогаем с образцами. Для частных заказов - бесплатно подбираем комплект под террасу, балкон или интерьер.
@@ -683,7 +668,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 For trade clients we keep profile stock and help with samples. For private orders we match sets to terrace, balcony or interior free of charge.
 
 We deliver across Uzbekistan, assemble on site and warranty the weave. One manager handles the order from enquiry to delivery - on Telegram or WhatsApp.');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (4, 'uhod-za-mebelyu-iz-rotanga', 'assets/scene-dining-warm.png', 'published', '2026-03-12');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (4, 'uhod-za-mebelyu-iz-rotanga', 'assets/bundle-vertex-d90-corda.jpg', 'published', '2026-03-12');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (4, 'ru', 'Уход за мебелью из искусственного ротанга', 'Достаточно влажной ткани и мягкого мыла - без масел, лака и сложной химии.', 'Искусственный ротанг не требует сезонного ухода. Раз в 2-4 недели протрите плетение влажной мягкой тканью с каплей нейтрального мыла.
 
 Не используйте абразивы и растворители - они могут повредить поверхность. После дождя просто дайте мебели высохнуть на воздухе.
@@ -727,7 +712,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 BTT''s palette has five base shades: articles 0609, 1505, 0704 and 2404. Need another colour? We''ll make it to order from a single coil.
 
 Request a sample or price list on the site - we''ll bring it to the showroom or courier across Tashkent.');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (6, 'rotang-dlya-terrasy', 'assets/scene-dining-warm.png', 'published', '2026-04-02');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (6, 'rotang-dlya-terrasy', 'assets/bundle-taper-80-corda.jpg', 'published', '2026-04-02');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (6, 'ru', 'Искусственный ротанг для террасы и веранды', 'Как подобрать мебель, которая переживёт солнце, дождь и перепады температур без ухода маслом.', 'Терраса и веранда - самые жёсткие условия для мебели: прямое солнце, ветер, ночная влага. Искусственный ротанг создан именно для таких зон.
 
 Для открытой площадки выбирайте плотное плетение на алюминиевом каркасе - он не ржавеет. Комплект из дивана и кресел или обеденная группа закрывают большинство сценариев: от завтрака до вечерних посиделок.
@@ -793,7 +778,7 @@ Synthetic rattan (PE) is coloured through the fibre, won''t rot and handles fros
 For gardens, terraces and outdoor cafés we recommend synthetic rattan only.
 
 At BTT we work with high quality PE profiles - Tobacco, Woody, Brown, Graphite, Choco. Order a sample and compare in person.');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (9, 'sadovaya-mebel-rotang-tashkent', 'assets/hero-garden-furniture.png', 'published', '2026-04-22');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (9, 'sadovaya-mebel-rotang-tashkent', 'assets/bundle-vertex-d90-corda.jpg', 'published', '2026-04-22');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (9, 'ru', 'Садовая мебель из ротанга в Ташкенте: как выбрать комплект', 'Диваны, кресла и обеденные группы для террасы и дачи - на что смотреть перед покупкой в Узбекистане.', 'Садовая мебель из искусственного ротанга - один из самых частых запросов в Ташкенте: жаркий климат, яркое солнце и перепады температур требуют материала, который не выцветает и не требует ежегодного ухода маслом.
 
 ## Почему ротанг подходит для улицы Узбекистана
@@ -804,7 +789,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 - Каркас из алюминия не ржавеет
 - Плетение держит форму 5-10 лет при нормальной эксплуатации
 
-![Садовая обеденная группа](assets/scene-dining-warm.png)
+![Садовая обеденная группа](assets/bundle-vertex-d90-vertex.jpg)
 
 ## Какой комплект выбрать
 
@@ -822,7 +807,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ## Где купить в Ташкенте
 
-В BTT мебель плетётся в мастерской в Ташкенте - можно посмотреть образцы, подобрать комплект и заказать доставку по городу и области. Напишите в Telegram @btt_uz - менеджер рассчитает комплект и сроки.');
+В Bententrade мебель плетётся в мастерской в Ташкенте - можно посмотреть образцы, подобрать комплект и заказать доставку по городу и области. Напишите в Telegram @bententradeuz - менеджер рассчитает комплект и сроки.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (9, 'uz', 'Toshkentda bog‘ mebeli: rotang to‘plamini qanday tanlash', 'Terassa va dacha uchun divan, kreslo va ovqat guruhlari - O‘zbekistonda xarid qilishdan oldin.', 'Sun’iy rotangdan bog‘ mebeli Toshkentda eng ko‘p qidiriladigan mahsulotlardan biri.
 
 ## Nima uchun rotang mos
@@ -833,7 +818,7 @@ PE tolasi quyosh va yomg‘irga chidamli, massada bo‘yalgan.
 - Alyumin karkas zanglamaydi
 - 5-10 yil xizmat qiladi
 
-![Ovqat guruhi](assets/scene-dining-warm.png)
+![Ovqat guruhi](assets/bundle-vertex-d90-vertex.jpg)
 
 ## Qanday to‘plam
 
@@ -841,14 +826,14 @@ Kichik terassa - 2 kreslo va stol. Katta oila - burchakli divan yoki 6-8 o‘rin
 
 ## Qayerdan sotib olish
 
-BTT Toshkentda ishlab chiqaradi. Telegram @btt_uz.');
+Bententrade Toshkentda ishlab chiqaradi. Telegram @bententradeuz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (9, 'en', 'Garden rattan furniture in Tashkent: how to choose a set', 'Sofas, chairs and dining groups for terrace and dacha - what to check before buying in Uzbekistan.', 'Synthetic rattan garden furniture is a top search in Tashkent because heat and UV demand a low-maintenance material.
 
 ## Why rattan works outdoors
 
 PE fibre is coloured through, won''t rot, and aluminium frames don''t rust.
 
-![Dining set](assets/scene-dining-warm.png)
+![Dining set](assets/bundle-vertex-d90-vertex.jpg)
 
 ## Which set to pick
 
@@ -856,7 +841,7 @@ Small terrace: two chairs and a coffee table. Family of six: corner sofa or dini
 
 ## Buy in Tashkent
 
-BTT weaves in our Tashkent workshop. Message @btt_uz on Telegram.');
+Bententrade weaves in our Tashkent workshop. Message @bententradeuz on Telegram.');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (10, 'kashpo-iz-iskusstvennogo-rotanga', 'assets/bento-planter.png', 'published', '2026-04-28');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (10, 'ru', 'Кашпо из искусственного ротанга: для сада, террасы и интерьера', 'Плетёные кашпо не боятся дождя, легко моются и подчёркивают зелень - гид по размерам и формам.', 'Кашпо из искусственного ротанга совмещают декоративное плетение и практичность: влага не разрушает материал, а вес меньше, чем у керамики того же объёма.
 
@@ -875,7 +860,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ### Комплекты
 
-Набор из 3-5 кашпо одного стиля визуально собирает зону отдыха. В каталоге BTT есть готовые комплекты и индивидуальные размеры.
+Набор из 3-5 кашпо одного стиля визуально собирает зону отдыха. В каталоге Bententrade есть готовые комплекты и индивидуальные размеры.
 
 ## Уход
 
@@ -883,17 +868,17 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ## Заказ в Ташкенте
 
-Подберём форму и цвет под ваш проект - @btt_uz в Telegram.');
+Подберём форму и цвет под ваш проект - @bententradeuz в Telegram.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (10, 'uz', 'Sun’iy rotang gultuvaklari', 'Bog‘, terassa va interyer uchun.', 'Rotang gultuvaklari namlikka chidamli.
 
 ![Gultuvak](assets/hero-planter.png)
 
-BTT - @btt_uz.');
+Bententrade - @bententradeuz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (10, 'en', 'Synthetic rattan planters', 'For garden, terrace and interior.', 'Won''t crack in frost, easy to wash.
 
 ![Planter](assets/hero-planter.png)
 
-Order via @btt_uz.');
+Order via @bententradeuz.');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (11, 'korziny-sunduki-rotang', 'assets/hero-home-furniture.png', 'published', '2026-05-05');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (11, 'ru', 'Корзины и сундуки из ротанга для хранения', 'Плетёные корзины для белья, игрушек и пикника - аккуратный дом и терраса без визуального шума.', 'Корзины и сундуки из искусственного ротанга решают задачу хранения без «пластикового» вида. Их ставят в спальню, ванную, на террасу и в детскую.
 
@@ -917,17 +902,17 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Протирка влажной тканью раз в 2-3 недели. Не ставьте острые предметы вплотную к плетению без прокладки.
 
-Закажите в каталоге или напишите @btt_uz.');
+Закажите в каталоге или напишите @bententradeuz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (11, 'uz', 'Rotang savatlar va sandiqlar', 'Uy va terassa uchun saqlash.', 'Savatlar namlikka chidamli.
 
 ![Saqlash](assets/hero-home-furniture.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (11, 'en', 'Rattan baskets and chests', 'Storage for home and terrace.', 'Woven storage without plastic look.
 
 ![Storage](assets/hero-home-furniture.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (12, 'kupit-rotang-buhtami', 'assets/hero-rattan.png', 'published', '2026-05-12');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (12, 'ru', 'Купить искусственный ротанг бухтами в Ташкенте', 'Профили полумесяц, круг и плоский - для мастерских, мебельщиков и B2B. Палитра и образцы.', 'Если вы мебельщик, дизайнер или открываете мастерскую, ротанг бухтами выгоднее готовой мебели: вы контролируете форму и маржу.
 
@@ -949,20 +934,20 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Стабильные партии, артикулы 0609, 1505, 0704, 2404. Склад в Ташкенте - самовывоз или доставка по Узбекистану.
 
-## Качество BTT
+## Качество Bententrade
 
-Собственное производство - окраска в массе, контроль диаметра, без «пустого» ядра. Напишите @btt_uz для прайса.');
+Собственное производство - окраска в массе, контроль диаметра, без «пустого» ядра. Напишите @bententradeuz для прайса.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (12, 'uz', 'Toshkentda rotang g‘iloflab sotib olish', 'Ustalar va B2B uchun.', 'Profil va rang tanlang.
 
 ![Rotang](assets/hero-rattan.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (12, 'en', 'Buy synthetic rattan by the coil in Tashkent', 'Profiles for workshops and B2B.', 'Half-moon, round and flat profiles.
 
 ![Coils](assets/hero-rattan.png)
 
-@btt_uz');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (13, 'mebel-rotang-dlya-kafe', 'assets/scene-dining-teal.png', 'published', '2026-05-20');
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (13, 'mebel-rotang-dlya-kafe', 'assets/bundle-taper-80-corda.jpg', 'published', '2026-05-20');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (13, 'ru', 'Мебель из ротанга для кафе и ресторанов', 'Уличные зоны, веранды и летние площадки - практичное плетение и удобная замена подушек.', 'Для HoReCa в Ташкенте и по Узбекистану мебель из искусственного ротанга - баланс между эстетикой и практичностью. Гости видят аккуратное плетение, а персонал тратит минимум времени на уход.
 
 ## Что ставят чаще всего
@@ -971,7 +956,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 - Барные стулья у стойки
 - Угловые диваны для lounge-зон
 
-![Зона кафе](assets/scene-dining-teal.png)
+![Зона кафе](assets/bundle-taper-80-corda.jpg)
 
 ## Коммерческая эксплуатация
 
@@ -983,20 +968,20 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Поставляем партиями, собираем на объекте. Возможен нестандарт под планировку зала.
 
-## Связь с BTT
+## Связь с Bententrade
 
-Коммерческое предложение и 3D-подбор по фото зала - @btt_uz.');
+Коммерческое предложение и 3D-подбор по фото зала - @bententradeuz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (13, 'uz', 'Kafe va restoranlar uchun rotang mebel', 'Ko‘cha zonalar va verandalar.', 'Izosh qoplamasi va tez parvarish.
 
-![Kafe](assets/scene-dining-teal.png)
+![Kafe](assets/bundle-taper-80-corda.jpg)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (13, 'en', 'Rattan furniture for cafés and restaurants', 'Outdoor seating that lasts.', 'Dense weave, aluminium frame.
 
-![Café](assets/scene-dining-teal.png)
+![Café](assets/bundle-taper-80-corda.jpg)
 
-@btt_uz');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (14, 'pletennaya-mebel-dlya-doma', 'assets/scene-dining-cream.png', 'published', '2026-05-28');
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (14, 'pletennaya-mebel-dlya-doma', 'assets/bundle-taper-80-todo.jpg', 'published', '2026-05-28');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (14, 'ru', 'Плетёная мебель из ротанга для дома и гостиной', 'Кресла, комоды и стеллажи - тёплая фактура без тяжёлого ухода, подходит для квартиры.', 'Плетёная мебель в интерьере возвращает ощущение натуральности, но искусственный ротанг не требует климат-контроля как лоза.
 
 ## Куда ставить в квартире
@@ -1005,7 +990,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 - Прихожая - узкий комод для обуви и аксессуаров
 - Спальня - корзины и прикроватные столики
 
-![Интерьер с плетением](assets/scene-dining-cream.png)
+![Интерьер с плетением](assets/bundle-taper-80-todo.jpg)
 
 ## Стиль и сочетания
 
@@ -1017,19 +1002,19 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ## Доставка
 
-По Ташкенту - 1-3 дня после готовности. @btt_uz');
+По Ташкенту - 1-3 дня после готовности. @bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (14, 'uz', 'Uy va mehmonxona uchun to‘qima mebel', 'Kreslo, komod, javon.', 'Interyerda tabiiy ko‘rinish.
 
-![Uy](assets/scene-dining-cream.png)
+![Uy](assets/bundle-taper-80-todo.jpg)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (14, 'en', 'Woven rattan furniture for home', 'Living room chairs and storage.', 'Warm texture, easy care.
 
-![Home](assets/scene-dining-cream.png)
+![Home](assets/bundle-taper-80-todo.jpg)
 
-@btt_uz');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (15, 'dostavka-rotanga-po-uzbekistanu', 'assets/hero-garden-furniture.png', 'published', '2026-06-05');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (15, 'ru', 'Доставка мебели и ротанга по Узбекистану', 'Ташкент, область и регионы - сборка, упаковка и сроки. Как мы организуем логистику.', 'BTT доставляет плетёную мебель, кашпо и ротанг бухтами по Узбекистану. Ниже - как устроен процесс, чтобы вы заранее планировали сроки.
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (15, 'dostavka-rotanga-po-uzbekistanu', 'assets/bundle-vertex-d90-corda.jpg', 'published', '2026-06-05');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (15, 'ru', 'Доставка мебели и ротанга по Узбекистану', 'Ташкент, область и регионы - сборка, упаковка и сроки. Как мы организуем логистику.', 'Bententrade доставляет плетёную мебель, кашпо и ротанг бухтами по Узбекистану. Ниже - как устроен процесс, чтобы вы заранее планировали сроки.
 
 ## Ташкент и Ташкентская область
 
@@ -1041,7 +1026,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Отправляем в Самарканд, Бухару, Фергану, Наманган и другие города. Срок зависит от объёма - менеджер назовёт дату при оформлении.
 
-![Доставка комплекта](assets/hero-garden-furniture.png)
+![Доставка комплекта](assets/bundle-vertex-d90-corda.jpg)
 
 ## Упаковка
 
@@ -1053,17 +1038,17 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ## Оформить доставку
 
-Telegram @btt_uz или форма на сайте после принятия cookie.');
+Telegram @bententradeuz или форма на сайте после принятия cookie.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (15, 'uz', 'O‘zbekiston bo‘ylab yetkazib berish', 'Toshkent va viloyatlar.', '1-3 kun ichida Toshkent.
 
-![Yetkazish](assets/hero-garden-furniture.png)
+![Yetkazish](assets/bundle-vertex-d90-corda.jpg)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (15, 'en', 'Delivery across Uzbekistan', 'Tashkent and regions.', 'Assembly on site in capital.
 
-![Delivery](assets/hero-garden-furniture.png)
+![Delivery](assets/bundle-vertex-d90-corda.jpg)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (16, 'rotang-dlya-balkona', 'assets/bento-rattan.png', 'published', '2026-06-12');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (16, 'ru', 'Мебель из ротанга для балкона и лоджии', 'Компактные кресла, столики и кашпо - легко переставить и не боится перепадов температуры.', 'Балкон и лоджия в многоэтажках Ташкента - мини-терраса. Мебель должна быть лёгкой, узкой и устойчивой к солнцу через стекло.
 
@@ -1085,19 +1070,19 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ## Заказ
 
-Подберём габариты по вашим замерам - @btt_uz.');
+Подберём габариты по вашим замерам - @bententradeuz.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (16, 'uz', 'Balkon va lodjiya uchun rotang', 'Ixcham kreslo va stol.', 'Quyoshga chidamli.
 
 ![Balkon](assets/bento-rattan.png)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (16, 'en', 'Rattan for balcony and loggia', 'Compact chairs and tables.', 'UV-stable PE weave.
 
 ![Balcony](assets/bento-rattan.png)
 
-@btt_uz');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (17, 'palitra-tsvetov-rotanga-btt', 'assets/rattan-palette-hero.png', 'published', '2026-06-20');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'ru', 'Палитра цветов искусственного ротанга BTT', 'Tobacco, Woody, Brown, Graphite, Choco - как выбрать оттенок под интерьер и фасад.', 'Цвет ротанга задаёт характер всей зоны отдыха. В BTT палитра построена на натуральных древесных тонах - без кислотных оттенков, которые выгорают неравномерно.
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (17, 'palitra-tsvetov-rotanga-bententrade', 'assets/rattan-palette-hero.png', 'published', '2026-06-20');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'ru', 'Палитра цветов искусственного ротанга Bententrade', 'Tobacco, Woody, Brown, Graphite, Choco - как выбрать оттенок под интерьер и фасад.', 'Цвет ротанга задаёт характер всей зоны отдыха. В Bententrade палитра построена на натуральных древесных тонах - без кислотных оттенков, которые выгорают неравномерно.
 
 ## Базовые цвета
 
@@ -1115,22 +1100,22 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 ### Образцы
 
-Закажите набор образцов 15-20 см - привезём в Ташкент или отправим с заказом. @btt_uz
+Закажите набор образцов 15-20 см - привезём в Ташкент или отправим с заказом. @bententradeuz
 
 ## Нестандарт
 
 Любой цвет под заказ от одной бухты - согласуем эталон до производства.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'uz', 'BTT rotang rang palitrasi', 'Tobacco, Woody, Graphite.', '5 asosiy rang.
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'uz', 'Bententrade rotang rang palitrasi', 'Tobacco, Woody, Graphite.', '5 asosiy rang.
 
 ![Palitra](assets/rattan-palette-hero.png)
 
-@btt_uz');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'en', 'BTT rattan colour palette', 'Wood tones for outdoor and indoor.', 'Five base shades plus custom.
+@bententradeuz');
+INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (17, 'en', 'Bententrade rattan colour palette', 'Wood tones for outdoor and indoor.', 'Five base shades plus custom.
 
 ![Palette](assets/rattan-palette-hero.png)
 
-@btt_uz');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (18, 'oformlenie-terassi-rotangom', 'assets/scene-dining-warm.png', 'published', '2026-06-28');
+@bententradeuz');
+INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (18, 'oformlenie-terassi-rotangom', 'assets/bundle-vertex-d90-vertex.jpg', 'published', '2026-06-28');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (18, 'ru', 'Как оформить террасу ротанговой мебелью', 'Зонирование, свет, текстиль и растения - пошаговый гид для уютной террасы в Ташкенте.', 'Терраса - продолжение гостиной на воздухе. Ротанговая мебель задаёт стиль, но важны пропорции, свет и аксессуары.
 
 ## Шаг 1: зонирование
@@ -1141,7 +1126,7 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Выберите один цвет плетения - Tobacco или Woody для тепла. Добавьте один акцент: кашпо или столик другого оттенка.
 
-![Терраса с обеденной зоной](assets/scene-dining-warm.png)
+![Терраса с обеденной зоной](assets/bundle-vertex-d90-vertex.jpg)
 
 ## Шаг 3: текстиль
 
@@ -1155,235 +1140,19 @@ INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VAL
 
 Высокие кашпо из ротанга с фикусом или оливой визуально «потолок» зоны.
 
-## Реализация с BTT
+## Реализация с Bententrade
 
-Комплект под ключ + доставка - @btt_uz. Можем изготовить нестандартные размеры под вашу планировку.');
+Комплект под ключ + доставка - @bententradeuz. Можем изготовить нестандартные размеры под вашу планировку.');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (18, 'uz', 'Terassani rotang bilan bezash', 'Zonalar va yoritish.', '4 qadamli qo‘llanma.
 
-![Terassa](assets/scene-dining-warm.png)
+![Terassa](assets/bundle-vertex-d90-vertex.jpg)
 
-@btt_uz');
+@bententradeuz');
 INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (18, 'en', 'Terrace styling with rattan furniture', 'Zones, light and plants.', 'Step-by-step guide.
 
-![Terrace](assets/scene-dining-warm.png)
+![Terrace](assets/bundle-vertex-d90-vertex.jpg)
 
-@btt_uz');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (19, 'stulya-dlya-kafe-horeca-tashkent', 'assets/scene-dining-teal.png', 'published', '2026-07-08');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (19, 'ru', 'Стулья и столы для кафе и ресторанов в Ташкенте: гид по HoReCa мебели', 'Штабелируемые стулья, износостойкие подстолья и готовые гарнитуры для летних площадок и залов - как обустроить заведение без переплат посредникам.', 'Открытие кофейни, ресторана или сезонной летней веранды в Ташкенте требует мебели, выдерживающей непрерывный поток гостей, палящее летнее солнце и частую санитарную обработку.
-
-## Главные требования к мебели HoReCa
-
-В сфере общепита мебель решает сразу несколько бизнес-задач:
-
-- **Штабелируемость:** стулья должны быстро складываться друг в друга для влажной уборки зала или хранения на ночь (модели Roero, Noero, Todo).
-- **Стойкость к напиткам и загрязнениям:** первичный полипропилен и столешницы из ЛДСП с мраморной текстурой не впитывают кофе, соусы и жир.
-- **Устойчивые подстолья:** столы серии Taper и Corda оснащены надёжными опорами, не шатаются на брусчатке и плитке.
-
-![Мебель для HoReCa](assets/scene-dining-teal.png)
-
-## Популярные комбинации для заведений
-
-1. **Быстрая посадка на веранде:** штабелируемые стулья Roero (от 168 000 сум в комплекте) со столом Taper 80×80 (733 000 сум в комплекте).
-2. **Уютная кофейня:** стулья Jardin с эргономичными подлокотниками и стол Corda 135 Чёрный мрамор.
-3. **Lounge и кальянные зоны:** плетёные стулья Corda и Vertex с мягкими подушками из водоотталкивающего текстиля.
-
-## Работа с юридическими лицами в BTT
-
-Для владельцев бизнеса BTT предоставляет официальный договор, счёт-фактуру с НДС, сертификаты качества и быструю доставку по Ташкенту и в регионы. Напишите в Telegram @btt_uz для оптового расчёта.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (19, 'uz', 'Toshkentdagi kafe va restoranlar uchun stul va stollar: HoReCa mebel qo''llanmasi', 'Yig''iladigan stullar, mustahkam stollar va tayyor to''plamlar - ortiqcha to''lovlarsiz qahvaxona va restoranlarni jihozlash.', 'Toshkentda kafe yoki yozgi ayvon ochish uchun uzluksiz yuklamaga, quyoshga va tozalashga chidamli mebel talab qilinadi.
-
-## HoReCa mebelining asosiy talablari
-
-- Qulay yig''ilishi (shtabellanishi): Roero, Noero va Todo stullari bir-birining ustiga oson yig''iladi.
-- Oson yuvilishi: polipropilen qahva va yog''ni singdirmaydi.
-- Mustahkam karkas: Taper va Corda stollari tekis turadi va qimirlamaydi.
-
-![Kafe mebeli](assets/scene-dining-teal.png)
-
-BTT kompaniyasi yuridik shaxslar uchun shartnoma, QQS bilan hisob-faktura va tezkor yetkazib berishni ta''minlaydi. Telegram: @btt_uz.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (19, 'en', 'Chairs and Tables for Cafes and Restaurants in Tashkent: HoReCa Furniture Guide', 'Stackable chairs, durable frames, and turn-key sets for summer terraces and indoor halls without distributor markups.', 'Running a cafe or restaurant in Tashkent demands furniture that withstands intense guest footfall, strong summer sun, and frequent daily sanitation.
-
-## Essential Criteria for Hospitality Furniture
-
-- **Stackability:** Chairs like Roero, Noero, and Todo nest securely for rapid floor cleaning and evening storage.
-- **Stain resistance:** Virgin polypropylene and marble-finish laminate tops do not absorb grease, coffee, or sauces.
-- **Stability:** Taper and Corda series bases remain firm on pavement and patio tiles.
-
-![HoReCa Furniture](assets/scene-dining-teal.png)
-
-BTT provides corporate contracts, VAT invoices, and fast delivery across Tashkent. Reach out on Telegram @btt_uz.');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (20, 'plastikovye-stulya-vs-rotang', 'assets/scene-dining-cream.png', 'published', '2026-07-15');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (20, 'ru', 'Пластиковые стулья или искусственный ротанг: что выбрать для террасы и дачи', 'Сравниваем полипропиленовые стулья и плетёные модели из ротанга: вес, долговечность, уход, комфорт посадки и бюджет.', 'При обустройстве дачи, балкона или загородного дома в Узбекистане часто встаёт вопрос: отдать предпочтение практичным пластиковым стульям или благородному плетению из искусственного ротанга?
-
-## Пластиковые стулья (Roero, Noero, Todo, Jardin)
-
-Современные дизайнерские пластиковые стулья изготавливаются из первичного полипропилена с добавлением стекловолокна:
-
-- **Плюсы:** лёгкий вес, возможность штабелирования по 4-6 штук, абсолютная невосприимчивость к дождю, мытьё обычной водой из шланга, доступная цена (от 168 000 сум в комплекте).
-- **Минусы:** более строгий урбанистичный вид, сиденье твёрже (хотя модель TODO SOFT решает это мягкой экокожей).
-
-![Пластиковые стулья в интерьере](assets/scene-dining-cream.png)
-
-## Плетёные стулья из искусственного ротанга (Vertex, Corda)
-
-Плетёные кресла на усиленном металлическом каркасе с ручным плетением из кручёного PE-ротанга:
-
-- **Плюсы:** премиальный курортный вид, максимальный комфорт благодаря мягким подушкам, приятная фактура ручного плетения, статусность.
-- **Минусы:** вес больше, не штабелируются, подушки во время сильного ливня лучше убирать под навес.
-
-## Итоговый вердикт
-
-- Если вам нужна максимальная мобильность, лёгкость уборки и невысокий бюджет - выбирайте **ROERO**, **NOERO** или **TODO**.
-- Если вы обустраиваете уютную обеденную зону у бассейна или на закрытой террасе для долгих семейных ужинов - выбирайте **VERTEX** или **CORDA** (499 000 сум).');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (20, 'uz', 'Plastik stullar yoki to''qilgan rotang: terassa va dacha uchun qaysi birini tanlash kerak', 'Polipropilen va sun''iy rotang modellari solishtiruvi: og''irlik, chidamlilik, parvarish va narx.', 'Dacha va hovlini jihozlashda plastik va rotang stullari orasida tanlov qilish zarurati tug''iladi.
-
-## Plastik stullar (Roero, Noero, Todo, Jardin)
-
-- Yengil, yig''iladigan, suvdan qo''rqmaydi, hamyonbop narx (to''plamda 168 000 so''mdan).
-
-## Rotang stullar (Vertex, Corda)
-
-- Hashamatli ko''rinish, yumshoq yostiqlar, qo''lda to''qilgan qulay o''rindiq (499 000 so''m).
-
-![Mebel solishtiruvi](assets/scene-dining-cream.png)
-
-BTT katalogida ikkala turdagi mebellar ham mavjud.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (20, 'en', 'Plastic Chairs vs Wicker Rattan: What to Choose for Terrace and Garden', 'Comparing polypropylene chairs with woven synthetic rattan: weight, longevity, maintenance, comfort, and budget.', 'When furnishing a garden patio or townhouse terrace in Uzbekistan, choosing between designer plastic and hand-woven synthetic rattan is a central decision.
-
-## Plastic Chairs (Roero, Noero, Todo, Jardin)
-
-- Lightweight, easily stackable, totally immune to rain, washable with water, accessible factory price (from 168,000 UZS in sets).
-
-## Wicker Rattan Chairs (Vertex, Corda)
-
-- Resort aesthetic, superior long-sitting comfort with soft cushions, solid steel frame (499,000 UZS).
-
-![Chairs comparison](assets/scene-dining-cream.png)
-
-Explore both lines in the BTT catalog.');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (21, 'gotovye-komplekty-mebeli-so-skidkoy', 'assets/scene-dining-warm.png', 'published', '2026-07-22');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (21, 'ru', 'Как выгодно купить комплект мебели: столы со стульями со скидкой от фабрики BTT', 'Почему покупать стол и стулья вместе выгоднее: правила расчёта скидок, утверждённые комплекты от 2 676 000 сум и онлайн-калькулятор.', 'Покупка мебели в разрозненных магазинах часто приводит к переплате за доставку и несовпадению оттенков. Фабрика BTT предлагает прозрачную систему комплектных скидок при единовременном заказе стола со стульями.
-
-## В чём выгода покупки гарнитуром
-
-1. **Экономия на каждом стуле:** при заказе со столом стоимость каждого пластикового стула снижается на 20 000 сум. На комплекте из 4 стульев вы экономите 80 000 сум, а на 6 стульях - 120 000 сум.
-2. **Скидка на стол:** цена стола в составе гарнитура уменьшается на 50 000 сум.
-3. **Общая выгода:** экономия до 200 000 сум по сравнению с раздельной покупкой.
-
-![Обеденный гарнитур BTT](assets/scene-dining-warm.png)
-
-## Утверждённые суперцены на готовые комплекты
-
-Для гарнитуров с плетёными стульями действуют специальные фиксированные цены:
-
-- Стол Vertex D90 (круглый Ø90) + 4 стула Vertex или Corda: **2 676 000 сум**
-- Стол Taper 80×80 + 4 стула Vertex или Corda: **2 850 000 сум**
-- Стол Taper Rotang 80×80 + 4 стула Vertex или Corda: **2 850 000 сум**
-
-## Онлайн-калькулятор комплектов
-
-На нашем сайте работает интерактивный калькулятор: выберите любой стол, модель стульев и количество, и система покажет точную стоимость с учётом всех скидок. Оформить заказ можно за 1 клик с оплатой при получении.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (21, 'uz', 'Mebel to''plamini qanday qulay sotib olish mumkin: BTT fabrikasidan chegirmali stol va stullar', 'Stol va stullarni birga sotib olish nega foydali: chegirmalar qoidalari va 2 676 000 so''mdan boshlanadigan tayyor to''plamlar.', 'BTT fabrikasida stol va stullarni to''plam qilib xarid qilganda maxsus chegirmalar amal qiladi.
-
-- Har bir stul uchun 20 000 so''mgacha chegirma;
-- Stol uchun 50 000 so''m chegirma;
-- Jami tejash 200 000 so''mgacha.
-
-![Tayyor to''plam](assets/scene-dining-warm.png)
-
-Saytimizdagi onlayn kalkulyatordan foydalanib narxni bir zumda hisoblang.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (21, 'en', 'How to Buy Dining Sets with Discount: Tables and Chairs from BTT Factory', 'Why buying tables and chairs together saves money: transparent calculation rules, approved combos from 2,676,000 UZS, and instant calculator.', 'Purchasing dining groups together guarantees color harmony and unlocks direct factory bundle discounts.
-
-- Save up to 20,000 UZS per chair when ordered with any table.
-- Save 50,000 UZS on table bundle pricing.
-- Total savings up to 200,000 UZS per set.
-
-![Dining Set](assets/scene-dining-warm.png)
-
-Try our interactive set calculator on the website for instant pricing.');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (22, 'treny-osveshcheniya-nastolnye-lampy', 'assets/prod-lamp-nova.jpg', 'published', '2026-08-01');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (22, 'ru', 'Тренды освещения 2026: тёплые настольные лампы для уюта спальни, гостиной и столиков кафе', 'Обзор 6 дизайнерских настольных ламп BTT: Nova, Sora, Vela, Runa, Liva и Aria. Тёплый свет 2700K, автономность и создание камерной атмосферы.', 'Правильное локальное освещение способно полностью преобразить интерьер. В 2026 году главным трендом в оформлении домов и ресторанов стал отказ от резкого верхнего света в пользу мягких точечных источников.
-
-## 6 моделей настольных ламп BTT
-
-Линейка ламп BTT разработана для создания расслабляющей тёплой атмосферы:
-
-- **ARIA (316 941 сум):** ультракомпактный светильник 11.8×24.35 см. Идеален для кофейных столиков и прикроватных тумб.
-- **VELA (332 252 сум):** изящный высокий силуэт 25×43 см с широким рассеивателем.
-- **NOVA (401 047 сум):** гармоничные пропорции 23.5×30.9 см с мягким куполом, фаворит современных гостиных.
-- **LIVA (442 495 сум):** лаконичный цилиндрический дизайн 12×24.8 см в оттенках Белый и Мятный.
-- **RUNA (491 000 сум):** уютная геометрия 19×22.3 см с рассеянным круговым свечением.
-- **SORA (740 113 сум):** флагманская лампа 25×43 см с премиальной фактурой и глубоким тёплым светом.
-
-![Настольная лампа NOVA](assets/prod-lamp-nova.jpg)
-
-## Где использовать настольные лампы
-
-1. **На столиках в ресторанах и кафе:** создаёт приватное настроение без ослепления гостей.
-2. **В спальне и кабинете:** мягкий вечерний свет без нагрузки на зрение перед сном.
-3. **На веранде и террасе:** уютная атмосфера для неспешных вечерних бесед.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (22, 'uz', '2026 yoritish trendlari: yotoqxona, mehmonxona va kafe stollari uchun issiq stol lampalari', 'BTT ning 6 ta dizaynerlik stol lampalari: Nova, Sora, Vela, Runa, Liva va Aria. Yumshoq iliq yorug''lik va qulay muhit.', 'To''g''ri yoritish xonada o''zgacha shinamlik yaratadi. BTT lampalari uy va kafe stollari uchun ajoyib yechimdir.
-
-- ARIA: 316 941 so''m
-- VELA: 332 252 so''m
-- NOVA: 401 047 so''m
-- LIVA: 442 495 so''m (Oq va Yalpiz ranglarida)
-- RUNA: 491 000 so''m
-- SORA: 740 113 so''m
-
-![NOVA lampasi](assets/prod-lamp-nova.jpg)
-
-Barcha modellar BTT katalogida mavjud.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (22, 'en', 'Lighting Trends 2026: Warm Table Lamps for Bedroom, Living Room and Cafe Tables', 'Overview of 6 designer BTT table lamps: Nova, Sora, Vela, Runa, Liva, and Aria. Warm 2700K glow and ambient comfort.', 'Accent lighting transforms any space. In 2026, the key trend across homes and hospitality venues is moving away from harsh overhead fixtures toward warm, intimate point lights.
-
-- **ARIA (316,941 UZS):** 11.8×24.35 cm compact accent.
-- **VELA (332,252 UZS):** 25×43 cm tall silhouette.
-- **NOVA (401,047 UZS):** 23.5×30.9 cm soft ambient dome.
-- **LIVA (442,495 UZS):** 12×24.8 cm sleek column in White and Mint.
-- **RUNA (491,000 UZS):** 19×22.3 cm rounded warm glow.
-- **SORA (740,113 UZS):** 25×43 cm statement luminaire.
-
-![NOVA table lamp](assets/prod-lamp-nova.jpg)
-
-Discover all lighting pieces in the BTT catalog.');
-INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES (23, 'uhod-za-mebelyu-v-klimate-uzbekistana', 'assets/hero-garden-furniture.png', 'published', '2026-08-10');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (23, 'ru', 'Уход за садовой и уличной мебелью в климате Узбекистана: защита от жары, пыли и солнца', 'Как чистить мебель после чилли, почему полипропилен и ротанг BTT не выгорают на солнце +45°C и простые правила продления срока службы.', 'Лето в Ташкенте и других регионах Узбекистана сопровождается высокими температурами (чилля до +45°C) и ветрами с мелкой пылью. Обычная мебель в таких условиях рассыхается, выцветает и трескается.
-
-## Почему материалы BTT устойчивы к местному климату
-
-1. **Окраска в массе:** полиэтиленовое волокно ротанга и полипропиленовые гранулы стульев окрашиваются ещё на этапе плавления сырья. УФ-стабилизаторы не дают цвету выгорать даже под прямыми солнечными лучами.
-2. **Ударопрочные полимеры:** материал не становится хрупким от температурных перепадов между дневной жарой и ночной прохладой.
-3. **Влагостойкость:** внезапные весенние ливни или полив газона не наносят вреда каркасам и плетению.
-
-![Садовая мебель на солнце](assets/hero-garden-furniture.png)
-
-## 3 простых правила ухода
-
-- **Очистка от пыли:** достаточно раз в неделю ополоснуть стулья и столы обычной водой из шланга или протереть мягкой влажной микрофиброй. Не требуется использовать абразивные щётки и агрессивные растворители.
-- **Уход за столешницами:** ламинированная поверхность под мрамор протирается мыльным раствором. Не ставьте раскалённую посуду прямо на поверхность без подставки.
-- **Хранение текстиля:** водоотталкивающие подушки стульев Vertex и Corda во время сильных пыльных бурь или на зимний период рекомендуется убирать в сухое помещение.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (23, 'uz', 'O''zbekiston iqlimida bog'' va ko''cha mebelini parvarish qilish: issiq, chang va quyoshdan himoya', 'Chilla davrida changdan tozalash, quyoshda rang o''chmasligi sirlari va mebel umrini uzaytirish bo''yicha maslahatlar.', 'O''zbekistonda yozgi jazirama va changli shamollar mebel uchun jiddiy sinovdir. BTT materiallari maxsus UV stabilizatorlari bilan ishlab chiqariladi.
-
-## Parvarishlash qoidalari
-
-- Oddiy suv bilan yuvish: shlang yoki nam mato bilan changni ketkazish kifoya.
-- Stol yuzalarini toza saqlash: abraziv kukunlarsiz yumshoq vositalar bilan artish.
-- Yostiqlarni qishda quruq joyda saqlash.
-
-![Bog'' mebeli](assets/hero-garden-furniture.png)
-
-BTT mebellari uzoq yillar xizmat qiladi.');
-INSERT OR REPLACE INTO article_i18n (article_id, lang, title, excerpt, body) VALUES (23, 'en', 'Caring for Outdoor Furniture in Uzbekistan Climate: Protection Against Heat, Dust and Sun', 'Cleaning furniture after sand winds, why BTT polymers do not fade under +45°C UV, and simple steps to extend longevity.', 'Uzbekistan summers feature intense heatwaves (+45°C chilla) and dusty winds. Conventional furniture fades and splinters under these conditions.
-
-## Why BTT Furniture Endures Local Climate
-
-- **Mass-pigmentation:** Polymers are dyed uniformly during melting, fortified with UV-stabilizers preventing sun-bleaching.
-- **Impact resilience:** Polymer structures resist thermal shock between day baking and night cooling.
-- **Zero water absorption:** Heavy rain and lawn sprinklers cause zero warping or rot.
-
-![Outdoor furniture](assets/hero-garden-furniture.png)
-
-Simple weekly hose-down keeps pieces in pristine showroom shape.');
+@bententradeuz');
 
 INSERT OR REPLACE INTO settings (key, value) VALUES ('brand', 'BTT - мебель для дома и сада');
 INSERT OR REPLACE INTO settings (key, value) VALUES ('phone', '+998 77 104 44 22');

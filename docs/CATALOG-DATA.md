@@ -63,7 +63,7 @@ npm run validate
   "isTable": false,
   "images": [
     "assets/prod-chair-corda.jpg",
-    "assets/scene-dining-warm.png"
+    "assets/bundle-vertex-d90-vertex.jpg"
   ],
   "i18n": {
     "ru": {

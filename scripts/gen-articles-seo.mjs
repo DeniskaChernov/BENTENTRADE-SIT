@@ -1,14 +1,14 @@
 import { writeFileSync } from "fs";
 
 const IMG = {
-  garden: "assets/hero-garden-furniture.png",
+  garden: "assets/bundle-vertex-d90-corda.jpg",
   home: "assets/hero-home-furniture.png",
   rattan: "assets/hero-rattan.png",
   planter: "assets/bento-planter.png",
   bento: "assets/bento-rattan.png",
-  warm: "assets/scene-dining-warm.png",
-  teal: "assets/scene-dining-teal.png",
-  cream: "assets/scene-dining-cream.png",
+  warm: "assets/bundle-vertex-d90-vertex.jpg",
+  teal: "assets/bundle-taper-80-corda.jpg",
+  cream: "assets/bundle-taper-80-todo.jpg",
   palette: "assets/rattan-palette-hero.png",
   tobacco: "assets/rattan-profile-0609-tobacco.png",
   woody: "assets/rattan-profile-1505-woody.png",

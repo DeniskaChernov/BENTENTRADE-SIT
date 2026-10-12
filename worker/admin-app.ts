@@ -1367,7 +1367,7 @@ export const ADMIN_APP_JS = String.raw`
               '</div>' +
               '<div class="store-card-preview" id="p-store-card">' +
                 '<div class="store-card-img-wrap">' +
-                  '<img id="prev-img" src="/assets/hero-garden-furniture.png">' +
+                  '<img id="prev-img" src="/assets/placeholder.svg">' +
                   '<span class="store-card-badge" id="prev-badge">Садовая мебель</span>' +
                 '</div>' +
                 '<div class="store-card-body">' +

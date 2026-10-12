@@ -101,26 +101,26 @@
 
   /* Default high-res photography cover for every article topic */
   const DEFAULT_COVERS = {
-    "sadovaya-mebel-rotang-tashkent": "assets/hero-garden-furniture.png",
-    "uhod-za-rotangom-zimoy": "assets/scene-dining-warm.png",
+    "sadovaya-mebel-rotang-tashkent": "assets/bundle-vertex-d90-corda.jpg",
+    "uhod-za-rotangom-zimoy": "assets/bundle-vertex-d90-vertex.jpg",
     "iskusstvennyy-rotang": "assets/hero-rattan.png",
     "zachem-iskusstvennyy-rotang": "assets/hero-rattan.png",
     "kak-vybrat-luchshiy-rotang": "assets/rattan-palette-hero.png",
-    "pochemu-rabotayut-s-btt": "assets/hero-garden-furniture.png",
+    "pochemu-rabotayut-s-btt": "assets/bundle-vertex-d90-corda.jpg",
     "kashpo-iz-iskusstvennogo-rotanga": "assets/bento-planter.png",
-    "korziny-sunduki-rotang": "assets/hero-home-furniture.png",
+    "korziny-sunduki-rotang": "assets/hero-planter.png",
     "kupit-rotang-buhtami": "assets/hero-rattan.png",
-    "mebel-rotang-dlya-kafe": "assets/scene-dining-teal.png",
-    "pletennaya-mebel-dlya-doma": "assets/scene-dining-cream.png",
-    "dostavka-rotanga-po-uzbekistanu": "assets/hero-garden-furniture.png",
+    "mebel-rotang-dlya-kafe": "assets/bundle-taper-80-corda.jpg",
+    "pletennaya-mebel-dlya-doma": "assets/bundle-taper-80-vertex.jpg",
+    "dostavka-rotanga-po-uzbekistanu": "assets/bundle-taper-80-corda.jpg",
     "rotang-dlya-balkona": "assets/bento-rattan.png",
     "palitra-tsvetov-rotanga-btt": "assets/rattan-palette-hero.png",
-    "oformlenie-terassi-rotangom": "assets/scene-dining-warm.png",
-    "stulya-dlya-kafe-horeca-tashkent": "assets/scene-dining-teal.png",
-    "plastikovye-stulya-vs-rotang": "assets/scene-dining-cream.png",
-    "gotovye-komplekty-mebeli-so-skidkoy": "assets/scene-dining-warm.png",
-    "treny-osveshcheniya-nastolnye-lampy": "assets/prod-lamp-nova.jpg",
-    "uhod-za-mebelyu-v-klimate-uzbekistana": "assets/hero-garden-furniture.png"
+    "oformlenie-terassi-rotangom": "assets/bundle-vertex-d90-corda.jpg",
+    "stulya-dlya-kafe-horeca-tashkent": "assets/bundle-vertex-d90-jardin.jpg",
+    "plastikovye-stulya-vs-rotang": "assets/bundle-taper-80-todo.jpg",
+    "gotovye-komplekty-mebeli-so-skidkoy": "assets/bundle-taper-80-corda.jpg",
+    "treny-osveshcheniya-nastolnye-lampy": "assets/prod-lamp-runa-scene.jpg",
+    "uhod-za-mebelyu-v-klimate-uzbekistana": "assets/bundle-vertex-d90-jardin.jpg"
   };
 
   function lang() {
@@ -155,7 +155,7 @@
 
   function cover(media, slug) {
     if (!media) {
-      media = DEFAULT_COVERS[slug] || "assets/hero-garden-furniture.png";
+      media = DEFAULT_COVERS[slug] || "assets/bundle-vertex-d90-vertex.jpg";
     }
     return media.indexOf("/") === 0 || media.indexOf("http") === 0 ? media : "/" + media.replace(/^\//, "");
   }
@@ -242,7 +242,7 @@
   function localizeArticle(a) {
     if (!a) return null;
     const loc = (a.i18n && (a.i18n[lang()] || a.i18n.ru)) || {};
-    const coverMedia = a.cover_media || DEFAULT_COVERS[a.slug] || "assets/hero-garden-furniture.png";
+    const coverMedia = a.cover_media || DEFAULT_COVERS[a.slug] || "assets/bundle-vertex-d90-vertex.jpg";
     return {
       slug: a.slug,
       published_at: a.published_at,
@@ -282,7 +282,7 @@
           } else {
             staticMap.set(apiItem.slug, {
               ...apiItem,
-              cover_media: apiItem.cover_media || DEFAULT_COVERS[apiItem.slug] || "assets/hero-garden-furniture.png"
+              cover_media: apiItem.cover_media || DEFAULT_COVERS[apiItem.slug] || "assets/bundle-vertex-d90-vertex.jpg"
             });
           }
         });

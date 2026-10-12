@@ -36,3 +36,5 @@ Bententrade-Sit/**
 *.ps1
 *.ts
 sitemap.xml
+.tmp*
+.tmp*/**

@@ -67,7 +67,7 @@ function syncProductsJs() {
   };
 
   window.BTT_CAT_IMG = {
-    all:                 "assets/scene-dining-warm.png",
+    all:                 "assets/bundle-vertex-d90-vertex.jpg",
     "wicker-chairs":     "assets/prod-chair-corda.jpg",
     "plastic-chairs":    "assets/prod-chair-roero-black.jpg",
     tables:              "assets/prod-table-corda-135-black.jpg",
@@ -75,7 +75,7 @@ function syncProductsJs() {
     "rattan-raw":        "assets/prod-rattan-polutrubka.svg",
     // legacy category aliases
     furniture:           "assets/prod-chair-corda.jpg",
-    indoor:              "assets/scene-dining-marble.png",
+    indoor:              "assets/bundle-taper-80-corda.jpg",
     planter:             "assets/prod-chair-corda.jpg",
     basket:              "assets/prod-chair-corda.jpg"
   };

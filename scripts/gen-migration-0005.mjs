@@ -48,7 +48,7 @@ const cats = [
     uz: { name: "Ovqat stollari", desc: "LDSP ustki qismli va metall karkasli mustahkam stollar.", seo_t: "Toshkentda ovqat stollari sotib olish - BTT", seo_d: "BTT dan to‘rtburchak va dumaloq ovqat stollari." },
     en: { name: "Dining tables", desc: "Dining tables on metal frames with chipboard tops.", seo_t: "Buy Dining Tables in Tashkent - BTT", seo_d: "Dining tables by BTT. Dimensions 80x80, 135x80 and round D90." }
   },
-  { id: 5, slug: "sets", sort: 50, image: "assets/hero-garden-furniture.png",
+  { id: 5, slug: "sets", sort: 50, image: "assets/bundle-taper-80-corda.jpg",
     ru: { name: "Комплекты мебели", desc: "Готовые обеденные группы из столов и стульев для дома и террасы.", seo_t: "Купить комплекты мебели в Ташкенте - BTT", seo_d: "Готовые мебельные комплекты от BTT. Доставка по Ташкенту и Узбекистану." },
     uz: { name: "Mebel to‘plamlari", desc: "Uy va veranda uchun stol va stullardan iborat tayyor to‘plamlar.", seo_t: "Toshkentda mebel to‘plamlari sotib olish - BTT", seo_d: "BTT dan tayyor stol va stul to‘plamlari." },
     en: { name: "Furniture sets", desc: "Ready-to-use dining sets of tables and matching chairs.", seo_t: "Buy Furniture Sets in Tashkent - BTT", seo_d: "Furniture dining sets by BTT." }

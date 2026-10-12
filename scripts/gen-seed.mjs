@@ -111,7 +111,7 @@ function main() {
     if (!art.slug || seenSlugs.has(art.slug)) continue;
     seenSlugs.add(art.slug);
     const pub = art.published_at || "2026-03-01";
-    const cover = art.cover_media || "assets/hero-garden-furniture.png";
+    const cover = art.cover_media || "assets/bundle-vertex-d90-vertex.jpg";
     lines.push(
       `INSERT OR REPLACE INTO articles (id, slug, cover_media, status, published_at) VALUES ` +
         `(${artId}, ${q(art.slug)}, ${q(cover)}, 'published', ${q(pub)});`,

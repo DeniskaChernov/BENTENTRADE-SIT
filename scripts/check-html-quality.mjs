@@ -20,7 +20,7 @@ console.log('=== CHECKING ALL HTML FILES FOR I18N KEYS & DASHES ===');
 for (const file of htmlFiles) {
   const content = fs.readFileSync(path.join(root, file), 'utf8');
 
-  // Check em-dash (— \u2014) and en-dash (– \u2013)
+  // Check em-dash (\u2014) and en-dash (\u2013)
   const dashes = [];
   const lines = content.split('\n');
   lines.forEach((line, idx) => {
