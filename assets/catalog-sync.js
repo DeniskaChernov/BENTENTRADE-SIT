@@ -11,7 +11,7 @@
   const U = window.BTT_UTIL || {};
   const money = (n) => (window.BTT_UTIL && window.BTT_UTIL.formatMoney)
     ? window.BTT_UTIL.formatMoney(n)
-    : (String(Math.round(Number(n) * 12500)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0сум");
+    : (String(Math.round(Number(n) >= 10000 ? Number(n) : Number(n) * 12500)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0сум");
   const mediaUrl = (key) => {
     if (!key) return "";
     if (key.startsWith("assets/") || key.startsWith("/assets/") || key.startsWith("http://") || key.startsWith("https://") || key.startsWith("/")) {

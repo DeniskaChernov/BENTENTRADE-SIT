@@ -1447,7 +1447,8 @@
         var I = window.BTT_I18N || {};
         var dict = I[curLang] || I.ru || {};
         var title = (p && p.name) || dict[slug + ".name"] || slug;
-        var snap = { id: slug, name: title, price: (p && p.now) || 0, img: img, qty: 1 };
+        var pImg = (p && p.images && p.images[0]) || (p && p.colors && p.colors[0] && p.colors[0].image) || "";
+        var snap = { id: slug, name: title, price: (p && p.now) || 0, img: pImg, qty: 1 };
 
         if(window.BTT_CART && window.BTT_CART.openQuickOrder){
           window.BTT_CART.openQuickOrder(snap);

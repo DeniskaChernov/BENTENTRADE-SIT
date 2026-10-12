@@ -865,7 +865,7 @@
         const snap = {
           id: pid,
           name: name,
-          price: (window.BTT_UTIL && window.BTT_UTIL.toUzs) ? window.BTT_UTIL.toUzs(prod.now) : Math.round(prod.now * 12500),
+          price: (window.BTT_UTIL && window.BTT_UTIL.toUzs) ? window.BTT_UTIL.toUzs(prod.now) : (Number(prod.now) || 0),
           img: photos[0].thumb,
           qty: 1
         };

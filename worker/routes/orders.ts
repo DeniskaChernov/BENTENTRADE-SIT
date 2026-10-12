@@ -146,7 +146,10 @@ app.post("/", async (c) => {
   }
 
   // Resolve authoritative prices from DB and bundle calculator
-  const rawIds = rawItems.map((i) => str(i.id, 60)).filter(Boolean);
+  const rawIds = rawItems.map((i) => {
+    const s = str(i.id, 60);
+    return s ? s.split("__")[0].trim() : "";
+  }).filter(Boolean);
   const resolvedIds = rawIds.map((rawId) => ALIAS_MAP[rawId] || rawId);
 
   const priceMap = new Map<string, number>();
@@ -183,17 +186,25 @@ app.post("/", async (c) => {
   }
 
   const UZS_RATE = 12500;
-  const parsedItems = rawItems.map((i) => {
+  const parsedItems = [];
+  for (const i of rawItems) {
     const rawId = str(i.id, 60) || null;
-    const resolvedId = rawId ? (ALIAS_MAP[rawId] || rawId) : null;
+    const baseId = rawId ? rawId.split("__")[0].trim() : null;
+    const resolvedId = baseId ? (ALIAS_MAP[baseId] || baseId) : null;
     const qty = Math.max(1, Math.min(99, Math.floor(Number(i.qty) || 1)));
     const clientPrice = Math.max(0, Math.floor(Number(i.price) || 0));
 
     // Authoritative price check
     let unitPrice = clientPrice;
-    const isKnown = resolvedId && (priceMap.has(resolvedId) || (rawId && priceMap.has(rawId)));
+    const isKnown = Boolean(
+      (resolvedId && priceMap.has(resolvedId)) ||
+      (baseId && priceMap.has(baseId)) ||
+      (rawId && priceMap.has(rawId))
+    );
+    const isOnRequest = Boolean(resolvedId && resolvedId.startsWith("rotang-"));
+
     if (isKnown) {
-      const dbPrice = (resolvedId ? priceMap.get(resolvedId) : null) ?? (rawId ? priceMap.get(rawId) : null) ?? 0;
+      const dbPrice = (resolvedId ? priceMap.get(resolvedId) : null) ?? (baseId ? priceMap.get(baseId) : null) ?? (rawId ? priceMap.get(rawId) : null) ?? 0;
       if (currency === "сум" || currency === "UZS") {
         unitPrice = dbPrice < 10000 ? dbPrice * UZS_RATE : dbPrice;
       } else if (currency === "$") {
@@ -201,16 +212,10 @@ app.post("/", async (c) => {
       } else {
         unitPrice = dbPrice;
       }
+    } else if (isOnRequest) {
+      unitPrice = 0;
     } else {
-      // If it's an on-request item (e.g. rotang profiles where price is negotiated per MOQ/volume)
-      const isOnRequest = resolvedId && resolvedId.startsWith("rotang-");
-      if (isOnRequest) {
-        unitPrice = 0;
-      } else if (clientPrice > 0) {
-        unitPrice = clientPrice;
-      } else {
-        unitPrice = 0;
-      }
+      return c.json({ error: "product_not_found", id: rawId }, 422);
     }
 
     const itemUnit = str(i.unit, 20) || (resolvedId && unitMap.get(resolvedId)) || "pcs";
@@ -222,15 +227,15 @@ app.post("/", async (c) => {
       if (!optionsObj) optionsObj = {};
       optionsObj.unit = itemUnit;
     }
-    return {
-      id: resolvedId || rawId,
+    parsedItems.push({
+      id: resolvedId || baseId || rawId,
       name: str(i.name, 200) || resolvedId || "-",
       qty,
       unit: itemUnit,
       unit_price: unitPrice,
       options: optionsObj ? JSON.stringify(optionsObj).slice(0, 500) : (i.options ? JSON.stringify(i.options).slice(0, 500) : null),
-    };
-  });
+    });
+  }
 
   const items = parsedItems;
 
