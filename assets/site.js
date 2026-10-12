@@ -542,6 +542,121 @@
     });
   }
 
+  /* ---- Conversion Funnel: Express furniture lead capture ---- */
+  function initFunnel(){
+    const funnel = document.querySelector(".prefoot-funnel");
+    if(!funnel) return;
+    const form = funnel.querySelector(".prefoot-funnel__form");
+    if(!form) return;
+    const phoneInput = form.querySelector('input[name="phone"], input[type="tel"]');
+    const submitBtn = form.querySelector(".prefoot-funnel__btn");
+    const successBox = funnel.querySelector(".prefoot-funnel__success");
+    const quizBox = funnel.querySelector(".prefoot-funnel__quiz");
+
+    form.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      if(!phoneInput) return;
+      const rawPhone = phoneInput.value.trim();
+      const cleanDigits = rawPhone.replace(/\D/g, "");
+      if(cleanDigits.length < 7){
+        phoneInput.focus();
+        phoneInput.style.borderColor = "var(--copper-bright)";
+        phoneInput.style.boxShadow = "0 0 0 3px rgba(226,124,61,.3)";
+        setTimeout(()=>{
+          phoneInput.style.borderColor = "";
+          phoneInput.style.boxShadow = "";
+        }, 1600);
+        return;
+      }
+
+      const spaceRadio = funnel.querySelector('input[name="funnel-space"]:checked');
+      const capacityRadio = funnel.querySelector('input[name="funnel-capacity"]:checked');
+      const spaceVal = spaceRadio ? spaceRadio.value : "Дом / терраса";
+      const capVal = capacityRadio ? capacityRadio.value : "4 персоны";
+
+      const originalBtnText = submitBtn ? submitBtn.textContent : "";
+      if(submitBtn){
+        submitBtn.disabled = true;
+        submitBtn.textContent = "...";
+      }
+
+      const msg = "Экспресс-подбор комплекта BTT: Пространство: " + spaceVal + "; Посадочных мест: " + capVal;
+      try{
+        if(window.BTT_API && window.BTT_API.contact){
+          await window.BTT_API.contact({
+            name: "Клиент (экспресс-подбор)",
+            phone: rawPhone,
+            message: msg,
+            source: "funnel",
+            page: window.location.pathname
+          });
+        } else {
+          await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: "Клиент (экспресс-подбор)",
+              phone: rawPhone,
+              message: msg,
+              source: "funnel",
+              page: window.location.pathname
+            })
+          });
+        }
+      }catch(_){
+        // Provide graceful fallback UI even if offline
+      }
+
+      form.style.display = "none";
+      if(quizBox) quizBox.style.display = "none";
+      if(successBox){
+        successBox.classList.add("is-visible");
+      }
+      if(window.navigator && window.navigator.vibrate) try{ window.navigator.vibrate([15, 30, 20]); }catch(_){}
+    });
+  }
+
+  /* ---- Mobile Funnel Bar (Bottom sticky CTA for <= 768px) ---- */
+  function initMobileFunnelBar(){
+    const bar = document.querySelector(".mobile-funnel-bar");
+    if(!bar) return;
+
+    let ticking = false;
+    function updateBarVisibility(){
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      const isScrollEnough = scrollY > 280;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const isNearBottom = (docHeight - scrollY) < 40;
+
+      if(isScrollEnough && !isNearBottom){
+        bar.classList.add("is-visible");
+      } else {
+        bar.classList.remove("is-visible");
+      }
+      ticking = false;
+    }
+
+    window.addEventListener("scroll", ()=>{
+      if(!ticking){
+        requestAnimationFrame(updateBarVisibility);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateBarVisibility();
+
+    const setsBtn = bar.querySelector('[data-funnel-action="sets"]');
+    if(setsBtn){
+      setsBtn.addEventListener("click", (e)=>{
+        const setsTarget = document.getElementById("sets") || document.querySelector(".prefoot-funnel");
+        if(setsTarget){
+          e.preventDefault();
+          setsTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    }
+  }
+
   window.BTT_applyProductMeta = applyProductMeta;
 
   function initFaq(){
@@ -1110,6 +1225,8 @@
     initFaq();
     applyProductMeta();
     initCustomOrder();
+    initFunnel();
+    initMobileFunnelBar();
     wireQuickViewTriggers();
 
 

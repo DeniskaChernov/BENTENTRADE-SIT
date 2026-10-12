@@ -25,8 +25,9 @@ app.post("/", async (c) => {
   const source = str(body.source, 40) || (body.is_bot ? "bot" : "web");
   const lang = str(body.lang, 4) || "ru";
   const defaultBotName = lang === "uz" ? "Mijoz (onlayn-chat)" : lang === "en" ? "Customer (online chat)" : "Посетитель сайта (онлайн-чат)";
+  const defaultWebName = lang === "uz" ? "Mijoz (veb-sayt)" : lang === "en" ? "Customer (website)" : "Посетитель сайта";
   const rawName = str(body.name, 120);
-  const name = rawName || (source === "bot" ? defaultBotName : "");
+  const name = rawName || (source === "bot" ? defaultBotName : defaultWebName);
   const phone = str(body.phone, 40);
   const email = str(body.email, 160);
   const page = str(body.page, 200);
@@ -50,38 +51,37 @@ app.post("/", async (c) => {
     .run();
 
   const chatHistory = Array.isArray(body.history) ? (body.history as Array<{ who?: string; text?: string }>) : [];
-  let tgMsg = "";
-  if (source === "bot") {
-    tgMsg = `💬 <b>НОВАЯ ЗАЯВКА ИЗ ЧАТ-БОТА BTT</b>\n` +
-      `👤 Клиент: <b>${escapeHtml(name)}</b>\n` +
-      (phone ? `📞 Телефон: <b>${escapeHtml(phone)}</b>\n` : "") +
-      (email ? `✉️ Email: <b>${escapeHtml(email)}</b>\n` : "") +
-      (page ? `📄 Страница: ${escapeHtml(page)}\n` : "") +
-      `❓ Запрос: ${escapeHtml(message)}`;
-    if (chatHistory.length) {
-      const recent = chatHistory.slice(-6).map((h) => {
-        const whoLabel = h.who === "user" ? "Клиент" : "Бот";
-        const cleanText = (h.text || "")
-          .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
-          .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
-          .replace(/<[^>]+>/g, " ")
-          .replace(/&nbsp;/g, " ")
-          .replace(/&quot;/g, '"')
-          .replace(/&amp;/g, "&")
-          .replace(/&lt;/g, "<")
-          .replace(/&gt;/g, ">")
-          .replace(/\s+/g, " ")
-          .trim();
-        return `• <i>${whoLabel}:</i> ${escapeHtml(str(cleanText, 250))}`;
-      }).join("\n");
-      tgMsg += `\n\n<b>Контекст диалога:</b>\n${recent}`;
-    }
-    const reqId = res.meta?.last_row_id ?? "";
-    tgMsg = `<b>Новая заявка${reqId ? ` #${reqId}` : ""}</b>\n` +
-      `Имя: ${escapeHtml(name)}\n` +
-      (phone ? `Телефон: ${escapeHtml(phone)}\n` : "") +
-      (email ? `Email: ${escapeHtml(email)}\n` : "") +
-      `Сообщение: ${escapeHtml(message)}`;
+  const reqId = res.meta?.last_row_id ?? "";
+  const sourceLabel = source === "bot"
+    ? "ИЗ ОНЛАЙН-ЧАТА"
+    : source === "funnel"
+    ? "ИЗ ВОРОНКИ ПОДБОРА"
+    : "С САЙТА";
+
+  let tgMsg = `💬 <b>НОВАЯ ЗАЯВКА ${sourceLabel} BTT${reqId ? ` #${reqId}` : ""}</b>\n` +
+    `👤 Клиент: <b>${escapeHtml(name)}</b>\n` +
+    (phone ? `📞 Телефон: <b>${escapeHtml(phone)}</b>\n` : "") +
+    (email ? `✉️ Email: <b>${escapeHtml(email)}</b>\n` : "") +
+    (page ? `📄 Страница: ${escapeHtml(page)}\n` : "") +
+    `❓ Запрос: ${escapeHtml(message)}`;
+
+  if (source === "bot" && chatHistory.length) {
+    const recent = chatHistory.slice(-6).map((h) => {
+      const whoLabel = h.who === "user" ? "Клиент" : "Бот";
+      const cleanText = (h.text || "")
+        .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
+        .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/&nbsp;/g, " ")
+        .replace(/&quot;/g, '"')
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/\s+/g, " ")
+        .trim();
+      return `• <i>${whoLabel}:</i> ${escapeHtml(str(cleanText, 250))}`;
+    }).join("\n");
+    tgMsg += `\n\n<b>Контекст диалога:</b>\n${recent}`;
   }
 
   await notifyTelegram(c.env, tgMsg);
