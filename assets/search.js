@@ -36,9 +36,89 @@
     { href:"contacts.html", k:"nav.contacts" }
   ];
 
+  const PHONETIC_MAP = {
+    "вертекс": "vertex",
+    "вертех": "vertex",
+    "корда": "corda",
+    "роеро": "roero",
+    "роэро": "roero",
+    "роэра": "roero",
+    "раеро": "roero",
+    "ноэро": "noero",
+    "ноеро": "noero",
+    "ноэра": "noero",
+    "тодо": "todo",
+    "туду": "todo",
+    "жардин": "jardin",
+    "жарден": "jardin",
+    "джардин": "jardin",
+    "тейпер": "taper",
+    "тапер": "taper",
+    "тепер": "taper",
+    "нова": "nova",
+    "сора": "sora",
+    "вела": "vela",
+    "руна": "runa",
+    "лива": "liva",
+    "ариа": "aria",
+    "ария": "aria",
+    "ротанг": "rotang",
+    "ратан": "rotang",
+    "полутрубка": "polutrubka",
+    "полумесяц": "polumesyats",
+    "лента": "ploskaya-lenta",
+    "трубка": "trubka",
+    "полусфера": "polusfera",
+    "твист": "twist"
+  };
+
+  const CAT_SYNONYMS = {
+    "wicker-chairs": ["плетеные", "плетеная", "стул", "стулья", "stul", "stullar", "to'qilgan", "wicker", "chairs", "vertex", "вертекс", "corda", "корда"],
+    "plastic-chairs": ["пластиковые", "пластиковый", "стул", "стулья", "stul", "stullar", "plastik", "plastic", "chairs", "roero", "роеро", "noero", "ноэро", "todo", "тодо", "jardin", "жардин"],
+    "tables": ["стол", "столы", "обеденные", "stollar", "stol", "tables", "table", "taper", "тейпер", "vertex", "вертекс", "corda", "корда"],
+    "lighting": ["лампа", "лампы", "настольные", "светильник", "светильники", "освещение", "chiroq", "chiroqlar", "lamps", "lamp", "lighting", "nova", "sora", "vela", "runa", "liva", "aria", "нова", "сора", "вела", "руна", "лива", "ария"],
+    "rattan-raw": ["ротанг", "искусственный", "сырье", "бухты", "rotang", "sun'iy", "rattan", "raw", "twist", "polutrubka", "полутрубка", "полумесяц", "лента", "трубка", "полусфера", "твист"]
+  };
+
+  const PAGE_SYNONYMS = {
+    "delivery.html": ["доставка", "оплата", "yetkazib", "berish", "to'lov", "delivery", "shipping", "payment"],
+    "contacts.html": ["контакты", "адрес", "телефон", "aloqa", "manzil", "telefon", "contacts", "phone", "address"],
+    "faq.html": ["вопросы", "ответы", "savollar", "javoblar", "faq", "help"],
+    "care.html": ["уход", "чистка", "parvarish", "care", "cleaning"],
+    "returns.html": ["возврат", "гарантия", "qaytarish", "kafolat", "returns", "warranty"],
+    "horeca.html": ["хорека", "кафе", "ресторан", "оптом", "kafe", "restoran", "ulgurji", "horeca"],
+    "blog.html": ["блог", "статьи", "новости", "maqolalar", "yangiliklar", "blog", "articles"]
+  };
+
   function productThumb(id){
     const imgs = window.BTT_PRODUCT_IMG ? window.BTT_PRODUCT_IMG(id) : null;
     return (imgs && imgs[0]) ? imgs[0].thumb : null;
+  }
+
+  function buildSearchText(slug, name, cat, model, rawItem){
+    const parts = [slug || "", name || "", cat || "", model || ""];
+    const I = window.BTT_I18N || {};
+    ["ru", "uz", "en"].forEach(function(l){
+      const d = I[l] || {};
+      if(slug && d[slug + ".name"]) parts.push(d[slug + ".name"]);
+      if(slug && d[slug + ".cat"]) parts.push(d[slug + ".cat"]);
+      if(rawItem && rawItem.legacyId && d[rawItem.legacyId + ".name"]) parts.push(d[rawItem.legacyId + ".name"]);
+    });
+    if(rawItem && rawItem.i18n){
+      ["ru", "uz", "en"].forEach(function(l){
+        if(rawItem.i18n[l] && rawItem.i18n[l].name) parts.push(rawItem.i18n[l].name);
+      });
+    }
+    const base = norm(parts.join(" "));
+    const extras = [];
+    Object.keys(PHONETIC_MAP).forEach(function(k){
+      const target = PHONETIC_MAP[k];
+      if(base.includes(k) || base.includes(target)){
+        extras.push(k);
+        extras.push(target);
+      }
+    });
+    return base + (extras.length ? " " + extras.join(" ") : "");
   }
 
   function staticProducts(){
@@ -50,7 +130,8 @@
         const id = item.slug;
         const name = d[item.slug + ".name"] || d[item.legacyId + ".name"] || (item.i18n && (item.i18n[lang()] || item.i18n.ru) && (item.i18n[lang()] || item.i18n.ru).name) || item.model;
         const cat = d[item.slug + ".cat"] || d[item.legacyId + ".cat"] || d["cat." + item.category] || item.category;
-        out.push({ id, slug: item.slug, name, cat, img: productThumb(item.slug), q: name });
+        const searchStr = buildSearchText(item.slug, name, cat, item.model, item);
+        out.push({ id, slug: item.slug, name, cat, img: productThumb(item.slug), q: name, searchStr });
       });
       return out;
     }
@@ -60,7 +141,8 @@
         const p = P[id] || {};
         const name = d[id+".name"] || d[p.legacyId+".name"] || p.model || id;
         const cat = d[id+".cat"] || d[p.legacyId+".cat"] || d["cat." + p.cat] || p.cat || "";
-        out.push({ id, slug: p.slug || id, name, cat, img: productThumb(id), q: name });
+        const searchStr = buildSearchText(p.slug || id, name, cat, p.model, p);
+        out.push({ id, slug: p.slug || id, name, cat, img: productThumb(id), q: name, searchStr });
       });
       if(out.length) return out;
     }
@@ -77,7 +159,8 @@
     window.BTT_API.products("all").then(res=>{
       apiCache[l] = (res.products || []).map(p=>({
         id:p.id, slug:p.slug || p.id, name:p.name || "", cat:p.category_label || "",
-        img:p.image ? ("/media/" + p.image) : null, q:p.name || ""
+        img:p.image ? ("/media/" + p.image) : null, q:p.name || "",
+        searchStr: buildSearchText(p.slug || p.id, p.name || "", p.category_label || "", p.model || "", p)
       }));
       if(ov && ov.classList.contains("is-open")) render();
     }).catch(()=>{});
@@ -146,16 +229,47 @@
     if(window.BTT_UTIL && window.BTT_UTIL.esc) return window.BTT_UTIL.esc(s);
     return String(s == null ? "" : s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   }
-  function norm(s){ return String(s).toLowerCase().replace(/[‘’`]/g, "'").trim(); }
+  function norm(s){
+    return String(s == null ? "" : s).toLowerCase()
+      .replace(/[‘’`ʻʼ]/g, "'")
+      .replace(/ё/g, "е")
+      .replace(/[^\p{L}\p{N}\s'-]/gu, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function matchQuery(targetStr, q){
+    if(!q) return true;
+    const tokens = q.split(/\s+/).filter(Boolean);
+    const target = norm(targetStr);
+    return tokens.every(function(tkn){
+      if(target.includes(tkn)) return true;
+      const mapped = PHONETIC_MAP[tkn];
+      if(mapped && target.includes(mapped)) return true;
+      for(const k in PHONETIC_MAP){
+        if(PHONETIC_MAP[k] === tkn && target.includes(k)) return true;
+      }
+      return false;
+    });
+  }
 
   function render(){
     const q = norm(input.value);
     items = [];
     let html = "";
 
-    const cats = categories().filter(c=> !q || norm(c.label).includes(q));
-    const prods = products().filter(p=> !q || norm(p.name).includes(q) || norm(p.cat).includes(q));
-    const pages = PAGES.map(p=>({ ...p, label:t(p.k), sub:p.sub?t(p.sub):p.href })).filter(p=> !q || norm(p.label).includes(q) || norm(p.sub||"").includes(q));
+    const cats = categories().filter(c=>{
+      const searchStr = norm(c.label + " " + c.slug + " " + (CAT_SYNONYMS[c.slug] || []).join(" "));
+      return matchQuery(searchStr, q);
+    });
+    const prods = products().filter(p=> matchQuery(p.searchStr || norm(p.name + " " + p.cat + " " + (p.slug || "")), q));
+    const pages = PAGES.map(p=>{
+      const label = t(p.k);
+      const sub = p.sub ? t(p.sub) : p.href;
+      const syn = (PAGE_SYNONYMS[p.href] || []).join(" ");
+      const searchStr = norm(label + " " + sub + " " + p.href + " " + syn);
+      return { ...p, label, sub, searchStr };
+    }).filter(p=> matchQuery(p.searchStr, q));
 
     if(!cats.length && !prods.length && !pages.length){
       body.innerHTML = '<div class="search-empty">'+esc(t("srch.empty"))+'</div>';

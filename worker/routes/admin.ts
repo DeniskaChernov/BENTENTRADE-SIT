@@ -530,12 +530,43 @@ app.put("/orders/:id/status", async (c) => {
   const status = str(b.status, 20);
   if (!ORDER_STATUSES.includes(status)) return c.json({ error: "bad_status" }, 422);
   const order = await c.env.DB.prepare(`SELECT * FROM orders WHERE id = ?`).bind(id).first<any>();
+  if (!order) return c.json({ error: "not_found" }, 404);
+  if (order.status === status) {
+    return c.json({ ok: true, updated: 0, unchanged: true });
+  }
   const r = await c.env.DB.prepare(`UPDATE orders SET status = ? WHERE id = ?`).bind(status, id).run();
-  if (order && order.customer_phone) {
+  if (order.customer_phone) {
     await notifyOrderSms(c.env, { ...order, status }, "status_change", status).catch((e) =>
       console.warn("[sms:status] Failed:", (e as Error).message),
     );
   }
+  return c.json({ ok: true, updated: r.meta.changes });
+});
+
+app.put("/orders/:id", async (c) => {
+  const id = Number(c.req.param("id"));
+  const b = await c.req.json().catch(() => ({}));
+  const order = await c.env.DB.prepare(`SELECT * FROM orders WHERE id = ?`).bind(id).first<any>();
+  if (!order) return c.json({ error: "not_found" }, 404);
+
+  const customerName = str(b.customer_name ?? order.customer_name, 120);
+  const customerPhone = str(b.customer_phone ?? order.customer_phone, 40);
+  const customerEmail = str(b.customer_email ?? order.customer_email, 160);
+  const address = str(b.address ?? order.address, 400);
+  const comment = str(b.comment ?? order.comment, 2000);
+  const status = b.status ? str(b.status, 20) : order.status;
+  if (status && !ORDER_STATUSES.includes(status)) return c.json({ error: "bad_status" }, 422);
+
+  const r = await c.env.DB.prepare(
+    `UPDATE orders SET customer_name = ?, customer_phone = ?, customer_email = ?, address = ?, comment = ?, status = ? WHERE id = ?`
+  ).bind(customerName, customerPhone, customerEmail, address, comment, status, id).run();
+
+  if (status !== order.status && customerPhone) {
+    await notifyOrderSms(c.env, { ...order, customer_name: customerName, customer_phone: customerPhone, address, status }, "status_change", status).catch((e) =>
+      console.warn("[sms:status] Failed:", (e as Error).message),
+    );
+  }
+
   return c.json({ ok: true, updated: r.meta.changes });
 });
 

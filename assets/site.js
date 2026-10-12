@@ -1720,9 +1720,24 @@
           const section = grid.closest("section[id]");
           if(section) setTimeout(()=> scrollToSection(section.id, true), opts.instant ? 0 : 340);
         }
+        if(!opts.fromPopstate && !opts.instant && (location.pathname.endsWith("catalog.html") || location.pathname.endsWith("/catalog") || location.pathname === "/catalog")){
+          const p = new URLSearchParams(location.search);
+          if(cat && cat !== "all"){
+            p.set("cat", cat);
+          } else {
+            p.delete("cat");
+          }
+          const newSearch = p.toString();
+          const newUrl = location.pathname + (newSearch ? "?" + newSearch : "") + location.hash;
+          if(location.href !== newUrl){
+            try {
+              history.pushState({ cat }, "", newUrl);
+            } catch(e){}
+          }
+        }
         document.dispatchEvent(new CustomEvent("btt:cat-change", { detail:{ cat, chip } }));
       }
-      chips.forEach(chip=> chip.addEventListener("click", ()=> activate(chip)));
+      chips.forEach(chip=> chip.addEventListener("click", ()=> activate(chip, { fromPopstate: chip.dataset.popstate === "true" })));
       const qcat = urlParams.get("cat");
       if(qcat){
         const resolved = resolveChipCat(qcat);
@@ -1759,13 +1774,15 @@
       window.BTT_UTIL.setActiveCat = (c) => { activeCat = c; };
     }
 
-    window.addEventListener("popstate", ()=>{
+    window.addEventListener("popstate", (e)=>{
       const params = new URLSearchParams(location.search);
-      const cat = params.get("cat") || "all";
+      const cat = (e.state && e.state.cat) || params.get("cat") || "all";
       const resolved = resolveChipCat(cat);
       const chip = document.querySelector(`[data-chips] .chip[data-cat="${resolved}"]`) || document.querySelector(`.cat-chips .chip[data-cat="${resolved}"]`);
       if(chip && !chip.classList.contains("is-active")){
+        chip.dataset.popstate = "true";
         chip.click();
+        delete chip.dataset.popstate;
       }
     });
 

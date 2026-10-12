@@ -3382,8 +3382,10 @@ export const ADMIN_APP_JS = String.raw`
     var o = d.order || {};
     var items = d.items || [];
 
-    var cleanPhone = String(o.customer_phone || "").replace(/[^0-9+]/g, "");
-    var waUrl = cleanPhone ? "https://wa.me/" + cleanPhone.replace("+", "") : "";
+    var rawDigits = String(o.customer_phone || "").replace(/\D/g, "");
+    if (rawDigits.length === 9) rawDigits = "998" + rawDigits;
+    var waUrl = rawDigits ? "https://wa.me/" + rawDigits : "";
+    var telHref = rawDigits ? (rawDigits.startsWith("998") ? ("+998" + rawDigits.slice(3)) : ("+" + rawDigits)) : (o.customer_phone || "");
 
     function getItemUnit(it){
       var u = it.product_unit;
@@ -3417,6 +3419,12 @@ export const ADMIN_APP_JS = String.raw`
       return String(optStr);
     }
 
+    var statusSelectHtml = '<select class="select-sm" id="o-dlg-status" style="padding:4px 8px;font-size:12.5px;font-weight:600;border-radius:6px;background:var(--panel);border:1px solid var(--line);cursor:pointer">' +
+      ORDER_STATUSES.map(function(s){
+        return '<option value="' + s + '"' + (o.status === s ? ' selected' : '') + '>' + esc(ORDER_STATUS_LABELS[s] || s) + '</option>';
+      }).join("") +
+    '</select>';
+
     var dlg = document.createElement("dialog");
     dlg.innerHTML =
       '<div class="dlg-header">' +
@@ -3429,7 +3437,7 @@ export const ADMIN_APP_JS = String.raw`
             '<div style="font-size:16px;font-weight:700">' + esc(o.customer_name || "Клиент") + '</div>' +
             '<div style="display:flex;gap:8px">' +
               (waUrl ? '<a href="' + waUrl + '" target="_blank" class="btn sm" style="background:#25D366;color:#fff">' + ICONS.whatsapp + ' WhatsApp</a>' : '') +
-              (o.customer_phone ? '<a href="tel:' + esc(o.customer_phone) + '" class="btn ghost sm">' + ICONS.phone + ' Позвонить</a>' : '') +
+              (telHref ? '<a href="tel:' + esc(telHref) + '" class="btn ghost sm">' + ICONS.phone + ' Позвонить</a>' : '') +
             '</div>' +
           '</div>' +
           '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;color:var(--ink-soft)">' +
@@ -3438,7 +3446,7 @@ export const ADMIN_APP_JS = String.raw`
             '<div><b>Способ получения:</b> <span class="pill" style="vertical-align:middle">' + (o.delivery_method === "pickup" ? "Самовывоз" : (o.delivery_method === "quick_order" ? "⚡ Быстрый заказ" : "Доставка курьером")) + '</span></div>' +
             '<div><b>Оплата:</b> <span class="pill" style="vertical-align:middle;background:var(--copper-bg);color:var(--copper);font-weight:600">' + (o.payment_method === "click_payme" ? "Click / Payme" : (o.payment_method === "card_or_invoice" ? "Перевод / Счёт" : "При получении")) + '</span></div>' +
             '<div><b>Валюта:</b> ' + esc(o.currency || "сум") + '</div>' +
-            '<div><b>Статус:</b> <span class="pill" style="vertical-align:middle">' + (ORDER_STATUS_LABELS[o.status] || o.status) + '</span></div>' +
+            '<div style="display:flex;align-items:center;gap:6px"><b>Статус:</b> ' + statusSelectHtml + '</div>' +
             '<div style="grid-column:1/-1"><b>Адрес доставки:</b> ' + esc(o.address || (o.delivery_method === "pickup" ? "Самовывоз (склад Ташкент)" : (o.delivery_method === "quick_order" ? "Уточнить у клиента" : "Не указан"))) + '</div>' +
             (o.comment ? '<div style="grid-column:1/-1"><b>Комментарий:</b> ' + esc(o.comment) + '</div>' : '') +
           '</div>' +
@@ -3449,22 +3457,26 @@ export const ADMIN_APP_JS = String.raw`
           '<table>' +
             '<thead><tr><th>Товар</th><th>Кол-во</th><th>Цена</th><th>Сумма</th></tr></thead>' +
             '<tbody>' +
-              items.map(function(it){
-                var optText = formatOpts(it.options);
-                return '<tr>' +
-                  '<td><b>' + esc(it.name) + '</b>' + (optText ? '<br><small class="hint" style="color:var(--copper);font-weight:600">' + esc(optText) + '</small>' : '') + '</td>' +
-                  '<td>' + it.qty + ' ' + getItemUnit(it) + '</td>' +
-                  '<td>' + fmtMoney(it.unit_price, o.currency) + '</td>' +
-                  '<td><b>' + fmtMoney(it.unit_price * it.qty, o.currency) + '</b></td>' +
-                '</tr>';
-              }).join("") +
+              ((!items || !items.length)
+                ? '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:24px">Нет позиций в заказе</td></tr>'
+                : items.map(function(it){
+                    var optText = formatOpts(it.options);
+                    var itQty = Math.max(1, it.qty || 1);
+                    var itPrice = it.unit_price || 0;
+                    return '<tr>' +
+                      '<td><b>' + esc(it.name || "Товар") + '</b>' + (optText ? '<br><small class="hint" style="color:var(--copper);font-weight:600">' + esc(optText) + '</small>' : '') + '</td>' +
+                      '<td>' + itQty + ' ' + getItemUnit(it) + '</td>' +
+                      '<td>' + fmtMoney(itPrice, o.currency) + '</td>' +
+                      '<td><b>' + fmtMoney(itPrice * itQty, o.currency) + '</b></td>' +
+                    '</tr>';
+                  }).join("")) +
             '</tbody>' +
           '</table>' +
         '</div>' +
 
         '<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--panel2);border-radius:var(--radius)">' +
           '<div><b>Итого к оплате:</b></div>' +
-          '<div style="font-size:20px;font-weight:800;color:var(--copper)">' + fmtMoney(o.total, o.currency) + '</div>' +
+          '<div style="font-size:20px;font-weight:800;color:var(--copper)">' + fmtMoney(o.total || 0, o.currency) + '</div>' +
         '</div>' +
       '</div>' +
       '<div class="dlg-foot">' +
@@ -3475,6 +3487,21 @@ export const ADMIN_APP_JS = String.raw`
     dlg.showModal();
     dlg.querySelector("#o-close").onclick = function(){ dlg.close(); dlg.remove(); };
     dlg.querySelector("#o-dlg-close").onclick = function(){ dlg.close(); dlg.remove(); };
+
+    var stSel = dlg.querySelector("#o-dlg-status");
+    if (stSel) {
+      stSel.onchange = async function(){
+        var newStatus = stSel.value;
+        try {
+          await api("/api/admin/orders/" + id + "/status", { method: "PUT", body: { status: newStatus } });
+          o.status = newStatus;
+          toast("Статус заказа обновлен: " + (ORDER_STATUS_LABELS[newStatus] || newStatus), "ok");
+          if (typeof secOrders === "function") secOrders();
+        } catch(e) {
+          toast("Ошибка обновления статуса", "err");
+        }
+      };
+    }
   }
 
   /* ------------------------------ Requests --------------------------- */
