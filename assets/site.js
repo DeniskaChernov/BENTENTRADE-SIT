@@ -574,8 +574,8 @@
 
         const spaceRadio = funnel.querySelector('input[name="funnel-space"]:checked');
         const capacityRadio = funnel.querySelector('input[name="funnel-capacity"]:checked');
-        const spaceVal = spaceRadio ? spaceRadio.value : "Дом / терраса";
-        const capVal = capacityRadio ? capacityRadio.value : "4 персоны";
+        const spaceVal = spaceRadio ? spaceRadio.value : "Дом, кухня и терраса";
+        const capVal = capacityRadio ? capacityRadio.value : "4 персоны (обеденный стол + 4 стула)";
 
         if(submitBtn){
           submitBtn.disabled = true;
