@@ -490,7 +490,7 @@ p{margin:0;text-wrap:pretty;}
 .media img{width:100%;height:100%;object-fit:cover;}
 
 .badge-sale{
-  position:absolute;top:12px;right:12px;
+  position:absolute;top:12px;left:12px;right:auto;
   background:linear-gradient(135deg, var(--copper-bright) 0%, var(--copper) 100%);
   color:#fff;font-size:12px;font-weight:800;padding:5px 11px;
   border-radius:var(--r-pill);z-index:2;
@@ -549,13 +549,13 @@ p{margin:0;text-wrap:pretty;}
   .price { gap: 4px; margin-top: 3px; }
   .price__now { font-size: 14px; }
   .price__old { font-size: 11px; }
-  .product__media .fav { width: 30px; height: 30px; top: 6px; left: 6px; }
+  .product__media .fav { width: 30px; height: 30px; top: 6px; right: 6px; left: auto; }
   .product__media .fav svg { width: 13px; height: 13px; }
   .product__media .add { width: 34px; height: 34px; bottom: 6px; right: 6px; }
   .product__media .add svg { width: 15px; height: 15px; }
-  .badge-sale { top: 6px; right: 6px; font-size: 9px; padding: 2px 6px; }
+  .badge-sale { top: 6px; left: 6px; right: auto; font-size: 9px; padding: 2px 6px; }
   .badge-mto { top: 6px; left: 6px; font-size: 8.5px; padding: 2px 6px; }
-  .product__media:has(.badge-mto) .fav { top: 30px; left: 6px; }
+  .product__media:has(.badge-mto) .badge-sale { top: 28px; left: 6px; }
   .product__media .quickview-btn { display: none !important; }
   .product__foot { flex-direction: column !important; align-items: stretch !important; gap: 6px !important; }
   .product__foot .product__buy { width: 100% !important; padding: 7px 10px !important; text-align: center !important; font-size: 12.5px !important; }
@@ -568,7 +568,7 @@ p{margin:0;text-wrap:pretty;}
   .price { gap: 5px; margin-top: 4px; }
   .price__now { font-size: 15.5px; }
   .price__old { font-size: 12px; }
-  .product__media .fav { width: 34px; height: 34px; top: 8px; left: 8px; }
+  .product__media .fav { width: 34px; height: 34px; top: 8px; right: 8px; left: auto; }
   .product__media .fav svg { width: 15px; height: 15px; }
   .product__media .add { width: 38px; height: 38px; bottom: 8px; right: 8px; }
   .product__media .add svg { width: 16px; height: 16px; }
@@ -579,7 +579,7 @@ p{margin:0;text-wrap:pretty;}
   .product { gap: 16px; }
   .product__name { font-size: 18px; line-height: 1.3; }
   .price__now { font-size: 20px; }
-  .product__media .fav { width: 42px; height: 42px; top: 14px; left: 14px; }
+  .product__media .fav { width: 42px; height: 42px; top: 14px; right: 14px; left: auto; }
   .product__media .fav svg { width: 18px; height: 18px; }
   .product__media .add { width: 48px; height: 48px; bottom: 14px; right: 14px; }
   .product__media .add svg { width: 21px; height: 21px; }
@@ -605,18 +605,18 @@ p{margin:0;text-wrap:pretty;}
 }
 
 .product__media .fav{
-  position:absolute;top:12px;left:12px;width:38px;height:38px;border-radius:50%;
+  position:absolute;top:12px;right:12px;left:auto;width:38px;height:38px;border-radius:50%;
   background:color-mix(in oklab, var(--paper) 88%, transparent);
   border:1px solid var(--line);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   box-shadow:0 4px 12px -3px rgba(22,19,15,.12);
-  display:grid;place-items:center;color:var(--text);z-index:2;
+  display:grid;place-items:center;color:var(--text);z-index:4;
   transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;
   cursor:pointer;
 }
 .product__media .fav::before{content:"";position:absolute;inset:-6px;}
-.product__media:has(.badge-mto) .fav{top:48px;}
-.product__media:has(.badge-mto):has(.badge-sale) .fav{top:auto;bottom:64px;}
+.product__media:has(.badge-mto) .badge-sale{top:44px;}
+/* badges stack on left, fav is top-right */
 .product__media .fav:hover{
   background:var(--copper-bright);border-color:var(--copper-bright);color:#fff;
   transform:translateY(-1px) scale(1.05);
@@ -712,19 +712,19 @@ p{margin:0;text-wrap:pretty;}
   .product__media{border-radius:14px;}
   .product__media .see{display:none;}
   .product__media .fav{
-    top:8px;left:8px;width:34px;height:34px;
+    top:8px;right:8px;left:auto;width:34px;height:34px;
     box-shadow:0 3px 8px -2px rgba(22,19,15,.1);
   }
   .product__media .fav svg{width:15px;height:15px;}
-  .product__media:has(.badge-mto) .fav{top:36px;}
-  .product__media:has(.badge-mto):has(.badge-sale) .fav{bottom:48px;}
+  .product__media:has(.badge-mto) .badge-sale{top:32px;}
+  /* badges on left, fav on right */
   .product__media .add{
     bottom:8px;right:8px;width:38px;height:38px;
     box-shadow:0 4px 12px -3px rgba(22,19,15,.22);
   }
   .product__media .add svg{width:17px;height:17px;}
   .badge-sale{
-    top:8px;right:8px;font-size:10px;font-weight:800;padding:3px 7px;
+    top:8px;left:8px;right:auto;font-size:10px;font-weight:800;padding:3px 7px;
   }
   .badge-mto{
     top:8px;left:8px;font-size:9px;font-weight:800;padding:3px 7px;

@@ -1693,11 +1693,14 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 /* In-media action buttons */
 .catalog-layout .product__media .fav,
 #catalog-grid .product__media .fav,
+.prod-grid .product__media .fav,
 [data-related-grid] .product__media .fav{
   width:32px !important;
   height:32px !important;
-  top:8px !important;
-  left:8px !important;
+  top:10px !important;
+  right:10px !important;
+  left:auto !important;
+  z-index:4 !important;
   border-radius:50% !important;
   background:rgba(255,255,255,.9) !important;
   border:1px solid rgba(0,0,0,.08) !important;
@@ -1784,13 +1787,30 @@ html.acc-cookie-wait .acc-skeleton{display:none}
 }
 .catalog-layout .product__media .badge-sale,
 #catalog-grid .product__media .badge-sale,
+.prod-grid .product__media .badge-sale,
 [data-related-grid] .product__media .badge-sale{
-  top:8px !important;
-  right:8px !important;
+  top:10px !important;
+  left:10px !important;
+  right:auto !important;
   font-size:11px !important;
   padding:3px 8px !important;
   font-weight:800;
   border-radius:var(--r-pill);
+  z-index:2 !important;
+}
+.catalog-layout .product__media .badge-mto,
+#catalog-grid .product__media .badge-mto,
+.prod-grid .product__media .badge-mto,
+[data-related-grid] .product__media .badge-mto{
+  top:10px !important;
+  left:10px !important;
+  right:auto !important;
+  z-index:3 !important;
+}
+.product__media:has(.badge-mto) .badge-sale{
+  top:38px !important;
+  left:10px !important;
+  right:auto !important;
 }
 .catalog-layout .product__media .see,
 #catalog-grid .product__media .see,
