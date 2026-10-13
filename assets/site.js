@@ -544,75 +544,78 @@
 
   /* ---- Conversion Funnel: Express furniture lead capture ---- */
   function initFunnel(){
-    const funnel = document.querySelector(".prefoot-funnel");
-    if(!funnel) return;
-    const form = funnel.querySelector(".prefoot-funnel__form");
-    if(!form) return;
-    const phoneInput = form.querySelector('input[name="phone"], input[type="tel"]');
-    const submitBtn = form.querySelector(".prefoot-funnel__btn");
-    const successBox = funnel.querySelector(".prefoot-funnel__success");
-    const quizBox = funnel.querySelector(".prefoot-funnel__quiz");
+    const funnels = document.querySelectorAll(".prefoot-funnel");
+    if(!funnels.length) return;
 
-    form.addEventListener("submit", async (e)=>{
-      e.preventDefault();
-      if(!phoneInput) return;
-      const rawPhone = phoneInput.value.trim();
-      const cleanDigits = rawPhone.replace(/\D/g, "");
-      if(cleanDigits.length < 7){
-        phoneInput.focus();
-        phoneInput.style.borderColor = "var(--copper-bright)";
-        phoneInput.style.boxShadow = "0 0 0 3px rgba(226,124,61,.3)";
-        setTimeout(()=>{
-          phoneInput.style.borderColor = "";
-          phoneInput.style.boxShadow = "";
-        }, 1600);
-        return;
-      }
+    funnels.forEach(funnel => {
+      const form = funnel.querySelector(".prefoot-funnel__form");
+      if(!form || form.dataset.funnelBound) return;
+      form.dataset.funnelBound = "1";
+      const phoneInput = form.querySelector('input[name="phone"], input[type="tel"]');
+      const submitBtn = form.querySelector(".prefoot-funnel__btn");
+      const successBox = funnel.querySelector(".prefoot-funnel__success");
+      const quizBox = funnel.querySelector(".prefoot-funnel__quiz");
 
-      const spaceRadio = funnel.querySelector('input[name="funnel-space"]:checked');
-      const capacityRadio = funnel.querySelector('input[name="funnel-capacity"]:checked');
-      const spaceVal = spaceRadio ? spaceRadio.value : "Дом / терраса";
-      const capVal = capacityRadio ? capacityRadio.value : "4 персоны";
+      form.addEventListener("submit", async (e)=>{
+        e.preventDefault();
+        if(!phoneInput) return;
+        const rawPhone = phoneInput.value.trim();
+        const cleanDigits = rawPhone.replace(/\D/g, "");
+        if(cleanDigits.length < 7){
+          phoneInput.focus();
+          phoneInput.style.borderColor = "var(--copper-bright)";
+          phoneInput.style.boxShadow = "0 0 0 3px rgba(226,124,61,.3)";
+          setTimeout(()=>{
+            phoneInput.style.borderColor = "";
+            phoneInput.style.boxShadow = "";
+          }, 1600);
+          return;
+        }
 
-      const originalBtnText = submitBtn ? submitBtn.textContent : "";
-      if(submitBtn){
-        submitBtn.disabled = true;
-        submitBtn.textContent = "...";
-      }
+        const spaceRadio = funnel.querySelector('input[name="funnel-space"]:checked');
+        const capacityRadio = funnel.querySelector('input[name="funnel-capacity"]:checked');
+        const spaceVal = spaceRadio ? spaceRadio.value : "Дом / терраса";
+        const capVal = capacityRadio ? capacityRadio.value : "4 персоны";
 
-      const msg = "Экспресс-подбор комплекта BTT: Пространство: " + spaceVal + "; Посадочных мест: " + capVal;
-      try{
-        if(window.BTT_API && window.BTT_API.contact){
-          await window.BTT_API.contact({
-            name: "Клиент (экспресс-подбор)",
-            phone: rawPhone,
-            message: msg,
-            source: "funnel",
-            page: window.location.pathname
-          });
-        } else {
-          await fetch("/api/contact", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
+        if(submitBtn){
+          submitBtn.disabled = true;
+          submitBtn.textContent = "...";
+        }
+
+        const msg = "Экспресс-подбор комплекта BTT: Пространство: " + spaceVal + "; Посадочных мест: " + capVal;
+        try{
+          if(window.BTT_API && window.BTT_API.contact){
+            await window.BTT_API.contact({
               name: "Клиент (экспресс-подбор)",
               phone: rawPhone,
               message: msg,
               source: "funnel",
               page: window.location.pathname
-            })
-          });
+            });
+          } else {
+            await fetch("/api/contact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                name: "Клиент (экспресс-подбор)",
+                phone: rawPhone,
+                message: msg,
+                source: "funnel",
+                page: window.location.pathname
+              })
+            });
+          }
+        }catch(_){
+          // Provide graceful fallback UI even if offline
         }
-      }catch(_){
-        // Provide graceful fallback UI even if offline
-      }
 
-      form.style.display = "none";
-      if(quizBox) quizBox.style.display = "none";
-      if(successBox){
-        successBox.classList.add("is-visible");
-      }
-      if(window.navigator && window.navigator.vibrate) try{ window.navigator.vibrate([15, 30, 20]); }catch(_){}
+        form.style.display = "none";
+        if(quizBox) quizBox.style.display = "none";
+        if(successBox){
+          successBox.classList.add("is-visible");
+        }
+        if(window.navigator && window.navigator.vibrate) try{ window.navigator.vibrate([15, 30, 20]); }catch(_){}
+      });
     });
   }
 
